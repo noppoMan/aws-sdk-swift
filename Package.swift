@@ -283,7 +283,7 @@ let package = Package(
         .library(name: "SotoXRay", targets: ["SotoXRay"])
     ],
     dependencies: [
-        .package(url: "https://github.com/soto-project/soto-core.git", from: "5.2.0")
+        .package(url: "https://github.com/soto-project/soto-core.git", .branch("async-await"))
     ],
     targets: [
         .target(name: "SotoACM", dependencies: [.product(name: "SotoCore", package: "soto-core")], path: "./Sources/Soto/Services/ACM"),
@@ -550,24 +550,27 @@ let package = Package(
         .target(name: "SotoXRay", dependencies: [.product(name: "SotoCore", package: "soto-core")], path: "./Sources/Soto/Services/XRay"),
         .target(name: "CSotoZlib", linkerSettings: [.linkedLibrary("z")]),
 
-        .testTarget(name: "SotoTests", dependencies: [
-            "SotoACM",
-            "SotoAPIGateway",
-            "SotoApiGatewayV2",
-            "SotoCloudFront",
-            "SotoCloudTrail",
-            "SotoDynamoDB",
-            "SotoEC2",
-            "SotoGlacier",
-            "SotoIAM",
-            "SotoLambda",
-            "SotoRoute53",
-            "SotoS3",
-            "SotoSES",
-            "SotoSNS",
-            "SotoSQS",
-            "SotoSSM",
-            "SotoSTS"
-        ])
+        .testTarget(
+            name: "SotoTests",
+            dependencies: [
+                "SotoACM",
+                "SotoAPIGateway",
+                "SotoApiGatewayV2",
+                "SotoCloudFront",
+                "SotoCloudTrail",
+                "SotoDynamoDB",
+                "SotoEC2",
+                "SotoGlacier",
+                "SotoIAM",
+                "SotoLambda",
+                "SotoRoute53",
+                "SotoS3",
+                "SotoSES",
+                "SotoSNS",
+                "SotoSQS",
+                "SotoSSM",
+                "SotoSTS"
+            ]
+        )
     ]
 )
