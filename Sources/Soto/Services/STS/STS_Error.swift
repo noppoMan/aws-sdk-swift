@@ -21,12 +21,12 @@ import SotoCore
 public struct STSErrorType: AWSErrorType {
     enum Code: String {
         case expiredTokenException = "ExpiredTokenException"
-        case iDPCommunicationErrorException = "IDPCommunicationErrorException"
-        case iDPRejectedClaimException = "IDPRejectedClaimException"
+        case iDPCommunicationErrorException = "IDPCommunicationError"
+        case iDPRejectedClaimException = "IDPRejectedClaim"
         case invalidAuthorizationMessageException = "InvalidAuthorizationMessageException"
-        case invalidIdentityTokenException = "InvalidIdentityTokenException"
-        case malformedPolicyDocumentException = "MalformedPolicyDocumentException"
-        case packedPolicyTooLargeException = "PackedPolicyTooLargeException"
+        case invalidIdentityTokenException = "InvalidIdentityToken"
+        case malformedPolicyDocumentException = "MalformedPolicyDocument"
+        case packedPolicyTooLargeException = "PackedPolicyTooLarge"
         case regionDisabledException = "RegionDisabledException"
     }
 

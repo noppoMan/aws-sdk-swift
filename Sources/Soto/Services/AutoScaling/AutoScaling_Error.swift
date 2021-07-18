@@ -20,14 +20,14 @@ import SotoCore
 /// Error enum for AutoScaling
 public struct AutoScalingErrorType: AWSErrorType {
     enum Code: String {
-        case activeInstanceRefreshNotFoundFault = "ActiveInstanceRefreshNotFoundFault"
-        case alreadyExistsFault = "AlreadyExistsFault"
-        case instanceRefreshInProgressFault = "InstanceRefreshInProgressFault"
+        case activeInstanceRefreshNotFoundFault = "ActiveInstanceRefreshNotFound"
+        case alreadyExistsFault = "AlreadyExists"
+        case instanceRefreshInProgressFault = "InstanceRefreshInProgress"
         case invalidNextToken = "InvalidNextToken"
-        case limitExceededFault = "LimitExceededFault"
-        case resourceContentionFault = "ResourceContentionFault"
-        case resourceInUseFault = "ResourceInUseFault"
-        case scalingActivityInProgressFault = "ScalingActivityInProgressFault"
+        case limitExceededFault = "LimitExceeded"
+        case resourceContentionFault = "ResourceContention"
+        case resourceInUseFault = "ResourceInUse"
+        case scalingActivityInProgressFault = "ScalingActivityInProgress"
         case serviceLinkedRoleFailure = "ServiceLinkedRoleFailure"
     }
 

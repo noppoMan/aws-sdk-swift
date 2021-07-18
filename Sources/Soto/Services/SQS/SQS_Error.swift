@@ -20,22 +20,22 @@ import SotoCore
 /// Error enum for SQS
 public struct SQSErrorType: AWSErrorType {
     enum Code: String {
-        case batchEntryIdsNotDistinct = "BatchEntryIdsNotDistinct"
-        case batchRequestTooLong = "BatchRequestTooLong"
-        case emptyBatchRequest = "EmptyBatchRequest"
+        case batchEntryIdsNotDistinct = "AWS.SimpleQueueService.BatchEntryIdsNotDistinct"
+        case batchRequestTooLong = "AWS.SimpleQueueService.BatchRequestTooLong"
+        case emptyBatchRequest = "AWS.SimpleQueueService.EmptyBatchRequest"
         case invalidAttributeName = "InvalidAttributeName"
-        case invalidBatchEntryId = "InvalidBatchEntryId"
+        case invalidBatchEntryId = "AWS.SimpleQueueService.InvalidBatchEntryId"
         case invalidIdFormat = "InvalidIdFormat"
         case invalidMessageContents = "InvalidMessageContents"
-        case messageNotInflight = "MessageNotInflight"
+        case messageNotInflight = "AWS.SimpleQueueService.MessageNotInflight"
         case overLimit = "OverLimit"
-        case purgeQueueInProgress = "PurgeQueueInProgress"
-        case queueDeletedRecently = "QueueDeletedRecently"
-        case queueDoesNotExist = "QueueDoesNotExist"
-        case queueNameExists = "QueueNameExists"
+        case purgeQueueInProgress = "AWS.SimpleQueueService.PurgeQueueInProgress"
+        case queueDeletedRecently = "AWS.SimpleQueueService.QueueDeletedRecently"
+        case queueDoesNotExist = "AWS.SimpleQueueService.NonExistentQueue"
+        case queueNameExists = "QueueAlreadyExists"
         case receiptHandleIsInvalid = "ReceiptHandleIsInvalid"
-        case tooManyEntriesInBatchRequest = "TooManyEntriesInBatchRequest"
-        case unsupportedOperation = "UnsupportedOperation"
+        case tooManyEntriesInBatchRequest = "AWS.SimpleQueueService.TooManyEntriesInBatchRequest"
+        case unsupportedOperation = "AWS.SimpleQueueService.UnsupportedOperation"
     }
 
     private let error: Code

@@ -20,7 +20,7 @@ import SotoCore
 /// Error enum for ACM
 public struct ACMErrorType: AWSErrorType {
     enum Code: String {
-        case accessDeniedException = "AccessDeniedException"
+        case accessDeniedException = "AccessDenied"
         case conflictException = "ConflictException"
         case invalidArgsException = "InvalidArgsException"
         case invalidArnException = "InvalidArnException"
@@ -33,9 +33,9 @@ public struct ACMErrorType: AWSErrorType {
         case resourceInUseException = "ResourceInUseException"
         case resourceNotFoundException = "ResourceNotFoundException"
         case tagPolicyException = "TagPolicyException"
-        case throttlingException = "ThrottlingException"
+        case throttlingException = "Throttling"
         case tooManyTagsException = "TooManyTagsException"
-        case validationException = "ValidationException"
+        case validationException = "ValidationError"
     }
 
     private let error: Code

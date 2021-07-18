@@ -21,12 +21,12 @@ import SotoCore
 public struct CloudSearchErrorType: AWSErrorType {
     enum Code: String {
         case baseException = "BaseException"
-        case disabledOperationException = "DisabledOperationException"
+        case disabledOperationException = "DisabledAction"
         case internalException = "InternalException"
-        case invalidTypeException = "InvalidTypeException"
-        case limitExceededException = "LimitExceededException"
-        case resourceAlreadyExistsException = "ResourceAlreadyExistsException"
-        case resourceNotFoundException = "ResourceNotFoundException"
+        case invalidTypeException = "InvalidType"
+        case limitExceededException = "LimitExceeded"
+        case resourceAlreadyExistsException = "ResourceAlreadyExists"
+        case resourceNotFoundException = "ResourceNotFound"
         case validationException = "ValidationException"
     }
 
