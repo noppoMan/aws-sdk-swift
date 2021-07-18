@@ -346,13 +346,13 @@ extension CodeGuruProfiler {
     public struct Channel: AWSEncodableShape & AWSDecodableShape {
 
         /// List of publishers for different type of events that may be detected in an application from the profile. Anomaly detection is the only event publisher in Profiler.
-        public let eventPublishers: Set<EventPublisher>
+        public let eventPublishers: [EventPublisher]
         /// Unique identifier for each Channel in the notification configuration of a Profiling Group. A random UUID for channelId is used when adding a channel to the notification configuration if not specified in the request.
         public let id: String?
         /// Unique arn of the resource to be used for notifications. We support a valid SNS topic arn as a channel uri.
         public let uri: String
 
-        public init(eventPublishers: Set<EventPublisher>, id: String? = nil, uri: String) {
+        public init(eventPublishers: [EventPublisher], id: String? = nil, uri: String) {
             self.eventPublishers = eventPublishers
             self.id = id
             self.uri = uri

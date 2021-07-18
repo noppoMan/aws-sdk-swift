@@ -80,46 +80,6 @@ extension SSMIncidents {
         public var description: String { return self.rawValue }
     }
 
-    public enum Action: AWSEncodableShape & AWSDecodableShape {
-        /// The Systems Manager automation document to start as the runbook at the beginning of the incident.
-        case ssmAutomation(SsmAutomation)
-
-        public init(from decoder: Decoder) throws {
-            let container = try decoder.container(keyedBy: CodingKeys.self)
-            guard container.allKeys.count == 1, let key = container.allKeys.first else {
-                let context = DecodingError.Context(
-                    codingPath: container.codingPath,
-                    debugDescription: "Expected exactly one key, but got \(container.allKeys.count)"
-                )
-                throw DecodingError.dataCorrupted(context)
-            }
-            switch key {
-            case .ssmAutomation:
-                let value = try container.decode(SsmAutomation.self, forKey: .ssmAutomation)
-                self = .ssmAutomation(value)
-            }
-        }
-
-        public func encode(to encoder: Encoder) throws {
-            var container = encoder.container(keyedBy: CodingKeys.self)
-            switch self {
-            case .ssmAutomation(let value):
-                try container.encode(value, forKey: .ssmAutomation)
-            }
-        }
-
-        public func validate(name: String) throws {
-            switch self {
-            case .ssmAutomation(let value):
-                try value.validate(name: "\(name).ssmAutomation")
-            }
-        }
-
-        private enum CodingKeys: String, CodingKey {
-            case ssmAutomation = "ssmAutomation"
-        }
-    }
-
     public enum AttributeValueList: AWSEncodableShape {
         /// The list of integer values that the filter matches.
         case integerValues([Int])
@@ -151,34 +111,9 @@ extension SSMIncidents {
         }
     }
 
-    public enum AutomationExecution: AWSDecodableShape {
-        /// The Amazon Resource Name (ARN) of the automation process.
-        case ssmExecutionArn(String)
-
-        public init(from decoder: Decoder) throws {
-            let container = try decoder.container(keyedBy: CodingKeys.self)
-            guard container.allKeys.count == 1, let key = container.allKeys.first else {
-                let context = DecodingError.Context(
-                    codingPath: container.codingPath,
-                    debugDescription: "Expected exactly one key, but got \(container.allKeys.count)"
-                )
-                throw DecodingError.dataCorrupted(context)
-            }
-            switch key {
-            case .ssmExecutionArn:
-                let value = try container.decode(String.self, forKey: .ssmExecutionArn)
-                self = .ssmExecutionArn(value)
-            }
-        }
-
-        private enum CodingKeys: String, CodingKey {
-            case ssmExecutionArn = "ssmExecutionArn"
-        }
-    }
-
     public enum ChatChannel: AWSEncodableShape & AWSDecodableShape {
         /// The SNS targets that AWS Chatbot uses to notify the chat channel of updates to an incident. You can also make updates to the incident through the chat channel by using the SNS topics. 
-        case chatbotSns(Set<String>)
+        case chatbotSns([String])
         /// Used to remove the chat channel from an incident record or response plan.
         case empty(EmptyChatChannel)
 
@@ -193,7 +128,7 @@ extension SSMIncidents {
             }
             switch key {
             case .chatbotSns:
-                let value = try container.decode(Set<String>.self, forKey: .chatbotSns)
+                let value = try container.decode([String].self, forKey: .chatbotSns)
                 self = .chatbotSns(value)
             case .empty:
                 let value = try container.decode(EmptyChatChannel.self, forKey: .empty)
@@ -324,47 +259,6 @@ extension SSMIncidents {
             case arn = "arn"
             case metricDefinition = "metricDefinition"
             case url = "url"
-        }
-    }
-
-    public enum NotificationTargetItem: AWSEncodableShape & AWSDecodableShape {
-        /// The Amazon Resource Name (ARN) of the SNS topic.
-        case snsTopicArn(String)
-
-        public init(from decoder: Decoder) throws {
-            let container = try decoder.container(keyedBy: CodingKeys.self)
-            guard container.allKeys.count == 1, let key = container.allKeys.first else {
-                let context = DecodingError.Context(
-                    codingPath: container.codingPath,
-                    debugDescription: "Expected exactly one key, but got \(container.allKeys.count)"
-                )
-                throw DecodingError.dataCorrupted(context)
-            }
-            switch key {
-            case .snsTopicArn:
-                let value = try container.decode(String.self, forKey: .snsTopicArn)
-                self = .snsTopicArn(value)
-            }
-        }
-
-        public func encode(to encoder: Encoder) throws {
-            var container = encoder.container(keyedBy: CodingKeys.self)
-            switch self {
-            case .snsTopicArn(let value):
-                try container.encode(value, forKey: .snsTopicArn)
-            }
-        }
-
-        public func validate(name: String) throws {
-            switch self {
-            case .snsTopicArn(let value):
-                try validate(value, name: "snsTopicArn", parent: name, max: 1000)
-                try validate(value, name: "snsTopicArn", parent: name, pattern: "^arn:aws(-cn|-us-gov)?:[a-z0-9-]*:[a-z0-9-]*:([0-9]{12})?:.+$")
-            }
-        }
-
-        private enum CodingKeys: String, CodingKey {
-            case snsTopicArn = "snsTopicArn"
         }
     }
 
@@ -508,7 +402,7 @@ extension SSMIncidents {
         /// The long format of the response plan name. This field can contain spaces.
         public let displayName: String?
         /// The contacts and escalation plans that the response plan engages during an incident.
-        public let engagements: Set<String>?
+        public let engagements: [String]?
         /// Details used to create an incident when using this response plan.
         public let incidentTemplate: IncidentTemplate
         /// The short format name of the response plan. Can't include spaces.
@@ -516,7 +410,7 @@ extension SSMIncidents {
         /// A list of tags that you are adding to the response plan.
         public let tags: [String: String]?
 
-        public init(actions: [Action]? = nil, chatChannel: ChatChannel? = nil, clientToken: String? = CreateResponsePlanInput.idempotencyToken(), displayName: String? = nil, engagements: Set<String>? = nil, incidentTemplate: IncidentTemplate, name: String, tags: [String: String]? = nil) {
+        public init(actions: [Action]? = nil, chatChannel: ChatChannel? = nil, clientToken: String? = CreateResponsePlanInput.idempotencyToken(), displayName: String? = nil, engagements: [String]? = nil, incidentTemplate: IncidentTemplate, name: String, tags: [String: String]? = nil) {
             self.actions = actions
             self.chatChannel = chatChannel
             self.clientToken = clientToken
@@ -1010,13 +904,13 @@ extension SSMIncidents {
         /// The long format name of the response plan. Can contain spaces.
         public let displayName: String?
         /// The contacts and escalation plans that the response plan engages during an incident.
-        public let engagements: Set<String>?
+        public let engagements: [String]?
         /// Details used to create the incident when using this response plan.
         public let incidentTemplate: IncidentTemplate
         /// The short format name of the response plan. Can't contain spaces.
         public let name: String
 
-        public init(actions: [Action]? = nil, arn: String, chatChannel: ChatChannel? = nil, displayName: String? = nil, engagements: Set<String>? = nil, incidentTemplate: IncidentTemplate, name: String) {
+        public init(actions: [Action]? = nil, arn: String, chatChannel: ChatChannel? = nil, displayName: String? = nil, engagements: [String]? = nil, incidentTemplate: IncidentTemplate, name: String) {
             self.actions = actions
             self.arn = arn
             self.chatChannel = chatChannel
@@ -1081,7 +975,7 @@ extension SSMIncidents {
         /// The Amazon Resource Name (ARN) of the incident record.
         public let arn: String
         /// The runbook, or automation document, that's run at the beginning of the incident.
-        public let automationExecutions: Set<AutomationExecution>?
+        public let automationExecutions: [AutomationExecution]?
         /// The chat channel used for collaboration during an incident.
         public let chatChannel: ChatChannel?
         /// The time that Incident Manager created the incident record.
@@ -1097,7 +991,7 @@ extension SSMIncidents {
         /// The time at which the incident was most recently modified.
         public let lastModifiedTime: Date
         /// The SNS targets that AWS Chatbot uses to notify the chat channels and perform actions on the incident record.
-        public let notificationTargets: Set<NotificationTargetItem>?
+        public let notificationTargets: [NotificationTargetItem]?
         /// The time at which the incident was resolved. This appears as a timeline event.
         public let resolvedTime: Date?
         /// The current status of the incident.
@@ -1107,7 +1001,7 @@ extension SSMIncidents {
         /// The title of the incident.
         public let title: String
 
-        public init(arn: String, automationExecutions: Set<AutomationExecution>? = nil, chatChannel: ChatChannel? = nil, creationTime: Date, dedupeString: String, impact: Int, incidentRecordSource: IncidentRecordSource, lastModifiedBy: String, lastModifiedTime: Date, notificationTargets: Set<NotificationTargetItem>? = nil, resolvedTime: Date? = nil, status: IncidentRecordStatus, summary: String? = nil, title: String) {
+        public init(arn: String, automationExecutions: [AutomationExecution]? = nil, chatChannel: ChatChannel? = nil, creationTime: Date, dedupeString: String, impact: Int, incidentRecordSource: IncidentRecordSource, lastModifiedBy: String, lastModifiedTime: Date, notificationTargets: [NotificationTargetItem]? = nil, resolvedTime: Date? = nil, status: IncidentRecordStatus, summary: String? = nil, title: String) {
             self.arn = arn
             self.automationExecutions = automationExecutions
             self.chatChannel = chatChannel
@@ -1213,13 +1107,13 @@ extension SSMIncidents {
         /// The impact of the incident on your customers and applications. 
         public let impact: Int
         /// The SNS targets that AWS Chatbot uses to notify the chat channel of updates to an incident. You can also make updates to the incident through the chat channel using the SNS topics. 
-        public let notificationTargets: Set<NotificationTargetItem>?
+        public let notificationTargets: [NotificationTargetItem]?
         /// The summary of the incident. The summary is a brief synopsis of what occurred, what's currently happening, and context.
         public let summary: String?
         /// The title of the incident. 
         public let title: String
 
-        public init(dedupeString: String? = nil, impact: Int, notificationTargets: Set<NotificationTargetItem>? = nil, summary: String? = nil, title: String) {
+        public init(dedupeString: String? = nil, impact: Int, notificationTargets: [NotificationTargetItem]? = nil, summary: String? = nil, title: String) {
             self.dedupeString = dedupeString
             self.impact = impact
             self.notificationTargets = notificationTargets
@@ -2024,7 +1918,7 @@ extension SSMIncidents {
         /// Defines the impact to customers and applications. Providing an impact overwrites the impact provided by the response plan.  Possible impacts:     1 - Critical impact, this typically relates to full application failure that impacts many to all customers.     2 - High impact, partial application failure with impact to many customers.    3 -  Medium impact, the application is providing reduced service to customers.    4 -  Low impact, customer might aren't impacted by the problem yet.    5 - No impact, customers aren't currently impacted but urgent action is needed to avoid impact.  
         public let impact: Int?
         /// The SNS targets that AWS Chatbot uses to notify the chat channel of updates to an incident. You can also make updates to the incident through the chat channel using the SNS topics.  Using multiple SNS topics creates redundancy in the case that a Region is down during the incident.
-        public let notificationTargets: Set<NotificationTargetItem>?
+        public let notificationTargets: [NotificationTargetItem]?
         /// The status of the incident. An incident can be Open or Resolved.
         public let status: IncidentRecordStatus?
         /// The summary describes what has happened during the incident.
@@ -2032,7 +1926,7 @@ extension SSMIncidents {
         /// The title of the incident is a brief and easily recognizable.
         public let title: String?
 
-        public init(arn: String, chatChannel: ChatChannel? = nil, clientToken: String? = UpdateIncidentRecordInput.idempotencyToken(), impact: Int? = nil, notificationTargets: Set<NotificationTargetItem>? = nil, status: IncidentRecordStatus? = nil, summary: String? = nil, title: String? = nil) {
+        public init(arn: String, chatChannel: ChatChannel? = nil, clientToken: String? = UpdateIncidentRecordInput.idempotencyToken(), impact: Int? = nil, notificationTargets: [NotificationTargetItem]? = nil, status: IncidentRecordStatus? = nil, summary: String? = nil, title: String? = nil) {
             self.arn = arn
             self.chatChannel = chatChannel
             self.clientToken = clientToken
@@ -2167,19 +2061,19 @@ extension SSMIncidents {
         /// The long format name of the response plan. Can't contain spaces.
         public let displayName: String?
         /// The contacts and escalation plans that Incident Manager engages at the start of the incident.
-        public let engagements: Set<String>?
+        public let engagements: [String]?
         /// Used to create only one incident record for an incident.
         public let incidentTemplateDedupeString: String?
         /// Defines the impact to the customers. Providing an impact overwrites the impact provided by a response plan.  Possible impacts:     5 - Severe impact    4 - High impact    3 - Medium impact    2 - Low impact    1 - No impact  
         public let incidentTemplateImpact: Int?
         /// The SNS targets that AWS Chatbot uses to notify the chat channels and perform actions on the incident record.
-        public let incidentTemplateNotificationTargets: Set<NotificationTargetItem>?
+        public let incidentTemplateNotificationTargets: [NotificationTargetItem]?
         /// A brief summary of the incident. This typically contains what has happened, what's currently happening, and next steps.
         public let incidentTemplateSummary: String?
         /// The short format name of the incident. Can't contain spaces.
         public let incidentTemplateTitle: String?
 
-        public init(actions: [Action]? = nil, arn: String, chatChannel: ChatChannel? = nil, clientToken: String? = UpdateResponsePlanInput.idempotencyToken(), displayName: String? = nil, engagements: Set<String>? = nil, incidentTemplateDedupeString: String? = nil, incidentTemplateImpact: Int? = nil, incidentTemplateNotificationTargets: Set<NotificationTargetItem>? = nil, incidentTemplateSummary: String? = nil, incidentTemplateTitle: String? = nil) {
+        public init(actions: [Action]? = nil, arn: String, chatChannel: ChatChannel? = nil, clientToken: String? = UpdateResponsePlanInput.idempotencyToken(), displayName: String? = nil, engagements: [String]? = nil, incidentTemplateDedupeString: String? = nil, incidentTemplateImpact: Int? = nil, incidentTemplateNotificationTargets: [NotificationTargetItem]? = nil, incidentTemplateSummary: String? = nil, incidentTemplateTitle: String? = nil) {
             self.actions = actions
             self.arn = arn
             self.chatChannel = chatChannel
@@ -2291,5 +2185,56 @@ extension SSMIncidents {
         public init() {
         }
 
+    }
+
+    public struct Action: AWSEncodableShape & AWSDecodableShape {
+
+        /// The Systems Manager automation document to start as the runbook at the beginning of the incident.
+        public let ssmAutomation: SsmAutomation?
+
+        public init(ssmAutomation: SsmAutomation? = nil) {
+            self.ssmAutomation = ssmAutomation
+        }
+
+        public func validate(name: String) throws {
+            try self.ssmAutomation?.validate(name: "\(name).ssmAutomation")
+        }
+
+        private enum CodingKeys: String, CodingKey {
+            case ssmAutomation = "ssmAutomation"
+        }
+    }
+
+    public struct AutomationExecution: AWSDecodableShape {
+
+        /// The Amazon Resource Name (ARN) of the automation process.
+        public let ssmExecutionArn: String?
+
+        public init(ssmExecutionArn: String? = nil) {
+            self.ssmExecutionArn = ssmExecutionArn
+        }
+
+        private enum CodingKeys: String, CodingKey {
+            case ssmExecutionArn = "ssmExecutionArn"
+        }
+    }
+
+    public struct NotificationTargetItem: AWSEncodableShape & AWSDecodableShape {
+
+        /// The Amazon Resource Name (ARN) of the SNS topic.
+        public let snsTopicArn: String?
+
+        public init(snsTopicArn: String? = nil) {
+            self.snsTopicArn = snsTopicArn
+        }
+
+        public func validate(name: String) throws {
+            try self.validate(self.snsTopicArn, name: "snsTopicArn", parent: name, max: 1000)
+            try self.validate(self.snsTopicArn, name: "snsTopicArn", parent: name, pattern: "^arn:aws(-cn|-us-gov)?:[a-z0-9-]*:[a-z0-9-]*:([0-9]{12})?:.+$")
+        }
+
+        private enum CodingKeys: String, CodingKey {
+            case snsTopicArn = "snsTopicArn"
+        }
     }
 }

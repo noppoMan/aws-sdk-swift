@@ -68,46 +68,6 @@ extension EMRcontainers {
         public var description: String { return self.rawValue }
     }
 
-    public enum ContainerInfo: AWSEncodableShape & AWSDecodableShape {
-        /// The information about the EKS cluster.
-        case eksInfo(EksInfo)
-
-        public init(from decoder: Decoder) throws {
-            let container = try decoder.container(keyedBy: CodingKeys.self)
-            guard container.allKeys.count == 1, let key = container.allKeys.first else {
-                let context = DecodingError.Context(
-                    codingPath: container.codingPath,
-                    debugDescription: "Expected exactly one key, but got \(container.allKeys.count)"
-                )
-                throw DecodingError.dataCorrupted(context)
-            }
-            switch key {
-            case .eksInfo:
-                let value = try container.decode(EksInfo.self, forKey: .eksInfo)
-                self = .eksInfo(value)
-            }
-        }
-
-        public func encode(to encoder: Encoder) throws {
-            var container = encoder.container(keyedBy: CodingKeys.self)
-            switch self {
-            case .eksInfo(let value):
-                try container.encode(value, forKey: .eksInfo)
-            }
-        }
-
-        public func validate(name: String) throws {
-            switch self {
-            case .eksInfo(let value):
-                try value.validate(name: "\(name).eksInfo")
-            }
-        }
-
-        private enum CodingKeys: String, CodingKey {
-            case eksInfo = "eksInfo"
-        }
-    }
-
     // MARK: Shapes
 
     public struct CancelJobRunRequest: AWSEncodableShape {
@@ -1376,6 +1336,24 @@ extension EMRcontainers {
             case name = "name"
             case state = "state"
             case tags = "tags"
+        }
+    }
+
+    public struct ContainerInfo: AWSEncodableShape & AWSDecodableShape {
+
+        /// The information about the EKS cluster.
+        public let eksInfo: EksInfo?
+
+        public init(eksInfo: EksInfo? = nil) {
+            self.eksInfo = eksInfo
+        }
+
+        public func validate(name: String) throws {
+            try self.eksInfo?.validate(name: "\(name).eksInfo")
+        }
+
+        private enum CodingKeys: String, CodingKey {
+            case eksInfo = "eksInfo"
         }
     }
 }

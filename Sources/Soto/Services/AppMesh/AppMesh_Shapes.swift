@@ -156,86 +156,6 @@ extension AppMesh {
         public var description: String { return self.rawValue }
     }
 
-    public enum AccessLog: AWSEncodableShape & AWSDecodableShape {
-        /// The file object to send virtual node access logs to.
-        case file(FileAccessLog)
-
-        public init(from decoder: Decoder) throws {
-            let container = try decoder.container(keyedBy: CodingKeys.self)
-            guard container.allKeys.count == 1, let key = container.allKeys.first else {
-                let context = DecodingError.Context(
-                    codingPath: container.codingPath,
-                    debugDescription: "Expected exactly one key, but got \(container.allKeys.count)"
-                )
-                throw DecodingError.dataCorrupted(context)
-            }
-            switch key {
-            case .file:
-                let value = try container.decode(FileAccessLog.self, forKey: .file)
-                self = .file(value)
-            }
-        }
-
-        public func encode(to encoder: Encoder) throws {
-            var container = encoder.container(keyedBy: CodingKeys.self)
-            switch self {
-            case .file(let value):
-                try container.encode(value, forKey: .file)
-            }
-        }
-
-        public func validate(name: String) throws {
-            switch self {
-            case .file(let value):
-                try value.validate(name: "\(name).file")
-            }
-        }
-
-        private enum CodingKeys: String, CodingKey {
-            case file = "file"
-        }
-    }
-
-    public enum Backend: AWSEncodableShape & AWSDecodableShape {
-        /// Specifies a virtual service to use as a backend.  
-        case virtualService(VirtualServiceBackend)
-
-        public init(from decoder: Decoder) throws {
-            let container = try decoder.container(keyedBy: CodingKeys.self)
-            guard container.allKeys.count == 1, let key = container.allKeys.first else {
-                let context = DecodingError.Context(
-                    codingPath: container.codingPath,
-                    debugDescription: "Expected exactly one key, but got \(container.allKeys.count)"
-                )
-                throw DecodingError.dataCorrupted(context)
-            }
-            switch key {
-            case .virtualService:
-                let value = try container.decode(VirtualServiceBackend.self, forKey: .virtualService)
-                self = .virtualService(value)
-            }
-        }
-
-        public func encode(to encoder: Encoder) throws {
-            var container = encoder.container(keyedBy: CodingKeys.self)
-            switch self {
-            case .virtualService(let value):
-                try container.encode(value, forKey: .virtualService)
-            }
-        }
-
-        public func validate(name: String) throws {
-            switch self {
-            case .virtualService(let value):
-                try value.validate(name: "\(name).virtualService")
-            }
-        }
-
-        private enum CodingKeys: String, CodingKey {
-            case virtualService = "virtualService"
-        }
-    }
-
     public enum ClientTlsCertificate: AWSEncodableShape & AWSDecodableShape {
         /// An object that represents a local file certificate. The certificate must meet specific requirements and you must have proxy authorization enabled. For more information, see Transport Layer Security (TLS).
         case file(ListenerTlsFileCertificate)
@@ -825,46 +745,6 @@ extension AppMesh {
         }
     }
 
-    public enum VirtualGatewayAccessLog: AWSEncodableShape & AWSDecodableShape {
-        /// The file object to send virtual gateway access logs to.
-        case file(VirtualGatewayFileAccessLog)
-
-        public init(from decoder: Decoder) throws {
-            let container = try decoder.container(keyedBy: CodingKeys.self)
-            guard container.allKeys.count == 1, let key = container.allKeys.first else {
-                let context = DecodingError.Context(
-                    codingPath: container.codingPath,
-                    debugDescription: "Expected exactly one key, but got \(container.allKeys.count)"
-                )
-                throw DecodingError.dataCorrupted(context)
-            }
-            switch key {
-            case .file:
-                let value = try container.decode(VirtualGatewayFileAccessLog.self, forKey: .file)
-                self = .file(value)
-            }
-        }
-
-        public func encode(to encoder: Encoder) throws {
-            var container = encoder.container(keyedBy: CodingKeys.self)
-            switch self {
-            case .file(let value):
-                try container.encode(value, forKey: .file)
-            }
-        }
-
-        public func validate(name: String) throws {
-            switch self {
-            case .file(let value):
-                try value.validate(name: "\(name).file")
-            }
-        }
-
-        private enum CodingKeys: String, CodingKey {
-            case file = "file"
-        }
-    }
-
     public enum VirtualGatewayClientTlsCertificate: AWSEncodableShape & AWSDecodableShape {
         /// An object that represents a local file certificate. The certificate must meet specific requirements and you must have proxy authorization enabled. For more information, see Transport Layer Security (TLS) .
         case file(VirtualGatewayListenerTlsFileCertificate)
@@ -1367,11 +1247,11 @@ extension AppMesh {
         /// Whether the policy is enforced. The default is True, if a value isn't specified.
         public let enforce: Bool?
         /// One or more ports that the policy is enforced for.
-        public let ports: Set<Int>?
+        public let ports: [Int]?
         /// A reference to an object that represents a TLS validation context.
         public let validation: TlsValidationContext
 
-        public init(certificate: ClientTlsCertificate? = nil, enforce: Bool? = nil, ports: Set<Int>? = nil, validation: TlsValidationContext) {
+        public init(certificate: ClientTlsCertificate? = nil, enforce: Bool? = nil, ports: [Int]? = nil, validation: TlsValidationContext) {
             self.certificate = certificate
             self.enforce = enforce
             self.ports = ports
@@ -5246,11 +5126,11 @@ extension AppMesh {
         /// Whether the policy is enforced. The default is True, if a value isn't specified.
         public let enforce: Bool?
         /// One or more ports that the policy is enforced for.
-        public let ports: Set<Int>?
+        public let ports: [Int]?
         /// A reference to an object that represents a Transport Layer Security (TLS) validation context.
         public let validation: VirtualGatewayTlsValidationContext
 
-        public init(certificate: VirtualGatewayClientTlsCertificate? = nil, enforce: Bool? = nil, ports: Set<Int>? = nil, validation: VirtualGatewayTlsValidationContext) {
+        public init(certificate: VirtualGatewayClientTlsCertificate? = nil, enforce: Bool? = nil, ports: [Int]? = nil, validation: VirtualGatewayTlsValidationContext) {
             self.certificate = certificate
             self.enforce = enforce
             self.ports = ports
@@ -6286,6 +6166,60 @@ extension AppMesh {
         private enum CodingKeys: String, CodingKey {
             case virtualNode = "virtualNode"
             case weight = "weight"
+        }
+    }
+
+    public struct AccessLog: AWSEncodableShape & AWSDecodableShape {
+
+        /// The file object to send virtual node access logs to.
+        public let file: FileAccessLog?
+
+        public init(file: FileAccessLog? = nil) {
+            self.file = file
+        }
+
+        public func validate(name: String) throws {
+            try self.file?.validate(name: "\(name).file")
+        }
+
+        private enum CodingKeys: String, CodingKey {
+            case file = "file"
+        }
+    }
+
+    public struct Backend: AWSEncodableShape & AWSDecodableShape {
+
+        /// Specifies a virtual service to use as a backend.  
+        public let virtualService: VirtualServiceBackend?
+
+        public init(virtualService: VirtualServiceBackend? = nil) {
+            self.virtualService = virtualService
+        }
+
+        public func validate(name: String) throws {
+            try self.virtualService?.validate(name: "\(name).virtualService")
+        }
+
+        private enum CodingKeys: String, CodingKey {
+            case virtualService = "virtualService"
+        }
+    }
+
+    public struct VirtualGatewayAccessLog: AWSEncodableShape & AWSDecodableShape {
+
+        /// The file object to send virtual gateway access logs to.
+        public let file: VirtualGatewayFileAccessLog?
+
+        public init(file: VirtualGatewayFileAccessLog? = nil) {
+            self.file = file
+        }
+
+        public func validate(name: String) throws {
+            try self.file?.validate(name: "\(name).file")
+        }
+
+        private enum CodingKeys: String, CodingKey {
+            case file = "file"
         }
     }
 }

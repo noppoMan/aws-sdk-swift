@@ -85,30 +85,6 @@ extension Proton {
         public var description: String { return self.rawValue }
     }
 
-    public enum TemplateVersionSourceInput: AWSEncodableShape {
-        /// An S3 source object that includes the template bundle S3 path and name for a template minor version.
-        case s3(S3ObjectSource)
-
-        public func encode(to encoder: Encoder) throws {
-            var container = encoder.container(keyedBy: CodingKeys.self)
-            switch self {
-            case .s3(let value):
-                try container.encode(value, forKey: .s3)
-            }
-        }
-
-        public func validate(name: String) throws {
-            switch self {
-            case .s3(let value):
-                try value.validate(name: "\(name).s3")
-            }
-        }
-
-        private enum CodingKeys: String, CodingKey {
-            case s3 = "s3"
-        }
-    }
-
     // MARK: Shapes
 
     public struct AcceptEnvironmentAccountConnectionInput: AWSEncodableShape {
@@ -3441,6 +3417,24 @@ extension Proton {
 
         private enum CodingKeys: String, CodingKey {
             case serviceTemplateVersion = "serviceTemplateVersion"
+        }
+    }
+
+    public struct TemplateVersionSourceInput: AWSEncodableShape {
+
+        /// An S3 source object that includes the template bundle S3 path and name for a template minor version.
+        public let s3: S3ObjectSource?
+
+        public init(s3: S3ObjectSource? = nil) {
+            self.s3 = s3
+        }
+
+        public func validate(name: String) throws {
+            try self.s3?.validate(name: "\(name).s3")
+        }
+
+        private enum CodingKeys: String, CodingKey {
+            case s3 = "s3"
         }
     }
 }

@@ -54,87 +54,6 @@ extension HealthLake {
         public var description: String { return self.rawValue }
     }
 
-    public enum InputDataConfig: AWSEncodableShape & AWSDecodableShape {
-        /// The S3Uri is the user specified S3 location of the FHIR data to be imported into Amazon HealthLake. 
-        case s3Uri(String)
-
-        public init(from decoder: Decoder) throws {
-            let container = try decoder.container(keyedBy: CodingKeys.self)
-            guard container.allKeys.count == 1, let key = container.allKeys.first else {
-                let context = DecodingError.Context(
-                    codingPath: container.codingPath,
-                    debugDescription: "Expected exactly one key, but got \(container.allKeys.count)"
-                )
-                throw DecodingError.dataCorrupted(context)
-            }
-            switch key {
-            case .s3Uri:
-                let value = try container.decode(String.self, forKey: .s3Uri)
-                self = .s3Uri(value)
-            }
-        }
-
-        public func encode(to encoder: Encoder) throws {
-            var container = encoder.container(keyedBy: CodingKeys.self)
-            switch self {
-            case .s3Uri(let value):
-                try container.encode(value, forKey: .s3Uri)
-            }
-        }
-
-        public func validate(name: String) throws {
-            switch self {
-            case .s3Uri(let value):
-                try validate(value, name: "s3Uri", parent: name, max: 1024)
-                try validate(value, name: "s3Uri", parent: name, pattern: "^s3://[a-z0-9][\\.\\-a-z0-9]{1,61}[a-z0-9](/.*)?$")
-            }
-        }
-
-        private enum CodingKeys: String, CodingKey {
-            case s3Uri = "S3Uri"
-        }
-    }
-
-    public enum OutputDataConfig: AWSEncodableShape & AWSDecodableShape {
-        ///  The output data configuration that was supplied when the export job was created. 
-        case s3Configuration(S3Configuration)
-
-        public init(from decoder: Decoder) throws {
-            let container = try decoder.container(keyedBy: CodingKeys.self)
-            guard container.allKeys.count == 1, let key = container.allKeys.first else {
-                let context = DecodingError.Context(
-                    codingPath: container.codingPath,
-                    debugDescription: "Expected exactly one key, but got \(container.allKeys.count)"
-                )
-                throw DecodingError.dataCorrupted(context)
-            }
-            switch key {
-            case .s3Configuration:
-                let value = try container.decode(S3Configuration.self, forKey: .s3Configuration)
-                self = .s3Configuration(value)
-            }
-        }
-
-        public func encode(to encoder: Encoder) throws {
-            var container = encoder.container(keyedBy: CodingKeys.self)
-            switch self {
-            case .s3Configuration(let value):
-                try container.encode(value, forKey: .s3Configuration)
-            }
-        }
-
-        public func validate(name: String) throws {
-            switch self {
-            case .s3Configuration(let value):
-                try value.validate(name: "\(name).s3Configuration")
-            }
-        }
-
-        private enum CodingKeys: String, CodingKey {
-            case s3Configuration = "S3Configuration"
-        }
-    }
-
     // MARK: Shapes
 
     public struct CreateFHIRDatastoreRequest: AWSEncodableShape {
@@ -1086,5 +1005,42 @@ extension HealthLake {
         public init() {
         }
 
+    }
+
+    public struct InputDataConfig: AWSEncodableShape & AWSDecodableShape {
+
+        /// The S3Uri is the user specified S3 location of the FHIR data to be imported into Amazon HealthLake. 
+        public let s3Uri: String?
+
+        public init(s3Uri: String? = nil) {
+            self.s3Uri = s3Uri
+        }
+
+        public func validate(name: String) throws {
+            try self.validate(self.s3Uri, name: "s3Uri", parent: name, max: 1024)
+            try self.validate(self.s3Uri, name: "s3Uri", parent: name, pattern: "^s3://[a-z0-9][\\.\\-a-z0-9]{1,61}[a-z0-9](/.*)?$")
+        }
+
+        private enum CodingKeys: String, CodingKey {
+            case s3Uri = "S3Uri"
+        }
+    }
+
+    public struct OutputDataConfig: AWSEncodableShape & AWSDecodableShape {
+
+        ///  The output data configuration that was supplied when the export job was created. 
+        public let s3Configuration: S3Configuration?
+
+        public init(s3Configuration: S3Configuration? = nil) {
+            self.s3Configuration = s3Configuration
+        }
+
+        public func validate(name: String) throws {
+            try self.s3Configuration?.validate(name: "\(name).s3Configuration")
+        }
+
+        private enum CodingKeys: String, CodingKey {
+            case s3Configuration = "S3Configuration"
+        }
     }
 }

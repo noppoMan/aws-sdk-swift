@@ -220,47 +220,6 @@ extension S3Control {
         public var description: String { return self.rawValue }
     }
 
-    public enum ObjectLambdaContentTransformation: AWSEncodableShape & AWSDecodableShape {
-        public static let _xmlNamespace: String? = "http://awss3control.amazonaws.com/doc/2018-08-20/"
-        /// A container for an AWS Lambda function.
-        case awsLambda(AwsLambdaTransformation)
-
-        public init(from decoder: Decoder) throws {
-            let container = try decoder.container(keyedBy: CodingKeys.self)
-            guard container.allKeys.count == 1, let key = container.allKeys.first else {
-                let context = DecodingError.Context(
-                    codingPath: container.codingPath,
-                    debugDescription: "Expected exactly one key, but got \(container.allKeys.count)"
-                )
-                throw DecodingError.dataCorrupted(context)
-            }
-            switch key {
-            case .awsLambda:
-                let value = try container.decode(AwsLambdaTransformation.self, forKey: .awsLambda)
-                self = .awsLambda(value)
-            }
-        }
-
-        public func encode(to encoder: Encoder) throws {
-            var container = encoder.container(keyedBy: CodingKeys.self)
-            switch self {
-            case .awsLambda(let value):
-                try container.encode(value, forKey: .awsLambda)
-            }
-        }
-
-        public func validate(name: String) throws {
-            switch self {
-            case .awsLambda(let value):
-                try value.validate(name: "\(name).awsLambda")
-            }
-        }
-
-        private enum CodingKeys: String, CodingKey {
-            case awsLambda = "AwsLambda"
-        }
-    }
-
     // MARK: Shapes
 
     public struct AbortIncompleteMultipartUpload: AWSEncodableShape & AWSDecodableShape {
@@ -4075,6 +4034,25 @@ extension S3Control {
 
         private enum CodingKeys: String, CodingKey {
             case vpcId = "VpcId"
+        }
+    }
+
+    public struct ObjectLambdaContentTransformation: AWSEncodableShape & AWSDecodableShape {
+        public static let _xmlNamespace: String? = "http://awss3control.amazonaws.com/doc/2018-08-20/"
+
+        /// A container for an AWS Lambda function.
+        public let awsLambda: AwsLambdaTransformation?
+
+        public init(awsLambda: AwsLambdaTransformation? = nil) {
+            self.awsLambda = awsLambda
+        }
+
+        public func validate(name: String) throws {
+            try self.awsLambda?.validate(name: "\(name).awsLambda")
+        }
+
+        private enum CodingKeys: String, CodingKey {
+            case awsLambda = "AwsLambda"
         }
     }
 }
