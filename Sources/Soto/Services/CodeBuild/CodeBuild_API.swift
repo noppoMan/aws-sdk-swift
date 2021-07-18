@@ -19,7 +19,7 @@
 
 /// Service object for interacting with AWS CodeBuild service.
 ///
-/// CodeBuild is a fully managed build service in the cloud. CodeBuild compiles your source code, runs unit tests, and produces artifacts that are ready to deploy. CodeBuild eliminates the need to provision, manage, and scale your own build servers. It provides prepackaged build environments for the most popular programming languages and build tools, such as Apache Maven, Gradle, and more. You can also fully customize build environments in CodeBuild to use your own build tools. CodeBuild scales automatically to meet peak build requests. You pay only for the build time you consume. For more information about CodeBuild, see the  CodeBuild User Guide. 
+/// CodeBuild is a fully managed build service in the cloud. CodeBuild compiles your source code, runs unit tests, and produces artifacts that are ready to deploy. CodeBuild eliminates the need to provision, manage, and scale your own build servers. It provides prepackaged build environments for the most popular programming languages and build tools, such as Apache Maven, Gradle, and more. You can also fully customize build environments in CodeBuild to use your own build tools. CodeBuild scales automatically to meet peak build requests. You pay only for the build time you consume. For more information about CodeBuild, see the  CodeBuild User Guide.
 public struct CodeBuild: AWSService {
     // MARK: Member variables
 
@@ -84,12 +84,12 @@ public struct CodeBuild: AWSService {
         return self.client.execute(operation: "BatchGetProjects", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    ///  Returns an array of report groups. 
+    ///  Returns an array of report groups.
     public func batchGetReportGroups(_ input: BatchGetReportGroupsInput, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<BatchGetReportGroupsOutput> {
         return self.client.execute(operation: "BatchGetReportGroups", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    ///  Returns an array of reports. 
+    ///  Returns an array of reports.
     public func batchGetReports(_ input: BatchGetReportsInput, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<BatchGetReportsOutput> {
         return self.client.execute(operation: "BatchGetReports", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -99,12 +99,12 @@ public struct CodeBuild: AWSService {
         return self.client.execute(operation: "CreateProject", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    ///  Creates a report group. A report group contains a collection of reports. 
+    ///  Creates a report group. A report group contains a collection of reports.
     public func createReportGroup(_ input: CreateReportGroupInput, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<CreateReportGroupOutput> {
         return self.client.execute(operation: "CreateReportGroup", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// For an existing CodeBuild build project that has its source code stored in a GitHub or Bitbucket repository, enables CodeBuild to start rebuilding the source code every time a code change is pushed to the repository.  If you enable webhooks for an CodeBuild project, and the project is used as a build step in CodePipeline, then two identical builds are created for each commit. One build is triggered through webhooks, and one through CodePipeline. Because billing is on a per-build basis, you are billed for both builds. Therefore, if you are using CodePipeline, we recommend that you disable webhooks in CodeBuild. In the CodeBuild console, clear the Webhook box. For more information, see step 5 in Change a Build Project's Settings. 
+    /// For an existing CodeBuild build project that has its source code stored in a GitHub or Bitbucket repository, enables CodeBuild to start rebuilding the source code every time a code change is pushed to the repository.  If you enable webhooks for an CodeBuild project, and the project is used as a build step in CodePipeline, then two identical builds are created for each commit. One build is triggered through webhooks, and one through CodePipeline. Because billing is on a per-build basis, you are billed for both builds. Therefore, if you are using CodePipeline, we recommend that you disable webhooks in CodeBuild. In the CodeBuild console, clear the Webhook box. For more information, see step 5 in Change a Build Project's Settings.
     public func createWebhook(_ input: CreateWebhookInput, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<CreateWebhookOutput> {
         return self.client.execute(operation: "CreateWebhook", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -114,27 +114,27 @@ public struct CodeBuild: AWSService {
         return self.client.execute(operation: "DeleteBuildBatch", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    ///  Deletes a build project. When you delete a project, its builds are not deleted. 
+    ///  Deletes a build project. When you delete a project, its builds are not deleted.
     public func deleteProject(_ input: DeleteProjectInput, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<DeleteProjectOutput> {
         return self.client.execute(operation: "DeleteProject", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    ///  Deletes a report. 
+    ///  Deletes a report.
     public func deleteReport(_ input: DeleteReportInput, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<DeleteReportOutput> {
         return self.client.execute(operation: "DeleteReport", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Deletes a report group. Before you delete a report group, you must delete its reports. 
+    /// Deletes a report group. Before you delete a report group, you must delete its reports.
     public func deleteReportGroup(_ input: DeleteReportGroupInput, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<DeleteReportGroupOutput> {
         return self.client.execute(operation: "DeleteReportGroup", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    ///  Deletes a resource policy that is identified by its resource ARN. 
+    ///  Deletes a resource policy that is identified by its resource ARN.
     public func deleteResourcePolicy(_ input: DeleteResourcePolicyInput, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<DeleteResourcePolicyOutput> {
         return self.client.execute(operation: "DeleteResourcePolicy", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    ///  Deletes a set of GitHub, GitHub Enterprise, or Bitbucket source credentials. 
+    ///  Deletes a set of GitHub, GitHub Enterprise, or Bitbucket source credentials.
     public func deleteSourceCredentials(_ input: DeleteSourceCredentialsInput, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<DeleteSourceCredentialsOutput> {
         return self.client.execute(operation: "DeleteSourceCredentials", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -149,7 +149,7 @@ public struct CodeBuild: AWSService {
         return self.client.execute(operation: "DescribeCodeCoverages", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    ///  Returns a list of details about test cases for a report. 
+    ///  Returns a list of details about test cases for a report.
     public func describeTestCases(_ input: DescribeTestCasesInput, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<DescribeTestCasesOutput> {
         return self.client.execute(operation: "DescribeTestCases", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -159,12 +159,12 @@ public struct CodeBuild: AWSService {
         return self.client.execute(operation: "GetReportGroupTrend", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    ///  Gets a resource policy that is identified by its resource ARN. 
+    ///  Gets a resource policy that is identified by its resource ARN.
     public func getResourcePolicy(_ input: GetResourcePolicyInput, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<GetResourcePolicyOutput> {
         return self.client.execute(operation: "GetResourcePolicy", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    ///  Imports the source repository credentials for an CodeBuild project that has its source code stored in a GitHub, GitHub Enterprise, or Bitbucket repository. 
+    ///  Imports the source repository credentials for an CodeBuild project that has its source code stored in a GitHub, GitHub Enterprise, or Bitbucket repository.
     public func importSourceCredentials(_ input: ImportSourceCredentialsInput, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<ImportSourceCredentialsOutput> {
         return self.client.execute(operation: "ImportSourceCredentials", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -204,37 +204,37 @@ public struct CodeBuild: AWSService {
         return self.client.execute(operation: "ListProjects", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    ///  Gets a list ARNs for the report groups in the current Amazon Web Services account. 
+    ///  Gets a list ARNs for the report groups in the current Amazon Web Services account.
     public func listReportGroups(_ input: ListReportGroupsInput, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<ListReportGroupsOutput> {
         return self.client.execute(operation: "ListReportGroups", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    ///  Returns a list of ARNs for the reports in the current Amazon Web Services account. 
+    ///  Returns a list of ARNs for the reports in the current Amazon Web Services account.
     public func listReports(_ input: ListReportsInput, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<ListReportsOutput> {
         return self.client.execute(operation: "ListReports", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    ///  Returns a list of ARNs for the reports that belong to a ReportGroup. 
+    ///  Returns a list of ARNs for the reports that belong to a ReportGroup.
     public func listReportsForReportGroup(_ input: ListReportsForReportGroupInput, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<ListReportsForReportGroupOutput> {
         return self.client.execute(operation: "ListReportsForReportGroup", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    ///  Gets a list of projects that are shared with other Amazon Web Services accounts or users. 
+    ///  Gets a list of projects that are shared with other Amazon Web Services accounts or users.
     public func listSharedProjects(_ input: ListSharedProjectsInput, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<ListSharedProjectsOutput> {
         return self.client.execute(operation: "ListSharedProjects", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    ///  Gets a list of report groups that are shared with other Amazon Web Services accounts or users. 
+    ///  Gets a list of report groups that are shared with other Amazon Web Services accounts or users.
     public func listSharedReportGroups(_ input: ListSharedReportGroupsInput, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<ListSharedReportGroupsOutput> {
         return self.client.execute(operation: "ListSharedReportGroups", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    ///  Returns a list of SourceCredentialsInfo objects. 
+    ///  Returns a list of SourceCredentialsInfo objects.
     public func listSourceCredentials(_ input: ListSourceCredentialsInput, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<ListSourceCredentialsOutput> {
         return self.client.execute(operation: "ListSourceCredentials", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    ///  Stores a resource policy for the ARN of a Project or ReportGroup object. 
+    ///  Stores a resource policy for the ARN of a Project or ReportGroup object.
     public func putResourcePolicy(_ input: PutResourcePolicyInput, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<PutResourcePolicyOutput> {
         return self.client.execute(operation: "PutResourcePolicy", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -274,12 +274,12 @@ public struct CodeBuild: AWSService {
         return self.client.execute(operation: "UpdateProject", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    ///  Updates a report group. 
+    ///  Updates a report group.
     public func updateReportGroup(_ input: UpdateReportGroupInput, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<UpdateReportGroupOutput> {
         return self.client.execute(operation: "UpdateReportGroup", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    ///  Updates the webhook associated with an CodeBuild build project.   If you use Bitbucket for your repository, rotateSecret is ignored.  
+    ///  Updates the webhook associated with an CodeBuild build project.   If you use Bitbucket for your repository, rotateSecret is ignored.
     public func updateWebhook(_ input: UpdateWebhookInput, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<UpdateWebhookOutput> {
         return self.client.execute(operation: "UpdateWebhook", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }

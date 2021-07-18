@@ -54,7 +54,7 @@ public struct HealthLakeErrorType: AWSErrorType {
     public static var internalServerException: Self { .init(.internalServerException) }
     ///  The requested Data Store was not found.
     public static var resourceNotFoundException: Self { .init(.resourceNotFoundException) }
-    /// The user has exceeded their maximum number of allowed calls to the given API. 
+    /// The user has exceeded their maximum number of allowed calls to the given API.
     public static var throttlingException: Self { .init(.throttlingException) }
     /// The user input parameter was invalid.
     public static var validationException: Self { .init(.validationException) }

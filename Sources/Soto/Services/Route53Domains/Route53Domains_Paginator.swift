@@ -73,8 +73,8 @@ extension Route53Domains {
         )
     }
 
-    ///  Returns information about all of the operations that return an operation ID and that have ever been 
-    ///  			performed on domains that were registered by the current account. 
+    ///  Returns information about all of the operations that return an operation ID and that have ever been
+    ///  			performed on domains that were registered by the current account.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.

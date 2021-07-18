@@ -52,9 +52,9 @@ public struct STSErrorType: AWSErrorType {
     public static var expiredTokenException: Self { .init(.expiredTokenException) }
     /// The request could not be fulfilled because the identity provider (IDP) that was asked to verify the incoming identity token could not be reached. This is often a transient error caused by network conditions. Retry the request a limited number of times so that you don't exceed the request rate. If the error persists, the identity provider might be down or not responding.
     public static var iDPCommunicationErrorException: Self { .init(.iDPCommunicationErrorException) }
-    /// The identity provider (IdP) reported that authentication failed. This might be because the claim is invalid. If this error is returned for the AssumeRoleWithWebIdentity operation, it can also mean that the claim has expired or has been explicitly revoked. 
+    /// The identity provider (IdP) reported that authentication failed. This might be because the claim is invalid. If this error is returned for the AssumeRoleWithWebIdentity operation, it can also mean that the claim has expired or has been explicitly revoked.
     public static var iDPRejectedClaimException: Self { .init(.iDPRejectedClaimException) }
-    /// The error returned if the message passed to DecodeAuthorizationMessage was invalid. This can happen if the token contains invalid characters, such as linebreaks. 
+    /// The error returned if the message passed to DecodeAuthorizationMessage was invalid. This can happen if the token contains invalid characters, such as linebreaks.
     public static var invalidAuthorizationMessageException: Self { .init(.invalidAuthorizationMessageException) }
     /// The web identity token that was passed could not be validated by Amazon Web Services. Get a new identity token from the identity provider and then retry the request.
     public static var invalidIdentityTokenException: Self { .init(.invalidIdentityTokenException) }

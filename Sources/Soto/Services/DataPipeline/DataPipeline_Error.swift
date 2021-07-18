@@ -53,7 +53,7 @@ public struct DataPipelineErrorType: AWSErrorType {
     public static var pipelineDeletedException: Self { .init(.pipelineDeletedException) }
     /// The specified pipeline was not found. Verify that you used the correct user and account identifiers.
     public static var pipelineNotFoundException: Self { .init(.pipelineNotFoundException) }
-    /// The specified task was not found. 
+    /// The specified task was not found.
     public static var taskNotFoundException: Self { .init(.taskNotFoundException) }
 }
 

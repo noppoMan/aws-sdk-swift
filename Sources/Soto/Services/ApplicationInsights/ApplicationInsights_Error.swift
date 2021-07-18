@@ -48,7 +48,7 @@ public struct ApplicationInsightsErrorType: AWSErrorType {
     /// return error code string
     public var errorCode: String { self.error.rawValue }
 
-    ///  User does not have permissions to perform this action. 
+    ///  User does not have permissions to perform this action.
     public static var accessDeniedException: Self { .init(.accessDeniedException) }
     /// The request is not understood by the server.
     public static var badRequestException: Self { .init(.badRequestException) }

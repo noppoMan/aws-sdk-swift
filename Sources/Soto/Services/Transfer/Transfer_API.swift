@@ -98,7 +98,7 @@ public struct Transfer: AWSService {
 
     /// Deletes the user belonging to a file transfer protocol-enabled server you specify.
     ///  No response returns from this operation.
-    ///   When you delete a user from a server, the user's information is lost. 
+    ///   When you delete a user from a server, the user's information is lost.
     @discardableResult public func deleteUser(_ input: DeleteUserRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<Void> {
         return self.client.execute(operation: "DeleteUser", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -164,7 +164,7 @@ public struct Transfer: AWSService {
     }
 
     /// Changes the state of a file transfer protocol-enabled server from ONLINE to OFFLINE. An OFFLINE server cannot accept and process file transfer jobs. Information tied to your server, such as server and user properties, are not affected by stopping your server.
-    ///   Stopping the server will not reduce or impact your file transfer protocol endpoint billing; you must delete the server to stop being billed. 
+    ///   Stopping the server will not reduce or impact your file transfer protocol endpoint billing; you must delete the server to stop being billed.
     ///  The state of STOPPING indicates that the server is in an intermediate state, either not fully able to respond, or not fully offline. The values of STOP_FAILED can indicate an error condition.
     ///  No response is returned from this call.
     @discardableResult public func stopServer(_ input: StopServerRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<Void> {

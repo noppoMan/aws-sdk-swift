@@ -25,8 +25,8 @@ extension IoT1ClickProjects {
 
     public struct AssociateDeviceWithPlacementRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "deviceTemplateName", location: .uri(locationName: "deviceTemplateName")), 
-            AWSMemberEncoding(label: "placementName", location: .uri(locationName: "placementName")), 
+            AWSMemberEncoding(label: "deviceTemplateName", location: .uri(locationName: "deviceTemplateName")),
+            AWSMemberEncoding(label: "placementName", location: .uri(locationName: "placementName")),
             AWSMemberEncoding(label: "projectName", location: .uri(locationName: "projectName"))
         ]
 
@@ -61,16 +61,12 @@ extension IoT1ClickProjects {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case deviceId = "deviceId"
+            case deviceId
         }
     }
 
     public struct AssociateDeviceWithPlacementResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct CreatePlacementRequest: AWSEncodableShape {
@@ -106,21 +102,16 @@ extension IoT1ClickProjects {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case attributes = "attributes"
-            case placementName = "placementName"
+            case attributes
+            case placementName
         }
     }
 
     public struct CreatePlacementResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct CreateProjectRequest: AWSEncodableShape {
-
         /// An optional description for the project.
         public let description: String?
         /// The schema defining the placement to be created. A placement template defines placement default attributes and device templates. You cannot add or remove device templates after the project has been created. However, you can update callbackOverrides for the device templates using the UpdateProject API.
@@ -154,24 +145,20 @@ extension IoT1ClickProjects {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case description = "description"
-            case placementTemplate = "placementTemplate"
-            case projectName = "projectName"
-            case tags = "tags"
+            case description
+            case placementTemplate
+            case projectName
+            case tags
         }
     }
 
     public struct CreateProjectResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeletePlacementRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "placementName", location: .uri(locationName: "placementName")), 
+            AWSMemberEncoding(label: "placementName", location: .uri(locationName: "placementName")),
             AWSMemberEncoding(label: "projectName", location: .uri(locationName: "projectName"))
         ]
 
@@ -198,11 +185,7 @@ extension IoT1ClickProjects {
     }
 
     public struct DeletePlacementResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteProjectRequest: AWSEncodableShape {
@@ -227,16 +210,12 @@ extension IoT1ClickProjects {
     }
 
     public struct DeleteProjectResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DescribePlacementRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "placementName", location: .uri(locationName: "placementName")), 
+            AWSMemberEncoding(label: "placementName", location: .uri(locationName: "placementName")),
             AWSMemberEncoding(label: "projectName", location: .uri(locationName: "projectName"))
         ]
 
@@ -263,7 +242,6 @@ extension IoT1ClickProjects {
     }
 
     public struct DescribePlacementResponse: AWSDecodableShape {
-
         /// An object describing the placement.
         public let placement: PlacementDescription
 
@@ -272,7 +250,7 @@ extension IoT1ClickProjects {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case placement = "placement"
+            case placement
         }
     }
 
@@ -298,7 +276,6 @@ extension IoT1ClickProjects {
     }
 
     public struct DescribeProjectResponse: AWSDecodableShape {
-
         /// An object describing the project.
         public let project: ProjectDescription
 
@@ -307,12 +284,11 @@ extension IoT1ClickProjects {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case project = "project"
+            case project
         }
     }
 
     public struct DeviceTemplate: AWSEncodableShape & AWSDecodableShape {
-
         /// An optional Lambda function to invoke instead of the default Lambda function provided by the placement template.
         public let callbackOverrides: [String: String]?
         /// The device type, which currently must be "button".
@@ -333,15 +309,15 @@ extension IoT1ClickProjects {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case callbackOverrides = "callbackOverrides"
-            case deviceType = "deviceType"
+            case callbackOverrides
+            case deviceType
         }
     }
 
     public struct DisassociateDeviceFromPlacementRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "deviceTemplateName", location: .uri(locationName: "deviceTemplateName")), 
-            AWSMemberEncoding(label: "placementName", location: .uri(locationName: "placementName")), 
+            AWSMemberEncoding(label: "deviceTemplateName", location: .uri(locationName: "deviceTemplateName")),
+            AWSMemberEncoding(label: "placementName", location: .uri(locationName: "placementName")),
             AWSMemberEncoding(label: "projectName", location: .uri(locationName: "projectName"))
         ]
 
@@ -374,16 +350,12 @@ extension IoT1ClickProjects {
     }
 
     public struct DisassociateDeviceFromPlacementResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct GetDevicesInPlacementRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "placementName", location: .uri(locationName: "placementName")), 
+            AWSMemberEncoding(label: "placementName", location: .uri(locationName: "placementName")),
             AWSMemberEncoding(label: "projectName", location: .uri(locationName: "projectName"))
         ]
 
@@ -410,7 +382,6 @@ extension IoT1ClickProjects {
     }
 
     public struct GetDevicesInPlacementResponse: AWSDecodableShape {
-
         /// An object containing the devices (zero or more) within the placement.
         public let devices: [String: String]
 
@@ -419,14 +390,14 @@ extension IoT1ClickProjects {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case devices = "devices"
+            case devices
         }
     }
 
     public struct ListPlacementsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
-            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
+            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")),
             AWSMemberEncoding(label: "projectName", location: .uri(locationName: "projectName"))
         ]
 
@@ -457,7 +428,6 @@ extension IoT1ClickProjects {
     }
 
     public struct ListPlacementsResponse: AWSDecodableShape {
-
         /// The token used to retrieve the next set of results - will be effectively empty if there are no further results.
         public let nextToken: String?
         /// An object listing the requested placements.
@@ -469,14 +439,14 @@ extension IoT1ClickProjects {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case placements = "placements"
+            case nextToken
+            case placements
         }
     }
 
     public struct ListProjectsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
@@ -501,7 +471,6 @@ extension IoT1ClickProjects {
     }
 
     public struct ListProjectsResponse: AWSDecodableShape {
-
         /// The token used to retrieve the next set of results - will be effectively empty if there are no further results.
         public let nextToken: String?
         /// An object containing the list of projects.
@@ -513,8 +482,8 @@ extension IoT1ClickProjects {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case projects = "projects"
+            case nextToken
+            case projects
         }
     }
 
@@ -538,7 +507,6 @@ extension IoT1ClickProjects {
     }
 
     public struct ListTagsForResourceResponse: AWSDecodableShape {
-
         /// The tags (metadata key/value pairs) which you have assigned to the resource.
         public let tags: [String: String]?
 
@@ -547,12 +515,11 @@ extension IoT1ClickProjects {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tags = "tags"
+            case tags
         }
     }
 
     public struct PlacementDescription: AWSDecodableShape {
-
         /// The user-defined attributes associated with the placement.
         public let attributes: [String: String]
         /// The date when the placement was initially created, in UNIX epoch time format.
@@ -573,16 +540,15 @@ extension IoT1ClickProjects {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case attributes = "attributes"
-            case createdDate = "createdDate"
-            case placementName = "placementName"
-            case projectName = "projectName"
-            case updatedDate = "updatedDate"
+            case attributes
+            case createdDate
+            case placementName
+            case projectName
+            case updatedDate
         }
     }
 
     public struct PlacementSummary: AWSDecodableShape {
-
         /// The date when the placement was originally created, in UNIX epoch time format.
         public let createdDate: Date
         /// The name of the placement being summarized.
@@ -600,15 +566,14 @@ extension IoT1ClickProjects {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case createdDate = "createdDate"
-            case placementName = "placementName"
-            case projectName = "projectName"
-            case updatedDate = "updatedDate"
+            case createdDate
+            case placementName
+            case projectName
+            case updatedDate
         }
     }
 
     public struct PlacementTemplate: AWSEncodableShape & AWSDecodableShape {
-
         /// The default attributes (key/value pairs) to be applied to all placements using this template.
         public let defaultAttributes: [String: String]?
         /// An object specifying the DeviceTemplate for all placements using this (PlacementTemplate) template.
@@ -634,13 +599,12 @@ extension IoT1ClickProjects {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case defaultAttributes = "defaultAttributes"
-            case deviceTemplates = "deviceTemplates"
+            case defaultAttributes
+            case deviceTemplates
         }
     }
 
     public struct ProjectDescription: AWSDecodableShape {
-
         /// The ARN of the project.
         public let arn: String?
         /// The date when the project was originally created, in UNIX epoch time format.
@@ -667,18 +631,17 @@ extension IoT1ClickProjects {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdDate = "createdDate"
-            case description = "description"
-            case placementTemplate = "placementTemplate"
-            case projectName = "projectName"
-            case tags = "tags"
-            case updatedDate = "updatedDate"
+            case arn
+            case createdDate
+            case description
+            case placementTemplate
+            case projectName
+            case tags
+            case updatedDate
         }
     }
 
     public struct ProjectSummary: AWSDecodableShape {
-
         /// The ARN of the project.
         public let arn: String?
         /// The date when the project was originally created, in UNIX epoch time format.
@@ -699,11 +662,11 @@ extension IoT1ClickProjects {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdDate = "createdDate"
-            case projectName = "projectName"
-            case tags = "tags"
-            case updatedDate = "updatedDate"
+            case arn
+            case createdDate
+            case projectName
+            case tags
+            case updatedDate
         }
     }
 
@@ -735,21 +698,17 @@ extension IoT1ClickProjects {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tags = "tags"
+            case tags
         }
     }
 
     public struct TagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UntagResourceRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "resourceArn")), 
+            AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "resourceArn")),
             AWSMemberEncoding(label: "tagKeys", location: .querystring(locationName: "tagKeys"))
         ]
 
@@ -778,16 +737,12 @@ extension IoT1ClickProjects {
     }
 
     public struct UntagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdatePlacementRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "placementName", location: .uri(locationName: "placementName")), 
+            AWSMemberEncoding(label: "placementName", location: .uri(locationName: "placementName")),
             AWSMemberEncoding(label: "projectName", location: .uri(locationName: "projectName"))
         ]
 
@@ -819,16 +774,12 @@ extension IoT1ClickProjects {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case attributes = "attributes"
+            case attributes
         }
     }
 
     public struct UpdatePlacementResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateProjectRequest: AWSEncodableShape {
@@ -858,16 +809,12 @@ extension IoT1ClickProjects {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case description = "description"
-            case placementTemplate = "placementTemplate"
+            case description
+            case placementTemplate
         }
     }
 
     public struct UpdateProjectResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 }

@@ -50,8 +50,8 @@ public struct Route53DomainsErrorType: AWSErrorType {
     public static var domainLimitExceeded: Self { .init(.domainLimitExceeded) }
     /// The request is already in progress for the domain.
     public static var duplicateRequest: Self { .init(.duplicateRequest) }
-    /// The requested item is not acceptable. For example, for APIs that accept a domain name, the request might specify a domain name 
-    /// 			that doesn't belong to the account that submitted the request. For AcceptDomainTransferFromAnotherAwsAccount, 
+    /// The requested item is not acceptable. For example, for APIs that accept a domain name, the request might specify a domain name
+    /// 			that doesn't belong to the account that submitted the request. For AcceptDomainTransferFromAnotherAwsAccount,
     /// 			the password might be invalid.
     public static var invalidInput: Self { .init(.invalidInput) }
     /// The number of operations or jobs running exceeded the allowed threshold for the account.

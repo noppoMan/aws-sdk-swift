@@ -69,7 +69,7 @@ public struct PersonalizeEvents: AWSService {
         return self.client.execute(operation: "PutEvents", path: "/events", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Adds one or more items to an Items dataset. For more information see  Importing Items Incrementally. 
+    /// Adds one or more items to an Items dataset. For more information see  Importing Items Incrementally.
     @discardableResult public func putItems(_ input: PutItemsRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<Void> {
         return self.client.execute(operation: "PutItems", path: "/items", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }

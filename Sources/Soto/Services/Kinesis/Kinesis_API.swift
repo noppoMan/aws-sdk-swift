@@ -138,7 +138,7 @@ public struct Kinesis: AWSService {
         return self.client.execute(operation: "IncreaseStreamRetentionPeriod", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Lists the shards in a stream and provides information about each shard. This operation has a limit of 100 transactions per second per data stream.  This API is a new operation that is used by the Amazon Kinesis Client Library (KCL). If you have a fine-grained IAM policy that only allows specific operations, you must update your policy to allow calls to this API. For more information, see Controlling Access to Amazon Kinesis Data Streams Resources Using IAM. 
+    /// Lists the shards in a stream and provides information about each shard. This operation has a limit of 100 transactions per second per data stream.  This API is a new operation that is used by the Amazon Kinesis Client Library (KCL). If you have a fine-grained IAM policy that only allows specific operations, you must update your policy to allow calls to this API. For more information, see Controlling Access to Amazon Kinesis Data Streams Resources Using IAM.
     public func listShards(_ input: ListShardsInput, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<ListShardsOutput> {
         return self.client.execute(operation: "ListShards", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }

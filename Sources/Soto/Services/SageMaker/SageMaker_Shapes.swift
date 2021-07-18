@@ -85,7 +85,7 @@ extension SageMaker {
         case mlT3Micro = "ml.t3.micro"
         case mlT3Small = "ml.t3.small"
         case mlT3Xlarge = "ml.t3.xlarge"
-        case system = "system"
+        case system
         public var description: String { return self.rawValue }
     }
 
@@ -455,8 +455,8 @@ extension SageMaker {
     }
 
     public enum FileSystemAccessMode: String, CustomStringConvertible, Codable {
-        case ro = "ro"
-        case rw = "rw"
+        case ro
+        case rw
         public var description: String { return self.rawValue }
     }
 
@@ -1299,18 +1299,18 @@ extension SageMaker {
     }
 
     public enum TargetDevice: String, CustomStringConvertible, Codable {
-        case aisage = "aisage"
+        case aisage
         case ambaCv22 = "amba_cv22"
         case ambaCv25 = "amba_cv25"
-        case coreml = "coreml"
-        case deeplens = "deeplens"
-        case imx8qm = "imx8qm"
+        case coreml
+        case deeplens
+        case imx8qm
         case jacintoTda4Vm = "jacinto_tda4vm"
         case jetsonNano = "jetson_nano"
         case jetsonTx1 = "jetson_tx1"
         case jetsonTx2 = "jetson_tx2"
         case jetsonXavier = "jetson_xavier"
-        case lambda = "lambda"
+        case lambda
         case mlC4 = "ml_c4"
         case mlC5 = "ml_c5"
         case mlEia2 = "ml_eia2"
@@ -1320,11 +1320,11 @@ extension SageMaker {
         case mlM5 = "ml_m5"
         case mlP2 = "ml_p2"
         case mlP3 = "ml_p3"
-        case qcs603 = "qcs603"
-        case qcs605 = "qcs605"
-        case rasp3b = "rasp3b"
-        case rk3288 = "rk3288"
-        case rk3399 = "rk3399"
+        case qcs603
+        case qcs605
+        case rasp3b
+        case rk3288
+        case rk3399
         case sbeC = "sbe_c"
         case sitaraAm57X = "sitara_am57x"
         case x86Win32 = "x86_win32"
@@ -1548,8 +1548,8 @@ extension SageMaker {
         public func validate(name: String) throws {
             switch self {
             case .stringValue(let value):
-                try validate(value, name: "stringValue", parent: name, max: 256)
-                try validate(value, name: "stringValue", parent: name, pattern: ".*")
+                try self.validate(value, name: "stringValue", parent: name, max: 256)
+                try self.validate(value, name: "stringValue", parent: name, pattern: ".*")
             default:
                 break
             }
@@ -1564,7 +1564,6 @@ extension SageMaker {
     // MARK: Shapes
 
     public struct ActionSource: AWSEncodableShape & AWSDecodableShape {
-
         /// The ID of the source.
         public let sourceId: String?
         /// The type of the source.
@@ -1592,7 +1591,6 @@ extension SageMaker {
     }
 
     public struct ActionSummary: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the action.
         public let actionArn: String?
         /// The name of the action.
@@ -1630,8 +1628,7 @@ extension SageMaker {
     }
 
     public struct AddAssociationRequest: AWSEncodableShape {
-
-        /// The type of association. The following are suggested uses for each type. Amazon SageMaker places no restrictions on their use.   ContributedTo - The source contributed to the destination or had a part in enabling the destination. For example, the training data contributed to the training job.   AssociatedWith - The source is connected to the destination. For example, an approval workflow is associated with a model deployment.   DerivedFrom - The destination is a modification of the source. For example, a digest output of a channel input for a processing job is derived from the original inputs.   Produced - The source generated the destination. For example, a training job produced a model artifact.  
+        /// The type of association. The following are suggested uses for each type. Amazon SageMaker places no restrictions on their use.   ContributedTo - The source contributed to the destination or had a part in enabling the destination. For example, the training data contributed to the training job.   AssociatedWith - The source is connected to the destination. For example, an approval workflow is associated with a model deployment.   DerivedFrom - The destination is a modification of the source. For example, a digest output of a channel input for a processing job is derived from the original inputs.   Produced - The source generated the destination. For example, a training job produced a model artifact.
         public let associationType: AssociationEdgeType?
         /// The Amazon Resource Name (ARN) of the destination.
         public let destinationArn: String
@@ -1659,7 +1656,6 @@ extension SageMaker {
     }
 
     public struct AddAssociationResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the destination.
         public let destinationArn: String?
         /// The ARN of the source.
@@ -1677,7 +1673,6 @@ extension SageMaker {
     }
 
     public struct AddTagsInput: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the resource that you want to tag.
         public let resourceArn: String
         /// An array of key-value pairs. You can use tags to categorize your Amazon Web Services resources in different ways, for example, by purpose, owner, or environment. For more information, see Tagging Amazon Web Services Resources.
@@ -1704,7 +1699,6 @@ extension SageMaker {
     }
 
     public struct AddTagsOutput: AWSDecodableShape {
-
         /// A list of tags associated with the Amazon SageMaker resource.
         public let tags: [Tag]?
 
@@ -1718,7 +1712,6 @@ extension SageMaker {
     }
 
     public struct AgentVersion: AWSDecodableShape {
-
         /// The number of Edge Manager agents.
         public let agentCount: Int64
         /// Version of the agent.
@@ -1736,7 +1729,6 @@ extension SageMaker {
     }
 
     public struct Alarm: AWSEncodableShape & AWSDecodableShape {
-
         public let alarmName: String?
 
         public init(alarmName: String? = nil) {
@@ -1755,16 +1747,15 @@ extension SageMaker {
     }
 
     public struct AlgorithmSpecification: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the algorithm resource to use for the training job. This must be an algorithm resource that you created or subscribe to on Amazon Web Services Marketplace. If you specify a value for this parameter, you can't specify a value for TrainingImage.
         public let algorithmName: String?
-        /// To generate and save time-series metrics during training, set to true. The default is false and time-series metrics aren't generated except in the following cases:   You use one of the Amazon SageMaker built-in algorithms   You use one of the following Prebuilt Amazon SageMaker Docker Images:   Tensorflow (version >= 1.15)   MXNet (version >= 1.6)   PyTorch (version >= 1.3)     You specify at least one MetricDefinition   
+        /// To generate and save time-series metrics during training, set to true. The default is false and time-series metrics aren't generated except in the following cases:   You use one of the Amazon SageMaker built-in algorithms   You use one of the following Prebuilt Amazon SageMaker Docker Images:   Tensorflow (version >= 1.15)   MXNet (version >= 1.6)   PyTorch (version >= 1.3)     You specify at least one MetricDefinition
         public let enableSageMakerMetricsTimeSeries: Bool?
         /// A list of metric definition objects. Each object specifies the metric name and regular expressions used to parse algorithm logs. Amazon SageMaker publishes each metric to Amazon CloudWatch.
         public let metricDefinitions: [MetricDefinition]?
         /// The registry path of the Docker image that contains the training algorithm. For information about docker registry paths for built-in algorithms, see Algorithms Provided by Amazon SageMaker: Common Parameters. Amazon SageMaker supports both registry/repository[:tag] and registry/repository[@digest] image path formats. For more information, see Using Your Own Algorithms with Amazon SageMaker.
         public let trainingImage: String?
-        /// The input mode that the algorithm supports. For the input modes that Amazon SageMaker algorithms support, see Algorithms. If an algorithm supports the File input mode, Amazon SageMaker downloads the training data from S3 to the provisioned ML storage Volume, and mounts the directory to docker volume for training container. If an algorithm supports the Pipe input mode, Amazon SageMaker streams data directly from S3 to the container.  In File mode, make sure you provision ML storage volume with sufficient capacity to accommodate the data download from S3. In addition to the training data, the ML storage volume also stores the output model. The algorithm container use ML storage volume to also store intermediate information, if any.  For distributed algorithms using File mode, training data is distributed uniformly, and your training duration is predictable if the input data objects size is approximately same. Amazon SageMaker does not split the files any further for model training. If the object sizes are skewed, training won't be optimal as the data distribution is also skewed where one host in a training cluster is overloaded, thus becoming bottleneck in training. 
+        /// The input mode that the algorithm supports. For the input modes that Amazon SageMaker algorithms support, see Algorithms. If an algorithm supports the File input mode, Amazon SageMaker downloads the training data from S3 to the provisioned ML storage Volume, and mounts the directory to docker volume for training container. If an algorithm supports the Pipe input mode, Amazon SageMaker streams data directly from S3 to the container.  In File mode, make sure you provision ML storage volume with sufficient capacity to accommodate the data download from S3. In addition to the training data, the ML storage volume also stores the output model. The algorithm container use ML storage volume to also store intermediate information, if any.  For distributed algorithms using File mode, training data is distributed uniformly, and your training duration is predictable if the input data objects size is approximately same. Amazon SageMaker does not split the files any further for model training. If the object sizes are skewed, training won't be optimal as the data distribution is also skewed where one host in a training cluster is overloaded, thus becoming bottleneck in training.
         public let trainingInputMode: TrainingInputMode
 
         public init(algorithmName: String? = nil, enableSageMakerMetricsTimeSeries: Bool? = nil, metricDefinitions: [MetricDefinition]? = nil, trainingImage: String? = nil, trainingInputMode: TrainingInputMode) {
@@ -1797,7 +1788,6 @@ extension SageMaker {
     }
 
     public struct AlgorithmStatusDetails: AWSDecodableShape {
-
         /// The status of the scan of the algorithm's Docker image container.
         public let imageScanStatuses: [AlgorithmStatusItem]?
         /// The status of algorithm validation.
@@ -1815,7 +1805,6 @@ extension SageMaker {
     }
 
     public struct AlgorithmStatusItem: AWSDecodableShape {
-
         /// if the overall status is Failed, the reason for the failure.
         public let failureReason: String?
         /// The name of the algorithm for which the overall status is being reported.
@@ -1837,7 +1826,6 @@ extension SageMaker {
     }
 
     public struct AlgorithmSummary: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the algorithm.
         public let algorithmArn: String
         /// A brief description of the algorithm.
@@ -1867,7 +1855,6 @@ extension SageMaker {
     }
 
     public struct AlgorithmValidationProfile: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the profile for the algorithm. The name must have 1 to 63 characters. Valid characters are a-z, A-Z, 0-9, and - (hyphen).
         public let profileName: String
         /// The TrainingJobDefinition object that describes the training job that Amazon SageMaker runs to validate your algorithm.
@@ -1897,7 +1884,6 @@ extension SageMaker {
     }
 
     public struct AlgorithmValidationSpecification: AWSEncodableShape & AWSDecodableShape {
-
         /// An array of AlgorithmValidationProfile objects, each of which specifies a training job and batch transform job that Amazon SageMaker runs to validate your algorithm.
         public let validationProfiles: [AlgorithmValidationProfile]
         /// The IAM roles that Amazon SageMaker uses to run the training jobs.
@@ -1926,11 +1912,10 @@ extension SageMaker {
     }
 
     public struct AnnotationConsolidationConfig: AWSEncodableShape & AWSDecodableShape {
-
-        /// The Amazon Resource Name (ARN) of a Lambda function implements the logic for annotation consolidation and to process output data. This parameter is required for all labeling jobs. For built-in task types, use one of the following Amazon SageMaker Ground Truth Lambda function ARNs for AnnotationConsolidationLambdaArn. For custom labeling workflows, see Post-annotation Lambda. 
-        ///   Bounding box - Finds the most similar boxes from different workers based on the Jaccard index of the boxes.    arn:aws:lambda:us-east-1:432418664414:function:ACS-BoundingBox     arn:aws:lambda:us-east-2:266458841044:function:ACS-BoundingBox     arn:aws:lambda:us-west-2:081040173940:function:ACS-BoundingBox     arn:aws:lambda:eu-west-1:568282634449:function:ACS-BoundingBox     arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-BoundingBox     arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-BoundingBox     arn:aws:lambda:ap-south-1:565803892007:function:ACS-BoundingBox     arn:aws:lambda:eu-central-1:203001061592:function:ACS-BoundingBox     arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-BoundingBox     arn:aws:lambda:eu-west-2:487402164563:function:ACS-BoundingBox     arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-BoundingBox     arn:aws:lambda:ca-central-1:918755190332:function:ACS-BoundingBox     Image classification - Uses a variant of the Expectation Maximization approach to estimate the true class of an image based on annotations from individual workers.    arn:aws:lambda:us-east-1:432418664414:function:ACS-ImageMultiClass     arn:aws:lambda:us-east-2:266458841044:function:ACS-ImageMultiClass     arn:aws:lambda:us-west-2:081040173940:function:ACS-ImageMultiClass     arn:aws:lambda:eu-west-1:568282634449:function:ACS-ImageMultiClass     arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-ImageMultiClass     arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-ImageMultiClass     arn:aws:lambda:ap-south-1:565803892007:function:ACS-ImageMultiClass     arn:aws:lambda:eu-central-1:203001061592:function:ACS-ImageMultiClass     arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-ImageMultiClass     arn:aws:lambda:eu-west-2:487402164563:function:ACS-ImageMultiClass     arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-ImageMultiClass     arn:aws:lambda:ca-central-1:918755190332:function:ACS-ImageMultiClass     Multi-label image classification - Uses a variant of the Expectation Maximization approach to estimate the true classes of an image based on annotations from individual workers.    arn:aws:lambda:us-east-1:432418664414:function:ACS-ImageMultiClassMultiLabel     arn:aws:lambda:us-east-2:266458841044:function:ACS-ImageMultiClassMultiLabel     arn:aws:lambda:us-west-2:081040173940:function:ACS-ImageMultiClassMultiLabel     arn:aws:lambda:eu-west-1:568282634449:function:ACS-ImageMultiClassMultiLabel     arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-ImageMultiClassMultiLabel     arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-ImageMultiClassMultiLabel     arn:aws:lambda:ap-south-1:565803892007:function:ACS-ImageMultiClassMultiLabel     arn:aws:lambda:eu-central-1:203001061592:function:ACS-ImageMultiClassMultiLabel     arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-ImageMultiClassMultiLabel     arn:aws:lambda:eu-west-2:487402164563:function:ACS-ImageMultiClassMultiLabel     arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-ImageMultiClassMultiLabel     arn:aws:lambda:ca-central-1:918755190332:function:ACS-ImageMultiClassMultiLabel     Semantic segmentation - Treats each pixel in an image as a multi-class classification and treats pixel annotations from workers as "votes" for the correct label.    arn:aws:lambda:us-east-1:432418664414:function:ACS-SemanticSegmentation     arn:aws:lambda:us-east-2:266458841044:function:ACS-SemanticSegmentation     arn:aws:lambda:us-west-2:081040173940:function:ACS-SemanticSegmentation     arn:aws:lambda:eu-west-1:568282634449:function:ACS-SemanticSegmentation     arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-SemanticSegmentation     arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-SemanticSegmentation     arn:aws:lambda:ap-south-1:565803892007:function:ACS-SemanticSegmentation     arn:aws:lambda:eu-central-1:203001061592:function:ACS-SemanticSegmentation     arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-SemanticSegmentation     arn:aws:lambda:eu-west-2:487402164563:function:ACS-SemanticSegmentation     arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-SemanticSegmentation     arn:aws:lambda:ca-central-1:918755190332:function:ACS-SemanticSegmentation     Text classification - Uses a variant of the Expectation Maximization approach to estimate the true class of text based on annotations from individual workers.    rn:aws:lambda:us-east-1:432418664414:function:ACS-TextMultiClass     arn:aws:lambda:us-east-2:266458841044:function:ACS-TextMultiClass     arn:aws:lambda:us-west-2:081040173940:function:ACS-TextMultiClass     arn:aws:lambda:eu-west-1:568282634449:function:ACS-TextMultiClass     arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-TextMultiClass     arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-TextMultiClass     arn:aws:lambda:ap-south-1:565803892007:function:ACS-TextMultiClass     arn:aws:lambda:eu-central-1:203001061592:function:ACS-TextMultiClass     arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-TextMultiClass     arn:aws:lambda:eu-west-2:487402164563:function:ACS-TextMultiClass     arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-TextMultiClass     arn:aws:lambda:ca-central-1:918755190332:function:ACS-TextMultiClass     Multi-label text classification - Uses a variant of the Expectation Maximization approach to estimate the true classes of text based on annotations from individual workers.    arn:aws:lambda:us-east-1:432418664414:function:ACS-TextMultiClassMultiLabel     arn:aws:lambda:us-east-2:266458841044:function:ACS-TextMultiClassMultiLabel     arn:aws:lambda:us-west-2:081040173940:function:ACS-TextMultiClassMultiLabel     arn:aws:lambda:eu-west-1:568282634449:function:ACS-TextMultiClassMultiLabel     arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-TextMultiClassMultiLabel     arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-TextMultiClassMultiLabel     arn:aws:lambda:ap-south-1:565803892007:function:ACS-TextMultiClassMultiLabel     arn:aws:lambda:eu-central-1:203001061592:function:ACS-TextMultiClassMultiLabel     arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-TextMultiClassMultiLabel     arn:aws:lambda:eu-west-2:487402164563:function:ACS-TextMultiClassMultiLabel     arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-TextMultiClassMultiLabel     arn:aws:lambda:ca-central-1:918755190332:function:ACS-TextMultiClassMultiLabel     Named entity recognition - Groups similar selections and calculates aggregate boundaries, resolving to most-assigned label.    arn:aws:lambda:us-east-1:432418664414:function:ACS-NamedEntityRecognition     arn:aws:lambda:us-east-2:266458841044:function:ACS-NamedEntityRecognition     arn:aws:lambda:us-west-2:081040173940:function:ACS-NamedEntityRecognition     arn:aws:lambda:eu-west-1:568282634449:function:ACS-NamedEntityRecognition     arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-NamedEntityRecognition     arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-NamedEntityRecognition     arn:aws:lambda:ap-south-1:565803892007:function:ACS-NamedEntityRecognition     arn:aws:lambda:eu-central-1:203001061592:function:ACS-NamedEntityRecognition     arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-NamedEntityRecognition     arn:aws:lambda:eu-west-2:487402164563:function:ACS-NamedEntityRecognition     arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-NamedEntityRecognition     arn:aws:lambda:ca-central-1:918755190332:function:ACS-NamedEntityRecognition          Video Classification - Use this task type when you need workers to classify videos using predefined labels that you specify. Workers are shown videos and are asked to choose one label for each video.    arn:aws:lambda:us-east-1:432418664414:function:ACS-VideoMultiClass     arn:aws:lambda:us-east-2:266458841044:function:ACS-VideoMultiClass     arn:aws:lambda:us-west-2:081040173940:function:ACS-VideoMultiClass     arn:aws:lambda:eu-west-1:568282634449:function:ACS-VideoMultiClass     arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-VideoMultiClass     arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-VideoMultiClass     arn:aws:lambda:ap-south-1:565803892007:function:ACS-VideoMultiClass     arn:aws:lambda:eu-central-1:203001061592:function:ACS-VideoMultiClass     arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-VideoMultiClass     arn:aws:lambda:eu-west-2:487402164563:function:ACS-VideoMultiClass     arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-VideoMultiClass     arn:aws:lambda:ca-central-1:918755190332:function:ACS-VideoMultiClass     Video Frame Object Detection - Use this task type to have workers identify and locate objects in a sequence of video frames (images extracted from a video) using bounding boxes. For example, you can use this task to ask workers to identify and localize various objects in a series of video frames, such as cars, bikes, and pedestrians.    arn:aws:lambda:us-east-1:432418664414:function:ACS-VideoObjectDetection     arn:aws:lambda:us-east-2:266458841044:function:ACS-VideoObjectDetection     arn:aws:lambda:us-west-2:081040173940:function:ACS-VideoObjectDetection     arn:aws:lambda:eu-west-1:568282634449:function:ACS-VideoObjectDetection     arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-VideoObjectDetection     arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-VideoObjectDetection     arn:aws:lambda:ap-south-1:565803892007:function:ACS-VideoObjectDetection     arn:aws:lambda:eu-central-1:203001061592:function:ACS-VideoObjectDetection     arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-VideoObjectDetection     arn:aws:lambda:eu-west-2:487402164563:function:ACS-VideoObjectDetection     arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-VideoObjectDetection     arn:aws:lambda:ca-central-1:918755190332:function:ACS-VideoObjectDetection     Video Frame Object Tracking - Use this task type to have workers track the movement of objects in a sequence of video frames (images extracted from a video) using bounding boxes. For example, you can use this task to ask workers to track the movement of objects, such as cars, bikes, and pedestrians.     arn:aws:lambda:us-east-1:432418664414:function:ACS-VideoObjectTracking     arn:aws:lambda:us-east-2:266458841044:function:ACS-VideoObjectTracking     arn:aws:lambda:us-west-2:081040173940:function:ACS-VideoObjectTracking     arn:aws:lambda:eu-west-1:568282634449:function:ACS-VideoObjectTracking     arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-VideoObjectTracking     arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-VideoObjectTracking     arn:aws:lambda:ap-south-1:565803892007:function:ACS-VideoObjectTracking     arn:aws:lambda:eu-central-1:203001061592:function:ACS-VideoObjectTracking     arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-VideoObjectTracking     arn:aws:lambda:eu-west-2:487402164563:function:ACS-VideoObjectTracking     arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-VideoObjectTracking     arn:aws:lambda:ca-central-1:918755190332:function:ACS-VideoObjectTracking       3D Point Cloud Object Detection - Use this task type when you want workers to classify objects in a 3D point cloud by drawing 3D cuboids around objects. For example, you can use this task type to ask workers to identify different types of objects in a point cloud, such as cars, bikes, and pedestrians.    arn:aws:lambda:us-east-1:432418664414:function:ACS-3DPointCloudObjectDetection     arn:aws:lambda:us-east-2:266458841044:function:ACS-3DPointCloudObjectDetection     arn:aws:lambda:us-west-2:081040173940:function:ACS-3DPointCloudObjectDetection     arn:aws:lambda:eu-west-1:568282634449:function:ACS-3DPointCloudObjectDetection     arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-3DPointCloudObjectDetection     arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-3DPointCloudObjectDetection     arn:aws:lambda:ap-south-1:565803892007:function:ACS-3DPointCloudObjectDetection     arn:aws:lambda:eu-central-1:203001061592:function:ACS-3DPointCloudObjectDetection     arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-3DPointCloudObjectDetection     arn:aws:lambda:eu-west-2:487402164563:function:ACS-3DPointCloudObjectDetection     arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-3DPointCloudObjectDetection     arn:aws:lambda:ca-central-1:918755190332:function:ACS-3DPointCloudObjectDetection     3D Point Cloud Object Tracking - Use this task type when you want workers to draw 3D cuboids around objects that appear in a sequence of 3D point cloud frames. For example, you can use this task type to ask workers to track the movement of vehicles across multiple point cloud frames.     arn:aws:lambda:us-east-1:432418664414:function:ACS-3DPointCloudObjectTracking     arn:aws:lambda:us-east-2:266458841044:function:ACS-3DPointCloudObjectTracking     arn:aws:lambda:us-west-2:081040173940:function:ACS-3DPointCloudObjectTracking     arn:aws:lambda:eu-west-1:568282634449:function:ACS-3DPointCloudObjectTracking     arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-3DPointCloudObjectTracking     arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-3DPointCloudObjectTracking     arn:aws:lambda:ap-south-1:565803892007:function:ACS-3DPointCloudObjectTracking     arn:aws:lambda:eu-central-1:203001061592:function:ACS-3DPointCloudObjectTracking     arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-3DPointCloudObjectTracking     arn:aws:lambda:eu-west-2:487402164563:function:ACS-3DPointCloudObjectTracking     arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-3DPointCloudObjectTracking     arn:aws:lambda:ca-central-1:918755190332:function:ACS-3DPointCloudObjectTracking     3D Point Cloud Semantic Segmentation - Use this task type when you want workers to create a point-level semantic segmentation masks by painting objects in a 3D point cloud using different colors where each color is assigned to one of the classes you specify.    arn:aws:lambda:us-east-1:432418664414:function:ACS-3DPointCloudSemanticSegmentation     arn:aws:lambda:us-east-2:266458841044:function:ACS-3DPointCloudSemanticSegmentation     arn:aws:lambda:us-west-2:081040173940:function:ACS-3DPointCloudSemanticSegmentation     arn:aws:lambda:eu-west-1:568282634449:function:ACS-3DPointCloudSemanticSegmentation     arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-3DPointCloudSemanticSegmentation     arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-3DPointCloudSemanticSegmentation     arn:aws:lambda:ap-south-1:565803892007:function:ACS-3DPointCloudSemanticSegmentation     arn:aws:lambda:eu-central-1:203001061592:function:ACS-3DPointCloudSemanticSegmentation     arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-3DPointCloudSemanticSegmentation     arn:aws:lambda:eu-west-2:487402164563:function:ACS-3DPointCloudSemanticSegmentation     arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-3DPointCloudSemanticSegmentation     arn:aws:lambda:ca-central-1:918755190332:function:ACS-3DPointCloudSemanticSegmentation     
+        /// The Amazon Resource Name (ARN) of a Lambda function implements the logic for annotation consolidation and to process output data. This parameter is required for all labeling jobs. For built-in task types, use one of the following Amazon SageMaker Ground Truth Lambda function ARNs for AnnotationConsolidationLambdaArn. For custom labeling workflows, see Post-annotation Lambda.
+        ///   Bounding box - Finds the most similar boxes from different workers based on the Jaccard index of the boxes.    arn:aws:lambda:us-east-1:432418664414:function:ACS-BoundingBox     arn:aws:lambda:us-east-2:266458841044:function:ACS-BoundingBox     arn:aws:lambda:us-west-2:081040173940:function:ACS-BoundingBox     arn:aws:lambda:eu-west-1:568282634449:function:ACS-BoundingBox     arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-BoundingBox     arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-BoundingBox     arn:aws:lambda:ap-south-1:565803892007:function:ACS-BoundingBox     arn:aws:lambda:eu-central-1:203001061592:function:ACS-BoundingBox     arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-BoundingBox     arn:aws:lambda:eu-west-2:487402164563:function:ACS-BoundingBox     arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-BoundingBox     arn:aws:lambda:ca-central-1:918755190332:function:ACS-BoundingBox     Image classification - Uses a variant of the Expectation Maximization approach to estimate the true class of an image based on annotations from individual workers.    arn:aws:lambda:us-east-1:432418664414:function:ACS-ImageMultiClass     arn:aws:lambda:us-east-2:266458841044:function:ACS-ImageMultiClass     arn:aws:lambda:us-west-2:081040173940:function:ACS-ImageMultiClass     arn:aws:lambda:eu-west-1:568282634449:function:ACS-ImageMultiClass     arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-ImageMultiClass     arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-ImageMultiClass     arn:aws:lambda:ap-south-1:565803892007:function:ACS-ImageMultiClass     arn:aws:lambda:eu-central-1:203001061592:function:ACS-ImageMultiClass     arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-ImageMultiClass     arn:aws:lambda:eu-west-2:487402164563:function:ACS-ImageMultiClass     arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-ImageMultiClass     arn:aws:lambda:ca-central-1:918755190332:function:ACS-ImageMultiClass     Multi-label image classification - Uses a variant of the Expectation Maximization approach to estimate the true classes of an image based on annotations from individual workers.    arn:aws:lambda:us-east-1:432418664414:function:ACS-ImageMultiClassMultiLabel     arn:aws:lambda:us-east-2:266458841044:function:ACS-ImageMultiClassMultiLabel     arn:aws:lambda:us-west-2:081040173940:function:ACS-ImageMultiClassMultiLabel     arn:aws:lambda:eu-west-1:568282634449:function:ACS-ImageMultiClassMultiLabel     arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-ImageMultiClassMultiLabel     arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-ImageMultiClassMultiLabel     arn:aws:lambda:ap-south-1:565803892007:function:ACS-ImageMultiClassMultiLabel     arn:aws:lambda:eu-central-1:203001061592:function:ACS-ImageMultiClassMultiLabel     arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-ImageMultiClassMultiLabel     arn:aws:lambda:eu-west-2:487402164563:function:ACS-ImageMultiClassMultiLabel     arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-ImageMultiClassMultiLabel     arn:aws:lambda:ca-central-1:918755190332:function:ACS-ImageMultiClassMultiLabel     Semantic segmentation - Treats each pixel in an image as a multi-class classification and treats pixel annotations from workers as "votes" for the correct label.    arn:aws:lambda:us-east-1:432418664414:function:ACS-SemanticSegmentation     arn:aws:lambda:us-east-2:266458841044:function:ACS-SemanticSegmentation     arn:aws:lambda:us-west-2:081040173940:function:ACS-SemanticSegmentation     arn:aws:lambda:eu-west-1:568282634449:function:ACS-SemanticSegmentation     arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-SemanticSegmentation     arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-SemanticSegmentation     arn:aws:lambda:ap-south-1:565803892007:function:ACS-SemanticSegmentation     arn:aws:lambda:eu-central-1:203001061592:function:ACS-SemanticSegmentation     arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-SemanticSegmentation     arn:aws:lambda:eu-west-2:487402164563:function:ACS-SemanticSegmentation     arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-SemanticSegmentation     arn:aws:lambda:ca-central-1:918755190332:function:ACS-SemanticSegmentation     Text classification - Uses a variant of the Expectation Maximization approach to estimate the true class of text based on annotations from individual workers.    rn:aws:lambda:us-east-1:432418664414:function:ACS-TextMultiClass     arn:aws:lambda:us-east-2:266458841044:function:ACS-TextMultiClass     arn:aws:lambda:us-west-2:081040173940:function:ACS-TextMultiClass     arn:aws:lambda:eu-west-1:568282634449:function:ACS-TextMultiClass     arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-TextMultiClass     arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-TextMultiClass     arn:aws:lambda:ap-south-1:565803892007:function:ACS-TextMultiClass     arn:aws:lambda:eu-central-1:203001061592:function:ACS-TextMultiClass     arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-TextMultiClass     arn:aws:lambda:eu-west-2:487402164563:function:ACS-TextMultiClass     arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-TextMultiClass     arn:aws:lambda:ca-central-1:918755190332:function:ACS-TextMultiClass     Multi-label text classification - Uses a variant of the Expectation Maximization approach to estimate the true classes of text based on annotations from individual workers.    arn:aws:lambda:us-east-1:432418664414:function:ACS-TextMultiClassMultiLabel     arn:aws:lambda:us-east-2:266458841044:function:ACS-TextMultiClassMultiLabel     arn:aws:lambda:us-west-2:081040173940:function:ACS-TextMultiClassMultiLabel     arn:aws:lambda:eu-west-1:568282634449:function:ACS-TextMultiClassMultiLabel     arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-TextMultiClassMultiLabel     arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-TextMultiClassMultiLabel     arn:aws:lambda:ap-south-1:565803892007:function:ACS-TextMultiClassMultiLabel     arn:aws:lambda:eu-central-1:203001061592:function:ACS-TextMultiClassMultiLabel     arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-TextMultiClassMultiLabel     arn:aws:lambda:eu-west-2:487402164563:function:ACS-TextMultiClassMultiLabel     arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-TextMultiClassMultiLabel     arn:aws:lambda:ca-central-1:918755190332:function:ACS-TextMultiClassMultiLabel     Named entity recognition - Groups similar selections and calculates aggregate boundaries, resolving to most-assigned label.    arn:aws:lambda:us-east-1:432418664414:function:ACS-NamedEntityRecognition     arn:aws:lambda:us-east-2:266458841044:function:ACS-NamedEntityRecognition     arn:aws:lambda:us-west-2:081040173940:function:ACS-NamedEntityRecognition     arn:aws:lambda:eu-west-1:568282634449:function:ACS-NamedEntityRecognition     arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-NamedEntityRecognition     arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-NamedEntityRecognition     arn:aws:lambda:ap-south-1:565803892007:function:ACS-NamedEntityRecognition     arn:aws:lambda:eu-central-1:203001061592:function:ACS-NamedEntityRecognition     arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-NamedEntityRecognition     arn:aws:lambda:eu-west-2:487402164563:function:ACS-NamedEntityRecognition     arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-NamedEntityRecognition     arn:aws:lambda:ca-central-1:918755190332:function:ACS-NamedEntityRecognition          Video Classification - Use this task type when you need workers to classify videos using predefined labels that you specify. Workers are shown videos and are asked to choose one label for each video.    arn:aws:lambda:us-east-1:432418664414:function:ACS-VideoMultiClass     arn:aws:lambda:us-east-2:266458841044:function:ACS-VideoMultiClass     arn:aws:lambda:us-west-2:081040173940:function:ACS-VideoMultiClass     arn:aws:lambda:eu-west-1:568282634449:function:ACS-VideoMultiClass     arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-VideoMultiClass     arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-VideoMultiClass     arn:aws:lambda:ap-south-1:565803892007:function:ACS-VideoMultiClass     arn:aws:lambda:eu-central-1:203001061592:function:ACS-VideoMultiClass     arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-VideoMultiClass     arn:aws:lambda:eu-west-2:487402164563:function:ACS-VideoMultiClass     arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-VideoMultiClass     arn:aws:lambda:ca-central-1:918755190332:function:ACS-VideoMultiClass     Video Frame Object Detection - Use this task type to have workers identify and locate objects in a sequence of video frames (images extracted from a video) using bounding boxes. For example, you can use this task to ask workers to identify and localize various objects in a series of video frames, such as cars, bikes, and pedestrians.    arn:aws:lambda:us-east-1:432418664414:function:ACS-VideoObjectDetection     arn:aws:lambda:us-east-2:266458841044:function:ACS-VideoObjectDetection     arn:aws:lambda:us-west-2:081040173940:function:ACS-VideoObjectDetection     arn:aws:lambda:eu-west-1:568282634449:function:ACS-VideoObjectDetection     arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-VideoObjectDetection     arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-VideoObjectDetection     arn:aws:lambda:ap-south-1:565803892007:function:ACS-VideoObjectDetection     arn:aws:lambda:eu-central-1:203001061592:function:ACS-VideoObjectDetection     arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-VideoObjectDetection     arn:aws:lambda:eu-west-2:487402164563:function:ACS-VideoObjectDetection     arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-VideoObjectDetection     arn:aws:lambda:ca-central-1:918755190332:function:ACS-VideoObjectDetection     Video Frame Object Tracking - Use this task type to have workers track the movement of objects in a sequence of video frames (images extracted from a video) using bounding boxes. For example, you can use this task to ask workers to track the movement of objects, such as cars, bikes, and pedestrians.     arn:aws:lambda:us-east-1:432418664414:function:ACS-VideoObjectTracking     arn:aws:lambda:us-east-2:266458841044:function:ACS-VideoObjectTracking     arn:aws:lambda:us-west-2:081040173940:function:ACS-VideoObjectTracking     arn:aws:lambda:eu-west-1:568282634449:function:ACS-VideoObjectTracking     arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-VideoObjectTracking     arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-VideoObjectTracking     arn:aws:lambda:ap-south-1:565803892007:function:ACS-VideoObjectTracking     arn:aws:lambda:eu-central-1:203001061592:function:ACS-VideoObjectTracking     arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-VideoObjectTracking     arn:aws:lambda:eu-west-2:487402164563:function:ACS-VideoObjectTracking     arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-VideoObjectTracking     arn:aws:lambda:ca-central-1:918755190332:function:ACS-VideoObjectTracking       3D Point Cloud Object Detection - Use this task type when you want workers to classify objects in a 3D point cloud by drawing 3D cuboids around objects. For example, you can use this task type to ask workers to identify different types of objects in a point cloud, such as cars, bikes, and pedestrians.    arn:aws:lambda:us-east-1:432418664414:function:ACS-3DPointCloudObjectDetection     arn:aws:lambda:us-east-2:266458841044:function:ACS-3DPointCloudObjectDetection     arn:aws:lambda:us-west-2:081040173940:function:ACS-3DPointCloudObjectDetection     arn:aws:lambda:eu-west-1:568282634449:function:ACS-3DPointCloudObjectDetection     arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-3DPointCloudObjectDetection     arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-3DPointCloudObjectDetection     arn:aws:lambda:ap-south-1:565803892007:function:ACS-3DPointCloudObjectDetection     arn:aws:lambda:eu-central-1:203001061592:function:ACS-3DPointCloudObjectDetection     arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-3DPointCloudObjectDetection     arn:aws:lambda:eu-west-2:487402164563:function:ACS-3DPointCloudObjectDetection     arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-3DPointCloudObjectDetection     arn:aws:lambda:ca-central-1:918755190332:function:ACS-3DPointCloudObjectDetection     3D Point Cloud Object Tracking - Use this task type when you want workers to draw 3D cuboids around objects that appear in a sequence of 3D point cloud frames. For example, you can use this task type to ask workers to track the movement of vehicles across multiple point cloud frames.     arn:aws:lambda:us-east-1:432418664414:function:ACS-3DPointCloudObjectTracking     arn:aws:lambda:us-east-2:266458841044:function:ACS-3DPointCloudObjectTracking     arn:aws:lambda:us-west-2:081040173940:function:ACS-3DPointCloudObjectTracking     arn:aws:lambda:eu-west-1:568282634449:function:ACS-3DPointCloudObjectTracking     arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-3DPointCloudObjectTracking     arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-3DPointCloudObjectTracking     arn:aws:lambda:ap-south-1:565803892007:function:ACS-3DPointCloudObjectTracking     arn:aws:lambda:eu-central-1:203001061592:function:ACS-3DPointCloudObjectTracking     arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-3DPointCloudObjectTracking     arn:aws:lambda:eu-west-2:487402164563:function:ACS-3DPointCloudObjectTracking     arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-3DPointCloudObjectTracking     arn:aws:lambda:ca-central-1:918755190332:function:ACS-3DPointCloudObjectTracking     3D Point Cloud Semantic Segmentation - Use this task type when you want workers to create a point-level semantic segmentation masks by painting objects in a 3D point cloud using different colors where each color is assigned to one of the classes you specify.    arn:aws:lambda:us-east-1:432418664414:function:ACS-3DPointCloudSemanticSegmentation     arn:aws:lambda:us-east-2:266458841044:function:ACS-3DPointCloudSemanticSegmentation     arn:aws:lambda:us-west-2:081040173940:function:ACS-3DPointCloudSemanticSegmentation     arn:aws:lambda:eu-west-1:568282634449:function:ACS-3DPointCloudSemanticSegmentation     arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-3DPointCloudSemanticSegmentation     arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-3DPointCloudSemanticSegmentation     arn:aws:lambda:ap-south-1:565803892007:function:ACS-3DPointCloudSemanticSegmentation     arn:aws:lambda:eu-central-1:203001061592:function:ACS-3DPointCloudSemanticSegmentation     arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-3DPointCloudSemanticSegmentation     arn:aws:lambda:eu-west-2:487402164563:function:ACS-3DPointCloudSemanticSegmentation     arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-3DPointCloudSemanticSegmentation     arn:aws:lambda:ca-central-1:918755190332:function:ACS-3DPointCloudSemanticSegmentation
         ///   Use the following ARNs for Label Verification and Adjustment Jobs  Use label verification and adjustment jobs to review and adjust labels. To learn more, see Verify and Adjust Labels .   Semantic Segmentation Adjustment - Treats each pixel in an image as a multi-class classification and treats pixel adjusted annotations from workers as "votes" for the correct label.    arn:aws:lambda:us-east-1:432418664414:function:ACS-AdjustmentSemanticSegmentation     arn:aws:lambda:us-east-2:266458841044:function:ACS-AdjustmentSemanticSegmentation     arn:aws:lambda:us-west-2:081040173940:function:ACS-AdjustmentSemanticSegmentation     arn:aws:lambda:eu-west-1:568282634449:function:ACS-AdjustmentSemanticSegmentation     arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-AdjustmentSemanticSegmentation     arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-AdjustmentSemanticSegmentation     arn:aws:lambda:ap-south-1:565803892007:function:ACS-AdjustmentSemanticSegmentation     arn:aws:lambda:eu-central-1:203001061592:function:ACS-AdjustmentSemanticSegmentation     arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-AdjustmentSemanticSegmentation     arn:aws:lambda:eu-west-2:487402164563:function:ACS-AdjustmentSemanticSegmentation     arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-AdjustmentSemanticSegmentation     arn:aws:lambda:ca-central-1:918755190332:function:ACS-AdjustmentSemanticSegmentation      Semantic Segmentation Verification - Uses a variant of the Expectation Maximization approach to estimate the true class of verification judgment for semantic segmentation labels based on annotations from individual workers.    arn:aws:lambda:us-east-1:432418664414:function:ACS-VerificationSemanticSegmentation     arn:aws:lambda:us-east-2:266458841044:function:ACS-VerificationSemanticSegmentation     arn:aws:lambda:us-west-2:081040173940:function:ACS-VerificationSemanticSegmentation     arn:aws:lambda:eu-west-1:568282634449:function:ACS-VerificationSemanticSegmentation     arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-VerificationSemanticSegmentation     arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-VerificationSemanticSegmentation     arn:aws:lambda:ap-south-1:565803892007:function:ACS-VerificationSemanticSegmentation     arn:aws:lambda:eu-central-1:203001061592:function:ACS-VerificationSemanticSegmentation     arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-VerificationSemanticSegmentation     arn:aws:lambda:eu-west-2:487402164563:function:ACS-VerificationSemanticSegmentation     arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-VerificationSemanticSegmentation     arn:aws:lambda:ca-central-1:918755190332:function:ACS-VerificationSemanticSegmentation      Bounding Box Adjustment - Finds the most similar boxes from different workers based on the Jaccard index of the adjusted annotations.    arn:aws:lambda:us-east-1:432418664414:function:ACS-AdjustmentBoundingBox     arn:aws:lambda:us-east-2:266458841044:function:ACS-AdjustmentBoundingBox     arn:aws:lambda:us-west-2:081040173940:function:ACS-AdjustmentBoundingBox     arn:aws:lambda:eu-west-1:568282634449:function:ACS-AdjustmentBoundingBox     arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-AdjustmentBoundingBox     arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-AdjustmentBoundingBox     arn:aws:lambda:ap-south-1:565803892007:function:ACS-AdjustmentBoundingBox     arn:aws:lambda:eu-central-1:203001061592:function:ACS-AdjustmentBoundingBox     arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-AdjustmentBoundingBox     arn:aws:lambda:eu-west-2:487402164563:function:ACS-AdjustmentBoundingBox     arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-AdjustmentBoundingBox     arn:aws:lambda:ca-central-1:918755190332:function:ACS-AdjustmentBoundingBox     Bounding Box Verification - Uses a variant of the Expectation Maximization approach to estimate the true class of verification judgement for bounding box labels based on annotations from individual workers.    arn:aws:lambda:us-east-1:432418664414:function:ACS-VerificationBoundingBox     arn:aws:lambda:us-east-2:266458841044:function:ACS-VerificationBoundingBox     arn:aws:lambda:us-west-2:081040173940:function:ACS-VerificationBoundingBox     arn:aws:lambda:eu-west-1:568282634449:function:ACS-VerificationBoundingBox     arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-VerificationBoundingBox     arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-VerificationBoundingBox     arn:aws:lambda:ap-south-1:565803892007:function:ACS-VerificationBoundingBox     arn:aws:lambda:eu-central-1:203001061592:function:ACS-VerificationBoundingBox     arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-VerificationBoundingBox     arn:aws:lambda:eu-west-2:487402164563:function:ACS-VerificationBoundingBox     arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-VerificationBoundingBox     arn:aws:lambda:ca-central-1:918755190332:function:ACS-VerificationBoundingBox        Video Frame Object Detection Adjustment -  Use this task type when you want workers to adjust bounding boxes that workers have added  to video frames to classify and localize objects in a sequence of video frames.
-        ///     arn:aws:lambda:us-east-1:432418664414:function:ACS-AdjustmentVideoObjectDetection     arn:aws:lambda:us-east-2:266458841044:function:ACS-AdjustmentVideoObjectDetection     arn:aws:lambda:us-west-2:081040173940:function:ACS-AdjustmentVideoObjectDetection     arn:aws:lambda:eu-west-1:568282634449:function:ACS-AdjustmentVideoObjectDetection     arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-AdjustmentVideoObjectDetection     arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-AdjustmentVideoObjectDetection     arn:aws:lambda:ap-south-1:565803892007:function:ACS-AdjustmentVideoObjectDetection     arn:aws:lambda:eu-central-1:203001061592:function:ACS-AdjustmentVideoObjectDetection     arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-AdjustmentVideoObjectDetection     arn:aws:lambda:eu-west-2:487402164563:function:ACS-AdjustmentVideoObjectDetection     arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-AdjustmentVideoObjectDetection     arn:aws:lambda:ca-central-1:918755190332:function:ACS-AdjustmentVideoObjectDetection     Video Frame Object Tracking Adjustment -  Use this task type when you want workers to adjust bounding boxes that workers have added  to video frames to track object movement across a sequence of video frames.    arn:aws:lambda:us-east-1:432418664414:function:ACS-AdjustmentVideoObjectTracking     arn:aws:lambda:us-east-2:266458841044:function:ACS-AdjustmentVideoObjectTracking     arn:aws:lambda:us-west-2:081040173940:function:ACS-AdjustmentVideoObjectTracking     arn:aws:lambda:eu-west-1:568282634449:function:ACS-AdjustmentVideoObjectTracking     arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-AdjustmentVideoObjectTracking     arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-AdjustmentVideoObjectTracking     arn:aws:lambda:ap-south-1:565803892007:function:ACS-AdjustmentVideoObjectTracking     arn:aws:lambda:eu-central-1:203001061592:function:ACS-AdjustmentVideoObjectTracking     arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-AdjustmentVideoObjectTracking     arn:aws:lambda:eu-west-2:487402164563:function:ACS-AdjustmentVideoObjectTracking     arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-AdjustmentVideoObjectTracking     arn:aws:lambda:ca-central-1:918755190332:function:ACS-AdjustmentVideoObjectTracking        3D Point Cloud Object Detection Adjustment - Use this task type when you want workers to adjust 3D cuboids around objects in a 3D point cloud.     arn:aws:lambda:us-east-1:432418664414:function:ACS-Adjustment3DPointCloudObjectDetection     arn:aws:lambda:us-east-2:266458841044:function:ACS-Adjustment3DPointCloudObjectDetection     arn:aws:lambda:us-west-2:081040173940:function:ACS-Adjustment3DPointCloudObjectDetection     arn:aws:lambda:eu-west-1:568282634449:function:ACS-Adjustment3DPointCloudObjectDetection     arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-Adjustment3DPointCloudObjectDetection     arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-Adjustment3DPointCloudObjectDetection     arn:aws:lambda:ap-south-1:565803892007:function:ACS-Adjustment3DPointCloudObjectDetection     arn:aws:lambda:eu-central-1:203001061592:function:ACS-Adjustment3DPointCloudObjectDetection     arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-Adjustment3DPointCloudObjectDetection     arn:aws:lambda:eu-west-2:487402164563:function:ACS-Adjustment3DPointCloudObjectDetection     arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-Adjustment3DPointCloudObjectDetection     arn:aws:lambda:ca-central-1:918755190332:function:ACS-Adjustment3DPointCloudObjectDetection     3D Point Cloud Object Tracking Adjustment - Use this task type when you want workers to adjust 3D cuboids around objects that appear in a sequence of 3D point cloud frames.    arn:aws:lambda:us-east-1:432418664414:function:ACS-Adjustment3DPointCloudObjectTracking     arn:aws:lambda:us-east-2:266458841044:function:ACS-Adjustment3DPointCloudObjectTracking     arn:aws:lambda:us-west-2:081040173940:function:ACS-Adjustment3DPointCloudObjectTracking     arn:aws:lambda:eu-west-1:568282634449:function:ACS-Adjustment3DPointCloudObjectTracking     arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-Adjustment3DPointCloudObjectTracking     arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-Adjustment3DPointCloudObjectTracking     arn:aws:lambda:ap-south-1:565803892007:function:ACS-Adjustment3DPointCloudObjectTracking     arn:aws:lambda:eu-central-1:203001061592:function:ACS-Adjustment3DPointCloudObjectTracking     arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-Adjustment3DPointCloudObjectTracking     arn:aws:lambda:eu-west-2:487402164563:function:ACS-Adjustment3DPointCloudObjectTracking     arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-Adjustment3DPointCloudObjectTracking     arn:aws:lambda:ca-central-1:918755190332:function:ACS-Adjustment3DPointCloudObjectTracking     3D Point Cloud Semantic Segmentation Adjustment - Use this task type when you want workers to adjust a point-level semantic segmentation masks using a paint tool.    arn:aws:lambda:us-east-1:432418664414:function:ACS-3DPointCloudSemanticSegmentation     arn:aws:lambda:us-east-1:432418664414:function:ACS-Adjustment3DPointCloudSemanticSegmentation     arn:aws:lambda:us-east-2:266458841044:function:ACS-Adjustment3DPointCloudSemanticSegmentation     arn:aws:lambda:us-west-2:081040173940:function:ACS-Adjustment3DPointCloudSemanticSegmentation     arn:aws:lambda:eu-west-1:568282634449:function:ACS-Adjustment3DPointCloudSemanticSegmentation     arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-Adjustment3DPointCloudSemanticSegmentation     arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-Adjustment3DPointCloudSemanticSegmentation     arn:aws:lambda:ap-south-1:565803892007:function:ACS-Adjustment3DPointCloudSemanticSegmentation     arn:aws:lambda:eu-central-1:203001061592:function:ACS-Adjustment3DPointCloudSemanticSegmentation     arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-Adjustment3DPointCloudSemanticSegmentation     arn:aws:lambda:eu-west-2:487402164563:function:ACS-Adjustment3DPointCloudSemanticSegmentation     arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-Adjustment3DPointCloudSemanticSegmentation     arn:aws:lambda:ca-central-1:918755190332:function:ACS-Adjustment3DPointCloudSemanticSegmentation   
+        ///     arn:aws:lambda:us-east-1:432418664414:function:ACS-AdjustmentVideoObjectDetection     arn:aws:lambda:us-east-2:266458841044:function:ACS-AdjustmentVideoObjectDetection     arn:aws:lambda:us-west-2:081040173940:function:ACS-AdjustmentVideoObjectDetection     arn:aws:lambda:eu-west-1:568282634449:function:ACS-AdjustmentVideoObjectDetection     arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-AdjustmentVideoObjectDetection     arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-AdjustmentVideoObjectDetection     arn:aws:lambda:ap-south-1:565803892007:function:ACS-AdjustmentVideoObjectDetection     arn:aws:lambda:eu-central-1:203001061592:function:ACS-AdjustmentVideoObjectDetection     arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-AdjustmentVideoObjectDetection     arn:aws:lambda:eu-west-2:487402164563:function:ACS-AdjustmentVideoObjectDetection     arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-AdjustmentVideoObjectDetection     arn:aws:lambda:ca-central-1:918755190332:function:ACS-AdjustmentVideoObjectDetection     Video Frame Object Tracking Adjustment -  Use this task type when you want workers to adjust bounding boxes that workers have added  to video frames to track object movement across a sequence of video frames.    arn:aws:lambda:us-east-1:432418664414:function:ACS-AdjustmentVideoObjectTracking     arn:aws:lambda:us-east-2:266458841044:function:ACS-AdjustmentVideoObjectTracking     arn:aws:lambda:us-west-2:081040173940:function:ACS-AdjustmentVideoObjectTracking     arn:aws:lambda:eu-west-1:568282634449:function:ACS-AdjustmentVideoObjectTracking     arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-AdjustmentVideoObjectTracking     arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-AdjustmentVideoObjectTracking     arn:aws:lambda:ap-south-1:565803892007:function:ACS-AdjustmentVideoObjectTracking     arn:aws:lambda:eu-central-1:203001061592:function:ACS-AdjustmentVideoObjectTracking     arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-AdjustmentVideoObjectTracking     arn:aws:lambda:eu-west-2:487402164563:function:ACS-AdjustmentVideoObjectTracking     arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-AdjustmentVideoObjectTracking     arn:aws:lambda:ca-central-1:918755190332:function:ACS-AdjustmentVideoObjectTracking        3D Point Cloud Object Detection Adjustment - Use this task type when you want workers to adjust 3D cuboids around objects in a 3D point cloud.     arn:aws:lambda:us-east-1:432418664414:function:ACS-Adjustment3DPointCloudObjectDetection     arn:aws:lambda:us-east-2:266458841044:function:ACS-Adjustment3DPointCloudObjectDetection     arn:aws:lambda:us-west-2:081040173940:function:ACS-Adjustment3DPointCloudObjectDetection     arn:aws:lambda:eu-west-1:568282634449:function:ACS-Adjustment3DPointCloudObjectDetection     arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-Adjustment3DPointCloudObjectDetection     arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-Adjustment3DPointCloudObjectDetection     arn:aws:lambda:ap-south-1:565803892007:function:ACS-Adjustment3DPointCloudObjectDetection     arn:aws:lambda:eu-central-1:203001061592:function:ACS-Adjustment3DPointCloudObjectDetection     arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-Adjustment3DPointCloudObjectDetection     arn:aws:lambda:eu-west-2:487402164563:function:ACS-Adjustment3DPointCloudObjectDetection     arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-Adjustment3DPointCloudObjectDetection     arn:aws:lambda:ca-central-1:918755190332:function:ACS-Adjustment3DPointCloudObjectDetection     3D Point Cloud Object Tracking Adjustment - Use this task type when you want workers to adjust 3D cuboids around objects that appear in a sequence of 3D point cloud frames.    arn:aws:lambda:us-east-1:432418664414:function:ACS-Adjustment3DPointCloudObjectTracking     arn:aws:lambda:us-east-2:266458841044:function:ACS-Adjustment3DPointCloudObjectTracking     arn:aws:lambda:us-west-2:081040173940:function:ACS-Adjustment3DPointCloudObjectTracking     arn:aws:lambda:eu-west-1:568282634449:function:ACS-Adjustment3DPointCloudObjectTracking     arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-Adjustment3DPointCloudObjectTracking     arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-Adjustment3DPointCloudObjectTracking     arn:aws:lambda:ap-south-1:565803892007:function:ACS-Adjustment3DPointCloudObjectTracking     arn:aws:lambda:eu-central-1:203001061592:function:ACS-Adjustment3DPointCloudObjectTracking     arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-Adjustment3DPointCloudObjectTracking     arn:aws:lambda:eu-west-2:487402164563:function:ACS-Adjustment3DPointCloudObjectTracking     arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-Adjustment3DPointCloudObjectTracking     arn:aws:lambda:ca-central-1:918755190332:function:ACS-Adjustment3DPointCloudObjectTracking     3D Point Cloud Semantic Segmentation Adjustment - Use this task type when you want workers to adjust a point-level semantic segmentation masks using a paint tool.    arn:aws:lambda:us-east-1:432418664414:function:ACS-3DPointCloudSemanticSegmentation     arn:aws:lambda:us-east-1:432418664414:function:ACS-Adjustment3DPointCloudSemanticSegmentation     arn:aws:lambda:us-east-2:266458841044:function:ACS-Adjustment3DPointCloudSemanticSegmentation     arn:aws:lambda:us-west-2:081040173940:function:ACS-Adjustment3DPointCloudSemanticSegmentation     arn:aws:lambda:eu-west-1:568282634449:function:ACS-Adjustment3DPointCloudSemanticSegmentation     arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-Adjustment3DPointCloudSemanticSegmentation     arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-Adjustment3DPointCloudSemanticSegmentation     arn:aws:lambda:ap-south-1:565803892007:function:ACS-Adjustment3DPointCloudSemanticSegmentation     arn:aws:lambda:eu-central-1:203001061592:function:ACS-Adjustment3DPointCloudSemanticSegmentation     arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-Adjustment3DPointCloudSemanticSegmentation     arn:aws:lambda:eu-west-2:487402164563:function:ACS-Adjustment3DPointCloudSemanticSegmentation     arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-Adjustment3DPointCloudSemanticSegmentation     arn:aws:lambda:ca-central-1:918755190332:function:ACS-Adjustment3DPointCloudSemanticSegmentation
         public let annotationConsolidationLambdaArn: String
 
         public init(annotationConsolidationLambdaArn: String) {
@@ -1948,7 +1933,6 @@ extension SageMaker {
     }
 
     public struct AppDetails: AWSDecodableShape {
-
         /// The name of the app.
         public let appName: String?
         /// The type of app.
@@ -1982,7 +1966,6 @@ extension SageMaker {
     }
 
     public struct AppImageConfigDetails: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the AppImageConfig.
         public let appImageConfigArn: String?
         /// The name of the AppImageConfig. Must be unique to your account.
@@ -2012,7 +1995,6 @@ extension SageMaker {
     }
 
     public struct AppSpecification: AWSEncodableShape & AWSDecodableShape {
-
         /// The arguments for a container used to run a processing job.
         public let containerArguments: [String]?
         /// The entrypoint for a container used to run a processing job.
@@ -2051,7 +2033,6 @@ extension SageMaker {
     }
 
     public struct ArtifactSource: AWSEncodableShape & AWSDecodableShape {
-
         /// A list of source types.
         public let sourceTypes: [ArtifactSourceType]?
         /// The URI of the source.
@@ -2076,7 +2057,6 @@ extension SageMaker {
     }
 
     public struct ArtifactSourceType: AWSEncodableShape & AWSDecodableShape {
-
         /// The type of ID.
         public let sourceIdType: ArtifactSourceIdType
         /// The ID.
@@ -2098,7 +2078,6 @@ extension SageMaker {
     }
 
     public struct ArtifactSummary: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the artifact.
         public let artifactArn: String?
         /// The name of the artifact.
@@ -2132,7 +2111,6 @@ extension SageMaker {
     }
 
     public struct AssociateTrialComponentRequest: AWSEncodableShape {
-
         /// The name of the component to associated with the trial.
         public let trialComponentName: String
         /// The name of the trial to associate with.
@@ -2159,7 +2137,6 @@ extension SageMaker {
     }
 
     public struct AssociateTrialComponentResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the trial.
         public let trialArn: String?
         /// The ARN of the trial component.
@@ -2177,7 +2154,6 @@ extension SageMaker {
     }
 
     public struct AssociationSummary: AWSDecodableShape {
-
         /// The type of the association.
         public let associationType: AssociationEdgeType?
         public let createdBy: UserContext?
@@ -2222,7 +2198,6 @@ extension SageMaker {
     }
 
     public struct AthenaDatasetDefinition: AWSEncodableShape & AWSDecodableShape {
-
         public let catalog: String
         public let database: String
         /// The Amazon Web Services Key Management Service (Amazon Web Services KMS) key that Amazon SageMaker uses to encrypt data generated from an Athena query execution.
@@ -2277,7 +2252,6 @@ extension SageMaker {
     }
 
     public struct AutoMLCandidate: AWSDecodableShape {
-
         /// The name of the candidate.
         public let candidateName: String
         /// The AutoML candidate's properties.
@@ -2330,7 +2304,6 @@ extension SageMaker {
     }
 
     public struct AutoMLCandidateStep: AWSDecodableShape {
-
         /// The ARN for the candidate's step.
         public let candidateStepArn: String
         /// The name for the candidate's step.
@@ -2352,7 +2325,6 @@ extension SageMaker {
     }
 
     public struct AutoMLChannel: AWSEncodableShape & AWSDecodableShape {
-
         /// You can use Gzip or None. The default value is None.
         public let compressionType: CompressionType?
         /// The data source for an AutoML channel.
@@ -2379,7 +2351,6 @@ extension SageMaker {
     }
 
     public struct AutoMLContainerDefinition: AWSDecodableShape {
-
         /// The environment variables to set in the container. For more information, see .
         public let environment: [String: String]?
         /// The ECR path of the container. For more information, see .
@@ -2401,8 +2372,7 @@ extension SageMaker {
     }
 
     public struct AutoMLDataSource: AWSEncodableShape & AWSDecodableShape {
-
-        /// The Amazon S3 location of the input data.  The input data must be in CSV format and contain at least 500 rows. 
+        /// The Amazon S3 location of the input data.  The input data must be in CSV format and contain at least 500 rows.
         public let s3DataSource: AutoMLS3DataSource
 
         public init(s3DataSource: AutoMLS3DataSource) {
@@ -2419,7 +2389,6 @@ extension SageMaker {
     }
 
     public struct AutoMLJobArtifacts: AWSDecodableShape {
-
         /// The URL of the notebook location.
         public let candidateDefinitionNotebookLocation: String?
         /// The URL of the notebook location.
@@ -2437,7 +2406,6 @@ extension SageMaker {
     }
 
     public struct AutoMLJobCompletionCriteria: AWSEncodableShape & AWSDecodableShape {
-
         /// The maximum runtime, in seconds, an AutoML job has to complete.
         public let maxAutoMLJobRuntimeInSeconds: Int?
         /// The maximum number of times a training job is allowed to run.
@@ -2465,7 +2433,6 @@ extension SageMaker {
     }
 
     public struct AutoMLJobConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// How long an AutoML job is allowed to run, or how many candidates a job is allowed to generate.
         public let completionCriteria: AutoMLJobCompletionCriteria?
         /// The security configuration for traffic encryption or Amazon VPC settings.
@@ -2488,8 +2455,7 @@ extension SageMaker {
     }
 
     public struct AutoMLJobObjective: AWSEncodableShape & AWSDecodableShape {
-
-        /// The name of the objective metric used to measure the predictive quality of a machine learning system. This metric is optimized during training to provide the best estimate for model parameter values from data. Here are the options:    MSE: The mean squared error (MSE) is the average of the squared differences between the predicted and actual values. It is used for regression. MSE values are always positive: the better a model is at predicting the actual values, the smaller the MSE value. When the data contains outliers, they tend to dominate the MSE, which might cause subpar prediction performance.    Accuracy: The ratio of the number of correctly classified items to the total number of (correctly and incorrectly) classified items. It is used for binary and multiclass classification. It measures how close the predicted class values are to the actual values. Accuracy values vary between zero and one: one indicates perfect accuracy and zero indicates perfect inaccuracy.    F1: The F1 score is the harmonic mean of the precision and recall. It is used for binary classification into classes traditionally referred to as positive and negative. Predictions are said to be true when they match their actual (correct) class and false when they do not. Precision is the ratio of the true positive predictions to all positive predictions (including the false positives) in a data set and measures the quality of the prediction when it predicts the positive class. Recall (or sensitivity) is the ratio of the true positive predictions to all actual positive instances and measures how completely a model predicts the actual class members in a data set. The standard F1 score weighs precision and recall equally. But which metric is paramount typically depends on specific aspects of a problem. F1 scores vary between zero and one: one indicates the best possible performance and zero the worst.    AUC: The area under the curve (AUC) metric is used to compare and evaluate binary classification by algorithms such as logistic regression that return probabilities. A threshold is needed to map the probabilities into classifications. The relevant curve is the receiver operating characteristic curve that plots the true positive rate (TPR) of predictions (or recall) against the false positive rate (FPR) as a function of the threshold value, above which a prediction is considered positive. Increasing the threshold results in fewer false positives but more false negatives. AUC is the area under this receiver operating characteristic curve and so provides an aggregated measure of the model performance across all possible classification thresholds. The AUC score can also be interpreted as the probability that a randomly selected positive data point is more likely to be predicted positive than a randomly selected negative example. AUC scores vary between zero and one: a score of one indicates perfect accuracy and a score of one half indicates that the prediction is not better than a random classifier. Values under one half predict less accurately than a random predictor. But such consistently bad predictors can simply be inverted to obtain better than random predictors.    F1macro: The F1macro score applies F1 scoring to multiclass classification. In this context, you have multiple classes to predict. You just calculate the precision and recall for each class as you did for the positive class in binary classification. Then, use these values to calculate the F1 score for each class and average them to obtain the F1macro score. F1macro scores vary between zero and one: one indicates the best possible performance and zero the worst.   If you do not specify a metric explicitly, the default behavior is to automatically use:    MSE: for regression.    F1: for binary classification    Accuracy: for multiclass classification.  
+        /// The name of the objective metric used to measure the predictive quality of a machine learning system. This metric is optimized during training to provide the best estimate for model parameter values from data. Here are the options:    MSE: The mean squared error (MSE) is the average of the squared differences between the predicted and actual values. It is used for regression. MSE values are always positive: the better a model is at predicting the actual values, the smaller the MSE value. When the data contains outliers, they tend to dominate the MSE, which might cause subpar prediction performance.    Accuracy: The ratio of the number of correctly classified items to the total number of (correctly and incorrectly) classified items. It is used for binary and multiclass classification. It measures how close the predicted class values are to the actual values. Accuracy values vary between zero and one: one indicates perfect accuracy and zero indicates perfect inaccuracy.    F1: The F1 score is the harmonic mean of the precision and recall. It is used for binary classification into classes traditionally referred to as positive and negative. Predictions are said to be true when they match their actual (correct) class and false when they do not. Precision is the ratio of the true positive predictions to all positive predictions (including the false positives) in a data set and measures the quality of the prediction when it predicts the positive class. Recall (or sensitivity) is the ratio of the true positive predictions to all actual positive instances and measures how completely a model predicts the actual class members in a data set. The standard F1 score weighs precision and recall equally. But which metric is paramount typically depends on specific aspects of a problem. F1 scores vary between zero and one: one indicates the best possible performance and zero the worst.    AUC: The area under the curve (AUC) metric is used to compare and evaluate binary classification by algorithms such as logistic regression that return probabilities. A threshold is needed to map the probabilities into classifications. The relevant curve is the receiver operating characteristic curve that plots the true positive rate (TPR) of predictions (or recall) against the false positive rate (FPR) as a function of the threshold value, above which a prediction is considered positive. Increasing the threshold results in fewer false positives but more false negatives. AUC is the area under this receiver operating characteristic curve and so provides an aggregated measure of the model performance across all possible classification thresholds. The AUC score can also be interpreted as the probability that a randomly selected positive data point is more likely to be predicted positive than a randomly selected negative example. AUC scores vary between zero and one: a score of one indicates perfect accuracy and a score of one half indicates that the prediction is not better than a random classifier. Values under one half predict less accurately than a random predictor. But such consistently bad predictors can simply be inverted to obtain better than random predictors.    F1macro: The F1macro score applies F1 scoring to multiclass classification. In this context, you have multiple classes to predict. You just calculate the precision and recall for each class as you did for the positive class in binary classification. Then, use these values to calculate the F1 score for each class and average them to obtain the F1macro score. F1macro scores vary between zero and one: one indicates the best possible performance and zero the worst.   If you do not specify a metric explicitly, the default behavior is to automatically use:    MSE: for regression.    F1: for binary classification    Accuracy: for multiclass classification.
         public let metricName: AutoMLMetricEnum
 
         public init(metricName: AutoMLMetricEnum) {
@@ -2502,7 +2468,6 @@ extension SageMaker {
     }
 
     public struct AutoMLJobSummary: AWSDecodableShape {
-
         /// The ARN of the AutoML job.
         public let autoMLJobArn: String
         /// The name of the AutoML you are requesting.
@@ -2548,7 +2513,6 @@ extension SageMaker {
     }
 
     public struct AutoMLOutputDataConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// The Amazon Web Services KMS encryption key ID.
         public let kmsKeyId: String?
         /// The Amazon S3 output path. Must be 128 characters or less.
@@ -2573,7 +2537,6 @@ extension SageMaker {
     }
 
     public struct AutoMLPartialFailureReason: AWSDecodableShape {
-
         /// The message containing the reason for a partial failure of an AutoML job.
         public let partialFailureMessage: String?
 
@@ -2587,7 +2550,6 @@ extension SageMaker {
     }
 
     public struct AutoMLS3DataSource: AWSEncodableShape & AWSDecodableShape {
-
         /// The data type.
         public let s3DataType: AutoMLS3DataType
         /// The URL to the Amazon S3 data source.
@@ -2610,7 +2572,6 @@ extension SageMaker {
     }
 
     public struct AutoMLSecurityConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// Whether to use traffic encryption between the container layers.
         public let enableInterContainerTrafficEncryption: Bool?
         /// The key used to encrypt stored data.
@@ -2638,7 +2599,6 @@ extension SageMaker {
     }
 
     public struct AutoRollbackConfig: AWSEncodableShape & AWSDecodableShape {
-
         public let alarms: [Alarm]?
 
         public init(alarms: [Alarm]? = nil) {
@@ -2659,7 +2619,6 @@ extension SageMaker {
     }
 
     public struct Bias: AWSEncodableShape & AWSDecodableShape {
-
         /// The bias report for a model
         public let report: MetricsSource?
 
@@ -2677,7 +2636,6 @@ extension SageMaker {
     }
 
     public struct BlueGreenUpdatePolicy: AWSEncodableShape & AWSDecodableShape {
-
         public let maximumExecutionTimeoutInSeconds: Int?
         public let terminationWaitInSeconds: Int?
         public let trafficRoutingConfiguration: TrafficRoutingConfig
@@ -2704,7 +2662,6 @@ extension SageMaker {
     }
 
     public struct CacheHitResult: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the pipeline execution.
         public let sourcePipelineExecutionArn: String?
 
@@ -2718,7 +2675,6 @@ extension SageMaker {
     }
 
     public struct CallbackStepMetadata: AWSDecodableShape {
-
         /// The pipeline generated token from the Amazon SQS queue.
         public let callbackToken: String?
         /// A list of the output parameters of the callback step.
@@ -2740,7 +2696,6 @@ extension SageMaker {
     }
 
     public struct CandidateArtifactLocations: AWSDecodableShape {
-
         /// The Amazon S3 prefix to the explainability artifacts generated for the AutoML candidate.
         public let explainability: String
 
@@ -2754,7 +2709,6 @@ extension SageMaker {
     }
 
     public struct CandidateProperties: AWSDecodableShape {
-
         /// The Amazon S3 prefix to the artifacts generated for an AutoML candidate.
         public let candidateArtifactLocations: CandidateArtifactLocations?
 
@@ -2768,7 +2722,6 @@ extension SageMaker {
     }
 
     public struct CapacitySize: AWSEncodableShape & AWSDecodableShape {
-
         /// This API is not supported.
         public let type: CapacitySizeType
         public let value: Int
@@ -2789,7 +2742,6 @@ extension SageMaker {
     }
 
     public struct CaptureContentTypeHeader: AWSEncodableShape & AWSDecodableShape {
-
         public let csvContentTypes: [String]?
         public let jsonContentTypes: [String]?
 
@@ -2822,7 +2774,6 @@ extension SageMaker {
     }
 
     public struct CaptureOption: AWSEncodableShape & AWSDecodableShape {
-
         public let captureMode: CaptureMode
 
         public init(captureMode: CaptureMode) {
@@ -2835,7 +2786,6 @@ extension SageMaker {
     }
 
     public struct CategoricalParameterRange: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the categorical hyperparameter to tune.
         public let name: String
         /// A list of the categories for the hyperparameter.
@@ -2864,7 +2814,6 @@ extension SageMaker {
     }
 
     public struct CategoricalParameterRangeSpecification: AWSEncodableShape & AWSDecodableShape {
-
         /// The allowed categories for the hyperparameter.
         public let values: [String]
 
@@ -2887,8 +2836,7 @@ extension SageMaker {
     }
 
     public struct Channel: AWSEncodableShape & AWSDecodableShape {
-
-        /// The name of the channel. 
+        /// The name of the channel.
         public let channelName: String
         /// If training data is compressed, the compression type. The default value is None. CompressionType is used only in Pipe input mode. In File mode, leave this field unset or set it to None.
         public let compressionType: CompressionType?
@@ -2934,7 +2882,6 @@ extension SageMaker {
     }
 
     public struct ChannelSpecification: AWSEncodableShape & AWSDecodableShape {
-
         /// A brief description of the channel.
         public let description: String?
         /// Indicates whether the channel is required by the algorithm.
@@ -2981,8 +2928,7 @@ extension SageMaker {
     }
 
     public struct CheckpointConfig: AWSEncodableShape & AWSDecodableShape {
-
-        /// (Optional) The local directory where checkpoints are written. The default directory is /opt/ml/checkpoints/. 
+        /// (Optional) The local directory where checkpoints are written. The default directory is /opt/ml/checkpoints/.
         public let localPath: String?
         /// Identifies the S3 path where you want Amazon SageMaker to store checkpoints. For example, s3://bucket-name/key-name-prefix.
         public let s3Uri: String
@@ -3006,7 +2952,6 @@ extension SageMaker {
     }
 
     public struct CodeRepositorySummary: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the Git repository.
         public let codeRepositoryArn: String
         /// The name of the Git repository.
@@ -3036,7 +2981,6 @@ extension SageMaker {
     }
 
     public struct CognitoConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// The client ID for your Amazon Cognito user pool.
         public let clientId: String
         /// A  user pool is a user directory in Amazon Cognito.  With a user pool, your users can sign in to your web or mobile app through Amazon Cognito.  Your users can also sign in through social identity providers like  Google, Facebook, Amazon, or Apple, and through SAML identity providers.
@@ -3063,7 +3007,6 @@ extension SageMaker {
     }
 
     public struct CognitoMemberDefinition: AWSEncodableShape & AWSDecodableShape {
-
         /// An identifier for an application client. You must create the app client ID using Amazon Cognito.
         public let clientId: String
         /// An identifier for a user group.
@@ -3097,7 +3040,6 @@ extension SageMaker {
     }
 
     public struct CollectionConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the tensor collection. The name must be unique relative to other rule configuration names.
         public let collectionName: String?
         /// Parameter values for the tensor collection. The allowed parameters are "name", "include_regex", "reduction_config", "save_config", "tensor_names", and "save_histogram".
@@ -3129,7 +3071,6 @@ extension SageMaker {
     }
 
     public struct CompilationJobSummary: AWSDecodableShape {
-
         /// The time when the model compilation job completed.
         public let compilationEndTime: Date?
         /// The Amazon Resource Name (ARN) of the model compilation job.
@@ -3183,7 +3124,6 @@ extension SageMaker {
     }
 
     public struct ConditionStepMetadata: AWSDecodableShape {
-
         /// The outcome of the Condition step evaluation.
         public let outcome: ConditionOutcome?
 
@@ -3197,18 +3137,17 @@ extension SageMaker {
     }
 
     public struct ContainerDefinition: AWSEncodableShape & AWSDecodableShape {
-
         /// This parameter is ignored for models that contain only a PrimaryContainer. When a ContainerDefinition is part of an inference pipeline, the value of the parameter uniquely identifies the container for the purposes of logging and metrics. For information, see Use Logs and Metrics to Monitor an Inference Pipeline. If you don't specify a value for this parameter for a ContainerDefinition that is part of an inference pipeline, a unique name is automatically assigned based on the position of the ContainerDefinition in the pipeline. If you specify a value for the ContainerHostName for any ContainerDefinition that is part of an inference pipeline, you must specify a value for the ContainerHostName parameter of every ContainerDefinition in that pipeline.
         public let containerHostname: String?
-        /// The environment variables to set in the Docker container. Each key and value in the Environment string to string map can have length of up to 1024. We support up to 16 entries in the map. 
+        /// The environment variables to set in the Docker container. Each key and value in the Environment string to string map can have length of up to 1024. We support up to 16 entries in the map.
         public let environment: [String: String]?
-        /// The path where inference code is stored. This can be either in Amazon EC2 Container Registry or in a Docker registry that is accessible from the same VPC that you configure for your endpoint. If you are using your own custom algorithm instead of an algorithm provided by Amazon SageMaker, the inference code must meet Amazon SageMaker requirements. Amazon SageMaker supports both registry/repository[:tag] and registry/repository[@digest] image path formats. For more information, see Using Your Own Algorithms with Amazon SageMaker 
+        /// The path where inference code is stored. This can be either in Amazon EC2 Container Registry or in a Docker registry that is accessible from the same VPC that you configure for your endpoint. If you are using your own custom algorithm instead of an algorithm provided by Amazon SageMaker, the inference code must meet Amazon SageMaker requirements. Amazon SageMaker supports both registry/repository[:tag] and registry/repository[@digest] image path formats. For more information, see Using Your Own Algorithms with Amazon SageMaker
         public let image: String?
-        /// Specifies whether the model container is in Amazon ECR or a private Docker registry accessible from your Amazon Virtual Private Cloud (VPC). For information about storing containers in a private Docker registry, see Use a Private Docker Registry for Real-Time Inference Containers 
+        /// Specifies whether the model container is in Amazon ECR or a private Docker registry accessible from your Amazon Virtual Private Cloud (VPC). For information about storing containers in a private Docker registry, see Use a Private Docker Registry for Real-Time Inference Containers
         public let imageConfig: ImageConfig?
         /// Whether the container hosts a single model or multiple models.
         public let mode: ContainerMode?
-        /// The S3 path where the model artifacts, which result from model training, are stored. This path must point to a single gzip compressed tar archive (.tar.gz suffix). The S3 path is required for Amazon SageMaker built-in algorithms, but not if you use your own algorithms. For more information on built-in algorithms, see Common Parameters.   The model artifacts must be in an S3 bucket that is in the same region as the model or endpoint you are creating.  If you provide a value for this parameter, Amazon SageMaker uses Amazon Web Services Security Token Service to download model artifacts from the S3 path you provide. Amazon Web Services STS is activated in your IAM user account by default. If you previously deactivated Amazon Web Services STS for a region, you need to reactivate Amazon Web Services STS for that region. For more information, see Activating and Deactivating Amazon Web Services STS in an Amazon Web Services Region in the Amazon Web Services Identity and Access Management User Guide.  If you use a built-in algorithm to create a model, Amazon SageMaker requires that you provide a S3 path to the model artifacts in ModelDataUrl. 
+        /// The S3 path where the model artifacts, which result from model training, are stored. This path must point to a single gzip compressed tar archive (.tar.gz suffix). The S3 path is required for Amazon SageMaker built-in algorithms, but not if you use your own algorithms. For more information on built-in algorithms, see Common Parameters.   The model artifacts must be in an S3 bucket that is in the same region as the model or endpoint you are creating.  If you provide a value for this parameter, Amazon SageMaker uses Amazon Web Services Security Token Service to download model artifacts from the S3 path you provide. Amazon Web Services STS is activated in your IAM user account by default. If you previously deactivated Amazon Web Services STS for a region, you need to reactivate Amazon Web Services STS for that region. For more information, see Activating and Deactivating Amazon Web Services STS in an Amazon Web Services Region in the Amazon Web Services Identity and Access Management User Guide.  If you use a built-in algorithm to create a model, Amazon SageMaker requires that you provide a S3 path to the model artifacts in ModelDataUrl.
         public let modelDataUrl: String?
         /// The name or Amazon Resource Name (ARN) of the model package to use to create the model.
         public let modelPackageName: String?
@@ -3259,7 +3198,6 @@ extension SageMaker {
     }
 
     public struct ContextSource: AWSEncodableShape & AWSDecodableShape {
-
         /// The ID of the source.
         public let sourceId: String?
         /// The type of the source.
@@ -3287,7 +3225,6 @@ extension SageMaker {
     }
 
     public struct ContextSummary: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the context.
         public let contextArn: String?
         /// The name of the context.
@@ -3321,14 +3258,13 @@ extension SageMaker {
     }
 
     public struct ContinuousParameterRange: AWSEncodableShape & AWSDecodableShape {
-
         /// The maximum value for the hyperparameter. The tuning job uses floating-point values between MinValue value and this value for tuning.
         public let maxValue: String
         /// The minimum value for the hyperparameter. The tuning job uses floating-point values between this value and MaxValuefor tuning.
         public let minValue: String
         /// The name of the continuous hyperparameter to tune.
         public let name: String
-        /// The scale that hyperparameter tuning uses to search the hyperparameter range. For information about choosing a hyperparameter scale, see Hyperparameter Scaling. One of the following values:  Auto  Amazon SageMaker hyperparameter tuning chooses the best scale for the hyperparameter.  Linear  Hyperparameter tuning searches the values in the hyperparameter range by using a linear scale.  Logarithmic  Hyperparameter tuning searches the values in the hyperparameter range by using a logarithmic scale. Logarithmic scaling works only for ranges that have only values greater than 0.  ReverseLogarithmic  Hyperparameter tuning searches the values in the hyperparameter range by using a reverse logarithmic scale. Reverse logarithmic scaling works only for ranges that are entirely within the range 0  
+        /// The scale that hyperparameter tuning uses to search the hyperparameter range. For information about choosing a hyperparameter scale, see Hyperparameter Scaling. One of the following values:  Auto  Amazon SageMaker hyperparameter tuning chooses the best scale for the hyperparameter.  Linear  Hyperparameter tuning searches the values in the hyperparameter range by using a linear scale.  Logarithmic  Hyperparameter tuning searches the values in the hyperparameter range by using a logarithmic scale. Logarithmic scaling works only for ranges that have only values greater than 0.  ReverseLogarithmic  Hyperparameter tuning searches the values in the hyperparameter range by using a reverse logarithmic scale. Reverse logarithmic scaling works only for ranges that are entirely within the range 0
         public let scalingType: HyperParameterScalingType?
 
         public init(maxValue: String, minValue: String, name: String, scalingType: HyperParameterScalingType? = nil) {
@@ -3356,7 +3292,6 @@ extension SageMaker {
     }
 
     public struct ContinuousParameterRangeSpecification: AWSEncodableShape & AWSDecodableShape {
-
         /// The maximum floating-point value allowed.
         public let maxValue: String
         /// The minimum floating-point value allowed.
@@ -3381,7 +3316,6 @@ extension SageMaker {
     }
 
     public struct CreateActionRequest: AWSEncodableShape {
-
         /// The name of the action. Must be unique to your account in an Amazon Web Services Region.
         public let actionName: String
         /// The action type.
@@ -3444,7 +3378,6 @@ extension SageMaker {
     }
 
     public struct CreateActionResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the action.
         public let actionArn: String?
 
@@ -3458,18 +3391,17 @@ extension SageMaker {
     }
 
     public struct CreateAlgorithmInput: AWSEncodableShape {
-
         /// A description of the algorithm.
         public let algorithmDescription: String?
         /// The name of the algorithm.
         public let algorithmName: String
         /// Whether to certify the algorithm so that it can be listed in Amazon Web Services Marketplace.
         public let certifyForMarketplace: Bool?
-        /// Specifies details about inference jobs that the algorithm runs, including the following:   The Amazon ECR paths of containers that contain the inference code and model artifacts.   The instance types that the algorithm supports for transform jobs and real-time endpoints used for inference.   The input and output content formats that the algorithm supports for inference.  
+        /// Specifies details about inference jobs that the algorithm runs, including the following:   The Amazon ECR paths of containers that contain the inference code and model artifacts.   The instance types that the algorithm supports for transform jobs and real-time endpoints used for inference.   The input and output content formats that the algorithm supports for inference.
         public let inferenceSpecification: InferenceSpecification?
         /// An array of key-value pairs. You can use tags to categorize your Amazon Web Services resources in different ways, for example, by purpose, owner, or environment. For more information, see Tagging Amazon Web Services Resources.
         public let tags: [Tag]?
-        /// Specifies details about training jobs run by this algorithm, including the following:   The Amazon ECR path of the container and the version digest of the algorithm.   The hyperparameters that the algorithm supports.   The instance types that the algorithm supports for training.   Whether the algorithm supports distributed training.   The metrics that the algorithm emits to Amazon CloudWatch.   Which metrics that the algorithm emits can be used as the objective metric for hyperparameter tuning jobs.   The input channels that the algorithm supports for training data. For example, an algorithm might support train, validation, and test channels.  
+        /// Specifies details about training jobs run by this algorithm, including the following:   The Amazon ECR path of the container and the version digest of the algorithm.   The hyperparameters that the algorithm supports.   The instance types that the algorithm supports for training.   Whether the algorithm supports distributed training.   The metrics that the algorithm emits to Amazon CloudWatch.   Which metrics that the algorithm emits can be used as the objective metric for hyperparameter tuning jobs.   The input channels that the algorithm supports for training data. For example, an algorithm might support train, validation, and test channels.
         public let trainingSpecification: TrainingSpecification
         /// Specifies configurations for one or more training jobs and that Amazon SageMaker runs to test the algorithm's training code and, optionally, one or more batch transform jobs that Amazon SageMaker runs to test the algorithm's inference code.
         public let validationSpecification: AlgorithmValidationSpecification?
@@ -3511,7 +3443,6 @@ extension SageMaker {
     }
 
     public struct CreateAlgorithmOutput: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the new algorithm.
         public let algorithmArn: String
 
@@ -3525,7 +3456,6 @@ extension SageMaker {
     }
 
     public struct CreateAppImageConfigRequest: AWSEncodableShape {
-
         /// The name of the AppImageConfig. Must be unique to your account.
         public let appImageConfigName: String
         /// The KernelGatewayImageConfig.
@@ -3557,7 +3487,6 @@ extension SageMaker {
     }
 
     public struct CreateAppImageConfigResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the AppImageConfig.
         public let appImageConfigArn: String?
 
@@ -3571,7 +3500,6 @@ extension SageMaker {
     }
 
     public struct CreateAppRequest: AWSEncodableShape {
-
         /// The name of the app.
         public let appName: String
         /// The type of app. Supported apps are JupyterServer and KernelGateway. TensorBoard is not supported.
@@ -3618,7 +3546,6 @@ extension SageMaker {
     }
 
     public struct CreateAppResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the app.
         public let appArn: String?
 
@@ -3632,7 +3559,6 @@ extension SageMaker {
     }
 
     public struct CreateArtifactRequest: AWSEncodableShape {
-
         /// The name of the artifact. Must be unique to your account in an Amazon Web Services Region.
         public let artifactName: String?
         /// The artifact type.
@@ -3685,7 +3611,6 @@ extension SageMaker {
     }
 
     public struct CreateArtifactResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the artifact.
         public let artifactArn: String?
 
@@ -3699,7 +3624,6 @@ extension SageMaker {
     }
 
     public struct CreateAutoMLJobRequest: AWSEncodableShape {
-
         /// Contains CompletionCriteria and SecurityConfig settings for the AutoML job.
         public let autoMLJobConfig: AutoMLJobConfig?
         /// Identifies an Autopilot job. The name must be unique to your account and is case-insensitive.
@@ -3770,7 +3694,6 @@ extension SageMaker {
     }
 
     public struct CreateAutoMLJobResponse: AWSDecodableShape {
-
         /// The unique ARN that is assigned to the AutoML job when it is created.
         public let autoMLJobArn: String
 
@@ -3784,7 +3707,6 @@ extension SageMaker {
     }
 
     public struct CreateCodeRepositoryInput: AWSEncodableShape {
-
         /// The name of the Git repository. The name must have 1 to 63 characters. Valid characters are a-z, A-Z, 0-9, and - (hyphen).
         public let codeRepositoryName: String
         /// Specifies details about the repository, including the URL where the repository is located, the default branch, and credentials to use to access the repository.
@@ -3817,7 +3739,6 @@ extension SageMaker {
     }
 
     public struct CreateCodeRepositoryOutput: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the new repository.
         public let codeRepositoryArn: String
 
@@ -3831,14 +3752,13 @@ extension SageMaker {
     }
 
     public struct CreateCompilationJobRequest: AWSEncodableShape {
-
-        /// A name for the model compilation job. The name must be unique within the Amazon Web Services Region and within your Amazon Web Services account. 
+        /// A name for the model compilation job. The name must be unique within the Amazon Web Services Region and within your Amazon Web Services account.
         public let compilationJobName: String
         /// Provides information about the location of input model artifacts, the name and shape of the expected data inputs, and the framework in which the model was trained.
         public let inputConfig: InputConfig
         /// Provides information about the output location for the compiled model and the target device the model runs on.
         public let outputConfig: OutputConfig
-        /// The Amazon Resource Name (ARN) of an IAM role that enables Amazon SageMaker to perform tasks on your behalf.  During model compilation, Amazon SageMaker needs your permission to:   Read input data from an S3 bucket   Write model artifacts to an S3 bucket   Write logs to Amazon CloudWatch Logs   Publish metrics to Amazon CloudWatch   You grant permissions for all of these tasks to an IAM role. To pass this role to Amazon SageMaker, the caller of this API must have the iam:PassRole permission. For more information, see Amazon SageMaker Roles. 
+        /// The Amazon Resource Name (ARN) of an IAM role that enables Amazon SageMaker to perform tasks on your behalf.  During model compilation, Amazon SageMaker needs your permission to:   Read input data from an S3 bucket   Write model artifacts to an S3 bucket   Write logs to Amazon CloudWatch Logs   Publish metrics to Amazon CloudWatch   You grant permissions for all of these tasks to an IAM role. To pass this role to Amazon SageMaker, the caller of this API must have the iam:PassRole permission. For more information, see Amazon SageMaker Roles.
         public let roleArn: String
         /// Specifies a limit to how long a model compilation job can run. When the job reaches the time limit, Amazon SageMaker ends the compilation job. Use this API to cap model training costs.
         public let stoppingCondition: StoppingCondition
@@ -3886,8 +3806,7 @@ extension SageMaker {
     }
 
     public struct CreateCompilationJobResponse: AWSDecodableShape {
-
-        /// If the action is successful, the service sends back an HTTP 200 response. Amazon SageMaker returns the following data in JSON format:    CompilationJobArn: The Amazon Resource Name (ARN) of the compiled job.  
+        /// If the action is successful, the service sends back an HTTP 200 response. Amazon SageMaker returns the following data in JSON format:    CompilationJobArn: The Amazon Resource Name (ARN) of the compiled job.
         public let compilationJobArn: String
 
         public init(compilationJobArn: String) {
@@ -3900,7 +3819,6 @@ extension SageMaker {
     }
 
     public struct CreateContextRequest: AWSEncodableShape {
-
         /// The name of the context. Must be unique to your account in an Amazon Web Services Region.
         public let contextName: String
         /// The context type.
@@ -3955,7 +3873,6 @@ extension SageMaker {
     }
 
     public struct CreateContextResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the context.
         public let contextArn: String?
 
@@ -3969,7 +3886,6 @@ extension SageMaker {
     }
 
     public struct CreateDataQualityJobDefinitionRequest: AWSEncodableShape {
-
         /// Specifies the container that runs the monitoring job.
         public let dataQualityAppSpecification: DataQualityAppSpecification
         /// Configures the constraints and baselines for the monitoring job.
@@ -4036,7 +3952,6 @@ extension SageMaker {
     }
 
     public struct CreateDataQualityJobDefinitionResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the job definition.
         public let jobDefinitionArn: String
 
@@ -4050,7 +3965,6 @@ extension SageMaker {
     }
 
     public struct CreateDeviceFleetRequest: AWSEncodableShape {
-
         /// A description of the fleet.
         public let description: String?
         /// The name of the fleet that the device belongs to.
@@ -4101,8 +4015,7 @@ extension SageMaker {
     }
 
     public struct CreateDomainRequest: AWSEncodableShape {
-
-        /// Specifies the VPC used for non-EFS traffic. The default value is PublicInternetOnly.    PublicInternetOnly - Non-EFS traffic is through a VPC managed by Amazon SageMaker, which allows direct internet access    VpcOnly - All Studio traffic is through the specified VPC and subnets  
+        /// Specifies the VPC used for non-EFS traffic. The default value is PublicInternetOnly.    PublicInternetOnly - Non-EFS traffic is through a VPC managed by Amazon SageMaker, which allows direct internet access    VpcOnly - All Studio traffic is through the specified VPC and subnets
         public let appNetworkAccessType: AppNetworkAccessType?
         /// The mode of authentication that members use to access the domain.
         public let authMode: AuthMode
@@ -4169,7 +4082,6 @@ extension SageMaker {
     }
 
     public struct CreateDomainResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the created domain.
         public let domainArn: String?
         /// The URL to the created domain.
@@ -4187,7 +4099,6 @@ extension SageMaker {
     }
 
     public struct CreateEdgePackagingJobRequest: AWSEncodableShape {
-
         /// The name of the SageMaker Neo compilation job that will be used to locate model artifacts for packaging.
         public let compilationJobName: String
         /// The name of the edge packaging job.
@@ -4254,11 +4165,10 @@ extension SageMaker {
     }
 
     public struct CreateEndpointConfigInput: AWSEncodableShape {
-
         public let dataCaptureConfig: DataCaptureConfig?
-        /// The name of the endpoint configuration. You specify this name in a CreateEndpoint request. 
+        /// The name of the endpoint configuration. You specify this name in a CreateEndpoint request.
         public let endpointConfigName: String
-        /// The Amazon Resource Name (ARN) of a Amazon Web Services Key Management Service key that Amazon SageMaker uses to encrypt data on the storage volume attached to the ML compute instance that hosts the endpoint. The KmsKeyId can be any of the following formats:    Key ID: 1234abcd-12ab-34cd-56ef-1234567890ab    Key ARN: arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab    Alias name: alias/ExampleAlias    Alias name ARN: arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias    The KMS key policy must grant permission to the IAM role that you specify in your CreateEndpoint, UpdateEndpoint requests. For more information, refer to the Amazon Web Services Key Management Service section Using Key Policies in Amazon Web Services KMS    Certain Nitro-based instances include local storage, dependent on the instance type. Local storage volumes are encrypted using a hardware module on the instance. You can't request a KmsKeyId when using an instance type with local storage. If any of the models that you specify in the ProductionVariants parameter use nitro-based instances with local storage, do not specify a value for the KmsKeyId parameter. If you specify a value for KmsKeyId when using any nitro-based instances with local storage, the call to CreateEndpointConfig fails. For a list of instance types that support local instance storage, see Instance Store Volumes. For more information about local instance storage encryption, see SSD Instance Store Volumes. 
+        /// The Amazon Resource Name (ARN) of a Amazon Web Services Key Management Service key that Amazon SageMaker uses to encrypt data on the storage volume attached to the ML compute instance that hosts the endpoint. The KmsKeyId can be any of the following formats:    Key ID: 1234abcd-12ab-34cd-56ef-1234567890ab    Key ARN: arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab    Alias name: alias/ExampleAlias    Alias name ARN: arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias    The KMS key policy must grant permission to the IAM role that you specify in your CreateEndpoint, UpdateEndpoint requests. For more information, refer to the Amazon Web Services Key Management Service section Using Key Policies in Amazon Web Services KMS    Certain Nitro-based instances include local storage, dependent on the instance type. Local storage volumes are encrypted using a hardware module on the instance. You can't request a KmsKeyId when using an instance type with local storage. If any of the models that you specify in the ProductionVariants parameter use nitro-based instances with local storage, do not specify a value for the KmsKeyId parameter. If you specify a value for KmsKeyId when using any nitro-based instances with local storage, the call to CreateEndpointConfig fails. For a list of instance types that support local instance storage, see Instance Store Volumes. For more information about local instance storage encryption, see SSD Instance Store Volumes.
         public let kmsKeyId: String?
         /// An list of ProductionVariant objects, one for each model that you want to host at this endpoint.
         public let productionVariants: [ProductionVariant]
@@ -4300,8 +4210,7 @@ extension SageMaker {
     }
 
     public struct CreateEndpointConfigOutput: AWSDecodableShape {
-
-        /// The Amazon Resource Name (ARN) of the endpoint configuration. 
+        /// The Amazon Resource Name (ARN) of the endpoint configuration.
         public let endpointConfigArn: String
 
         public init(endpointConfigArn: String) {
@@ -4314,8 +4223,7 @@ extension SageMaker {
     }
 
     public struct CreateEndpointInput: AWSEncodableShape {
-
-        /// The name of an endpoint configuration. For more information, see CreateEndpointConfig. 
+        /// The name of an endpoint configuration. For more information, see CreateEndpointConfig.
         public let endpointConfigName: String
         /// The name of the endpoint.The name must be unique within an Amazon Web Services Region in your Amazon Web Services account. The name is case-insensitive in CreateEndpoint, but the case is preserved and must be matched in .
         public let endpointName: String
@@ -4347,7 +4255,6 @@ extension SageMaker {
     }
 
     public struct CreateEndpointOutput: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the endpoint.
         public let endpointArn: String
 
@@ -4361,7 +4268,6 @@ extension SageMaker {
     }
 
     public struct CreateExperimentRequest: AWSEncodableShape {
-
         /// The description of the experiment.
         public let description: String?
         /// The name of the experiment as displayed. The name doesn't need to be unique. If you don't specify DisplayName, the value in ExperimentName is displayed.
@@ -4402,7 +4308,6 @@ extension SageMaker {
     }
 
     public struct CreateExperimentResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the experiment.
         public let experimentArn: String?
 
@@ -4416,20 +4321,19 @@ extension SageMaker {
     }
 
     public struct CreateFeatureGroupRequest: AWSEncodableShape {
-
         /// A free-form description of a FeatureGroup.
         public let description: String?
-        /// The name of the feature that stores the EventTime of a Record in a FeatureGroup. An EventTime is a point in time when a new event occurs that corresponds to the creation or update of a Record in a FeatureGroup. All Records in the FeatureGroup must have a corresponding EventTime. An EventTime can be a String or Fractional.     Fractional: EventTime feature values must be a Unix timestamp in seconds.    String: EventTime feature values must be an ISO-8601 string in the format. The following formats are supported yyyy-MM-dd'T'HH:mm:ssZ and yyyy-MM-dd'T'HH:mm:ss.SSSZ where yyyy, MM, and dd represent the year, month, and day respectively and HH, mm, ss, and if applicable, SSS represent the hour, month, second and milliseconds respsectively. 'T' and Z are constants.  
+        /// The name of the feature that stores the EventTime of a Record in a FeatureGroup. An EventTime is a point in time when a new event occurs that corresponds to the creation or update of a Record in a FeatureGroup. All Records in the FeatureGroup must have a corresponding EventTime. An EventTime can be a String or Fractional.     Fractional: EventTime feature values must be a Unix timestamp in seconds.    String: EventTime feature values must be an ISO-8601 string in the format. The following formats are supported yyyy-MM-dd'T'HH:mm:ssZ and yyyy-MM-dd'T'HH:mm:ss.SSSZ where yyyy, MM, and dd represent the year, month, and day respectively and HH, mm, ss, and if applicable, SSS represent the hour, month, second and milliseconds respsectively. 'T' and Z are constants.
         public let eventTimeFeatureName: String
         /// A list of Feature names and types. Name and Type is compulsory per Feature.  Valid feature FeatureTypes are Integral, Fractional and String.  FeatureNames cannot be any of the following: is_deleted, write_time, api_invocation_time  You can create up to 2,500 FeatureDefinitions per FeatureGroup.
         public let featureDefinitions: [FeatureDefinition]
-        /// The name of the FeatureGroup. The name must be unique within an Amazon Web Services Region in an Amazon Web Services account. The name:   Must start and end with an alphanumeric character.   Can only contain alphanumeric character and hyphens. Spaces are not allowed.   
+        /// The name of the FeatureGroup. The name must be unique within an Amazon Web Services Region in an Amazon Web Services account. The name:   Must start and end with an alphanumeric character.   Can only contain alphanumeric character and hyphens. Spaces are not allowed.
         public let featureGroupName: String
         /// Use this to configure an OfflineFeatureStore. This parameter allows you to specify:   The Amazon Simple Storage Service (Amazon S3) location of an OfflineStore.   A configuration for an Amazon Web Services Glue or Amazon Web Services Hive data cataolgue.    An KMS encryption key to encrypt the Amazon S3 location used for OfflineStore.   To learn more about this parameter, see OfflineStoreConfig.
         public let offlineStoreConfig: OfflineStoreConfig?
         /// You can turn the OnlineStore on or off by specifying True for the EnableOnlineStore flag in OnlineStoreConfig; the default value is False. You can also include an Amazon Web Services KMS key ID (KMSKeyId) for at-rest encryption of the OnlineStore.
         public let onlineStoreConfig: OnlineStoreConfig?
-        /// The name of the Feature whose value uniquely identifies a Record defined in the FeatureStore. Only the latest record per identifier value will be stored in the OnlineStore. RecordIdentifierFeatureName must be one of feature definitions' names. You use the RecordIdentifierFeatureName to access data in a FeatureStore. This name:   Must start and end with an alphanumeric character.   Can only contains alphanumeric characters, hyphens, underscores. Spaces are not allowed.   
+        /// The name of the Feature whose value uniquely identifies a Record defined in the FeatureStore. Only the latest record per identifier value will be stored in the OnlineStore. RecordIdentifierFeatureName must be one of feature definitions' names. You use the RecordIdentifierFeatureName to access data in a FeatureStore. This name:   Must start and end with an alphanumeric character.   Can only contains alphanumeric characters, hyphens, underscores. Spaces are not allowed.
         public let recordIdentifierFeatureName: String
         /// The Amazon Resource Name (ARN) of the IAM execution role used to persist data into the OfflineStore if an OfflineStoreConfig is provided.
         public let roleArn: String?
@@ -4489,8 +4393,7 @@ extension SageMaker {
     }
 
     public struct CreateFeatureGroupResponse: AWSDecodableShape {
-
-        /// The Amazon Resource Name (ARN) of the FeatureGroup. This is a unique identifier for the feature group. 
+        /// The Amazon Resource Name (ARN) of the FeatureGroup. This is a unique identifier for the feature group.
         public let featureGroupArn: String
 
         public init(featureGroupArn: String) {
@@ -4503,7 +4406,6 @@ extension SageMaker {
     }
 
     public struct CreateFlowDefinitionRequest: AWSEncodableShape {
-
         /// The name of your flow definition.
         public let flowDefinitionName: String
         /// An object containing information about the events that trigger a human workflow.
@@ -4557,7 +4459,6 @@ extension SageMaker {
     }
 
     public struct CreateFlowDefinitionResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the flow definition you create.
         public let flowDefinitionArn: String
 
@@ -4571,7 +4472,6 @@ extension SageMaker {
     }
 
     public struct CreateHumanTaskUiRequest: AWSEncodableShape {
-
         /// The name of the user interface you are creating.
         public let humanTaskUiName: String
         /// An array of key-value pairs that contain metadata to help you categorize and organize a human review workflow user interface. Each tag consists of a key and a value, both of which you define.
@@ -4603,7 +4503,6 @@ extension SageMaker {
     }
 
     public struct CreateHumanTaskUiResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the human review workflow user interface you create.
         public let humanTaskUiArn: String
 
@@ -4617,7 +4516,6 @@ extension SageMaker {
     }
 
     public struct CreateHyperParameterTuningJobRequest: AWSEncodableShape {
-
         /// The HyperParameterTuningJobConfig object that describes the tuning job, including the search strategy, the objective metric used to evaluate training jobs, ranges of parameters to search, and resource limits for the tuning job. For more information, see How Hyperparameter Tuning Works.
         public let hyperParameterTuningJobConfig: HyperParameterTuningJobConfig
         /// The name of the tuning job. This name is the prefix for the names of all training jobs that this tuning job launches. The name must be unique within the same Amazon Web Services account and Amazon Web Services Region. The name must have 1 to 32 characters. Valid characters are a-z, A-Z, 0-9, and : + = @ _ % - (hyphen). The name is not case sensitive.
@@ -4628,7 +4526,7 @@ extension SageMaker {
         public let trainingJobDefinition: HyperParameterTrainingJobDefinition?
         /// A list of the HyperParameterTrainingJobDefinition objects launched for this tuning job.
         public let trainingJobDefinitions: [HyperParameterTrainingJobDefinition]?
-        /// Specifies the configuration for starting the hyperparameter tuning job using one or more previous tuning jobs as a starting point. The results of previous tuning jobs are used to inform which combinations of hyperparameters to search over in the new tuning job. All training jobs launched by the new hyperparameter tuning job are evaluated by using the objective metric. If you specify IDENTICAL_DATA_AND_ALGORITHM as the WarmStartType value for the warm start configuration, the training job that performs the best in the new tuning job is compared to the best training jobs from the parent tuning jobs. From these, the training job that performs the best as measured by the objective metric is returned as the overall best training job.  All training jobs launched by parent hyperparameter tuning jobs and the new hyperparameter tuning jobs count against the limit of training jobs for the tuning job. 
+        /// Specifies the configuration for starting the hyperparameter tuning job using one or more previous tuning jobs as a starting point. The results of previous tuning jobs are used to inform which combinations of hyperparameters to search over in the new tuning job. All training jobs launched by the new hyperparameter tuning job are evaluated by using the objective metric. If you specify IDENTICAL_DATA_AND_ALGORITHM as the WarmStartType value for the warm start configuration, the training job that performs the best in the new tuning job is compared to the best training jobs from the parent tuning jobs. From these, the training job that performs the best as measured by the objective metric is returned as the overall best training job.  All training jobs launched by parent hyperparameter tuning jobs and the new hyperparameter tuning jobs count against the limit of training jobs for the tuning job.
         public let warmStartConfig: HyperParameterTuningJobWarmStartConfig?
 
         public init(hyperParameterTuningJobConfig: HyperParameterTuningJobConfig, hyperParameterTuningJobName: String, tags: [Tag]? = nil, trainingJobDefinition: HyperParameterTrainingJobDefinition? = nil, trainingJobDefinitions: [HyperParameterTrainingJobDefinition]? = nil, warmStartConfig: HyperParameterTuningJobWarmStartConfig? = nil) {
@@ -4669,7 +4567,6 @@ extension SageMaker {
     }
 
     public struct CreateHyperParameterTuningJobResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the tuning job. Amazon SageMaker assigns an ARN to a hyperparameter tuning job when you create it.
         public let hyperParameterTuningJobArn: String
 
@@ -4683,7 +4580,6 @@ extension SageMaker {
     }
 
     public struct CreateImageRequest: AWSEncodableShape {
-
         /// The description of the image.
         public let description: String?
         /// The display name of the image. If not provided, ImageName is displayed.
@@ -4732,7 +4628,6 @@ extension SageMaker {
     }
 
     public struct CreateImageResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the image.
         public let imageArn: String?
 
@@ -4746,8 +4641,7 @@ extension SageMaker {
     }
 
     public struct CreateImageVersionRequest: AWSEncodableShape {
-
-        /// The registry path of the container image to use as the starting point for this version. The path is an Amazon Container Registry (ECR) URI in the following format:  .dkr.ecr..amazonaws.com/ 
+        /// The registry path of the container image to use as the starting point for this version. The path is an Amazon Container Registry (ECR) URI in the following format:  .dkr.ecr..amazonaws.com/
         public let baseImage: String
         /// A unique ID. If not specified, the Amazon Web Services CLI and Amazon Web Services SDKs, such as the SDK for Python (Boto3), add a unique value to the call.
         public let clientToken: String
@@ -4780,7 +4674,6 @@ extension SageMaker {
     }
 
     public struct CreateImageVersionResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the image version.
         public let imageVersionArn: String?
 
@@ -4794,14 +4687,13 @@ extension SageMaker {
     }
 
     public struct CreateLabelingJobRequest: AWSEncodableShape {
-
         /// Configures the labeling task and how it is presented to workers; including, but not limited to price, keywords, and batch size (task count).
         public let humanTaskConfig: HumanTaskConfig
         /// Input data for the labeling job, such as the Amazon S3 location of the data objects and the location of the manifest file that describes the data objects. You must specify at least one of the following: S3DataSource or SnsDataSource.    Use SnsDataSource to specify an SNS input topic for a streaming labeling job. If you do not specify and SNS input topic ARN, Ground Truth will create a one-time labeling job that stops after all data objects in the input manifest file have been labeled.   Use S3DataSource to specify an input manifest file for both streaming and one-time labeling jobs. Adding an S3DataSource is optional if you use SnsDataSource to create a streaming labeling job.   If you use the Amazon Mechanical Turk workforce, your input data should not include confidential information, personal information or protected health information. Use ContentClassifiers to specify that your data is free of personally identifiable information and adult content.
         public let inputConfig: LabelingJobInputConfig
-        /// The attribute name to use for the label in the output manifest file. This is the key for the key/value pair formed with the label that a worker assigns to the object. The LabelAttributeName must meet the following requirements.   The name can't end with "-metadata".    If you are using one of the following built-in task types, the attribute name must end with "-ref". If the task type you are using is not listed below, the attribute name must not end with "-ref".   Image semantic segmentation (SemanticSegmentation), and adjustment (AdjustmentSemanticSegmentation) and verification (VerificationSemanticSegmentation) labeling jobs for this task type.   Video frame object detection (VideoObjectDetection), and adjustment and verification (AdjustmentVideoObjectDetection) labeling jobs for this task type.   Video frame object tracking (VideoObjectTracking), and adjustment and verification (AdjustmentVideoObjectTracking) labeling jobs for this task type.   3D point cloud semantic segmentation (3DPointCloudSemanticSegmentation), and adjustment and verification (Adjustment3DPointCloudSemanticSegmentation) labeling jobs for this task type.    3D point cloud object tracking (3DPointCloudObjectTracking), and adjustment and verification (Adjustment3DPointCloudObjectTracking) labeling jobs for this task type.        If you are creating an adjustment or verification labeling job, you must use a different LabelAttributeName than the one used in the original labeling job. The original labeling job is the Ground Truth labeling job that produced the labels that you want verified or adjusted. To learn more about adjustment and verification labeling jobs, see Verify and Adjust Labels. 
+        /// The attribute name to use for the label in the output manifest file. This is the key for the key/value pair formed with the label that a worker assigns to the object. The LabelAttributeName must meet the following requirements.   The name can't end with "-metadata".    If you are using one of the following built-in task types, the attribute name must end with "-ref". If the task type you are using is not listed below, the attribute name must not end with "-ref".   Image semantic segmentation (SemanticSegmentation), and adjustment (AdjustmentSemanticSegmentation) and verification (VerificationSemanticSegmentation) labeling jobs for this task type.   Video frame object detection (VideoObjectDetection), and adjustment and verification (AdjustmentVideoObjectDetection) labeling jobs for this task type.   Video frame object tracking (VideoObjectTracking), and adjustment and verification (AdjustmentVideoObjectTracking) labeling jobs for this task type.   3D point cloud semantic segmentation (3DPointCloudSemanticSegmentation), and adjustment and verification (Adjustment3DPointCloudSemanticSegmentation) labeling jobs for this task type.    3D point cloud object tracking (3DPointCloudObjectTracking), and adjustment and verification (Adjustment3DPointCloudObjectTracking) labeling jobs for this task type.        If you are creating an adjustment or verification labeling job, you must use a different LabelAttributeName than the one used in the original labeling job. The original labeling job is the Ground Truth labeling job that produced the labels that you want verified or adjusted. To learn more about adjustment and verification labeling jobs, see Verify and Adjust Labels.
         public let labelAttributeName: String
-        /// The S3 URI of the file, referred to as a label category configuration file, that defines the categories used to label the data objects. For 3D point cloud and video frame task types, you can add label category attributes and frame attributes to your label category configuration file. To learn how, see Create a Labeling Category Configuration File for 3D Point Cloud Labeling Jobs.  For all other built-in task types and custom tasks, your label category configuration file must be a JSON file in the following format. Identify the labels you want to use by replacing label_1, label_2,...,label_n with your label categories.  {    "document-version": "2018-11-28",   "labels": [{"label": "label_1"},{"label": "label_2"},...{"label": "label_n"}]   }  Note the following about the label category configuration file:   For image classification and text classification (single and multi-label) you must specify at least two label categories. For all other task types, the minimum number of label categories required is one.    Each label category must be unique, you cannot specify duplicate label categories.   If you create a 3D point cloud or video frame adjustment or verification labeling job, you must include auditLabelAttributeName in the label category configuration. Use this parameter to enter the  LabelAttributeName of the labeling job you want to adjust or verify annotations of.  
+        /// The S3 URI of the file, referred to as a label category configuration file, that defines the categories used to label the data objects. For 3D point cloud and video frame task types, you can add label category attributes and frame attributes to your label category configuration file. To learn how, see Create a Labeling Category Configuration File for 3D Point Cloud Labeling Jobs.  For all other built-in task types and custom tasks, your label category configuration file must be a JSON file in the following format. Identify the labels you want to use by replacing label_1, label_2,...,label_n with your label categories.  {    "document-version": "2018-11-28",   "labels": [{"label": "label_1"},{"label": "label_2"},...{"label": "label_n"}]   }  Note the following about the label category configuration file:   For image classification and text classification (single and multi-label) you must specify at least two label categories. For all other task types, the minimum number of label categories required is one.    Each label category must be unique, you cannot specify duplicate label categories.   If you create a 3D point cloud or video frame adjustment or verification labeling job, you must include auditLabelAttributeName in the label category configuration. Use this parameter to enter the  LabelAttributeName of the labeling job you want to adjust or verify annotations of.
         public let labelCategoryConfigS3Uri: String?
         /// Configures the information required to perform automated data labeling.
         public let labelingJobAlgorithmsConfig: LabelingJobAlgorithmsConfig?
@@ -4867,7 +4759,6 @@ extension SageMaker {
     }
 
     public struct CreateLabelingJobResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the labeling job. You use this ARN to identify the labeling job.
         public let labelingJobArn: String
 
@@ -4881,7 +4772,6 @@ extension SageMaker {
     }
 
     public struct CreateModelBiasJobDefinitionRequest: AWSEncodableShape {
-
         /// The name of the bias job definition. The name must be unique within an Amazon Web Services Region in the Amazon Web Services account.
         public let jobDefinitionName: String
         public let jobResources: MonitoringResources
@@ -4948,7 +4838,6 @@ extension SageMaker {
     }
 
     public struct CreateModelBiasJobDefinitionResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the model bias job.
         public let jobDefinitionArn: String
 
@@ -4962,7 +4851,6 @@ extension SageMaker {
     }
 
     public struct CreateModelExplainabilityJobDefinitionRequest: AWSEncodableShape {
-
         ///  The name of the model explainability job definition. The name must be unique within an Amazon Web Services Region in the Amazon Web Services account.
         public let jobDefinitionName: String
         public let jobResources: MonitoringResources
@@ -5029,7 +4917,6 @@ extension SageMaker {
     }
 
     public struct CreateModelExplainabilityJobDefinitionResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the model explainability job.
         public let jobDefinitionArn: String
 
@@ -5043,18 +4930,17 @@ extension SageMaker {
     }
 
     public struct CreateModelInput: AWSEncodableShape {
-
         /// Specifies the containers in the inference pipeline.
         public let containers: [ContainerDefinition]?
         /// Isolates the model container. No inbound or outbound network calls can be made to or from the model container.
         public let enableNetworkIsolation: Bool?
-        /// The Amazon Resource Name (ARN) of the IAM role that Amazon SageMaker can assume to access model artifacts and docker image for deployment on ML compute instances or for batch transform jobs. Deploying on ML compute instances is part of model hosting. For more information, see Amazon SageMaker Roles.   To be able to pass this role to Amazon SageMaker, the caller of this API must have the iam:PassRole permission. 
+        /// The Amazon Resource Name (ARN) of the IAM role that Amazon SageMaker can assume to access model artifacts and docker image for deployment on ML compute instances or for batch transform jobs. Deploying on ML compute instances is part of model hosting. For more information, see Amazon SageMaker Roles.   To be able to pass this role to Amazon SageMaker, the caller of this API must have the iam:PassRole permission.
         public let executionRoleArn: String
         /// Specifies details of how containers in a multi-container endpoint are called.
         public let inferenceExecutionConfig: InferenceExecutionConfig?
         /// The name of the new model.
         public let modelName: String
-        /// The location of the primary docker image containing inference code, associated artifacts, and custom environment map that the inference code uses when the model is deployed for predictions. 
+        /// The location of the primary docker image containing inference code, associated artifacts, and custom environment map that the inference code uses when the model is deployed for predictions.
         public let primaryContainer: ContainerDefinition?
         /// An array of key-value pairs. You can use tags to categorize your Amazon Web Services resources in different ways, for example, by purpose, owner, or environment. For more information, see Tagging Amazon Web Services Resources.
         public let tags: [Tag]?
@@ -5103,7 +4989,6 @@ extension SageMaker {
     }
 
     public struct CreateModelOutput: AWSDecodableShape {
-
         /// The ARN of the model created in Amazon SageMaker.
         public let modelArn: String
 
@@ -5117,7 +5002,6 @@ extension SageMaker {
     }
 
     public struct CreateModelPackageGroupInput: AWSEncodableShape {
-
         /// A description for the model group.
         public let modelPackageGroupDescription: String?
         /// The name of the model group.
@@ -5151,7 +5035,6 @@ extension SageMaker {
     }
 
     public struct CreateModelPackageGroupOutput: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the model group.
         public let modelPackageGroupArn: String
 
@@ -5165,12 +5048,11 @@ extension SageMaker {
     }
 
     public struct CreateModelPackageInput: AWSEncodableShape {
-
         /// Whether to certify the model package for listing on Amazon Web Services Marketplace. This parameter is optional for unversioned models, and does not apply to versioned models.
         public let certifyForMarketplace: Bool?
         /// A unique token that guarantees that the call to this API is idempotent.
         public let clientToken: String?
-        /// Specifies details about inference jobs that can be run with models based on this model package, including the following:   The Amazon ECR paths of containers that contain the inference code and model artifacts.   The instance types that the model package supports for transform jobs and real-time endpoints used for inference.   The input and output content formats that the model package supports for inference.  
+        /// Specifies details about inference jobs that can be run with models based on this model package, including the following:   The Amazon ECR paths of containers that contain the inference code and model artifacts.   The instance types that the model package supports for transform jobs and real-time endpoints used for inference.   The input and output content formats that the model package supports for inference.
         public let inferenceSpecification: InferenceSpecification?
         public let metadataProperties: MetadataProperties?
         /// Whether the model is approved for deployment. This parameter is optional for versioned models, and does not apply to unversioned models. For versioned models, the value of this parameter must be set to Approved to deploy the model.
@@ -5245,7 +5127,6 @@ extension SageMaker {
     }
 
     public struct CreateModelPackageOutput: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the new model package.
         public let modelPackageArn: String
 
@@ -5259,7 +5140,6 @@ extension SageMaker {
     }
 
     public struct CreateModelQualityJobDefinitionRequest: AWSEncodableShape {
-
         /// The name of the monitoring job definition.
         public let jobDefinitionName: String
         public let jobResources: MonitoringResources
@@ -5326,7 +5206,6 @@ extension SageMaker {
     }
 
     public struct CreateModelQualityJobDefinitionResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the model quality monitoring job.
         public let jobDefinitionArn: String
 
@@ -5340,7 +5219,6 @@ extension SageMaker {
     }
 
     public struct CreateMonitoringScheduleRequest: AWSEncodableShape {
-
         /// The configuration object that specifies the monitoring schedule and defines the monitoring job.
         public let monitoringScheduleConfig: MonitoringScheduleConfig
         /// The name of the monitoring schedule. The name must be unique within an Amazon Web Services Region within an Amazon Web Services account.
@@ -5373,7 +5251,6 @@ extension SageMaker {
     }
 
     public struct CreateMonitoringScheduleResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the monitoring schedule.
         public let monitoringScheduleArn: String
 
@@ -5387,7 +5264,6 @@ extension SageMaker {
     }
 
     public struct CreateNotebookInstanceInput: AWSEncodableShape {
-
         /// A list of Elastic Inference (EI) instance types to associate with this notebook instance. Currently, only one instance type can be associated with a notebook instance. For more information, see Using Elastic Inference in Amazon SageMaker.
         public let acceleratorTypes: [NotebookInstanceAcceleratorType]?
         /// An array of up to three Git repositories to associate with the notebook instance. These can be either the names of Git repositories stored as resources in your account, or the URL of Git repositories in Amazon Web Services CodeCommit or in any other Git repository. These repositories are cloned at the same level as the default repository of your notebook instance. For more information, see Associating Git Repositories with Amazon SageMaker Notebook Instances.
@@ -5404,13 +5280,13 @@ extension SageMaker {
         public let lifecycleConfigName: String?
         /// The name of the new notebook instance.
         public let notebookInstanceName: String
-        ///  When you send any requests to Amazon Web Services resources from the notebook instance, Amazon SageMaker assumes this role to perform tasks on your behalf. You must grant this role necessary permissions so Amazon SageMaker can perform these tasks. The policy must allow the Amazon SageMaker service principal (sagemaker.amazonaws.com) permissions to assume this role. For more information, see Amazon SageMaker Roles.   To be able to pass this role to Amazon SageMaker, the caller of this API must have the iam:PassRole permission. 
+        ///  When you send any requests to Amazon Web Services resources from the notebook instance, Amazon SageMaker assumes this role to perform tasks on your behalf. You must grant this role necessary permissions so Amazon SageMaker can perform these tasks. The policy must allow the Amazon SageMaker service principal (sagemaker.amazonaws.com) permissions to assume this role. For more information, see Amazon SageMaker Roles.   To be able to pass this role to Amazon SageMaker, the caller of this API must have the iam:PassRole permission.
         public let roleArn: String
-        /// Whether root access is enabled or disabled for users of the notebook instance. The default value is Enabled.  Lifecycle configurations need root access to be able to set up a notebook instance. Because of this, lifecycle configurations associated with a notebook instance always run with root access even if you disable root access for users. 
+        /// Whether root access is enabled or disabled for users of the notebook instance. The default value is Enabled.  Lifecycle configurations need root access to be able to set up a notebook instance. Because of this, lifecycle configurations associated with a notebook instance always run with root access even if you disable root access for users.
         public let rootAccess: RootAccess?
-        /// The VPC security group IDs, in the form sg-xxxxxxxx. The security groups must be for the same VPC as specified in the subnet. 
+        /// The VPC security group IDs, in the form sg-xxxxxxxx. The security groups must be for the same VPC as specified in the subnet.
         public let securityGroupIds: [String]?
-        /// The ID of the subnet in a VPC to which you would like to have a connectivity from your ML compute instance. 
+        /// The ID of the subnet in a VPC to which you would like to have a connectivity from your ML compute instance.
         public let subnetId: String?
         /// An array of key-value pairs. You can use tags to categorize your Amazon Web Services resources in different ways, for example, by purpose, owner, or environment. For more information, see Tagging Amazon Web Services Resources.
         public let tags: [Tag]?
@@ -5487,7 +5363,6 @@ extension SageMaker {
     }
 
     public struct CreateNotebookInstanceLifecycleConfigInput: AWSEncodableShape {
-
         /// The name of the lifecycle configuration.
         public let notebookInstanceLifecycleConfigName: String
         /// A shell script that runs only once, when you create a notebook instance. The shell script must be a base64-encoded string.
@@ -5522,7 +5397,6 @@ extension SageMaker {
     }
 
     public struct CreateNotebookInstanceLifecycleConfigOutput: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the lifecycle configuration.
         public let notebookInstanceLifecycleConfigArn: String?
 
@@ -5536,8 +5410,7 @@ extension SageMaker {
     }
 
     public struct CreateNotebookInstanceOutput: AWSDecodableShape {
-
-        /// The Amazon Resource Name (ARN) of the notebook instance. 
+        /// The Amazon Resource Name (ARN) of the notebook instance.
         public let notebookInstanceArn: String?
 
         public init(notebookInstanceArn: String? = nil) {
@@ -5550,7 +5423,6 @@ extension SageMaker {
     }
 
     public struct CreatePipelineRequest: AWSEncodableShape {
-
         /// A unique, case-sensitive identifier that you provide to ensure the idempotency of the operation. An idempotent operation completes no more than one time.
         public let clientRequestToken: String
         /// The JSON pipeline definition of the pipeline.
@@ -5579,7 +5451,7 @@ extension SageMaker {
         public func validate(name: String) throws {
             try self.validate(self.clientRequestToken, name: "clientRequestToken", parent: name, max: 128)
             try self.validate(self.clientRequestToken, name: "clientRequestToken", parent: name, min: 32)
-            try self.validate(self.pipelineDefinition, name: "pipelineDefinition", parent: name, max: 1048576)
+            try self.validate(self.pipelineDefinition, name: "pipelineDefinition", parent: name, max: 1_048_576)
             try self.validate(self.pipelineDefinition, name: "pipelineDefinition", parent: name, min: 1)
             try self.validate(self.pipelineDefinition, name: "pipelineDefinition", parent: name, pattern: "(?:[ \\r\\n\\t].*)*$")
             try self.validate(self.pipelineDescription, name: "pipelineDescription", parent: name, max: 3072)
@@ -5611,7 +5483,6 @@ extension SageMaker {
     }
 
     public struct CreatePipelineResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the created pipeline.
         public let pipelineArn: String?
 
@@ -5625,7 +5496,6 @@ extension SageMaker {
     }
 
     public struct CreatePresignedDomainUrlRequest: AWSEncodableShape {
-
         /// The domain ID.
         public let domainId: String
         /// The number of seconds until the pre-signed URL expires. This value defaults to 300.
@@ -5661,7 +5531,6 @@ extension SageMaker {
     }
 
     public struct CreatePresignedDomainUrlResponse: AWSDecodableShape {
-
         /// The presigned URL.
         public let authorizedUrl: String?
 
@@ -5675,7 +5544,6 @@ extension SageMaker {
     }
 
     public struct CreatePresignedNotebookInstanceUrlInput: AWSEncodableShape {
-
         /// The name of the notebook instance.
         public let notebookInstanceName: String
         /// The duration of the session, in seconds. The default is 12 hours.
@@ -5700,8 +5568,7 @@ extension SageMaker {
     }
 
     public struct CreatePresignedNotebookInstanceUrlOutput: AWSDecodableShape {
-
-        /// A JSON object that contains the URL string. 
+        /// A JSON object that contains the URL string.
         public let authorizedUrl: String?
 
         public init(authorizedUrl: String? = nil) {
@@ -5714,7 +5581,6 @@ extension SageMaker {
     }
 
     public struct CreateProcessingJobRequest: AWSEncodableShape {
-
         /// Configures the processing job to run a specified Docker container image.
         public let appSpecification: AppSpecification
         /// The environment variables to set in the Docker container. Up to  100 key and values entries in the map are supported.
@@ -5797,7 +5663,6 @@ extension SageMaker {
     }
 
     public struct CreateProcessingJobResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the processing job.
         public let processingJobArn: String
 
@@ -5811,7 +5676,6 @@ extension SageMaker {
     }
 
     public struct CreateProjectInput: AWSEncodableShape {
-
         /// A description for the project.
         public let projectDescription: String?
         /// The name of the project.
@@ -5850,7 +5714,6 @@ extension SageMaker {
     }
 
     public struct CreateProjectOutput: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the project.
         public let projectArn: String
         /// The ID of the new project.
@@ -5868,8 +5731,7 @@ extension SageMaker {
     }
 
     public struct CreateTrainingJobRequest: AWSEncodableShape {
-
-        /// The registry path of the Docker image that contains the training algorithm and algorithm-specific metadata, including the input mode. For more information about algorithms provided by Amazon SageMaker, see Algorithms. For information about providing your own algorithms, see Using Your Own Algorithms with Amazon SageMaker. 
+        /// The registry path of the Docker image that contains the training algorithm and algorithm-specific metadata, including the input mode. For more information about algorithms provided by Amazon SageMaker, see Algorithms. For information about providing your own algorithms, see Using Your Own Algorithms with Amazon SageMaker.
         public let algorithmSpecification: AlgorithmSpecification
         /// Contains information about the output location for managed spot training checkpoint data.
         public let checkpointConfig: CheckpointConfig?
@@ -5878,18 +5740,18 @@ extension SageMaker {
         public let debugRuleConfigurations: [DebugRuleConfiguration]?
         /// To encrypt all communications between ML compute instances in distributed training, choose True. Encryption provides greater security for distributed training, but training might take longer. How long it takes depends on the amount of communication between compute instances, especially if you use a deep learning algorithm in distributed training. For more information, see Protect Communications Between ML Compute Instances in a Distributed Training Job.
         public let enableInterContainerTrafficEncryption: Bool?
-        /// To train models using managed spot training, choose True. Managed spot training provides a fully managed and scalable infrastructure for training machine learning models. this option is useful when training jobs can be interrupted and when there is flexibility when the training job is run.  The complete and intermediate results of jobs are stored in an Amazon S3 bucket, and can be used as a starting point to train models incrementally. Amazon SageMaker provides metrics and logs in CloudWatch. They can be used to see when managed spot training jobs are running, interrupted, resumed, or completed. 
+        /// To train models using managed spot training, choose True. Managed spot training provides a fully managed and scalable infrastructure for training machine learning models. this option is useful when training jobs can be interrupted and when there is flexibility when the training job is run.  The complete and intermediate results of jobs are stored in an Amazon S3 bucket, and can be used as a starting point to train models incrementally. Amazon SageMaker provides metrics and logs in CloudWatch. They can be used to see when managed spot training jobs are running, interrupted, resumed, or completed.
         public let enableManagedSpotTraining: Bool?
         /// Isolates the training container. No inbound or outbound network calls can be made, except for calls between peers within a training cluster for distributed training. If you enable network isolation for training jobs that are configured to use a VPC, Amazon SageMaker downloads and uploads customer data and model artifacts through the specified VPC, but the training container does not have network access.
         public let enableNetworkIsolation: Bool?
         /// The environment variables to set in the Docker container.
         public let environment: [String: String]?
         public let experimentConfig: ExperimentConfig?
-        /// Algorithm-specific parameters that influence the quality of the model. You set hyperparameters before you start the learning process. For a list of hyperparameters for each training algorithm provided by Amazon SageMaker, see Algorithms.  You can specify a maximum of 100 hyperparameters. Each hyperparameter is a key-value pair. Each key and value is limited to 256 characters, as specified by the Length Constraint. 
+        /// Algorithm-specific parameters that influence the quality of the model. You set hyperparameters before you start the learning process. For a list of hyperparameters for each training algorithm provided by Amazon SageMaker, see Algorithms.  You can specify a maximum of 100 hyperparameters. Each hyperparameter is a key-value pair. Each key and value is limited to 256 characters, as specified by the Length Constraint.
         public let hyperParameters: [String: String]?
         /// An array of Channel objects. Each channel is a named input source. InputDataConfig describes the input data and its location.  Algorithms can accept input data from one or more channels. For example, an algorithm might have two channels of input data, training_data and validation_data. The configuration for each channel provides the S3, EFS, or FSx location where the input data is stored. It also provides information about the stored data: the MIME type, compression method, and whether the data is wrapped in RecordIO format.  Depending on the input mode that the algorithm supports, Amazon SageMaker either copies input data files from an S3 bucket to a local directory in the Docker container, or makes it available as input streams. For example, if you specify an EFS location, input data files will be made available as input streams. They do not need to be downloaded.
         public let inputDataConfig: [Channel]?
-        /// Specifies the path to the S3 location where you want to store model artifacts. Amazon SageMaker creates subfolders for the artifacts. 
+        /// Specifies the path to the S3 location where you want to store model artifacts. Amazon SageMaker creates subfolders for the artifacts.
         public let outputDataConfig: OutputDataConfig
         public let profilerConfig: ProfilerConfig?
         /// Configuration information for Debugger rules for profiling system and framework metrics.
@@ -5898,14 +5760,14 @@ extension SageMaker {
         public let resourceConfig: ResourceConfig
         /// The number of times to retry the job when the job fails due to an InternalServerError.
         public let retryStrategy: RetryStrategy?
-        /// The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker can assume to perform tasks on your behalf.  During model training, Amazon SageMaker needs your permission to read input data from an S3 bucket, download a Docker image that contains training code, write model artifacts to an S3 bucket, write logs to Amazon CloudWatch Logs, and publish metrics to Amazon CloudWatch. You grant permissions for all of these tasks to an IAM role. For more information, see Amazon SageMaker Roles.   To be able to pass this role to Amazon SageMaker, the caller of this API must have the iam:PassRole permission. 
+        /// The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker can assume to perform tasks on your behalf.  During model training, Amazon SageMaker needs your permission to read input data from an S3 bucket, download a Docker image that contains training code, write model artifacts to an S3 bucket, write logs to Amazon CloudWatch Logs, and publish metrics to Amazon CloudWatch. You grant permissions for all of these tasks to an IAM role. For more information, see Amazon SageMaker Roles.   To be able to pass this role to Amazon SageMaker, the caller of this API must have the iam:PassRole permission.
         public let roleArn: String
-        /// Specifies a limit to how long a model training job can run. It also specifies how long a managed Spot training job has to complete. When the job reaches the time limit, Amazon SageMaker ends the training job. Use this API to cap model training costs. To stop a job, Amazon SageMaker sends the algorithm the SIGTERM signal, which delays job termination for 120 seconds. Algorithms can use this 120-second window to save the model artifacts, so the results of training are not lost. 
+        /// Specifies a limit to how long a model training job can run. It also specifies how long a managed Spot training job has to complete. When the job reaches the time limit, Amazon SageMaker ends the training job. Use this API to cap model training costs. To stop a job, Amazon SageMaker sends the algorithm the SIGTERM signal, which delays job termination for 120 seconds. Algorithms can use this 120-second window to save the model artifacts, so the results of training are not lost.
         public let stoppingCondition: StoppingCondition
         /// An array of key-value pairs. You can use tags to categorize your Amazon Web Services resources in different ways, for example, by purpose, owner, or environment. For more information, see Tagging Amazon Web Services Resources.
         public let tags: [Tag]?
         public let tensorBoardOutputConfig: TensorBoardOutputConfig?
-        /// The name of the training job. The name must be unique within an Amazon Web Services Region in an Amazon Web Services account. 
+        /// The name of the training job. The name must be unique within an Amazon Web Services Region in an Amazon Web Services account.
         public let trainingJobName: String
         /// A VpcConfig object that specifies the VPC that you want your training job to connect to. Control access to and from your training container by configuring the VPC. For more information, see Protect Training Jobs by Using an Amazon Virtual Private Cloud.
         public let vpcConfig: VpcConfig?
@@ -6013,7 +5875,6 @@ extension SageMaker {
     }
 
     public struct CreateTrainingJobResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the training job.
         public let trainingJobArn: String
 
@@ -6027,7 +5888,6 @@ extension SageMaker {
     }
 
     public struct CreateTransformJobRequest: AWSEncodableShape {
-
         /// Specifies the number of records to include in a mini-batch for an HTTP inference request. A record is a single unit of input data that inference can be made on. For example, a single line in a CSV file is a record.  To enable the batch strategy, you must set the SplitType property to Line, RecordIO, or TFRecord. To use only one record when making an HTTP invocation request to a container, set BatchStrategy to SingleRecord and SplitType to Line. To fit as many records in a mini-batch as can fit within the MaxPayloadInMB limit, set BatchStrategy to MultiRecord and SplitType to Line.
         public let batchStrategy: BatchStrategy?
         /// The data structure used to specify the data to be used for inference in a batch transform job and to associate the data that is relevant to the prediction results in the output. The input filter provided allows you to exclude input data that is not needed for inference in a batch transform job. The output filter provided allows you to include input data relevant to interpreting the predictions in the output from the job. For more information, see Associate Prediction Results with their Corresponding Input Records.
@@ -6047,7 +5907,7 @@ extension SageMaker {
         public let tags: [Tag]?
         /// Describes the input source and the way the transform job consumes it.
         public let transformInput: TransformInput
-        /// The name of the transform job. The name must be unique within an Amazon Web Services Region in an Amazon Web Services account. 
+        /// The name of the transform job. The name must be unique within an Amazon Web Services Region in an Amazon Web Services account.
         public let transformJobName: String
         /// Describes the results of the transform job.
         public let transformOutput: TransformOutput
@@ -6115,7 +5975,6 @@ extension SageMaker {
     }
 
     public struct CreateTransformJobResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the transform job.
         public let transformJobArn: String
 
@@ -6129,7 +5988,6 @@ extension SageMaker {
     }
 
     public struct CreateTrialComponentRequest: AWSEncodableShape {
-
         /// The name of the component as displayed. The name doesn't need to be unique. If DisplayName isn't specified, TrialComponentName is displayed.
         public let displayName: String?
         /// When the component ended.
@@ -6143,7 +6001,7 @@ extension SageMaker {
         public let parameters: [String: TrialComponentParameterValue]?
         /// When the component started.
         public let startTime: Date?
-        /// The status of the component. States include:   InProgress   Completed   Failed  
+        /// The status of the component. States include:   InProgress   Completed   Failed
         public let status: TrialComponentStatus?
         /// A list of tags to associate with the component. You can use Search API to search on the tags.
         public let tags: [Tag]?
@@ -6211,7 +6069,6 @@ extension SageMaker {
     }
 
     public struct CreateTrialComponentResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the trial component.
         public let trialComponentArn: String?
 
@@ -6225,7 +6082,6 @@ extension SageMaker {
     }
 
     public struct CreateTrialRequest: AWSEncodableShape {
-
         /// The name of the trial as displayed. The name doesn't need to be unique. If DisplayName isn't specified, TrialName is displayed.
         public let displayName: String?
         /// The name of the experiment to associate the trial with.
@@ -6271,7 +6127,6 @@ extension SageMaker {
     }
 
     public struct CreateTrialResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the trial.
         public let trialArn: String?
 
@@ -6285,12 +6140,11 @@ extension SageMaker {
     }
 
     public struct CreateUserProfileRequest: AWSEncodableShape {
-
         /// The ID of the associated Domain.
         public let domainId: String
-        /// A specifier for the type of value specified in SingleSignOnUserValue.  Currently, the only supported value is "UserName". If the Domain's AuthMode is SSO, this field is required.  If the Domain's AuthMode is not SSO, this field cannot be specified. 
+        /// A specifier for the type of value specified in SingleSignOnUserValue.  Currently, the only supported value is "UserName". If the Domain's AuthMode is SSO, this field is required.  If the Domain's AuthMode is not SSO, this field cannot be specified.
         public let singleSignOnUserIdentifier: String?
-        /// The username of the associated Amazon Web Services Single Sign-On User for this UserProfile.  If the Domain's AuthMode is SSO, this field is required, and must match a valid username of a user in your directory.  If the Domain's AuthMode is not SSO, this field cannot be specified. 
+        /// The username of the associated Amazon Web Services Single Sign-On User for this UserProfile.  If the Domain's AuthMode is SSO, this field is required, and must match a valid username of a user in your directory.  If the Domain's AuthMode is not SSO, this field cannot be specified.
         public let singleSignOnUserValue: String?
         /// Each tag consists of a key and an optional value. Tag keys must be unique per resource. Tags that you specify for the User Profile are also added to all Apps that the User Profile launches.
         public let tags: [Tag]?
@@ -6332,7 +6186,6 @@ extension SageMaker {
     }
 
     public struct CreateUserProfileResponse: AWSDecodableShape {
-
         /// The user profile Amazon Resource Name (ARN).
         public let userProfileArn: String?
 
@@ -6346,7 +6199,6 @@ extension SageMaker {
     }
 
     public struct CreateWorkforceRequest: AWSEncodableShape {
-
         /// Use this parameter to configure an Amazon Cognito private workforce. A single Cognito workforce is created using and corresponds to a single  Amazon Cognito user pool.  Do not use OidcConfig if you specify values for  CognitoConfig.
         public let cognitoConfig: CognitoConfig?
         /// Use this parameter to configure a private workforce using your own OIDC Identity Provider. Do not use CognitoConfig if you specify values for  OidcConfig.
@@ -6388,7 +6240,6 @@ extension SageMaker {
     }
 
     public struct CreateWorkforceResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the workforce.
         public let workforceArn: String
 
@@ -6402,7 +6253,6 @@ extension SageMaker {
     }
 
     public struct CreateWorkteamRequest: AWSEncodableShape {
-
         /// A description of the work team.
         public let description: String
         /// A list of MemberDefinition objects that contains objects that identify the workers that make up the work team.  Workforces can be created using Amazon Cognito or your own OIDC Identity Provider (IdP). For private workforces created using Amazon Cognito use CognitoMemberDefinition. For workforces created using your own OIDC identity provider (IdP) use OidcMemberDefinition. Do not provide input for both of these parameters in a single request. For workforces created using Amazon Cognito, private work teams correspond to Amazon Cognito user groups within the user pool used to create a workforce. All of the CognitoMemberDefinition objects that make up the member definition must have the same ClientId and UserPool values. To add a Amazon Cognito user group to an existing worker pool, see Adding groups to a User Pool. For more information about user pools, see Amazon Cognito User Pools. For workforces created using your own OIDC IdP, specify the user groups that you want to  include in your private work team in OidcMemberDefinition by listing those groups in Groups.
@@ -6458,7 +6308,6 @@ extension SageMaker {
     }
 
     public struct CreateWorkteamResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the work team. You can use this ARN to identify the work team.
         public let workteamArn: String?
 
@@ -6472,7 +6321,6 @@ extension SageMaker {
     }
 
     public struct CustomImage: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the AppImageConfig.
         public let appImageConfigName: String
         /// The name of the CustomImage. Must be unique to your account.
@@ -6503,7 +6351,6 @@ extension SageMaker {
     }
 
     public struct DataCaptureConfig: AWSEncodableShape & AWSDecodableShape {
-
         public let captureContentTypeHeader: CaptureContentTypeHeader?
         public let captureOptions: [CaptureOption]
         public let destinationS3Uri: String
@@ -6543,7 +6390,6 @@ extension SageMaker {
     }
 
     public struct DataCaptureConfigSummary: AWSDecodableShape {
-
         public let captureStatus: CaptureStatus
         public let currentSamplingPercentage: Int
         public let destinationS3Uri: String
@@ -6568,7 +6414,6 @@ extension SageMaker {
     }
 
     public struct DataCatalogConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the Glue table catalog.
         public let catalog: String
         /// The name of the Glue table database.
@@ -6602,12 +6447,11 @@ extension SageMaker {
     }
 
     public struct DataProcessing: AWSEncodableShape & AWSDecodableShape {
-
-        /// A JSONPath expression used to select a portion of the input data to pass to the algorithm. Use the InputFilter parameter to exclude fields, such as an ID column, from the input. If you want Amazon SageMaker to pass the entire input dataset to the algorithm, accept the default value $. Examples: "$", "$[1:]", "$.features" 
+        /// A JSONPath expression used to select a portion of the input data to pass to the algorithm. Use the InputFilter parameter to exclude fields, such as an ID column, from the input. If you want Amazon SageMaker to pass the entire input dataset to the algorithm, accept the default value $. Examples: "$", "$[1:]", "$.features"
         public let inputFilter: String?
         /// Specifies the source of the data to join with the transformed data. The valid values are None and Input. The default value is None, which specifies not to join the input with the transformed data. If you want the batch transform job to join the original input data with the transformed data, set JoinSource to Input. You can specify OutputFilter as an additional filter to select a portion of the joined dataset and store it in the output file. For JSON or JSONLines objects, such as a JSON array, Amazon SageMaker adds the transformed data to the input JSON object in an attribute called SageMakerOutput. The joined result for JSON must be a key-value pair object. If the input is not a key-value pair object, Amazon SageMaker creates a new JSON file. In the new JSON file, and the input data is stored under the SageMakerInput key and the results are stored in SageMakerOutput. For CSV data, Amazon SageMaker takes each row as a JSON array and joins the transformed data with the input by appending each transformed row to the end of the input. The joined data has the original input data followed by the transformed data and the output is a CSV file. For information on how joining in applied, see Workflow for Associating Inferences with Input Records.
         public let joinSource: JoinSource?
-        /// A JSONPath expression used to select a portion of the joined dataset to save in the output file for a batch transform job. If you want Amazon SageMaker to store the entire input dataset in the output file, leave the default value, $. If you specify indexes that aren't within the dimension size of the joined dataset, you get an error. Examples: "$", "$[0,5:]", "$['id','SageMakerOutput']" 
+        /// A JSONPath expression used to select a portion of the joined dataset to save in the output file for a batch transform job. If you want Amazon SageMaker to store the entire input dataset in the output file, leave the default value, $. If you specify indexes that aren't within the dimension size of the joined dataset, you get an error. Examples: "$", "$[0,5:]", "$['id','SageMakerOutput']"
         public let outputFilter: String?
 
         public init(inputFilter: String? = nil, joinSource: JoinSource? = nil, outputFilter: String? = nil) {
@@ -6629,7 +6473,6 @@ extension SageMaker {
     }
 
     public struct DataQualityAppSpecification: AWSEncodableShape & AWSDecodableShape {
-
         /// The arguments to send to the container that the monitoring job runs.
         public let containerArguments: [String]?
         /// The entrypoint for a container used to run a monitoring job.
@@ -6691,7 +6534,6 @@ extension SageMaker {
     }
 
     public struct DataQualityBaselineConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the job that performs baselining for the data quality monitoring job.
         public let baseliningJobName: String?
         public let constraintsResource: MonitoringConstraintsResource?
@@ -6719,7 +6561,6 @@ extension SageMaker {
     }
 
     public struct DataQualityJobInput: AWSEncodableShape & AWSDecodableShape {
-
         public let endpointInput: EndpointInput
 
         public init(endpointInput: EndpointInput) {
@@ -6736,7 +6577,6 @@ extension SageMaker {
     }
 
     public struct DataSource: AWSEncodableShape & AWSDecodableShape {
-
         /// The file system that is associated with a channel.
         public let fileSystemDataSource: FileSystemDataSource?
         /// The S3 location of the data source that is associated with a channel.
@@ -6759,7 +6599,6 @@ extension SageMaker {
     }
 
     public struct DatasetDefinition: AWSEncodableShape & AWSDecodableShape {
-
         public let athenaDatasetDefinition: AthenaDatasetDefinition?
         /// Whether the generated dataset is FullyReplicated or ShardedByS3Key (default).
         public let dataDistributionType: DataDistributionType?
@@ -6794,8 +6633,7 @@ extension SageMaker {
     }
 
     public struct DebugHookConfig: AWSEncodableShape & AWSDecodableShape {
-
-        /// Configuration information for Debugger tensor collections. To learn more about how to configure the CollectionConfiguration parameter,  see Use the SageMaker and Debugger Configuration API Operations to Create, Update, and Debug Your Training Job. 
+        /// Configuration information for Debugger tensor collections. To learn more about how to configure the CollectionConfiguration parameter,  see Use the SageMaker and Debugger Configuration API Operations to Create, Update, and Debug Your Training Job.
         public let collectionConfigurations: [CollectionConfiguration]?
         /// Configuration information for the Debugger hook parameters.
         public let hookParameters: [String: String]?
@@ -6839,7 +6677,6 @@ extension SageMaker {
     }
 
     public struct DebugRuleConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// The instance type to deploy a Debugger custom rule for debugging a training job.
         public let instanceType: ProcessingInstanceType?
         /// Path to local storage location for output of rules. Defaults to /opt/ml/processing/output/rule/.
@@ -6898,7 +6735,6 @@ extension SageMaker {
     }
 
     public struct DebugRuleEvaluationStatus: AWSDecodableShape {
-
         /// Timestamp when the rule evaluation status was last modified.
         public let lastModifiedTime: Date?
         /// The name of the rule configuration.
@@ -6928,7 +6764,6 @@ extension SageMaker {
     }
 
     public struct DeleteActionRequest: AWSEncodableShape {
-
         /// The name of the action to delete.
         public let actionName: String
 
@@ -6948,7 +6783,6 @@ extension SageMaker {
     }
 
     public struct DeleteActionResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the action.
         public let actionArn: String?
 
@@ -6962,7 +6796,6 @@ extension SageMaker {
     }
 
     public struct DeleteAlgorithmInput: AWSEncodableShape {
-
         /// The name of the algorithm to delete.
         public let algorithmName: String
 
@@ -6982,7 +6815,6 @@ extension SageMaker {
     }
 
     public struct DeleteAppImageConfigRequest: AWSEncodableShape {
-
         /// The name of the AppImageConfig to delete.
         public let appImageConfigName: String
 
@@ -7001,7 +6833,6 @@ extension SageMaker {
     }
 
     public struct DeleteAppRequest: AWSEncodableShape {
-
         /// The name of the app.
         public let appName: String
         /// The type of app.
@@ -7035,7 +6866,6 @@ extension SageMaker {
     }
 
     public struct DeleteArtifactRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the artifact to delete.
         public let artifactArn: String?
         /// The URI of the source.
@@ -7059,7 +6889,6 @@ extension SageMaker {
     }
 
     public struct DeleteArtifactResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the artifact.
         public let artifactArn: String?
 
@@ -7073,7 +6902,6 @@ extension SageMaker {
     }
 
     public struct DeleteAssociationRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the destination.
         public let destinationArn: String
         /// The ARN of the source.
@@ -7098,7 +6926,6 @@ extension SageMaker {
     }
 
     public struct DeleteAssociationResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the destination.
         public let destinationArn: String?
         /// The ARN of the source.
@@ -7116,7 +6943,6 @@ extension SageMaker {
     }
 
     public struct DeleteCodeRepositoryInput: AWSEncodableShape {
-
         /// The name of the Git repository to delete.
         public let codeRepositoryName: String
 
@@ -7136,7 +6962,6 @@ extension SageMaker {
     }
 
     public struct DeleteContextRequest: AWSEncodableShape {
-
         /// The name of the context to delete.
         public let contextName: String
 
@@ -7156,7 +6981,6 @@ extension SageMaker {
     }
 
     public struct DeleteContextResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the context.
         public let contextArn: String?
 
@@ -7170,7 +6994,6 @@ extension SageMaker {
     }
 
     public struct DeleteDataQualityJobDefinitionRequest: AWSEncodableShape {
-
         /// The name of the data quality monitoring job definition to delete.
         public let jobDefinitionName: String
 
@@ -7190,7 +7013,6 @@ extension SageMaker {
     }
 
     public struct DeleteDeviceFleetRequest: AWSEncodableShape {
-
         /// The name of the fleet to delete.
         public let deviceFleetName: String
 
@@ -7210,10 +7032,9 @@ extension SageMaker {
     }
 
     public struct DeleteDomainRequest: AWSEncodableShape {
-
         /// The domain ID.
         public let domainId: String
-        /// The retention policy for this domain, which specifies whether resources will be retained after the Domain is deleted. By default, all resources are retained (not automatically deleted). 
+        /// The retention policy for this domain, which specifies whether resources will be retained after the Domain is deleted. By default, all resources are retained (not automatically deleted).
         public let retentionPolicy: RetentionPolicy?
 
         public init(domainId: String, retentionPolicy: RetentionPolicy? = nil) {
@@ -7232,7 +7053,6 @@ extension SageMaker {
     }
 
     public struct DeleteEndpointConfigInput: AWSEncodableShape {
-
         /// The name of the endpoint configuration that you want to delete.
         public let endpointConfigName: String
 
@@ -7251,7 +7071,6 @@ extension SageMaker {
     }
 
     public struct DeleteEndpointInput: AWSEncodableShape {
-
         /// The name of the endpoint that you want to delete.
         public let endpointName: String
 
@@ -7270,7 +7089,6 @@ extension SageMaker {
     }
 
     public struct DeleteExperimentRequest: AWSEncodableShape {
-
         /// The name of the experiment to delete.
         public let experimentName: String
 
@@ -7290,7 +7108,6 @@ extension SageMaker {
     }
 
     public struct DeleteExperimentResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the experiment that is being deleted.
         public let experimentArn: String?
 
@@ -7304,8 +7121,7 @@ extension SageMaker {
     }
 
     public struct DeleteFeatureGroupRequest: AWSEncodableShape {
-
-        /// The name of the FeatureGroup you want to delete. The name must be unique within an Amazon Web Services Region in an Amazon Web Services account. 
+        /// The name of the FeatureGroup you want to delete. The name must be unique within an Amazon Web Services Region in an Amazon Web Services account.
         public let featureGroupName: String
 
         public init(featureGroupName: String) {
@@ -7324,7 +7140,6 @@ extension SageMaker {
     }
 
     public struct DeleteFlowDefinitionRequest: AWSEncodableShape {
-
         /// The name of the flow definition you are deleting.
         public let flowDefinitionName: String
 
@@ -7344,15 +7159,10 @@ extension SageMaker {
     }
 
     public struct DeleteFlowDefinitionResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteHumanTaskUiRequest: AWSEncodableShape {
-
         /// The name of the human task user interface (work task template) you want to delete.
         public let humanTaskUiName: String
 
@@ -7372,15 +7182,10 @@ extension SageMaker {
     }
 
     public struct DeleteHumanTaskUiResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteImageRequest: AWSEncodableShape {
-
         /// The name of the image to delete.
         public let imageName: String
 
@@ -7400,15 +7205,10 @@ extension SageMaker {
     }
 
     public struct DeleteImageResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteImageVersionRequest: AWSEncodableShape {
-
         /// The name of the image.
         public let imageName: String
         /// The version to delete.
@@ -7433,15 +7233,10 @@ extension SageMaker {
     }
 
     public struct DeleteImageVersionResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteModelBiasJobDefinitionRequest: AWSEncodableShape {
-
         /// The name of the model bias job definition to delete.
         public let jobDefinitionName: String
 
@@ -7461,7 +7256,6 @@ extension SageMaker {
     }
 
     public struct DeleteModelExplainabilityJobDefinitionRequest: AWSEncodableShape {
-
         /// The name of the model explainability job definition to delete.
         public let jobDefinitionName: String
 
@@ -7481,7 +7275,6 @@ extension SageMaker {
     }
 
     public struct DeleteModelInput: AWSEncodableShape {
-
         /// The name of the model to delete.
         public let modelName: String
 
@@ -7500,7 +7293,6 @@ extension SageMaker {
     }
 
     public struct DeleteModelPackageGroupInput: AWSEncodableShape {
-
         /// The name of the model group to delete.
         public let modelPackageGroupName: String
 
@@ -7520,7 +7312,6 @@ extension SageMaker {
     }
 
     public struct DeleteModelPackageGroupPolicyInput: AWSEncodableShape {
-
         /// The name of the model group for which to delete the policy.
         public let modelPackageGroupName: String
 
@@ -7540,7 +7331,6 @@ extension SageMaker {
     }
 
     public struct DeleteModelPackageInput: AWSEncodableShape {
-
         /// The name or Amazon Resource Name (ARN) of the model package to delete. When you specify a name, the name must have 1 to 63 characters. Valid characters are a-z, A-Z, 0-9, and - (hyphen).
         public let modelPackageName: String
 
@@ -7560,7 +7350,6 @@ extension SageMaker {
     }
 
     public struct DeleteModelQualityJobDefinitionRequest: AWSEncodableShape {
-
         /// The name of the model quality monitoring job definition to delete.
         public let jobDefinitionName: String
 
@@ -7580,7 +7369,6 @@ extension SageMaker {
     }
 
     public struct DeleteMonitoringScheduleRequest: AWSEncodableShape {
-
         /// The name of the monitoring schedule to delete.
         public let monitoringScheduleName: String
 
@@ -7600,7 +7388,6 @@ extension SageMaker {
     }
 
     public struct DeleteNotebookInstanceInput: AWSEncodableShape {
-
         /// The name of the Amazon SageMaker notebook instance to delete.
         public let notebookInstanceName: String
 
@@ -7619,7 +7406,6 @@ extension SageMaker {
     }
 
     public struct DeleteNotebookInstanceLifecycleConfigInput: AWSEncodableShape {
-
         /// The name of the lifecycle configuration to delete.
         public let notebookInstanceLifecycleConfigName: String
 
@@ -7638,7 +7424,6 @@ extension SageMaker {
     }
 
     public struct DeletePipelineRequest: AWSEncodableShape {
-
         /// A unique, case-sensitive identifier that you provide to ensure the idempotency of the operation. An idempotent operation completes no more than one time.
         public let clientRequestToken: String
         /// The name of the pipeline to delete.
@@ -7664,7 +7449,6 @@ extension SageMaker {
     }
 
     public struct DeletePipelineResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the pipeline to delete.
         public let pipelineArn: String?
 
@@ -7678,7 +7462,6 @@ extension SageMaker {
     }
 
     public struct DeleteProjectInput: AWSEncodableShape {
-
         /// The name of the project to delete.
         public let projectName: String
 
@@ -7698,7 +7481,6 @@ extension SageMaker {
     }
 
     public struct DeleteTagsInput: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the resource whose tags you want to delete.
         public let resourceArn: String
         /// An array or one or more tag keys to delete.
@@ -7728,15 +7510,10 @@ extension SageMaker {
     }
 
     public struct DeleteTagsOutput: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteTrialComponentRequest: AWSEncodableShape {
-
         /// The name of the component to delete.
         public let trialComponentName: String
 
@@ -7756,7 +7533,6 @@ extension SageMaker {
     }
 
     public struct DeleteTrialComponentResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the component is being deleted.
         public let trialComponentArn: String?
 
@@ -7770,7 +7546,6 @@ extension SageMaker {
     }
 
     public struct DeleteTrialRequest: AWSEncodableShape {
-
         /// The name of the trial to delete.
         public let trialName: String
 
@@ -7790,7 +7565,6 @@ extension SageMaker {
     }
 
     public struct DeleteTrialResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the trial that is being deleted.
         public let trialArn: String?
 
@@ -7804,7 +7578,6 @@ extension SageMaker {
     }
 
     public struct DeleteUserProfileRequest: AWSEncodableShape {
-
         /// The domain ID.
         public let domainId: String
         /// The user profile name.
@@ -7828,7 +7601,6 @@ extension SageMaker {
     }
 
     public struct DeleteWorkforceRequest: AWSEncodableShape {
-
         /// The name of the workforce.
         public let workforceName: String
 
@@ -7848,15 +7620,10 @@ extension SageMaker {
     }
 
     public struct DeleteWorkforceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteWorkteamRequest: AWSEncodableShape {
-
         /// The name of the work team to delete.
         public let workteamName: String
 
@@ -7876,7 +7643,6 @@ extension SageMaker {
     }
 
     public struct DeleteWorkteamResponse: AWSDecodableShape {
-
         /// Returns true if the work team was successfully deleted; otherwise, returns false.
         public let success: Bool
 
@@ -7890,8 +7656,7 @@ extension SageMaker {
     }
 
     public struct DeployedImage: AWSDecodableShape {
-
-        /// The date and time when the image path for the model resolved to the ResolvedImage 
+        /// The date and time when the image path for the model resolved to the ResolvedImage
         public let resolutionTime: Date?
         /// The specific digest path of the image hosted in this ProductionVariant.
         public let resolvedImage: String?
@@ -7912,7 +7677,6 @@ extension SageMaker {
     }
 
     public struct DeploymentConfig: AWSEncodableShape & AWSDecodableShape {
-
         public let autoRollbackConfiguration: AutoRollbackConfig?
         public let blueGreenUpdatePolicy: BlueGreenUpdatePolicy
 
@@ -7933,7 +7697,6 @@ extension SageMaker {
     }
 
     public struct DeregisterDevicesRequest: AWSEncodableShape {
-
         /// The name of the fleet the devices belong to.
         public let deviceFleetName: String
         /// The unique IDs of the devices.
@@ -7962,7 +7725,6 @@ extension SageMaker {
     }
 
     public struct DescribeActionRequest: AWSEncodableShape {
-
         /// The name of the action to describe.
         public let actionName: String
 
@@ -7982,7 +7744,6 @@ extension SageMaker {
     }
 
     public struct DescribeActionResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the action.
         public let actionArn: String?
         /// The name of the action.
@@ -8037,7 +7798,6 @@ extension SageMaker {
     }
 
     public struct DescribeAlgorithmInput: AWSEncodableShape {
-
         /// The name of the algorithm to describe.
         public let algorithmName: String
 
@@ -8057,7 +7817,6 @@ extension SageMaker {
     }
 
     public struct DescribeAlgorithmOutput: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the algorithm.
         public let algorithmArn: String
         /// A brief summary about the algorithm.
@@ -8111,7 +7870,6 @@ extension SageMaker {
     }
 
     public struct DescribeAppImageConfigRequest: AWSEncodableShape {
-
         /// The name of the AppImageConfig to describe.
         public let appImageConfigName: String
 
@@ -8130,7 +7888,6 @@ extension SageMaker {
     }
 
     public struct DescribeAppImageConfigResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the AppImageConfig.
         public let appImageConfigArn: String?
         /// The name of the AppImageConfig.
@@ -8160,7 +7917,6 @@ extension SageMaker {
     }
 
     public struct DescribeAppRequest: AWSEncodableShape {
-
         /// The name of the app.
         public let appName: String
         /// The type of app.
@@ -8194,7 +7950,6 @@ extension SageMaker {
     }
 
     public struct DescribeAppResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the app.
         public let appArn: String?
         /// The name of the app.
@@ -8248,7 +8003,6 @@ extension SageMaker {
     }
 
     public struct DescribeArtifactRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the artifact to describe.
         public let artifactArn: String
 
@@ -8267,7 +8021,6 @@ extension SageMaker {
     }
 
     public struct DescribeArtifactResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the artifact.
         public let artifactArn: String?
         /// The name of the artifact.
@@ -8314,7 +8067,6 @@ extension SageMaker {
     }
 
     public struct DescribeAutoMLJobRequest: AWSEncodableShape {
-
         /// Requests information about an AutoML job using its unique name.
         public let autoMLJobName: String
 
@@ -8334,7 +8086,6 @@ extension SageMaker {
     }
 
     public struct DescribeAutoMLJobResponse: AWSDecodableShape {
-
         /// Returns the ARN of the AutoML job.
         public let autoMLJobArn: String
         /// Returns information on the job's artifacts found in AutoMLJobArtifacts.
@@ -8428,7 +8179,6 @@ extension SageMaker {
     }
 
     public struct DescribeCodeRepositoryInput: AWSEncodableShape {
-
         /// The name of the Git repository to describe.
         public let codeRepositoryName: String
 
@@ -8448,7 +8198,6 @@ extension SageMaker {
     }
 
     public struct DescribeCodeRepositoryOutput: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the Git repository.
         public let codeRepositoryArn: String
         /// The name of the Git repository.
@@ -8478,7 +8227,6 @@ extension SageMaker {
     }
 
     public struct DescribeCompilationJobRequest: AWSEncodableShape {
-
         /// The name of the model compilation job that you want information about.
         public let compilationJobName: String
 
@@ -8498,8 +8246,7 @@ extension SageMaker {
     }
 
     public struct DescribeCompilationJobResponse: AWSDecodableShape {
-
-        /// The time when the model compilation job on a compilation job instance ended. For a successful or stopped job, this is when the job's model artifacts have finished uploading. For a failed job, this is when Amazon SageMaker detected that the job failed. 
+        /// The time when the model compilation job on a compilation job instance ended. For a successful or stopped job, this is when the job's model artifacts have finished uploading. For a failed job, this is when Amazon SageMaker detected that the job failed.
         public let compilationEndTime: Date?
         /// The Amazon Resource Name (ARN) of the model compilation job.
         public let compilationJobArn: String
@@ -8507,11 +8254,11 @@ extension SageMaker {
         public let compilationJobName: String
         /// The status of the model compilation job.
         public let compilationJobStatus: CompilationJobStatus
-        /// The time when the model compilation job started the CompilationJob instances.  You are billed for the time between this timestamp and the timestamp in the DescribeCompilationJobResponse$CompilationEndTime field. In Amazon CloudWatch Logs, the start time might be later than this time. That's because it takes time to download the compilation job, which depends on the size of the compilation job container. 
+        /// The time when the model compilation job started the CompilationJob instances.  You are billed for the time between this timestamp and the timestamp in the DescribeCompilationJobResponse$CompilationEndTime field. In Amazon CloudWatch Logs, the start time might be later than this time. That's because it takes time to download the compilation job, which depends on the size of the compilation job container.
         public let compilationStartTime: Date?
         /// The time that the model compilation job was created.
         public let creationTime: Date
-        /// If a model compilation job failed, the reason it failed. 
+        /// If a model compilation job failed, the reason it failed.
         public let failureReason: String
         /// The inference image to use when compiling a model.  Specify an image only if the target device is a cloud instance.
         public let inferenceImage: String?
@@ -8572,7 +8319,6 @@ extension SageMaker {
     }
 
     public struct DescribeContextRequest: AWSEncodableShape {
-
         /// The name of the context to describe.
         public let contextName: String
 
@@ -8592,7 +8338,6 @@ extension SageMaker {
     }
 
     public struct DescribeContextResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the context.
         public let contextArn: String?
         /// The name of the context.
@@ -8640,7 +8385,6 @@ extension SageMaker {
     }
 
     public struct DescribeDataQualityJobDefinitionRequest: AWSEncodableShape {
-
         /// The name of the data quality monitoring job definition to describe.
         public let jobDefinitionName: String
 
@@ -8660,7 +8404,6 @@ extension SageMaker {
     }
 
     public struct DescribeDataQualityJobDefinitionResponse: AWSDecodableShape {
-
         /// The time that the data quality monitoring job definition was created.
         public let creationTime: Date
         /// Information about the container that runs the data quality monitoring job.
@@ -8711,7 +8454,6 @@ extension SageMaker {
     }
 
     public struct DescribeDeviceFleetRequest: AWSEncodableShape {
-
         /// The name of the fleet.
         public let deviceFleetName: String
 
@@ -8731,7 +8473,6 @@ extension SageMaker {
     }
 
     public struct DescribeDeviceFleetResponse: AWSDecodableShape {
-
         /// Timestamp of when the device fleet was created.
         public let creationTime: Date
         /// A description of the fleet.
@@ -8773,7 +8514,6 @@ extension SageMaker {
     }
 
     public struct DescribeDeviceRequest: AWSEncodableShape {
-
         /// The name of the fleet the devices belong to.
         public let deviceFleetName: String
         /// The unique ID of the device.
@@ -8806,7 +8546,6 @@ extension SageMaker {
     }
 
     public struct DescribeDeviceResponse: AWSDecodableShape {
-
         /// A description of the device.
         public let description: String?
         /// The Amazon Resource Name (ARN) of the device.
@@ -8856,7 +8595,6 @@ extension SageMaker {
     }
 
     public struct DescribeDomainRequest: AWSEncodableShape {
-
         /// The domain ID.
         public let domainId: String
 
@@ -8874,14 +8612,13 @@ extension SageMaker {
     }
 
     public struct DescribeDomainResponse: AWSDecodableShape {
-
-        /// Specifies the VPC used for non-EFS traffic. The default value is PublicInternetOnly.    PublicInternetOnly - Non-EFS traffic is through a VPC managed by Amazon SageMaker, which allows direct internet access    VpcOnly - All Studio traffic is through the specified VPC and subnets  
+        /// Specifies the VPC used for non-EFS traffic. The default value is PublicInternetOnly.    PublicInternetOnly - Non-EFS traffic is through a VPC managed by Amazon SageMaker, which allows direct internet access    VpcOnly - All Studio traffic is through the specified VPC and subnets
         public let appNetworkAccessType: AppNetworkAccessType?
         /// The domain's authentication mode.
         public let authMode: AuthMode?
         /// The creation time.
         public let creationTime: Date?
-        /// Settings which are applied to UserProfiles in this domain if settings are not explicitly specified in a given UserProfile. 
+        /// Settings which are applied to UserProfiles in this domain if settings are not explicitly specified in a given UserProfile.
         public let defaultUserSettings: UserSettings?
         /// The domain's Amazon Resource Name (ARN).
         public let domainArn: String?
@@ -8952,7 +8689,6 @@ extension SageMaker {
     }
 
     public struct DescribeEdgePackagingJobRequest: AWSEncodableShape {
-
         /// The name of the edge packaging job.
         public let edgePackagingJobName: String
 
@@ -8972,7 +8708,6 @@ extension SageMaker {
     }
 
     public struct DescribeEdgePackagingJobResponse: AWSDecodableShape {
-
         /// The name of the SageMaker Neo compilation job that is used to locate model artifacts that are being packaged.
         public let compilationJobName: String?
         /// The timestamp of when the packaging job was created.
@@ -9042,7 +8777,6 @@ extension SageMaker {
     }
 
     public struct DescribeEndpointConfigInput: AWSEncodableShape {
-
         /// The name of the endpoint configuration.
         public let endpointConfigName: String
 
@@ -9061,7 +8795,6 @@ extension SageMaker {
     }
 
     public struct DescribeEndpointConfigOutput: AWSDecodableShape {
-
         /// A timestamp that shows when the endpoint configuration was created.
         public let creationTime: Date
         public let dataCaptureConfig: DataCaptureConfig?
@@ -9094,7 +8827,6 @@ extension SageMaker {
     }
 
     public struct DescribeEndpointInput: AWSEncodableShape {
-
         /// The name of the endpoint.
         public let endpointName: String
 
@@ -9113,7 +8845,6 @@ extension SageMaker {
     }
 
     public struct DescribeEndpointOutput: AWSDecodableShape {
-
         /// A timestamp that shows when the endpoint was created.
         public let creationTime: Date
         public let dataCaptureConfig: DataCaptureConfigSummary?
@@ -9123,15 +8854,15 @@ extension SageMaker {
         public let endpointConfigName: String
         /// Name of the endpoint.
         public let endpointName: String
-        /// The status of the endpoint.    OutOfService: Endpoint is not available to take incoming requests.    Creating: CreateEndpoint is executing.    Updating: UpdateEndpoint or UpdateEndpointWeightsAndCapacities is executing.    SystemUpdating: Endpoint is undergoing maintenance and cannot be updated or deleted or re-scaled until it has completed. This maintenance operation does not change any customer-specified values such as VPC config, KMS encryption, model, instance type, or instance count.    RollingBack: Endpoint fails to scale up or down or change its variant weight and is in the process of rolling back to its previous configuration. Once the rollback completes, endpoint returns to an InService status. This transitional status only applies to an endpoint that has autoscaling enabled and is undergoing variant weight or capacity changes as part of an UpdateEndpointWeightsAndCapacities call or when the UpdateEndpointWeightsAndCapacities operation is called explicitly.    InService: Endpoint is available to process incoming requests.    Deleting: DeleteEndpoint is executing.    Failed: Endpoint could not be created, updated, or re-scaled. Use DescribeEndpointOutput$FailureReason for information about the failure. DeleteEndpoint is the only operation that can be performed on a failed endpoint.  
+        /// The status of the endpoint.    OutOfService: Endpoint is not available to take incoming requests.    Creating: CreateEndpoint is executing.    Updating: UpdateEndpoint or UpdateEndpointWeightsAndCapacities is executing.    SystemUpdating: Endpoint is undergoing maintenance and cannot be updated or deleted or re-scaled until it has completed. This maintenance operation does not change any customer-specified values such as VPC config, KMS encryption, model, instance type, or instance count.    RollingBack: Endpoint fails to scale up or down or change its variant weight and is in the process of rolling back to its previous configuration. Once the rollback completes, endpoint returns to an InService status. This transitional status only applies to an endpoint that has autoscaling enabled and is undergoing variant weight or capacity changes as part of an UpdateEndpointWeightsAndCapacities call or when the UpdateEndpointWeightsAndCapacities operation is called explicitly.    InService: Endpoint is available to process incoming requests.    Deleting: DeleteEndpoint is executing.    Failed: Endpoint could not be created, updated, or re-scaled. Use DescribeEndpointOutput$FailureReason for information about the failure. DeleteEndpoint is the only operation that can be performed on a failed endpoint.
         public let endpointStatus: EndpointStatus
-        /// If the status of the endpoint is Failed, the reason why it failed. 
+        /// If the status of the endpoint is Failed, the reason why it failed.
         public let failureReason: String?
         /// The most recent deployment configuration for the endpoint.
         public let lastDeploymentConfig: DeploymentConfig?
         /// A timestamp that shows when the endpoint was last modified.
         public let lastModifiedTime: Date
-        ///  An array of ProductionVariantSummary objects, one for each model hosted behind this endpoint. 
+        ///  An array of ProductionVariantSummary objects, one for each model hosted behind this endpoint.
         public let productionVariants: [ProductionVariantSummary]?
 
         public init(creationTime: Date, dataCaptureConfig: DataCaptureConfigSummary? = nil, endpointArn: String, endpointConfigName: String, endpointName: String, endpointStatus: EndpointStatus, failureReason: String? = nil, lastDeploymentConfig: DeploymentConfig? = nil, lastModifiedTime: Date, productionVariants: [ProductionVariantSummary]? = nil) {
@@ -9162,7 +8893,6 @@ extension SageMaker {
     }
 
     public struct DescribeExperimentRequest: AWSEncodableShape {
-
         /// The name of the experiment to describe.
         public let experimentName: String
 
@@ -9182,7 +8912,6 @@ extension SageMaker {
     }
 
     public struct DescribeExperimentResponse: AWSDecodableShape {
-
         /// Who created the experiment.
         public let createdBy: UserContext?
         /// When the experiment was created.
@@ -9228,8 +8957,7 @@ extension SageMaker {
     }
 
     public struct DescribeFeatureGroupRequest: AWSEncodableShape {
-
-        /// The name of the FeatureGroup you want described. 
+        /// The name of the FeatureGroup you want described.
         public let featureGroupName: String
         /// A token to resume pagination of the list of Features (FeatureDefinitions). 2,500 Features are returned by default.
         public let nextToken: String?
@@ -9254,18 +8982,17 @@ extension SageMaker {
     }
 
     public struct DescribeFeatureGroupResponse: AWSDecodableShape {
-
         /// A timestamp indicating when SageMaker created the FeatureGroup.
         public let creationTime: Date
         /// A free form description of the feature group.
         public let description: String?
         /// The name of the feature that stores the EventTime of a Record in a FeatureGroup. An EventTime is a point in time when a new event occurs that corresponds to the creation or update of a Record in a FeatureGroup. All Records in the FeatureGroup have a corresponding EventTime.
         public let eventTimeFeatureName: String
-        /// The reason that the FeatureGroup failed to be replicated in the OfflineStore. This is failure can occur because:   The FeatureGroup could not be created in the OfflineStore.   The FeatureGroup could not be deleted from the OfflineStore.  
+        /// The reason that the FeatureGroup failed to be replicated in the OfflineStore. This is failure can occur because:   The FeatureGroup could not be created in the OfflineStore.   The FeatureGroup could not be deleted from the OfflineStore.
         public let failureReason: String?
         /// A list of the Features in the FeatureGroup.  Each feature is defined by a FeatureName and FeatureType.
         public let featureDefinitions: [FeatureDefinition]
-        /// The Amazon Resource Name (ARN) of the FeatureGroup.  
+        /// The Amazon Resource Name (ARN) of the FeatureGroup.
         public let featureGroupArn: String
         /// he name of the FeatureGroup.
         public let featureGroupName: String
@@ -9275,7 +9002,7 @@ extension SageMaker {
         public let nextToken: String
         /// The configuration of the OfflineStore, inducing the S3 location of the OfflineStore, Amazon Web Services Glue or Amazon Web Services Hive data catalogue configurations, and the security configuration.
         public let offlineStoreConfig: OfflineStoreConfig?
-        /// The status of the OfflineStore. Notifies you if replicating data into the OfflineStore has failed. Returns either: Active or Blocked 
+        /// The status of the OfflineStore. Notifies you if replicating data into the OfflineStore has failed. Returns either: Active or Blocked
         public let offlineStoreStatus: OfflineStoreStatus?
         /// The configuration for the OnlineStore.
         public let onlineStoreConfig: OnlineStoreConfig?
@@ -9320,7 +9047,6 @@ extension SageMaker {
     }
 
     public struct DescribeFlowDefinitionRequest: AWSEncodableShape {
-
         /// The name of the flow definition.
         public let flowDefinitionName: String
 
@@ -9340,7 +9066,6 @@ extension SageMaker {
     }
 
     public struct DescribeFlowDefinitionResponse: AWSDecodableShape {
-
         /// The timestamp when the flow definition was created.
         public let creationTime: Date
         /// The reason your flow definition failed.
@@ -9390,7 +9115,6 @@ extension SageMaker {
     }
 
     public struct DescribeHumanTaskUiRequest: AWSEncodableShape {
-
         /// The name of the human task user interface  (worker task template) you want information about.
         public let humanTaskUiName: String
 
@@ -9410,7 +9134,6 @@ extension SageMaker {
     }
 
     public struct DescribeHumanTaskUiResponse: AWSDecodableShape {
-
         /// The timestamp when the human task user interface was created.
         public let creationTime: Date
         /// The Amazon Resource Name (ARN) of the human task user interface (worker task template).
@@ -9439,7 +9162,6 @@ extension SageMaker {
     }
 
     public struct DescribeHyperParameterTuningJobRequest: AWSEncodableShape {
-
         /// The name of the tuning job.
         public let hyperParameterTuningJobName: String
 
@@ -9459,7 +9181,6 @@ extension SageMaker {
     }
 
     public struct DescribeHyperParameterTuningJobResponse: AWSDecodableShape {
-
         /// A TrainingJobSummary object that describes the training job that completed with the best current HyperParameterTuningJobObjective.
         public let bestTrainingJob: HyperParameterTrainingJobSummary?
         /// The date and time that the tuning job started.
@@ -9476,7 +9197,7 @@ extension SageMaker {
         public let hyperParameterTuningJobName: String
         /// The status of the tuning job: InProgress, Completed, Failed, Stopping, or Stopped.
         public let hyperParameterTuningJobStatus: HyperParameterTuningJobStatus
-        /// The date and time that the status of the tuning job was modified. 
+        /// The date and time that the status of the tuning job was modified.
         public let lastModifiedTime: Date?
         /// The ObjectiveStatusCounters object that specifies the number of training jobs, categorized by the status of their final objective metric, that this tuning job launched.
         public let objectiveStatusCounters: ObjectiveStatusCounters
@@ -9529,7 +9250,6 @@ extension SageMaker {
     }
 
     public struct DescribeImageRequest: AWSEncodableShape {
-
         /// The name of the image to describe.
         public let imageName: String
 
@@ -9549,7 +9269,6 @@ extension SageMaker {
     }
 
     public struct DescribeImageResponse: AWSDecodableShape {
-
         /// When the image was created.
         public let creationTime: Date?
         /// The description of the image.
@@ -9595,7 +9314,6 @@ extension SageMaker {
     }
 
     public struct DescribeImageVersionRequest: AWSEncodableShape {
-
         /// The name of the image.
         public let imageName: String
         /// The version of the image. If not specified, the latest version is described.
@@ -9620,7 +9338,6 @@ extension SageMaker {
     }
 
     public struct DescribeImageVersionResponse: AWSDecodableShape {
-
         /// The registry path of the container image on which this image version is based.
         public let baseImage: String?
         /// The registry path of the container image that contains this image version.
@@ -9666,7 +9383,6 @@ extension SageMaker {
     }
 
     public struct DescribeLabelingJobRequest: AWSEncodableShape {
-
         /// The name of the labeling job to return information for.
         public let labelingJobName: String
 
@@ -9686,10 +9402,9 @@ extension SageMaker {
     }
 
     public struct DescribeLabelingJobResponse: AWSDecodableShape {
-
         /// The date and time that the labeling job was created.
         public let creationTime: Date
-        /// If the job failed, the reason that it failed. 
+        /// If the job failed, the reason that it failed.
         public let failureReason: String?
         /// Configuration information required for human workers to complete a labeling task.
         public let humanTaskConfig: HumanTaskConfig
@@ -9699,9 +9414,9 @@ extension SageMaker {
         public let jobReferenceCode: String
         /// The attribute used as the label in the output manifest file.
         public let labelAttributeName: String?
-        /// The S3 location of the JSON file that defines the categories used to label data objects. Please note the following label-category limits:   Semantic segmentation labeling jobs using automated labeling: 20 labels   Box bounding labeling jobs (all): 10 labels   The file is a JSON structure in the following format:  {   "document-version": "2018-11-28"   "labels": [   {   "label": "label 1"   },   {   "label": "label 2"   },   ...   {   "label": "label n"   }   ]   } 
+        /// The S3 location of the JSON file that defines the categories used to label data objects. Please note the following label-category limits:   Semantic segmentation labeling jobs using automated labeling: 20 labels   Box bounding labeling jobs (all): 10 labels   The file is a JSON structure in the following format:  {   "document-version": "2018-11-28"   "labels": [   {   "label": "label 1"   },   {   "label": "label 2"   },   ...   {   "label": "label n"   }   ]   }
         public let labelCategoryConfigS3Uri: String?
-        /// Provides a breakdown of the number of data objects labeled by humans, the number of objects labeled by machine, the number of objects than couldn't be labeled, and the total number of objects labeled. 
+        /// Provides a breakdown of the number of data objects labeled by humans, the number of objects labeled by machine, the number of objects than couldn't be labeled, and the total number of objects labeled.
         public let labelCounters: LabelCounters
         /// Configuration information for automated data labeling.
         public let labelingJobAlgorithmsConfig: LabelingJobAlgorithmsConfig?
@@ -9711,7 +9426,7 @@ extension SageMaker {
         public let labelingJobName: String
         /// The location of the output produced by the labeling job.
         public let labelingJobOutput: LabelingJobOutput?
-        /// The processing status of the labeling job. 
+        /// The processing status of the labeling job.
         public let labelingJobStatus: LabelingJobStatus
         /// The date and time that the labeling job was last updated.
         public let lastModifiedTime: Date
@@ -9768,7 +9483,6 @@ extension SageMaker {
     }
 
     public struct DescribeModelBiasJobDefinitionRequest: AWSEncodableShape {
-
         /// The name of the model bias job definition. The name must be unique within an Amazon Web Services Region in the Amazon Web Services account.
         public let jobDefinitionName: String
 
@@ -9788,7 +9502,6 @@ extension SageMaker {
     }
 
     public struct DescribeModelBiasJobDefinitionResponse: AWSDecodableShape {
-
         /// The time at which the model bias job was created.
         public let creationTime: Date
         /// The Amazon Resource Name (ARN) of the model bias job.
@@ -9839,7 +9552,6 @@ extension SageMaker {
     }
 
     public struct DescribeModelExplainabilityJobDefinitionRequest: AWSEncodableShape {
-
         /// The name of the model explainability job definition. The name must be unique within an Amazon Web Services Region in the Amazon Web Services account.
         public let jobDefinitionName: String
 
@@ -9859,7 +9571,6 @@ extension SageMaker {
     }
 
     public struct DescribeModelExplainabilityJobDefinitionResponse: AWSDecodableShape {
-
         /// The time at which the model explainability job was created.
         public let creationTime: Date
         /// The Amazon Resource Name (ARN) of the model explainability job.
@@ -9910,7 +9621,6 @@ extension SageMaker {
     }
 
     public struct DescribeModelInput: AWSEncodableShape {
-
         /// The name of the model.
         public let modelName: String
 
@@ -9929,7 +9639,6 @@ extension SageMaker {
     }
 
     public struct DescribeModelOutput: AWSDecodableShape {
-
         /// The containers in the inference pipeline.
         public let containers: [ContainerDefinition]?
         /// A timestamp that shows when the model was created.
@@ -9944,9 +9653,9 @@ extension SageMaker {
         public let modelArn: String
         /// Name of the Amazon SageMaker model.
         public let modelName: String
-        /// The location of the primary inference code, associated artifacts, and custom environment map that the inference code uses when it is deployed in production. 
+        /// The location of the primary inference code, associated artifacts, and custom environment map that the inference code uses when it is deployed in production.
         public let primaryContainer: ContainerDefinition?
-        /// A VpcConfig object that specifies the VPC that this model has access to. For more information, see Protect Endpoints by Using an Amazon Virtual Private Cloud 
+        /// A VpcConfig object that specifies the VPC that this model has access to. For more information, see Protect Endpoints by Using an Amazon Virtual Private Cloud
         public let vpcConfig: VpcConfig?
 
         public init(containers: [ContainerDefinition]? = nil, creationTime: Date, enableNetworkIsolation: Bool? = nil, executionRoleArn: String, inferenceExecutionConfig: InferenceExecutionConfig? = nil, modelArn: String, modelName: String, primaryContainer: ContainerDefinition? = nil, vpcConfig: VpcConfig? = nil) {
@@ -9975,7 +9684,6 @@ extension SageMaker {
     }
 
     public struct DescribeModelPackageGroupInput: AWSEncodableShape {
-
         /// The name of the model group to describe.
         public let modelPackageGroupName: String
 
@@ -9995,7 +9703,6 @@ extension SageMaker {
     }
 
     public struct DescribeModelPackageGroupOutput: AWSDecodableShape {
-
         public let createdBy: UserContext
         /// The time that the model group was created.
         public let creationTime: Date
@@ -10028,7 +9735,6 @@ extension SageMaker {
     }
 
     public struct DescribeModelPackageInput: AWSEncodableShape {
-
         /// The name or Amazon Resource Name (ARN) of the model package to describe. When you specify a name, the name must have 1 to 63 characters. Valid characters are a-z, A-Z, 0-9, and - (hyphen).
         public let modelPackageName: String
 
@@ -10048,7 +9754,6 @@ extension SageMaker {
     }
 
     public struct DescribeModelPackageOutput: AWSDecodableShape {
-
         /// A description provided for the model approval.
         public let approvalDescription: String?
         /// Whether the model package is certified for listing on Amazon Web Services Marketplace.
@@ -10131,7 +9836,6 @@ extension SageMaker {
     }
 
     public struct DescribeModelQualityJobDefinitionRequest: AWSEncodableShape {
-
         /// The name of the model quality job. The name must be unique within an Amazon Web Services Region in the Amazon Web Services account.
         public let jobDefinitionName: String
 
@@ -10151,7 +9855,6 @@ extension SageMaker {
     }
 
     public struct DescribeModelQualityJobDefinitionResponse: AWSDecodableShape {
-
         /// The time at which the model quality job was created.
         public let creationTime: Date
         /// The Amazon Resource Name (ARN) of the model quality job.
@@ -10202,7 +9905,6 @@ extension SageMaker {
     }
 
     public struct DescribeMonitoringScheduleRequest: AWSEncodableShape {
-
         /// Name of a previously created monitoring schedule.
         public let monitoringScheduleName: String
 
@@ -10222,7 +9924,6 @@ extension SageMaker {
     }
 
     public struct DescribeMonitoringScheduleResponse: AWSDecodableShape {
-
         /// The time at which the monitoring job was created.
         public let creationTime: Date
         ///  The name of the endpoint for the monitoring job.
@@ -10241,7 +9942,7 @@ extension SageMaker {
         public let monitoringScheduleName: String
         /// The status of an monitoring job.
         public let monitoringScheduleStatus: ScheduleStatus
-        /// The type of the monitoring job that this schedule runs. This is one of the following values.    DATA_QUALITY - The schedule is for a data quality monitoring job.    MODEL_QUALITY - The schedule is for a model quality monitoring job.    MODEL_BIAS - The schedule is for a bias monitoring job.    MODEL_EXPLAINABILITY - The schedule is for an explainability monitoring job.  
+        /// The type of the monitoring job that this schedule runs. This is one of the following values.    DATA_QUALITY - The schedule is for a data quality monitoring job.    MODEL_QUALITY - The schedule is for a model quality monitoring job.    MODEL_BIAS - The schedule is for a bias monitoring job.    MODEL_EXPLAINABILITY - The schedule is for an explainability monitoring job.
         public let monitoringType: MonitoringType?
 
         public init(creationTime: Date, endpointName: String? = nil, failureReason: String? = nil, lastModifiedTime: Date, lastMonitoringExecutionSummary: MonitoringExecutionSummary? = nil, monitoringScheduleArn: String, monitoringScheduleConfig: MonitoringScheduleConfig, monitoringScheduleName: String, monitoringScheduleStatus: ScheduleStatus, monitoringType: MonitoringType? = nil) {
@@ -10272,7 +9973,6 @@ extension SageMaker {
     }
 
     public struct DescribeNotebookInstanceInput: AWSEncodableShape {
-
         /// The name of the notebook instance that you want information about.
         public let notebookInstanceName: String
 
@@ -10291,7 +9991,6 @@ extension SageMaker {
     }
 
     public struct DescribeNotebookInstanceLifecycleConfigInput: AWSEncodableShape {
-
         /// The name of the lifecycle configuration to describe.
         public let notebookInstanceLifecycleConfigName: String
 
@@ -10310,7 +10009,6 @@ extension SageMaker {
     }
 
     public struct DescribeNotebookInstanceLifecycleConfigOutput: AWSDecodableShape {
-
         /// A timestamp that tells when the lifecycle configuration was created.
         public let creationTime: Date?
         /// A timestamp that tells when the lifecycle configuration was last modified.
@@ -10344,7 +10042,6 @@ extension SageMaker {
     }
 
     public struct DescribeNotebookInstanceOutput: AWSDecodableShape {
-
         /// A list of the Elastic Inference (EI) instance types associated with this notebook instance. Currently only one EI instance type can be associated with a notebook instance. For more information, see Using Elastic Inference in Amazon SageMaker.
         public let acceleratorTypes: [NotebookInstanceAcceleratorType]?
         /// An array of up to three Git repositories associated with the notebook instance. These can be either the names of Git repositories stored as resources in your account, or the URL of Git repositories in Amazon Web Services CodeCommit or in any other Git repository. These repositories are cloned at the same level as the default repository of your notebook instance. For more information, see Associating Git Repositories with Amazon SageMaker Notebook Instances.
@@ -10359,29 +10056,29 @@ extension SageMaker {
         public let failureReason: String?
         /// The type of ML compute instance running on the notebook instance.
         public let instanceType: InstanceType?
-        /// The Amazon Web Services KMS key ID Amazon SageMaker uses to encrypt data when storing it on the ML storage volume attached to the instance. 
+        /// The Amazon Web Services KMS key ID Amazon SageMaker uses to encrypt data when storing it on the ML storage volume attached to the instance.
         public let kmsKeyId: String?
-        /// A timestamp. Use this parameter to retrieve the time when the notebook instance was last modified. 
+        /// A timestamp. Use this parameter to retrieve the time when the notebook instance was last modified.
         public let lastModifiedTime: Date?
-        /// The network interface IDs that Amazon SageMaker created at the time of creating the instance. 
+        /// The network interface IDs that Amazon SageMaker created at the time of creating the instance.
         public let networkInterfaceId: String?
         /// The Amazon Resource Name (ARN) of the notebook instance.
         public let notebookInstanceArn: String?
-        /// Returns the name of a notebook instance lifecycle configuration. For information about notebook instance lifestyle configurations, see Step 2.1: (Optional) Customize a Notebook Instance 
+        /// Returns the name of a notebook instance lifecycle configuration. For information about notebook instance lifestyle configurations, see Step 2.1: (Optional) Customize a Notebook Instance
         public let notebookInstanceLifecycleConfigName: String?
-        /// The name of the Amazon SageMaker notebook instance. 
+        /// The name of the Amazon SageMaker notebook instance.
         public let notebookInstanceName: String?
         /// The status of the notebook instance.
         public let notebookInstanceStatus: NotebookInstanceStatus?
-        /// The Amazon Resource Name (ARN) of the IAM role associated with the instance. 
+        /// The Amazon Resource Name (ARN) of the IAM role associated with the instance.
         public let roleArn: String?
-        /// Whether root access is enabled or disabled for users of the notebook instance.  Lifecycle configurations need root access to be able to set up a notebook instance. Because of this, lifecycle configurations associated with a notebook instance always run with root access even if you disable root access for users. 
+        /// Whether root access is enabled or disabled for users of the notebook instance.  Lifecycle configurations need root access to be able to set up a notebook instance. Because of this, lifecycle configurations associated with a notebook instance always run with root access even if you disable root access for users.
         public let rootAccess: RootAccess?
         /// The IDs of the VPC security groups.
         public let securityGroups: [String]?
         /// The ID of the VPC subnet.
         public let subnetId: String?
-        /// The URL that you use to connect to the Jupyter notebook that is running in your notebook instance. 
+        /// The URL that you use to connect to the Jupyter notebook that is running in your notebook instance.
         public let url: String?
         /// The size, in GB, of the ML storage volume attached to the notebook instance.
         public let volumeSizeInGB: Int?
@@ -10434,7 +10131,6 @@ extension SageMaker {
     }
 
     public struct DescribePipelineDefinitionForExecutionRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the pipeline execution.
         public let pipelineExecutionArn: String
 
@@ -10453,7 +10149,6 @@ extension SageMaker {
     }
 
     public struct DescribePipelineDefinitionForExecutionResponse: AWSDecodableShape {
-
         /// The time when the pipeline was created.
         public let creationTime: Date?
         /// The JSON pipeline definition.
@@ -10471,7 +10166,6 @@ extension SageMaker {
     }
 
     public struct DescribePipelineExecutionRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the pipeline execution.
         public let pipelineExecutionArn: String
 
@@ -10490,7 +10184,6 @@ extension SageMaker {
     }
 
     public struct DescribePipelineExecutionResponse: AWSDecodableShape {
-
         public let createdBy: UserContext?
         /// The time when the pipeline execution was created.
         public let creationTime: Date?
@@ -10541,7 +10234,6 @@ extension SageMaker {
     }
 
     public struct DescribePipelineRequest: AWSEncodableShape {
-
         /// The name of the pipeline to describe.
         public let pipelineName: String
 
@@ -10561,7 +10253,6 @@ extension SageMaker {
     }
 
     public struct DescribePipelineResponse: AWSDecodableShape {
-
         public let createdBy: UserContext?
         /// The time when the pipeline was created.
         public let creationTime: Date?
@@ -10617,7 +10308,6 @@ extension SageMaker {
     }
 
     public struct DescribeProcessingJobRequest: AWSEncodableShape {
-
         /// The name of the processing job. The name must be unique within an Amazon Web Services Region in the Amazon Web Services account.
         public let processingJobName: String
 
@@ -10637,7 +10327,6 @@ extension SageMaker {
     }
 
     public struct DescribeProcessingJobResponse: AWSDecodableShape {
-
         /// Configures the processing job to run a specified container image.
         public let appSpecification: AppSpecification
         /// The ARN of an AutoML job associated with this processing job.
@@ -10731,7 +10420,6 @@ extension SageMaker {
     }
 
     public struct DescribeProjectInput: AWSEncodableShape {
-
         /// The name of the project to describe.
         public let projectName: String
 
@@ -10751,7 +10439,6 @@ extension SageMaker {
     }
 
     public struct DescribeProjectOutput: AWSDecodableShape {
-
         public let createdBy: UserContext?
         /// The time when the project was created.
         public let creationTime: Date
@@ -10796,7 +10483,6 @@ extension SageMaker {
     }
 
     public struct DescribeSubscribedWorkteamRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the subscribed work team to describe.
         public let workteamArn: String
 
@@ -10815,7 +10501,6 @@ extension SageMaker {
     }
 
     public struct DescribeSubscribedWorkteamResponse: AWSDecodableShape {
-
         /// A Workteam instance that contains information about the work team.
         public let subscribedWorkteam: SubscribedWorkteam
 
@@ -10829,7 +10514,6 @@ extension SageMaker {
     }
 
     public struct DescribeTrainingJobRequest: AWSEncodableShape {
-
         /// The name of the training job.
         public let trainingJobName: String
 
@@ -10849,8 +10533,7 @@ extension SageMaker {
     }
 
     public struct DescribeTrainingJobResponse: AWSDecodableShape {
-
-        /// Information about the algorithm used for training, and algorithm metadata. 
+        /// Information about the algorithm used for training, and algorithm metadata.
         public let algorithmSpecification: AlgorithmSpecification
         /// The Amazon Resource Name (ARN) of an AutoML job.
         public let autoMLJobArn: String?
@@ -10873,21 +10556,21 @@ extension SageMaker {
         /// The environment variables to set in the Docker container.
         public let environment: [String: String]?
         public let experimentConfig: ExperimentConfig?
-        /// If the training job failed, the reason it failed. 
+        /// If the training job failed, the reason it failed.
         public let failureReason: String?
         /// A collection of MetricData objects that specify the names, values, and dates and times that the training algorithm emitted to Amazon CloudWatch.
         public let finalMetricDataList: [MetricData]?
-        /// Algorithm-specific parameters. 
+        /// Algorithm-specific parameters.
         public let hyperParameters: [String: String]?
-        /// An array of Channel objects that describes each data input channel. 
+        /// An array of Channel objects that describes each data input channel.
         public let inputDataConfig: [Channel]?
         /// The Amazon Resource Name (ARN) of the Amazon SageMaker Ground Truth labeling job that created the transform or training job.
         public let labelingJobArn: String?
         /// A timestamp that indicates when the status of the training job was last modified.
         public let lastModifiedTime: Date?
-        /// Information about the Amazon S3 location that is configured for storing model artifacts. 
+        /// Information about the Amazon S3 location that is configured for storing model artifacts.
         public let modelArtifacts: ModelArtifacts
-        /// The S3 path where model artifacts that you configured when creating the job are stored. Amazon SageMaker creates subfolders for model artifacts. 
+        /// The S3 path where model artifacts that you configured when creating the job are stored. Amazon SageMaker creates subfolders for model artifacts.
         public let outputDataConfig: OutputDataConfig?
         public let profilerConfig: ProfilerConfig?
         /// Configuration information for Debugger rules for profiling system and framework metrics.
@@ -10896,26 +10579,26 @@ extension SageMaker {
         public let profilerRuleEvaluationStatuses: [ProfilerRuleEvaluationStatus]?
         /// Profiling status of a training job.
         public let profilingStatus: ProfilingStatus?
-        /// Resources, including ML compute instances and ML storage volumes, that are configured for model training. 
+        /// Resources, including ML compute instances and ML storage volumes, that are configured for model training.
         public let resourceConfig: ResourceConfig
         /// The number of times to retry the job when the job fails due to an InternalServerError.
         public let retryStrategy: RetryStrategy?
-        /// The Amazon Web Services Identity and Access Management (IAM) role configured for the training job. 
+        /// The Amazon Web Services Identity and Access Management (IAM) role configured for the training job.
         public let roleArn: String?
-        ///  Provides detailed information about the state of the training job. For detailed information on the secondary status of the training job, see StatusMessage under SecondaryStatusTransition. Amazon SageMaker provides primary statuses and secondary statuses that apply to each of them:  InProgress     Starting - Starting the training job.    Downloading - An optional stage for algorithms that support File training input mode. It indicates that data is being downloaded to the ML storage volumes.    Training - Training is in progress.    Interrupted - The job stopped because the managed spot training instances were interrupted.     Uploading - Training is complete and the model artifacts are being uploaded to the S3 location.    Completed     Completed - The training job has completed.    Failed     Failed - The training job has failed. The reason for the failure is returned in the FailureReason field of DescribeTrainingJobResponse.    Stopped     MaxRuntimeExceeded - The job stopped because it exceeded the maximum allowed runtime.    MaxWaitTimeExceeded - The job stopped because it exceeded the maximum allowed wait time.    Stopped - The training job has stopped.    Stopping     Stopping - Stopping the training job.       Valid values for SecondaryStatus are subject to change.   We no longer support the following secondary statuses:    LaunchingMLInstances     PreparingTraining     DownloadingTrainingImage   
+        ///  Provides detailed information about the state of the training job. For detailed information on the secondary status of the training job, see StatusMessage under SecondaryStatusTransition. Amazon SageMaker provides primary statuses and secondary statuses that apply to each of them:  InProgress     Starting - Starting the training job.    Downloading - An optional stage for algorithms that support File training input mode. It indicates that data is being downloaded to the ML storage volumes.    Training - Training is in progress.    Interrupted - The job stopped because the managed spot training instances were interrupted.     Uploading - Training is complete and the model artifacts are being uploaded to the S3 location.    Completed     Completed - The training job has completed.    Failed     Failed - The training job has failed. The reason for the failure is returned in the FailureReason field of DescribeTrainingJobResponse.    Stopped     MaxRuntimeExceeded - The job stopped because it exceeded the maximum allowed runtime.    MaxWaitTimeExceeded - The job stopped because it exceeded the maximum allowed wait time.    Stopped - The training job has stopped.    Stopping     Stopping - Stopping the training job.       Valid values for SecondaryStatus are subject to change.   We no longer support the following secondary statuses:    LaunchingMLInstances     PreparingTraining     DownloadingTrainingImage
         public let secondaryStatus: SecondaryStatus
         /// A history of all of the secondary statuses that the training job has transitioned through.
         public let secondaryStatusTransitions: [SecondaryStatusTransition]?
-        /// Specifies a limit to how long a model training job can run. It also specifies how long a managed Spot training job has to complete. When the job reaches the time limit, Amazon SageMaker ends the training job. Use this API to cap model training costs. To stop a job, Amazon SageMaker sends the algorithm the SIGTERM signal, which delays job termination for 120 seconds. Algorithms can use this 120-second window to save the model artifacts, so the results of training are not lost. 
+        /// Specifies a limit to how long a model training job can run. It also specifies how long a managed Spot training job has to complete. When the job reaches the time limit, Amazon SageMaker ends the training job. Use this API to cap model training costs. To stop a job, Amazon SageMaker sends the algorithm the SIGTERM signal, which delays job termination for 120 seconds. Algorithms can use this 120-second window to save the model artifacts, so the results of training are not lost.
         public let stoppingCondition: StoppingCondition
         public let tensorBoardOutputConfig: TensorBoardOutputConfig?
         /// Indicates the time when the training job ends on training instances. You are billed for the time interval between the value of TrainingStartTime and this time. For successful jobs and stopped jobs, this is the time after model artifacts are uploaded. For failed jobs, this is the time when Amazon SageMaker detects a job failure.
         public let trainingEndTime: Date?
         /// The Amazon Resource Name (ARN) of the training job.
         public let trainingJobArn: String
-        ///  Name of the model training job. 
+        ///  Name of the model training job.
         public let trainingJobName: String
-        /// The status of the training job. Amazon SageMaker provides the following training job statuses:    InProgress - The training is in progress.    Completed - The training job has completed.    Failed - The training job has failed. To see the reason for the failure, see the FailureReason field in the response to a DescribeTrainingJobResponse call.    Stopping - The training job is stopping.    Stopped - The training job has stopped.   For more detailed information, see SecondaryStatus. 
+        /// The status of the training job. Amazon SageMaker provides the following training job statuses:    InProgress - The training is in progress.    Completed - The training job has completed.    Failed - The training job has failed. To see the reason for the failure, see the FailureReason field in the response to a DescribeTrainingJobResponse call.    Stopping - The training job is stopping.    Stopped - The training job has stopped.   For more detailed information, see SecondaryStatus.
         public let trainingJobStatus: TrainingJobStatus
         /// Indicates the time when the training job starts on training instances. You are billed for the time interval between this time and the value of TrainingEndTime. The start time in CloudWatch Logs might be later than this time. The difference is due to the time it takes to download the training data and to the size of the training container.
         public let trainingStartTime: Date?
@@ -11014,7 +10697,6 @@ extension SageMaker {
     }
 
     public struct DescribeTransformJobRequest: AWSEncodableShape {
-
         /// The name of the transform job that you want to view details of.
         public let transformJobName: String
 
@@ -11034,7 +10716,6 @@ extension SageMaker {
     }
 
     public struct DescribeTransformJobResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the AutoML transform job.
         public let autoMLJobArn: String?
         /// Specifies the number of records to include in a mini-batch for an HTTP inference request. A record is a single unit of input data that inference can be made on. For example, a single line in a CSV file is a record.  To enable the batch strategy, you must set SplitType to Line, RecordIO, or TFRecord.
@@ -11122,7 +10803,6 @@ extension SageMaker {
     }
 
     public struct DescribeTrialComponentRequest: AWSEncodableShape {
-
         /// The name of the trial component to describe.
         public let trialComponentName: String
 
@@ -11142,7 +10822,6 @@ extension SageMaker {
     }
 
     public struct DescribeTrialComponentResponse: AWSDecodableShape {
-
         /// Who created the component.
         public let createdBy: UserContext?
         /// When the component was created.
@@ -11168,7 +10847,7 @@ extension SageMaker {
         public let source: TrialComponentSource?
         /// When the component started.
         public let startTime: Date?
-        /// The status of the component. States include:   InProgress   Completed   Failed  
+        /// The status of the component. States include:   InProgress   Completed   Failed
         public let status: TrialComponentStatus?
         /// The Amazon Resource Name (ARN) of the trial component.
         public let trialComponentArn: String?
@@ -11215,7 +10894,6 @@ extension SageMaker {
     }
 
     public struct DescribeTrialRequest: AWSEncodableShape {
-
         /// The name of the trial to describe.
         public let trialName: String
 
@@ -11235,7 +10913,6 @@ extension SageMaker {
     }
 
     public struct DescribeTrialResponse: AWSDecodableShape {
-
         /// Who created the trial.
         public let createdBy: UserContext?
         /// When the trial was created.
@@ -11284,7 +10961,6 @@ extension SageMaker {
     }
 
     public struct DescribeUserProfileRequest: AWSEncodableShape {
-
         /// The domain ID.
         public let domainId: String
         /// The user profile name. This value is not case sensitive.
@@ -11308,7 +10984,6 @@ extension SageMaker {
     }
 
     public struct DescribeUserProfileResponse: AWSDecodableShape {
-
         /// The creation time.
         public let creationTime: Date?
         /// The ID of the domain that contains the profile.
@@ -11362,8 +11037,7 @@ extension SageMaker {
     }
 
     public struct DescribeWorkforceRequest: AWSEncodableShape {
-
-        /// The name of the private workforce whose access you want to restrict. WorkforceName is automatically set to default when a workforce is created and cannot be modified. 
+        /// The name of the private workforce whose access you want to restrict. WorkforceName is automatically set to default when a workforce is created and cannot be modified.
         public let workforceName: String
 
         public init(workforceName: String) {
@@ -11382,7 +11056,6 @@ extension SageMaker {
     }
 
     public struct DescribeWorkforceResponse: AWSDecodableShape {
-
         /// A single private workforce, which is automatically created when you create your first private work team. You can create one private work force in each Amazon Web Services Region. By default, any workforce-related API operation used in a specific region will apply to the workforce created in that region. To learn how to create a private workforce, see Create a Private Workforce.
         public let workforce: Workforce
 
@@ -11396,7 +11069,6 @@ extension SageMaker {
     }
 
     public struct DescribeWorkteamRequest: AWSEncodableShape {
-
         /// The name of the work team to return a description of.
         public let workteamName: String
 
@@ -11416,8 +11088,7 @@ extension SageMaker {
     }
 
     public struct DescribeWorkteamResponse: AWSDecodableShape {
-
-        /// A Workteam instance that contains information about the work team. 
+        /// A Workteam instance that contains information about the work team.
         public let workteam: Workteam
 
         public init(workteam: Workteam) {
@@ -11430,7 +11101,6 @@ extension SageMaker {
     }
 
     public struct DesiredWeightAndCapacity: AWSEncodableShape {
-
         /// The variant's capacity.
         public let desiredInstanceCount: Int?
         /// The variant's weight.
@@ -11459,7 +11129,6 @@ extension SageMaker {
     }
 
     public struct Device: AWSEncodableShape {
-
         /// Description of the device.
         public let description: String?
         /// The name of the device.
@@ -11492,7 +11161,6 @@ extension SageMaker {
     }
 
     public struct DeviceFleetSummary: AWSDecodableShape {
-
         /// Timestamp of when the device fleet was created.
         public let creationTime: Date?
         /// Amazon Resource Name (ARN) of the device fleet.
@@ -11518,7 +11186,6 @@ extension SageMaker {
     }
 
     public struct DeviceStats: AWSDecodableShape {
-
         /// The number of devices connected with a heartbeat.
         public let connectedDeviceCount: Int64
         /// The number of registered devices.
@@ -11536,7 +11203,6 @@ extension SageMaker {
     }
 
     public struct DeviceSummary: AWSDecodableShape {
-
         /// A description of the device.
         public let description: String?
         /// Amazon Resource Name (ARN) of the device.
@@ -11578,23 +11244,14 @@ extension SageMaker {
     }
 
     public struct DisableSagemakerServicecatalogPortfolioInput: AWSEncodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DisableSagemakerServicecatalogPortfolioOutput: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DisassociateTrialComponentRequest: AWSEncodableShape {
-
         /// The name of the component to disassociate from the trial.
         public let trialComponentName: String
         /// The name of the trial to disassociate from.
@@ -11621,7 +11278,6 @@ extension SageMaker {
     }
 
     public struct DisassociateTrialComponentResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the trial.
         public let trialArn: String?
         /// The ARN of the trial component.
@@ -11639,7 +11295,6 @@ extension SageMaker {
     }
 
     public struct DomainDetails: AWSDecodableShape {
-
         /// The creation time.
         public let creationTime: Date?
         /// The domain's Amazon Resource Name (ARN).
@@ -11677,7 +11332,6 @@ extension SageMaker {
     }
 
     public struct EdgeModel: AWSDecodableShape {
-
         /// The timestamp of the last inference that was made.
         public let latestInference: Date?
         /// The timestamp of the last data sample taken.
@@ -11703,10 +11357,9 @@ extension SageMaker {
     }
 
     public struct EdgeModelStat: AWSDecodableShape {
-
         /// The number of devices that have this model version, a heart beat, and are currently running.
         public let activeDeviceCount: Int64
-        /// The number of devices that have this model version and have a heart beat. 
+        /// The number of devices that have this model version and have a heart beat.
         public let connectedDeviceCount: Int64
         /// The name of the model.
         public let modelName: String
@@ -11737,7 +11390,6 @@ extension SageMaker {
     }
 
     public struct EdgeModelSummary: AWSDecodableShape {
-
         /// The name of the model.
         public let modelName: String
         /// The version model.
@@ -11755,10 +11407,9 @@ extension SageMaker {
     }
 
     public struct EdgeOutputConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// The Amazon Web Services Key Management Service (Amazon Web Services KMS) key that Amazon SageMaker uses to encrypt data on the storage volume after compilation job.  If you don't provide a KMS key ID, Amazon SageMaker uses the default KMS key for Amazon S3 for your role's account.
         public let kmsKeyId: String?
-        /// The configuration used to create deployment artifacts.  Specify configuration options with a JSON string. The available configuration options for each type are:    ComponentName (optional) - Name of the GreenGrass V2 component. If not specified, the default name generated consists of "SagemakerEdgeManager" and the name of your SageMaker Edge Manager packaging job.    ComponentDescription (optional) - Description of the component.    ComponentVersion (optional) - The version of the component.  Amazon Web Services IoT Greengrass uses semantic versions for components. Semantic versions follow a major.minor.patch number system. For example, version 1.0.0 represents the first major release for a component. For more information, see the semantic version specification.     PlatformOS (optional) - The name of the operating system for the platform. Supported platforms include Windows and Linux.    PlatformArchitecture (optional) - The processor architecture for the platform.  Supported architectures Windows include: Windows32_x86, Windows64_x64. Supported architectures for Linux include: Linux x86_64, Linux ARMV8.  
+        /// The configuration used to create deployment artifacts.  Specify configuration options with a JSON string. The available configuration options for each type are:    ComponentName (optional) - Name of the GreenGrass V2 component. If not specified, the default name generated consists of "SagemakerEdgeManager" and the name of your SageMaker Edge Manager packaging job.    ComponentDescription (optional) - Description of the component.    ComponentVersion (optional) - The version of the component.  Amazon Web Services IoT Greengrass uses semantic versions for components. Semantic versions follow a major.minor.patch number system. For example, version 1.0.0 represents the first major release for a component. For more information, see the semantic version specification.     PlatformOS (optional) - The name of the operating system for the platform. Supported platforms include Windows and Linux.    PlatformArchitecture (optional) - The processor architecture for the platform.  Supported architectures Windows include: Windows32_x86, Windows64_x64. Supported architectures for Linux include: Linux x86_64, Linux ARMV8.
         public let presetDeploymentConfig: String?
         /// The deployment type SageMaker Edge Manager will create.  Currently only supports Amazon Web Services IoT Greengrass Version 2 components.
         public let presetDeploymentType: EdgePresetDeploymentType?
@@ -11788,7 +11439,6 @@ extension SageMaker {
     }
 
     public struct EdgePackagingJobSummary: AWSDecodableShape {
-
         /// The name of the SageMaker Neo compilation job.
         public let compilationJobName: String?
         /// The timestamp of when the job was created.
@@ -11830,7 +11480,6 @@ extension SageMaker {
     }
 
     public struct EdgePresetDeploymentOutput: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the generated deployable resource.
         public let artifact: String?
         /// The status of the deployable resource.
@@ -11856,23 +11505,14 @@ extension SageMaker {
     }
 
     public struct EnableSagemakerServicecatalogPortfolioInput: AWSEncodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct EnableSagemakerServicecatalogPortfolioOutput: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct Endpoint: AWSDecodableShape {
-
         /// The time that the endpoint was created.
         public let creationTime: Date
         public let dataCaptureConfig: DataCaptureConfigSummary?
@@ -11925,7 +11565,6 @@ extension SageMaker {
     }
 
     public struct EndpointConfigSummary: AWSDecodableShape {
-
         /// A timestamp that shows when the endpoint configuration was created.
         public let creationTime: Date
         /// The Amazon Resource Name (ARN) of the endpoint configuration.
@@ -11947,7 +11586,6 @@ extension SageMaker {
     }
 
     public struct EndpointInput: AWSEncodableShape & AWSDecodableShape {
-
         /// An endpoint in customer's account which has enabled DataCaptureConfig enabled.
         public let endpointName: String
         /// If specified, monitoring jobs substract this time from the end time. For information about using offsets for scheduling monitoring jobs, see Schedule Model Quality Monitoring Jobs.
@@ -11962,7 +11600,7 @@ extension SageMaker {
         public let probabilityAttribute: String?
         /// The threshold for the class probability to be evaluated as a positive result.
         public let probabilityThresholdAttribute: Double?
-        /// Whether input data distributed in Amazon S3 is fully replicated or sharded by an S3 key. Defaults to FullyReplicated 
+        /// Whether input data distributed in Amazon S3 is fully replicated or sharded by an S3 key. Defaults to FullyReplicated
         public let s3DataDistributionType: ProcessingS3DataDistributionType?
         /// Whether the Pipe or File is used as the input mode for transfering data for the monitoring job. Pipe mode is recommended for large datasets. File mode is useful for small files that fit in memory. Defaults to File.
         public let s3InputMode: ProcessingS3InputMode?
@@ -12010,7 +11648,6 @@ extension SageMaker {
     }
 
     public struct EndpointSummary: AWSDecodableShape {
-
         /// A timestamp that shows when the endpoint was created.
         public let creationTime: Date
         /// The Amazon Resource Name (ARN) of the endpoint.
@@ -12040,7 +11677,6 @@ extension SageMaker {
     }
 
     public struct Experiment: AWSDecodableShape {
-
         public let createdBy: UserContext?
         /// When the experiment was created.
         public let creationTime: Date?
@@ -12087,7 +11723,6 @@ extension SageMaker {
     }
 
     public struct ExperimentConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of an existing experiment to associate the trial component with.
         public let experimentName: String?
         /// The display name for the trial component. If this key isn't specified, the display name is the trial component name.
@@ -12121,7 +11756,6 @@ extension SageMaker {
     }
 
     public struct ExperimentSource: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the source.
         public let sourceArn: String
         /// The source type.
@@ -12139,7 +11773,6 @@ extension SageMaker {
     }
 
     public struct ExperimentSummary: AWSDecodableShape {
-
         /// When the experiment was created.
         public let creationTime: Date?
         /// The name of the experiment as displayed. If DisplayName isn't specified, ExperimentName is displayed.
@@ -12172,7 +11805,6 @@ extension SageMaker {
     }
 
     public struct Explainability: AWSEncodableShape & AWSDecodableShape {
-
         /// The explainability report for a model.
         public let report: MetricsSource?
 
@@ -12190,7 +11822,6 @@ extension SageMaker {
     }
 
     public struct FeatureDefinition: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of a feature. The type must be a string. FeatureName cannot be any of the following: is_deleted, write_time, api_invocation_time.
         public let featureName: String?
         /// The value type of a feature. Valid values are Integral, Fractional, or String.
@@ -12214,7 +11845,6 @@ extension SageMaker {
     }
 
     public struct FeatureGroup: AWSDecodableShape {
-
         /// The time a FeatureGroup was created.
         public let creationTime: Date?
         /// A free form description of a FeatureGroup.
@@ -12277,14 +11907,13 @@ extension SageMaker {
     }
 
     public struct FeatureGroupSummary: AWSDecodableShape {
-
         /// A timestamp indicating the time of creation time of the FeatureGroup.
         public let creationTime: Date
         /// Unique identifier for the FeatureGroup.
         public let featureGroupArn: String
         /// The name of FeatureGroup.
         public let featureGroupName: String
-        /// The status of a FeatureGroup. The status can be any of the following: Creating, Created, CreateFail, Deleting or DetailFail. 
+        /// The status of a FeatureGroup. The status can be any of the following: Creating, Created, CreateFail, Deleting or DetailFail.
         public let featureGroupStatus: FeatureGroupStatus?
         /// Notifies you if replicating data into the OfflineStore has failed. Returns either: Active or Blocked.
         public let offlineStoreStatus: OfflineStoreStatus?
@@ -12307,7 +11936,6 @@ extension SageMaker {
     }
 
     public struct FileSystemConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// The default POSIX group ID (GID). If not specified, defaults to 100.
         public let defaultGid: Int?
         /// The default POSIX user ID (UID). If not specified, defaults to 1000.
@@ -12338,14 +11966,13 @@ extension SageMaker {
     }
 
     public struct FileSystemDataSource: AWSEncodableShape & AWSDecodableShape {
-
         /// The full path to the directory to associate with the channel.
         public let directoryPath: String
         /// The access mode of the mount of the directory associated with the channel. A directory can be mounted either in ro (read-only) or rw (read-write) mode.
         public let fileSystemAccessMode: FileSystemAccessMode
         /// The file system id.
         public let fileSystemId: String
-        /// The file system type. 
+        /// The file system type.
         public let fileSystemType: FileSystemType
 
         public init(directoryPath: String, fileSystemAccessMode: FileSystemAccessMode, fileSystemId: String, fileSystemType: FileSystemType) {
@@ -12371,10 +11998,9 @@ extension SageMaker {
     }
 
     public struct Filter: AWSEncodableShape {
-
         /// A resource property name. For example, TrainingJobName. For valid property names, see SearchRecord. You must specify a valid property for the resource.
         public let name: String
-        /// A Boolean binary operator that is used to evaluate the filter. The operator field contains one of the following values:  Equals  The value of Name equals Value.  NotEquals  The value of Name doesn't equal Value.  Exists  The Name property exists.  NotExists  The Name property does not exist.  GreaterThan  The value of Name is greater than Value. Not supported for text properties.  GreaterThanOrEqualTo  The value of Name is greater than or equal to Value. Not supported for text properties.  LessThan  The value of Name is less than Value. Not supported for text properties.  LessThanOrEqualTo  The value of Name is less than or equal to Value. Not supported for text properties.  In  The value of Name is one of the comma delimited strings in Value. Only supported for text properties.  Contains  The value of Name contains the string Value. Only supported for text properties. A SearchExpression can include the Contains operator multiple times when the value of Name is one of the following:    Experiment.DisplayName     Experiment.ExperimentName     Experiment.Tags     Trial.DisplayName     Trial.TrialName     Trial.Tags     TrialComponent.DisplayName     TrialComponent.TrialComponentName     TrialComponent.Tags     TrialComponent.InputArtifacts     TrialComponent.OutputArtifacts    A SearchExpression can include only one Contains operator for all other values of Name. In these cases, if you include multiple Contains operators in the SearchExpression, the result is the following error message: "'CONTAINS' operator usage limit of 1 exceeded."  
+        /// A Boolean binary operator that is used to evaluate the filter. The operator field contains one of the following values:  Equals  The value of Name equals Value.  NotEquals  The value of Name doesn't equal Value.  Exists  The Name property exists.  NotExists  The Name property does not exist.  GreaterThan  The value of Name is greater than Value. Not supported for text properties.  GreaterThanOrEqualTo  The value of Name is greater than or equal to Value. Not supported for text properties.  LessThan  The value of Name is less than Value. Not supported for text properties.  LessThanOrEqualTo  The value of Name is less than or equal to Value. Not supported for text properties.  In  The value of Name is one of the comma delimited strings in Value. Only supported for text properties.  Contains  The value of Name contains the string Value. Only supported for text properties. A SearchExpression can include the Contains operator multiple times when the value of Name is one of the following:    Experiment.DisplayName     Experiment.ExperimentName     Experiment.Tags     Trial.DisplayName     Trial.TrialName     Trial.Tags     TrialComponent.DisplayName     TrialComponent.TrialComponentName     TrialComponent.Tags     TrialComponent.InputArtifacts     TrialComponent.OutputArtifacts    A SearchExpression can include only one Contains operator for all other values of Name. In these cases, if you include multiple Contains operators in the SearchExpression, the result is the following error message: "'CONTAINS' operator usage limit of 1 exceeded."
         public let `operator`: Operator?
         /// A value used with Name and Operator to determine which resources satisfy the filter's condition. For numerical properties, Value must be an integer or floating-point decimal. For timestamp properties, Value must be an ISO 8601 date-time string of the following format: YYYY-mm-dd'T'HH:MM:SS.
         public let value: String?
@@ -12402,7 +12028,6 @@ extension SageMaker {
     }
 
     public struct FinalAutoMLJobObjectiveMetric: AWSDecodableShape {
-
         /// The name of the metric with the best result. For a description of the possible objective metrics, see AutoMLJobObjective$MetricName.
         public let metricName: AutoMLMetricEnum
         /// The type of metric with the best result.
@@ -12424,7 +12049,6 @@ extension SageMaker {
     }
 
     public struct FinalHyperParameterTuningJobObjectiveMetric: AWSDecodableShape {
-
         /// The name of the objective metric.
         public let metricName: String
         /// Whether to minimize or maximize the objective metric. Valid values are Minimize and Maximize.
@@ -12446,7 +12070,6 @@ extension SageMaker {
     }
 
     public struct FlowDefinitionOutputConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// The Amazon Key Management Service (KMS) key ID for server-side encryption.
         public let kmsKeyId: String?
         /// The Amazon S3 path where the object containing human output will be made available. To learn more about the format of Amazon A2I output data, see Amazon A2I Output Data.
@@ -12471,7 +12094,6 @@ extension SageMaker {
     }
 
     public struct FlowDefinitionSummary: AWSDecodableShape {
-
         /// The timestamp when SageMaker created the flow definition.
         public let creationTime: Date
         /// The reason why the flow definition creation failed. A failure reason is returned only when the flow definition status is Failed.
@@ -12501,7 +12123,6 @@ extension SageMaker {
     }
 
     public struct GetDeviceFleetReportRequest: AWSEncodableShape {
-
         /// The name of the fleet.
         public let deviceFleetName: String
 
@@ -12521,7 +12142,6 @@ extension SageMaker {
     }
 
     public struct GetDeviceFleetReportResponse: AWSDecodableShape {
-
         /// The versions of Edge Manager agent deployed on the fleet.
         public let agentVersions: [AgentVersion]?
         /// Description of the fleet.
@@ -12563,7 +12183,6 @@ extension SageMaker {
     }
 
     public struct GetModelPackageGroupPolicyInput: AWSEncodableShape {
-
         /// The name of the model group for which to get the resource policy.
         public let modelPackageGroupName: String
 
@@ -12583,7 +12202,6 @@ extension SageMaker {
     }
 
     public struct GetModelPackageGroupPolicyOutput: AWSDecodableShape {
-
         /// The resource policy for the model group.
         public let resourcePolicy: String
 
@@ -12597,15 +12215,10 @@ extension SageMaker {
     }
 
     public struct GetSagemakerServicecatalogPortfolioStatusInput: AWSEncodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct GetSagemakerServicecatalogPortfolioStatusOutput: AWSDecodableShape {
-
         /// Whether Service Catalog is enabled or disabled in SageMaker.
         public let status: SagemakerServicecatalogStatus?
 
@@ -12619,7 +12232,6 @@ extension SageMaker {
     }
 
     public struct GetSearchSuggestionsRequest: AWSEncodableShape {
-
         /// The name of the Amazon SageMaker resource to search for.
         public let resource: ResourceType
         /// Limits the property names that are included in the response.
@@ -12641,7 +12253,6 @@ extension SageMaker {
     }
 
     public struct GetSearchSuggestionsResponse: AWSDecodableShape {
-
         /// A list of property names for a Resource that match a SuggestionQuery.
         public let propertyNameSuggestions: [PropertyNameSuggestion]?
 
@@ -12655,12 +12266,11 @@ extension SageMaker {
     }
 
     public struct GitConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// The default branch for the Git repository.
         public let branch: String?
         /// The URL where the Git repository is located.
         public let repositoryUrl: String
-        /// The Amazon Resource Name (ARN) of the Amazon Web Services Secrets Manager secret that contains the credentials used to access the git repository. The secret must have a staging label of AWSCURRENT and must be in the following format:  {"username": UserName, "password": Password} 
+        /// The Amazon Resource Name (ARN) of the Amazon Web Services Secrets Manager secret that contains the credentials used to access the git repository. The secret must have a staging label of AWSCURRENT and must be in the following format:  {"username": UserName, "password": Password}
         public let secretArn: String?
 
         public init(branch: String? = nil, repositoryUrl: String, secretArn: String? = nil) {
@@ -12687,8 +12297,7 @@ extension SageMaker {
     }
 
     public struct GitConfigForUpdate: AWSEncodableShape {
-
-        /// The Amazon Resource Name (ARN) of the Amazon Web Services Secrets Manager secret that contains the credentials used to access the git repository. The secret must have a staging label of AWSCURRENT and must be in the following format:  {"username": UserName, "password": Password} 
+        /// The Amazon Resource Name (ARN) of the Amazon Web Services Secrets Manager secret that contains the credentials used to access the git repository. The secret must have a staging label of AWSCURRENT and must be in the following format:  {"username": UserName, "password": Password}
         public let secretArn: String?
 
         public init(secretArn: String? = nil) {
@@ -12707,7 +12316,6 @@ extension SageMaker {
     }
 
     public struct HumanLoopActivationConditionsConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// JSON expressing use-case specific conditions declaratively. If any condition is matched, atomic tasks are created against the configured work team.  The set of conditions is different for Rekognition and Textract. For more information about how to structure the JSON, see  JSON Schema for Human Loop Activation Conditions in Amazon Augmented AI  in the Amazon SageMaker Developer Guide.
         public let humanLoopActivationConditions: String
 
@@ -12725,7 +12333,6 @@ extension SageMaker {
     }
 
     public struct HumanLoopActivationConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// Container structure for defining under what conditions SageMaker creates a human loop.
         public let humanLoopActivationConditionsConfig: HumanLoopActivationConditionsConfig
 
@@ -12743,7 +12350,6 @@ extension SageMaker {
     }
 
     public struct HumanLoopConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the human task user interface. You can use standard HTML and Crowd HTML Elements to create a custom worker task template. You use this template to create a human task UI. To learn how to create a custom HTML template, see Create Custom Worker Task Template. To learn how to create a human task UI, which is a worker task template that can be used in a flow definition, see Create and Delete a Worker Task Templates.
         public let humanTaskUiArn: String
         public let publicWorkforceTaskPrice: PublicWorkforceTaskPrice?
@@ -12778,7 +12384,7 @@ extension SageMaker {
             try self.validate(self.humanTaskUiArn, name: "humanTaskUiArn", parent: name, max: 1024)
             try self.validate(self.humanTaskUiArn, name: "humanTaskUiArn", parent: name, pattern: "^arn:aws[a-z\\-]*:sagemaker:[a-z0-9\\-]*:[0-9]{12}:human-task-ui/")
             try self.publicWorkforceTaskPrice?.validate(name: "\(name).publicWorkforceTaskPrice")
-            try self.validate(self.taskAvailabilityLifetimeInSeconds, name: "taskAvailabilityLifetimeInSeconds", parent: name, max: 864000)
+            try self.validate(self.taskAvailabilityLifetimeInSeconds, name: "taskAvailabilityLifetimeInSeconds", parent: name, max: 864_000)
             try self.validate(self.taskAvailabilityLifetimeInSeconds, name: "taskAvailabilityLifetimeInSeconds", parent: name, min: 1)
             try self.validate(self.taskCount, name: "taskCount", parent: name, max: 3)
             try self.validate(self.taskCount, name: "taskCount", parent: name, min: 1)
@@ -12815,7 +12421,6 @@ extension SageMaker {
     }
 
     public struct HumanLoopRequestSource: AWSEncodableShape & AWSDecodableShape {
-
         /// Specifies whether Amazon Rekognition or Amazon Textract are used as the integration source.  The default field settings and JSON parsing rules are different based on the integration source. Valid values:
         public let awsManagedHumanLoopRequestSource: AwsManagedHumanLoopRequestSource
 
@@ -12829,29 +12434,28 @@ extension SageMaker {
     }
 
     public struct HumanTaskConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// Configures how labels are consolidated across human workers.
         public let annotationConsolidationConfig: AnnotationConsolidationConfig
         /// Defines the maximum number of data objects that can be labeled by human workers at the same time. Also referred to as batch size. Each object may have more than one worker at one time. The default value is 1000 objects.
         public let maxConcurrentTaskCount: Int?
-        /// The number of human workers that will label an object. 
+        /// The number of human workers that will label an object.
         public let numberOfHumanWorkersPerDataObject: Int
-        /// The Amazon Resource Name (ARN) of a Lambda function that is run before a data object is sent to a human worker. Use this function to provide input to a custom labeling job. For built-in task types, use one of the following Amazon SageMaker Ground Truth Lambda function ARNs for PreHumanTaskLambdaArn. For custom labeling workflows, see Pre-annotation Lambda.   
-        ///   Bounding box - Finds the most similar boxes from different workers based on the Jaccard index of the boxes.    arn:aws:lambda:us-east-1:432418664414:function:PRE-BoundingBox     arn:aws:lambda:us-east-2:266458841044:function:PRE-BoundingBox     arn:aws:lambda:us-west-2:081040173940:function:PRE-BoundingBox     arn:aws:lambda:ca-central-1:918755190332:function:PRE-BoundingBox     arn:aws:lambda:eu-west-1:568282634449:function:PRE-BoundingBox     arn:aws:lambda:eu-west-2:487402164563:function:PRE-BoundingBox     arn:aws:lambda:eu-central-1:203001061592:function:PRE-BoundingBox     arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-BoundingBox     arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-BoundingBox     arn:aws:lambda:ap-south-1:565803892007:function:PRE-BoundingBox     arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-BoundingBox     arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-BoundingBox    
+        /// The Amazon Resource Name (ARN) of a Lambda function that is run before a data object is sent to a human worker. Use this function to provide input to a custom labeling job. For built-in task types, use one of the following Amazon SageMaker Ground Truth Lambda function ARNs for PreHumanTaskLambdaArn. For custom labeling workflows, see Pre-annotation Lambda.
+        ///   Bounding box - Finds the most similar boxes from different workers based on the Jaccard index of the boxes.    arn:aws:lambda:us-east-1:432418664414:function:PRE-BoundingBox     arn:aws:lambda:us-east-2:266458841044:function:PRE-BoundingBox     arn:aws:lambda:us-west-2:081040173940:function:PRE-BoundingBox     arn:aws:lambda:ca-central-1:918755190332:function:PRE-BoundingBox     arn:aws:lambda:eu-west-1:568282634449:function:PRE-BoundingBox     arn:aws:lambda:eu-west-2:487402164563:function:PRE-BoundingBox     arn:aws:lambda:eu-central-1:203001061592:function:PRE-BoundingBox     arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-BoundingBox     arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-BoundingBox     arn:aws:lambda:ap-south-1:565803892007:function:PRE-BoundingBox     arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-BoundingBox     arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-BoundingBox
         ///   Image classification - Uses a variant of the Expectation Maximization approach to estimate the true class of an image based on annotations from individual workers.
-        ///     arn:aws:lambda:us-east-1:432418664414:function:PRE-ImageMultiClass     arn:aws:lambda:us-east-2:266458841044:function:PRE-ImageMultiClass     arn:aws:lambda:us-west-2:081040173940:function:PRE-ImageMultiClass     arn:aws:lambda:ca-central-1:918755190332:function:PRE-ImageMultiClass     arn:aws:lambda:eu-west-1:568282634449:function:PRE-ImageMultiClass     arn:aws:lambda:eu-west-2:487402164563:function:PRE-ImageMultiClass     arn:aws:lambda:eu-central-1:203001061592:function:PRE-ImageMultiClass     arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-ImageMultiClass     arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-ImageMultiClass     arn:aws:lambda:ap-south-1:565803892007:function:PRE-ImageMultiClass     arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-ImageMultiClass     arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-ImageMultiClass      Multi-label image classification - Uses a variant of the Expectation Maximization approach to estimate the true classes of an image based on annotations from individual workers.    arn:aws:lambda:us-east-1:432418664414:function:PRE-ImageMultiClassMultiLabel     arn:aws:lambda:us-east-2:266458841044:function:PRE-ImageMultiClassMultiLabel     arn:aws:lambda:us-west-2:081040173940:function:PRE-ImageMultiClassMultiLabel     arn:aws:lambda:ca-central-1:918755190332:function:PRE-ImageMultiClassMultiLabel     arn:aws:lambda:eu-west-1:568282634449:function:PRE-ImageMultiClassMultiLabel     arn:aws:lambda:eu-west-2:487402164563:function:PRE-ImageMultiClassMultiLabel     arn:aws:lambda:eu-central-1:203001061592:function:PRE-ImageMultiClassMultiLabel     arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-ImageMultiClassMultiLabel     arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-ImageMultiClassMultiLabel     arn:aws:lambda:ap-south-1:565803892007:function:PRE-ImageMultiClassMultiLabel     arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-ImageMultiClassMultiLabel     arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-ImageMultiClassMultiLabel      Semantic segmentation - Treats each pixel in an image as a multi-class classification and treats pixel annotations from workers as "votes" for the correct label.    arn:aws:lambda:us-east-1:432418664414:function:PRE-SemanticSegmentation     arn:aws:lambda:us-east-2:266458841044:function:PRE-SemanticSegmentation     arn:aws:lambda:us-west-2:081040173940:function:PRE-SemanticSegmentation     arn:aws:lambda:ca-central-1:918755190332:function:PRE-SemanticSegmentation     arn:aws:lambda:eu-west-1:568282634449:function:PRE-SemanticSegmentation     arn:aws:lambda:eu-west-2:487402164563:function:PRE-SemanticSegmentation     arn:aws:lambda:eu-central-1:203001061592:function:PRE-SemanticSegmentation     arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-SemanticSegmentation     arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-SemanticSegmentation     arn:aws:lambda:ap-south-1:565803892007:function:PRE-SemanticSegmentation     arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-SemanticSegmentation     arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-SemanticSegmentation      Text classification - Uses a variant of the Expectation Maximization approach to estimate the true class of text based on annotations from individual workers.    arn:aws:lambda:us-east-1:432418664414:function:PRE-TextMultiClass     arn:aws:lambda:us-east-2:266458841044:function:PRE-TextMultiClass     arn:aws:lambda:us-west-2:081040173940:function:PRE-TextMultiClass     arn:aws:lambda:ca-central-1:918755190332:function:PRE-TextMultiClass     arn:aws:lambda:eu-west-1:568282634449:function:PRE-TextMultiClass     arn:aws:lambda:eu-west-2:487402164563:function:PRE-TextMultiClass     arn:aws:lambda:eu-central-1:203001061592:function:PRE-TextMultiClass     arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-TextMultiClass     arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-TextMultiClass     arn:aws:lambda:ap-south-1:565803892007:function:PRE-TextMultiClass     arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-TextMultiClass     arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-TextMultiClass      Multi-label text classification - Uses a variant of the Expectation Maximization approach to estimate the true classes of text based on annotations from individual workers.    arn:aws:lambda:us-east-1:432418664414:function:PRE-TextMultiClassMultiLabel     arn:aws:lambda:us-east-2:266458841044:function:PRE-TextMultiClassMultiLabel     arn:aws:lambda:us-west-2:081040173940:function:PRE-TextMultiClassMultiLabel     arn:aws:lambda:ca-central-1:918755190332:function:PRE-TextMultiClassMultiLabel     arn:aws:lambda:eu-west-1:568282634449:function:PRE-TextMultiClassMultiLabel     arn:aws:lambda:eu-west-2:487402164563:function:PRE-TextMultiClassMultiLabel     arn:aws:lambda:eu-central-1:203001061592:function:PRE-TextMultiClassMultiLabel     arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-TextMultiClassMultiLabel     arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-TextMultiClassMultiLabel     arn:aws:lambda:ap-south-1:565803892007:function:PRE-TextMultiClassMultiLabel     arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-TextMultiClassMultiLabel     arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-TextMultiClassMultiLabel      Named entity recognition - Groups similar selections and calculates aggregate boundaries, resolving to most-assigned label.    arn:aws:lambda:us-east-1:432418664414:function:PRE-NamedEntityRecognition     arn:aws:lambda:us-east-2:266458841044:function:PRE-NamedEntityRecognition     arn:aws:lambda:us-west-2:081040173940:function:PRE-NamedEntityRecognition     arn:aws:lambda:ca-central-1:918755190332:function:PRE-NamedEntityRecognition     arn:aws:lambda:eu-west-1:568282634449:function:PRE-NamedEntityRecognition     arn:aws:lambda:eu-west-2:487402164563:function:PRE-NamedEntityRecognition     arn:aws:lambda:eu-central-1:203001061592:function:PRE-NamedEntityRecognition     arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-NamedEntityRecognition     arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-NamedEntityRecognition     arn:aws:lambda:ap-south-1:565803892007:function:PRE-NamedEntityRecognition     arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-NamedEntityRecognition     arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-NamedEntityRecognition         Video Classification - Use this task type when you need workers to classify videos using predefined labels that you specify. Workers are shown videos and are asked to choose one label for each video.     arn:aws:lambda:us-east-1:432418664414:function:PRE-VideoMultiClass     arn:aws:lambda:us-east-2:266458841044:function:PRE-VideoMultiClass     arn:aws:lambda:us-west-2:081040173940:function:PRE-VideoMultiClass     arn:aws:lambda:eu-west-1:568282634449:function:PRE-VideoMultiClass     arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-VideoMultiClass     arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-VideoMultiClass     arn:aws:lambda:ap-south-1:565803892007:function:PRE-VideoMultiClass     arn:aws:lambda:eu-central-1:203001061592:function:PRE-VideoMultiClass     arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-VideoMultiClass     arn:aws:lambda:eu-west-2:487402164563:function:PRE-VideoMultiClass     arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-VideoMultiClass     arn:aws:lambda:ca-central-1:918755190332:function:PRE-VideoMultiClass      Video Frame Object Detection - Use this task type to have workers identify and locate objects in a sequence of video frames (images extracted from a video) using bounding boxes. For example, you can use this task to ask workers to identify and localize various objects in a series of video frames, such as cars, bikes, and pedestrians.     arn:aws:lambda:us-east-1:432418664414:function:PRE-VideoObjectDetection     arn:aws:lambda:us-east-2:266458841044:function:PRE-VideoObjectDetection     arn:aws:lambda:us-west-2:081040173940:function:PRE-VideoObjectDetection     arn:aws:lambda:eu-west-1:568282634449:function:PRE-VideoObjectDetection     arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-VideoObjectDetection     arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-VideoObjectDetection     arn:aws:lambda:ap-south-1:565803892007:function:PRE-VideoObjectDetection     arn:aws:lambda:eu-central-1:203001061592:function:PRE-VideoObjectDetection     arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-VideoObjectDetection     arn:aws:lambda:eu-west-2:487402164563:function:PRE-VideoObjectDetection     arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-VideoObjectDetection     arn:aws:lambda:ca-central-1:918755190332:function:PRE-VideoObjectDetection      Video Frame Object Tracking - Use this task type to have workers track the movement of objects in a sequence of video frames (images extracted from a video) using bounding boxes. For example, you can use this task to ask workers to track the movement of objects, such as cars, bikes, and pedestrians.     arn:aws:lambda:us-east-1:432418664414:function:PRE-VideoObjectTracking     arn:aws:lambda:us-east-2:266458841044:function:PRE-VideoObjectTracking     arn:aws:lambda:us-west-2:081040173940:function:PRE-VideoObjectTracking     arn:aws:lambda:eu-west-1:568282634449:function:PRE-VideoObjectTracking     arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-VideoObjectTracking     arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-VideoObjectTracking     arn:aws:lambda:ap-south-1:565803892007:function:PRE-VideoObjectTracking     arn:aws:lambda:eu-central-1:203001061592:function:PRE-VideoObjectTracking     arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-VideoObjectTracking     arn:aws:lambda:eu-west-2:487402164563:function:PRE-VideoObjectTracking     arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-VideoObjectTracking     arn:aws:lambda:ca-central-1:918755190332:function:PRE-VideoObjectTracking      
-        ///   3D Point Cloud Modalities  Use the following pre-annotation lambdas for 3D point cloud labeling modality tasks. See 3D Point Cloud Task types to learn more. 
-        ///    3D Point Cloud Object Detection -  Use this task type when you want workers to classify objects in a 3D point cloud by  drawing 3D cuboids around objects. For example, you can use this task type to ask workers  to identify different types of objects in a point cloud, such as cars, bikes, and pedestrians.    arn:aws:lambda:us-east-1:432418664414:function:PRE-3DPointCloudObjectDetection     arn:aws:lambda:us-east-2:266458841044:function:PRE-3DPointCloudObjectDetection     arn:aws:lambda:us-west-2:081040173940:function:PRE-3DPointCloudObjectDetection     arn:aws:lambda:eu-west-1:568282634449:function:PRE-3DPointCloudObjectDetection     arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-3DPointCloudObjectDetection     arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-3DPointCloudObjectDetection     arn:aws:lambda:ap-south-1:565803892007:function:PRE-3DPointCloudObjectDetection     arn:aws:lambda:eu-central-1:203001061592:function:PRE-3DPointCloudObjectDetection     arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-3DPointCloudObjectDetection     arn:aws:lambda:eu-west-2:487402164563:function:PRE-3DPointCloudObjectDetection     arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-3DPointCloudObjectDetection     arn:aws:lambda:ca-central-1:918755190332:function:PRE-3DPointCloudObjectDetection      3D Point Cloud Object Tracking -  Use this task type when you want workers to draw 3D cuboids around objects that appear in a sequence of 3D point cloud frames.  For example, you can use this task type to ask workers to track  the movement of vehicles across multiple point cloud frames.     arn:aws:lambda:us-east-1:432418664414:function:PRE-3DPointCloudObjectTracking     arn:aws:lambda:us-east-2:266458841044:function:PRE-3DPointCloudObjectTracking     arn:aws:lambda:us-west-2:081040173940:function:PRE-3DPointCloudObjectTracking     arn:aws:lambda:eu-west-1:568282634449:function:PRE-3DPointCloudObjectTracking     arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-3DPointCloudObjectTracking     arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-3DPointCloudObjectTracking     arn:aws:lambda:ap-south-1:565803892007:function:PRE-3DPointCloudObjectTracking     arn:aws:lambda:eu-central-1:203001061592:function:PRE-3DPointCloudObjectTracking     arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-3DPointCloudObjectTracking     arn:aws:lambda:eu-west-2:487402164563:function:PRE-3DPointCloudObjectTracking     arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-3DPointCloudObjectTracking     arn:aws:lambda:ca-central-1:918755190332:function:PRE-3DPointCloudObjectTracking        3D Point Cloud Semantic Segmentation -  Use this task type when you want workers to create a point-level semantic segmentation masks by  painting objects in a 3D point cloud using different colors where each color is assigned to one of  the classes you specify.    arn:aws:lambda:us-east-1:432418664414:function:PRE-3DPointCloudSemanticSegmentation     arn:aws:lambda:us-east-2:266458841044:function:PRE-3DPointCloudSemanticSegmentation     arn:aws:lambda:us-west-2:081040173940:function:PRE-3DPointCloudSemanticSegmentation     arn:aws:lambda:eu-west-1:568282634449:function:PRE-3DPointCloudSemanticSegmentation     arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-3DPointCloudSemanticSegmentation     arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-3DPointCloudSemanticSegmentation     arn:aws:lambda:ap-south-1:565803892007:function:PRE-3DPointCloudSemanticSegmentation     arn:aws:lambda:eu-central-1:203001061592:function:PRE-3DPointCloudSemanticSegmentation     arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-3DPointCloudSemanticSegmentation     arn:aws:lambda:eu-west-2:487402164563:function:PRE-3DPointCloudSemanticSegmentation     arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-3DPointCloudSemanticSegmentation     arn:aws:lambda:ca-central-1:918755190332:function:PRE-3DPointCloudSemanticSegmentation      Use the following ARNs for Label Verification and Adjustment Jobs  Use label verification and adjustment jobs to review and adjust labels. To learn more, see Verify and Adjust Labels .   Bounding box verification - Uses a variant of the Expectation Maximization approach to estimate the true class of verification judgement for bounding box labels based on annotations from individual workers.    arn:aws:lambda:us-east-1:432418664414:function:PRE-VerificationBoundingBox     arn:aws:lambda:us-east-2:266458841044:function:PRE-VerificationBoundingBox     arn:aws:lambda:us-west-2:081040173940:function:PRE-VerificationBoundingBox     arn:aws:lambda:eu-west-1:568282634449:function:PRE-VerificationBoundingBox     arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-VerificationBoundingBox     arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-VerificationBoundingBox     arn:aws:lambda:ap-south-1:565803892007:function:PRE-VerificationBoundingBox     arn:aws:lambda:eu-central-1:203001061592:function:PRE-VerificationBoundingBox     arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-VerificationBoundingBox     arn:aws:lambda:eu-west-2:487402164563:function:PRE-VerificationBoundingBox     arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-VerificationBoundingBox     arn:aws:lambda:ca-central-1:918755190332:function:PRE-VerificationBoundingBox      Bounding box adjustment - Finds the most similar boxes from different workers based on the Jaccard index of the adjusted annotations.    arn:aws:lambda:us-east-1:432418664414:function:PRE-AdjustmentBoundingBox     arn:aws:lambda:us-east-2:266458841044:function:PRE-AdjustmentBoundingBox     arn:aws:lambda:us-west-2:081040173940:function:PRE-AdjustmentBoundingBox     arn:aws:lambda:ca-central-1:918755190332:function:PRE-AdjustmentBoundingBox     arn:aws:lambda:eu-west-1:568282634449:function:PRE-AdjustmentBoundingBox     arn:aws:lambda:eu-west-2:487402164563:function:PRE-AdjustmentBoundingBox     arn:aws:lambda:eu-central-1:203001061592:function:PRE-AdjustmentBoundingBox     arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-AdjustmentBoundingBox     arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-AdjustmentBoundingBox     arn:aws:lambda:ap-south-1:565803892007:function:PRE-AdjustmentBoundingBox     arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-AdjustmentBoundingBox     arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-AdjustmentBoundingBox      Semantic segmentation verification - Uses a variant of the Expectation Maximization approach to estimate the true class of verification judgment for semantic segmentation labels based on annotations from individual workers.    arn:aws:lambda:us-east-1:432418664414:function:PRE-VerificationSemanticSegmentation     arn:aws:lambda:us-east-2:266458841044:function:PRE-VerificationSemanticSegmentation     arn:aws:lambda:us-west-2:081040173940:function:PRE-VerificationSemanticSegmentation     arn:aws:lambda:ca-central-1:918755190332:function:PRE-VerificationSemanticSegmentation     arn:aws:lambda:eu-west-1:568282634449:function:PRE-VerificationSemanticSegmentation     arn:aws:lambda:eu-west-2:487402164563:function:PRE-VerificationSemanticSegmentation     arn:aws:lambda:eu-central-1:203001061592:function:PRE-VerificationSemanticSegmentation     arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-VerificationSemanticSegmentation     arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-VerificationSemanticSegmentation     arn:aws:lambda:ap-south-1:565803892007:function:PRE-VerificationSemanticSegmentation     arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-VerificationSemanticSegmentation     arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-VerificationSemanticSegmentation      Semantic segmentation adjustment - Treats each pixel in an image as a multi-class classification and treats pixel adjusted annotations from workers as "votes" for the correct label.    arn:aws:lambda:us-east-1:432418664414:function:PRE-AdjustmentSemanticSegmentation     arn:aws:lambda:us-east-2:266458841044:function:PRE-AdjustmentSemanticSegmentation     arn:aws:lambda:us-west-2:081040173940:function:PRE-AdjustmentSemanticSegmentation     arn:aws:lambda:ca-central-1:918755190332:function:PRE-AdjustmentSemanticSegmentation     arn:aws:lambda:eu-west-1:568282634449:function:PRE-AdjustmentSemanticSegmentation     arn:aws:lambda:eu-west-2:487402164563:function:PRE-AdjustmentSemanticSegmentation     arn:aws:lambda:eu-central-1:203001061592:function:PRE-AdjustmentSemanticSegmentation     arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-AdjustmentSemanticSegmentation     arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-AdjustmentSemanticSegmentation     arn:aws:lambda:ap-south-1:565803892007:function:PRE-AdjustmentSemanticSegmentation     arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-AdjustmentSemanticSegmentation     arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-AdjustmentSemanticSegmentation         Video Frame Object Detection Adjustment -  Use this task type when you want workers to adjust bounding boxes that workers have added  to video frames to classify and localize objects in a sequence of video frames.     arn:aws:lambda:us-east-1:432418664414:function:PRE-AdjustmentVideoObjectDetection     arn:aws:lambda:us-east-2:266458841044:function:PRE-AdjustmentVideoObjectDetection     arn:aws:lambda:us-west-2:081040173940:function:PRE-AdjustmentVideoObjectDetection     arn:aws:lambda:eu-west-1:568282634449:function:PRE-AdjustmentVideoObjectDetection     arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-AdjustmentVideoObjectDetection     arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-AdjustmentVideoObjectDetection     arn:aws:lambda:ap-south-1:565803892007:function:PRE-AdjustmentVideoObjectDetection     arn:aws:lambda:eu-central-1:203001061592:function:PRE-AdjustmentVideoObjectDetection     arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-AdjustmentVideoObjectDetection     arn:aws:lambda:eu-west-2:487402164563:function:PRE-AdjustmentVideoObjectDetection     arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-AdjustmentVideoObjectDetection     arn:aws:lambda:ca-central-1:918755190332:function:PRE-AdjustmentVideoObjectDetection      Video Frame Object Tracking Adjustment -  Use this task type when you want workers to adjust bounding boxes that workers have added  to video frames to track object movement across a sequence of video frames.    arn:aws:lambda:us-east-1:432418664414:function:PRE-AdjustmentVideoObjectTracking     arn:aws:lambda:us-east-2:266458841044:function:PRE-AdjustmentVideoObjectTracking     arn:aws:lambda:us-west-2:081040173940:function:PRE-AdjustmentVideoObjectTracking     arn:aws:lambda:eu-west-1:568282634449:function:PRE-AdjustmentVideoObjectTracking     arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-AdjustmentVideoObjectTracking     arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-AdjustmentVideoObjectTracking     arn:aws:lambda:ap-south-1:565803892007:function:PRE-AdjustmentVideoObjectTracking     arn:aws:lambda:eu-central-1:203001061592:function:PRE-AdjustmentVideoObjectTracking     arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-AdjustmentVideoObjectTracking     arn:aws:lambda:eu-west-2:487402164563:function:PRE-AdjustmentVideoObjectTracking     arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-AdjustmentVideoObjectTracking     arn:aws:lambda:ca-central-1:918755190332:function:PRE-AdjustmentVideoObjectTracking         3D point cloud object detection adjustment - Adjust 3D cuboids in a point cloud frame.     arn:aws:lambda:us-east-1:432418664414:function:PRE-Adjustment3DPointCloudObjectDetection     arn:aws:lambda:us-east-2:266458841044:function:PRE-Adjustment3DPointCloudObjectDetection     arn:aws:lambda:us-west-2:081040173940:function:PRE-Adjustment3DPointCloudObjectDetection     arn:aws:lambda:eu-west-1:568282634449:function:PRE-Adjustment3DPointCloudObjectDetection     arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-Adjustment3DPointCloudObjectDetection     arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-Adjustment3DPointCloudObjectDetection     arn:aws:lambda:ap-south-1:565803892007:function:PRE-Adjustment3DPointCloudObjectDetection     arn:aws:lambda:eu-central-1:203001061592:function:PRE-Adjustment3DPointCloudObjectDetection     arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-Adjustment3DPointCloudObjectDetection     arn:aws:lambda:eu-west-2:487402164563:function:PRE-Adjustment3DPointCloudObjectDetection     arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-Adjustment3DPointCloudObjectDetection     arn:aws:lambda:ca-central-1:918755190332:function:PRE-Adjustment3DPointCloudObjectDetection      3D point cloud object tracking adjustment - Adjust 3D cuboids across a sequence of point cloud frames.     arn:aws:lambda:us-east-1:432418664414:function:PRE-Adjustment3DPointCloudObjectTracking     arn:aws:lambda:us-east-2:266458841044:function:PRE-Adjustment3DPointCloudObjectTracking     arn:aws:lambda:us-west-2:081040173940:function:PRE-Adjustment3DPointCloudObjectTracking     arn:aws:lambda:eu-west-1:568282634449:function:PRE-Adjustment3DPointCloudObjectTracking     arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-Adjustment3DPointCloudObjectTracking     arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-Adjustment3DPointCloudObjectTracking     arn:aws:lambda:ap-south-1:565803892007:function:PRE-Adjustment3DPointCloudObjectTracking     arn:aws:lambda:eu-central-1:203001061592:function:PRE-Adjustment3DPointCloudObjectTracking     arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-Adjustment3DPointCloudObjectTracking     arn:aws:lambda:eu-west-2:487402164563:function:PRE-Adjustment3DPointCloudObjectTracking     arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-Adjustment3DPointCloudObjectTracking     arn:aws:lambda:ca-central-1:918755190332:function:PRE-Adjustment3DPointCloudObjectTracking      3D point cloud semantic segmentation adjustment - Adjust semantic segmentation masks in a 3D point cloud.     arn:aws:lambda:us-east-1:432418664414:function:PRE-Adjustment3DPointCloudSemanticSegmentation     arn:aws:lambda:us-east-2:266458841044:function:PRE-Adjustment3DPointCloudSemanticSegmentation     arn:aws:lambda:us-west-2:081040173940:function:PRE-Adjustment3DPointCloudSemanticSegmentation     arn:aws:lambda:eu-west-1:568282634449:function:PRE-Adjustment3DPointCloudSemanticSegmentation     arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-Adjustment3DPointCloudSemanticSegmentation     arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-Adjustment3DPointCloudSemanticSegmentation     arn:aws:lambda:ap-south-1:565803892007:function:PRE-Adjustment3DPointCloudSemanticSegmentation     arn:aws:lambda:eu-central-1:203001061592:function:PRE-Adjustment3DPointCloudSemanticSegmentation     arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-Adjustment3DPointCloudSemanticSegmentation     arn:aws:lambda:eu-west-2:487402164563:function:PRE-Adjustment3DPointCloudSemanticSegmentation     arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-Adjustment3DPointCloudSemanticSegmentation     arn:aws:lambda:ca-central-1:918755190332:function:PRE-Adjustment3DPointCloudSemanticSegmentation   
+        ///     arn:aws:lambda:us-east-1:432418664414:function:PRE-ImageMultiClass     arn:aws:lambda:us-east-2:266458841044:function:PRE-ImageMultiClass     arn:aws:lambda:us-west-2:081040173940:function:PRE-ImageMultiClass     arn:aws:lambda:ca-central-1:918755190332:function:PRE-ImageMultiClass     arn:aws:lambda:eu-west-1:568282634449:function:PRE-ImageMultiClass     arn:aws:lambda:eu-west-2:487402164563:function:PRE-ImageMultiClass     arn:aws:lambda:eu-central-1:203001061592:function:PRE-ImageMultiClass     arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-ImageMultiClass     arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-ImageMultiClass     arn:aws:lambda:ap-south-1:565803892007:function:PRE-ImageMultiClass     arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-ImageMultiClass     arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-ImageMultiClass      Multi-label image classification - Uses a variant of the Expectation Maximization approach to estimate the true classes of an image based on annotations from individual workers.    arn:aws:lambda:us-east-1:432418664414:function:PRE-ImageMultiClassMultiLabel     arn:aws:lambda:us-east-2:266458841044:function:PRE-ImageMultiClassMultiLabel     arn:aws:lambda:us-west-2:081040173940:function:PRE-ImageMultiClassMultiLabel     arn:aws:lambda:ca-central-1:918755190332:function:PRE-ImageMultiClassMultiLabel     arn:aws:lambda:eu-west-1:568282634449:function:PRE-ImageMultiClassMultiLabel     arn:aws:lambda:eu-west-2:487402164563:function:PRE-ImageMultiClassMultiLabel     arn:aws:lambda:eu-central-1:203001061592:function:PRE-ImageMultiClassMultiLabel     arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-ImageMultiClassMultiLabel     arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-ImageMultiClassMultiLabel     arn:aws:lambda:ap-south-1:565803892007:function:PRE-ImageMultiClassMultiLabel     arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-ImageMultiClassMultiLabel     arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-ImageMultiClassMultiLabel      Semantic segmentation - Treats each pixel in an image as a multi-class classification and treats pixel annotations from workers as "votes" for the correct label.    arn:aws:lambda:us-east-1:432418664414:function:PRE-SemanticSegmentation     arn:aws:lambda:us-east-2:266458841044:function:PRE-SemanticSegmentation     arn:aws:lambda:us-west-2:081040173940:function:PRE-SemanticSegmentation     arn:aws:lambda:ca-central-1:918755190332:function:PRE-SemanticSegmentation     arn:aws:lambda:eu-west-1:568282634449:function:PRE-SemanticSegmentation     arn:aws:lambda:eu-west-2:487402164563:function:PRE-SemanticSegmentation     arn:aws:lambda:eu-central-1:203001061592:function:PRE-SemanticSegmentation     arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-SemanticSegmentation     arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-SemanticSegmentation     arn:aws:lambda:ap-south-1:565803892007:function:PRE-SemanticSegmentation     arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-SemanticSegmentation     arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-SemanticSegmentation      Text classification - Uses a variant of the Expectation Maximization approach to estimate the true class of text based on annotations from individual workers.    arn:aws:lambda:us-east-1:432418664414:function:PRE-TextMultiClass     arn:aws:lambda:us-east-2:266458841044:function:PRE-TextMultiClass     arn:aws:lambda:us-west-2:081040173940:function:PRE-TextMultiClass     arn:aws:lambda:ca-central-1:918755190332:function:PRE-TextMultiClass     arn:aws:lambda:eu-west-1:568282634449:function:PRE-TextMultiClass     arn:aws:lambda:eu-west-2:487402164563:function:PRE-TextMultiClass     arn:aws:lambda:eu-central-1:203001061592:function:PRE-TextMultiClass     arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-TextMultiClass     arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-TextMultiClass     arn:aws:lambda:ap-south-1:565803892007:function:PRE-TextMultiClass     arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-TextMultiClass     arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-TextMultiClass      Multi-label text classification - Uses a variant of the Expectation Maximization approach to estimate the true classes of text based on annotations from individual workers.    arn:aws:lambda:us-east-1:432418664414:function:PRE-TextMultiClassMultiLabel     arn:aws:lambda:us-east-2:266458841044:function:PRE-TextMultiClassMultiLabel     arn:aws:lambda:us-west-2:081040173940:function:PRE-TextMultiClassMultiLabel     arn:aws:lambda:ca-central-1:918755190332:function:PRE-TextMultiClassMultiLabel     arn:aws:lambda:eu-west-1:568282634449:function:PRE-TextMultiClassMultiLabel     arn:aws:lambda:eu-west-2:487402164563:function:PRE-TextMultiClassMultiLabel     arn:aws:lambda:eu-central-1:203001061592:function:PRE-TextMultiClassMultiLabel     arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-TextMultiClassMultiLabel     arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-TextMultiClassMultiLabel     arn:aws:lambda:ap-south-1:565803892007:function:PRE-TextMultiClassMultiLabel     arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-TextMultiClassMultiLabel     arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-TextMultiClassMultiLabel      Named entity recognition - Groups similar selections and calculates aggregate boundaries, resolving to most-assigned label.    arn:aws:lambda:us-east-1:432418664414:function:PRE-NamedEntityRecognition     arn:aws:lambda:us-east-2:266458841044:function:PRE-NamedEntityRecognition     arn:aws:lambda:us-west-2:081040173940:function:PRE-NamedEntityRecognition     arn:aws:lambda:ca-central-1:918755190332:function:PRE-NamedEntityRecognition     arn:aws:lambda:eu-west-1:568282634449:function:PRE-NamedEntityRecognition     arn:aws:lambda:eu-west-2:487402164563:function:PRE-NamedEntityRecognition     arn:aws:lambda:eu-central-1:203001061592:function:PRE-NamedEntityRecognition     arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-NamedEntityRecognition     arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-NamedEntityRecognition     arn:aws:lambda:ap-south-1:565803892007:function:PRE-NamedEntityRecognition     arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-NamedEntityRecognition     arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-NamedEntityRecognition         Video Classification - Use this task type when you need workers to classify videos using predefined labels that you specify. Workers are shown videos and are asked to choose one label for each video.     arn:aws:lambda:us-east-1:432418664414:function:PRE-VideoMultiClass     arn:aws:lambda:us-east-2:266458841044:function:PRE-VideoMultiClass     arn:aws:lambda:us-west-2:081040173940:function:PRE-VideoMultiClass     arn:aws:lambda:eu-west-1:568282634449:function:PRE-VideoMultiClass     arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-VideoMultiClass     arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-VideoMultiClass     arn:aws:lambda:ap-south-1:565803892007:function:PRE-VideoMultiClass     arn:aws:lambda:eu-central-1:203001061592:function:PRE-VideoMultiClass     arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-VideoMultiClass     arn:aws:lambda:eu-west-2:487402164563:function:PRE-VideoMultiClass     arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-VideoMultiClass     arn:aws:lambda:ca-central-1:918755190332:function:PRE-VideoMultiClass      Video Frame Object Detection - Use this task type to have workers identify and locate objects in a sequence of video frames (images extracted from a video) using bounding boxes. For example, you can use this task to ask workers to identify and localize various objects in a series of video frames, such as cars, bikes, and pedestrians.     arn:aws:lambda:us-east-1:432418664414:function:PRE-VideoObjectDetection     arn:aws:lambda:us-east-2:266458841044:function:PRE-VideoObjectDetection     arn:aws:lambda:us-west-2:081040173940:function:PRE-VideoObjectDetection     arn:aws:lambda:eu-west-1:568282634449:function:PRE-VideoObjectDetection     arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-VideoObjectDetection     arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-VideoObjectDetection     arn:aws:lambda:ap-south-1:565803892007:function:PRE-VideoObjectDetection     arn:aws:lambda:eu-central-1:203001061592:function:PRE-VideoObjectDetection     arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-VideoObjectDetection     arn:aws:lambda:eu-west-2:487402164563:function:PRE-VideoObjectDetection     arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-VideoObjectDetection     arn:aws:lambda:ca-central-1:918755190332:function:PRE-VideoObjectDetection      Video Frame Object Tracking - Use this task type to have workers track the movement of objects in a sequence of video frames (images extracted from a video) using bounding boxes. For example, you can use this task to ask workers to track the movement of objects, such as cars, bikes, and pedestrians.     arn:aws:lambda:us-east-1:432418664414:function:PRE-VideoObjectTracking     arn:aws:lambda:us-east-2:266458841044:function:PRE-VideoObjectTracking     arn:aws:lambda:us-west-2:081040173940:function:PRE-VideoObjectTracking     arn:aws:lambda:eu-west-1:568282634449:function:PRE-VideoObjectTracking     arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-VideoObjectTracking     arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-VideoObjectTracking     arn:aws:lambda:ap-south-1:565803892007:function:PRE-VideoObjectTracking     arn:aws:lambda:eu-central-1:203001061592:function:PRE-VideoObjectTracking     arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-VideoObjectTracking     arn:aws:lambda:eu-west-2:487402164563:function:PRE-VideoObjectTracking     arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-VideoObjectTracking     arn:aws:lambda:ca-central-1:918755190332:function:PRE-VideoObjectTracking
+        ///   3D Point Cloud Modalities  Use the following pre-annotation lambdas for 3D point cloud labeling modality tasks. See 3D Point Cloud Task types to learn more.
+        ///    3D Point Cloud Object Detection -  Use this task type when you want workers to classify objects in a 3D point cloud by  drawing 3D cuboids around objects. For example, you can use this task type to ask workers  to identify different types of objects in a point cloud, such as cars, bikes, and pedestrians.    arn:aws:lambda:us-east-1:432418664414:function:PRE-3DPointCloudObjectDetection     arn:aws:lambda:us-east-2:266458841044:function:PRE-3DPointCloudObjectDetection     arn:aws:lambda:us-west-2:081040173940:function:PRE-3DPointCloudObjectDetection     arn:aws:lambda:eu-west-1:568282634449:function:PRE-3DPointCloudObjectDetection     arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-3DPointCloudObjectDetection     arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-3DPointCloudObjectDetection     arn:aws:lambda:ap-south-1:565803892007:function:PRE-3DPointCloudObjectDetection     arn:aws:lambda:eu-central-1:203001061592:function:PRE-3DPointCloudObjectDetection     arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-3DPointCloudObjectDetection     arn:aws:lambda:eu-west-2:487402164563:function:PRE-3DPointCloudObjectDetection     arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-3DPointCloudObjectDetection     arn:aws:lambda:ca-central-1:918755190332:function:PRE-3DPointCloudObjectDetection      3D Point Cloud Object Tracking -  Use this task type when you want workers to draw 3D cuboids around objects that appear in a sequence of 3D point cloud frames.  For example, you can use this task type to ask workers to track  the movement of vehicles across multiple point cloud frames.     arn:aws:lambda:us-east-1:432418664414:function:PRE-3DPointCloudObjectTracking     arn:aws:lambda:us-east-2:266458841044:function:PRE-3DPointCloudObjectTracking     arn:aws:lambda:us-west-2:081040173940:function:PRE-3DPointCloudObjectTracking     arn:aws:lambda:eu-west-1:568282634449:function:PRE-3DPointCloudObjectTracking     arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-3DPointCloudObjectTracking     arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-3DPointCloudObjectTracking     arn:aws:lambda:ap-south-1:565803892007:function:PRE-3DPointCloudObjectTracking     arn:aws:lambda:eu-central-1:203001061592:function:PRE-3DPointCloudObjectTracking     arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-3DPointCloudObjectTracking     arn:aws:lambda:eu-west-2:487402164563:function:PRE-3DPointCloudObjectTracking     arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-3DPointCloudObjectTracking     arn:aws:lambda:ca-central-1:918755190332:function:PRE-3DPointCloudObjectTracking        3D Point Cloud Semantic Segmentation -  Use this task type when you want workers to create a point-level semantic segmentation masks by  painting objects in a 3D point cloud using different colors where each color is assigned to one of  the classes you specify.    arn:aws:lambda:us-east-1:432418664414:function:PRE-3DPointCloudSemanticSegmentation     arn:aws:lambda:us-east-2:266458841044:function:PRE-3DPointCloudSemanticSegmentation     arn:aws:lambda:us-west-2:081040173940:function:PRE-3DPointCloudSemanticSegmentation     arn:aws:lambda:eu-west-1:568282634449:function:PRE-3DPointCloudSemanticSegmentation     arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-3DPointCloudSemanticSegmentation     arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-3DPointCloudSemanticSegmentation     arn:aws:lambda:ap-south-1:565803892007:function:PRE-3DPointCloudSemanticSegmentation     arn:aws:lambda:eu-central-1:203001061592:function:PRE-3DPointCloudSemanticSegmentation     arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-3DPointCloudSemanticSegmentation     arn:aws:lambda:eu-west-2:487402164563:function:PRE-3DPointCloudSemanticSegmentation     arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-3DPointCloudSemanticSegmentation     arn:aws:lambda:ca-central-1:918755190332:function:PRE-3DPointCloudSemanticSegmentation      Use the following ARNs for Label Verification and Adjustment Jobs  Use label verification and adjustment jobs to review and adjust labels. To learn more, see Verify and Adjust Labels .   Bounding box verification - Uses a variant of the Expectation Maximization approach to estimate the true class of verification judgement for bounding box labels based on annotations from individual workers.    arn:aws:lambda:us-east-1:432418664414:function:PRE-VerificationBoundingBox     arn:aws:lambda:us-east-2:266458841044:function:PRE-VerificationBoundingBox     arn:aws:lambda:us-west-2:081040173940:function:PRE-VerificationBoundingBox     arn:aws:lambda:eu-west-1:568282634449:function:PRE-VerificationBoundingBox     arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-VerificationBoundingBox     arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-VerificationBoundingBox     arn:aws:lambda:ap-south-1:565803892007:function:PRE-VerificationBoundingBox     arn:aws:lambda:eu-central-1:203001061592:function:PRE-VerificationBoundingBox     arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-VerificationBoundingBox     arn:aws:lambda:eu-west-2:487402164563:function:PRE-VerificationBoundingBox     arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-VerificationBoundingBox     arn:aws:lambda:ca-central-1:918755190332:function:PRE-VerificationBoundingBox      Bounding box adjustment - Finds the most similar boxes from different workers based on the Jaccard index of the adjusted annotations.    arn:aws:lambda:us-east-1:432418664414:function:PRE-AdjustmentBoundingBox     arn:aws:lambda:us-east-2:266458841044:function:PRE-AdjustmentBoundingBox     arn:aws:lambda:us-west-2:081040173940:function:PRE-AdjustmentBoundingBox     arn:aws:lambda:ca-central-1:918755190332:function:PRE-AdjustmentBoundingBox     arn:aws:lambda:eu-west-1:568282634449:function:PRE-AdjustmentBoundingBox     arn:aws:lambda:eu-west-2:487402164563:function:PRE-AdjustmentBoundingBox     arn:aws:lambda:eu-central-1:203001061592:function:PRE-AdjustmentBoundingBox     arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-AdjustmentBoundingBox     arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-AdjustmentBoundingBox     arn:aws:lambda:ap-south-1:565803892007:function:PRE-AdjustmentBoundingBox     arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-AdjustmentBoundingBox     arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-AdjustmentBoundingBox      Semantic segmentation verification - Uses a variant of the Expectation Maximization approach to estimate the true class of verification judgment for semantic segmentation labels based on annotations from individual workers.    arn:aws:lambda:us-east-1:432418664414:function:PRE-VerificationSemanticSegmentation     arn:aws:lambda:us-east-2:266458841044:function:PRE-VerificationSemanticSegmentation     arn:aws:lambda:us-west-2:081040173940:function:PRE-VerificationSemanticSegmentation     arn:aws:lambda:ca-central-1:918755190332:function:PRE-VerificationSemanticSegmentation     arn:aws:lambda:eu-west-1:568282634449:function:PRE-VerificationSemanticSegmentation     arn:aws:lambda:eu-west-2:487402164563:function:PRE-VerificationSemanticSegmentation     arn:aws:lambda:eu-central-1:203001061592:function:PRE-VerificationSemanticSegmentation     arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-VerificationSemanticSegmentation     arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-VerificationSemanticSegmentation     arn:aws:lambda:ap-south-1:565803892007:function:PRE-VerificationSemanticSegmentation     arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-VerificationSemanticSegmentation     arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-VerificationSemanticSegmentation      Semantic segmentation adjustment - Treats each pixel in an image as a multi-class classification and treats pixel adjusted annotations from workers as "votes" for the correct label.    arn:aws:lambda:us-east-1:432418664414:function:PRE-AdjustmentSemanticSegmentation     arn:aws:lambda:us-east-2:266458841044:function:PRE-AdjustmentSemanticSegmentation     arn:aws:lambda:us-west-2:081040173940:function:PRE-AdjustmentSemanticSegmentation     arn:aws:lambda:ca-central-1:918755190332:function:PRE-AdjustmentSemanticSegmentation     arn:aws:lambda:eu-west-1:568282634449:function:PRE-AdjustmentSemanticSegmentation     arn:aws:lambda:eu-west-2:487402164563:function:PRE-AdjustmentSemanticSegmentation     arn:aws:lambda:eu-central-1:203001061592:function:PRE-AdjustmentSemanticSegmentation     arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-AdjustmentSemanticSegmentation     arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-AdjustmentSemanticSegmentation     arn:aws:lambda:ap-south-1:565803892007:function:PRE-AdjustmentSemanticSegmentation     arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-AdjustmentSemanticSegmentation     arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-AdjustmentSemanticSegmentation         Video Frame Object Detection Adjustment -  Use this task type when you want workers to adjust bounding boxes that workers have added  to video frames to classify and localize objects in a sequence of video frames.     arn:aws:lambda:us-east-1:432418664414:function:PRE-AdjustmentVideoObjectDetection     arn:aws:lambda:us-east-2:266458841044:function:PRE-AdjustmentVideoObjectDetection     arn:aws:lambda:us-west-2:081040173940:function:PRE-AdjustmentVideoObjectDetection     arn:aws:lambda:eu-west-1:568282634449:function:PRE-AdjustmentVideoObjectDetection     arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-AdjustmentVideoObjectDetection     arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-AdjustmentVideoObjectDetection     arn:aws:lambda:ap-south-1:565803892007:function:PRE-AdjustmentVideoObjectDetection     arn:aws:lambda:eu-central-1:203001061592:function:PRE-AdjustmentVideoObjectDetection     arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-AdjustmentVideoObjectDetection     arn:aws:lambda:eu-west-2:487402164563:function:PRE-AdjustmentVideoObjectDetection     arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-AdjustmentVideoObjectDetection     arn:aws:lambda:ca-central-1:918755190332:function:PRE-AdjustmentVideoObjectDetection      Video Frame Object Tracking Adjustment -  Use this task type when you want workers to adjust bounding boxes that workers have added  to video frames to track object movement across a sequence of video frames.    arn:aws:lambda:us-east-1:432418664414:function:PRE-AdjustmentVideoObjectTracking     arn:aws:lambda:us-east-2:266458841044:function:PRE-AdjustmentVideoObjectTracking     arn:aws:lambda:us-west-2:081040173940:function:PRE-AdjustmentVideoObjectTracking     arn:aws:lambda:eu-west-1:568282634449:function:PRE-AdjustmentVideoObjectTracking     arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-AdjustmentVideoObjectTracking     arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-AdjustmentVideoObjectTracking     arn:aws:lambda:ap-south-1:565803892007:function:PRE-AdjustmentVideoObjectTracking     arn:aws:lambda:eu-central-1:203001061592:function:PRE-AdjustmentVideoObjectTracking     arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-AdjustmentVideoObjectTracking     arn:aws:lambda:eu-west-2:487402164563:function:PRE-AdjustmentVideoObjectTracking     arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-AdjustmentVideoObjectTracking     arn:aws:lambda:ca-central-1:918755190332:function:PRE-AdjustmentVideoObjectTracking         3D point cloud object detection adjustment - Adjust 3D cuboids in a point cloud frame.     arn:aws:lambda:us-east-1:432418664414:function:PRE-Adjustment3DPointCloudObjectDetection     arn:aws:lambda:us-east-2:266458841044:function:PRE-Adjustment3DPointCloudObjectDetection     arn:aws:lambda:us-west-2:081040173940:function:PRE-Adjustment3DPointCloudObjectDetection     arn:aws:lambda:eu-west-1:568282634449:function:PRE-Adjustment3DPointCloudObjectDetection     arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-Adjustment3DPointCloudObjectDetection     arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-Adjustment3DPointCloudObjectDetection     arn:aws:lambda:ap-south-1:565803892007:function:PRE-Adjustment3DPointCloudObjectDetection     arn:aws:lambda:eu-central-1:203001061592:function:PRE-Adjustment3DPointCloudObjectDetection     arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-Adjustment3DPointCloudObjectDetection     arn:aws:lambda:eu-west-2:487402164563:function:PRE-Adjustment3DPointCloudObjectDetection     arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-Adjustment3DPointCloudObjectDetection     arn:aws:lambda:ca-central-1:918755190332:function:PRE-Adjustment3DPointCloudObjectDetection      3D point cloud object tracking adjustment - Adjust 3D cuboids across a sequence of point cloud frames.     arn:aws:lambda:us-east-1:432418664414:function:PRE-Adjustment3DPointCloudObjectTracking     arn:aws:lambda:us-east-2:266458841044:function:PRE-Adjustment3DPointCloudObjectTracking     arn:aws:lambda:us-west-2:081040173940:function:PRE-Adjustment3DPointCloudObjectTracking     arn:aws:lambda:eu-west-1:568282634449:function:PRE-Adjustment3DPointCloudObjectTracking     arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-Adjustment3DPointCloudObjectTracking     arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-Adjustment3DPointCloudObjectTracking     arn:aws:lambda:ap-south-1:565803892007:function:PRE-Adjustment3DPointCloudObjectTracking     arn:aws:lambda:eu-central-1:203001061592:function:PRE-Adjustment3DPointCloudObjectTracking     arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-Adjustment3DPointCloudObjectTracking     arn:aws:lambda:eu-west-2:487402164563:function:PRE-Adjustment3DPointCloudObjectTracking     arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-Adjustment3DPointCloudObjectTracking     arn:aws:lambda:ca-central-1:918755190332:function:PRE-Adjustment3DPointCloudObjectTracking      3D point cloud semantic segmentation adjustment - Adjust semantic segmentation masks in a 3D point cloud.     arn:aws:lambda:us-east-1:432418664414:function:PRE-Adjustment3DPointCloudSemanticSegmentation     arn:aws:lambda:us-east-2:266458841044:function:PRE-Adjustment3DPointCloudSemanticSegmentation     arn:aws:lambda:us-west-2:081040173940:function:PRE-Adjustment3DPointCloudSemanticSegmentation     arn:aws:lambda:eu-west-1:568282634449:function:PRE-Adjustment3DPointCloudSemanticSegmentation     arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-Adjustment3DPointCloudSemanticSegmentation     arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-Adjustment3DPointCloudSemanticSegmentation     arn:aws:lambda:ap-south-1:565803892007:function:PRE-Adjustment3DPointCloudSemanticSegmentation     arn:aws:lambda:eu-central-1:203001061592:function:PRE-Adjustment3DPointCloudSemanticSegmentation     arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-Adjustment3DPointCloudSemanticSegmentation     arn:aws:lambda:eu-west-2:487402164563:function:PRE-Adjustment3DPointCloudSemanticSegmentation     arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-Adjustment3DPointCloudSemanticSegmentation     arn:aws:lambda:ca-central-1:918755190332:function:PRE-Adjustment3DPointCloudSemanticSegmentation
         public let preHumanTaskLambdaArn: String
         /// The price that you pay for each task performed by an Amazon Mechanical Turk worker.
         public let publicWorkforceTaskPrice: PublicWorkforceTaskPrice?
-        /// The length of time that a task remains available for labeling by human workers. The default and maximum values for this parameter depend on the type of workforce you use.   If you choose the Amazon Mechanical Turk workforce, the maximum is 12 hours (43,200 seconds). The default is 6 hours (21,600 seconds).   If you choose a private or vendor workforce, the default value is 10 days (864,000 seconds). For most users, the maximum is also 10 days. If you want to change this limit, contact Amazon Web Services Support.  
+        /// The length of time that a task remains available for labeling by human workers. The default and maximum values for this parameter depend on the type of workforce you use.   If you choose the Amazon Mechanical Turk workforce, the maximum is 12 hours (43,200 seconds). The default is 6 hours (21,600 seconds).   If you choose a private or vendor workforce, the default value is 10 days (864,000 seconds). For most users, the maximum is also 10 days. If you want to change this limit, contact Amazon Web Services Support.
         public let taskAvailabilityLifetimeInSeconds: Int?
         /// A description of the task for your human workers.
         public let taskDescription: String
         /// Keywords used to describe the task so that workers on Amazon Mechanical Turk can discover the task.
         public let taskKeywords: [String]?
-        /// The amount of time that a worker has to complete a task.  If you create a custom labeling job, the maximum value for this parameter is 8 hours (28,800 seconds). If you create a labeling job using a built-in task type the maximum for this parameter depends on the task type you use:   For image and  text labeling jobs, the maximum is 8 hours (28,800 seconds).   For 3D point cloud and video frame labeling jobs, the maximum is 7 days (604,800 seconds). If you want to change these limits, contact Amazon Web Services Support.  
+        /// The amount of time that a worker has to complete a task.  If you create a custom labeling job, the maximum value for this parameter is 8 hours (28,800 seconds). If you create a labeling job using a built-in task type the maximum for this parameter depends on the task type you use:   For image and  text labeling jobs, the maximum is 8 hours (28,800 seconds).   For 3D point cloud and video frame labeling jobs, the maximum is 7 days (604,800 seconds). If you want to change these limits, contact Amazon Web Services Support.
         public let taskTimeLimitInSeconds: Int
         /// A title for the task for your human workers.
         public let taskTitle: String
@@ -12921,7 +12525,6 @@ extension SageMaker {
     }
 
     public struct HumanTaskUiSummary: AWSDecodableShape {
-
         /// A timestamp when SageMaker created the human task user interface.
         public let creationTime: Date
         /// The Amazon Resource Name (ARN) of the human task user interface.
@@ -12943,14 +12546,13 @@ extension SageMaker {
     }
 
     public struct HyperParameterAlgorithmSpecification: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the resource algorithm to use for the hyperparameter tuning job. If you specify a value for this parameter, do not specify a value for TrainingImage.
         public let algorithmName: String?
         /// An array of MetricDefinition objects that specify the metrics that the algorithm emits.
         public let metricDefinitions: [MetricDefinition]?
         ///  The registry path of the Docker image that contains the training algorithm. For information about Docker registry paths for built-in algorithms, see Algorithms Provided by Amazon SageMaker: Common Parameters. Amazon SageMaker supports both registry/repository[:tag] and registry/repository[@digest] image path formats. For more information, see Using Your Own Algorithms with Amazon SageMaker.
         public let trainingImage: String?
-        /// The input mode that the algorithm supports: File or Pipe. In File input mode, Amazon SageMaker downloads the training data from Amazon S3 to the storage volume that is attached to the training instance and mounts the directory to the Docker volume for the training container. In Pipe input mode, Amazon SageMaker streams data directly from Amazon S3 to the container.  If you specify File mode, make sure that you provision the storage volume that is attached to the training instance with enough capacity to accommodate the training data downloaded from Amazon S3, the model artifacts, and intermediate information.  For more information about input modes, see Algorithms. 
+        /// The input mode that the algorithm supports: File or Pipe. In File input mode, Amazon SageMaker downloads the training data from Amazon S3 to the storage volume that is attached to the training instance and mounts the directory to the Docker volume for the training container. In Pipe input mode, Amazon SageMaker streams data directly from Amazon S3 to the container.  If you specify File mode, make sure that you provision the storage volume that is attached to the training instance with enough capacity to accommodate the training data downloaded from Amazon S3, the model artifacts, and intermediate information.  For more information about input modes, see Algorithms.
         public let trainingInputMode: TrainingInputMode
 
         public init(algorithmName: String? = nil, metricDefinitions: [MetricDefinition]? = nil, trainingImage: String? = nil, trainingInputMode: TrainingInputMode) {
@@ -12981,7 +12583,6 @@ extension SageMaker {
     }
 
     public struct HyperParameterSpecification: AWSEncodableShape & AWSDecodableShape {
-
         /// The default value for this hyperparameter. If a default value is specified, a hyperparameter cannot be required.
         public let defaultValue: String?
         /// A brief description of the hyperparameter.
@@ -13029,7 +12630,6 @@ extension SageMaker {
     }
 
     public struct HyperParameterTrainingJobDefinition: AWSEncodableShape & AWSDecodableShape {
-
         /// The HyperParameterAlgorithmSpecification object that specifies the resource algorithm to use for the training jobs that the tuning job launches.
         public let algorithmSpecification: HyperParameterAlgorithmSpecification
         public let checkpointConfig: CheckpointConfig?
@@ -13130,14 +12730,13 @@ extension SageMaker {
     }
 
     public struct HyperParameterTrainingJobSummary: AWSDecodableShape {
-
         /// The date and time that the training job was created.
         public let creationTime: Date
-        /// The reason that the training job failed. 
+        /// The reason that the training job failed.
         public let failureReason: String?
         /// The FinalHyperParameterTuningJobObjectiveMetric object that specifies the value of the objective metric of the tuning job that launched this training job.
         public let finalHyperParameterTuningJobObjectiveMetric: FinalHyperParameterTuningJobObjectiveMetric?
-        /// The status of the objective metric for the training job:   Succeeded: The final objective metric for the training job was evaluated by the hyperparameter tuning job and used in the hyperparameter tuning process.     Pending: The training job is in progress and evaluation of its final objective metric is pending.     Failed: The final objective metric for the training job was not evaluated, and was not used in the hyperparameter tuning process. This typically occurs when the training job failed or did not emit an objective metric.  
+        /// The status of the objective metric for the training job:   Succeeded: The final objective metric for the training job was evaluated by the hyperparameter tuning job and used in the hyperparameter tuning process.     Pending: The training job is in progress and evaluation of its final objective metric is pending.     Failed: The final objective metric for the training job was not evaluated, and was not used in the hyperparameter tuning process. This typically occurs when the training job failed or did not emit an objective metric.
         public let objectiveStatus: ObjectiveStatus?
         /// Specifies the time when the training job ends on training instances. You are billed for the time interval between the value of TrainingStartTime and this time. For successful jobs and stopped jobs, this is the time after model artifacts are uploaded. For failed jobs, this is the time when Amazon SageMaker detects a job failure.
         public let trainingEndTime: Date?
@@ -13188,7 +12787,6 @@ extension SageMaker {
     }
 
     public struct HyperParameterTuningJobConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// The HyperParameterTuningJobObjective object that specifies the objective metric for this tuning job.
         public let hyperParameterTuningJobObjective: HyperParameterTuningJobObjective?
         /// The ParameterRanges object that specifies the ranges of hyperparameters that this tuning job searches.
@@ -13197,7 +12795,7 @@ extension SageMaker {
         public let resourceLimits: ResourceLimits
         /// Specifies how hyperparameter tuning chooses the combinations of hyperparameter values to use for the training job it launches. To use the Bayesian search strategy, set this to Bayesian. To randomly search, set it to Random. For information about search strategies, see How Hyperparameter Tuning Works.
         public let strategy: HyperParameterTuningJobStrategyType
-        /// Specifies whether to use early stopping for training jobs launched by the hyperparameter tuning job. This can be one of the following values (the default value is OFF):  OFF  Training jobs launched by the hyperparameter tuning job do not use early stopping.  AUTO  Amazon SageMaker stops training jobs launched by the hyperparameter tuning job when they are unlikely to perform better than previously completed training jobs. For more information, see Stop Training Jobs Early.  
+        /// Specifies whether to use early stopping for training jobs launched by the hyperparameter tuning job. This can be one of the following values (the default value is OFF):  OFF  Training jobs launched by the hyperparameter tuning job do not use early stopping.  AUTO  Amazon SageMaker stops training jobs launched by the hyperparameter tuning job when they are unlikely to perform better than previously completed training jobs. For more information, see Stop Training Jobs Early.
         public let trainingJobEarlyStoppingType: TrainingJobEarlyStoppingType?
         /// The tuning job's completion criteria.
         public let tuningJobCompletionCriteria: TuningJobCompletionCriteria?
@@ -13228,7 +12826,6 @@ extension SageMaker {
     }
 
     public struct HyperParameterTuningJobObjective: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the metric to use for the objective metric.
         public let metricName: String
         /// Whether to minimize or maximize the objective metric.
@@ -13252,7 +12849,6 @@ extension SageMaker {
     }
 
     public struct HyperParameterTuningJobSummary: AWSDecodableShape {
-
         /// The date and time that the tuning job was created.
         public let creationTime: Date
         /// The date and time that the tuning job ended.
@@ -13302,10 +12898,9 @@ extension SageMaker {
     }
 
     public struct HyperParameterTuningJobWarmStartConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// An array of hyperparameter tuning jobs that are used as the starting point for the new hyperparameter tuning job. For more information about warm starting a hyperparameter tuning job, see Using a Previous Hyperparameter Tuning Job as a Starting Point. Hyperparameter tuning jobs created before October 1, 2018 cannot be used as parent jobs for warm start tuning jobs.
         public let parentHyperParameterTuningJobs: [ParentHyperParameterTuningJob]
-        /// Specifies one of the following:  IDENTICAL_DATA_AND_ALGORITHM  The new hyperparameter tuning job uses the same input data and training image as the parent tuning jobs. You can change the hyperparameter ranges to search and the maximum number of training jobs that the hyperparameter tuning job launches. You cannot use a new version of the training algorithm, unless the changes in the new version do not affect the algorithm itself. For example, changes that improve logging or adding support for a different data format are allowed. You can also change hyperparameters from tunable to static, and from static to tunable, but the total number of static plus tunable hyperparameters must remain the same as it is in all parent jobs. The objective metric for the new tuning job must be the same as for all parent jobs.  TRANSFER_LEARNING  The new hyperparameter tuning job can include input data, hyperparameter ranges, maximum number of concurrent training jobs, and maximum number of training jobs that are different than those of its parent hyperparameter tuning jobs. The training image can also be a different version from the version used in the parent hyperparameter tuning job. You can also change hyperparameters from tunable to static, and from static to tunable, but the total number of static plus tunable hyperparameters must remain the same as it is in all parent jobs. The objective metric for the new tuning job must be the same as for all parent jobs.  
+        /// Specifies one of the following:  IDENTICAL_DATA_AND_ALGORITHM  The new hyperparameter tuning job uses the same input data and training image as the parent tuning jobs. You can change the hyperparameter ranges to search and the maximum number of training jobs that the hyperparameter tuning job launches. You cannot use a new version of the training algorithm, unless the changes in the new version do not affect the algorithm itself. For example, changes that improve logging or adding support for a different data format are allowed. You can also change hyperparameters from tunable to static, and from static to tunable, but the total number of static plus tunable hyperparameters must remain the same as it is in all parent jobs. The objective metric for the new tuning job must be the same as for all parent jobs.  TRANSFER_LEARNING  The new hyperparameter tuning job can include input data, hyperparameter ranges, maximum number of concurrent training jobs, and maximum number of training jobs that are different than those of its parent hyperparameter tuning jobs. The training image can also be a different version from the version used in the parent hyperparameter tuning job. You can also change hyperparameters from tunable to static, and from static to tunable, but the total number of static plus tunable hyperparameters must remain the same as it is in all parent jobs. The objective metric for the new tuning job must be the same as for all parent jobs.
         public let warmStartType: HyperParameterTuningJobWarmStartType
 
         public init(parentHyperParameterTuningJobs: [ParentHyperParameterTuningJob], warmStartType: HyperParameterTuningJobWarmStartType) {
@@ -13328,7 +12923,6 @@ extension SageMaker {
     }
 
     public struct Image: AWSDecodableShape {
-
         /// When the image was created.
         public let creationTime: Date
         /// The description of the image.
@@ -13370,8 +12964,7 @@ extension SageMaker {
     }
 
     public struct ImageConfig: AWSEncodableShape & AWSDecodableShape {
-
-        /// Set this to one of the following values:    Platform - The model image is hosted in Amazon ECR.    Vpc - The model image is hosted in a private Docker registry in your VPC.  
+        /// Set this to one of the following values:    Platform - The model image is hosted in Amazon ECR.    Vpc - The model image is hosted in a private Docker registry in your VPC.
         public let repositoryAccessMode: RepositoryAccessMode
         /// (Optional) Specifies an authentication configuration for the private docker registry where your model image is hosted. Specify a value for this property only if you specified Vpc as the value for the RepositoryAccessMode field, and the private Docker registry where the model image is hosted requires authentication.
         public let repositoryAuthConfig: RepositoryAuthConfig?
@@ -13392,7 +12985,6 @@ extension SageMaker {
     }
 
     public struct ImageVersion: AWSDecodableShape {
-
         /// When the version was created.
         public let creationTime: Date
         /// When a create or delete operation fails, the reason for the failure.
@@ -13430,8 +13022,7 @@ extension SageMaker {
     }
 
     public struct InferenceExecutionConfig: AWSEncodableShape & AWSDecodableShape {
-
-        /// How containers in a multi-container are run. The following values are valid.    SERIAL - Containers run as a serial pipeline.    DIRECT - Only the individual container that you specify is run.  
+        /// How containers in a multi-container are run. The following values are valid.    SERIAL - Containers run as a serial pipeline.    DIRECT - Only the individual container that you specify is run.
         public let mode: InferenceExecutionMode
 
         public init(mode: InferenceExecutionMode) {
@@ -13444,7 +13035,6 @@ extension SageMaker {
     }
 
     public struct InferenceSpecification: AWSEncodableShape & AWSDecodableShape {
-
         /// The Amazon ECR registry path of the Docker image that contains the inference code.
         public let containers: [ModelPackageContainerDefinition]
         /// The supported MIME types for the input data.
@@ -13491,8 +13081,7 @@ extension SageMaker {
     }
 
     public struct InputConfig: AWSEncodableShape & AWSDecodableShape {
-
-        /// Specifies the name and shape of the expected data inputs for your trained model with a JSON dictionary form. The data inputs are InputConfig$Framework specific.     TensorFlow: You must specify the name and shape (NHWC format) of the expected data inputs using a dictionary format for your trained model. The dictionary formats required for the console and CLI are different.   Examples for one input:   If using the console, {"input":[1,1024,1024,3]}    If using the CLI, {\"input\":[1,1024,1024,3]}      Examples for two inputs:   If using the console, {"data1": [1,28,28,1], "data2":[1,28,28,1]}    If using the CLI, {\"data1\": [1,28,28,1], \"data2\":[1,28,28,1]}         KERAS: You must specify the name and shape (NCHW format) of expected data inputs using a dictionary format for your trained model. Note that while Keras model artifacts should be uploaded in NHWC (channel-last) format, DataInputConfig should be specified in NCHW (channel-first) format. The dictionary formats required for the console and CLI are different.   Examples for one input:   If using the console, {"input_1":[1,3,224,224]}    If using the CLI, {\"input_1\":[1,3,224,224]}      Examples for two inputs:   If using the console, {"input_1": [1,3,224,224], "input_2":[1,3,224,224]}     If using the CLI, {\"input_1\": [1,3,224,224], \"input_2\":[1,3,224,224]}         MXNET/ONNX/DARKNET: You must specify the name and shape (NCHW format) of the expected data inputs in order using a dictionary format for your trained model. The dictionary formats required for the console and CLI are different.   Examples for one input:   If using the console, {"data":[1,3,1024,1024]}    If using the CLI, {\"data\":[1,3,1024,1024]}      Examples for two inputs:   If using the console, {"var1": [1,1,28,28], "var2":[1,1,28,28]}     If using the CLI, {\"var1\": [1,1,28,28], \"var2\":[1,1,28,28]}         PyTorch: You can either specify the name and shape (NCHW format) of expected data inputs in order using a dictionary format for your trained model or you can specify the shape only using a list format. The dictionary formats required for the console and CLI are different. The list formats for the console and CLI are the same.   Examples for one input in dictionary format:   If using the console, {"input0":[1,3,224,224]}    If using the CLI, {\"input0\":[1,3,224,224]}      Example for one input in list format: [[1,3,224,224]]    Examples for two inputs in dictionary format:   If using the console, {"input0":[1,3,224,224], "input1":[1,3,224,224]}    If using the CLI, {\"input0\":[1,3,224,224], \"input1\":[1,3,224,224]}       Example for two inputs in list format: [[1,3,224,224], [1,3,224,224]]       XGBOOST: input data name and shape are not needed.    DataInputConfig supports the following parameters for CoreML OutputConfig$TargetDevice (ML Model format):    shape: Input shape, for example {"input_1": {"shape": [1,224,224,3]}}. In addition to static input shapes, CoreML converter supports Flexible input shapes:   Range Dimension. You can use the Range Dimension feature if you know the input shape will be within some specific interval in that dimension, for example: {"input_1": {"shape": ["1..10", 224, 224, 3]}}    Enumerated shapes. Sometimes, the models are trained to work only on a select set of inputs. You can enumerate all supported input shapes, for example: {"input_1": {"shape": [[1, 224, 224, 3], [1, 160, 160, 3]]}}       default_shape: Default input shape. You can set a default shape during conversion for both Range Dimension and Enumerated Shapes. For example {"input_1": {"shape": ["1..10", 224, 224, 3], "default_shape": [1, 224, 224, 3]}}     type: Input type. Allowed values: Image and Tensor. By default, the converter generates an ML Model with inputs of type Tensor (MultiArray). User can set input type to be Image. Image input type requires additional input parameters such as bias and scale.    bias: If the input type is an Image, you need to provide the bias vector.    scale: If the input type is an Image, you need to provide a scale factor.   CoreML ClassifierConfig parameters can be specified using OutputConfig$CompilerOptions. CoreML converter supports Tensorflow and PyTorch models. CoreML conversion examples:   Tensor type input:    "DataInputConfig": {"input_1": {"shape": [[1,224,224,3], [1,160,160,3]], "default_shape": [1,224,224,3]}}      Tensor type input without input name (PyTorch):    "DataInputConfig": [{"shape": [[1,3,224,224], [1,3,160,160]], "default_shape": [1,3,224,224]}]      Image type input:    "DataInputConfig": {"input_1": {"shape": [[1,224,224,3], [1,160,160,3]], "default_shape": [1,224,224,3], "type": "Image", "bias": [-1,-1,-1], "scale": 0.007843137255}}     "CompilerOptions": {"class_labels": "imagenet_labels_1000.txt"}      Image type input without input name (PyTorch):    "DataInputConfig": [{"shape": [[1,3,224,224], [1,3,160,160]], "default_shape": [1,3,224,224], "type": "Image", "bias": [-1,-1,-1], "scale": 0.007843137255}]     "CompilerOptions": {"class_labels": "imagenet_labels_1000.txt"}      Depending on the model format, DataInputConfig requires the following parameters for  ml_eia2  OutputConfig:TargetDevice.   For TensorFlow models saved in the SavedModel format, specify the input names  from signature_def_key and the input model shapes for DataInputConfig.   Specify the signature_def_key in   OutputConfig:CompilerOptions if  the model does not use TensorFlow's default signature def key. For example:    "DataInputConfig": {"inputs": [1, 224, 224, 3]}     "CompilerOptions": {"signature_def_key": "serving_custom"}      For TensorFlow models saved as a frozen graph, specify the input tensor names and shapes   in DataInputConfig and the output tensor names for output_names in   OutputConfig:CompilerOptions . For example:    "DataInputConfig": {"input_tensor:0": [1, 224, 224, 3]}     "CompilerOptions": {"output_names": ["output_tensor:0"]}     
+        /// Specifies the name and shape of the expected data inputs for your trained model with a JSON dictionary form. The data inputs are InputConfig$Framework specific.     TensorFlow: You must specify the name and shape (NHWC format) of the expected data inputs using a dictionary format for your trained model. The dictionary formats required for the console and CLI are different.   Examples for one input:   If using the console, {"input":[1,1024,1024,3]}    If using the CLI, {\"input\":[1,1024,1024,3]}      Examples for two inputs:   If using the console, {"data1": [1,28,28,1], "data2":[1,28,28,1]}    If using the CLI, {\"data1\": [1,28,28,1], \"data2\":[1,28,28,1]}         KERAS: You must specify the name and shape (NCHW format) of expected data inputs using a dictionary format for your trained model. Note that while Keras model artifacts should be uploaded in NHWC (channel-last) format, DataInputConfig should be specified in NCHW (channel-first) format. The dictionary formats required for the console and CLI are different.   Examples for one input:   If using the console, {"input_1":[1,3,224,224]}    If using the CLI, {\"input_1\":[1,3,224,224]}      Examples for two inputs:   If using the console, {"input_1": [1,3,224,224], "input_2":[1,3,224,224]}     If using the CLI, {\"input_1\": [1,3,224,224], \"input_2\":[1,3,224,224]}         MXNET/ONNX/DARKNET: You must specify the name and shape (NCHW format) of the expected data inputs in order using a dictionary format for your trained model. The dictionary formats required for the console and CLI are different.   Examples for one input:   If using the console, {"data":[1,3,1024,1024]}    If using the CLI, {\"data\":[1,3,1024,1024]}      Examples for two inputs:   If using the console, {"var1": [1,1,28,28], "var2":[1,1,28,28]}     If using the CLI, {\"var1\": [1,1,28,28], \"var2\":[1,1,28,28]}         PyTorch: You can either specify the name and shape (NCHW format) of expected data inputs in order using a dictionary format for your trained model or you can specify the shape only using a list format. The dictionary formats required for the console and CLI are different. The list formats for the console and CLI are the same.   Examples for one input in dictionary format:   If using the console, {"input0":[1,3,224,224]}    If using the CLI, {\"input0\":[1,3,224,224]}      Example for one input in list format: [[1,3,224,224]]    Examples for two inputs in dictionary format:   If using the console, {"input0":[1,3,224,224], "input1":[1,3,224,224]}    If using the CLI, {\"input0\":[1,3,224,224], \"input1\":[1,3,224,224]}       Example for two inputs in list format: [[1,3,224,224], [1,3,224,224]]       XGBOOST: input data name and shape are not needed.    DataInputConfig supports the following parameters for CoreML OutputConfig$TargetDevice (ML Model format):    shape: Input shape, for example {"input_1": {"shape": [1,224,224,3]}}. In addition to static input shapes, CoreML converter supports Flexible input shapes:   Range Dimension. You can use the Range Dimension feature if you know the input shape will be within some specific interval in that dimension, for example: {"input_1": {"shape": ["1..10", 224, 224, 3]}}    Enumerated shapes. Sometimes, the models are trained to work only on a select set of inputs. You can enumerate all supported input shapes, for example: {"input_1": {"shape": [[1, 224, 224, 3], [1, 160, 160, 3]]}}       default_shape: Default input shape. You can set a default shape during conversion for both Range Dimension and Enumerated Shapes. For example {"input_1": {"shape": ["1..10", 224, 224, 3], "default_shape": [1, 224, 224, 3]}}     type: Input type. Allowed values: Image and Tensor. By default, the converter generates an ML Model with inputs of type Tensor (MultiArray). User can set input type to be Image. Image input type requires additional input parameters such as bias and scale.    bias: If the input type is an Image, you need to provide the bias vector.    scale: If the input type is an Image, you need to provide a scale factor.   CoreML ClassifierConfig parameters can be specified using OutputConfig$CompilerOptions. CoreML converter supports Tensorflow and PyTorch models. CoreML conversion examples:   Tensor type input:    "DataInputConfig": {"input_1": {"shape": [[1,224,224,3], [1,160,160,3]], "default_shape": [1,224,224,3]}}      Tensor type input without input name (PyTorch):    "DataInputConfig": [{"shape": [[1,3,224,224], [1,3,160,160]], "default_shape": [1,3,224,224]}]      Image type input:    "DataInputConfig": {"input_1": {"shape": [[1,224,224,3], [1,160,160,3]], "default_shape": [1,224,224,3], "type": "Image", "bias": [-1,-1,-1], "scale": 0.007843137255}}     "CompilerOptions": {"class_labels": "imagenet_labels_1000.txt"}      Image type input without input name (PyTorch):    "DataInputConfig": [{"shape": [[1,3,224,224], [1,3,160,160]], "default_shape": [1,3,224,224], "type": "Image", "bias": [-1,-1,-1], "scale": 0.007843137255}]     "CompilerOptions": {"class_labels": "imagenet_labels_1000.txt"}      Depending on the model format, DataInputConfig requires the following parameters for  ml_eia2  OutputConfig:TargetDevice.   For TensorFlow models saved in the SavedModel format, specify the input names  from signature_def_key and the input model shapes for DataInputConfig.   Specify the signature_def_key in   OutputConfig:CompilerOptions if  the model does not use TensorFlow's default signature def key. For example:    "DataInputConfig": {"inputs": [1, 224, 224, 3]}     "CompilerOptions": {"signature_def_key": "serving_custom"}      For TensorFlow models saved as a frozen graph, specify the input tensor names and shapes   in DataInputConfig and the output tensor names for output_names in   OutputConfig:CompilerOptions . For example:    "DataInputConfig": {"input_tensor:0": [1, 224, 224, 3]}     "CompilerOptions": {"output_names": ["output_tensor:0"]}
         public let dataInputConfig: String
         /// Identifies the framework in which the model was trained. For example: TENSORFLOW.
         public let framework: Framework
@@ -13528,14 +13117,13 @@ extension SageMaker {
     }
 
     public struct IntegerParameterRange: AWSEncodableShape & AWSDecodableShape {
-
         /// The maximum value of the hyperparameter to search.
         public let maxValue: String
         /// The minimum value of the hyperparameter to search.
         public let minValue: String
         /// The name of the hyperparameter to search.
         public let name: String
-        /// The scale that hyperparameter tuning uses to search the hyperparameter range. For information about choosing a hyperparameter scale, see Hyperparameter Scaling. One of the following values:  Auto  Amazon SageMaker hyperparameter tuning chooses the best scale for the hyperparameter.  Linear  Hyperparameter tuning searches the values in the hyperparameter range by using a linear scale.  Logarithmic  Hyperparameter tuning searches the values in the hyperparameter range by using a logarithmic scale. Logarithmic scaling works only for ranges that have only values greater than 0.  
+        /// The scale that hyperparameter tuning uses to search the hyperparameter range. For information about choosing a hyperparameter scale, see Hyperparameter Scaling. One of the following values:  Auto  Amazon SageMaker hyperparameter tuning chooses the best scale for the hyperparameter.  Linear  Hyperparameter tuning searches the values in the hyperparameter range by using a linear scale.  Logarithmic  Hyperparameter tuning searches the values in the hyperparameter range by using a logarithmic scale. Logarithmic scaling works only for ranges that have only values greater than 0.
         public let scalingType: HyperParameterScalingType?
 
         public init(maxValue: String, minValue: String, name: String, scalingType: HyperParameterScalingType? = nil) {
@@ -13563,7 +13151,6 @@ extension SageMaker {
     }
 
     public struct IntegerParameterRangeSpecification: AWSEncodableShape & AWSDecodableShape {
-
         /// The maximum integer value allowed.
         public let maxValue: String
         /// The minimum integer value allowed.
@@ -13588,7 +13175,6 @@ extension SageMaker {
     }
 
     public struct JupyterServerAppSettings: AWSEncodableShape & AWSDecodableShape {
-
         /// The default instance type and the Amazon Resource Name (ARN) of the default SageMaker image used by the JupyterServer app.
         public let defaultResourceSpec: ResourceSpec?
 
@@ -13606,7 +13192,6 @@ extension SageMaker {
     }
 
     public struct KernelGatewayAppSettings: AWSEncodableShape & AWSDecodableShape {
-
         /// A list of custom SageMaker images that are configured to run as a KernelGateway app.
         public let customImages: [CustomImage]?
         /// The default instance type and the Amazon Resource Name (ARN) of the default SageMaker image used by the KernelGateway app.
@@ -13632,7 +13217,6 @@ extension SageMaker {
     }
 
     public struct KernelGatewayImageConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// The Amazon Elastic File System (EFS) storage configuration for a SageMaker image.
         public let fileSystemConfig: FileSystemConfig?
         /// The specification of the Jupyter kernels in the image.
@@ -13659,7 +13243,6 @@ extension SageMaker {
     }
 
     public struct KernelSpec: AWSEncodableShape & AWSDecodableShape {
-
         /// The display name of the kernel.
         public let displayName: String?
         /// The name of the Jupyter kernel in the image. This value is case sensitive.
@@ -13682,7 +13265,6 @@ extension SageMaker {
     }
 
     public struct LabelCounters: AWSDecodableShape {
-
         /// The total number of objects that could not be labeled due to an error.
         public let failedNonRetryableError: Int?
         /// The total number of objects labeled by a human worker.
@@ -13712,7 +13294,6 @@ extension SageMaker {
     }
 
     public struct LabelCountersForWorkteam: AWSDecodableShape {
-
         /// The total number of data objects labeled by a human worker.
         public let humanLabeled: Int?
         /// The total number of data objects that need to be labeled by a human worker.
@@ -13734,10 +13315,9 @@ extension SageMaker {
     }
 
     public struct LabelingJobAlgorithmsConfig: AWSEncodableShape & AWSDecodableShape {
-
-        /// At the end of an auto-label job Ground Truth sends the Amazon Resource Name (ARN) of the final model used for auto-labeling. You can use this model as the starting point for subsequent similar jobs by providing the ARN of the model here. 
+        /// At the end of an auto-label job Ground Truth sends the Amazon Resource Name (ARN) of the final model used for auto-labeling. You can use this model as the starting point for subsequent similar jobs by providing the ARN of the model here.
         public let initialActiveLearningModelArn: String?
-        /// Specifies the Amazon Resource Name (ARN) of the algorithm used for auto-labeling. You must select one of the following ARNs:    Image classification   arn:aws:sagemaker:region:027400017018:labeling-job-algorithm-specification/image-classification     Text classification   arn:aws:sagemaker:region:027400017018:labeling-job-algorithm-specification/text-classification     Object detection   arn:aws:sagemaker:region:027400017018:labeling-job-algorithm-specification/object-detection     Semantic Segmentation   arn:aws:sagemaker:region:027400017018:labeling-job-algorithm-specification/semantic-segmentation   
+        /// Specifies the Amazon Resource Name (ARN) of the algorithm used for auto-labeling. You must select one of the following ARNs:    Image classification   arn:aws:sagemaker:region:027400017018:labeling-job-algorithm-specification/image-classification     Text classification   arn:aws:sagemaker:region:027400017018:labeling-job-algorithm-specification/text-classification     Object detection   arn:aws:sagemaker:region:027400017018:labeling-job-algorithm-specification/object-detection     Semantic Segmentation   arn:aws:sagemaker:region:027400017018:labeling-job-algorithm-specification/semantic-segmentation
         public let labelingJobAlgorithmSpecificationArn: String
         /// Provides configuration information for a labeling job.
         public let labelingJobResourceConfig: LabelingJobResourceConfig?
@@ -13765,7 +13345,6 @@ extension SageMaker {
     }
 
     public struct LabelingJobDataAttributes: AWSEncodableShape & AWSDecodableShape {
-
         /// Declares that your content is free of personally identifiable information or adult content. Amazon SageMaker may restrict the Amazon Mechanical Turk workers that can view your task based on this information.
         public let contentClassifiers: [ContentClassifier]?
 
@@ -13783,10 +13362,9 @@ extension SageMaker {
     }
 
     public struct LabelingJobDataSource: AWSEncodableShape & AWSDecodableShape {
-
         /// The Amazon S3 location of the input data objects.
         public let s3DataSource: LabelingJobS3DataSource?
-        /// An Amazon SNS data source used for streaming labeling jobs. To learn more, see Send Data to a Streaming Labeling Job. 
+        /// An Amazon SNS data source used for streaming labeling jobs. To learn more, see Send Data to a Streaming Labeling Job.
         public let snsDataSource: LabelingJobSnsDataSource?
 
         public init(s3DataSource: LabelingJobS3DataSource? = nil, snsDataSource: LabelingJobSnsDataSource? = nil) {
@@ -13806,7 +13384,6 @@ extension SageMaker {
     }
 
     public struct LabelingJobForWorkteamSummary: AWSDecodableShape {
-
         /// The date and time that the labeling job was created.
         public let creationTime: Date
         /// A unique identifier for a labeling job. You can use this to refer to a specific labeling job.
@@ -13840,7 +13417,6 @@ extension SageMaker {
     }
 
     public struct LabelingJobInputConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// Attributes of the data specified by the customer.
         public let dataAttributes: LabelingJobDataAttributes?
         /// The location of the input data.
@@ -13863,10 +13439,9 @@ extension SageMaker {
     }
 
     public struct LabelingJobOutput: AWSDecodableShape {
-
-        /// The Amazon Resource Name (ARN) for the most recent Amazon SageMaker model trained as part of automated data labeling. 
+        /// The Amazon Resource Name (ARN) for the most recent Amazon SageMaker model trained as part of automated data labeling.
         public let finalActiveLearningModelArn: String?
-        /// The Amazon S3 bucket location of the manifest file for labeled data. 
+        /// The Amazon S3 bucket location of the manifest file for labeled data.
         public let outputDatasetS3Uri: String
 
         public init(finalActiveLearningModelArn: String? = nil, outputDatasetS3Uri: String) {
@@ -13881,12 +13456,11 @@ extension SageMaker {
     }
 
     public struct LabelingJobOutputConfig: AWSEncodableShape & AWSDecodableShape {
-
-        /// The Amazon Web Services Key Management Service ID of the key used to encrypt the output data, if any. If you provide your own KMS key ID, you must add the required permissions to your KMS key described in Encrypt Output Data and Storage Volume with Amazon Web Services KMS. If you don't provide a KMS key ID, Amazon SageMaker uses the default Amazon Web Services KMS key for Amazon S3 for your role's account to encrypt your output data. If you use a bucket policy with an s3:PutObject permission that only allows objects with server-side encryption, set the condition key of s3:x-amz-server-side-encryption to "aws:kms". For more information, see KMS-Managed Encryption Keys in the Amazon Simple Storage Service Developer Guide. 
+        /// The Amazon Web Services Key Management Service ID of the key used to encrypt the output data, if any. If you provide your own KMS key ID, you must add the required permissions to your KMS key described in Encrypt Output Data and Storage Volume with Amazon Web Services KMS. If you don't provide a KMS key ID, Amazon SageMaker uses the default Amazon Web Services KMS key for Amazon S3 for your role's account to encrypt your output data. If you use a bucket policy with an s3:PutObject permission that only allows objects with server-side encryption, set the condition key of s3:x-amz-server-side-encryption to "aws:kms". For more information, see KMS-Managed Encryption Keys in the Amazon Simple Storage Service Developer Guide.
         public let kmsKeyId: String?
         /// The Amazon S3 location to write output data.
         public let s3OutputPath: String
-        /// An Amazon Simple Notification Service (Amazon SNS) output topic ARN. Provide a SnsTopicArn if you want to do real time chaining to another streaming job and receive an Amazon SNS notifications each time a data object is submitted by a worker. If you provide an SnsTopicArn in OutputConfig, when workers complete labeling tasks, Ground Truth will send labeling task output data to the SNS output topic you specify here.  To learn more, see Receive Output Data from a Streaming Labeling Job. 
+        /// An Amazon Simple Notification Service (Amazon SNS) output topic ARN. Provide a SnsTopicArn if you want to do real time chaining to another streaming job and receive an Amazon SNS notifications each time a data object is submitted by a worker. If you provide an SnsTopicArn in OutputConfig, when workers complete labeling tasks, Ground Truth will send labeling task output data to the SNS output topic you specify here.  To learn more, see Receive Output Data from a Streaming Labeling Job.
         public let snsTopicArn: String?
 
         public init(kmsKeyId: String? = nil, s3OutputPath: String, snsTopicArn: String? = nil) {
@@ -13912,8 +13486,7 @@ extension SageMaker {
     }
 
     public struct LabelingJobResourceConfig: AWSEncodableShape & AWSDecodableShape {
-
-        /// The Amazon Web Services Key Management Service (Amazon Web Services KMS) key that Amazon SageMaker uses to encrypt data on the storage volume attached to the ML compute instance(s) that run the training and inference jobs used for automated data labeling.  You can only specify a VolumeKmsKeyId when you create a labeling job with automated data labeling enabled using the API operation CreateLabelingJob. You cannot specify an Amazon Web Services KMS customer managed CMK to encrypt the storage volume used for automated data labeling model training and inference when you create a labeling job using the console. To learn more, see Output Data and Storage Volume Encryption. The VolumeKmsKeyId can be any of the following formats:   KMS Key ID  "1234abcd-12ab-34cd-56ef-1234567890ab"    Amazon Resource Name (ARN) of a KMS Key  "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"   
+        /// The Amazon Web Services Key Management Service (Amazon Web Services KMS) key that Amazon SageMaker uses to encrypt data on the storage volume attached to the ML compute instance(s) that run the training and inference jobs used for automated data labeling.  You can only specify a VolumeKmsKeyId when you create a labeling job with automated data labeling enabled using the API operation CreateLabelingJob. You cannot specify an Amazon Web Services KMS customer managed CMK to encrypt the storage volume used for automated data labeling model training and inference when you create a labeling job using the console. To learn more, see Output Data and Storage Volume Encryption. The VolumeKmsKeyId can be any of the following formats:   KMS Key ID  "1234abcd-12ab-34cd-56ef-1234567890ab"    Amazon Resource Name (ARN) of a KMS Key  "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
         public let volumeKmsKeyId: String?
 
         public init(volumeKmsKeyId: String? = nil) {
@@ -13931,7 +13504,6 @@ extension SageMaker {
     }
 
     public struct LabelingJobS3DataSource: AWSEncodableShape & AWSDecodableShape {
-
         /// The Amazon S3 location of the manifest file that describes the input data objects.  The input manifest file referenced in ManifestS3Uri must contain one of the following keys: source-ref or source. The value of the keys are interpreted as follows:    source-ref: The source of the object is the Amazon S3 object specified in the value. Use this value when the object is a binary object, such as an image.    source: The source of the object is the value. Use this value when the object is a text value.   If you are a new user of Ground Truth, it is recommended you review Use an Input Manifest File  in the Amazon SageMaker Developer Guide to learn how to create an input manifest file.
         public let manifestS3Uri: String
 
@@ -13950,7 +13522,6 @@ extension SageMaker {
     }
 
     public struct LabelingJobSnsDataSource: AWSEncodableShape & AWSDecodableShape {
-
         /// The Amazon SNS input topic Amazon Resource Name (ARN). Specify the ARN of the input topic you will use to send new data objects to a streaming labeling job.
         public let snsTopicArn: String
 
@@ -13969,7 +13540,6 @@ extension SageMaker {
     }
 
     public struct LabelingJobStoppingConditions: AWSEncodableShape & AWSDecodableShape {
-
         /// The maximum number of objects that can be labeled by human workers.
         public let maxHumanLabeledObjectCount: Int?
         /// The maximum number of input data objects that should be labeled.
@@ -13993,7 +13563,6 @@ extension SageMaker {
     }
 
     public struct LabelingJobSummary: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the Lambda function used to consolidate the annotations from individual workers into a label for a data object. For more information, see Annotation Consolidation.
         public let annotationConsolidationLambdaArn: String?
         /// The date and time that the job was created (timestamp).
@@ -14010,7 +13579,7 @@ extension SageMaker {
         public let labelingJobName: String
         /// The location of the output produced by the labeling job.
         public let labelingJobOutput: LabelingJobOutput?
-        /// The current status of the labeling job. 
+        /// The current status of the labeling job.
         public let labelingJobStatus: LabelingJobStatus
         /// The date and time that the job was last modified (timestamp).
         public let lastModifiedTime: Date
@@ -14051,7 +13620,6 @@ extension SageMaker {
     }
 
     public struct ListActionsRequest: AWSEncodableShape {
-
         /// A filter that returns only actions of the specified type.
         public let actionType: String?
         /// A filter that returns only actions created on or after the specified time.
@@ -14103,7 +13671,6 @@ extension SageMaker {
     }
 
     public struct ListActionsResponse: AWSDecodableShape {
-
         /// A list of actions and their properties.
         public let actionSummaries: [ActionSummary]?
         /// A token for getting the next set of actions, if there are any.
@@ -14121,7 +13688,6 @@ extension SageMaker {
     }
 
     public struct ListAlgorithmsInput: AWSEncodableShape {
-
         /// A filter that returns only algorithms created after the specified time (timestamp).
         public let creationTimeAfter: Date?
         /// A filter that returns only algorithms created before the specified time (timestamp).
@@ -14168,7 +13734,6 @@ extension SageMaker {
     }
 
     public struct ListAlgorithmsOutput: AWSDecodableShape {
-
         /// >An array of AlgorithmSummary objects, each of which lists an algorithm.
         public let algorithmSummaryList: [AlgorithmSummary]
         /// If the response is truncated, Amazon SageMaker returns this token. To retrieve the next set of algorithms, use it in the subsequent request.
@@ -14186,12 +13751,11 @@ extension SageMaker {
     }
 
     public struct ListAppImageConfigsRequest: AWSEncodableShape {
-
         /// A filter that returns only AppImageConfigs created on or after the specified time.
         public let creationTimeAfter: Date?
         /// A filter that returns only AppImageConfigs created on or before the specified time.
         public let creationTimeBefore: Date?
-        /// The maximum number of AppImageConfigs to return in the response. The default value is 10. 
+        /// The maximum number of AppImageConfigs to return in the response. The default value is 10.
         public let maxResults: Int?
         /// A filter that returns only AppImageConfigs modified on or after the specified time.
         public let modifiedTimeAfter: Date?
@@ -14241,7 +13805,6 @@ extension SageMaker {
     }
 
     public struct ListAppImageConfigsResponse: AWSDecodableShape {
-
         /// A list of AppImageConfigs and their properties.
         public let appImageConfigs: [AppImageConfigDetails]?
         /// A token for getting the next set of AppImageConfigs, if there are any.
@@ -14259,7 +13822,6 @@ extension SageMaker {
     }
 
     public struct ListAppsRequest: AWSEncodableShape {
-
         /// A parameter to search for the domain ID.
         public let domainIdEquals: String?
         /// Returns a list up to a specified limit.
@@ -14303,7 +13865,6 @@ extension SageMaker {
     }
 
     public struct ListAppsResponse: AWSDecodableShape {
-
         /// The list of apps.
         public let apps: [AppDetails]?
         /// If the previous response was truncated, you will receive this token. Use it in your next request to receive the next set of results.
@@ -14321,7 +13882,6 @@ extension SageMaker {
     }
 
     public struct ListArtifactsRequest: AWSEncodableShape {
-
         /// A filter that returns only artifacts of the specified type.
         public let artifactType: String?
         /// A filter that returns only artifacts created on or after the specified time.
@@ -14373,7 +13933,6 @@ extension SageMaker {
     }
 
     public struct ListArtifactsResponse: AWSDecodableShape {
-
         /// A list of artifacts and their properties.
         public let artifactSummaries: [ArtifactSummary]?
         /// A token for getting the next set of artifacts, if there are any.
@@ -14391,7 +13950,6 @@ extension SageMaker {
     }
 
     public struct ListAssociationsRequest: AWSEncodableShape {
-
         /// A filter that returns only associations of the specified type.
         public let associationType: AssociationEdgeType?
         /// A filter that returns only associations created on or after the specified time.
@@ -14458,7 +14016,6 @@ extension SageMaker {
     }
 
     public struct ListAssociationsResponse: AWSDecodableShape {
-
         /// A list of associations and their properties.
         public let associationSummaries: [AssociationSummary]?
         /// A token for getting the next set of associations, if there are any.
@@ -14476,7 +14033,6 @@ extension SageMaker {
     }
 
     public struct ListAutoMLJobsRequest: AWSEncodableShape {
-
         /// Request a list of jobs, using a filter for time.
         public let creationTimeAfter: Date?
         /// Request a list of jobs, using a filter for time.
@@ -14535,7 +14091,6 @@ extension SageMaker {
     }
 
     public struct ListAutoMLJobsResponse: AWSDecodableShape {
-
         /// Returns a summary list of jobs.
         public let autoMLJobSummaries: [AutoMLJobSummary]
         /// If the previous response was truncated, you receive this token. Use it in your next request to receive the next set of results.
@@ -14553,7 +14108,6 @@ extension SageMaker {
     }
 
     public struct ListCandidatesForAutoMLJobRequest: AWSEncodableShape {
-
         /// List the candidates created for the job by providing the job's name.
         public let autoMLJobName: String
         /// List the candidates for the job and filter by candidate name.
@@ -14603,7 +14157,6 @@ extension SageMaker {
     }
 
     public struct ListCandidatesForAutoMLJobResponse: AWSDecodableShape {
-
         /// Summaries about the AutoMLCandidates.
         public let candidates: [AutoMLCandidate]
         /// If the previous response was truncated, you receive this token. Use it in your next request to receive the next set of results.
@@ -14621,7 +14174,6 @@ extension SageMaker {
     }
 
     public struct ListCodeRepositoriesInput: AWSEncodableShape {
-
         /// A filter that returns only Git repositories that were created after the specified time.
         public let creationTimeAfter: Date?
         /// A filter that returns only Git repositories that were created before the specified time.
@@ -14676,8 +14228,7 @@ extension SageMaker {
     }
 
     public struct ListCodeRepositoriesOutput: AWSDecodableShape {
-
-        /// Gets a list of summaries of the Git repositories. Each summary specifies the following values for the repository:    Name   Amazon Resource Name (ARN)   Creation time   Last modified time   Configuration information, including the URL location of the repository and the ARN of the Amazon Web Services Secrets Manager secret that contains the credentials used to access the repository.  
+        /// Gets a list of summaries of the Git repositories. Each summary specifies the following values for the repository:    Name   Amazon Resource Name (ARN)   Creation time   Last modified time   Configuration information, including the URL location of the repository and the ARN of the Amazon Web Services Secrets Manager secret that contains the credentials used to access the repository.
         public let codeRepositorySummaryList: [CodeRepositorySummary]
         /// If the result of a ListCodeRepositoriesOutput request was truncated, the response includes a NextToken. To get the next set of Git repositories, use the token in the next request.
         public let nextToken: String?
@@ -14694,8 +14245,7 @@ extension SageMaker {
     }
 
     public struct ListCompilationJobsRequest: AWSEncodableShape {
-
-        /// A filter that returns the model compilation jobs that were created after a specified time. 
+        /// A filter that returns the model compilation jobs that were created after a specified time.
         public let creationTimeAfter: Date?
         /// A filter that returns the model compilation jobs that were created before a specified time.
         public let creationTimeBefore: Date?
@@ -14753,8 +14303,7 @@ extension SageMaker {
     }
 
     public struct ListCompilationJobsResponse: AWSDecodableShape {
-
-        /// An array of CompilationJobSummary objects, each describing a model compilation job. 
+        /// An array of CompilationJobSummary objects, each describing a model compilation job.
         public let compilationJobSummaries: [CompilationJobSummary]
         /// If the response is truncated, Amazon SageMaker returns this NextToken. To retrieve the next set of model compilation jobs, use this token in the next request.
         public let nextToken: String?
@@ -14771,7 +14320,6 @@ extension SageMaker {
     }
 
     public struct ListContextsRequest: AWSEncodableShape {
-
         /// A filter that returns only contexts of the specified type.
         public let contextType: String?
         /// A filter that returns only contexts created on or after the specified time.
@@ -14823,7 +14371,6 @@ extension SageMaker {
     }
 
     public struct ListContextsResponse: AWSDecodableShape {
-
         /// A list of contexts and their properties.
         public let contextSummaries: [ContextSummary]?
         /// A token for getting the next set of contexts, if there are any.
@@ -14841,7 +14388,6 @@ extension SageMaker {
     }
 
     public struct ListDataQualityJobDefinitionsRequest: AWSEncodableShape {
-
         /// A filter that returns only data quality monitoring job definitions created after the specified time.
         public let creationTimeAfter: Date?
         /// A filter that returns only data quality monitoring job definitions created before the specified time.
@@ -14894,7 +14440,6 @@ extension SageMaker {
     }
 
     public struct ListDataQualityJobDefinitionsResponse: AWSDecodableShape {
-
         /// A list of data quality monitoring job definitions.
         public let jobDefinitionSummaries: [MonitoringJobDefinitionSummary]
         /// If the result of the previous ListDataQualityJobDefinitions request was truncated, the response includes a NextToken. To retrieve the next set of data quality monitoring job definitions, use the token in the next request.
@@ -14912,7 +14457,6 @@ extension SageMaker {
     }
 
     public struct ListDeviceFleetsRequest: AWSEncodableShape {
-
         /// Filter fleets where packaging job was created after specified time.
         public let creationTimeAfter: Date?
         /// Filter fleets where the edge packaging job was created before specified time.
@@ -14966,7 +14510,6 @@ extension SageMaker {
     }
 
     public struct ListDeviceFleetsResponse: AWSDecodableShape {
-
         /// Summary of the device fleet.
         public let deviceFleetSummaries: [DeviceFleetSummary]
         /// The response from the last list when returning a list large enough to need tokening.
@@ -14984,7 +14527,6 @@ extension SageMaker {
     }
 
     public struct ListDevicesRequest: AWSEncodableShape {
-
         /// Filter for fleets containing this name in their device fleet name.
         public let deviceFleetName: String?
         /// Select fleets where the job was updated after X
@@ -15026,7 +14568,6 @@ extension SageMaker {
     }
 
     public struct ListDevicesResponse: AWSDecodableShape {
-
         /// Summary of devices.
         public let deviceSummaries: [DeviceSummary]
         /// The response from the last list when returning a list large enough to need tokening.
@@ -15044,7 +14585,6 @@ extension SageMaker {
     }
 
     public struct ListDomainsRequest: AWSEncodableShape {
-
         /// Returns a list up to a specified limit.
         public let maxResults: Int?
         /// If the previous response was truncated, you will receive this token. Use it in your next request to receive the next set of results.
@@ -15069,7 +14609,6 @@ extension SageMaker {
     }
 
     public struct ListDomainsResponse: AWSDecodableShape {
-
         /// The list of domains.
         public let domains: [DomainDetails]?
         /// If the previous response was truncated, you will receive this token. Use it in your next request to receive the next set of results.
@@ -15087,7 +14626,6 @@ extension SageMaker {
     }
 
     public struct ListEdgePackagingJobsRequest: AWSEncodableShape {
-
         /// Select jobs where the job was created after specified time.
         public let creationTimeAfter: Date?
         /// Select jobs where the job was created before specified time.
@@ -15151,7 +14689,6 @@ extension SageMaker {
     }
 
     public struct ListEdgePackagingJobsResponse: AWSDecodableShape {
-
         /// Summaries of edge packaging jobs.
         public let edgePackagingJobSummaries: [EdgePackagingJobSummary]
         /// Token to use when calling the next page of results.
@@ -15169,16 +14706,15 @@ extension SageMaker {
     }
 
     public struct ListEndpointConfigsInput: AWSEncodableShape {
-
         /// A filter that returns only endpoint configurations with a creation time greater than or equal to the specified time (timestamp).
         public let creationTimeAfter: Date?
         /// A filter that returns only endpoint configurations created before the specified time (timestamp).
         public let creationTimeBefore: Date?
         /// The maximum number of training jobs to return in the response.
         public let maxResults: Int?
-        /// A string in the endpoint configuration name. This filter returns only endpoint configurations whose name contains the specified string. 
+        /// A string in the endpoint configuration name. This filter returns only endpoint configurations whose name contains the specified string.
         public let nameContains: String?
-        /// If the result of the previous ListEndpointConfig request was truncated, the response includes a NextToken. To retrieve the next set of endpoint configurations, use the token in the next request. 
+        /// If the result of the previous ListEndpointConfig request was truncated, the response includes a NextToken. To retrieve the next set of endpoint configurations, use the token in the next request.
         public let nextToken: String?
         /// The field to sort results by. The default is CreationTime.
         public let sortBy: EndpointConfigSortKey?
@@ -15216,10 +14752,9 @@ extension SageMaker {
     }
 
     public struct ListEndpointConfigsOutput: AWSDecodableShape {
-
         /// An array of endpoint configurations.
         public let endpointConfigs: [EndpointConfigSummary]
-        ///  If the response is truncated, Amazon SageMaker returns this token. To retrieve the next set of endpoint configurations, use it in the subsequent request 
+        ///  If the response is truncated, Amazon SageMaker returns this token. To retrieve the next set of endpoint configurations, use it in the subsequent request
         public let nextToken: String?
 
         public init(endpointConfigs: [EndpointConfigSummary], nextToken: String? = nil) {
@@ -15234,14 +14769,13 @@ extension SageMaker {
     }
 
     public struct ListEndpointsInput: AWSEncodableShape {
-
         /// A filter that returns only endpoints with a creation time greater than or equal to the specified time (timestamp).
         public let creationTimeAfter: Date?
         /// A filter that returns only endpoints that were created before the specified time (timestamp).
         public let creationTimeBefore: Date?
-        ///  A filter that returns only endpoints that were modified after the specified timestamp. 
+        ///  A filter that returns only endpoints that were modified after the specified timestamp.
         public let lastModifiedTimeAfter: Date?
-        ///  A filter that returns only endpoints that were modified before the specified timestamp. 
+        ///  A filter that returns only endpoints that were modified before the specified timestamp.
         public let lastModifiedTimeBefore: Date?
         /// The maximum number of endpoints to return in the response. This value defaults to 10.
         public let maxResults: Int?
@@ -15293,10 +14827,9 @@ extension SageMaker {
     }
 
     public struct ListEndpointsOutput: AWSDecodableShape {
-
-        ///  An array or endpoint objects. 
+        ///  An array or endpoint objects.
         public let endpoints: [EndpointSummary]
-        ///  If the response is truncated, Amazon SageMaker returns this token. To retrieve the next set of training jobs, use it in the subsequent request. 
+        ///  If the response is truncated, Amazon SageMaker returns this token. To retrieve the next set of training jobs, use it in the subsequent request.
         public let nextToken: String?
 
         public init(endpoints: [EndpointSummary], nextToken: String? = nil) {
@@ -15311,7 +14844,6 @@ extension SageMaker {
     }
 
     public struct ListExperimentsRequest: AWSEncodableShape {
-
         /// A filter that returns only experiments created after the specified time.
         public let createdAfter: Date?
         /// A filter that returns only experiments created before the specified time.
@@ -15352,7 +14884,6 @@ extension SageMaker {
     }
 
     public struct ListExperimentsResponse: AWSDecodableShape {
-
         /// A list of the summaries of your experiments.
         public let experimentSummaries: [ExperimentSummary]?
         /// A token for getting the next set of experiments, if there are any.
@@ -15370,20 +14901,19 @@ extension SageMaker {
     }
 
     public struct ListFeatureGroupsRequest: AWSEncodableShape {
-
         /// Use this parameter to search for FeatureGroupss created after a specific date and time.
         public let creationTimeAfter: Date?
         /// Use this parameter to search for FeatureGroupss created before a specific date and time.
         public let creationTimeBefore: Date?
-        /// A FeatureGroup status. Filters by FeatureGroup status. 
+        /// A FeatureGroup status. Filters by FeatureGroup status.
         public let featureGroupStatusEquals: FeatureGroupStatus?
         /// The maximum number of results returned by ListFeatureGroups.
         public let maxResults: Int?
-        /// A string that partially matches one or more FeatureGroups names. Filters FeatureGroups by name. 
+        /// A string that partially matches one or more FeatureGroups names. Filters FeatureGroups by name.
         public let nameContains: String?
         /// A token to resume pagination of ListFeatureGroups results.
         public let nextToken: String?
-        /// An OfflineStore status. Filters by OfflineStore status. 
+        /// An OfflineStore status. Filters by OfflineStore status.
         public let offlineStoreStatusEquals: OfflineStoreStatusValue?
         /// The value on which the feature group list is sorted.
         public let sortBy: FeatureGroupSortBy?
@@ -15425,7 +14955,6 @@ extension SageMaker {
     }
 
     public struct ListFeatureGroupsResponse: AWSDecodableShape {
-
         /// A summary of feature groups.
         public let featureGroupSummaries: [FeatureGroupSummary]
         /// A token to resume pagination of ListFeatureGroups results.
@@ -15443,7 +14972,6 @@ extension SageMaker {
     }
 
     public struct ListFlowDefinitionsRequest: AWSEncodableShape {
-
         /// A filter that returns only flow definitions with a creation time greater than or equal to the specified timestamp.
         public let creationTimeAfter: Date?
         /// A filter that returns only flow definitions that were created before the specified timestamp.
@@ -15480,7 +15008,6 @@ extension SageMaker {
     }
 
     public struct ListFlowDefinitionsResponse: AWSDecodableShape {
-
         /// An array of objects describing the flow definitions.
         public let flowDefinitionSummaries: [FlowDefinitionSummary]
         /// A token to resume pagination.
@@ -15498,7 +15025,6 @@ extension SageMaker {
     }
 
     public struct ListHumanTaskUisRequest: AWSEncodableShape {
-
         /// A filter that returns only human task user interfaces with a creation time greater than or equal to the specified timestamp.
         public let creationTimeAfter: Date?
         /// A filter that returns only human task user interfaces that were created before the specified timestamp.
@@ -15535,7 +15061,6 @@ extension SageMaker {
     }
 
     public struct ListHumanTaskUisResponse: AWSDecodableShape {
-
         /// An array of objects describing the human task user interfaces.
         public let humanTaskUiSummaries: [HumanTaskUiSummary]
         /// A token to resume pagination.
@@ -15553,7 +15078,6 @@ extension SageMaker {
     }
 
     public struct ListHyperParameterTuningJobsRequest: AWSEncodableShape {
-
         /// A filter that returns only tuning jobs that were created after the specified time.
         public let creationTimeAfter: Date?
         /// A filter that returns only tuning jobs that were created before the specified time.
@@ -15612,7 +15136,6 @@ extension SageMaker {
     }
 
     public struct ListHyperParameterTuningJobsResponse: AWSDecodableShape {
-
         /// A list of HyperParameterTuningJobSummary objects that describe the tuning jobs that the ListHyperParameterTuningJobs request returned.
         public let hyperParameterTuningJobSummaries: [HyperParameterTuningJobSummary]
         /// If the result of this ListHyperParameterTuningJobs request was truncated, the response includes a NextToken. To retrieve the next set of tuning jobs, use the token in the next request.
@@ -15630,7 +15153,6 @@ extension SageMaker {
     }
 
     public struct ListImageVersionsRequest: AWSEncodableShape {
-
         /// A filter that returns only versions created on or after the specified time.
         public let creationTimeAfter: Date?
         /// A filter that returns only versions created on or before the specified time.
@@ -15641,7 +15163,7 @@ extension SageMaker {
         public let lastModifiedTimeAfter: Date?
         /// A filter that returns only versions modified on or before the specified time.
         public let lastModifiedTimeBefore: Date?
-        /// The maximum number of versions to return in the response. The default value is 10. 
+        /// The maximum number of versions to return in the response. The default value is 10.
         public let maxResults: Int?
         /// If the previous call to ListImageVersions didn't return the full set of versions, the call returns a token for getting the next set of versions.
         public let nextToken: String?
@@ -15686,7 +15208,6 @@ extension SageMaker {
     }
 
     public struct ListImageVersionsResponse: AWSDecodableShape {
-
         /// A list of versions and their properties.
         public let imageVersions: [ImageVersion]?
         /// A token for getting the next set of versions, if there are any.
@@ -15704,7 +15225,6 @@ extension SageMaker {
     }
 
     public struct ListImagesRequest: AWSEncodableShape {
-
         /// A filter that returns only images created on or after the specified time.
         public let creationTimeAfter: Date?
         /// A filter that returns only images created on or before the specified time.
@@ -15713,7 +15233,7 @@ extension SageMaker {
         public let lastModifiedTimeAfter: Date?
         /// A filter that returns only images modified on or before the specified time.
         public let lastModifiedTimeBefore: Date?
-        /// The maximum number of images to return in the response. The default value is 10. 
+        /// The maximum number of images to return in the response. The default value is 10.
         public let maxResults: Int?
         /// A filter that returns only images whose name contains the specified string.
         public let nameContains: String?
@@ -15759,7 +15279,6 @@ extension SageMaker {
     }
 
     public struct ListImagesResponse: AWSDecodableShape {
-
         /// A list of images and their properties.
         public let images: [Image]?
         /// A token for getting the next set of images, if there are any.
@@ -15777,7 +15296,6 @@ extension SageMaker {
     }
 
     public struct ListLabelingJobsForWorkteamRequest: AWSEncodableShape {
-
         /// A filter that returns only labeling jobs created after the specified time (timestamp).
         public let creationTimeAfter: Date?
         /// A filter that returns only labeling jobs created before the specified time (timestamp).
@@ -15831,7 +15349,6 @@ extension SageMaker {
     }
 
     public struct ListLabelingJobsForWorkteamResponse: AWSDecodableShape {
-
         /// An array of LabelingJobSummary objects, each describing a labeling job.
         public let labelingJobSummaryList: [LabelingJobForWorkteamSummary]
         /// If the response is truncated, Amazon SageMaker returns this token. To retrieve the next set of labeling jobs, use it in the subsequent request.
@@ -15849,7 +15366,6 @@ extension SageMaker {
     }
 
     public struct ListLabelingJobsRequest: AWSEncodableShape {
-
         /// A filter that returns only labeling jobs created after the specified time (timestamp).
         public let creationTimeAfter: Date?
         /// A filter that returns only labeling jobs created before the specified time (timestamp).
@@ -15908,7 +15424,6 @@ extension SageMaker {
     }
 
     public struct ListLabelingJobsResponse: AWSDecodableShape {
-
         /// An array of LabelingJobSummary objects, each describing a labeling job.
         public let labelingJobSummaryList: [LabelingJobSummary]?
         /// If the response is truncated, Amazon SageMaker returns this token. To retrieve the next set of labeling jobs, use it in the subsequent request.
@@ -15926,7 +15441,6 @@ extension SageMaker {
     }
 
     public struct ListModelBiasJobDefinitionsRequest: AWSEncodableShape {
-
         /// A filter that returns only model bias jobs created after a specified time.
         public let creationTimeAfter: Date?
         /// A filter that returns only model bias jobs created before a specified time.
@@ -15979,7 +15493,6 @@ extension SageMaker {
     }
 
     public struct ListModelBiasJobDefinitionsResponse: AWSDecodableShape {
-
         /// A JSON array in which each element is a summary for a model bias jobs.
         public let jobDefinitionSummaries: [MonitoringJobDefinitionSummary]
         /// If the response is truncated, Amazon SageMaker returns this token. To retrieve the next set of jobs, use it in the subsequent request.
@@ -15997,7 +15510,6 @@ extension SageMaker {
     }
 
     public struct ListModelExplainabilityJobDefinitionsRequest: AWSEncodableShape {
-
         /// A filter that returns only model explainability jobs created after a specified time.
         public let creationTimeAfter: Date?
         /// A filter that returns only model explainability jobs created before a specified time.
@@ -16050,7 +15562,6 @@ extension SageMaker {
     }
 
     public struct ListModelExplainabilityJobDefinitionsResponse: AWSDecodableShape {
-
         /// A JSON array in which each element is a summary for a explainability bias jobs.
         public let jobDefinitionSummaries: [MonitoringJobDefinitionSummary]
         /// If the response is truncated, Amazon SageMaker returns this token. To retrieve the next set of jobs, use it in the subsequent request.
@@ -16068,7 +15579,6 @@ extension SageMaker {
     }
 
     public struct ListModelPackageGroupsInput: AWSEncodableShape {
-
         /// A filter that returns only model groups created after the specified time.
         public let creationTimeAfter: Date?
         /// A filter that returns only model groups created before the specified time.
@@ -16115,7 +15625,6 @@ extension SageMaker {
     }
 
     public struct ListModelPackageGroupsOutput: AWSDecodableShape {
-
         /// A list of summaries of the model groups in your Amazon Web Services account.
         public let modelPackageGroupSummaryList: [ModelPackageGroupSummary]
         /// If the response is truncated, SageMaker returns this token. To retrieve the next set of model groups, use it in the subsequent request.
@@ -16133,7 +15642,6 @@ extension SageMaker {
     }
 
     public struct ListModelPackagesInput: AWSEncodableShape {
-
         /// A filter that returns only model packages created after the specified time (timestamp).
         public let creationTimeAfter: Date?
         /// A filter that returns only model packages created before the specified time (timestamp).
@@ -16144,7 +15652,7 @@ extension SageMaker {
         public let modelApprovalStatus: ModelApprovalStatus?
         /// A filter that returns only model versions that belong to the specified model group.
         public let modelPackageGroupName: String?
-        /// A filter that returns onlyl the model packages of the specified type. This can be one of the following values.    VERSIONED - List only versioned models.    UNVERSIONED - List only unversioined models.    BOTH - List both versioned and unversioned models.  
+        /// A filter that returns onlyl the model packages of the specified type. This can be one of the following values.    VERSIONED - List only versioned models.    UNVERSIONED - List only unversioined models.    BOTH - List both versioned and unversioned models.
         public let modelPackageType: ModelPackageType?
         /// A string in the model package name. This filter returns only model packages whose name contains the specified string.
         public let nameContains: String?
@@ -16195,7 +15703,6 @@ extension SageMaker {
     }
 
     public struct ListModelPackagesOutput: AWSDecodableShape {
-
         /// An array of ModelPackageSummary objects, each of which lists a model package.
         public let modelPackageSummaryList: [ModelPackageSummary]
         /// If the response is truncated, Amazon SageMaker returns this token. To retrieve the next set of model packages, use it in the subsequent request.
@@ -16213,7 +15720,6 @@ extension SageMaker {
     }
 
     public struct ListModelQualityJobDefinitionsRequest: AWSEncodableShape {
-
         /// A filter that returns only model quality monitoring job definitions created after the specified time.
         public let creationTimeAfter: Date?
         /// A filter that returns only model quality monitoring job definitions created before the specified time.
@@ -16266,7 +15772,6 @@ extension SageMaker {
     }
 
     public struct ListModelQualityJobDefinitionsResponse: AWSDecodableShape {
-
         /// A list of summaries of model quality monitoring job definitions.
         public let jobDefinitionSummaries: [MonitoringJobDefinitionSummary]
         /// If the response is truncated, Amazon SageMaker returns this token. To retrieve the next set of model quality monitoring job definitions, use it in the next request.
@@ -16284,7 +15789,6 @@ extension SageMaker {
     }
 
     public struct ListModelsInput: AWSEncodableShape {
-
         /// A filter that returns only models with a creation time greater than or equal to the specified time (timestamp).
         public let creationTimeAfter: Date?
         /// A filter that returns only models created before the specified time (timestamp).
@@ -16331,10 +15835,9 @@ extension SageMaker {
     }
 
     public struct ListModelsOutput: AWSDecodableShape {
-
         /// An array of ModelSummary objects, each of which lists a model.
         public let models: [ModelSummary]
-        ///  If the response is truncated, Amazon SageMaker returns this token. To retrieve the next set of models, use it in the subsequent request. 
+        ///  If the response is truncated, Amazon SageMaker returns this token. To retrieve the next set of models, use it in the subsequent request.
         public let nextToken: String?
 
         public init(models: [ModelSummary], nextToken: String? = nil) {
@@ -16349,7 +15852,6 @@ extension SageMaker {
     }
 
     public struct ListMonitoringExecutionsRequest: AWSEncodableShape {
-
         /// A filter that returns only jobs created after a specified time.
         public let creationTimeAfter: Date?
         /// A filter that returns only jobs created before a specified time.
@@ -16434,7 +15936,6 @@ extension SageMaker {
     }
 
     public struct ListMonitoringExecutionsResponse: AWSDecodableShape {
-
         /// A JSON array in which each element is a summary for a monitoring execution.
         public let monitoringExecutionSummaries: [MonitoringExecutionSummary]
         /// If the response is truncated, Amazon SageMaker returns this token. To retrieve the next set of jobs, use it in the subsequent reques
@@ -16452,7 +15953,6 @@ extension SageMaker {
     }
 
     public struct ListMonitoringSchedulesRequest: AWSEncodableShape {
-
         /// A filter that returns only monitoring schedules created after a specified time.
         public let creationTimeAfter: Date?
         /// A filter that returns only monitoring schedules created before a specified time.
@@ -16528,7 +16028,6 @@ extension SageMaker {
     }
 
     public struct ListMonitoringSchedulesResponse: AWSDecodableShape {
-
         /// A JSON array in which each element is a summary for a monitoring schedule.
         public let monitoringScheduleSummaries: [MonitoringScheduleSummary]
         /// If the response is truncated, Amazon SageMaker returns this token. To retrieve the next set of jobs, use it in the subsequent request.
@@ -16546,7 +16045,6 @@ extension SageMaker {
     }
 
     public struct ListNotebookInstanceLifecycleConfigsInput: AWSEncodableShape {
-
         /// A filter that returns only lifecycle configurations that were created after the specified time (timestamp).
         public let creationTimeAfter: Date?
         /// A filter that returns only lifecycle configurations that were created before the specified time (timestamp).
@@ -16601,8 +16099,7 @@ extension SageMaker {
     }
 
     public struct ListNotebookInstanceLifecycleConfigsOutput: AWSDecodableShape {
-
-        /// If the response is truncated, Amazon SageMaker returns this token. To get the next set of lifecycle configurations, use it in the next request. 
+        /// If the response is truncated, Amazon SageMaker returns this token. To get the next set of lifecycle configurations, use it in the next request.
         public let nextToken: String?
         /// An array of NotebookInstanceLifecycleConfiguration objects, each listing a lifecycle configuration.
         public let notebookInstanceLifecycleConfigs: [NotebookInstanceLifecycleConfigSummary]?
@@ -16619,12 +16116,11 @@ extension SageMaker {
     }
 
     public struct ListNotebookInstancesInput: AWSEncodableShape {
-
         /// A filter that returns only notebook instances with associated with the specified git repository.
         public let additionalCodeRepositoryEquals: String?
         /// A filter that returns only notebook instances that were created after the specified time (timestamp).
         public let creationTimeAfter: Date?
-        /// A filter that returns only notebook instances that were created before the specified time (timestamp). 
+        /// A filter that returns only notebook instances that were created before the specified time (timestamp).
         public let creationTimeBefore: Date?
         /// A string in the name or URL of a Git repository associated with this notebook instance. This filter returns only notebook instances associated with a git repository with a name that contains the specified string.
         public let defaultCodeRepositoryContains: String?
@@ -16636,13 +16132,13 @@ extension SageMaker {
         public let maxResults: Int?
         /// A string in the notebook instances' name. This filter returns only notebook instances whose name contains the specified string.
         public let nameContains: String?
-        ///  If the previous call to the ListNotebookInstances is truncated, the response includes a NextToken. You can use this token in your subsequent ListNotebookInstances request to fetch the next set of notebook instances.   You might specify a filter or a sort order in your request. When response is truncated, you must use the same values for the filer and sort order in the next request.  
+        ///  If the previous call to the ListNotebookInstances is truncated, the response includes a NextToken. You can use this token in your subsequent ListNotebookInstances request to fetch the next set of notebook instances.   You might specify a filter or a sort order in your request. When response is truncated, you must use the same values for the filer and sort order in the next request.
         public let nextToken: String?
         /// A string in the name of a notebook instances lifecycle configuration associated with this notebook instance. This filter returns only notebook instances associated with a lifecycle configuration with a name that contains the specified string.
         public let notebookInstanceLifecycleConfigNameContains: String?
         /// The field to sort results by. The default is Name.
         public let sortBy: NotebookInstanceSortKey?
-        /// The sort order for results. 
+        /// The sort order for results.
         public let sortOrder: NotebookInstanceSortOrder?
         /// A filter that returns only notebook instances with the specified status.
         public let statusEquals: NotebookInstanceStatus?
@@ -16697,7 +16193,6 @@ extension SageMaker {
     }
 
     public struct ListNotebookInstancesOutput: AWSDecodableShape {
-
         /// If the response to the previous ListNotebookInstances request was truncated, Amazon SageMaker returns this token. To retrieve the next set of notebook instances, use the token in the next request.
         public let nextToken: String?
         /// An array of NotebookInstanceSummary objects, one for each notebook instance.
@@ -16715,7 +16210,6 @@ extension SageMaker {
     }
 
     public struct ListPipelineExecutionStepsRequest: AWSEncodableShape {
-
         /// The maximum number of pipeline execution steps to return in the response.
         public let maxResults: Int?
         /// If the result of the previous ListPipelineExecutionSteps request was truncated, the response includes a NextToken. To retrieve the next set of pipeline execution steps, use the token in the next request.
@@ -16750,7 +16244,6 @@ extension SageMaker {
     }
 
     public struct ListPipelineExecutionStepsResponse: AWSDecodableShape {
-
         /// If the result of the previous ListPipelineExecutionSteps request was truncated, the response includes a NextToken. To retrieve the next set of pipeline execution steps, use the token in the next request.
         public let nextToken: String?
         /// A list of PipeLineExecutionStep objects. Each PipeLineExecutionStep consists of StepName, StartTime, EndTime, StepStatus, and Metadata. Metadata is an object with properties for each job that contains relevant information about the job created by the step.
@@ -16768,7 +16261,6 @@ extension SageMaker {
     }
 
     public struct ListPipelineExecutionsRequest: AWSEncodableShape {
-
         /// A filter that returns the pipeline executions that were created after a specified time.
         public let createdAfter: Date?
         /// A filter that returns the pipeline executions that were created before a specified time.
@@ -16816,10 +16308,9 @@ extension SageMaker {
     }
 
     public struct ListPipelineExecutionsResponse: AWSDecodableShape {
-
         /// If the result of the previous ListPipelineExecutions request was truncated, the response includes a NextToken. To retrieve the next set of pipeline executions, use the token in the next request.
         public let nextToken: String?
-        /// Contains a sorted list of pipeline execution summary objects matching the specified filters. Each run summary includes the Amazon Resource Name (ARN) of the pipeline execution, the run date, and the status. This list can be empty. 
+        /// Contains a sorted list of pipeline execution summary objects matching the specified filters. Each run summary includes the Amazon Resource Name (ARN) of the pipeline execution, the run date, and the status. This list can be empty.
         public let pipelineExecutionSummaries: [PipelineExecutionSummary]?
 
         public init(nextToken: String? = nil, pipelineExecutionSummaries: [PipelineExecutionSummary]? = nil) {
@@ -16834,7 +16325,6 @@ extension SageMaker {
     }
 
     public struct ListPipelineParametersForExecutionRequest: AWSEncodableShape {
-
         /// The maximum number of parameters to return in the response.
         public let maxResults: Int?
         /// If the result of the previous ListPipelineParametersForExecution request was truncated, the response includes a NextToken. To retrieve the next set of parameters, use the token in the next request.
@@ -16865,10 +16355,9 @@ extension SageMaker {
     }
 
     public struct ListPipelineParametersForExecutionResponse: AWSDecodableShape {
-
         /// If the result of the previous ListPipelineParametersForExecution request was truncated, the response includes a NextToken. To retrieve the next set of parameters, use the token in the next request.
         public let nextToken: String?
-        /// Contains a list of pipeline parameters. This list can be empty. 
+        /// Contains a list of pipeline parameters. This list can be empty.
         public let pipelineParameters: [Parameter]?
 
         public init(nextToken: String? = nil, pipelineParameters: [Parameter]? = nil) {
@@ -16883,7 +16372,6 @@ extension SageMaker {
     }
 
     public struct ListPipelinesRequest: AWSEncodableShape {
-
         /// A filter that returns the pipelines that were created after a specified time.
         public let createdAfter: Date?
         /// A filter that returns the pipelines that were created before a specified time.
@@ -16931,10 +16419,9 @@ extension SageMaker {
     }
 
     public struct ListPipelinesResponse: AWSDecodableShape {
-
         /// If the result of the previous ListPipelines request was truncated, the response includes a NextToken. To retrieve the next set of pipelines, use the token in the next request.
         public let nextToken: String?
-        /// Contains a sorted list of PipelineSummary objects matching the specified filters. Each PipelineSummary consists of PipelineArn, PipelineName, ExperimentName, PipelineDescription, CreationTime, LastModifiedTime, LastRunTime, and RoleArn. This list can be empty. 
+        /// Contains a sorted list of PipelineSummary objects matching the specified filters. Each PipelineSummary consists of PipelineArn, PipelineName, ExperimentName, PipelineDescription, CreationTime, LastModifiedTime, LastRunTime, and RoleArn. This list can be empty.
         public let pipelineSummaries: [PipelineSummary]?
 
         public init(nextToken: String? = nil, pipelineSummaries: [PipelineSummary]? = nil) {
@@ -16949,7 +16436,6 @@ extension SageMaker {
     }
 
     public struct ListProcessingJobsRequest: AWSEncodableShape {
-
         /// A filter that returns only processing jobs created after the specified time.
         public let creationTimeAfter: Date?
         /// A filter that returns only processing jobs created after the specified time.
@@ -17006,7 +16492,6 @@ extension SageMaker {
     }
 
     public struct ListProcessingJobsResponse: AWSDecodableShape {
-
         /// If the response is truncated, Amazon SageMaker returns this token. To retrieve the next set of processing jobs, use it in the subsequent request.
         public let nextToken: String?
         /// An array of ProcessingJobSummary objects, each listing a processing job.
@@ -17024,7 +16509,6 @@ extension SageMaker {
     }
 
     public struct ListProjectsInput: AWSEncodableShape {
-
         /// A filter that returns the projects that were created after a specified time.
         public let creationTimeAfter: Date?
         /// A filter that returns the projects that were created before a specified time.
@@ -17072,7 +16556,6 @@ extension SageMaker {
     }
 
     public struct ListProjectsOutput: AWSDecodableShape {
-
         /// If the result of the previous ListCompilationJobs request was truncated, the response includes a NextToken. To retrieve the next set of model compilation jobs, use the token in the next request.
         public let nextToken: String?
         /// A list of summaries of projects.
@@ -17090,7 +16573,6 @@ extension SageMaker {
     }
 
     public struct ListSubscribedWorkteamsRequest: AWSEncodableShape {
-
         /// The maximum number of work teams to return in each page of the response.
         public let maxResults: Int?
         /// A string in the work team name. This filter returns only work teams whose name contains the specified string.
@@ -17122,7 +16604,6 @@ extension SageMaker {
     }
 
     public struct ListSubscribedWorkteamsResponse: AWSDecodableShape {
-
         /// If the response is truncated, Amazon SageMaker returns this token. To retrieve the next set of work teams, use it in the subsequent request.
         public let nextToken: String?
         /// An array of Workteam objects, each describing a work team.
@@ -17140,10 +16621,9 @@ extension SageMaker {
     }
 
     public struct ListTagsInput: AWSEncodableShape {
-
         /// Maximum number of tags to return.
         public let maxResults: Int?
-        ///  If the response to the previous ListTags request is truncated, Amazon SageMaker returns this token. To retrieve the next set of tags, use it in the subsequent request. 
+        ///  If the response to the previous ListTags request is truncated, Amazon SageMaker returns this token. To retrieve the next set of tags, use it in the subsequent request.
         public let nextToken: String?
         /// The Amazon Resource Name (ARN) of the resource whose tags you want to retrieve.
         public let resourceArn: String
@@ -17170,8 +16650,7 @@ extension SageMaker {
     }
 
     public struct ListTagsOutput: AWSDecodableShape {
-
-        ///  If response is truncated, Amazon SageMaker includes a token in the response. You can use this token in your subsequent request to fetch next set of tokens. 
+        ///  If response is truncated, Amazon SageMaker includes a token in the response. You can use this token in your subsequent request to fetch next set of tokens.
         public let nextToken: String?
         /// An array of Tag objects, each with a tag key and a value.
         public let tags: [Tag]?
@@ -17188,7 +16667,6 @@ extension SageMaker {
     }
 
     public struct ListTrainingJobsForHyperParameterTuningJobRequest: AWSEncodableShape {
-
         /// The name of the tuning job whose training jobs you want to list.
         public let hyperParameterTuningJobName: String
         /// The maximum number of training jobs to return. The default value is 10.
@@ -17232,7 +16710,6 @@ extension SageMaker {
     }
 
     public struct ListTrainingJobsForHyperParameterTuningJobResponse: AWSDecodableShape {
-
         /// If the result of this ListTrainingJobsForHyperParameterTuningJob request was truncated, the response includes a NextToken. To retrieve the next set of training jobs, use the token in the next request.
         public let nextToken: String?
         /// A list of TrainingJobSummary objects that describe the training jobs that the ListTrainingJobsForHyperParameterTuningJob request returned.
@@ -17250,7 +16727,6 @@ extension SageMaker {
     }
 
     public struct ListTrainingJobsRequest: AWSEncodableShape {
-
         /// A filter that returns only training jobs created after the specified time (timestamp).
         public let creationTimeAfter: Date?
         /// A filter that returns only training jobs created before the specified time (timestamp).
@@ -17263,7 +16739,7 @@ extension SageMaker {
         public let maxResults: Int?
         /// A string in the training job name. This filter returns only training jobs whose name contains the specified string.
         public let nameContains: String?
-        /// If the result of the previous ListTrainingJobs request was truncated, the response includes a NextToken. To retrieve the next set of training jobs, use the token in the next request. 
+        /// If the result of the previous ListTrainingJobs request was truncated, the response includes a NextToken. To retrieve the next set of training jobs, use the token in the next request.
         public let nextToken: String?
         /// The field to sort results by. The default is CreationTime.
         public let sortBy: SortBy?
@@ -17309,7 +16785,6 @@ extension SageMaker {
     }
 
     public struct ListTrainingJobsResponse: AWSDecodableShape {
-
         /// If the response is truncated, Amazon SageMaker returns this token. To retrieve the next set of training jobs, use it in the subsequent request.
         public let nextToken: String?
         /// An array of TrainingJobSummary objects, each listing a training job.
@@ -17327,7 +16802,6 @@ extension SageMaker {
     }
 
     public struct ListTransformJobsRequest: AWSEncodableShape {
-
         /// A filter that returns only transform jobs created after the specified time.
         public let creationTimeAfter: Date?
         /// A filter that returns only transform jobs created before the specified time.
@@ -17386,7 +16860,6 @@ extension SageMaker {
     }
 
     public struct ListTransformJobsResponse: AWSDecodableShape {
-
         /// If the response is truncated, Amazon SageMaker returns this token. To retrieve the next set of transform jobs, use it in the next request.
         public let nextToken: String?
         /// An array of TransformJobSummary objects.
@@ -17404,7 +16877,6 @@ extension SageMaker {
     }
 
     public struct ListTrialComponentsRequest: AWSEncodableShape {
-
         /// A filter that returns only components created after the specified time.
         public let createdAfter: Date?
         /// A filter that returns only components created before the specified time.
@@ -17464,7 +16936,6 @@ extension SageMaker {
     }
 
     public struct ListTrialComponentsResponse: AWSDecodableShape {
-
         /// A token for getting the next set of components, if there are any.
         public let nextToken: String?
         /// A list of the summaries of your trial components.
@@ -17482,7 +16953,6 @@ extension SageMaker {
     }
 
     public struct ListTrialsRequest: AWSEncodableShape {
-
         /// A filter that returns only trials created after the specified time.
         public let createdAfter: Date?
         /// A filter that returns only trials created before the specified time.
@@ -17537,7 +17007,6 @@ extension SageMaker {
     }
 
     public struct ListTrialsResponse: AWSDecodableShape {
-
         /// A token for getting the next set of trials, if there are any.
         public let nextToken: String?
         /// A list of the summaries of your trials.
@@ -17555,7 +17024,6 @@ extension SageMaker {
     }
 
     public struct ListUserProfilesRequest: AWSEncodableShape {
-
         /// A parameter by which to filter the results.
         public let domainIdEquals: String?
         /// Returns a list up to a specified limit.
@@ -17599,7 +17067,6 @@ extension SageMaker {
     }
 
     public struct ListUserProfilesResponse: AWSDecodableShape {
-
         /// If the previous response was truncated, you will receive this token. Use it in your next request to receive the next set of results.
         public let nextToken: String?
         /// The list of user profiles.
@@ -17617,7 +17084,6 @@ extension SageMaker {
     }
 
     public struct ListWorkforcesRequest: AWSEncodableShape {
-
         /// The maximum number of workforces returned in the response.
         public let maxResults: Int?
         /// A filter you can use to search for workforces using part of the workforce name.
@@ -17657,7 +17123,6 @@ extension SageMaker {
     }
 
     public struct ListWorkforcesResponse: AWSDecodableShape {
-
         /// A token to resume pagination.
         public let nextToken: String?
         /// A list containing information about your workforce.
@@ -17675,7 +17140,6 @@ extension SageMaker {
     }
 
     public struct ListWorkteamsRequest: AWSEncodableShape {
-
         /// The maximum number of work teams to return in each page of the response.
         public let maxResults: Int?
         /// A string in the work team's name. This filter returns only work teams whose name contains the specified string.
@@ -17715,7 +17179,6 @@ extension SageMaker {
     }
 
     public struct ListWorkteamsResponse: AWSDecodableShape {
-
         /// If the response is truncated, Amazon SageMaker returns this token. To retrieve the next set of work teams, use it in the subsequent request.
         public let nextToken: String?
         /// An array of Workteam objects, each describing a work team.
@@ -17733,7 +17196,6 @@ extension SageMaker {
     }
 
     public struct MemberDefinition: AWSEncodableShape & AWSDecodableShape {
-
         /// The Amazon Cognito user group that is part of the work team.
         public let cognitoMemberDefinition: CognitoMemberDefinition?
         /// A list user groups that exist in your OIDC Identity Provider (IdP).  One to ten groups can be used to create a single private work team.  When you add a user group to the list of Groups, you can add that user group to one or more private work teams. If you add a user group to a private work team, all workers in that user group  are added to the work team.
@@ -17756,7 +17218,6 @@ extension SageMaker {
     }
 
     public struct MetadataProperties: AWSEncodableShape & AWSDecodableShape {
-
         /// The commit ID.
         public let commitId: String?
         /// The entity this entity was generated by.
@@ -17793,7 +17254,6 @@ extension SageMaker {
     }
 
     public struct MetricData: AWSDecodableShape {
-
         /// The name of the metric.
         public let metricName: String?
         /// The date and time that the algorithm emitted the metric.
@@ -17815,7 +17275,6 @@ extension SageMaker {
     }
 
     public struct MetricDefinition: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the metric.
         public let name: String
         /// A regular expression that searches the output of a training job and gets the value of the metric. For more information about using regular expressions to define metrics, see Defining Objective Metrics.
@@ -17842,7 +17301,6 @@ extension SageMaker {
     }
 
     public struct MetricsSource: AWSEncodableShape & AWSDecodableShape {
-
         public let contentDigest: String?
         public let contentType: String
         public let s3Uri: String
@@ -17870,7 +17328,6 @@ extension SageMaker {
     }
 
     public struct ModelArtifacts: AWSDecodableShape {
-
         /// The path of the S3 object that contains the model artifacts. For example, s3://bucket-name/keynameprefix/model.tar.gz.
         public let s3ModelArtifacts: String
 
@@ -17884,7 +17341,6 @@ extension SageMaker {
     }
 
     public struct ModelBiasAppSpecification: AWSEncodableShape & AWSDecodableShape {
-
         /// JSON formatted S3 file that defines bias parameters. For more information on this JSON configuration file, see Configure bias parameters.
         public let configUri: String
         /// Sets the environment variables in the Docker container.
@@ -17920,7 +17376,6 @@ extension SageMaker {
     }
 
     public struct ModelBiasBaselineConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the baseline model bias job.
         public let baseliningJobName: String?
         public let constraintsResource: MonitoringConstraintsResource?
@@ -17944,7 +17399,6 @@ extension SageMaker {
     }
 
     public struct ModelBiasJobInput: AWSEncodableShape & AWSDecodableShape {
-
         public let endpointInput: EndpointInput
         /// Location of ground truth labels to use in model bias job.
         public let groundTruthS3Input: MonitoringGroundTruthS3Input
@@ -17966,7 +17420,6 @@ extension SageMaker {
     }
 
     public struct ModelClientConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// The maximum number of retries when invocation requests are failing.
         public let invocationsMaxRetries: Int?
         /// The timeout value in seconds for an invocation request.
@@ -17991,7 +17444,6 @@ extension SageMaker {
     }
 
     public struct ModelDataQuality: AWSEncodableShape & AWSDecodableShape {
-
         /// Data quality constraints for a model.
         public let constraints: MetricsSource?
         /// Data quality statistics for a model.
@@ -18014,10 +17466,9 @@ extension SageMaker {
     }
 
     public struct ModelDeployConfig: AWSEncodableShape & AWSDecodableShape {
-
-        /// Set to True to automatically generate an endpoint name for a one-click Autopilot model deployment; set to False otherwise. The default value is False.  If you set AutoGenerateEndpointName to True, do not specify the EndpointName; otherwise a 400 error is thrown. 
+        /// Set to True to automatically generate an endpoint name for a one-click Autopilot model deployment; set to False otherwise. The default value is False.  If you set AutoGenerateEndpointName to True, do not specify the EndpointName; otherwise a 400 error is thrown.
         public let autoGenerateEndpointName: Bool?
-        /// Specifies the endpoint name to use for a one-click Autopilot model deployment if the endpoint name is not generated automatically.  Specify the EndpointName if and only if you set AutoGenerateEndpointName to False; otherwise a 400 error is thrown. 
+        /// Specifies the endpoint name to use for a one-click Autopilot model deployment if the endpoint name is not generated automatically.  Specify the EndpointName if and only if you set AutoGenerateEndpointName to False; otherwise a 400 error is thrown.
         public let endpointName: String?
 
         public init(autoGenerateEndpointName: Bool? = nil, endpointName: String? = nil) {
@@ -18037,8 +17488,7 @@ extension SageMaker {
     }
 
     public struct ModelDeployResult: AWSDecodableShape {
-
-        /// The name of the endpoint to which the model has been deployed.  If model deployment fails, this field is omitted from the response. 
+        /// The name of the endpoint to which the model has been deployed.  If model deployment fails, this field is omitted from the response.
         public let endpointName: String?
 
         public init(endpointName: String? = nil) {
@@ -18051,7 +17501,6 @@ extension SageMaker {
     }
 
     public struct ModelDigests: AWSDecodableShape {
-
         /// Provides a hash value that uniquely identifies the stored model artifacts.
         public let artifactDigest: String?
 
@@ -18065,7 +17514,6 @@ extension SageMaker {
     }
 
     public struct ModelExplainabilityAppSpecification: AWSEncodableShape & AWSDecodableShape {
-
         /// JSON formatted S3 file that defines explainability parameters. For more information on this JSON configuration file, see Configure model explainability parameters.
         public let configUri: String
         /// Sets the environment variables in the Docker container.
@@ -18101,7 +17549,6 @@ extension SageMaker {
     }
 
     public struct ModelExplainabilityBaselineConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the baseline model explainability job.
         public let baseliningJobName: String?
         public let constraintsResource: MonitoringConstraintsResource?
@@ -18125,7 +17572,6 @@ extension SageMaker {
     }
 
     public struct ModelExplainabilityJobInput: AWSEncodableShape & AWSDecodableShape {
-
         public let endpointInput: EndpointInput
 
         public init(endpointInput: EndpointInput) {
@@ -18142,7 +17588,6 @@ extension SageMaker {
     }
 
     public struct ModelMetrics: AWSEncodableShape & AWSDecodableShape {
-
         /// Metrics that measure bais in a model.
         public let bias: Bias?
         /// Metrics that help explain a model.
@@ -18175,7 +17620,6 @@ extension SageMaker {
     }
 
     public struct ModelPackage: AWSDecodableShape {
-
         /// A description provided when the model approval is set.
         public let approvalDescription: String?
         /// Whether the model package is to be certified to be listed on Amazon Web Services Marketplace. For information about listing model packages on Amazon Web Services Marketplace, see List Your Algorithm or Model Package on Amazon Web Services Marketplace.
@@ -18188,7 +17632,7 @@ extension SageMaker {
         /// The last time the model package was modified.
         public let lastModifiedTime: Date?
         public let metadataProperties: MetadataProperties?
-        /// The approval status of the model. This can be one of the following values.    APPROVED - The model is approved    REJECTED - The model is rejected.    PENDING_MANUAL_APPROVAL - The model is waiting for manual approval.  
+        /// The approval status of the model. This can be one of the following values.    APPROVED - The model is approved    REJECTED - The model is rejected.    PENDING_MANUAL_APPROVAL - The model is waiting for manual approval.
         public let modelApprovalStatus: ModelApprovalStatus?
         /// Metrics for the model.
         public let modelMetrics: ModelMetrics?
@@ -18200,7 +17644,7 @@ extension SageMaker {
         public let modelPackageGroupName: String?
         /// The name of the model.
         public let modelPackageName: String?
-        /// The status of the model package. This can be one of the following values.    PENDING - The model package is pending being created.    IN_PROGRESS - The model package is in the process of being created.    COMPLETED - The model package was successfully created.    FAILED - The model package failed.    DELETING - The model package is in the process of being deleted.  
+        /// The status of the model package. This can be one of the following values.    PENDING - The model package is pending being created.    IN_PROGRESS - The model package is in the process of being created.    COMPLETED - The model package was successfully created.    FAILED - The model package failed.    DELETING - The model package is in the process of being deleted.
         public let modelPackageStatus: ModelPackageStatus?
         public let modelPackageStatusDetails: ModelPackageStatusDetails?
         /// The version number of a versioned model.
@@ -18258,7 +17702,6 @@ extension SageMaker {
     }
 
     public struct ModelPackageContainerDefinition: AWSEncodableShape & AWSDecodableShape {
-
         /// The DNS host name for the Docker container.
         public let containerHostname: String?
         /// The environment variables to set in the Docker container. Each key and value in the Environment string to string map can have length of up to 1024. We support up to 16 entries in the map.
@@ -18267,7 +17710,7 @@ extension SageMaker {
         public let image: String
         /// An MD5 hash of the training algorithm that identifies the Docker image used for training.
         public let imageDigest: String?
-        /// The Amazon S3 path where the model artifacts, which result from model training, are stored. This path must point to a single gzip compressed tar archive (.tar.gz suffix).  The model artifacts must be in an S3 bucket that is in the same region as the model package. 
+        /// The Amazon S3 path where the model artifacts, which result from model training, are stored. This path must point to a single gzip compressed tar archive (.tar.gz suffix).  The model artifacts must be in an S3 bucket that is in the same region as the model package.
         public let modelDataUrl: String?
         /// The Amazon Web Services Marketplace product ID of the model package.
         public let productId: String?
@@ -18312,7 +17755,6 @@ extension SageMaker {
     }
 
     public struct ModelPackageGroup: AWSDecodableShape {
-
         public let createdBy: UserContext?
         /// The time that the model group was created.
         public let creationTime: Date?
@@ -18322,7 +17764,7 @@ extension SageMaker {
         public let modelPackageGroupDescription: String?
         /// The name of the model group.
         public let modelPackageGroupName: String?
-        /// The status of the model group. This can be one of the following values.    PENDING - The model group is pending being created.    IN_PROGRESS - The model group is in the process of being created.    COMPLETED - The model group was successfully created.    FAILED - The model group failed.    DELETING - The model group is in the process of being deleted.    DELETE_FAILED - SageMaker failed to delete the model group.  
+        /// The status of the model group. This can be one of the following values.    PENDING - The model group is pending being created.    IN_PROGRESS - The model group is in the process of being created.    COMPLETED - The model group was successfully created.    FAILED - The model group failed.    DELETING - The model group is in the process of being deleted.    DELETE_FAILED - SageMaker failed to delete the model group.
         public let modelPackageGroupStatus: ModelPackageGroupStatus?
         /// A list of the tags associated with the model group. For more information, see Tagging Amazon Web Services resources in the Amazon Web Services General Reference Guide.
         public let tags: [Tag]?
@@ -18349,7 +17791,6 @@ extension SageMaker {
     }
 
     public struct ModelPackageGroupSummary: AWSDecodableShape {
-
         /// The time that the model group was created.
         public let creationTime: Date
         /// The Amazon Resource Name (ARN) of the model group.
@@ -18379,7 +17820,6 @@ extension SageMaker {
     }
 
     public struct ModelPackageStatusDetails: AWSDecodableShape {
-
         /// The status of the scan of the Docker image container for the model package.
         public let imageScanStatuses: [ModelPackageStatusItem]?
         /// The validation status of the model package.
@@ -18397,7 +17837,6 @@ extension SageMaker {
     }
 
     public struct ModelPackageStatusItem: AWSDecodableShape {
-
         /// if the overall status is Failed, the reason for the failure.
         public let failureReason: String?
         /// The name of the model package for which the overall status is being reported.
@@ -18419,10 +17858,9 @@ extension SageMaker {
     }
 
     public struct ModelPackageSummary: AWSDecodableShape {
-
         /// A timestamp that shows when the model package was created.
         public let creationTime: Date
-        /// The approval status of the model. This can be one of the following values.    APPROVED - The model is approved    REJECTED - The model is rejected.    PENDING_MANUAL_APPROVAL - The model is waiting for manual approval.  
+        /// The approval status of the model. This can be one of the following values.    APPROVED - The model is approved    REJECTED - The model is rejected.    PENDING_MANUAL_APPROVAL - The model is waiting for manual approval.
         public let modelApprovalStatus: ModelApprovalStatus?
         /// The Amazon Resource Name (ARN) of the model package.
         public let modelPackageArn: String
@@ -18461,7 +17899,6 @@ extension SageMaker {
     }
 
     public struct ModelPackageValidationProfile: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the profile for the model package.
         public let profileName: String
         /// The TransformJobDefinition object that describes the transform job used for the validation of the model package.
@@ -18486,7 +17923,6 @@ extension SageMaker {
     }
 
     public struct ModelPackageValidationSpecification: AWSEncodableShape & AWSDecodableShape {
-
         /// An array of ModelPackageValidationProfile objects, each of which specifies a batch transform job that Amazon SageMaker runs to validate your model package.
         public let validationProfiles: [ModelPackageValidationProfile]
         /// The IAM roles to be used for the validation of the model package.
@@ -18515,7 +17951,6 @@ extension SageMaker {
     }
 
     public struct ModelQuality: AWSEncodableShape & AWSDecodableShape {
-
         /// Model quality constraints.
         public let constraints: MetricsSource?
         /// Model quality statistics.
@@ -18538,7 +17973,6 @@ extension SageMaker {
     }
 
     public struct ModelQualityAppSpecification: AWSEncodableShape & AWSDecodableShape {
-
         /// An array of arguments for the container used to run the monitoring job.
         public let containerArguments: [String]?
         /// Specifies the entrypoint for a container that the monitoring job runs.
@@ -18604,7 +18038,6 @@ extension SageMaker {
     }
 
     public struct ModelQualityBaselineConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the job that performs baselining for the monitoring job.
         public let baseliningJobName: String?
         public let constraintsResource: MonitoringConstraintsResource?
@@ -18628,7 +18061,6 @@ extension SageMaker {
     }
 
     public struct ModelQualityJobInput: AWSEncodableShape & AWSDecodableShape {
-
         public let endpointInput: EndpointInput
         /// The ground truth label provided for the model.
         public let groundTruthS3Input: MonitoringGroundTruthS3Input
@@ -18650,7 +18082,6 @@ extension SageMaker {
     }
 
     public struct ModelStepMetadata: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the created model.
         public let arn: String?
 
@@ -18664,7 +18095,6 @@ extension SageMaker {
     }
 
     public struct ModelSummary: AWSDecodableShape {
-
         /// A timestamp that indicates when the model was created.
         public let creationTime: Date
         /// The Amazon Resource Name (ARN) of the model.
@@ -18686,7 +18116,6 @@ extension SageMaker {
     }
 
     public struct MonitoringAppSpecification: AWSEncodableShape & AWSDecodableShape {
-
         /// An array of arguments for the container used to run the monitoring job.
         public let containerArguments: [String]?
         /// Specifies the entrypoint for a container used to run the monitoring job.
@@ -18737,7 +18166,6 @@ extension SageMaker {
     }
 
     public struct MonitoringBaselineConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the job that performs baselining for the monitoring job.
         public let baseliningJobName: String?
         /// The baseline constraint file in Amazon S3 that the current monitoring job should validated against.
@@ -18767,7 +18195,6 @@ extension SageMaker {
     }
 
     public struct MonitoringClusterConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// The number of ML compute instances to use in the model monitoring job. For distributed processing jobs, specify a value greater than 1. The default value is 1.
         public let instanceCount: Int
         /// The ML compute instance type for the processing job.
@@ -18802,7 +18229,6 @@ extension SageMaker {
     }
 
     public struct MonitoringConstraintsResource: AWSEncodableShape & AWSDecodableShape {
-
         /// The Amazon S3 URI for the constraints resource.
         public let s3Uri: String?
 
@@ -18821,7 +18247,6 @@ extension SageMaker {
     }
 
     public struct MonitoringExecutionSummary: AWSDecodableShape {
-
         /// The time at which the monitoring job was created.
         public let creationTime: Date
         /// The name of the endpoint used to run the monitoring job.
@@ -18871,7 +18296,6 @@ extension SageMaker {
     }
 
     public struct MonitoringGroundTruthS3Input: AWSEncodableShape & AWSDecodableShape {
-
         /// The address of the Amazon S3 location of the ground truth labels.
         public let s3Uri: String?
 
@@ -18890,7 +18314,6 @@ extension SageMaker {
     }
 
     public struct MonitoringInput: AWSEncodableShape & AWSDecodableShape {
-
         /// The endpoint for a monitoring job.
         public let endpointInput: EndpointInput
 
@@ -18908,7 +18331,6 @@ extension SageMaker {
     }
 
     public struct MonitoringJobDefinition: AWSEncodableShape & AWSDecodableShape {
-
         /// Baseline configuration used to validate that the data conforms to the specified constraints and statistics
         public let baselineConfig: MonitoringBaselineConfig?
         /// Sets the environment variables in the Docker container.
@@ -18978,7 +18400,6 @@ extension SageMaker {
     }
 
     public struct MonitoringJobDefinitionSummary: AWSDecodableShape {
-
         /// The time that the monitoring job was created.
         public let creationTime: Date
         /// The name of the endpoint that the job monitors.
@@ -19004,7 +18425,6 @@ extension SageMaker {
     }
 
     public struct MonitoringNetworkConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// Whether to encrypt all communications between the instances used for the monitoring jobs. Choose True to encrypt communications. Encryption provides greater security for distributed jobs, but the processing might take longer.
         public let enableInterContainerTrafficEncryption: Bool?
         /// Whether to allow inbound and outbound network calls to and from the containers used for the monitoring job.
@@ -19029,7 +18449,6 @@ extension SageMaker {
     }
 
     public struct MonitoringOutput: AWSEncodableShape & AWSDecodableShape {
-
         /// The Amazon S3 storage location where the results of a monitoring job are saved.
         public let s3Output: MonitoringS3Output
 
@@ -19047,7 +18466,6 @@ extension SageMaker {
     }
 
     public struct MonitoringOutputConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// The Amazon Web Services Key Management Service (Amazon Web Services KMS) key that Amazon SageMaker uses to encrypt the model artifacts at rest using Amazon S3 server-side encryption.
         public let kmsKeyId: String?
         /// Monitoring outputs for monitoring jobs. This is where the output of the periodic monitoring jobs is uploaded.
@@ -19075,7 +18493,6 @@ extension SageMaker {
     }
 
     public struct MonitoringResources: AWSEncodableShape & AWSDecodableShape {
-
         /// The configuration for the cluster resources used to run the processing job.
         public let clusterConfig: MonitoringClusterConfig
 
@@ -19093,7 +18510,6 @@ extension SageMaker {
     }
 
     public struct MonitoringS3Output: AWSEncodableShape & AWSDecodableShape {
-
         /// The local path to the Amazon S3 storage location where Amazon SageMaker saves the results of a monitoring job. LocalPath is an absolute path for the output data.
         public let localPath: String
         /// Whether to upload the results of the monitoring job continuously or after the job completes.
@@ -19122,7 +18538,6 @@ extension SageMaker {
     }
 
     public struct MonitoringSchedule: AWSDecodableShape {
-
         /// The time that the monitoring schedule was created.
         public let creationTime: Date?
         /// The endpoint that hosts the model being monitored.
@@ -19137,7 +18552,7 @@ extension SageMaker {
         public let monitoringScheduleConfig: MonitoringScheduleConfig?
         /// The name of the monitoring schedule.
         public let monitoringScheduleName: String?
-        /// The status of the monitoring schedule. This can be one of the following values.    PENDING - The schedule is pending being created.    FAILED - The schedule failed.    SCHEDULED - The schedule was successfully created.    STOPPED - The schedule was stopped.  
+        /// The status of the monitoring schedule. This can be one of the following values.    PENDING - The schedule is pending being created.    FAILED - The schedule failed.    SCHEDULED - The schedule was successfully created.    STOPPED - The schedule was stopped.
         public let monitoringScheduleStatus: ScheduleStatus?
         /// The type of the monitoring job definition to schedule.
         public let monitoringType: MonitoringType?
@@ -19174,7 +18589,6 @@ extension SageMaker {
     }
 
     public struct MonitoringScheduleConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// Defines the monitoring job.
         public let monitoringJobDefinition: MonitoringJobDefinition?
         /// The name of the monitoring job definition to schedule.
@@ -19208,7 +18622,6 @@ extension SageMaker {
     }
 
     public struct MonitoringScheduleSummary: AWSDecodableShape {
-
         /// The creation time of the monitoring schedule.
         public let creationTime: Date
         /// The name of the endpoint using the monitoring schedule.
@@ -19250,7 +18663,6 @@ extension SageMaker {
     }
 
     public struct MonitoringStatisticsResource: AWSEncodableShape & AWSDecodableShape {
-
         /// The Amazon S3 URI for the statistics resource.
         public let s3Uri: String?
 
@@ -19269,8 +18681,7 @@ extension SageMaker {
     }
 
     public struct MonitoringStoppingCondition: AWSEncodableShape & AWSDecodableShape {
-
-        /// The maximum runtime allowed in seconds.  The MaxRuntimeInSeconds cannot exceed the frequency of the job. For data quality and model explainability, this can be up to 3600 seconds for an hourly schedule. For model bias and model quality hourly schedules, this can be up to 1800 seconds. 
+        /// The maximum runtime allowed in seconds.  The MaxRuntimeInSeconds cannot exceed the frequency of the job. For data quality and model explainability, this can be up to 3600 seconds for an hourly schedule. For model bias and model quality hourly schedules, this can be up to 1800 seconds.
         public let maxRuntimeInSeconds: Int
 
         public init(maxRuntimeInSeconds: Int) {
@@ -19288,7 +18699,6 @@ extension SageMaker {
     }
 
     public struct MultiModelConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// Whether to cache models for a multi-model endpoint. By default, multi-model endpoints cache models so that a model does not have to be loaded into memory each time it is invoked. Some use cases do not benefit from model caching. For example, if an endpoint hosts a large number of models that are each invoked infrequently, the endpoint might perform better if you disable model caching. To disable model caching, set the value of this parameter to Disabled.
         public let modelCacheSetting: ModelCacheSetting?
 
@@ -19302,7 +18712,6 @@ extension SageMaker {
     }
 
     public struct NeoVpcConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// The VPC security group IDs. IDs have the form of sg-xxxxxxxx.  Specify the security groups for the VPC that is specified in the Subnets field.
         public let securityGroupIds: [String]
         /// The ID of the subnets in the VPC that you want to connect the  compilation job to for accessing the model in Amazon S3.
@@ -19335,7 +18744,6 @@ extension SageMaker {
     }
 
     public struct NestedFilters: AWSEncodableShape {
-
         /// A list of filters. Each filter acts on a property. Filters must contain at least one Filters value. For example, a NestedFilters call might include a filter on the PropertyName parameter of the InputDataConfig property: InputDataConfig.DataSource.S3DataSource.S3Uri.
         public let filters: [Filter]
         /// The name of the property to use in the nested filters. The value must match a listed property name, such as InputDataConfig.
@@ -19364,7 +18772,6 @@ extension SageMaker {
     }
 
     public struct NetworkConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// Whether to encrypt all communications between distributed processing jobs. Choose True to encrypt communications. Encryption provides greater security for distributed processing jobs, but the processing might take longer.
         public let enableInterContainerTrafficEncryption: Bool?
         /// Whether to allow inbound and outbound network calls to and from the containers used for the processing job.
@@ -19389,7 +18796,6 @@ extension SageMaker {
     }
 
     public struct NotebookInstanceLifecycleConfigSummary: AWSDecodableShape {
-
         /// A timestamp that tells when the lifecycle configuration was created.
         public let creationTime: Date?
         /// A timestamp that tells when the lifecycle configuration was last modified.
@@ -19415,7 +18821,6 @@ extension SageMaker {
     }
 
     public struct NotebookInstanceLifecycleHook: AWSEncodableShape & AWSDecodableShape {
-
         /// A base64-encoded string that contains a shell script for a notebook instance lifecycle configuration.
         public let content: String?
 
@@ -19435,7 +18840,6 @@ extension SageMaker {
     }
 
     public struct NotebookInstanceSummary: AWSDecodableShape {
-
         /// An array of up to three Git repositories associated with the notebook instance. These can be either the names of Git repositories stored as resources in your account, or the URL of Git repositories in Amazon Web Services CodeCommit or in any other Git repository. These repositories are cloned at the same level as the default repository of your notebook instance. For more information, see Associating Git Repositories with Amazon SageMaker Notebook Instances.
         public let additionalCodeRepositories: [String]?
         /// A timestamp that shows when the notebook instance was created.
@@ -19454,7 +18858,7 @@ extension SageMaker {
         public let notebookInstanceName: String
         /// The status of the notebook instance.
         public let notebookInstanceStatus: NotebookInstanceStatus?
-        /// The URL that you use to connect to the Jupyter instance running in your notebook instance. 
+        /// The URL that you use to connect to the Jupyter instance running in your notebook instance.
         public let url: String?
 
         public init(additionalCodeRepositories: [String]? = nil, creationTime: Date? = nil, defaultCodeRepository: String? = nil, instanceType: InstanceType? = nil, lastModifiedTime: Date? = nil, notebookInstanceArn: String, notebookInstanceLifecycleConfigName: String? = nil, notebookInstanceName: String, notebookInstanceStatus: NotebookInstanceStatus? = nil, url: String? = nil) {
@@ -19485,7 +18889,6 @@ extension SageMaker {
     }
 
     public struct NotificationConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// The ARN for the SNS topic to which notifications should be published.
         public let notificationTopicArn: String?
 
@@ -19503,7 +18906,6 @@ extension SageMaker {
     }
 
     public struct ObjectiveStatusCounters: AWSDecodableShape {
-
         /// The number of training jobs whose final objective metric was not evaluated and used in the hyperparameter tuning process. This typically occurs when the training job failed or did not emit an objective metric.
         public let failed: Int?
         /// The number of training jobs that are in progress and pending evaluation of their final objective metric.
@@ -19525,8 +18927,7 @@ extension SageMaker {
     }
 
     public struct OfflineStoreConfig: AWSEncodableShape & AWSDecodableShape {
-
-        /// The meta data of the Glue table that is autogenerated when an OfflineStore is created. 
+        /// The meta data of the Glue table that is autogenerated when an OfflineStore is created.
         public let dataCatalogConfig: DataCatalogConfig?
         /// Set to True to disable the automatic creation of an Amazon Web Services Glue table when configuring an OfflineStore.
         public let disableGlueTableCreation: Bool?
@@ -19552,7 +18953,6 @@ extension SageMaker {
     }
 
     public struct OfflineStoreStatus: AWSDecodableShape {
-
         /// The justification for why the OfflineStoreStatus is Blocked (if applicable).
         public let blockedReason: String?
         /// An OfflineStore status.
@@ -19570,7 +18970,6 @@ extension SageMaker {
     }
 
     public struct OidcConfig: AWSEncodableShape {
-
         /// The OIDC IdP authorization endpoint used to configure your private workforce.
         public let authorizationEndpoint: String
         /// The OIDC IdP client ID used to configure your private workforce.
@@ -19633,7 +19032,6 @@ extension SageMaker {
     }
 
     public struct OidcConfigForResponse: AWSDecodableShape {
-
         /// The OIDC IdP authorization endpoint used to configure your private workforce.
         public let authorizationEndpoint: String?
         /// The OIDC IdP client ID used to configure your private workforce.
@@ -19671,7 +19069,6 @@ extension SageMaker {
     }
 
     public struct OidcMemberDefinition: AWSEncodableShape & AWSDecodableShape {
-
         /// A list of comma seperated strings that identifies user groups in your OIDC IdP. Each user group is made up of a group of private workers.
         public let groups: [String]
 
@@ -19695,7 +19092,6 @@ extension SageMaker {
     }
 
     public struct OnlineStoreConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// Turn OnlineStore off by specifying False  for the EnableOnlineStore flag. Turn OnlineStore  on by specifying True  for the EnableOnlineStore flag.  The default value is False.
         public let enableOnlineStore: Bool?
         /// Use to specify KMS Key ID (KMSKeyId) for at-rest encryption of your OnlineStore.
@@ -19717,8 +19113,7 @@ extension SageMaker {
     }
 
     public struct OnlineStoreSecurityConfig: AWSEncodableShape & AWSDecodableShape {
-
-        /// The ID of the Amazon Web Services Key Management Service (Amazon Web Services KMS) key that SageMaker Feature Store uses to encrypt the Amazon S3 objects at rest using Amazon S3 server-side encryption. The caller (either IAM user or IAM role) of CreateFeatureGroup must have below permissions to the OnlineStore KmsKeyId:    "kms:Encrypt"     "kms:Decrypt"     "kms:DescribeKey"     "kms:CreateGrant"     "kms:RetireGrant"     "kms:ReEncryptFrom"     "kms:ReEncryptTo"     "kms:GenerateDataKey"     "kms:ListAliases"     "kms:ListGrants"     "kms:RevokeGrant"    The caller (either IAM user or IAM role) to all DataPlane operations (PutRecord, GetRecord, DeleteRecord) must have the following permissions to the KmsKeyId:    "kms:Decrypt"   
+        /// The ID of the Amazon Web Services Key Management Service (Amazon Web Services KMS) key that SageMaker Feature Store uses to encrypt the Amazon S3 objects at rest using Amazon S3 server-side encryption. The caller (either IAM user or IAM role) of CreateFeatureGroup must have below permissions to the OnlineStore KmsKeyId:    "kms:Encrypt"     "kms:Decrypt"     "kms:DescribeKey"     "kms:CreateGrant"     "kms:RetireGrant"     "kms:ReEncryptFrom"     "kms:ReEncryptTo"     "kms:GenerateDataKey"     "kms:ListAliases"     "kms:ListGrants"     "kms:RevokeGrant"    The caller (either IAM user or IAM role) to all DataPlane operations (PutRecord, GetRecord, DeleteRecord) must have the following permissions to the KmsKeyId:    "kms:Decrypt"
         public let kmsKeyId: String?
 
         public init(kmsKeyId: String? = nil) {
@@ -19736,17 +19131,16 @@ extension SageMaker {
     }
 
     public struct OutputConfig: AWSEncodableShape & AWSDecodableShape {
-
-        /// Specifies additional parameters for compiler options in JSON format. The compiler options are TargetPlatform specific. It is required for NVIDIA accelerators and highly recommended for CPU compilations. For any other cases, it is optional to specify CompilerOptions.     DTYPE: Specifies the data type for the input. When compiling for ml_* (except for ml_inf) instances using PyTorch framework, provide the data type (dtype) of the model's input. "float32" is used if "DTYPE" is not specified. Options for data type are:   float32: Use either "float" or "float32".   int64: Use either "int64" or "long".   For example, {"dtype" : "float32"}.    CPU: Compilation for CPU supports the following compiler options.    mcpu: CPU micro-architecture. For example, {'mcpu': 'skylake-avx512'}     mattr: CPU flags. For example, {'mattr': ['+neon', '+vfpv4']}       ARM: Details of ARM CPU compilations.    NEON: NEON is an implementation of the Advanced SIMD extension used in ARMv7 processors. For example, add {'mattr': ['+neon']} to the compiler options if compiling for ARM 32-bit platform with the NEON support.      NVIDIA: Compilation for NVIDIA GPU supports the following compiler options.    gpu_code: Specifies the targeted architecture.    trt-ver: Specifies the TensorRT versions in x.y.z. format.    cuda-ver: Specifies the CUDA version in x.y format.   For example, {'gpu-code': 'sm_72', 'trt-ver': '6.0.1', 'cuda-ver': '10.1'}     ANDROID: Compilation for the Android OS supports the following compiler options:    ANDROID_PLATFORM: Specifies the Android API levels. Available levels range from 21 to 29. For example, {'ANDROID_PLATFORM': 28}.    mattr: Add {'mattr': ['+neon']} to compiler options if compiling for ARM 32-bit platform with NEON support.      INFERENTIA: Compilation for target ml_inf1 uses compiler options passed in as a JSON string. For example, "CompilerOptions": "\"--verbose 1 --num-neuroncores 2 -O2\"".  For information about supported compiler options, see  Neuron Compiler CLI.     CoreML: Compilation for the CoreML OutputConfig$TargetDevice supports the following compiler options:    class_labels: Specifies the classification labels file name inside input tar.gz file. For example, {"class_labels": "imagenet_labels_1000.txt"}. Labels inside the txt file should be separated by newlines.      EIA: Compilation for the Elastic Inference Accelerator supports the following  compiler options:    precision_mode: Specifies the precision of compiled artifacts. Supported values are "FP16" and "FP32". Default is "FP32".    signature_def_key: Specifies the signature to use for models in SavedModel format. Defaults is TensorFlow's default signature def key.    output_names: Specifies a list of output tensor names for  models in FrozenGraph format. Set at most one API field, either: signature_def_key or output_names.   For example:  {"precision_mode": "FP32",  "output_names": ["output:0"]}   
+        /// Specifies additional parameters for compiler options in JSON format. The compiler options are TargetPlatform specific. It is required for NVIDIA accelerators and highly recommended for CPU compilations. For any other cases, it is optional to specify CompilerOptions.     DTYPE: Specifies the data type for the input. When compiling for ml_* (except for ml_inf) instances using PyTorch framework, provide the data type (dtype) of the model's input. "float32" is used if "DTYPE" is not specified. Options for data type are:   float32: Use either "float" or "float32".   int64: Use either "int64" or "long".   For example, {"dtype" : "float32"}.    CPU: Compilation for CPU supports the following compiler options.    mcpu: CPU micro-architecture. For example, {'mcpu': 'skylake-avx512'}     mattr: CPU flags. For example, {'mattr': ['+neon', '+vfpv4']}       ARM: Details of ARM CPU compilations.    NEON: NEON is an implementation of the Advanced SIMD extension used in ARMv7 processors. For example, add {'mattr': ['+neon']} to the compiler options if compiling for ARM 32-bit platform with the NEON support.      NVIDIA: Compilation for NVIDIA GPU supports the following compiler options.    gpu_code: Specifies the targeted architecture.    trt-ver: Specifies the TensorRT versions in x.y.z. format.    cuda-ver: Specifies the CUDA version in x.y format.   For example, {'gpu-code': 'sm_72', 'trt-ver': '6.0.1', 'cuda-ver': '10.1'}     ANDROID: Compilation for the Android OS supports the following compiler options:    ANDROID_PLATFORM: Specifies the Android API levels. Available levels range from 21 to 29. For example, {'ANDROID_PLATFORM': 28}.    mattr: Add {'mattr': ['+neon']} to compiler options if compiling for ARM 32-bit platform with NEON support.      INFERENTIA: Compilation for target ml_inf1 uses compiler options passed in as a JSON string. For example, "CompilerOptions": "\"--verbose 1 --num-neuroncores 2 -O2\"".  For information about supported compiler options, see  Neuron Compiler CLI.     CoreML: Compilation for the CoreML OutputConfig$TargetDevice supports the following compiler options:    class_labels: Specifies the classification labels file name inside input tar.gz file. For example, {"class_labels": "imagenet_labels_1000.txt"}. Labels inside the txt file should be separated by newlines.      EIA: Compilation for the Elastic Inference Accelerator supports the following  compiler options:    precision_mode: Specifies the precision of compiled artifacts. Supported values are "FP16" and "FP32". Default is "FP32".    signature_def_key: Specifies the signature to use for models in SavedModel format. Defaults is TensorFlow's default signature def key.    output_names: Specifies a list of output tensor names for  models in FrozenGraph format. Set at most one API field, either: signature_def_key or output_names.   For example:  {"precision_mode": "FP32",  "output_names": ["output:0"]}
         public let compilerOptions: String?
-        /// The Amazon Web Services Key Management Service key (Amazon Web Services KMS) that Amazon SageMaker uses to encrypt your output models with Amazon S3 server-side encryption after compilation job. If you don't provide a KMS key ID, Amazon SageMaker uses the default KMS key for Amazon S3 for your role's account. For more information, see KMS-Managed Encryption Keys in the Amazon Simple Storage Service Developer Guide. 
-        /// 	        The KmsKeyId can be any of the following formats:    Key ID: 1234abcd-12ab-34cd-56ef-1234567890ab    Key ARN: arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab    Alias name: alias/ExampleAlias    Alias name ARN: arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias   
+        /// The Amazon Web Services Key Management Service key (Amazon Web Services KMS) that Amazon SageMaker uses to encrypt your output models with Amazon S3 server-side encryption after compilation job. If you don't provide a KMS key ID, Amazon SageMaker uses the default KMS key for Amazon S3 for your role's account. For more information, see KMS-Managed Encryption Keys in the Amazon Simple Storage Service Developer Guide.
+        /// 	        The KmsKeyId can be any of the following formats:    Key ID: 1234abcd-12ab-34cd-56ef-1234567890ab    Key ARN: arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab    Alias name: alias/ExampleAlias    Alias name ARN: arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias
         public let kmsKeyId: String?
         /// Identifies the S3 bucket where you want Amazon SageMaker to store the model artifacts. For example, s3://bucket-name/key-name-prefix.
         public let s3OutputLocation: String
         /// Identifies the target device or the machine learning instance that you want to run your model on after the compilation has completed. Alternatively, you can specify OS, architecture, and accelerator using TargetPlatform fields. It can be used instead of TargetPlatform.
         public let targetDevice: TargetDevice?
-        /// Contains information about a target platform that you want your model to run on, such as OS, architecture, and accelerators. It is an alternative of TargetDevice. The following examples show how to configure the TargetPlatform and CompilerOptions JSON strings for popular target platforms:    Raspberry Pi 3 Model B+  "TargetPlatform": {"Os": "LINUX", "Arch": "ARM_EABIHF"},   "CompilerOptions": {'mattr': ['+neon']}    Jetson TX2  "TargetPlatform": {"Os": "LINUX", "Arch": "ARM64", "Accelerator": "NVIDIA"},   "CompilerOptions": {'gpu-code': 'sm_62', 'trt-ver': '6.0.1', 'cuda-ver': '10.0'}    EC2 m5.2xlarge instance OS  "TargetPlatform": {"Os": "LINUX", "Arch": "X86_64", "Accelerator": "NVIDIA"},   "CompilerOptions": {'mcpu': 'skylake-avx512'}    RK3399  "TargetPlatform": {"Os": "LINUX", "Arch": "ARM64", "Accelerator": "MALI"}    ARMv7 phone (CPU)  "TargetPlatform": {"Os": "ANDROID", "Arch": "ARM_EABI"},   "CompilerOptions": {'ANDROID_PLATFORM': 25, 'mattr': ['+neon']}    ARMv8 phone (CPU)  "TargetPlatform": {"Os": "ANDROID", "Arch": "ARM64"},   "CompilerOptions": {'ANDROID_PLATFORM': 29}   
+        /// Contains information about a target platform that you want your model to run on, such as OS, architecture, and accelerators. It is an alternative of TargetDevice. The following examples show how to configure the TargetPlatform and CompilerOptions JSON strings for popular target platforms:    Raspberry Pi 3 Model B+  "TargetPlatform": {"Os": "LINUX", "Arch": "ARM_EABIHF"},   "CompilerOptions": {'mattr': ['+neon']}    Jetson TX2  "TargetPlatform": {"Os": "LINUX", "Arch": "ARM64", "Accelerator": "NVIDIA"},   "CompilerOptions": {'gpu-code': 'sm_62', 'trt-ver': '6.0.1', 'cuda-ver': '10.0'}    EC2 m5.2xlarge instance OS  "TargetPlatform": {"Os": "LINUX", "Arch": "X86_64", "Accelerator": "NVIDIA"},   "CompilerOptions": {'mcpu': 'skylake-avx512'}    RK3399  "TargetPlatform": {"Os": "LINUX", "Arch": "ARM64", "Accelerator": "MALI"}    ARMv7 phone (CPU)  "TargetPlatform": {"Os": "ANDROID", "Arch": "ARM_EABI"},   "CompilerOptions": {'ANDROID_PLATFORM': 25, 'mattr': ['+neon']}    ARMv8 phone (CPU)  "TargetPlatform": {"Os": "ANDROID", "Arch": "ARM64"},   "CompilerOptions": {'ANDROID_PLATFORM': 29}
         public let targetPlatform: TargetPlatform?
 
         public init(compilerOptions: String? = nil, kmsKeyId: String? = nil, s3OutputLocation: String, targetDevice: TargetDevice? = nil, targetPlatform: TargetPlatform? = nil) {
@@ -19777,10 +19171,9 @@ extension SageMaker {
     }
 
     public struct OutputDataConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// The Amazon Web Services Key Management Service (Amazon Web Services KMS) key that Amazon SageMaker uses to encrypt the model artifacts at rest using Amazon S3 server-side encryption. The KmsKeyId can be any of the following formats:    // KMS Key ID  "1234abcd-12ab-34cd-56ef-1234567890ab"    // Amazon Resource Name (ARN) of a KMS Key  "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"    // KMS Key Alias  "alias/ExampleAlias"    // Amazon Resource Name (ARN) of a KMS Key Alias  "arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias"     If you use a KMS key ID or an alias of your master key, the Amazon SageMaker execution role must include permissions to call kms:Encrypt. If you don't provide a KMS key ID, Amazon SageMaker uses the default KMS key for Amazon S3 for your role's account. Amazon SageMaker uses server-side encryption with KMS-managed keys for OutputDataConfig. If you use a bucket policy with an s3:PutObject permission that only allows objects with server-side encryption, set the condition key of s3:x-amz-server-side-encryption to "aws:kms". For more information, see KMS-Managed Encryption Keys in the Amazon Simple Storage Service Developer Guide.  The KMS key policy must grant permission to the IAM role that you specify in your CreateTrainingJob, CreateTransformJob, or CreateHyperParameterTuningJob requests. For more information, see Using Key Policies in Amazon Web Services KMS in the Amazon Web Services Key Management Service Developer Guide.
         public let kmsKeyId: String?
-        /// Identifies the S3 path where you want Amazon SageMaker to store the model artifacts. For example, s3://bucket-name/key-name-prefix. 
+        /// Identifies the S3 path where you want Amazon SageMaker to store the model artifacts. For example, s3://bucket-name/key-name-prefix.
         public let s3OutputPath: String
 
         public init(kmsKeyId: String? = nil, s3OutputPath: String) {
@@ -19802,7 +19195,6 @@ extension SageMaker {
     }
 
     public struct OutputParameter: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the output parameter.
         public let name: String
         /// The value of the output parameter.
@@ -19825,7 +19217,6 @@ extension SageMaker {
     }
 
     public struct Parameter: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the parameter to assign a value to. This parameter name must match a named parameter in the pipeline definition.
         public let name: String
         /// The literal value for the parameter.
@@ -19850,7 +19241,6 @@ extension SageMaker {
     }
 
     public struct ParameterRange: AWSEncodableShape & AWSDecodableShape {
-
         /// A CategoricalParameterRangeSpecification object that defines the possible values for a categorical hyperparameter.
         public let categoricalParameterRangeSpecification: CategoricalParameterRangeSpecification?
         /// A ContinuousParameterRangeSpecification object that defines the possible values for a continuous hyperparameter.
@@ -19878,7 +19268,6 @@ extension SageMaker {
     }
 
     public struct ParameterRanges: AWSEncodableShape & AWSDecodableShape {
-
         /// The array of CategoricalParameterRange objects that specify ranges of categorical hyperparameters that a hyperparameter tuning job searches.
         public let categoricalParameterRanges: [CategoricalParameterRange]?
         /// The array of ContinuousParameterRange objects that specify ranges of continuous hyperparameters that a hyperparameter tuning job searches.
@@ -19915,7 +19304,6 @@ extension SageMaker {
     }
 
     public struct Parent: AWSDecodableShape {
-
         /// The name of the experiment.
         public let experimentName: String?
         /// The name of the trial.
@@ -19933,7 +19321,6 @@ extension SageMaker {
     }
 
     public struct ParentHyperParameterTuningJob: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the hyperparameter tuning job to be used as a starting point for a new hyperparameter tuning job.
         public let hyperParameterTuningJobName: String?
 
@@ -19953,7 +19340,6 @@ extension SageMaker {
     }
 
     public struct Pipeline: AWSDecodableShape {
-
         public let createdBy: UserContext?
         /// The creation time of the pipeline.
         public let creationTime: Date?
@@ -20009,7 +19395,6 @@ extension SageMaker {
     }
 
     public struct PipelineExecution: AWSDecodableShape {
-
         public let createdBy: UserContext?
         /// The creation time of the pipeline execution.
         public let creationTime: Date?
@@ -20029,7 +19414,7 @@ extension SageMaker {
         /// The status of the pipeline status.
         public let pipelineExecutionStatus: PipelineExecutionStatus?
         public let pipelineExperimentConfig: PipelineExperimentConfig?
-        /// Contains a list of pipeline parameters. This list can be empty. 
+        /// Contains a list of pipeline parameters. This list can be empty.
         public let pipelineParameters: [Parameter]?
 
         public init(createdBy: UserContext? = nil, creationTime: Date? = nil, failureReason: String? = nil, lastModifiedBy: UserContext? = nil, lastModifiedTime: Date? = nil, pipelineArn: String? = nil, pipelineExecutionArn: String? = nil, pipelineExecutionDescription: String? = nil, pipelineExecutionDisplayName: String? = nil, pipelineExecutionStatus: PipelineExecutionStatus? = nil, pipelineExperimentConfig: PipelineExperimentConfig? = nil, pipelineParameters: [Parameter]? = nil) {
@@ -20064,7 +19449,6 @@ extension SageMaker {
     }
 
     public struct PipelineExecutionStep: AWSDecodableShape {
-
         /// If this pipeline execution step was cached, details on the cache hit.
         public let cacheHitResult: CacheHitResult?
         /// The time that the step stopped executing.
@@ -20102,7 +19486,6 @@ extension SageMaker {
     }
 
     public struct PipelineExecutionStepMetadata: AWSDecodableShape {
-
         public let callback: CallbackStepMetadata?
         /// If this is a Condition step metadata object, details on the condition.
         public let condition: ConditionStepMetadata?
@@ -20143,7 +19526,6 @@ extension SageMaker {
     }
 
     public struct PipelineExecutionSummary: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the pipeline execution.
         public let pipelineExecutionArn: String?
         /// The description of the pipeline execution.
@@ -20173,7 +19555,6 @@ extension SageMaker {
     }
 
     public struct PipelineExperimentConfig: AWSDecodableShape {
-
         /// The name of the experiment.
         public let experimentName: String?
         /// The name of the trial.
@@ -20191,7 +19572,6 @@ extension SageMaker {
     }
 
     public struct PipelineSummary: AWSDecodableShape {
-
         /// The creation time of the pipeline.
         public let creationTime: Date?
         /// The last time that a pipeline execution began.
@@ -20233,14 +19613,13 @@ extension SageMaker {
     }
 
     public struct ProcessingClusterConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// The number of ML compute instances to use in the processing job. For distributed processing jobs, specify a value greater than 1. The default value is 1.
         public let instanceCount: Int
         /// The ML compute instance type for the processing job.
         public let instanceType: ProcessingInstanceType
-        /// The Amazon Web Services Key Management Service (Amazon Web Services KMS) key that Amazon SageMaker uses to encrypt data on the storage volume attached to the ML compute instance(s) that run the processing job.   Certain Nitro-based instances include local storage, dependent on the instance type. Local storage volumes are encrypted using a hardware module on the instance. You can't request a VolumeKmsKeyId when using an instance type with local storage. For a list of instance types that support local instance storage, see Instance Store Volumes. For more information about local instance storage encryption, see SSD Instance Store Volumes. 
+        /// The Amazon Web Services Key Management Service (Amazon Web Services KMS) key that Amazon SageMaker uses to encrypt data on the storage volume attached to the ML compute instance(s) that run the processing job.   Certain Nitro-based instances include local storage, dependent on the instance type. Local storage volumes are encrypted using a hardware module on the instance. You can't request a VolumeKmsKeyId when using an instance type with local storage. For a list of instance types that support local instance storage, see Instance Store Volumes. For more information about local instance storage encryption, see SSD Instance Store Volumes.
         public let volumeKmsKeyId: String?
-        /// The size of the ML storage volume in gigabytes that you want to provision. You must specify sufficient ML storage for your scenario.  Certain Nitro-based instances include local storage with a fixed total size, dependent on the instance type. When using these instances for processing, Amazon SageMaker mounts the local instance storage instead of Amazon EBS gp2 storage. You can't request a VolumeSizeInGB greater than the total size of the local instance storage. For a list of instance types that support local instance storage, including the total size per instance type, see Instance Store Volumes. 
+        /// The size of the ML storage volume in gigabytes that you want to provision. You must specify sufficient ML storage for your scenario.  Certain Nitro-based instances include local storage with a fixed total size, dependent on the instance type. When using these instances for processing, Amazon SageMaker mounts the local instance storage instead of Amazon EBS gp2 storage. You can't request a VolumeSizeInGB greater than the total size of the local instance storage. For a list of instance types that support local instance storage, including the total size per instance type, see Instance Store Volumes.
         public let volumeSizeInGB: Int
 
         public init(instanceCount: Int, instanceType: ProcessingInstanceType, volumeKmsKeyId: String? = nil, volumeSizeInGB: Int) {
@@ -20268,7 +19647,6 @@ extension SageMaker {
     }
 
     public struct ProcessingFeatureStoreOutput: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the Amazon SageMaker FeatureGroup to use as the destination for processing job output. Note that your  processing script is responsible for putting records into your Feature Store.
         public let featureGroupName: String
 
@@ -20288,10 +19666,9 @@ extension SageMaker {
     }
 
     public struct ProcessingInput: AWSEncodableShape & AWSDecodableShape {
-
         /// When True, input operations such as data download are managed natively by the processing job application. When False (default), input operations are managed by Amazon SageMaker.
         public let appManaged: Bool?
-        /// Configuration for a Dataset Definition input. 
+        /// Configuration for a Dataset Definition input.
         public let datasetDefinition: DatasetDefinition?
         /// The name for the processing job input.
         public let inputName: String
@@ -20319,7 +19696,6 @@ extension SageMaker {
     }
 
     public struct ProcessingJob: AWSDecodableShape {
-
         public let appSpecification: AppSpecification?
         /// The Amazon Resource Name (ARN) of the AutoML job associated with this processing job.
         public let autoMLJobArn: String?
@@ -20411,7 +19787,6 @@ extension SageMaker {
     }
 
     public struct ProcessingJobStepMetadata: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the processing job.
         public let arn: String?
 
@@ -20425,7 +19800,6 @@ extension SageMaker {
     }
 
     public struct ProcessingJobSummary: AWSDecodableShape {
-
         /// The time at which the processing job was created.
         public let creationTime: Date
         /// An optional string, up to one KB in size, that contains metadata from the processing container when the processing job exits.
@@ -20467,10 +19841,9 @@ extension SageMaker {
     }
 
     public struct ProcessingOutput: AWSEncodableShape & AWSDecodableShape {
-
         /// When True, output operations such as data upload are managed natively by the processing job application. When False (default), output operations are managed by Amazon SageMaker.
         public let appManaged: Bool?
-        /// Configuration for processing job outputs in Amazon SageMaker Feature Store. This processing output type is only supported when AppManaged is specified. 
+        /// Configuration for processing job outputs in Amazon SageMaker Feature Store. This processing output type is only supported when AppManaged is specified.
         public let featureStoreOutput: ProcessingFeatureStoreOutput?
         /// The name for the processing job output.
         public let outputName: String
@@ -20498,7 +19871,6 @@ extension SageMaker {
     }
 
     public struct ProcessingOutputConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// The Amazon Web Services Key Management Service (Amazon Web Services KMS) key that Amazon SageMaker uses to encrypt the processing job output. KmsKeyId can be an ID of a KMS key, ARN of a KMS key, alias of a KMS key, or alias of a KMS key. The KmsKeyId is applied to all outputs.
         public let kmsKeyId: String?
         /// An array of outputs configuring the data to upload from the processing container.
@@ -20525,7 +19897,6 @@ extension SageMaker {
     }
 
     public struct ProcessingResources: AWSEncodableShape & AWSDecodableShape {
-
         /// The configuration for the resources in a cluster used to run the processing job.
         public let clusterConfig: ProcessingClusterConfig
 
@@ -20543,7 +19914,6 @@ extension SageMaker {
     }
 
     public struct ProcessingS3Input: AWSEncodableShape & AWSDecodableShape {
-
         /// The local path in your container where you want Amazon SageMaker to write input data to.  LocalPath is an absolute path to the input data and must begin with  /opt/ml/processing/. LocalPath is a required  parameter when AppManaged is False (default).
         public let localPath: String?
         /// Whether to GZIP-decompress the data in Amazon S3 as it is streamed into the processing  container. Gzip can only be used when Pipe mode is  specified as the S3InputMode. In Pipe mode, Amazon SageMaker streams input  data from the source directly to your container without using the EBS volume.
@@ -20584,7 +19954,6 @@ extension SageMaker {
     }
 
     public struct ProcessingS3Output: AWSEncodableShape & AWSDecodableShape {
-
         /// The local path of a directory where you want Amazon SageMaker to upload its contents to Amazon S3.  LocalPath is an absolute path to a directory containing output files.  This directory will be created by the platform and exist when your container's  entrypoint is invoked.
         public let localPath: String
         /// Whether to upload the results of the processing job continuously or after the job completes.
@@ -20613,7 +19982,6 @@ extension SageMaker {
     }
 
     public struct ProcessingStoppingCondition: AWSEncodableShape & AWSDecodableShape {
-
         /// Specifies the maximum runtime in seconds.
         public let maxRuntimeInSeconds: Int
 
@@ -20622,7 +19990,7 @@ extension SageMaker {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.maxRuntimeInSeconds, name: "maxRuntimeInSeconds", parent: name, max: 604800)
+            try self.validate(self.maxRuntimeInSeconds, name: "maxRuntimeInSeconds", parent: name, max: 604_800)
             try self.validate(self.maxRuntimeInSeconds, name: "maxRuntimeInSeconds", parent: name, min: 1)
         }
 
@@ -20632,14 +20000,13 @@ extension SageMaker {
     }
 
     public struct ProductionVariant: AWSEncodableShape & AWSDecodableShape {
-
         /// The size of the Elastic Inference (EI) instance to use for the production variant. EI instances provide on-demand GPU computing for inference. For more information, see Using Elastic Inference in Amazon SageMaker.
         public let acceleratorType: ProductionVariantAcceleratorType?
         /// Specifies configuration for a core dump from the model container when the process crashes.
         public let coreDumpConfig: ProductionVariantCoreDumpConfig?
         /// Number of instances to launch initially.
         public let initialInstanceCount: Int
-        /// Determines initial traffic distribution among all of the models that you specify in the endpoint configuration. The traffic to a production variant is determined by the ratio of the VariantWeight to the sum of all VariantWeight values across all ProductionVariants. If unspecified, it defaults to 1.0. 
+        /// Determines initial traffic distribution among all of the models that you specify in the endpoint configuration. The traffic to a production variant is determined by the ratio of the VariantWeight to the sum of all VariantWeight values across all ProductionVariants. If unspecified, it defaults to 1.0.
         public let initialVariantWeight: Float?
         /// The ML compute instance type.
         public let instanceType: ProductionVariantInstanceType
@@ -20680,7 +20047,6 @@ extension SageMaker {
     }
 
     public struct ProductionVariantCoreDumpConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// The Amazon S3 bucket to send the core dump to.
         public let destinationS3Uri: String
         /// The Amazon Web Services Key Management Service (Amazon Web Services KMS) key that Amazon SageMaker uses to encrypt the core dump data at rest using Amazon S3 server-side encryption. The KmsKeyId can be any of the following formats:    // KMS Key ID  "1234abcd-12ab-34cd-56ef-1234567890ab"    // Amazon Resource Name (ARN) of a KMS Key  "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"    // KMS Key Alias  "alias/ExampleAlias"    // Amazon Resource Name (ARN) of a KMS Key Alias  "arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias"     If you use a KMS key ID or an alias of your master key, the Amazon SageMaker execution role must include permissions to call kms:Encrypt. If you don't provide a KMS key ID, Amazon SageMaker uses the default KMS key for Amazon S3 for your role's account. Amazon SageMaker uses server-side encryption with KMS-managed keys for OutputDataConfig. If you use a bucket policy with an s3:PutObject permission that only allows objects with server-side encryption, set the condition key of s3:x-amz-server-side-encryption to "aws:kms". For more information, see KMS-Managed Encryption Keys in the Amazon Simple Storage Service Developer Guide.  The KMS key policy must grant permission to the IAM role that you specify in your CreateEndpoint and UpdateEndpoint requests. For more information, see Using Key Policies in Amazon Web Services KMS in the Amazon Web Services Key Management Service Developer Guide.
@@ -20705,16 +20071,15 @@ extension SageMaker {
     }
 
     public struct ProductionVariantSummary: AWSDecodableShape {
-
         /// The number of instances associated with the variant.
         public let currentInstanceCount: Int?
         /// The weight associated with the variant.
         public let currentWeight: Float?
         /// An array of DeployedImage objects that specify the Amazon EC2 Container Registry paths of the inference images deployed on instances of this ProductionVariant.
         public let deployedImages: [DeployedImage]?
-        /// The number of instances requested in the UpdateEndpointWeightsAndCapacities request. 
+        /// The number of instances requested in the UpdateEndpointWeightsAndCapacities request.
         public let desiredInstanceCount: Int?
-        /// The requested weight, as specified in the UpdateEndpointWeightsAndCapacities request. 
+        /// The requested weight, as specified in the UpdateEndpointWeightsAndCapacities request.
         public let desiredWeight: Float?
         /// The name of the variant.
         public let variantName: String
@@ -20739,10 +20104,9 @@ extension SageMaker {
     }
 
     public struct ProfilerConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// A time interval for capturing system metrics in milliseconds. Available values are 100, 200, 500, 1000 (1 second), 5000 (5 seconds), and 60000 (1 minute) milliseconds. The default value is 500 milliseconds.
         public let profilingIntervalInMilliseconds: Int64?
-        /// Configuration information for capturing framework metrics. Available key strings for different profiling options are DetailedProfilingConfig, PythonProfilingConfig, and DataLoaderProfilingConfig. The following codes are configuration structures for the ProfilingParameters parameter. To learn more about how to configure the ProfilingParameters parameter,  see Use the SageMaker and Debugger Configuration API Operations to Create, Update, and Debug Your Training Job. 
+        /// Configuration information for capturing framework metrics. Available key strings for different profiling options are DetailedProfilingConfig, PythonProfilingConfig, and DataLoaderProfilingConfig. The following codes are configuration structures for the ProfilingParameters parameter. To learn more about how to configure the ProfilingParameters parameter,  see Use the SageMaker and Debugger Configuration API Operations to Create, Update, and Debug Your Training Job.
         public let profilingParameters: [String: String]?
         /// Path to Amazon S3 storage location for system and framework metrics.
         public let s3OutputPath: String
@@ -20774,12 +20138,11 @@ extension SageMaker {
     }
 
     public struct ProfilerConfigForUpdate: AWSEncodableShape {
-
         /// To disable Debugger monitoring and profiling, set to True.
         public let disableProfiler: Bool?
         /// A time interval for capturing system metrics in milliseconds. Available values are 100, 200, 500, 1000 (1 second), 5000 (5 seconds), and 60000 (1 minute) milliseconds. The default value is 500 milliseconds.
         public let profilingIntervalInMilliseconds: Int64?
-        /// Configuration information for capturing framework metrics. Available key strings for different profiling options are DetailedProfilingConfig, PythonProfilingConfig, and DataLoaderProfilingConfig. The following codes are configuration structures for the ProfilingParameters parameter. To learn more about how to configure the ProfilingParameters parameter,  see Use the SageMaker and Debugger Configuration API Operations to Create, Update, and Debug Your Training Job. 
+        /// Configuration information for capturing framework metrics. Available key strings for different profiling options are DetailedProfilingConfig, PythonProfilingConfig, and DataLoaderProfilingConfig. The following codes are configuration structures for the ProfilingParameters parameter. To learn more about how to configure the ProfilingParameters parameter,  see Use the SageMaker and Debugger Configuration API Operations to Create, Update, and Debug Your Training Job.
         public let profilingParameters: [String: String]?
         /// Path to Amazon S3 storage location for system and framework metrics.
         public let s3OutputPath: String?
@@ -20813,10 +20176,9 @@ extension SageMaker {
     }
 
     public struct ProfilerRuleConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// The instance type to deploy a Debugger custom rule for profiling a training job.
         public let instanceType: ProcessingInstanceType?
-        /// Path to local storage location for output of rules. Defaults to /opt/ml/processing/output/rule/. 
+        /// Path to local storage location for output of rules. Defaults to /opt/ml/processing/output/rule/.
         public let localPath: String?
         /// The name of the rule configuration. It must be unique relative to other rule configuration names.
         public let ruleConfigurationName: String
@@ -20872,7 +20234,6 @@ extension SageMaker {
     }
 
     public struct ProfilerRuleEvaluationStatus: AWSDecodableShape {
-
         /// Timestamp when the rule evaluation status was last modified.
         public let lastModifiedTime: Date?
         /// The name of the rule configuration.
@@ -20902,7 +20263,6 @@ extension SageMaker {
     }
 
     public struct ProjectSummary: AWSDecodableShape {
-
         /// The time that the project was created.
         public let creationTime: Date
         /// The Amazon Resource Name (ARN) of the project.
@@ -20936,7 +20296,6 @@ extension SageMaker {
     }
 
     public struct PropertyNameQuery: AWSEncodableShape {
-
         /// Text that begins a property's name.
         public let propertyNameHint: String
 
@@ -20955,7 +20314,6 @@ extension SageMaker {
     }
 
     public struct PropertyNameSuggestion: AWSDecodableShape {
-
         /// A suggested property name based on what you entered in the search textbox in the Amazon SageMaker console.
         public let propertyName: String?
 
@@ -20969,7 +20327,6 @@ extension SageMaker {
     }
 
     public struct ProvisioningParameter: AWSEncodableShape & AWSDecodableShape {
-
         /// The key that identifies a provisioning parameter.
         public let key: String?
         /// The value of the provisioning parameter.
@@ -20995,7 +20352,6 @@ extension SageMaker {
     }
 
     public struct PublicWorkforceTaskPrice: AWSEncodableShape & AWSDecodableShape {
-
         /// Defines the amount of money paid to an Amazon Mechanical Turk worker in United States dollars.
         public let amountInUsd: USD?
 
@@ -21013,7 +20369,6 @@ extension SageMaker {
     }
 
     public struct PutModelPackageGroupPolicyInput: AWSEncodableShape {
-
         /// The name of the model group to add a resource policy to.
         public let modelPackageGroupName: String
         /// The resource policy for the model group.
@@ -21040,7 +20395,6 @@ extension SageMaker {
     }
 
     public struct PutModelPackageGroupPolicyOutput: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the model package group.
         public let modelPackageGroupArn: String
 
@@ -21054,7 +20408,6 @@ extension SageMaker {
     }
 
     public struct RedshiftDatasetDefinition: AWSEncodableShape & AWSDecodableShape {
-
         public let clusterId: String
         /// The IAM role attached to your Redshift cluster that Amazon SageMaker uses to generate datasets.
         public let clusterRoleArn: String
@@ -21116,7 +20469,6 @@ extension SageMaker {
     }
 
     public struct RegisterDevicesRequest: AWSEncodableShape {
-
         /// The name of the fleet.
         public let deviceFleetName: String
         /// A list of devices to register with SageMaker Edge Manager.
@@ -21151,7 +20503,6 @@ extension SageMaker {
     }
 
     public struct RegisterModelStepMetadata: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the model package.
         public let arn: String?
 
@@ -21165,7 +20516,6 @@ extension SageMaker {
     }
 
     public struct RenderUiTemplateRequest: AWSEncodableShape {
-
         /// The HumanTaskUiArn of the worker UI that you want to render. Do not provide a HumanTaskUiArn if you use the UiTemplate parameter. See a list of available Human Ui Amazon Resource Names (ARNs) in UiConfig.
         public let humanTaskUiArn: String?
         /// The Amazon Resource Name (ARN) that has access to the S3 objects that are used by the template.
@@ -21201,7 +20551,6 @@ extension SageMaker {
     }
 
     public struct RenderUiTemplateResponse: AWSDecodableShape {
-
         /// A list of one or more RenderingError objects if any were encountered while rendering the template. If there were no errors, the list is empty.
         public let errors: [RenderingError]
         /// A Liquid template that renders the HTML for the worker UI.
@@ -21219,7 +20568,6 @@ extension SageMaker {
     }
 
     public struct RenderableTask: AWSEncodableShape {
-
         /// A JSON object that contains values for the variables defined in the template. It is made available to the template under the substitution variable task.input. For example, if you define a variable task.input.text in your template, you can supply the variable in the JSON object as "text": "sample text".
         public let input: String
 
@@ -21228,7 +20576,7 @@ extension SageMaker {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.input, name: "input", parent: name, max: 128000)
+            try self.validate(self.input, name: "input", parent: name, max: 128_000)
             try self.validate(self.input, name: "input", parent: name, min: 2)
             try self.validate(self.input, name: "input", parent: name, pattern: "^[\\S\\s]+$")
         }
@@ -21239,7 +20587,6 @@ extension SageMaker {
     }
 
     public struct RenderingError: AWSDecodableShape {
-
         /// A unique identifier for a specific class of errors.
         public let code: String
         /// A human-readable message describing the error.
@@ -21257,7 +20604,6 @@ extension SageMaker {
     }
 
     public struct RepositoryAuthConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of an Amazon Web Services Lambda function that provides credentials to authenticate to the private Docker registry where your model image is hosted. For information about how to create an Amazon Web Services Lambda function, see Create a Lambda function with the console in the Amazon Web Services Lambda Developer Guide.
         public let repositoryCredentialsProviderArn: String
 
@@ -21277,7 +20623,6 @@ extension SageMaker {
     }
 
     public struct ResolvedAttributes: AWSDecodableShape {
-
         public let autoMLJobObjective: AutoMLJobObjective?
         public let completionCriteria: AutoMLJobCompletionCriteria?
         /// The problem type.
@@ -21297,14 +20642,13 @@ extension SageMaker {
     }
 
     public struct ResourceConfig: AWSEncodableShape & AWSDecodableShape {
-
-        /// The number of ML compute instances to use. For distributed training, provide a value greater than 1. 
+        /// The number of ML compute instances to use. For distributed training, provide a value greater than 1.
         public let instanceCount: Int
-        /// The ML compute instance type. 
+        /// The ML compute instance type.
         public let instanceType: TrainingInstanceType
-        /// The Amazon Web Services KMS key that Amazon SageMaker uses to encrypt data on the storage volume attached to the ML compute instance(s) that run the training job.  Certain Nitro-based instances include local storage, dependent on the instance type. Local storage volumes are encrypted using a hardware module on the instance. You can't request a VolumeKmsKeyId when using an instance type with local storage. For a list of instance types that support local instance storage, see Instance Store Volumes. For more information about local instance storage encryption, see SSD Instance Store Volumes.  The VolumeKmsKeyId can be in any of the following formats:   // KMS Key ID  "1234abcd-12ab-34cd-56ef-1234567890ab"    // Amazon Resource Name (ARN) of a KMS Key  "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"   
+        /// The Amazon Web Services KMS key that Amazon SageMaker uses to encrypt data on the storage volume attached to the ML compute instance(s) that run the training job.  Certain Nitro-based instances include local storage, dependent on the instance type. Local storage volumes are encrypted using a hardware module on the instance. You can't request a VolumeKmsKeyId when using an instance type with local storage. For a list of instance types that support local instance storage, see Instance Store Volumes. For more information about local instance storage encryption, see SSD Instance Store Volumes.  The VolumeKmsKeyId can be in any of the following formats:   // KMS Key ID  "1234abcd-12ab-34cd-56ef-1234567890ab"    // Amazon Resource Name (ARN) of a KMS Key  "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
         public let volumeKmsKeyId: String?
-        /// The size of the ML storage volume that you want to provision.  ML storage volumes store model artifacts and incremental states. Training algorithms might also use the ML storage volume for scratch space. If you want to store the training data in the ML storage volume, choose File as the TrainingInputMode in the algorithm specification.  You must specify sufficient ML storage for your scenario.   Amazon SageMaker supports only the General Purpose SSD (gp2) ML storage volume type.    Certain Nitro-based instances include local storage with a fixed total size, dependent on the instance type. When using these instances for training, Amazon SageMaker mounts the local instance storage instead of Amazon EBS gp2 storage. You can't request a VolumeSizeInGB greater than the total size of the local instance storage. For a list of instance types that support local instance storage, including the total size per instance type, see Instance Store Volumes. 
+        /// The size of the ML storage volume that you want to provision.  ML storage volumes store model artifacts and incremental states. Training algorithms might also use the ML storage volume for scratch space. If you want to store the training data in the ML storage volume, choose File as the TrainingInputMode in the algorithm specification.  You must specify sufficient ML storage for your scenario.   Amazon SageMaker supports only the General Purpose SSD (gp2) ML storage volume type.    Certain Nitro-based instances include local storage with a fixed total size, dependent on the instance type. When using these instances for training, Amazon SageMaker mounts the local instance storage instead of Amazon EBS gp2 storage. You can't request a VolumeSizeInGB greater than the total size of the local instance storage. For a list of instance types that support local instance storage, including the total size per instance type, see Instance Store Volumes.
         public let volumeSizeInGB: Int
 
         public init(instanceCount: Int, instanceType: TrainingInstanceType, volumeKmsKeyId: String? = nil, volumeSizeInGB: Int) {
@@ -21330,7 +20674,6 @@ extension SageMaker {
     }
 
     public struct ResourceLimits: AWSEncodableShape & AWSDecodableShape {
-
         /// The maximum number of training jobs that a hyperparameter tuning job can launch.
         public let maxNumberOfTrainingJobs: Int
         /// The maximum number of concurrent training jobs that a hyperparameter tuning job can launch.
@@ -21353,7 +20696,6 @@ extension SageMaker {
     }
 
     public struct ResourceSpec: AWSEncodableShape & AWSDecodableShape {
-
         /// The instance type that the image version runs on.
         public let instanceType: AppInstanceType?
         /// The ARN of the SageMaker image that the image version belongs to.
@@ -21382,7 +20724,6 @@ extension SageMaker {
     }
 
     public struct RetentionPolicy: AWSEncodableShape {
-
         /// The default is Retain, which specifies to keep the data stored on the EFS volume. Specify Delete to delete the data stored on the EFS volume.
         public let homeEfsFileSystem: RetentionType?
 
@@ -21396,7 +20737,6 @@ extension SageMaker {
     }
 
     public struct RetryStrategy: AWSEncodableShape & AWSDecodableShape {
-
         /// The number of times to retry the job. When the job is retried, it's SecondaryStatus is changed to STARTING.
         public let maximumRetryAttempts: Int
 
@@ -21415,14 +20755,13 @@ extension SageMaker {
     }
 
     public struct S3DataSource: AWSEncodableShape & AWSDecodableShape {
-
         /// A list of one or more attribute names to use that are found in a specified augmented manifest file.
         public let attributeNames: [String]?
-        /// If you want Amazon SageMaker to replicate the entire dataset on each ML compute instance that is launched for model training, specify FullyReplicated.  If you want Amazon SageMaker to replicate a subset of data on each ML compute instance that is launched for model training, specify ShardedByS3Key. If there are n ML compute instances launched for a training job, each instance gets approximately 1/n of the number of S3 objects. In this case, model training on each machine uses only the subset of training data.  Don't choose more ML compute instances for training than available S3 objects. If you do, some nodes won't get any data and you will pay for nodes that aren't getting any training data. This applies in both File and Pipe modes. Keep this in mind when developing algorithms.  In distributed training, where you use multiple ML compute EC2 instances, you might choose ShardedByS3Key. If the algorithm requires copying training data to the ML storage volume (when TrainingInputMode is set to File), this copies 1/n of the number of objects. 
+        /// If you want Amazon SageMaker to replicate the entire dataset on each ML compute instance that is launched for model training, specify FullyReplicated.  If you want Amazon SageMaker to replicate a subset of data on each ML compute instance that is launched for model training, specify ShardedByS3Key. If there are n ML compute instances launched for a training job, each instance gets approximately 1/n of the number of S3 objects. In this case, model training on each machine uses only the subset of training data.  Don't choose more ML compute instances for training than available S3 objects. If you do, some nodes won't get any data and you will pay for nodes that aren't getting any training data. This applies in both File and Pipe modes. Keep this in mind when developing algorithms.  In distributed training, where you use multiple ML compute EC2 instances, you might choose ShardedByS3Key. If the algorithm requires copying training data to the ML storage volume (when TrainingInputMode is set to File), this copies 1/n of the number of objects.
         public let s3DataDistributionType: S3DataDistribution?
         /// If you choose S3Prefix, S3Uri identifies a key name prefix. Amazon SageMaker uses all objects that match the specified key name prefix for model training.  If you choose ManifestFile, S3Uri identifies an object that is a manifest file containing a list of object keys that you want Amazon SageMaker to use for model training.  If you choose AugmentedManifestFile, S3Uri identifies an object that is an augmented manifest file in JSON lines format. This file contains the data you want to use for model training. AugmentedManifestFile can only be used if the Channel's input mode is Pipe.
         public let s3DataType: S3DataType
-        /// Depending on the value specified for the S3DataType, identifies either a key name prefix or a manifest. For example:    A key name prefix might look like this: s3://bucketname/exampleprefix    A manifest might look like this: s3://bucketname/example.manifest  A manifest is an S3 object which is a JSON file consisting of an array of elements. The first element is a prefix which is followed by one or more suffixes. SageMaker appends the suffix elements to the prefix to get a full set of S3Uri. Note that the prefix must be a valid non-empty S3Uri that precludes users from specifying a manifest whose individual S3Uri is sourced from different S3 buckets. The following code example shows a valid manifest format:   [ {"prefix": "s3://customer_bucket/some/prefix/"},   "relative/path/to/custdata-1",   "relative/path/custdata-2",   ...   "relative/path/custdata-N"   ]  This JSON is equivalent to the following S3Uri list:  s3://customer_bucket/some/prefix/relative/path/to/custdata-1   s3://customer_bucket/some/prefix/relative/path/custdata-2   ...   s3://customer_bucket/some/prefix/relative/path/custdata-N  The complete set of S3Uri in this manifest is the input data for the channel for this data source. The object that each S3Uri points to must be readable by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.   
+        /// Depending on the value specified for the S3DataType, identifies either a key name prefix or a manifest. For example:    A key name prefix might look like this: s3://bucketname/exampleprefix    A manifest might look like this: s3://bucketname/example.manifest  A manifest is an S3 object which is a JSON file consisting of an array of elements. The first element is a prefix which is followed by one or more suffixes. SageMaker appends the suffix elements to the prefix to get a full set of S3Uri. Note that the prefix must be a valid non-empty S3Uri that precludes users from specifying a manifest whose individual S3Uri is sourced from different S3 buckets. The following code example shows a valid manifest format:   [ {"prefix": "s3://customer_bucket/some/prefix/"},   "relative/path/to/custdata-1",   "relative/path/custdata-2",   ...   "relative/path/custdata-N"   ]  This JSON is equivalent to the following S3Uri list:  s3://customer_bucket/some/prefix/relative/path/to/custdata-1   s3://customer_bucket/some/prefix/relative/path/custdata-2   ...   s3://customer_bucket/some/prefix/relative/path/custdata-N  The complete set of S3Uri in this manifest is the input data for the channel for this data source. The object that each S3Uri points to must be readable by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
         public let s3Uri: String
 
         public init(attributeNames: [String]? = nil, s3DataDistributionType: S3DataDistribution? = nil, s3DataType: S3DataType, s3Uri: String) {
@@ -21452,8 +20791,7 @@ extension SageMaker {
     }
 
     public struct S3StorageConfig: AWSEncodableShape & AWSDecodableShape {
-
-        /// The Amazon Web Services Key Management Service (KMS) key ID of the key used to encrypt any objects written into the OfflineStore S3 location. The IAM roleARN that is passed as a parameter to CreateFeatureGroup must have below permissions to the KmsKeyId:    "kms:GenerateDataKey"   
+        /// The Amazon Web Services Key Management Service (KMS) key ID of the key used to encrypt any objects written into the OfflineStore S3 location. The IAM roleARN that is passed as a parameter to CreateFeatureGroup must have below permissions to the KmsKeyId:    "kms:GenerateDataKey"
         public let kmsKeyId: String?
         /// The S3 path where offline records are written.
         public let resolvedOutputS3Uri: String?
@@ -21483,11 +20821,10 @@ extension SageMaker {
     }
 
     public struct ScheduleConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// A cron expression that describes details about the monitoring schedule.
-        ///  Currently the only supported cron expressions are:   If you want to set the job to start every hour, please use the following:  Hourly: cron(0 * ? * * *)    If you want to start the job daily:  cron(0 [00-23] ? * * *)    For example, the following are valid cron expressions:   Daily at noon UTC: cron(0 12 ? * * *)    Daily at midnight UTC: cron(0 0 ? * * *)   
-        ///  To support running every 6, 12 hours, the following are also supported:  cron(0 [00-23]/[01-24] ? * * *)  For example, the following are valid cron expressions:   Every 12 hours, starting at 5pm UTC: cron(0 17/12 ? * * *)    Every two hours starting at midnight: cron(0 0/2 ? * * *)   
-        ///     Even though the cron expression is set to start at 5PM UTC, note that there could be a delay of 0-20 minutes from the actual requested time to run the execution.    We recommend that if you would like a daily schedule, you do not provide this parameter. Amazon SageMaker will pick a time for running every day.   
+        ///  Currently the only supported cron expressions are:   If you want to set the job to start every hour, please use the following:  Hourly: cron(0 * ? * * *)    If you want to start the job daily:  cron(0 [00-23] ? * * *)    For example, the following are valid cron expressions:   Daily at noon UTC: cron(0 12 ? * * *)    Daily at midnight UTC: cron(0 0 ? * * *)
+        ///  To support running every 6, 12 hours, the following are also supported:  cron(0 [00-23]/[01-24] ? * * *)  For example, the following are valid cron expressions:   Every 12 hours, starting at 5pm UTC: cron(0 17/12 ? * * *)    Every two hours starting at midnight: cron(0 0/2 ? * * *)
+        ///     Even though the cron expression is set to start at 5PM UTC, note that there could be a delay of 0-20 minutes from the actual requested time to run the execution.    We recommend that if you would like a daily schedule, you do not provide this parameter. Amazon SageMaker will pick a time for running every day.
         public let scheduleExpression: String
 
         public init(scheduleExpression: String) {
@@ -21505,7 +20842,6 @@ extension SageMaker {
     }
 
     public class SearchExpression: AWSEncodableShape {
-
         /// A list of filter objects.
         public let filters: [Filter]?
         /// A list of nested filter objects.
@@ -21549,7 +20885,6 @@ extension SageMaker {
     }
 
     public struct SearchRecord: AWSDecodableShape {
-
         public let endpoint: Endpoint?
         /// The properties of an experiment.
         public let experiment: Experiment?
@@ -21593,7 +20928,6 @@ extension SageMaker {
     }
 
     public struct SearchRequest: AWSEncodableShape {
-
         /// The maximum number of results to return.
         public let maxResults: Int?
         /// If more than MaxResults resources match the specified SearchExpression, the response includes a NextToken. The NextToken can be passed to the next SearchRequest to continue retrieving results.
@@ -21638,7 +20972,6 @@ extension SageMaker {
     }
 
     public struct SearchResponse: AWSDecodableShape {
-
         /// If the result of the previous Search request was truncated, the response includes a NextToken. To retrieve the next set of results, use the token in the next request.
         public let nextToken: String?
         /// A list of SearchRecord objects.
@@ -21656,14 +20989,13 @@ extension SageMaker {
     }
 
     public struct SecondaryStatusTransition: AWSDecodableShape {
-
         /// A timestamp that shows when the training job transitioned out of this secondary status state into another secondary status state or when the training job has ended.
         public let endTime: Date?
         /// A timestamp that shows when the training job transitioned to the current secondary status state.
         public let startTime: Date
-        /// Contains a secondary status information from a training job. Status might be one of the following secondary statuses:  InProgress     Starting - Starting the training job.    Downloading - An optional stage for algorithms that support File training input mode. It indicates that data is being downloaded to the ML storage volumes.    Training - Training is in progress.    Uploading - Training is complete and the model artifacts are being uploaded to the S3 location.    Completed     Completed - The training job has completed.    Failed     Failed - The training job has failed. The reason for the failure is returned in the FailureReason field of DescribeTrainingJobResponse.    Stopped     MaxRuntimeExceeded - The job stopped because it exceeded the maximum allowed runtime.    Stopped - The training job has stopped.    Stopping     Stopping - Stopping the training job.     We no longer support the following secondary statuses:    LaunchingMLInstances     PreparingTrainingStack     DownloadingTrainingImage   
+        /// Contains a secondary status information from a training job. Status might be one of the following secondary statuses:  InProgress     Starting - Starting the training job.    Downloading - An optional stage for algorithms that support File training input mode. It indicates that data is being downloaded to the ML storage volumes.    Training - Training is in progress.    Uploading - Training is complete and the model artifacts are being uploaded to the S3 location.    Completed     Completed - The training job has completed.    Failed     Failed - The training job has failed. The reason for the failure is returned in the FailureReason field of DescribeTrainingJobResponse.    Stopped     MaxRuntimeExceeded - The job stopped because it exceeded the maximum allowed runtime.    Stopped - The training job has stopped.    Stopping     Stopping - Stopping the training job.     We no longer support the following secondary statuses:    LaunchingMLInstances     PreparingTrainingStack     DownloadingTrainingImage
         public let status: SecondaryStatus
-        /// A detailed description of the progress within a secondary status.  Amazon SageMaker provides secondary statuses and status messages that apply to each of them:  Starting    Starting the training job.   Launching requested ML instances.   Insufficient capacity error from EC2 while launching instances, retrying!   Launched instance was unhealthy, replacing it!   Preparing the instances for training.    Training    Downloading the training image.   Training image download completed. Training in progress.      Status messages are subject to change. Therefore, we recommend not including them in code that programmatically initiates actions. For examples, don't use status messages in if statements.  To have an overview of your training job's progress, view TrainingJobStatus and SecondaryStatus in DescribeTrainingJob, and StatusMessage together. For example, at the start of a training job, you might see the following:    TrainingJobStatus - InProgress    SecondaryStatus - Training    StatusMessage - Downloading the training image  
+        /// A detailed description of the progress within a secondary status.  Amazon SageMaker provides secondary statuses and status messages that apply to each of them:  Starting    Starting the training job.   Launching requested ML instances.   Insufficient capacity error from EC2 while launching instances, retrying!   Launched instance was unhealthy, replacing it!   Preparing the instances for training.    Training    Downloading the training image.   Training image download completed. Training in progress.      Status messages are subject to change. Therefore, we recommend not including them in code that programmatically initiates actions. For examples, don't use status messages in if statements.  To have an overview of your training job's progress, view TrainingJobStatus and SecondaryStatus in DescribeTrainingJob, and StatusMessage together. For example, at the start of a training job, you might see the following:    TrainingJobStatus - InProgress    SecondaryStatus - Training    StatusMessage - Downloading the training image
         public let statusMessage: String?
 
         public init(endTime: Date? = nil, startTime: Date, status: SecondaryStatus, statusMessage: String? = nil) {
@@ -21682,7 +21014,6 @@ extension SageMaker {
     }
 
     public struct SendPipelineExecutionStepFailureRequest: AWSEncodableShape {
-
         /// The pipeline generated token from the Amazon SQS queue.
         public let callbackToken: String
         /// A unique, case-sensitive identifier that you provide to ensure the idempotency of the operation. An idempotent operation completes no more than one time.
@@ -21713,7 +21044,6 @@ extension SageMaker {
     }
 
     public struct SendPipelineExecutionStepFailureResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the pipeline execution.
         public let pipelineExecutionArn: String?
 
@@ -21727,7 +21057,6 @@ extension SageMaker {
     }
 
     public struct SendPipelineExecutionStepSuccessRequest: AWSEncodableShape {
-
         /// The pipeline generated token from the Amazon SQS queue.
         public let callbackToken: String
         /// A unique, case-sensitive identifier that you provide to ensure the idempotency of the operation. An idempotent operation completes no more than one time.
@@ -21761,7 +21090,6 @@ extension SageMaker {
     }
 
     public struct SendPipelineExecutionStepSuccessResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the pipeline execution.
         public let pipelineExecutionArn: String?
 
@@ -21775,10 +21103,9 @@ extension SageMaker {
     }
 
     public struct ServiceCatalogProvisionedProductDetails: AWSDecodableShape {
-
         /// The ID of the provisioned product.
         public let provisionedProductId: String?
-        /// The current status of the product.    AVAILABLE - Stable state, ready to perform any operation. The most recent operation succeeded and completed.    UNDER_CHANGE - Transitive state. Operations performed might not have valid results. Wait for an AVAILABLE status before performing operations.    TAINTED - Stable state, ready to perform any operation. The stack has completed the requested operation but is not exactly what was requested. For example, a request to update to a new version failed and the stack rolled back to the current version.    ERROR - An unexpected error occurred. The provisioned product exists but the stack is not running. For example, CloudFormation received a parameter value that was not valid and could not launch the stack.    PLAN_IN_PROGRESS - Transitive state. The plan operations were performed to provision a new product, but resources have not yet been created. After reviewing the list of resources to be created, execute the plan. Wait for an AVAILABLE status before performing operations.  
+        /// The current status of the product.    AVAILABLE - Stable state, ready to perform any operation. The most recent operation succeeded and completed.    UNDER_CHANGE - Transitive state. Operations performed might not have valid results. Wait for an AVAILABLE status before performing operations.    TAINTED - Stable state, ready to perform any operation. The stack has completed the requested operation but is not exactly what was requested. For example, a request to update to a new version failed and the stack rolled back to the current version.    ERROR - An unexpected error occurred. The provisioned product exists but the stack is not running. For example, CloudFormation received a parameter value that was not valid and could not launch the stack.    PLAN_IN_PROGRESS - Transitive state. The plan operations were performed to provision a new product, but resources have not yet been created. After reviewing the list of resources to be created, execute the plan. Wait for an AVAILABLE status before performing operations.
         public let provisionedProductStatusMessage: String?
 
         public init(provisionedProductId: String? = nil, provisionedProductStatusMessage: String? = nil) {
@@ -21793,8 +21120,7 @@ extension SageMaker {
     }
 
     public struct ServiceCatalogProvisioningDetails: AWSEncodableShape & AWSDecodableShape {
-
-        /// The path identifier of the product. This value is optional if the product has a default path, and required if the product has more than one path. 
+        /// The path identifier of the product. This value is optional if the product has a default path, and required if the product has more than one path.
         public let pathId: String?
         /// The ID of the product to provision.
         public let productId: String
@@ -21834,7 +21160,6 @@ extension SageMaker {
     }
 
     public struct SharingSettings: AWSEncodableShape & AWSDecodableShape {
-
         /// Whether to include the notebook cell output when sharing the notebook. The default is Disabled.
         public let notebookOutputOption: NotebookOutputOption?
         /// When NotebookOutputOption is Allowed, the Amazon Web Services Key Management Service (KMS) encryption key ID used to encrypt the notebook cell output in the Amazon S3 bucket.
@@ -21863,7 +21188,6 @@ extension SageMaker {
     }
 
     public struct ShuffleConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// Determines the shuffling order in ShuffleConfig value.
         public let seed: Int64
 
@@ -21877,10 +21201,9 @@ extension SageMaker {
     }
 
     public struct SourceAlgorithm: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of an algorithm that was used to create the model package. The algorithm must be either an algorithm resource in your Amazon SageMaker account or an algorithm in Amazon Web Services Marketplace that you are subscribed to.
         public let algorithmName: String
-        /// The Amazon S3 path where the model artifacts, which result from model training, are stored. This path must point to a single gzip compressed tar archive (.tar.gz suffix).  The model artifacts must be in an S3 bucket that is in the same region as the algorithm. 
+        /// The Amazon S3 path where the model artifacts, which result from model training, are stored. This path must point to a single gzip compressed tar archive (.tar.gz suffix).  The model artifacts must be in an S3 bucket that is in the same region as the algorithm.
         public let modelDataUrl: String?
 
         public init(algorithmName: String, modelDataUrl: String? = nil) {
@@ -21903,7 +21226,6 @@ extension SageMaker {
     }
 
     public struct SourceAlgorithmSpecification: AWSEncodableShape & AWSDecodableShape {
-
         /// A list of the algorithms that were used to create a model package.
         public let sourceAlgorithms: [SourceAlgorithm]
 
@@ -21925,8 +21247,7 @@ extension SageMaker {
     }
 
     public struct SourceIpConfig: AWSEncodableShape & AWSDecodableShape {
-
-        /// A list of one to ten Classless Inter-Domain Routing (CIDR) values. Maximum: Ten CIDR values  The following Length Constraints apply to individual CIDR values in the CIDR value list. 
+        /// A list of one to ten Classless Inter-Domain Routing (CIDR) values. Maximum: Ten CIDR values  The following Length Constraints apply to individual CIDR values in the CIDR value list.
         public let cidrs: [String]
 
         public init(cidrs: [String]) {
@@ -21947,7 +21268,6 @@ extension SageMaker {
     }
 
     public struct StartMonitoringScheduleRequest: AWSEncodableShape {
-
         /// The name of the schedule to start.
         public let monitoringScheduleName: String
 
@@ -21967,7 +21287,6 @@ extension SageMaker {
     }
 
     public struct StartNotebookInstanceInput: AWSEncodableShape {
-
         /// The name of the notebook instance to start.
         public let notebookInstanceName: String
 
@@ -21986,7 +21305,6 @@ extension SageMaker {
     }
 
     public struct StartPipelineExecutionRequest: AWSEncodableShape {
-
         /// A unique, case-sensitive identifier that you provide to ensure the idempotency of the operation. An idempotent operation completes no more than one time.
         public let clientRequestToken: String
         /// The description of the pipeline execution.
@@ -21995,7 +21313,7 @@ extension SageMaker {
         public let pipelineExecutionDisplayName: String?
         /// The name of the pipeline.
         public let pipelineName: String
-        /// Contains a list of pipeline parameters. This list can be empty. 
+        /// Contains a list of pipeline parameters. This list can be empty.
         public let pipelineParameters: [Parameter]?
 
         public init(clientRequestToken: String = StartPipelineExecutionRequest.idempotencyToken(), pipelineExecutionDescription: String? = nil, pipelineExecutionDisplayName: String? = nil, pipelineName: String, pipelineParameters: [Parameter]? = nil) {
@@ -22033,7 +21351,6 @@ extension SageMaker {
     }
 
     public struct StartPipelineExecutionResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the pipeline execution.
         public let pipelineExecutionArn: String?
 
@@ -22047,7 +21364,6 @@ extension SageMaker {
     }
 
     public struct StopAutoMLJobRequest: AWSEncodableShape {
-
         /// The name of the object you are requesting.
         public let autoMLJobName: String
 
@@ -22067,7 +21383,6 @@ extension SageMaker {
     }
 
     public struct StopCompilationJobRequest: AWSEncodableShape {
-
         /// The name of the model compilation job to stop.
         public let compilationJobName: String
 
@@ -22087,7 +21402,6 @@ extension SageMaker {
     }
 
     public struct StopEdgePackagingJobRequest: AWSEncodableShape {
-
         /// The name of the edge packaging job.
         public let edgePackagingJobName: String
 
@@ -22107,7 +21421,6 @@ extension SageMaker {
     }
 
     public struct StopHyperParameterTuningJobRequest: AWSEncodableShape {
-
         /// The name of the tuning job to stop.
         public let hyperParameterTuningJobName: String
 
@@ -22127,7 +21440,6 @@ extension SageMaker {
     }
 
     public struct StopLabelingJobRequest: AWSEncodableShape {
-
         /// The name of the labeling job to stop.
         public let labelingJobName: String
 
@@ -22147,7 +21459,6 @@ extension SageMaker {
     }
 
     public struct StopMonitoringScheduleRequest: AWSEncodableShape {
-
         /// The name of the schedule to stop.
         public let monitoringScheduleName: String
 
@@ -22167,7 +21478,6 @@ extension SageMaker {
     }
 
     public struct StopNotebookInstanceInput: AWSEncodableShape {
-
         /// The name of the notebook instance to terminate.
         public let notebookInstanceName: String
 
@@ -22186,7 +21496,6 @@ extension SageMaker {
     }
 
     public struct StopPipelineExecutionRequest: AWSEncodableShape {
-
         /// A unique, case-sensitive identifier that you provide to ensure the idempotency of the operation. An idempotent operation completes no more than one time.
         public let clientRequestToken: String
         /// The Amazon Resource Name (ARN) of the pipeline execution.
@@ -22211,7 +21520,6 @@ extension SageMaker {
     }
 
     public struct StopPipelineExecutionResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the pipeline execution.
         public let pipelineExecutionArn: String?
 
@@ -22225,7 +21533,6 @@ extension SageMaker {
     }
 
     public struct StopProcessingJobRequest: AWSEncodableShape {
-
         /// The name of the processing job to stop.
         public let processingJobName: String
 
@@ -22245,7 +21552,6 @@ extension SageMaker {
     }
 
     public struct StopTrainingJobRequest: AWSEncodableShape {
-
         /// The name of the training job to stop.
         public let trainingJobName: String
 
@@ -22265,7 +21571,6 @@ extension SageMaker {
     }
 
     public struct StopTransformJobRequest: AWSEncodableShape {
-
         /// The name of the transform job to stop.
         public let transformJobName: String
 
@@ -22285,7 +21590,6 @@ extension SageMaker {
     }
 
     public struct StoppingCondition: AWSEncodableShape & AWSDecodableShape {
-
         /// The maximum length of time, in seconds, that a training or compilation job can run. If the job does not complete during this time, Amazon SageMaker ends the job. When RetryStrategy is specified in the job request, MaxRuntimeInSeconds specifies the maximum time for all of the attempts in total, not each individual attempt. The default value is 1 day. The maximum value is 28 days.
         public let maxRuntimeInSeconds: Int?
         /// The maximum length of time, in seconds, that a managed Spot training job has to complete. It is the amount of time spent waiting for Spot capacity plus the amount of time the job can run. It must be equal to or greater than MaxRuntimeInSeconds. If the job does not complete during this time, Amazon SageMaker ends the job. When RetryStrategy is specified in the job request, MaxWaitTimeInSeconds specifies the maximum time for all of the attempts in total, not each individual attempt.
@@ -22308,7 +21612,6 @@ extension SageMaker {
     }
 
     public struct SubscribedWorkteam: AWSDecodableShape {
-
         /// Marketplace product listing ID.
         public let listingId: String?
         /// The description of the vendor from the Amazon Marketplace.
@@ -22338,7 +21641,6 @@ extension SageMaker {
     }
 
     public struct SuggestionQuery: AWSEncodableShape {
-
         /// Defines a property name hint. Only property names that begin with the specified hint are included in the response.
         public let propertyNameQuery: PropertyNameQuery?
 
@@ -22356,7 +21658,6 @@ extension SageMaker {
     }
 
     public struct Tag: AWSEncodableShape & AWSDecodableShape {
-
         /// The tag key. Tag keys must be unique per resource.
         public let key: String
         /// The tag value.
@@ -22382,12 +21683,11 @@ extension SageMaker {
     }
 
     public struct TargetPlatform: AWSEncodableShape & AWSDecodableShape {
-
-        /// Specifies a target platform accelerator (optional).    NVIDIA: Nvidia graphics processing unit. It also requires gpu-code, trt-ver, cuda-ver compiler options    MALI: ARM Mali graphics processor    INTEL_GRAPHICS: Integrated Intel graphics  
+        /// Specifies a target platform accelerator (optional).    NVIDIA: Nvidia graphics processing unit. It also requires gpu-code, trt-ver, cuda-ver compiler options    MALI: ARM Mali graphics processor    INTEL_GRAPHICS: Integrated Intel graphics
         public let accelerator: TargetPlatformAccelerator?
-        /// Specifies a target platform architecture.    X86_64: 64-bit version of the x86 instruction set.    X86: 32-bit version of the x86 instruction set.    ARM64: ARMv8 64-bit CPU.    ARM_EABIHF: ARMv7 32-bit, Hard Float.    ARM_EABI: ARMv7 32-bit, Soft Float. Used by Android 32-bit ARM platform.  
+        /// Specifies a target platform architecture.    X86_64: 64-bit version of the x86 instruction set.    X86: 32-bit version of the x86 instruction set.    ARM64: ARMv8 64-bit CPU.    ARM_EABIHF: ARMv7 32-bit, Hard Float.    ARM_EABI: ARMv7 32-bit, Soft Float. Used by Android 32-bit ARM platform.
         public let arch: TargetPlatformArch
-        /// Specifies a target platform OS.    LINUX: Linux-based operating systems.    ANDROID: Android operating systems. Android API level can be specified using the ANDROID_PLATFORM compiler option. For example, "CompilerOptions": {'ANDROID_PLATFORM': 28}   
+        /// Specifies a target platform OS.    LINUX: Linux-based operating systems.    ANDROID: Android operating systems. Android API level can be specified using the ANDROID_PLATFORM compiler option. For example, "CompilerOptions": {'ANDROID_PLATFORM': 28}
         public let os: TargetPlatformOs
 
         public init(accelerator: TargetPlatformAccelerator? = nil, arch: TargetPlatformArch, os: TargetPlatformOs) {
@@ -22404,7 +21704,6 @@ extension SageMaker {
     }
 
     public struct TensorBoardAppSettings: AWSEncodableShape & AWSDecodableShape {
-
         /// The default instance type and the Amazon Resource Name (ARN) of the SageMaker image created on the instance.
         public let defaultResourceSpec: ResourceSpec?
 
@@ -22422,7 +21721,6 @@ extension SageMaker {
     }
 
     public struct TensorBoardOutputConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// Path to local storage location for tensorBoard output. Defaults to /opt/ml/output/tensorboard.
         public let localPath: String?
         /// Path to Amazon S3 storage location for TensorBoard output.
@@ -22447,7 +21745,6 @@ extension SageMaker {
     }
 
     public struct TrafficRoutingConfig: AWSEncodableShape & AWSDecodableShape {
-
         public let canarySize: CapacitySize?
         public let type: TrafficRoutingConfigType
         public let waitIntervalInSeconds: Int
@@ -22472,7 +21769,6 @@ extension SageMaker {
     }
 
     public struct TrainingJob: AWSDecodableShape {
-
         /// Information about the algorithm used for training, and algorithm metadata.
         public let algorithmSpecification: AlgorithmSpecification?
         /// The Amazon Resource Name (ARN) of the job.
@@ -22518,11 +21814,11 @@ extension SageMaker {
         public let retryStrategy: RetryStrategy?
         /// The Amazon Web Services Identity and Access Management (IAM) role configured for the training job.
         public let roleArn: String?
-        ///  Provides detailed information about the state of the training job. For detailed information about the secondary status of the training job, see StatusMessage under SecondaryStatusTransition. Amazon SageMaker provides primary statuses and secondary statuses that apply to each of them:  InProgress     Starting - Starting the training job.    Downloading - An optional stage for algorithms that support File training input mode. It indicates that data is being downloaded to the ML storage volumes.    Training - Training is in progress.    Uploading - Training is complete and the model artifacts are being uploaded to the S3 location.    Completed     Completed - The training job has completed.    Failed     Failed - The training job has failed. The reason for the failure is returned in the FailureReason field of DescribeTrainingJobResponse.    Stopped     MaxRuntimeExceeded - The job stopped because it exceeded the maximum allowed runtime.    Stopped - The training job has stopped.    Stopping     Stopping - Stopping the training job.      Valid values for SecondaryStatus are subject to change.   We no longer support the following secondary statuses:    LaunchingMLInstances     PreparingTrainingStack     DownloadingTrainingImage   
+        ///  Provides detailed information about the state of the training job. For detailed information about the secondary status of the training job, see StatusMessage under SecondaryStatusTransition. Amazon SageMaker provides primary statuses and secondary statuses that apply to each of them:  InProgress     Starting - Starting the training job.    Downloading - An optional stage for algorithms that support File training input mode. It indicates that data is being downloaded to the ML storage volumes.    Training - Training is in progress.    Uploading - Training is complete and the model artifacts are being uploaded to the S3 location.    Completed     Completed - The training job has completed.    Failed     Failed - The training job has failed. The reason for the failure is returned in the FailureReason field of DescribeTrainingJobResponse.    Stopped     MaxRuntimeExceeded - The job stopped because it exceeded the maximum allowed runtime.    Stopped - The training job has stopped.    Stopping     Stopping - Stopping the training job.      Valid values for SecondaryStatus are subject to change.   We no longer support the following secondary statuses:    LaunchingMLInstances     PreparingTrainingStack     DownloadingTrainingImage
         public let secondaryStatus: SecondaryStatus?
         /// A history of all of the secondary statuses that the training job has transitioned through.
         public let secondaryStatusTransitions: [SecondaryStatusTransition]?
-        /// Specifies a limit to how long a model training job can run. It also specifies how long a managed Spot training job has to complete. When the job reaches the time limit, Amazon SageMaker ends the training job. Use this API to cap model training costs. To stop a job, Amazon SageMaker sends the algorithm the SIGTERM signal, which delays job termination for 120 seconds. Algorithms can use this 120-second window to save the model artifacts, so the results of training are not lost. 
+        /// Specifies a limit to how long a model training job can run. It also specifies how long a managed Spot training job has to complete. When the job reaches the time limit, Amazon SageMaker ends the training job. Use this API to cap model training costs. To stop a job, Amazon SageMaker sends the algorithm the SIGTERM signal, which delays job termination for 120 seconds. Algorithms can use this 120-second window to save the model artifacts, so the results of training are not lost.
         public let stoppingCondition: StoppingCondition?
         /// An array of key-value pairs. You can use tags to categorize your Amazon Web Services resources in different ways, for example, by purpose, owner, or environment. For more information, see Tagging Amazon Web Services Resources.
         public let tags: [Tag]?
@@ -22533,7 +21829,7 @@ extension SageMaker {
         public let trainingJobArn: String?
         /// The name of the training job.
         public let trainingJobName: String?
-        /// The status of the training job. Training job statuses are:    InProgress - The training is in progress.    Completed - The training job has completed.    Failed - The training job has failed. To see the reason for the failure, see the FailureReason field in the response to a DescribeTrainingJobResponse call.    Stopping - The training job is stopping.    Stopped - The training job has stopped.   For more detailed information, see SecondaryStatus. 
+        /// The status of the training job. Training job statuses are:    InProgress - The training is in progress.    Completed - The training job has completed.    Failed - The training job has failed. To see the reason for the failure, see the FailureReason field in the response to a DescribeTrainingJobResponse call.    Stopping - The training job is stopping.    Stopped - The training job has stopped.   For more detailed information, see SecondaryStatus.
         public let trainingJobStatus: TrainingJobStatus?
         /// Indicates the time when the training job starts on training instances. You are billed for the time interval between this time and the value of TrainingEndTime. The start time in CloudWatch Logs might be later than this time. The difference is due to the time it takes to download the training data and to the size of the training container.
         public let trainingStartTime: Date?
@@ -22626,7 +21922,6 @@ extension SageMaker {
     }
 
     public struct TrainingJobDefinition: AWSEncodableShape & AWSDecodableShape {
-
         /// The hyperparameters used for the training job.
         public let hyperParameters: [String: String]?
         /// An array of Channel objects, each of which specifies an input source.
@@ -22678,7 +21973,6 @@ extension SageMaker {
     }
 
     public struct TrainingJobStatusCounters: AWSDecodableShape {
-
         /// The number of completed training jobs launched by the hyperparameter tuning job.
         public let completed: Int?
         /// The number of in-progress training jobs launched by a hyperparameter tuning job.
@@ -22708,7 +22002,6 @@ extension SageMaker {
     }
 
     public struct TrainingJobStepMetadata: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the training job that was run by this step execution.
         public let arn: String?
 
@@ -22722,12 +22015,11 @@ extension SageMaker {
     }
 
     public struct TrainingJobSummary: AWSDecodableShape {
-
         /// A timestamp that shows when the training job was created.
         public let creationTime: Date
-        ///  Timestamp when the training job was last modified. 
+        ///  Timestamp when the training job was last modified.
         public let lastModifiedTime: Date?
-        /// A timestamp that shows when the training job ended. This field is set only if the training job has one of the terminal statuses (Completed, Failed, or Stopped). 
+        /// A timestamp that shows when the training job ended. This field is set only if the training job has one of the terminal statuses (Completed, Failed, or Stopped).
         public let trainingEndTime: Date?
         /// The Amazon Resource Name (ARN) of the training job.
         public let trainingJobArn: String
@@ -22756,7 +22048,6 @@ extension SageMaker {
     }
 
     public struct TrainingSpecification: AWSEncodableShape & AWSDecodableShape {
-
         /// A list of MetricDefinition objects, which are used for parsing metrics generated by the algorithm.
         public let metricDefinitions: [MetricDefinition]?
         /// A list of the HyperParameterSpecification objects, that define the supported hyperparameters. This is required if the algorithm supports automatic model tuning.>
@@ -22821,7 +22112,6 @@ extension SageMaker {
     }
 
     public struct TransformDataSource: AWSEncodableShape & AWSDecodableShape {
-
         /// The S3 location of the data source that is associated with a channel.
         public let s3DataSource: TransformS3DataSource
 
@@ -22839,14 +22129,13 @@ extension SageMaker {
     }
 
     public struct TransformInput: AWSEncodableShape & AWSDecodableShape {
-
         /// If your transform data is compressed, specify the compression type. Amazon SageMaker automatically decompresses the data for the transform job accordingly. The default value is None.
         public let compressionType: CompressionType?
         /// The multipurpose internet mail extension (MIME) type of the data. Amazon SageMaker uses the MIME type with each http call to transfer data to the transform job.
         public let contentType: String?
         /// Describes the location of the channel data, which is, the S3 location of the input data that the model can consume.
         public let dataSource: TransformDataSource
-        /// The method to use to split the transform job's data files into smaller batches. Splitting is necessary when the total size of each object is too large to fit in a single request. You can also use data splitting to improve performance by processing multiple concurrent mini-batches. The default value for SplitType is None, which indicates that input data files are not split, and request payloads contain the entire contents of an input object. Set the value of this parameter to Line to split records on a newline character boundary. SplitType also supports a number of record-oriented binary data formats. Currently, the supported record formats are:   RecordIO   TFRecord   When splitting is enabled, the size of a mini-batch depends on the values of the BatchStrategy and MaxPayloadInMB parameters. When the value of BatchStrategy is MultiRecord, Amazon SageMaker sends the maximum number of records in each request, up to the MaxPayloadInMB limit. If the value of BatchStrategy is SingleRecord, Amazon SageMaker sends individual records in each request.  Some data formats represent a record as a binary payload wrapped with extra padding bytes. When splitting is applied to a binary data format, padding is removed if the value of BatchStrategy is set to SingleRecord. Padding is not removed if the value of BatchStrategy is set to MultiRecord. For more information about RecordIO, see Create a Dataset Using RecordIO in the MXNet documentation. For more information about TFRecord, see Consuming TFRecord data in the TensorFlow documentation. 
+        /// The method to use to split the transform job's data files into smaller batches. Splitting is necessary when the total size of each object is too large to fit in a single request. You can also use data splitting to improve performance by processing multiple concurrent mini-batches. The default value for SplitType is None, which indicates that input data files are not split, and request payloads contain the entire contents of an input object. Set the value of this parameter to Line to split records on a newline character boundary. SplitType also supports a number of record-oriented binary data formats. Currently, the supported record formats are:   RecordIO   TFRecord   When splitting is enabled, the size of a mini-batch depends on the values of the BatchStrategy and MaxPayloadInMB parameters. When the value of BatchStrategy is MultiRecord, Amazon SageMaker sends the maximum number of records in each request, up to the MaxPayloadInMB limit. If the value of BatchStrategy is SingleRecord, Amazon SageMaker sends individual records in each request.  Some data formats represent a record as a binary payload wrapped with extra padding bytes. When splitting is applied to a binary data format, padding is removed if the value of BatchStrategy is set to SingleRecord. Padding is not removed if the value of BatchStrategy is set to MultiRecord. For more information about RecordIO, see Create a Dataset Using RecordIO in the MXNet documentation. For more information about TFRecord, see Consuming TFRecord data in the TensorFlow documentation.
         public let splitType: SplitType?
 
         public init(compressionType: CompressionType? = nil, contentType: String? = nil, dataSource: TransformDataSource, splitType: SplitType? = nil) {
@@ -22871,7 +22160,6 @@ extension SageMaker {
     }
 
     public struct TransformJob: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the AutoML job that created the transform job.
         public let autoMLJobArn: String?
         /// Specifies the number of records to include in a mini-batch for an HTTP inference request. A record is a single unit of input data that inference can be made on. For example, a single line in a CSV file is a record.
@@ -22902,7 +22190,7 @@ extension SageMaker {
         public let transformJobArn: String?
         /// The name of the transform job.
         public let transformJobName: String?
-        /// The status of the transform job. Transform job statuses are:    InProgress - The job is in progress.    Completed - The job has completed.    Failed - The transform job has failed. To see the reason for the failure, see the FailureReason field in the response to a DescribeTransformJob call.    Stopping - The transform job is stopping.    Stopped - The transform job has stopped.  
+        /// The status of the transform job. Transform job statuses are:    InProgress - The job is in progress.    Completed - The job has completed.    Failed - The transform job has failed. To see the reason for the failure, see the FailureReason field in the response to a DescribeTransformJob call.    Stopping - The transform job is stopping.    Stopped - The transform job has stopped.
         public let transformJobStatus: TransformJobStatus?
         public let transformOutput: TransformOutput?
         public let transformResources: TransformResources?
@@ -22959,7 +22247,6 @@ extension SageMaker {
     }
 
     public struct TransformJobDefinition: AWSEncodableShape & AWSDecodableShape {
-
         /// A string that determines the number of records included in a single mini-batch.  SingleRecord means only one record is used per mini-batch. MultiRecord means a mini-batch is set to contain as many records that can fit within the MaxPayloadInMB limit.
         public let batchStrategy: BatchStrategy?
         /// The environment variables to set in the Docker container. We support up to 16 key and values entries in the map.
@@ -23012,7 +22299,6 @@ extension SageMaker {
     }
 
     public struct TransformJobStepMetadata: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the transform job that was run by this step execution.
         public let arn: String?
 
@@ -23026,7 +22312,6 @@ extension SageMaker {
     }
 
     public struct TransformJobSummary: AWSDecodableShape {
-
         /// A timestamp that shows when the transform Job was created.
         public let creationTime: Date
         /// If the transform job failed, the reason it failed.
@@ -23064,7 +22349,6 @@ extension SageMaker {
     }
 
     public struct TransformOutput: AWSEncodableShape & AWSDecodableShape {
-
         /// The MIME type used to specify the output data. Amazon SageMaker uses the MIME type with each http call to transfer data from the transform job.
         public let accept: String?
         /// Defines how to assemble the results of the transform job as a single S3 object. Choose a format that is most convenient to you. To concatenate the results in binary format, specify None. To add a newline character at the end of every transformed record, specify Line.
@@ -23099,12 +22383,11 @@ extension SageMaker {
     }
 
     public struct TransformResources: AWSEncodableShape & AWSDecodableShape {
-
         /// The number of ML compute instances to use in the transform job. For distributed transform jobs, specify a value greater than 1. The default value is 1.
         public let instanceCount: Int
         /// The ML compute instance type for the transform job. If you are using built-in algorithms to transform moderately sized datasets, we recommend using ml.m4.xlarge or ml.m5.largeinstance types.
         public let instanceType: TransformInstanceType
-        /// The Amazon Web Services Key Management Service (Amazon Web Services KMS) key that Amazon SageMaker uses to encrypt model data on the storage volume attached to the ML compute instance(s) that run the batch transform job.  Certain Nitro-based instances include local storage, dependent on the instance type. Local storage volumes are encrypted using a hardware module on the instance. You can't request a VolumeKmsKeyId when using an instance type with local storage. For a list of instance types that support local instance storage, see Instance Store Volumes. For more information about local instance storage encryption, see SSD Instance Store Volumes.   The VolumeKmsKeyId can be any of the following formats:   Key ID: 1234abcd-12ab-34cd-56ef-1234567890ab    Key ARN: arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab    Alias name: alias/ExampleAlias    Alias name ARN: arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias   
+        /// The Amazon Web Services Key Management Service (Amazon Web Services KMS) key that Amazon SageMaker uses to encrypt model data on the storage volume attached to the ML compute instance(s) that run the batch transform job.  Certain Nitro-based instances include local storage, dependent on the instance type. Local storage volumes are encrypted using a hardware module on the instance. You can't request a VolumeKmsKeyId when using an instance type with local storage. For a list of instance types that support local instance storage, see Instance Store Volumes. For more information about local instance storage encryption, see SSD Instance Store Volumes.   The VolumeKmsKeyId can be any of the following formats:   Key ID: 1234abcd-12ab-34cd-56ef-1234567890ab    Key ARN: arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab    Alias name: alias/ExampleAlias    Alias name ARN: arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias
         public let volumeKmsKeyId: String?
 
         public init(instanceCount: Int, instanceType: TransformInstanceType, volumeKmsKeyId: String? = nil) {
@@ -23127,10 +22410,9 @@ extension SageMaker {
     }
 
     public struct TransformS3DataSource: AWSEncodableShape & AWSDecodableShape {
-
-        /// If you choose S3Prefix, S3Uri identifies a key name prefix. Amazon SageMaker uses all objects with the specified key name prefix for batch transform.  If you choose ManifestFile, S3Uri identifies an object that is a manifest file containing a list of object keys that you want Amazon SageMaker to use for batch transform.  The following values are compatible: ManifestFile, S3Prefix  The following value is not compatible: AugmentedManifestFile 
+        /// If you choose S3Prefix, S3Uri identifies a key name prefix. Amazon SageMaker uses all objects with the specified key name prefix for batch transform.  If you choose ManifestFile, S3Uri identifies an object that is a manifest file containing a list of object keys that you want Amazon SageMaker to use for batch transform.  The following values are compatible: ManifestFile, S3Prefix  The following value is not compatible: AugmentedManifestFile
         public let s3DataType: S3DataType
-        /// Depending on the value specified for the S3DataType, identifies either a key name prefix or a manifest. For example:   A key name prefix might look like this: s3://bucketname/exampleprefix.    A manifest might look like this: s3://bucketname/example.manifest  The manifest is an S3 object which is a JSON file with the following format:   [ {"prefix": "s3://customer_bucket/some/prefix/"},   "relative/path/to/custdata-1",   "relative/path/custdata-2",   ...   "relative/path/custdata-N"   ]  The preceding JSON matches the following S3Uris:   s3://customer_bucket/some/prefix/relative/path/to/custdata-1   s3://customer_bucket/some/prefix/relative/path/custdata-2   ...   s3://customer_bucket/some/prefix/relative/path/custdata-N  The complete set of S3Uris in this manifest constitutes the input data for the channel for this datasource. The object that each S3Uris points to must be readable by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.  
+        /// Depending on the value specified for the S3DataType, identifies either a key name prefix or a manifest. For example:   A key name prefix might look like this: s3://bucketname/exampleprefix.    A manifest might look like this: s3://bucketname/example.manifest  The manifest is an S3 object which is a JSON file with the following format:   [ {"prefix": "s3://customer_bucket/some/prefix/"},   "relative/path/to/custdata-1",   "relative/path/custdata-2",   ...   "relative/path/custdata-N"   ]  The preceding JSON matches the following S3Uris:   s3://customer_bucket/some/prefix/relative/path/to/custdata-1   s3://customer_bucket/some/prefix/relative/path/custdata-2   ...   s3://customer_bucket/some/prefix/relative/path/custdata-N  The complete set of S3Uris in this manifest constitutes the input data for the channel for this datasource. The object that each S3Uris points to must be readable by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
         public let s3Uri: String
 
         public init(s3DataType: S3DataType, s3Uri: String) {
@@ -23150,7 +22432,6 @@ extension SageMaker {
     }
 
     public struct Trial: AWSDecodableShape {
-
         public let createdBy: UserContext?
         /// When the trial was created.
         public let creationTime: Date?
@@ -23204,7 +22485,6 @@ extension SageMaker {
     }
 
     public struct TrialComponent: AWSDecodableShape {
-
         public let createdBy: UserContext?
         /// When the component was created.
         public let creationTime: Date?
@@ -23286,7 +22566,6 @@ extension SageMaker {
     }
 
     public struct TrialComponentArtifact: AWSEncodableShape & AWSDecodableShape {
-
         /// The media type of the artifact, which indicates the type of data in the artifact file. The media type consists of a type and a subtype concatenated with a slash (/) character, for example, text/csv, image/jpeg, and s3/uri. The type specifies the category of the media. The subtype specifies the kind of data.
         public let mediaType: String?
         /// The location of the artifact.
@@ -23311,7 +22590,6 @@ extension SageMaker {
     }
 
     public struct TrialComponentMetricSummary: AWSDecodableShape {
-
         /// The average value of the metric.
         public let avg: Double?
         /// The number of samples used to generate the metric.
@@ -23357,7 +22635,6 @@ extension SageMaker {
     }
 
     public struct TrialComponentSimpleSummary: AWSDecodableShape {
-
         public let createdBy: UserContext?
         /// When the component was created.
         public let creationTime: Date?
@@ -23385,7 +22662,6 @@ extension SageMaker {
     }
 
     public struct TrialComponentSource: AWSDecodableShape {
-
         /// The source ARN.
         public let sourceArn: String
         /// The source job type.
@@ -23403,7 +22679,6 @@ extension SageMaker {
     }
 
     public struct TrialComponentSourceDetail: AWSDecodableShape {
-
         /// Information about a processing job that's the source of a trial component.
         public let processingJob: ProcessingJob?
         /// The Amazon Resource Name (ARN) of the source.
@@ -23429,7 +22704,6 @@ extension SageMaker {
     }
 
     public struct TrialComponentStatus: AWSEncodableShape & AWSDecodableShape {
-
         /// If the component failed, a message describing why.
         public let message: String?
         /// The status of the trial component.
@@ -23452,7 +22726,6 @@ extension SageMaker {
     }
 
     public struct TrialComponentSummary: AWSDecodableShape {
-
         /// Who created the component.
         public let createdBy: UserContext?
         /// When the component was created.
@@ -23467,7 +22740,7 @@ extension SageMaker {
         public let lastModifiedTime: Date?
         /// When the component started.
         public let startTime: Date?
-        /// The status of the component. States include:   InProgress   Completed   Failed  
+        /// The status of the component. States include:   InProgress   Completed   Failed
         public let status: TrialComponentStatus?
         /// The ARN of the trial component.
         public let trialComponentArn: String?
@@ -23505,7 +22778,6 @@ extension SageMaker {
     }
 
     public struct TrialSource: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the source.
         public let sourceArn: String
         /// The source job type.
@@ -23523,7 +22795,6 @@ extension SageMaker {
     }
 
     public struct TrialSummary: AWSDecodableShape {
-
         /// When the trial was created.
         public let creationTime: Date?
         /// The name of the trial as displayed. If DisplayName isn't specified, TrialName is displayed.
@@ -23556,7 +22827,6 @@ extension SageMaker {
     }
 
     public struct TuningJobCompletionCriteria: AWSEncodableShape & AWSDecodableShape {
-
         /// The value of the objective metric.
         public let targetObjectiveMetricValue: Float
 
@@ -23570,7 +22840,6 @@ extension SageMaker {
     }
 
     public struct TuningJobStepMetaData: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the tuning job that was run by this step execution.
         public let arn: String?
 
@@ -23584,8 +22853,7 @@ extension SageMaker {
     }
 
     public struct USD: AWSEncodableShape & AWSDecodableShape {
-
-        /// The fractional portion, in cents, of the amount. 
+        /// The fractional portion, in cents, of the amount.
         public let cents: Int?
         /// The whole number of dollars in the amount.
         public let dollars: Int?
@@ -23615,15 +22883,14 @@ extension SageMaker {
     }
 
     public struct UiConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// The ARN of the worker task template used to render the worker UI and tools for labeling job tasks. Use this parameter when you are creating a labeling job for 3D point cloud and video fram labeling jobs. Use your labeling job task type to select one of the following ARNs and use it with this parameter when you create a labeling job. Replace aws-region with the Amazon Web Services region you are creating your labeling job in.
-        ///   3D Point Cloud HumanTaskUiArns 
-        ///  Use this HumanTaskUiArn for 3D point cloud object detection and 3D point cloud object detection adjustment labeling jobs.     arn:aws:sagemaker:aws-region:394669845002:human-task-ui/PointCloudObjectDetection   
-        ///  Use this HumanTaskUiArn for 3D point cloud object tracking and 3D point cloud object tracking adjustment labeling jobs.     arn:aws:sagemaker:aws-region:394669845002:human-task-ui/PointCloudObjectTracking   
-        ///  Use this HumanTaskUiArn for 3D point cloud semantic segmentation and 3D point cloud semantic segmentation adjustment labeling jobs.    arn:aws:sagemaker:aws-region:394669845002:human-task-ui/PointCloudSemanticSegmentation   
-        ///   Video Frame HumanTaskUiArns 
-        ///  Use this HumanTaskUiArn for video frame object detection and video frame object detection adjustment labeling jobs.     arn:aws:sagemaker:region:394669845002:human-task-ui/VideoObjectDetection   
-        ///  Use this HumanTaskUiArn for video frame object tracking and video frame object tracking adjustment labeling jobs.     arn:aws:sagemaker:aws-region:394669845002:human-task-ui/VideoObjectTracking   
+        ///   3D Point Cloud HumanTaskUiArns
+        ///  Use this HumanTaskUiArn for 3D point cloud object detection and 3D point cloud object detection adjustment labeling jobs.     arn:aws:sagemaker:aws-region:394669845002:human-task-ui/PointCloudObjectDetection
+        ///  Use this HumanTaskUiArn for 3D point cloud object tracking and 3D point cloud object tracking adjustment labeling jobs.     arn:aws:sagemaker:aws-region:394669845002:human-task-ui/PointCloudObjectTracking
+        ///  Use this HumanTaskUiArn for 3D point cloud semantic segmentation and 3D point cloud semantic segmentation adjustment labeling jobs.    arn:aws:sagemaker:aws-region:394669845002:human-task-ui/PointCloudSemanticSegmentation
+        ///   Video Frame HumanTaskUiArns
+        ///  Use this HumanTaskUiArn for video frame object detection and video frame object detection adjustment labeling jobs.     arn:aws:sagemaker:region:394669845002:human-task-ui/VideoObjectDetection
+        ///  Use this HumanTaskUiArn for video frame object tracking and video frame object tracking adjustment labeling jobs.     arn:aws:sagemaker:aws-region:394669845002:human-task-ui/VideoObjectTracking
         public let humanTaskUiArn: String?
         /// The Amazon S3 bucket location of the UI template, or worker task template. This is the template used to render the worker UI and tools for labeling job tasks. For more information about the contents of a UI template, see  Creating Your Custom Labeling Task Template.
         public let uiTemplateS3Uri: String?
@@ -23647,7 +22914,6 @@ extension SageMaker {
     }
 
     public struct UiTemplate: AWSEncodableShape {
-
         /// The content of the Liquid template for the worker user interface.
         public let content: String
 
@@ -23656,7 +22922,7 @@ extension SageMaker {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.content, name: "content", parent: name, max: 128000)
+            try self.validate(self.content, name: "content", parent: name, max: 128_000)
             try self.validate(self.content, name: "content", parent: name, min: 1)
             try self.validate(self.content, name: "content", parent: name, pattern: "^[\\S\\s]+$")
         }
@@ -23667,7 +22933,6 @@ extension SageMaker {
     }
 
     public struct UiTemplateInfo: AWSDecodableShape {
-
         /// The SHA-256 digest of the contents of the template.
         public let contentSha256: String?
         /// The URL for the user interface template.
@@ -23685,7 +22950,6 @@ extension SageMaker {
     }
 
     public struct UpdateActionRequest: AWSEncodableShape {
-
         /// The name of the action to update.
         public let actionName: String
         /// The new description for the action.
@@ -23734,7 +22998,6 @@ extension SageMaker {
     }
 
     public struct UpdateActionResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the action.
         public let actionArn: String?
 
@@ -23748,7 +23011,6 @@ extension SageMaker {
     }
 
     public struct UpdateAppImageConfigRequest: AWSEncodableShape {
-
         /// The name of the AppImageConfig to update.
         public let appImageConfigName: String
         /// The new KernelGateway app to run on the image.
@@ -23772,7 +23034,6 @@ extension SageMaker {
     }
 
     public struct UpdateAppImageConfigResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) for the AppImageConfig.
         public let appImageConfigArn: String?
 
@@ -23786,7 +23047,6 @@ extension SageMaker {
     }
 
     public struct UpdateArtifactRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the artifact to update.
         public let artifactArn: String
         /// The new name for the artifact.
@@ -23831,7 +23091,6 @@ extension SageMaker {
     }
 
     public struct UpdateArtifactResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the artifact.
         public let artifactArn: String?
 
@@ -23845,10 +23104,9 @@ extension SageMaker {
     }
 
     public struct UpdateCodeRepositoryInput: AWSEncodableShape {
-
         /// The name of the Git repository to update.
         public let codeRepositoryName: String
-        /// The configuration of the git repository, including the URL and the Amazon Resource Name (ARN) of the Amazon Web Services Secrets Manager secret that contains the credentials used to access the repository. The secret must have a staging label of AWSCURRENT and must be in the following format:  {"username": UserName, "password": Password} 
+        /// The configuration of the git repository, including the URL and the Amazon Resource Name (ARN) of the Amazon Web Services Secrets Manager secret that contains the credentials used to access the repository. The secret must have a staging label of AWSCURRENT and must be in the following format:  {"username": UserName, "password": Password}
         public let gitConfig: GitConfigForUpdate?
 
         public init(codeRepositoryName: String, gitConfig: GitConfigForUpdate? = nil) {
@@ -23870,7 +23128,6 @@ extension SageMaker {
     }
 
     public struct UpdateCodeRepositoryOutput: AWSDecodableShape {
-
         /// The ARN of the Git repository.
         public let codeRepositoryArn: String
 
@@ -23884,7 +23141,6 @@ extension SageMaker {
     }
 
     public struct UpdateContextRequest: AWSEncodableShape {
-
         /// The name of the context to update.
         public let contextName: String
         /// The new description for the context.
@@ -23929,7 +23185,6 @@ extension SageMaker {
     }
 
     public struct UpdateContextResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the context.
         public let contextArn: String?
 
@@ -23943,7 +23198,6 @@ extension SageMaker {
     }
 
     public struct UpdateDeviceFleetRequest: AWSEncodableShape {
-
         /// Description of the fleet.
         public let description: String?
         /// The name of the fleet.
@@ -23986,7 +23240,6 @@ extension SageMaker {
     }
 
     public struct UpdateDevicesRequest: AWSEncodableShape {
-
         /// The name of the fleet the devices belong to.
         public let deviceFleetName: String
         /// List of devices to register with Edge Manager agent.
@@ -24013,7 +23266,6 @@ extension SageMaker {
     }
 
     public struct UpdateDomainRequest: AWSEncodableShape {
-
         /// A collection of settings.
         public let defaultUserSettings: UserSettings?
         /// The ID of the domain to be updated.
@@ -24036,7 +23288,6 @@ extension SageMaker {
     }
 
     public struct UpdateDomainResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the domain.
         public let domainArn: String?
 
@@ -24050,14 +23301,13 @@ extension SageMaker {
     }
 
     public struct UpdateEndpointInput: AWSEncodableShape {
-
         /// The deployment configuration for the endpoint to be updated.
         public let deploymentConfig: DeploymentConfig?
         /// The name of the new endpoint configuration.
         public let endpointConfigName: String
         /// The name of the endpoint whose configuration you want to update.
         public let endpointName: String
-        /// When you are updating endpoint resources with UpdateEndpointInput$RetainAllVariantProperties, whose value is set to true, ExcludeRetainedVariantProperties specifies the list of type VariantProperty to override with the values provided by EndpointConfig. If you don't specify a value for ExcludeAllVariantProperties, no variant properties are overridden. 
+        /// When you are updating endpoint resources with UpdateEndpointInput$RetainAllVariantProperties, whose value is set to true, ExcludeRetainedVariantProperties specifies the list of type VariantProperty to override with the values provided by EndpointConfig. If you don't specify a value for ExcludeAllVariantProperties, no variant properties are overridden.
         public let excludeRetainedVariantProperties: [VariantProperty]?
         /// When updating endpoint resources, enables or disables the retention of variant properties, such as the instance count or the variant weight. To retain the variant properties of an endpoint when updating it, set RetainAllVariantProperties to true. To use the variant properties specified in a new EndpointConfig call when updating an endpoint, set RetainAllVariantProperties to false. The default is false.
         public let retainAllVariantProperties: Bool?
@@ -24089,7 +23339,6 @@ extension SageMaker {
     }
 
     public struct UpdateEndpointOutput: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the endpoint.
         public let endpointArn: String
 
@@ -24103,7 +23352,6 @@ extension SageMaker {
     }
 
     public struct UpdateEndpointWeightsAndCapacitiesInput: AWSEncodableShape {
-
         /// An object that provides new capacity and weight values for a variant.
         public let desiredWeightsAndCapacities: [DesiredWeightAndCapacity]
         /// The name of an existing Amazon SageMaker endpoint.
@@ -24130,7 +23378,6 @@ extension SageMaker {
     }
 
     public struct UpdateEndpointWeightsAndCapacitiesOutput: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the updated endpoint.
         public let endpointArn: String
 
@@ -24144,7 +23391,6 @@ extension SageMaker {
     }
 
     public struct UpdateExperimentRequest: AWSEncodableShape {
-
         /// The description of the experiment.
         public let description: String?
         /// The name of the experiment as displayed. The name doesn't need to be unique. If DisplayName isn't specified, ExperimentName is displayed.
@@ -24177,7 +23423,6 @@ extension SageMaker {
     }
 
     public struct UpdateExperimentResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the experiment.
         public let experimentArn: String?
 
@@ -24191,7 +23436,6 @@ extension SageMaker {
     }
 
     public struct UpdateImageRequest: AWSEncodableShape {
-
         /// A list of properties to delete. Only the Description and DisplayName properties can be deleted.
         public let deleteProperties: [String]?
         /// The new description for the image.
@@ -24242,7 +23486,6 @@ extension SageMaker {
     }
 
     public struct UpdateImageResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the image.
         public let imageArn: String?
 
@@ -24256,7 +23499,6 @@ extension SageMaker {
     }
 
     public struct UpdateModelPackageInput: AWSEncodableShape {
-
         /// A description for the approval status of the model.
         public let approvalDescription: String?
         /// The approval status of the model.
@@ -24286,7 +23528,6 @@ extension SageMaker {
     }
 
     public struct UpdateModelPackageOutput: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the model.
         public let modelPackageArn: String
 
@@ -24300,7 +23541,6 @@ extension SageMaker {
     }
 
     public struct UpdateMonitoringScheduleRequest: AWSEncodableShape {
-
         /// The configuration object that specifies the monitoring schedule and defines the monitoring job.
         public let monitoringScheduleConfig: MonitoringScheduleConfig
         /// The name of the monitoring schedule. The name must be unique within an Amazon Web Services Region within an Amazon Web Services account.
@@ -24325,7 +23565,6 @@ extension SageMaker {
     }
 
     public struct UpdateMonitoringScheduleResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the monitoring schedule.
         public let monitoringScheduleArn: String
 
@@ -24339,7 +23578,6 @@ extension SageMaker {
     }
 
     public struct UpdateNotebookInstanceInput: AWSEncodableShape {
-
         /// A list of the Elastic Inference (EI) instance types to associate with this notebook instance. Currently only one EI instance type can be associated with a notebook instance. For more information, see Using Elastic Inference in Amazon SageMaker.
         public let acceleratorTypes: [NotebookInstanceAcceleratorType]?
         /// An array of up to three Git repositories to associate with the notebook instance. These can be either the names of Git repositories stored as resources in your account, or the URL of Git repositories in Amazon Web Services CodeCommit or in any other Git repository. These repositories are cloned at the same level as the default repository of your notebook instance. For more information, see Associating Git Repositories with Amazon SageMaker Notebook Instances.
@@ -24360,9 +23598,9 @@ extension SageMaker {
         public let lifecycleConfigName: String?
         /// The name of the notebook instance to update.
         public let notebookInstanceName: String
-        /// The Amazon Resource Name (ARN) of the IAM role that Amazon SageMaker can assume to access the notebook instance. For more information, see Amazon SageMaker Roles.   To be able to pass this role to Amazon SageMaker, the caller of this API must have the iam:PassRole permission. 
+        /// The Amazon Resource Name (ARN) of the IAM role that Amazon SageMaker can assume to access the notebook instance. For more information, see Amazon SageMaker Roles.   To be able to pass this role to Amazon SageMaker, the caller of this API must have the iam:PassRole permission.
         public let roleArn: String?
-        /// Whether root access is enabled or disabled for users of the notebook instance. The default value is Enabled.  If you set this to Disabled, users don't have root access on the notebook instance, but lifecycle configuration scripts still run with root permissions. 
+        /// Whether root access is enabled or disabled for users of the notebook instance. The default value is Enabled.  If you set this to Disabled, users don't have root access on the notebook instance, but lifecycle configuration scripts still run with root permissions.
         public let rootAccess: RootAccess?
         /// The size, in GB, of the ML storage volume to attach to the notebook instance. The default value is 5 GB. ML storage volumes are encrypted, so Amazon SageMaker can't determine the amount of available free space on the volume. Because of this, you can increase the volume size when you update a notebook instance, but you can't decrease the volume size. If you want to decrease the size of the ML storage volume in use, create a new notebook instance with the desired size.
         public let volumeSizeInGB: Int?
@@ -24422,7 +23660,6 @@ extension SageMaker {
     }
 
     public struct UpdateNotebookInstanceLifecycleConfigInput: AWSEncodableShape {
-
         /// The name of the lifecycle configuration.
         public let notebookInstanceLifecycleConfigName: String
         /// The shell script that runs only once, when you create a notebook instance. The shell script must be a base64-encoded string.
@@ -24457,23 +23694,14 @@ extension SageMaker {
     }
 
     public struct UpdateNotebookInstanceLifecycleConfigOutput: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateNotebookInstanceOutput: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdatePipelineExecutionRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the pipeline execution.
         public let pipelineExecutionArn: String
         /// The description of the pipeline execution.
@@ -24505,7 +23733,6 @@ extension SageMaker {
     }
 
     public struct UpdatePipelineExecutionResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the updated pipeline execution.
         public let pipelineExecutionArn: String?
 
@@ -24519,7 +23746,6 @@ extension SageMaker {
     }
 
     public struct UpdatePipelineRequest: AWSEncodableShape {
-
         /// The JSON pipeline definition.
         public let pipelineDefinition: String?
         /// The description of the pipeline.
@@ -24540,7 +23766,7 @@ extension SageMaker {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.pipelineDefinition, name: "pipelineDefinition", parent: name, max: 1048576)
+            try self.validate(self.pipelineDefinition, name: "pipelineDefinition", parent: name, max: 1_048_576)
             try self.validate(self.pipelineDefinition, name: "pipelineDefinition", parent: name, min: 1)
             try self.validate(self.pipelineDefinition, name: "pipelineDefinition", parent: name, pattern: "(?:[ \\r\\n\\t].*)*$")
             try self.validate(self.pipelineDescription, name: "pipelineDescription", parent: name, max: 3072)
@@ -24566,7 +23792,6 @@ extension SageMaker {
     }
 
     public struct UpdatePipelineResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the updated pipeline.
         public let pipelineArn: String?
 
@@ -24580,7 +23805,6 @@ extension SageMaker {
     }
 
     public struct UpdateTrainingJobRequest: AWSEncodableShape {
-
         /// Configuration information for Debugger system monitoring, framework profiling, and storage paths.
         public let profilerConfig: ProfilerConfigForUpdate?
         /// Configuration information for Debugger rules for profiling system and framework metrics.
@@ -24613,7 +23837,6 @@ extension SageMaker {
     }
 
     public struct UpdateTrainingJobResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the training job.
         public let trainingJobArn: String
 
@@ -24627,7 +23850,6 @@ extension SageMaker {
     }
 
     public struct UpdateTrialComponentRequest: AWSEncodableShape {
-
         /// The name of the component as displayed. The name doesn't need to be unique. If DisplayName isn't specified, TrialComponentName is displayed.
         public let displayName: String?
         /// When the component ended.
@@ -24721,7 +23943,6 @@ extension SageMaker {
     }
 
     public struct UpdateTrialComponentResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the trial component.
         public let trialComponentArn: String?
 
@@ -24735,7 +23956,6 @@ extension SageMaker {
     }
 
     public struct UpdateTrialRequest: AWSEncodableShape {
-
         /// The name of the trial as displayed. The name doesn't need to be unique. If DisplayName isn't specified, TrialName is displayed.
         public let displayName: String?
         /// The name of the trial to update.
@@ -24762,7 +23982,6 @@ extension SageMaker {
     }
 
     public struct UpdateTrialResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the trial.
         public let trialArn: String?
 
@@ -24776,7 +23995,6 @@ extension SageMaker {
     }
 
     public struct UpdateUserProfileRequest: AWSEncodableShape {
-
         /// The domain ID.
         public let domainId: String
         /// The user profile name.
@@ -24805,7 +24023,6 @@ extension SageMaker {
     }
 
     public struct UpdateUserProfileResponse: AWSDecodableShape {
-
         /// The user profile Amazon Resource Name (ARN).
         public let userProfileArn: String?
 
@@ -24819,7 +24036,6 @@ extension SageMaker {
     }
 
     public struct UpdateWorkforceRequest: AWSEncodableShape {
-
         /// Use this parameter to update your OIDC Identity Provider (IdP)  configuration for a workforce made using your own IdP.
         public let oidcConfig: OidcConfig?
         /// A list of one to ten worker IP address ranges (CIDRs) that can be used to access tasks assigned to this workforce. Maximum: Ten CIDR values
@@ -24849,7 +24065,6 @@ extension SageMaker {
     }
 
     public struct UpdateWorkforceResponse: AWSDecodableShape {
-
         /// A single private workforce. You can create one private work force in each Amazon Web Services Region. By default, any workforce-related API operation used in a specific region will apply to the workforce created in that region. To learn how to create a private workforce, see Create a Private Workforce.
         public let workforce: Workforce
 
@@ -24863,10 +24078,9 @@ extension SageMaker {
     }
 
     public struct UpdateWorkteamRequest: AWSEncodableShape {
-
         /// An updated description for the work team.
         public let description: String?
-        /// A list of MemberDefinition objects that contains objects that identify the workers that make up the work team.  Workforces can be created using Amazon Cognito or your own OIDC Identity Provider (IdP).  For private workforces created using Amazon Cognito use CognitoMemberDefinition. For workforces created using your own OIDC identity provider (IdP) use OidcMemberDefinition. You should not provide input for both of these parameters in a single request. For workforces created using Amazon Cognito, private work teams correspond to Amazon Cognito user groups within the user pool used to create a workforce. All of the CognitoMemberDefinition objects that make up the member definition must have the same ClientId and UserPool values. To add a Amazon Cognito user group to an existing worker pool, see Adding groups to a User Pool. For more information about user pools, see Amazon Cognito User Pools. For workforces created using your own OIDC IdP, specify the user groups that you want to include in your private work team in OidcMemberDefinition by listing those groups in Groups. Be aware that user groups that are already in the work team must also be listed in Groups when you make this request to remain on the work team. If you do not include these user groups, they will no longer be associated with the work team you update. 
+        /// A list of MemberDefinition objects that contains objects that identify the workers that make up the work team.  Workforces can be created using Amazon Cognito or your own OIDC Identity Provider (IdP).  For private workforces created using Amazon Cognito use CognitoMemberDefinition. For workforces created using your own OIDC identity provider (IdP) use OidcMemberDefinition. You should not provide input for both of these parameters in a single request. For workforces created using Amazon Cognito, private work teams correspond to Amazon Cognito user groups within the user pool used to create a workforce. All of the CognitoMemberDefinition objects that make up the member definition must have the same ClientId and UserPool values. To add a Amazon Cognito user group to an existing worker pool, see Adding groups to a User Pool. For more information about user pools, see Amazon Cognito User Pools. For workforces created using your own OIDC IdP, specify the user groups that you want to include in your private work team in OidcMemberDefinition by listing those groups in Groups. Be aware that user groups that are already in the work team must also be listed in Groups when you make this request to remain on the work team. If you do not include these user groups, they will no longer be associated with the work team you update.
         public let memberDefinitions: [MemberDefinition]?
         /// Configures SNS topic notifications for available or expiring work items
         public let notificationConfiguration: NotificationConfiguration?
@@ -24904,7 +24118,6 @@ extension SageMaker {
     }
 
     public struct UpdateWorkteamResponse: AWSDecodableShape {
-
         /// A Workteam object that describes the updated work team.
         public let workteam: Workteam
 
@@ -24918,7 +24131,6 @@ extension SageMaker {
     }
 
     public struct UserContext: AWSDecodableShape {
-
         /// The domain associated with the user.
         public let domainId: String?
         /// The Amazon Resource Name (ARN) of the user's profile.
@@ -24940,7 +24152,6 @@ extension SageMaker {
     }
 
     public struct UserProfileDetails: AWSDecodableShape {
-
         /// The creation time.
         public let creationTime: Date?
         /// The domain ID.
@@ -24970,7 +24181,6 @@ extension SageMaker {
     }
 
     public struct UserSettings: AWSEncodableShape & AWSDecodableShape {
-
         /// The execution role for the user.
         public let executionRole: String?
         /// The Jupyter server's app settings.
@@ -25019,8 +24229,7 @@ extension SageMaker {
     }
 
     public struct VariantProperty: AWSEncodableShape {
-
-        /// The type of variant property. The supported values are:    DesiredInstanceCount: Overrides the existing variant instance counts using the ProductionVariant$InitialInstanceCount values in the CreateEndpointConfigInput$ProductionVariants.    DesiredWeight: Overrides the existing variant weights using the ProductionVariant$InitialVariantWeight values in the CreateEndpointConfigInput$ProductionVariants.    DataCaptureConfig: (Not currently supported.)  
+        /// The type of variant property. The supported values are:    DesiredInstanceCount: Overrides the existing variant instance counts using the ProductionVariant$InitialInstanceCount values in the CreateEndpointConfigInput$ProductionVariants.    DesiredWeight: Overrides the existing variant weights using the ProductionVariant$InitialVariantWeight values in the CreateEndpointConfigInput$ProductionVariants.    DataCaptureConfig: (Not currently supported.)
         public let variantPropertyType: VariantPropertyType
 
         public init(variantPropertyType: VariantPropertyType) {
@@ -25033,7 +24242,6 @@ extension SageMaker {
     }
 
     public struct VpcConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// The VPC security group IDs, in the form sg-xxxxxxxx. Specify the security groups for the VPC that is specified in the Subnets field.
         public let securityGroupIds: [String]
         /// The ID of the subnets in the VPC to which you want to connect your training job or model. For information about the availability of specific instance types, see Supported Instance Types and Availability Zones.
@@ -25066,7 +24274,6 @@ extension SageMaker {
     }
 
     public struct Workforce: AWSDecodableShape {
-
         /// The configuration of an Amazon Cognito workforce.  A single Cognito workforce is created using and corresponds to a single  Amazon Cognito user pool.
         public let cognitoConfig: CognitoConfig?
         /// The date that the workforce is created.
@@ -25108,7 +24315,6 @@ extension SageMaker {
     }
 
     public struct Workteam: AWSDecodableShape {
-
         /// The date and time that the work team was created (timestamp).
         public let createDate: Date?
         /// A description of the work team.

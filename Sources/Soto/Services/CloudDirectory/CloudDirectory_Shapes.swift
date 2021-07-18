@@ -207,11 +207,7 @@ extension CloudDirectory {
     }
 
     public struct AddFacetToObjectResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct ApplySchemaRequest: AWSEncodableShape {
@@ -235,7 +231,6 @@ extension CloudDirectory {
     }
 
     public struct ApplySchemaResponse: AWSDecodableShape {
-
         /// The applied schema ARN that is associated with the copied schema in the Directory. You can use this ARN to describe the schema information applied on this directory. For more information, see arns.
         public let appliedSchemaArn: String?
         /// The ARN that is associated with the Directory. For more information, see arns.
@@ -287,7 +282,6 @@ extension CloudDirectory {
     }
 
     public struct AttachObjectResponse: AWSDecodableShape {
-
         /// The attached ObjectIdentifier, which is the child ObjectIdentifier.
         public let attachedObjectIdentifier: String?
 
@@ -325,11 +319,7 @@ extension CloudDirectory {
     }
 
     public struct AttachPolicyResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct AttachToIndexRequest: AWSEncodableShape {
@@ -357,7 +347,6 @@ extension CloudDirectory {
     }
 
     public struct AttachToIndexResponse: AWSDecodableShape {
-
         /// The ObjectIdentifier of the object that was attached to the index.
         public let attachedObjectIdentifier: String?
 
@@ -410,7 +399,6 @@ extension CloudDirectory {
     }
 
     public struct AttachTypedLinkResponse: AWSDecodableShape {
-
         /// Returns a typed link specifier as output.
         public let typedLinkSpecifier: TypedLinkSpecifier?
 
@@ -424,7 +412,6 @@ extension CloudDirectory {
     }
 
     public struct AttributeKey: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the facet that the attribute exists within.
         public let facetName: String
         /// The name of the attribute.
@@ -455,7 +442,6 @@ extension CloudDirectory {
     }
 
     public struct AttributeKeyAndValue: AWSEncodableShape & AWSDecodableShape {
-
         /// The key of the attribute.
         public let key: AttributeKey
         /// The value of the attribute.
@@ -477,7 +463,6 @@ extension CloudDirectory {
     }
 
     public struct AttributeNameAndValue: AWSEncodableShape & AWSDecodableShape {
-
         /// The attribute name of the typed link.
         public let attributeName: String
         /// The value for the typed link.
@@ -501,7 +486,6 @@ extension CloudDirectory {
     }
 
     public struct BatchAddFacetToObject: AWSEncodableShape {
-
         /// The attributes to set on the object.
         public let objectAttributeList: [AttributeKeyAndValue]
         /// A reference to the object being mutated.
@@ -530,15 +514,10 @@ extension CloudDirectory {
     }
 
     public struct BatchAddFacetToObjectResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct BatchAttachObject: AWSEncodableShape {
-
         /// The child object reference that is to be attached to the object.
         public let childReference: ObjectReference
         /// The name of the link.
@@ -566,7 +545,6 @@ extension CloudDirectory {
     }
 
     public struct BatchAttachObjectResponse: AWSDecodableShape {
-
         /// The ObjectIdentifier of the object that has been attached.
         public let attachedObjectIdentifier: String?
 
@@ -575,12 +553,11 @@ extension CloudDirectory {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case attachedObjectIdentifier = "attachedObjectIdentifier"
+            case attachedObjectIdentifier
         }
     }
 
     public struct BatchAttachPolicy: AWSEncodableShape {
-
         /// The reference that identifies the object to which the policy will be attached.
         public let objectReference: ObjectReference
         /// The reference that is associated with the policy object.
@@ -598,15 +575,10 @@ extension CloudDirectory {
     }
 
     public struct BatchAttachPolicyResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct BatchAttachToIndex: AWSEncodableShape {
-
         /// A reference to the index that you are attaching the object to.
         public let indexReference: ObjectReference
         /// A reference to the object that you are attaching to the index.
@@ -624,7 +596,6 @@ extension CloudDirectory {
     }
 
     public struct BatchAttachToIndexResponse: AWSDecodableShape {
-
         /// The ObjectIdentifier of the object that was attached to the index.
         public let attachedObjectIdentifier: String?
 
@@ -638,7 +609,6 @@ extension CloudDirectory {
     }
 
     public struct BatchAttachTypedLink: AWSEncodableShape {
-
         /// A set of attributes that are associated with the typed link.
         public let attributes: [AttributeNameAndValue]
         /// Identifies the source object that the typed link will attach to.
@@ -671,7 +641,6 @@ extension CloudDirectory {
     }
 
     public struct BatchAttachTypedLinkResponse: AWSDecodableShape {
-
         /// Returns a typed link specifier as output.
         public let typedLinkSpecifier: TypedLinkSpecifier?
 
@@ -685,7 +654,6 @@ extension CloudDirectory {
     }
 
     public struct BatchCreateIndex: AWSEncodableShape {
-
         /// The batch reference name. See Transaction Support for more information.
         public let batchReferenceName: String?
         /// Indicates whether the attribute that is being indexed has unique values or not.
@@ -724,7 +692,6 @@ extension CloudDirectory {
     }
 
     public struct BatchCreateIndexResponse: AWSDecodableShape {
-
         /// The ObjectIdentifier of the index created by this operation.
         public let objectIdentifier: String?
 
@@ -738,7 +705,6 @@ extension CloudDirectory {
     }
 
     public struct BatchCreateObject: AWSEncodableShape {
-
         /// The batch reference name. See Transaction Support for more information.
         public let batchReferenceName: String?
         /// The name of the link.
@@ -780,7 +746,6 @@ extension CloudDirectory {
     }
 
     public struct BatchCreateObjectResponse: AWSDecodableShape {
-
         /// The ID that is associated with the object.
         public let objectIdentifier: String?
 
@@ -794,7 +759,6 @@ extension CloudDirectory {
     }
 
     public struct BatchDeleteObject: AWSEncodableShape {
-
         /// The reference that identifies the object.
         public let objectReference: ObjectReference
 
@@ -808,15 +772,10 @@ extension CloudDirectory {
     }
 
     public struct BatchDeleteObjectResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct BatchDetachFromIndex: AWSEncodableShape {
-
         /// A reference to the index object.
         public let indexReference: ObjectReference
         /// A reference to the object being detached from the index.
@@ -834,7 +793,6 @@ extension CloudDirectory {
     }
 
     public struct BatchDetachFromIndexResponse: AWSDecodableShape {
-
         /// The ObjectIdentifier of the object that was detached from the index.
         public let detachedObjectIdentifier: String?
 
@@ -848,7 +806,6 @@ extension CloudDirectory {
     }
 
     public struct BatchDetachObject: AWSEncodableShape {
-
         /// The batch reference name. See Transaction Support for more information.
         public let batchReferenceName: String?
         /// The name of the link.
@@ -876,7 +833,6 @@ extension CloudDirectory {
     }
 
     public struct BatchDetachObjectResponse: AWSDecodableShape {
-
         /// The ObjectIdentifier of the detached object.
         public let detachedObjectIdentifier: String?
 
@@ -885,12 +841,11 @@ extension CloudDirectory {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case detachedObjectIdentifier = "detachedObjectIdentifier"
+            case detachedObjectIdentifier
         }
     }
 
     public struct BatchDetachPolicy: AWSEncodableShape {
-
         /// Reference that identifies the object whose policy object will be detached.
         public let objectReference: ObjectReference
         /// Reference that identifies the policy object.
@@ -908,15 +863,10 @@ extension CloudDirectory {
     }
 
     public struct BatchDetachPolicyResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct BatchDetachTypedLink: AWSEncodableShape {
-
         /// Used to accept a typed link specifier as input.
         public let typedLinkSpecifier: TypedLinkSpecifier
 
@@ -934,15 +884,10 @@ extension CloudDirectory {
     }
 
     public struct BatchDetachTypedLinkResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct BatchGetLinkAttributes: AWSEncodableShape {
-
         /// A list of attribute names whose values will be retrieved.
         public let attributeNames: [String]
         /// Allows a typed link specifier to be accepted as input.
@@ -969,7 +914,6 @@ extension CloudDirectory {
     }
 
     public struct BatchGetLinkAttributesResponse: AWSDecodableShape {
-
         /// The attributes that are associated with the typed link.
         public let attributes: [AttributeKeyAndValue]?
 
@@ -983,7 +927,6 @@ extension CloudDirectory {
     }
 
     public struct BatchGetObjectAttributes: AWSEncodableShape {
-
         /// List of attribute names whose values will be retrieved.
         public let attributeNames: [String]
         /// Reference that identifies the object whose attributes will be retrieved.
@@ -1014,7 +957,6 @@ extension CloudDirectory {
     }
 
     public struct BatchGetObjectAttributesResponse: AWSDecodableShape {
-
         /// The attribute values that are associated with an object.
         public let attributes: [AttributeKeyAndValue]?
 
@@ -1028,7 +970,6 @@ extension CloudDirectory {
     }
 
     public struct BatchGetObjectInformation: AWSEncodableShape {
-
         /// A reference to the object.
         public let objectReference: ObjectReference
 
@@ -1042,7 +983,6 @@ extension CloudDirectory {
     }
 
     public struct BatchGetObjectInformationResponse: AWSDecodableShape {
-
         /// The ObjectIdentifier of the specified object.
         public let objectIdentifier: String?
         /// The facets attached to the specified object.
@@ -1060,7 +1000,6 @@ extension CloudDirectory {
     }
 
     public struct BatchListAttachedIndices: AWSEncodableShape {
-
         /// The maximum number of results to retrieve.
         public let maxResults: Int?
         /// The pagination token.
@@ -1086,7 +1025,6 @@ extension CloudDirectory {
     }
 
     public struct BatchListAttachedIndicesResponse: AWSDecodableShape {
-
         /// The indices attached to the specified object.
         public let indexAttachments: [IndexAttachment]?
         /// The pagination token.
@@ -1104,7 +1042,6 @@ extension CloudDirectory {
     }
 
     public struct BatchListIncomingTypedLinks: AWSEncodableShape {
-
         /// Provides range filters for multiple attributes. When providing ranges to typed link selection, any inexact ranges must be specified at the end. Any attributes that do not have a range specified are presumed to match the entire range.
         public let filterAttributeRanges: [TypedLinkAttributeRange]?
         /// Filters are interpreted in the order of the attributes on the typed link facet, not the order in which they are supplied to any API calls.
@@ -1142,7 +1079,6 @@ extension CloudDirectory {
     }
 
     public struct BatchListIncomingTypedLinksResponse: AWSDecodableShape {
-
         /// Returns one or more typed link specifiers as output.
         public let linkSpecifiers: [TypedLinkSpecifier]?
         /// The pagination token.
@@ -1160,7 +1096,6 @@ extension CloudDirectory {
     }
 
     public struct BatchListIndex: AWSEncodableShape {
-
         /// The reference to the index to list.
         public let indexReference: ObjectReference
         /// The maximum number of results to retrieve.
@@ -1193,7 +1128,6 @@ extension CloudDirectory {
     }
 
     public struct BatchListIndexResponse: AWSDecodableShape {
-
         /// The objects and indexed values attached to the index.
         public let indexAttachments: [IndexAttachment]?
         /// The pagination token.
@@ -1211,7 +1145,6 @@ extension CloudDirectory {
     }
 
     public struct BatchListObjectAttributes: AWSEncodableShape {
-
         /// Used to filter the list of object attributes that are associated with a certain facet.
         public let facetFilter: SchemaFacet?
         /// The maximum number of items to be retrieved in a single call. This is an approximate number.
@@ -1242,7 +1175,6 @@ extension CloudDirectory {
     }
 
     public struct BatchListObjectAttributesResponse: AWSDecodableShape {
-
         /// The attributes map that is associated with the object. AttributeArn is the key; attribute value is the value.
         public let attributes: [AttributeKeyAndValue]?
         /// The pagination token.
@@ -1260,7 +1192,6 @@ extension CloudDirectory {
     }
 
     public struct BatchListObjectChildren: AWSEncodableShape {
-
         /// Maximum number of items to be retrieved in a single call. This is an approximate number.
         public let maxResults: Int?
         /// The pagination token.
@@ -1286,7 +1217,6 @@ extension CloudDirectory {
     }
 
     public struct BatchListObjectChildrenResponse: AWSDecodableShape {
-
         /// The children structure, which is a map with the key as the LinkName and ObjectIdentifier as the value.
         public let children: [String: String]?
         /// The pagination token.
@@ -1304,7 +1234,6 @@ extension CloudDirectory {
     }
 
     public struct BatchListObjectParentPaths: AWSEncodableShape {
-
         /// The maximum number of results to retrieve.
         public let maxResults: Int?
         /// The pagination token.
@@ -1330,7 +1259,6 @@ extension CloudDirectory {
     }
 
     public struct BatchListObjectParentPathsResponse: AWSDecodableShape {
-
         /// The pagination token.
         public let nextToken: String?
         /// Returns the path to the ObjectIdentifiers that are associated with the directory.
@@ -1348,7 +1276,6 @@ extension CloudDirectory {
     }
 
     public struct BatchListObjectParents: AWSEncodableShape {
-
         public let maxResults: Int?
         public let nextToken: String?
         public let objectReference: ObjectReference
@@ -1371,7 +1298,6 @@ extension CloudDirectory {
     }
 
     public struct BatchListObjectParentsResponse: AWSDecodableShape {
-
         public let nextToken: String?
         public let parentLinks: [ObjectIdentifierAndLinkNameTuple]?
 
@@ -1387,7 +1313,6 @@ extension CloudDirectory {
     }
 
     public struct BatchListObjectPolicies: AWSEncodableShape {
-
         /// The maximum number of results to retrieve.
         public let maxResults: Int?
         /// The pagination token.
@@ -1413,7 +1338,6 @@ extension CloudDirectory {
     }
 
     public struct BatchListObjectPoliciesResponse: AWSDecodableShape {
-
         /// A list of policy ObjectIdentifiers, that are attached to the object.
         public let attachedPolicyIds: [String]?
         /// The pagination token.
@@ -1431,7 +1355,6 @@ extension CloudDirectory {
     }
 
     public struct BatchListOutgoingTypedLinks: AWSEncodableShape {
-
         /// Provides range filters for multiple attributes. When providing ranges to typed link selection, any inexact ranges must be specified at the end. Any attributes that do not have a range specified are presumed to match the entire range.
         public let filterAttributeRanges: [TypedLinkAttributeRange]?
         /// Filters are interpreted in the order of the attributes defined on the typed link facet, not the order they are supplied to any API calls.
@@ -1469,7 +1392,6 @@ extension CloudDirectory {
     }
 
     public struct BatchListOutgoingTypedLinksResponse: AWSDecodableShape {
-
         /// The pagination token.
         public let nextToken: String?
         /// Returns a typed link specifier as output.
@@ -1487,7 +1409,6 @@ extension CloudDirectory {
     }
 
     public struct BatchListPolicyAttachments: AWSEncodableShape {
-
         /// The maximum number of results to retrieve.
         public let maxResults: Int?
         /// The pagination token.
@@ -1513,7 +1434,6 @@ extension CloudDirectory {
     }
 
     public struct BatchListPolicyAttachmentsResponse: AWSDecodableShape {
-
         /// The pagination token.
         public let nextToken: String?
         /// A list of ObjectIdentifiers to which the policy is attached.
@@ -1531,7 +1451,6 @@ extension CloudDirectory {
     }
 
     public struct BatchLookupPolicy: AWSEncodableShape {
-
         /// The maximum number of results to retrieve.
         public let maxResults: Int?
         /// The pagination token.
@@ -1557,7 +1476,6 @@ extension CloudDirectory {
     }
 
     public struct BatchLookupPolicyResponse: AWSDecodableShape {
-
         /// The pagination token.
         public let nextToken: String?
         /// Provides list of path to policies. Policies contain PolicyId, ObjectIdentifier, and PolicyType. For more information, see Policies.
@@ -1575,7 +1493,6 @@ extension CloudDirectory {
     }
 
     public struct BatchReadException: AWSDecodableShape {
-
         /// An exception message that is associated with the failure.
         public let message: String?
         /// A type of exception, such as InvalidArnException.
@@ -1593,7 +1510,6 @@ extension CloudDirectory {
     }
 
     public struct BatchReadOperation: AWSEncodableShape {
-
         /// Retrieves attributes that are associated with a typed link.
         public let getLinkAttributes: BatchGetLinkAttributes?
         /// Retrieves attributes within a facet that are associated with an object.
@@ -1674,7 +1590,6 @@ extension CloudDirectory {
     }
 
     public struct BatchReadOperationResponse: AWSDecodableShape {
-
         /// Identifies which operation in a batch has failed.
         public let exceptionResponse: BatchReadException?
         /// Identifies which operation in a batch has succeeded.
@@ -1693,7 +1608,7 @@ extension CloudDirectory {
 
     public struct BatchReadRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "consistencyLevel", location: .header(locationName: "x-amz-consistency-level")), 
+            AWSMemberEncoding(label: "consistencyLevel", location: .header(locationName: "x-amz-consistency-level")),
             AWSMemberEncoding(label: "directoryArn", location: .header(locationName: "x-amz-data-partition"))
         ]
 
@@ -1722,7 +1637,6 @@ extension CloudDirectory {
     }
 
     public struct BatchReadResponse: AWSDecodableShape {
-
         /// A list of all the responses for each batch read.
         public let responses: [BatchReadOperationResponse]?
 
@@ -1736,7 +1650,6 @@ extension CloudDirectory {
     }
 
     public struct BatchReadSuccessfulResponse: AWSDecodableShape {
-
         /// The list of attributes to retrieve from the typed link.
         public let getLinkAttributes: BatchGetLinkAttributesResponse?
         /// Retrieves attributes within a facet that are associated with an object.
@@ -1801,7 +1714,6 @@ extension CloudDirectory {
     }
 
     public struct BatchRemoveFacetFromObject: AWSEncodableShape {
-
         /// A reference to the object whose facet will be removed.
         public let objectReference: ObjectReference
         /// The facet to remove from the object.
@@ -1823,15 +1735,10 @@ extension CloudDirectory {
     }
 
     public struct BatchRemoveFacetFromObjectResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct BatchUpdateLinkAttributes: AWSEncodableShape {
-
         /// The attributes update structure.
         public let attributeUpdates: [LinkAttributeUpdate]
         /// Allows a typed link specifier to be accepted as input.
@@ -1856,15 +1763,10 @@ extension CloudDirectory {
     }
 
     public struct BatchUpdateLinkAttributesResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct BatchUpdateObjectAttributes: AWSEncodableShape {
-
         /// Attributes update structure.
         public let attributeUpdates: [ObjectAttributeUpdate]
         /// Reference that identifies the object.
@@ -1888,7 +1790,6 @@ extension CloudDirectory {
     }
 
     public struct BatchUpdateObjectAttributesResponse: AWSDecodableShape {
-
         /// ID that is associated with the object.
         public let objectIdentifier: String?
 
@@ -1902,7 +1803,6 @@ extension CloudDirectory {
     }
 
     public struct BatchWriteOperation: AWSEncodableShape {
-
         /// A batch operation that adds a facet to an object.
         public let addFacetToObject: BatchAddFacetToObject?
         /// Attaches an object to a Directory.
@@ -1985,7 +1885,6 @@ extension CloudDirectory {
     }
 
     public struct BatchWriteOperationResponse: AWSDecodableShape {
-
         /// The result of an add facet to object batch operation.
         public let addFacetToObject: BatchAddFacetToObjectResponse?
         /// Attaches an object to a Directory.
@@ -2081,7 +1980,6 @@ extension CloudDirectory {
     }
 
     public struct BatchWriteResponse: AWSDecodableShape {
-
         /// A list of all the responses for each batch write.
         public let responses: [BatchWriteOperationResponse]?
 
@@ -2121,7 +2019,6 @@ extension CloudDirectory {
     }
 
     public struct CreateDirectoryResponse: AWSDecodableShape {
-
         /// The ARN of the published schema in the Directory. Once a published schema is copied into the directory, it has its own ARN, which is referred to applied schema ARN. For more information, see arns.
         public let appliedSchemaArn: String
         /// The ARN that is associated with the Directory. For more information, see arns.
@@ -2157,7 +2054,7 @@ extension CloudDirectory {
         public let facetStyle: FacetStyle?
         /// The name of the Facet, which is unique for a given schema.
         public let name: String
-        /// Specifies whether a given object created from this facet is of type node, leaf node, policy or index.   Node: Can have multiple children but one parent.     Leaf node: Cannot have children but can have multiple parents.     Policy: Allows you to store a policy document and policy type. For more information, see Policies.     Index: Can be created with the Index API.  
+        /// Specifies whether a given object created from this facet is of type node, leaf node, policy or index.   Node: Can have multiple children but one parent.     Leaf node: Cannot have children but can have multiple parents.     Policy: Allows you to store a policy document and policy type. For more information, see Policies.     Index: Can be created with the Index API.
         public let objectType: ObjectType?
         /// The schema ARN in which the new Facet will be created. For more information, see arns.
         public let schemaArn: String
@@ -2188,11 +2085,7 @@ extension CloudDirectory {
     }
 
     public struct CreateFacetResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct CreateIndexRequest: AWSEncodableShape {
@@ -2237,7 +2130,6 @@ extension CloudDirectory {
     }
 
     public struct CreateIndexResponse: AWSDecodableShape {
-
         /// The ObjectIdentifier of the index created by this operation.
         public let objectIdentifier: String?
 
@@ -2295,7 +2187,6 @@ extension CloudDirectory {
     }
 
     public struct CreateObjectResponse: AWSDecodableShape {
-
         /// The identifier that is associated with the object.
         public let objectIdentifier: String?
 
@@ -2309,7 +2200,6 @@ extension CloudDirectory {
     }
 
     public struct CreateSchemaRequest: AWSEncodableShape {
-
         /// The name that is associated with the schema. This is unique to each account and in each region.
         public let name: String
 
@@ -2329,7 +2219,6 @@ extension CloudDirectory {
     }
 
     public struct CreateSchemaResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) that is associated with the schema. For more information, see arns.
         public let schemaArn: String?
 
@@ -2367,11 +2256,7 @@ extension CloudDirectory {
     }
 
     public struct CreateTypedLinkFacetResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteDirectoryRequest: AWSEncodableShape {
@@ -2390,7 +2275,6 @@ extension CloudDirectory {
     }
 
     public struct DeleteDirectoryResponse: AWSDecodableShape {
-
         /// The ARN of the deleted directory.
         public let directoryArn: String
 
@@ -2430,11 +2314,7 @@ extension CloudDirectory {
     }
 
     public struct DeleteFacetResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteObjectRequest: AWSEncodableShape {
@@ -2458,11 +2338,7 @@ extension CloudDirectory {
     }
 
     public struct DeleteObjectResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteSchemaRequest: AWSEncodableShape {
@@ -2481,7 +2357,6 @@ extension CloudDirectory {
     }
 
     public struct DeleteSchemaResponse: AWSDecodableShape {
-
         /// The input ARN that is returned as part of the response. For more information, see arns.
         public let schemaArn: String?
 
@@ -2519,11 +2394,7 @@ extension CloudDirectory {
     }
 
     public struct DeleteTypedLinkFacetResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DetachFromIndexRequest: AWSEncodableShape {
@@ -2551,7 +2422,6 @@ extension CloudDirectory {
     }
 
     public struct DetachFromIndexResponse: AWSDecodableShape {
-
         /// The ObjectIdentifier of the object that was detached from the index.
         public let detachedObjectIdentifier: String?
 
@@ -2595,7 +2465,6 @@ extension CloudDirectory {
     }
 
     public struct DetachObjectResponse: AWSDecodableShape {
-
         /// The ObjectIdentifier that was detached from the object.
         public let detachedObjectIdentifier: String?
 
@@ -2633,11 +2502,7 @@ extension CloudDirectory {
     }
 
     public struct DetachPolicyResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DetachTypedLinkRequest: AWSEncodableShape {
@@ -2665,7 +2530,6 @@ extension CloudDirectory {
     }
 
     public struct Directory: AWSDecodableShape {
-
         /// The date and time when the directory was created.
         public let creationDateTime: Date?
         /// The Amazon Resource Name (ARN) that is associated with the directory. For more information, see arns.
@@ -2706,7 +2570,6 @@ extension CloudDirectory {
     }
 
     public struct DisableDirectoryResponse: AWSDecodableShape {
-
         /// The ARN of the directory that has been disabled.
         public let directoryArn: String
 
@@ -2735,7 +2598,6 @@ extension CloudDirectory {
     }
 
     public struct EnableDirectoryResponse: AWSDecodableShape {
-
         /// The ARN of the enabled directory.
         public let directoryArn: String
 
@@ -2749,7 +2611,6 @@ extension CloudDirectory {
     }
 
     public struct Facet: AWSDecodableShape {
-
         /// There are two different styles that you can define on any given facet, Static and Dynamic. For static facets, all attributes must be defined in the schema. For dynamic facets, attributes can be defined during data plane operations.
         public let facetStyle: FacetStyle?
         /// The name of the Facet.
@@ -2771,7 +2632,6 @@ extension CloudDirectory {
     }
 
     public struct FacetAttribute: AWSEncodableShape & AWSDecodableShape {
-
         /// A facet attribute consists of either a definition or a reference. This structure contains the attribute definition. See Attribute References for more information.
         public let attributeDefinition: FacetAttributeDefinition?
         /// An attribute reference that is associated with the attribute. See Attribute References for more information.
@@ -2805,7 +2665,6 @@ extension CloudDirectory {
     }
 
     public struct FacetAttributeDefinition: AWSEncodableShape & AWSDecodableShape {
-
         /// The default value of the attribute (if configured).
         public let defaultValue: TypedAttributeValue?
         /// Whether the attribute is mutable or not.
@@ -2839,7 +2698,6 @@ extension CloudDirectory {
     }
 
     public struct FacetAttributeReference: AWSEncodableShape & AWSDecodableShape {
-
         /// The target attribute name that is associated with the facet reference. See Attribute References for more information.
         public let targetAttributeName: String
         /// The target facet name that is associated with the facet reference. See Attribute References for more information.
@@ -2866,7 +2724,6 @@ extension CloudDirectory {
     }
 
     public struct FacetAttributeUpdate: AWSEncodableShape {
-
         /// The action to perform when updating the attribute.
         public let action: UpdateActionType?
         /// The attribute to update.
@@ -2888,7 +2745,6 @@ extension CloudDirectory {
     }
 
     public struct GetAppliedSchemaVersionRequest: AWSEncodableShape {
-
         /// The ARN of the applied schema.
         public let schemaArn: String
 
@@ -2902,7 +2758,6 @@ extension CloudDirectory {
     }
 
     public struct GetAppliedSchemaVersionResponse: AWSDecodableShape {
-
         /// Current applied schema ARN, including the minor version in use if one was provided.
         public let appliedSchemaArn: String?
 
@@ -2931,7 +2786,6 @@ extension CloudDirectory {
     }
 
     public struct GetDirectoryResponse: AWSDecodableShape {
-
         /// Metadata about the directory.
         public let directory: Directory
 
@@ -2971,7 +2825,6 @@ extension CloudDirectory {
     }
 
     public struct GetFacetResponse: AWSDecodableShape {
-
         /// The Facet structure that is associated with the facet.
         public let facet: Facet?
 
@@ -3022,7 +2875,6 @@ extension CloudDirectory {
     }
 
     public struct GetLinkAttributesResponse: AWSDecodableShape {
-
         /// The attributes that are associated with the typed link.
         public let attributes: [AttributeKeyAndValue]?
 
@@ -3037,7 +2889,7 @@ extension CloudDirectory {
 
     public struct GetObjectAttributesRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "consistencyLevel", location: .header(locationName: "x-amz-consistency-level")), 
+            AWSMemberEncoding(label: "consistencyLevel", location: .header(locationName: "x-amz-consistency-level")),
             AWSMemberEncoding(label: "directoryArn", location: .header(locationName: "x-amz-data-partition"))
         ]
 
@@ -3077,7 +2929,6 @@ extension CloudDirectory {
     }
 
     public struct GetObjectAttributesResponse: AWSDecodableShape {
-
         /// The attributes that are associated with the object.
         public let attributes: [AttributeKeyAndValue]?
 
@@ -3092,7 +2943,7 @@ extension CloudDirectory {
 
     public struct GetObjectInformationRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "consistencyLevel", location: .header(locationName: "x-amz-consistency-level")), 
+            AWSMemberEncoding(label: "consistencyLevel", location: .header(locationName: "x-amz-consistency-level")),
             AWSMemberEncoding(label: "directoryArn", location: .header(locationName: "x-amz-data-partition"))
         ]
 
@@ -3115,7 +2966,6 @@ extension CloudDirectory {
     }
 
     public struct GetObjectInformationResponse: AWSDecodableShape {
-
         /// The ObjectIdentifier of the specified object.
         public let objectIdentifier: String?
         /// The facets attached to the specified object. Although the response does not include minor version information, the most recently applied minor version of each Facet is in effect. See GetAppliedSchemaVersion for details.
@@ -3148,7 +2998,6 @@ extension CloudDirectory {
     }
 
     public struct GetSchemaAsJsonResponse: AWSDecodableShape {
-
         /// The JSON representation of the schema document.
         public let document: String?
         /// The name of the retrieved schema.
@@ -3190,7 +3039,6 @@ extension CloudDirectory {
     }
 
     public struct GetTypedLinkFacetInformationResponse: AWSDecodableShape {
-
         /// The order of identity attributes for the facet, from most significant to least significant. The ability to filter typed links considers the order that the attributes are defined on the typed link facet. When providing ranges to typed link selection, any inexact ranges must be specified at the end. Any attributes that do not have a range specified are presumed to match the entire range. Filters are interpreted in the order of the attributes on the typed link facet, not the order in which they are supplied to any API calls. For more information about identity attributes, see Typed Links.
         public let identityAttributeOrder: [String]?
 
@@ -3204,7 +3052,6 @@ extension CloudDirectory {
     }
 
     public struct IndexAttachment: AWSDecodableShape {
-
         /// The indexed attribute values.
         public let indexedAttributes: [AttributeKeyAndValue]?
         /// In response to ListIndex, the ObjectIdentifier of the object attached to the index. In response to ListAttachedIndices, the ObjectIdentifier of the index attached to the object. This field will always contain the ObjectIdentifier of the object on the opposite side of the attachment specified in the query.
@@ -3222,7 +3069,6 @@ extension CloudDirectory {
     }
 
     public struct LinkAttributeAction: AWSEncodableShape {
-
         /// A type that can be either UPDATE_OR_CREATE or DELETE.
         public let attributeActionType: UpdateActionType?
         /// The value that you want to update to.
@@ -3240,7 +3086,6 @@ extension CloudDirectory {
     }
 
     public struct LinkAttributeUpdate: AWSEncodableShape {
-
         /// The action to perform as part of the attribute update.
         public let attributeAction: LinkAttributeAction?
         /// The key of the attribute being updated.
@@ -3262,7 +3107,6 @@ extension CloudDirectory {
     }
 
     public struct ListAppliedSchemaArnsRequest: AWSEncodableShape {
-
         /// The ARN of the directory you are listing.
         public let directoryArn: String
         /// The maximum number of results to retrieve.
@@ -3292,7 +3136,6 @@ extension CloudDirectory {
     }
 
     public struct ListAppliedSchemaArnsResponse: AWSDecodableShape {
-
         /// The pagination token.
         public let nextToken: String?
         /// The ARNs of schemas that are applied to the directory.
@@ -3311,7 +3154,7 @@ extension CloudDirectory {
 
     public struct ListAttachedIndicesRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "consistencyLevel", location: .header(locationName: "x-amz-consistency-level")), 
+            AWSMemberEncoding(label: "consistencyLevel", location: .header(locationName: "x-amz-consistency-level")),
             AWSMemberEncoding(label: "directoryArn", location: .header(locationName: "x-amz-data-partition"))
         ]
 
@@ -3346,7 +3189,6 @@ extension CloudDirectory {
     }
 
     public struct ListAttachedIndicesResponse: AWSDecodableShape {
-
         /// The indices attached to the specified object.
         public let indexAttachments: [IndexAttachment]?
         /// The pagination token.
@@ -3364,7 +3206,6 @@ extension CloudDirectory {
     }
 
     public struct ListDevelopmentSchemaArnsRequest: AWSEncodableShape {
-
         /// The maximum number of results to retrieve.
         public let maxResults: Int?
         /// The pagination token.
@@ -3386,7 +3227,6 @@ extension CloudDirectory {
     }
 
     public struct ListDevelopmentSchemaArnsResponse: AWSDecodableShape {
-
         /// The pagination token.
         public let nextToken: String?
         /// The ARNs of retrieved development schemas.
@@ -3404,7 +3244,6 @@ extension CloudDirectory {
     }
 
     public struct ListDirectoriesRequest: AWSEncodableShape {
-
         /// The maximum number of results to retrieve.
         public let maxResults: Int?
         /// The pagination token.
@@ -3425,12 +3264,11 @@ extension CloudDirectory {
         private enum CodingKeys: String, CodingKey {
             case maxResults = "MaxResults"
             case nextToken = "NextToken"
-            case state = "state"
+            case state
         }
     }
 
     public struct ListDirectoriesResponse: AWSDecodableShape {
-
         /// Lists all directories that are associated with your account in pagination fashion.
         public let directories: [Directory]
         /// The pagination token.
@@ -3483,7 +3321,6 @@ extension CloudDirectory {
     }
 
     public struct ListFacetAttributesResponse: AWSDecodableShape {
-
         /// The attributes attached to the facet.
         public let attributes: [FacetAttribute]?
         /// The pagination token.
@@ -3529,7 +3366,6 @@ extension CloudDirectory {
     }
 
     public struct ListFacetNamesResponse: AWSDecodableShape {
-
         /// The names of facets that exist within the schema.
         public let facetNames: [String]?
         /// The pagination token.
@@ -3595,7 +3431,6 @@ extension CloudDirectory {
     }
 
     public struct ListIncomingTypedLinksResponse: AWSDecodableShape {
-
         /// Returns one or more typed link specifiers as output.
         public let linkSpecifiers: [TypedLinkSpecifier]?
         /// The pagination token.
@@ -3614,7 +3449,7 @@ extension CloudDirectory {
 
     public struct ListIndexRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "consistencyLevel", location: .header(locationName: "x-amz-consistency-level")), 
+            AWSMemberEncoding(label: "consistencyLevel", location: .header(locationName: "x-amz-consistency-level")),
             AWSMemberEncoding(label: "directoryArn", location: .header(locationName: "x-amz-data-partition"))
         ]
 
@@ -3656,7 +3491,6 @@ extension CloudDirectory {
     }
 
     public struct ListIndexResponse: AWSDecodableShape {
-
         /// The objects and indexed values attached to the index.
         public let indexAttachments: [IndexAttachment]?
         /// The pagination token.
@@ -3674,7 +3508,6 @@ extension CloudDirectory {
     }
 
     public struct ListManagedSchemaArnsRequest: AWSEncodableShape {
-
         /// The maximum number of results to retrieve.
         public let maxResults: Int?
         /// The pagination token.
@@ -3700,7 +3533,6 @@ extension CloudDirectory {
     }
 
     public struct ListManagedSchemaArnsResponse: AWSDecodableShape {
-
         /// The pagination token.
         public let nextToken: String?
         /// The ARNs for all AWS managed schemas.
@@ -3719,7 +3551,7 @@ extension CloudDirectory {
 
     public struct ListObjectAttributesRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "consistencyLevel", location: .header(locationName: "x-amz-consistency-level")), 
+            AWSMemberEncoding(label: "consistencyLevel", location: .header(locationName: "x-amz-consistency-level")),
             AWSMemberEncoding(label: "directoryArn", location: .header(locationName: "x-amz-data-partition"))
         ]
 
@@ -3759,7 +3591,6 @@ extension CloudDirectory {
     }
 
     public struct ListObjectAttributesResponse: AWSDecodableShape {
-
         /// Attributes map that is associated with the object. AttributeArn is the key, and attribute value is the value.
         public let attributes: [AttributeKeyAndValue]?
         /// The pagination token.
@@ -3778,7 +3609,7 @@ extension CloudDirectory {
 
     public struct ListObjectChildrenRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "consistencyLevel", location: .header(locationName: "x-amz-consistency-level")), 
+            AWSMemberEncoding(label: "consistencyLevel", location: .header(locationName: "x-amz-consistency-level")),
             AWSMemberEncoding(label: "directoryArn", location: .header(locationName: "x-amz-data-partition"))
         ]
 
@@ -3813,7 +3644,6 @@ extension CloudDirectory {
     }
 
     public struct ListObjectChildrenResponse: AWSDecodableShape {
-
         /// Children structure, which is a map with key as the LinkName and ObjectIdentifier as the value.
         public let children: [String: String]?
         /// The pagination token.
@@ -3863,7 +3693,6 @@ extension CloudDirectory {
     }
 
     public struct ListObjectParentPathsResponse: AWSDecodableShape {
-
         /// The pagination token.
         public let nextToken: String?
         /// Returns the path to the ObjectIdentifiers that are associated with the directory.
@@ -3882,7 +3711,7 @@ extension CloudDirectory {
 
     public struct ListObjectParentsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "consistencyLevel", location: .header(locationName: "x-amz-consistency-level")), 
+            AWSMemberEncoding(label: "consistencyLevel", location: .header(locationName: "x-amz-consistency-level")),
             AWSMemberEncoding(label: "directoryArn", location: .header(locationName: "x-amz-data-partition"))
         ]
 
@@ -3921,7 +3750,6 @@ extension CloudDirectory {
     }
 
     public struct ListObjectParentsResponse: AWSDecodableShape {
-
         /// The pagination token.
         public let nextToken: String?
         /// Returns a list of parent reference and LinkName Tuples.
@@ -3944,7 +3772,7 @@ extension CloudDirectory {
 
     public struct ListObjectPoliciesRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "consistencyLevel", location: .header(locationName: "x-amz-consistency-level")), 
+            AWSMemberEncoding(label: "consistencyLevel", location: .header(locationName: "x-amz-consistency-level")),
             AWSMemberEncoding(label: "directoryArn", location: .header(locationName: "x-amz-data-partition"))
         ]
 
@@ -3979,7 +3807,6 @@ extension CloudDirectory {
     }
 
     public struct ListObjectPoliciesResponse: AWSDecodableShape {
-
         /// A list of policy ObjectIdentifiers, that are attached to the object.
         public let attachedPolicyIds: [String]?
         /// The pagination token.
@@ -4045,7 +3872,6 @@ extension CloudDirectory {
     }
 
     public struct ListOutgoingTypedLinksResponse: AWSDecodableShape {
-
         /// The pagination token.
         public let nextToken: String?
         /// Returns a typed link specifier as output.
@@ -4064,7 +3890,7 @@ extension CloudDirectory {
 
     public struct ListPolicyAttachmentsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "consistencyLevel", location: .header(locationName: "x-amz-consistency-level")), 
+            AWSMemberEncoding(label: "consistencyLevel", location: .header(locationName: "x-amz-consistency-level")),
             AWSMemberEncoding(label: "directoryArn", location: .header(locationName: "x-amz-data-partition"))
         ]
 
@@ -4099,7 +3925,6 @@ extension CloudDirectory {
     }
 
     public struct ListPolicyAttachmentsResponse: AWSDecodableShape {
-
         /// The pagination token.
         public let nextToken: String?
         /// A list of ObjectIdentifiers to which the policy is attached.
@@ -4117,7 +3942,6 @@ extension CloudDirectory {
     }
 
     public struct ListPublishedSchemaArnsRequest: AWSEncodableShape {
-
         /// The maximum number of results to retrieve.
         public let maxResults: Int?
         /// The pagination token.
@@ -4143,7 +3967,6 @@ extension CloudDirectory {
     }
 
     public struct ListPublishedSchemaArnsResponse: AWSDecodableShape {
-
         /// The pagination token.
         public let nextToken: String?
         /// The ARNs of published schemas.
@@ -4161,7 +3984,6 @@ extension CloudDirectory {
     }
 
     public struct ListTagsForResourceRequest: AWSEncodableShape {
-
         /// The MaxResults parameter sets the maximum number of results returned in a single page. This is for future use and is not supported currently.
         public let maxResults: Int?
         /// The pagination token. This is for future use. Currently pagination is not supported for tagging.
@@ -4187,7 +4009,6 @@ extension CloudDirectory {
     }
 
     public struct ListTagsForResourceResponse: AWSDecodableShape {
-
         /// The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         public let nextToken: String?
         /// A list of tag key value pairs that are associated with the response.
@@ -4238,7 +4059,6 @@ extension CloudDirectory {
     }
 
     public struct ListTypedLinkFacetAttributesResponse: AWSDecodableShape {
-
         /// An ordered set of attributes associate with the typed link.
         public let attributes: [TypedLinkAttributeDefinition]?
         /// The pagination token.
@@ -4284,7 +4104,6 @@ extension CloudDirectory {
     }
 
     public struct ListTypedLinkFacetNamesResponse: AWSDecodableShape {
-
         /// The names of typed link facets that exist within the schema.
         public let facetNames: [String]?
         /// The pagination token.
@@ -4334,7 +4153,6 @@ extension CloudDirectory {
     }
 
     public struct LookupPolicyResponse: AWSDecodableShape {
-
         /// The pagination token.
         public let nextToken: String?
         /// Provides list of path to policies. Policies contain PolicyId, ObjectIdentifier, and PolicyType. For more information, see Policies.
@@ -4352,7 +4170,6 @@ extension CloudDirectory {
     }
 
     public struct ObjectAttributeAction: AWSEncodableShape {
-
         /// A type that can be either Update or Delete.
         public let objectAttributeActionType: UpdateActionType?
         /// The value that you want to update to.
@@ -4370,7 +4187,6 @@ extension CloudDirectory {
     }
 
     public struct ObjectAttributeRange: AWSEncodableShape {
-
         /// The key of the attribute that the attribute range covers.
         public let attributeKey: AttributeKey?
         /// The range of attribute values being selected.
@@ -4392,7 +4208,6 @@ extension CloudDirectory {
     }
 
     public struct ObjectAttributeUpdate: AWSEncodableShape {
-
         /// The action to perform as part of the attribute update.
         public let objectAttributeAction: ObjectAttributeAction?
         /// The key of the attribute being updated.
@@ -4414,7 +4229,6 @@ extension CloudDirectory {
     }
 
     public struct ObjectIdentifierAndLinkNameTuple: AWSDecodableShape {
-
         /// The name of the link between the parent and the child object.
         public let linkName: String?
         /// The ID that is associated with the object.
@@ -4432,8 +4246,7 @@ extension CloudDirectory {
     }
 
     public struct ObjectReference: AWSEncodableShape & AWSDecodableShape {
-
-        /// A path selector supports easy selection of an object by the parent/child links leading to it from the directory root. Use the link names from each parent/child link to construct the path. Path selectors start with a slash (/) and link names are separated by slashes. For more information about paths, see Access Objects. You can identify an object in one of the following ways:    $ObjectIdentifier - An object identifier is an opaque string provided by Amazon Cloud Directory. When creating objects, the system will provide you with the identifier of the created object. An object’s identifier is immutable and no two objects will ever share the same object identifier    /some/path - Identifies the object based on path    #SomeBatchReference - Identifies the object in a batch call  
+        /// A path selector supports easy selection of an object by the parent/child links leading to it from the directory root. Use the link names from each parent/child link to construct the path. Path selectors start with a slash (/) and link names are separated by slashes. For more information about paths, see Access Objects. You can identify an object in one of the following ways:    $ObjectIdentifier - An object identifier is an opaque string provided by Amazon Cloud Directory. When creating objects, the system will provide you with the identifier of the created object. An object’s identifier is immutable and no two objects will ever share the same object identifier    /some/path - Identifies the object based on path    #SomeBatchReference - Identifies the object in a batch call
         public let selector: String?
 
         public init(selector: String? = nil) {
@@ -4446,7 +4259,6 @@ extension CloudDirectory {
     }
 
     public struct PathToObjectIdentifiers: AWSDecodableShape {
-
         /// Lists ObjectIdentifiers starting from directory root to the object in the request.
         public let objectIdentifiers: [String]?
         /// The path that is used to identify the object starting from directory root.
@@ -4464,7 +4276,6 @@ extension CloudDirectory {
     }
 
     public struct PolicyAttachment: AWSDecodableShape {
-
         /// The ObjectIdentifier that is associated with PolicyAttachment.
         public let objectIdentifier: String?
         /// The ID of PolicyAttachment.
@@ -4486,7 +4297,6 @@ extension CloudDirectory {
     }
 
     public struct PolicyToPath: AWSDecodableShape {
-
         /// The path that is referenced from the root.
         public let path: String?
         /// List of policy objects.
@@ -4544,7 +4354,6 @@ extension CloudDirectory {
     }
 
     public struct PublishSchemaResponse: AWSDecodableShape {
-
         /// The ARN that is associated with the published schema. For more information, see arns.
         public let publishedSchemaArn: String?
 
@@ -4578,7 +4387,6 @@ extension CloudDirectory {
     }
 
     public struct PutSchemaFromJsonResponse: AWSDecodableShape {
-
         /// The ARN of the schema to update.
         public let arn: String?
 
@@ -4620,15 +4428,10 @@ extension CloudDirectory {
     }
 
     public struct RemoveFacetFromObjectResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct Rule: AWSEncodableShape & AWSDecodableShape {
-
         /// The minimum and maximum parameters that are associated with the rule.
         public let parameters: [String: String]?
         /// The type of attribute validation rule.
@@ -4646,7 +4449,6 @@ extension CloudDirectory {
     }
 
     public struct SchemaFacet: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the facet.
         public let facetName: String?
         /// The ARN of the schema that contains the facet with no minor component. See arns and In-Place Schema Upgrade for a description of when to provide minor versions.
@@ -4670,7 +4472,6 @@ extension CloudDirectory {
     }
 
     public struct Tag: AWSEncodableShape & AWSDecodableShape {
-
         /// The key that is associated with the tag.
         public let key: String?
         /// The value that is associated with the tag.
@@ -4688,7 +4489,6 @@ extension CloudDirectory {
     }
 
     public struct TagResourceRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the resource. Tagging is only supported for directories.
         public let resourceArn: String
         /// A list of tag key-value pairs.
@@ -4706,15 +4506,10 @@ extension CloudDirectory {
     }
 
     public struct TagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct TypedAttributeValueRange: AWSEncodableShape {
-
         /// The inclusive or exclusive range end.
         public let endMode: RangeMode
         /// The attribute value to terminate the range at.
@@ -4740,7 +4535,6 @@ extension CloudDirectory {
     }
 
     public struct TypedLinkAttributeDefinition: AWSEncodableShape & AWSDecodableShape {
-
         /// The default value of the attribute (if configured).
         public let defaultValue: TypedAttributeValue?
         /// Whether the attribute is mutable or not.
@@ -4785,7 +4579,6 @@ extension CloudDirectory {
     }
 
     public struct TypedLinkAttributeRange: AWSEncodableShape {
-
         /// The unique name of the typed link attribute.
         public let attributeName: String?
         /// The range of attribute values that are being selected.
@@ -4809,7 +4602,6 @@ extension CloudDirectory {
     }
 
     public struct TypedLinkFacet: AWSEncodableShape {
-
         /// A set of key-value pairs associated with the typed link. Typed link attributes are used when you have data values that are related to the link itself, and not to one of the two objects being linked. Identity attributes also serve to distinguish the link from others of the same type between the same objects.
         public let attributes: [TypedLinkAttributeDefinition]
         /// The set of attributes that distinguish links made from this facet from each other, in the order of significance. Listing typed links can filter on the values of these attributes. See ListOutgoingTypedLinks and ListIncomingTypedLinks for details.
@@ -4843,7 +4635,6 @@ extension CloudDirectory {
     }
 
     public struct TypedLinkFacetAttributeUpdate: AWSEncodableShape {
-
         /// The action to perform when updating the attribute.
         public let action: UpdateActionType
         /// The attribute to update.
@@ -4865,7 +4656,6 @@ extension CloudDirectory {
     }
 
     public struct TypedLinkSchemaAndFacetName: AWSEncodableShape & AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) that is associated with the schema. For more information, see arns.
         public let schemaArn: String
         /// The unique name of the typed link facet.
@@ -4887,7 +4677,6 @@ extension CloudDirectory {
     }
 
     public struct TypedLinkSpecifier: AWSEncodableShape & AWSDecodableShape {
-
         /// Identifies the attribute value to update.
         public let identityAttributeValues: [AttributeNameAndValue]
         /// Identifies the source object that the typed link will attach to.
@@ -4920,7 +4709,6 @@ extension CloudDirectory {
     }
 
     public struct UntagResourceRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the resource. Tagging is only supported for directories.
         public let resourceArn: String
         /// Keys of the tag that need to be removed from the resource.
@@ -4938,11 +4726,7 @@ extension CloudDirectory {
     }
 
     public struct UntagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateFacetRequest: AWSEncodableShape {
@@ -4950,7 +4734,7 @@ extension CloudDirectory {
             AWSMemberEncoding(label: "schemaArn", location: .header(locationName: "x-amz-data-partition"))
         ]
 
-        /// List of attributes that need to be updated in a given schema Facet. Each attribute is followed by AttributeAction, which specifies the type of update operation to perform. 
+        /// List of attributes that need to be updated in a given schema Facet. Each attribute is followed by AttributeAction, which specifies the type of update operation to perform.
         public let attributeUpdates: [FacetAttributeUpdate]?
         /// The name of the facet.
         public let name: String
@@ -4983,11 +4767,7 @@ extension CloudDirectory {
     }
 
     public struct UpdateFacetResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateLinkAttributesRequest: AWSEncodableShape {
@@ -5022,11 +4802,7 @@ extension CloudDirectory {
     }
 
     public struct UpdateLinkAttributesResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateObjectAttributesRequest: AWSEncodableShape {
@@ -5060,7 +4836,6 @@ extension CloudDirectory {
     }
 
     public struct UpdateObjectAttributesResponse: AWSDecodableShape {
-
         /// The ObjectIdentifier of the updated object.
         public let objectIdentifier: String?
 
@@ -5100,7 +4875,6 @@ extension CloudDirectory {
     }
 
     public struct UpdateSchemaResponse: AWSDecodableShape {
-
         /// The ARN that is associated with the updated schema. For more information, see arns.
         public let schemaArn: String?
 
@@ -5154,15 +4928,10 @@ extension CloudDirectory {
     }
 
     public struct UpdateTypedLinkFacetResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpgradeAppliedSchemaRequest: AWSEncodableShape {
-
         /// The ARN for the directory to which the upgraded schema will be applied.
         public let directoryArn: String
         /// Used for testing whether the major version schemas are backward compatible or not. If schema compatibility fails, an exception would be thrown else the call would succeed but no changes will be saved. This parameter is optional.
@@ -5184,7 +4953,6 @@ extension CloudDirectory {
     }
 
     public struct UpgradeAppliedSchemaResponse: AWSDecodableShape {
-
         /// The ARN of the directory that is returned as part of the response.
         public let directoryArn: String?
         /// The ARN of the upgraded schema that is returned as part of the response.
@@ -5202,7 +4970,6 @@ extension CloudDirectory {
     }
 
     public struct UpgradePublishedSchemaRequest: AWSEncodableShape {
-
         /// The ARN of the development schema with the changes used for the upgrade.
         public let developmentSchemaArn: String
         /// Used for testing whether the Development schema provided is backwards compatible, or not, with the publish schema provided by the user to be upgraded. If schema compatibility fails, an exception would be thrown else the call would succeed. This parameter is optional and defaults to false.
@@ -5234,7 +5001,6 @@ extension CloudDirectory {
     }
 
     public struct UpgradePublishedSchemaResponse: AWSDecodableShape {
-
         /// The ARN of the upgraded schema that is returned as part of the response.
         public let upgradedSchemaArn: String?
 

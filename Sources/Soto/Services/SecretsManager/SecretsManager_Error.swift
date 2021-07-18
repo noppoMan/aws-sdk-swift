@@ -52,7 +52,7 @@ public struct SecretsManagerErrorType: AWSErrorType {
     /// return error code string
     public var errorCode: String { self.error.rawValue }
 
-    /// Secrets Manager can't decrypt the protected secret text using the provided KMS key. 
+    /// Secrets Manager can't decrypt the protected secret text using the provided KMS key.
     public static var decryptionFailure: Self { .init(.decryptionFailure) }
     /// Secrets Manager can't encrypt the protected secret text using the provided KMS key. Check that the customer master key (CMK) is available, enabled, and not in an invalid state. For more information, see How Key State Affects Use of a Customer Master Key.
     public static var encryptionFailure: Self { .init(.encryptionFailure) }
@@ -62,7 +62,7 @@ public struct SecretsManagerErrorType: AWSErrorType {
     public static var invalidNextTokenException: Self { .init(.invalidNextTokenException) }
     /// You provided an invalid value for a parameter.
     public static var invalidParameterException: Self { .init(.invalidParameterException) }
-    /// You provided a parameter value that is not valid for the current state of the resource. Possible causes:   You tried to perform the operation on a secret that's currently marked deleted.   You tried to enable rotation on a secret that doesn't already have a Lambda function ARN configured and you didn't include such an ARN as a parameter in this call.   
+    /// You provided a parameter value that is not valid for the current state of the resource. Possible causes:   You tried to perform the operation on a secret that's currently marked deleted.   You tried to enable rotation on a secret that doesn't already have a Lambda function ARN configured and you didn't include such an ARN as a parameter in this call.
     public static var invalidRequestException: Self { .init(.invalidRequestException) }
     /// The request failed because it would exceed one of the Secrets Manager internal limits.
     public static var limitExceededException: Self { .init(.limitExceededException) }

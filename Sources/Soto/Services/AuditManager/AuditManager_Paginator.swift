@@ -73,7 +73,7 @@ extension AuditManager {
         )
     }
 
-    ///   Returns a list of delegations from an audit owner to a delegate. 
+    ///   Returns a list of delegations from an audit owner to a delegate.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.
@@ -550,7 +550,7 @@ extension AuditManager {
         )
     }
 
-    ///   Returns a list of all AWS Audit Manager notifications. 
+    ///   Returns a list of all AWS Audit Manager notifications.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.

@@ -63,42 +63,42 @@ public struct AuditManager: AWSService {
 
     // MARK: API Calls
 
-    ///  Associates an evidence folder to the specified assessment report in AWS Audit Manager.  
+    ///  Associates an evidence folder to the specified assessment report in AWS Audit Manager.
     public func associateAssessmentReportEvidenceFolder(_ input: AssociateAssessmentReportEvidenceFolderRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<AssociateAssessmentReportEvidenceFolderResponse> {
         return self.client.execute(operation: "AssociateAssessmentReportEvidenceFolder", path: "/assessments/{assessmentId}/associateToAssessmentReport", httpMethod: .PUT, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    ///  Associates a list of evidence to an assessment report in an AWS Audit Manager assessment. 
+    ///  Associates a list of evidence to an assessment report in an AWS Audit Manager assessment.
     public func batchAssociateAssessmentReportEvidence(_ input: BatchAssociateAssessmentReportEvidenceRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<BatchAssociateAssessmentReportEvidenceResponse> {
         return self.client.execute(operation: "BatchAssociateAssessmentReportEvidence", path: "/assessments/{assessmentId}/batchAssociateToAssessmentReport", httpMethod: .PUT, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    ///  Create a batch of delegations for a specified assessment in AWS Audit Manager. 
+    ///  Create a batch of delegations for a specified assessment in AWS Audit Manager.
     public func batchCreateDelegationByAssessment(_ input: BatchCreateDelegationByAssessmentRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<BatchCreateDelegationByAssessmentResponse> {
         return self.client.execute(operation: "BatchCreateDelegationByAssessment", path: "/assessments/{assessmentId}/delegations", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Deletes the delegations in the specified AWS Audit Manager assessment. 
+    /// Deletes the delegations in the specified AWS Audit Manager assessment.
     public func batchDeleteDelegationByAssessment(_ input: BatchDeleteDelegationByAssessmentRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<BatchDeleteDelegationByAssessmentResponse> {
         return self.client.execute(operation: "BatchDeleteDelegationByAssessment", path: "/assessments/{assessmentId}/delegations", httpMethod: .PUT, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    ///  Disassociates a list of evidence from the specified assessment report in AWS Audit Manager.  
+    ///  Disassociates a list of evidence from the specified assessment report in AWS Audit Manager.
     public func batchDisassociateAssessmentReportEvidence(_ input: BatchDisassociateAssessmentReportEvidenceRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<BatchDisassociateAssessmentReportEvidenceResponse> {
         return self.client.execute(operation: "BatchDisassociateAssessmentReportEvidence", path: "/assessments/{assessmentId}/batchDisassociateFromAssessmentReport", httpMethod: .PUT, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    ///  Uploads one or more pieces of evidence to the specified control in the assessment in AWS Audit Manager. 
+    ///  Uploads one or more pieces of evidence to the specified control in the assessment in AWS Audit Manager.
     public func batchImportEvidenceToAssessmentControl(_ input: BatchImportEvidenceToAssessmentControlRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<BatchImportEvidenceToAssessmentControlResponse> {
         return self.client.execute(operation: "BatchImportEvidenceToAssessmentControl", path: "/assessments/{assessmentId}/controlSets/{controlSetId}/controls/{controlId}/evidence", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    ///  Creates an assessment in AWS Audit Manager. 
+    ///  Creates an assessment in AWS Audit Manager.
     public func createAssessment(_ input: CreateAssessmentRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<CreateAssessmentResponse> {
         return self.client.execute(operation: "CreateAssessment", path: "/assessments", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Creates a custom framework in AWS Audit Manager. 
+    /// Creates a custom framework in AWS Audit Manager.
     public func createAssessmentFramework(_ input: CreateAssessmentFrameworkRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<CreateAssessmentFrameworkResponse> {
         return self.client.execute(operation: "CreateAssessmentFramework", path: "/assessmentFrameworks", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -113,7 +113,7 @@ public struct AuditManager: AWSService {
         return self.client.execute(operation: "CreateControl", path: "/controls", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    ///  Deletes an assessment in AWS Audit Manager. 
+    ///  Deletes an assessment in AWS Audit Manager.
     public func deleteAssessment(_ input: DeleteAssessmentRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<DeleteAssessmentResponse> {
         return self.client.execute(operation: "DeleteAssessment", path: "/assessments/{assessmentId}", httpMethod: .DELETE, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -138,12 +138,12 @@ public struct AuditManager: AWSService {
         return self.client.execute(operation: "DeregisterAccount", path: "/account/deregisterAccount", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    ///  Deregisters the delegated AWS administrator account from the AWS organization. 
+    ///  Deregisters the delegated AWS administrator account from the AWS organization.
     public func deregisterOrganizationAdminAccount(_ input: DeregisterOrganizationAdminAccountRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<DeregisterOrganizationAdminAccountResponse> {
         return self.client.execute(operation: "DeregisterOrganizationAdminAccount", path: "/account/deregisterOrganizationAdminAccount", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    ///  Disassociates an evidence folder from the specified assessment report in AWS Audit Manager. 
+    ///  Disassociates an evidence folder from the specified assessment report in AWS Audit Manager.
     public func disassociateAssessmentReportEvidenceFolder(_ input: DisassociateAssessmentReportEvidenceFolderRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<DisassociateAssessmentReportEvidenceFolderResponse> {
         return self.client.execute(operation: "DisassociateAssessmentReportEvidenceFolder", path: "/assessments/{assessmentId}/disassociateFromAssessmentReport", httpMethod: .PUT, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -178,7 +178,7 @@ public struct AuditManager: AWSService {
         return self.client.execute(operation: "GetControl", path: "/controls/{controlId}", httpMethod: .GET, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    ///  Returns a list of delegations from an audit owner to a delegate. 
+    ///  Returns a list of delegations from an audit owner to a delegate.
     public func getDelegations(_ input: GetDelegationsRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<GetDelegationsResponse> {
         return self.client.execute(operation: "GetDelegations", path: "/delegations", httpMethod: .GET, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -208,17 +208,17 @@ public struct AuditManager: AWSService {
         return self.client.execute(operation: "GetEvidenceFoldersByAssessmentControl", path: "/assessments/{assessmentId}/evidenceFolders-by-assessment-control/{controlSetId}/{controlId}", httpMethod: .GET, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    ///  Returns the name of the delegated AWS administrator account for the AWS organization. 
+    ///  Returns the name of the delegated AWS administrator account for the AWS organization.
     public func getOrganizationAdminAccount(_ input: GetOrganizationAdminAccountRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<GetOrganizationAdminAccountResponse> {
         return self.client.execute(operation: "GetOrganizationAdminAccount", path: "/account/organizationAdminAccount", httpMethod: .GET, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    ///  Returns a list of the in-scope AWS services for the specified assessment. 
+    ///  Returns a list of the in-scope AWS services for the specified assessment.
     public func getServicesInScope(_ input: GetServicesInScopeRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<GetServicesInScopeResponse> {
         return self.client.execute(operation: "GetServicesInScope", path: "/services", httpMethod: .GET, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    ///  Returns the settings for the specified AWS account. 
+    ///  Returns the settings for the specified AWS account.
     public func getSettings(_ input: GetSettingsRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<GetSettingsResponse> {
         return self.client.execute(operation: "GetSettings", path: "/settings/{attribute}", httpMethod: .GET, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -248,7 +248,7 @@ public struct AuditManager: AWSService {
         return self.client.execute(operation: "ListKeywordsForDataSource", path: "/dataSourceKeywords", httpMethod: .GET, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    ///  Returns a list of all AWS Audit Manager notifications. 
+    ///  Returns a list of all AWS Audit Manager notifications.
     public func listNotifications(_ input: ListNotificationsRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<ListNotificationsResponse> {
         return self.client.execute(operation: "ListNotifications", path: "/notifications", httpMethod: .GET, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -258,7 +258,7 @@ public struct AuditManager: AWSService {
         return self.client.execute(operation: "ListTagsForResource", path: "/tags/{resourceArn}", httpMethod: .GET, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    ///  Enables AWS Audit Manager for the specified AWS account. 
+    ///  Enables AWS Audit Manager for the specified AWS account.
     public func registerAccount(_ input: RegisterAccountRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<RegisterAccountResponse> {
         return self.client.execute(operation: "RegisterAccount", path: "/account/registerAccount", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -278,7 +278,7 @@ public struct AuditManager: AWSService {
         return self.client.execute(operation: "UntagResource", path: "/tags/{resourceArn}", httpMethod: .DELETE, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    ///  Edits an AWS Audit Manager assessment. 
+    ///  Edits an AWS Audit Manager assessment.
     public func updateAssessment(_ input: UpdateAssessmentRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<UpdateAssessmentResponse> {
         return self.client.execute(operation: "UpdateAssessment", path: "/assessments/{assessmentId}", httpMethod: .PUT, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -298,7 +298,7 @@ public struct AuditManager: AWSService {
         return self.client.execute(operation: "UpdateAssessmentFramework", path: "/assessmentFrameworks/{frameworkId}", httpMethod: .PUT, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    ///  Updates the status of an assessment in AWS Audit Manager. 
+    ///  Updates the status of an assessment in AWS Audit Manager.
     public func updateAssessmentStatus(_ input: UpdateAssessmentStatusRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<UpdateAssessmentStatusResponse> {
         return self.client.execute(operation: "UpdateAssessmentStatus", path: "/assessments/{assessmentId}/status", httpMethod: .PUT, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -308,12 +308,12 @@ public struct AuditManager: AWSService {
         return self.client.execute(operation: "UpdateControl", path: "/controls/{controlId}", httpMethod: .PUT, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    ///  Updates AWS Audit Manager settings for the current user account. 
+    ///  Updates AWS Audit Manager settings for the current user account.
     public func updateSettings(_ input: UpdateSettingsRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<UpdateSettingsResponse> {
         return self.client.execute(operation: "UpdateSettings", path: "/settings", httpMethod: .PUT, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    ///  Validates the integrity of an assessment report in AWS Audit Manager. 
+    ///  Validates the integrity of an assessment report in AWS Audit Manager.
     public func validateAssessmentReportIntegrity(_ input: ValidateAssessmentReportIntegrityRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<ValidateAssessmentReportIntegrityResponse> {
         return self.client.execute(operation: "ValidateAssessmentReportIntegrity", path: "/assessmentReports/integrity", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }

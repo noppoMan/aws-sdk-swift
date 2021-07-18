@@ -87,7 +87,7 @@ extension Location {
             AWSMemberEncoding(label: "trackerName", location: .uri(locationName: "TrackerName"))
         ]
 
-        /// The Amazon Resource Name (ARN) for the geofence collection to be associated to tracker resource. Used when you need to specify a resource across all AWS.   Format example: arn:aws:geo:region:account-id:geofence-collection/ExampleGeofenceCollectionConsumer   
+        /// The Amazon Resource Name (ARN) for the geofence collection to be associated to tracker resource. Used when you need to specify a resource across all AWS.   Format example: arn:aws:geo:region:account-id:geofence-collection/ExampleGeofenceCollectionConsumer
         public let consumerArn: String
         /// The name of the tracker resource to be associated with a geofence collection.
         public let trackerName: String
@@ -111,15 +111,10 @@ extension Location {
     }
 
     public struct AssociateTrackerConsumerResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct BatchDeleteDevicePositionHistoryError: AWSDecodableShape {
-
         /// The ID of the device for this position.
         public let deviceId: String
         public let error: BatchItemError
@@ -140,7 +135,7 @@ extension Location {
             AWSMemberEncoding(label: "trackerName", location: .uri(locationName: "TrackerName"))
         ]
 
-        /// Devices whose position history you want to delete.   For example, for two devices: “DeviceIds” : [DeviceId1,DeviceId2]   
+        /// Devices whose position history you want to delete.   For example, for two devices: “DeviceIds” : [DeviceId1,DeviceId2]
         public let deviceIds: [String]
         /// The name of the tracker resource to delete the device position history from.
         public let trackerName: String
@@ -167,7 +162,6 @@ extension Location {
     }
 
     public struct BatchDeleteDevicePositionHistoryResponse: AWSDecodableShape {
-
         /// Contains error details for each device history that failed to delete.
         public let errors: [BatchDeleteDevicePositionHistoryError]
 
@@ -181,7 +175,6 @@ extension Location {
     }
 
     public struct BatchDeleteGeofenceError: AWSDecodableShape {
-
         /// Contains details associated to the batch error.
         public let error: BatchItemError
         /// The geofence associated with the error message.
@@ -230,7 +223,6 @@ extension Location {
     }
 
     public struct BatchDeleteGeofenceResponse: AWSDecodableShape {
-
         /// Contains error details for each geofence that failed to delete.
         public let errors: [BatchDeleteGeofenceError]
 
@@ -244,12 +236,11 @@ extension Location {
     }
 
     public struct BatchEvaluateGeofencesError: AWSDecodableShape {
-
         /// The device associated with the position evaluation error.
         public let deviceId: String
         /// Contains details associated to the batch error.
         public let error: BatchItemError
-        /// Specifies a timestamp for when the error occurred in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ 
+        /// Specifies a timestamp for when the error occurred in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ
         @CustomCoding<ISO8601DateCoder>
         public var sampleTime: Date
 
@@ -296,7 +287,6 @@ extension Location {
     }
 
     public struct BatchEvaluateGeofencesResponse: AWSDecodableShape {
-
         /// Contains error details for each device that failed to evaluate its position against the given geofence collection.
         public let errors: [BatchEvaluateGeofencesError]
 
@@ -310,7 +300,6 @@ extension Location {
     }
 
     public struct BatchGetDevicePositionError: AWSDecodableShape {
-
         /// The ID of the device that didn't return a position.
         public let deviceId: String
         /// Contains details related to the error code.
@@ -332,7 +321,7 @@ extension Location {
             AWSMemberEncoding(label: "trackerName", location: .uri(locationName: "TrackerName"))
         ]
 
-        /// Devices whose position you want to retrieve.   For example, for two devices: device-ids=DeviceId1&amp;device-ids=DeviceId2   
+        /// Devices whose position you want to retrieve.   For example, for two devices: device-ids=DeviceId1&amp;device-ids=DeviceId2
         public let deviceIds: [String]
         /// The tracker resource retrieving the device position.
         public let trackerName: String
@@ -359,7 +348,6 @@ extension Location {
     }
 
     public struct BatchGetDevicePositionResponse: AWSDecodableShape {
-
         /// Contains device position details such as the device ID, position, and timestamps for when the position was received and sampled.
         public let devicePositions: [DevicePosition]
         /// Contains  error details for each device that failed to send its position to the tracker resource.
@@ -377,7 +365,6 @@ extension Location {
     }
 
     public struct BatchItemError: AWSDecodableShape {
-
         /// The error code associated with the batch request error.
         public let code: BatchItemErrorCode?
         /// A message with the reason for the batch request error.
@@ -395,7 +382,6 @@ extension Location {
     }
 
     public struct BatchPutGeofenceError: AWSDecodableShape {
-
         /// Contains details associated to the batch error.
         public let error: BatchItemError
         /// The geofence associated with the error message.
@@ -442,10 +428,9 @@ extension Location {
     }
 
     public struct BatchPutGeofenceRequestEntry: AWSEncodableShape {
-
         /// The identifier for the geofence to be stored in a given geofence collection.
         public let geofenceId: String
-        /// Contains the polygon details to specify the position of the geofence.  Each geofence polygon can have a maximum of 1,000 vertices. 
+        /// Contains the polygon details to specify the position of the geofence.  Each geofence polygon can have a maximum of 1,000 vertices.
         public let geometry: GeofenceGeometry
 
         public init(geofenceId: String, geometry: GeofenceGeometry) {
@@ -467,7 +452,6 @@ extension Location {
     }
 
     public struct BatchPutGeofenceResponse: AWSDecodableShape {
-
         /// Contains additional error details for each geofence that failed to be stored in a geofence collection.
         public let errors: [BatchPutGeofenceError]
         /// Contains each geofence that was successfully stored in a geofence collection.
@@ -485,13 +469,12 @@ extension Location {
     }
 
     public struct BatchPutGeofenceSuccess: AWSDecodableShape {
-
-        /// The timestamp for when the geofence was stored in a geofence collection in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ 
+        /// The timestamp for when the geofence was stored in a geofence collection in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ
         @CustomCoding<ISO8601DateCoder>
         public var createTime: Date
         /// The geofence successfully stored in a geofence collection.
         public let geofenceId: String
-        /// The timestamp for when the geofence was last updated in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ 
+        /// The timestamp for when the geofence was last updated in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ
         @CustomCoding<ISO8601DateCoder>
         public var updateTime: Date
 
@@ -509,12 +492,11 @@ extension Location {
     }
 
     public struct BatchUpdateDevicePositionError: AWSDecodableShape {
-
         /// The device associated with the failed location update.
         public let deviceId: String
         /// Contains details related to the error code such as the error code and error message.
         public let error: BatchItemError
-        /// The timestamp at which the device position was determined. Uses  ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ. 
+        /// The timestamp at which the device position was determined. Uses  ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.
         @CustomCoding<ISO8601DateCoder>
         public var sampleTime: Date
 
@@ -561,7 +543,6 @@ extension Location {
     }
 
     public struct BatchUpdateDevicePositionResponse: AWSDecodableShape {
-
         /// Contains  error details for each device that failed to update its position.
         public let errors: [BatchUpdateDevicePositionError]
 
@@ -575,10 +556,9 @@ extension Location {
     }
 
     public struct CalculateRouteCarModeOptions: AWSEncodableShape {
-
-        /// Avoids ferries when calculating routes. Default Value: false  Valid Values: false | true 
+        /// Avoids ferries when calculating routes. Default Value: false  Valid Values: false | true
         public let avoidFerries: Bool?
-        /// Avoids tolls when calculating routes. Default Value: false  Valid Values: false | true 
+        /// Avoids tolls when calculating routes. Default Value: false  Valid Values: false | true
         public let avoidTolls: Bool?
 
         public init(avoidFerries: Bool? = nil, avoidTolls: Bool? = nil) {
@@ -597,28 +577,28 @@ extension Location {
             AWSMemberEncoding(label: "calculatorName", location: .uri(locationName: "CalculatorName"))
         ]
 
-        /// The name of the route calculator resource that you want to use to calculate a route. 
+        /// The name of the route calculator resource that you want to use to calculate a route.
         public let calculatorName: String
         /// Specifies route preferences when traveling by Car, such as avoiding routes that use ferries or tolls. Requirements: TravelMode must be specified as Car.
         public let carModeOptions: CalculateRouteCarModeOptions?
-        /// Sets the time of departure as the current time. Uses the current time to calculate a route. Otherwise, the best time of day to travel with the best traffic conditions is used to calculate the route. Default Value: false  Valid Values: false | true 
+        /// Sets the time of departure as the current time. Uses the current time to calculate a route. Otherwise, the best time of day to travel with the best traffic conditions is used to calculate the route. Default Value: false  Valid Values: false | true
         public let departNow: Bool?
-        /// The start position for the route. Defined in WGS 84 format: [longitude, latitude].   For example, [-123.115, 49.285]     If you specify a departure that's not located on a road, Amazon Location moves the position to the nearest road.  Valid Values: [-180 to 180,-90 to 90] 
+        /// The start position for the route. Defined in WGS 84 format: [longitude, latitude].   For example, [-123.115, 49.285]     If you specify a departure that's not located on a road, Amazon Location moves the position to the nearest road.  Valid Values: [-180 to 180,-90 to 90]
         public let departurePosition: [Double]
-        /// Specifies the desired time of departure. Uses the given time to calculate a route. Otherwise, the best time of day to travel with the best traffic conditions is used to calculate the route.  Setting a departure time in the past returns a 400 ValidationException error.    In ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ. For example, 2020–07-2T12:15:20.000Z+01:00   
+        /// Specifies the desired time of departure. Uses the given time to calculate a route. Otherwise, the best time of day to travel with the best traffic conditions is used to calculate the route.  Setting a departure time in the past returns a 400 ValidationException error.    In ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ. For example, 2020–07-2T12:15:20.000Z+01:00
         @OptionalCustomCoding<ISO8601DateCoder>
         public var departureTime: Date?
-        /// The finish position for the route. Defined in WGS 84 format: [longitude, latitude].   For example, [-122.339, 47.615]     If you specify a destination that's not located on a road, Amazon Location moves the position to the nearest road.   Valid Values: [-180 to 180,-90 to 90] 
+        /// The finish position for the route. Defined in WGS 84 format: [longitude, latitude].   For example, [-122.339, 47.615]     If you specify a destination that's not located on a road, Amazon Location moves the position to the nearest road.   Valid Values: [-180 to 180,-90 to 90]
         public let destinationPosition: [Double]
-        /// Set the unit system to specify the distance. Default Value: Kilometers 
+        /// Set the unit system to specify the distance. Default Value: Kilometers
         public let distanceUnit: DistanceUnit?
-        /// Set to include the geometry details in the result for each path between a pair of positions. Default Value: false  Valid Values: false | true 
+        /// Set to include the geometry details in the result for each path between a pair of positions. Default Value: false  Valid Values: false | true
         public let includeLegGeometry: Bool?
-        /// Specifies the mode of transport when calculating a route. Used in estimating the speed of travel and road compatibility. The TravelMode you specify determines how you specify route preferences:    If traveling by Car use the CarModeOptions parameter.   If traveling by Truck use the TruckModeOptions parameter.   Default Value: Car 
+        /// Specifies the mode of transport when calculating a route. Used in estimating the speed of travel and road compatibility. The TravelMode you specify determines how you specify route preferences:    If traveling by Car use the CarModeOptions parameter.   If traveling by Truck use the TruckModeOptions parameter.   Default Value: Car
         public let travelMode: TravelMode?
         /// Specifies route preferences when traveling by Truck, such as avoiding routes that use ferries or tolls, and truck specifications to consider when choosing an optimal road. Requirements: TravelMode must be specified as Truck.
         public let truckModeOptions: CalculateRouteTruckModeOptions?
-        /// Specifies an ordered list of up to 23 intermediate positions to include along a route between the departure position and destination position.    For example, from the DeparturePosition [-123.115, 49.285], the route follows the order that the waypoint positions are given [[-122.757, 49.0021],[-122.349, 47.620]]     If you specify a waypoint position that's not located on a road, Amazon Location moves the position to the nearest road.  Specifying more than 23 waypoints returns a 400 ValidationException error.  Valid Values: [-180 to 180,-90 to 90] 
+        /// Specifies an ordered list of up to 23 intermediate positions to include along a route between the departure position and destination position.    For example, from the DeparturePosition [-123.115, 49.285], the route follows the order that the waypoint positions are given [[-122.757, 49.0021],[-122.349, 47.620]]     If you specify a waypoint position that's not located on a road, Amazon Location moves the position to the nearest road.  Specifying more than 23 waypoints returns a 400 ValidationException error.  Valid Values: [-180 to 180,-90 to 90]
         public let waypointPositions: [[Double]]?
 
         public init(calculatorName: String, carModeOptions: CalculateRouteCarModeOptions? = nil, departNow: Bool? = nil, departurePosition: [Double], departureTime: Date? = nil, destinationPosition: [Double], distanceUnit: DistanceUnit? = nil, includeLegGeometry: Bool? = nil, travelMode: TravelMode? = nil, truckModeOptions: CalculateRouteTruckModeOptions? = nil, waypointPositions: [[Double]]? = nil) {
@@ -664,10 +644,9 @@ extension Location {
     }
 
     public struct CalculateRouteResponse: AWSDecodableShape {
-
-        /// Contains details about each path between a pair of positions included along a route such as: StartPosition, EndPosition, Distance, DurationSeconds, Geometry, and Steps. The number of legs returned corresponds to one less than the total number of positions in the request.  For example, a route with a departure position and destination position returns one leg with the positions snapped to a nearby road:   The StartPosition is the departure position.   The EndPosition is the destination position.   A route with a waypoint between the departure and destination position returns two legs with the positions snapped to a nearby road.:   Leg 1: The StartPosition is the departure position . The EndPosition is the waypoint positon.   Leg 2: The StartPosition is the waypoint position. The EndPosition is the destination position.  
+        /// Contains details about each path between a pair of positions included along a route such as: StartPosition, EndPosition, Distance, DurationSeconds, Geometry, and Steps. The number of legs returned corresponds to one less than the total number of positions in the request.  For example, a route with a departure position and destination position returns one leg with the positions snapped to a nearby road:   The StartPosition is the departure position.   The EndPosition is the destination position.   A route with a waypoint between the departure and destination position returns two legs with the positions snapped to a nearby road.:   Leg 1: The StartPosition is the departure position . The EndPosition is the waypoint positon.   Leg 2: The StartPosition is the waypoint position. The EndPosition is the destination position.
         public let legs: [Leg]
-        /// Contains information about the whole route, such as: RouteBBox, DataSource, Distance, DistanceUnit, and DurationSeconds 
+        /// Contains information about the whole route, such as: RouteBBox, DataSource, Distance, DistanceUnit, and DurationSeconds
         public let summary: CalculateRouteSummary
 
         public init(legs: [Leg], summary: CalculateRouteSummary) {
@@ -682,16 +661,15 @@ extension Location {
     }
 
     public struct CalculateRouteSummary: AWSDecodableShape {
-
         /// The data provider of traffic and road network data used to calculate the route. Indicates one of the available providers:    Esri     Here    For more information about data providers, see Amazon Location Service data providers.
         public let dataSource: String
-        /// The total distance covered by the route. The sum of the distance travelled between every stop on the route.  The route distance can't be greater than 250 km. If the route exceeds 250 km, the response returns a 400 RoutesValidationException error. 
+        /// The total distance covered by the route. The sum of the distance travelled between every stop on the route.  The route distance can't be greater than 250 km. If the route exceeds 250 km, the response returns a 400 RoutesValidationException error.
         public let distance: Double
         /// The unit of measurement for the distance.
         public let distanceUnit: DistanceUnit
         /// The total travel time for the route measured in seconds. The sum of the travel time between every stop on the route.
         public let durationSeconds: Double
-        /// Specifies a geographical box surrounding a route. Used to zoom into a route when displaying it in a map. For example, [min x, min y, max x, max y]  The first 2 bbox parameters describe the lower southwest corner:    The first bbox position is the X coordinate or longitude of the lower southwest corner.    The second bbox position is the Y coordinate or latitude of the lower southwest corner.    The next 2 bbox parameters describe the upper northeast corner:    The third bbox position is the X coordinate, or longitude of the upper northeast corner.    The fourth bbox position is the Y coordinate, or longitude of the upper northeast corner.   
+        /// Specifies a geographical box surrounding a route. Used to zoom into a route when displaying it in a map. For example, [min x, min y, max x, max y]  The first 2 bbox parameters describe the lower southwest corner:    The first bbox position is the X coordinate or longitude of the lower southwest corner.    The second bbox position is the Y coordinate or latitude of the lower southwest corner.    The next 2 bbox parameters describe the upper northeast corner:    The third bbox position is the X coordinate, or longitude of the upper northeast corner.    The fourth bbox position is the Y coordinate, or longitude of the upper northeast corner.
         public let routeBBox: [Double]
 
         public init(dataSource: String, distance: Double, distanceUnit: DistanceUnit, durationSeconds: Double, routeBBox: [Double]) {
@@ -712,10 +690,9 @@ extension Location {
     }
 
     public struct CalculateRouteTruckModeOptions: AWSEncodableShape {
-
-        /// Avoids ferries when calculating routes. Default Value: false  Valid Values: false | true 
+        /// Avoids ferries when calculating routes. Default Value: false  Valid Values: false | true
         public let avoidFerries: Bool?
-        /// Avoids ferries when calculating routes. Default Value: false  Valid Values: false | true 
+        /// Avoids ferries when calculating routes. Default Value: false  Valid Values: false | true
         public let avoidTolls: Bool?
         /// Specifies the truck's dimension specifications including length, height, width, and unit of measurement. Used to avoid roads that can't support the truck's dimensions.
         public let dimensions: TruckDimensions?
@@ -738,22 +715,21 @@ extension Location {
     }
 
     public struct CreateGeofenceCollectionRequest: AWSEncodableShape {
-
-        /// A custom name for the geofence collection. Requirements:   Contain only alphanumeric characters (A–Z, a–z, 0–9), hyphens (-), periods (.), and underscores (_).    Must be a unique geofence collection name.   No spaces allowed. For example, ExampleGeofenceCollection.  
+        /// A custom name for the geofence collection. Requirements:   Contain only alphanumeric characters (A–Z, a–z, 0–9), hyphens (-), periods (.), and underscores (_).    Must be a unique geofence collection name.   No spaces allowed. For example, ExampleGeofenceCollection.
         public let collectionName: String
         /// An optional description for the geofence collection.
         public let description: String?
         /// A key identifier for an AWS KMS customer managed key. Enter a key ID, key ARN, alias name, or alias ARN.
-        /// 	
+        ///
         public let kmsKeyId: String?
         /// Specifies the pricing plan for the geofence collection. For additional details and restrictions on each pricing plan option, see the Amazon Location Service pricing page.
         public let pricingPlan: PricingPlan
         /// Specifies the data provider for the geofence collection.   Required value for the following pricing plans: MobileAssetTracking | MobileAssetManagement    For more information about Data Providers, and Pricing plans, see the Amazon Location Service product page.
-        /// 	        
+        ///
         /// 	           Amazon Location Service only uses PricingPlanDataSource to calculate billing for your geofence collection. Your data won't be shared with the data provider, and will remain in your AWS account or Region unless you move it.
-        /// 	         Valid Values: Esri | Here 
+        /// 	         Valid Values: Esri | Here
         public let pricingPlanDataSource: String?
-        /// Applies one or more tags to the geofence collection. A tag is a key-value pair helps manage, identify, search, and filter your resources by labelling them. Format: "key" : "value"  Restrictions:   Maximum 50 tags per resource   Each resource tag must be unique with a maximum of one value.   Maximum key length: 128 Unicode characters in UTF-8   Maximum value length: 256 Unicode characters in UTF-8   Can use alphanumeric characters (A–Z, a–z, 0–9), and the following characters: + - = . _ : / @.   
+        /// Applies one or more tags to the geofence collection. A tag is a key-value pair helps manage, identify, search, and filter your resources by labelling them. Format: "key" : "value"  Restrictions:   Maximum 50 tags per resource   Each resource tag must be unique with a maximum of one value.   Maximum key length: 128 Unicode characters in UTF-8   Maximum value length: 256 Unicode characters in UTF-8   Can use alphanumeric characters (A–Z, a–z, 0–9), and the following characters: + - = . _ : / @.
         public let tags: [String: String]?
 
         public init(collectionName: String, description: String? = nil, kmsKeyId: String? = nil, pricingPlan: PricingPlan, pricingPlanDataSource: String? = nil, tags: [String: String]? = nil) {
@@ -793,12 +769,11 @@ extension Location {
     }
 
     public struct CreateGeofenceCollectionResponse: AWSDecodableShape {
-
-        /// The Amazon Resource Name (ARN) for the geofence collection resource. Used when you need to specify a resource across all AWS.    Format example: arn:aws:geo:region:account-id:geofence-collection/ExampleGeofenceCollection   
+        /// The Amazon Resource Name (ARN) for the geofence collection resource. Used when you need to specify a resource across all AWS.    Format example: arn:aws:geo:region:account-id:geofence-collection/ExampleGeofenceCollection
         public let collectionArn: String
         /// The name for the geofence collection.
         public let collectionName: String
-        /// The timestamp for when the geofence collection was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ 
+        /// The timestamp for when the geofence collection was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ
         @CustomCoding<ISO8601DateCoder>
         public var createTime: Date
 
@@ -816,16 +791,15 @@ extension Location {
     }
 
     public struct CreateMapRequest: AWSEncodableShape {
-
         /// Specifies the map style selected from an available data provider.
         public let configuration: MapConfiguration
         /// An optional description for the map resource.
         public let description: String?
-        /// The name for the map resource. Requirements:   Must contain only alphanumeric characters (A–Z, a–z, 0–9), hyphens (-), periods (.), and underscores (_).    Must be a unique map resource name.    No spaces allowed. For example, ExampleMap.  
+        /// The name for the map resource. Requirements:   Must contain only alphanumeric characters (A–Z, a–z, 0–9), hyphens (-), periods (.), and underscores (_).    Must be a unique map resource name.    No spaces allowed. For example, ExampleMap.
         public let mapName: String
         /// Specifies the pricing plan for your map resource. For additional details and restrictions on each pricing plan option, see the Amazon Location Service pricing page.
         public let pricingPlan: PricingPlan
-        /// Applies one or more tags to the map resource. A tag is a key-value pair helps manage, identify, search, and filter your resources by labelling them. Format: "key" : "value"  Restrictions:   Maximum 50 tags per resource   Each resource tag must be unique with a maximum of one value.   Maximum key length: 128 Unicode characters in UTF-8   Maximum value length:  256 Unicode characters in UTF-8   Can use alphanumeric characters (A–Z, a–z, 0–9), and the following characters: + - = . _ : / @.   
+        /// Applies one or more tags to the map resource. A tag is a key-value pair helps manage, identify, search, and filter your resources by labelling them. Format: "key" : "value"  Restrictions:   Maximum 50 tags per resource   Each resource tag must be unique with a maximum of one value.   Maximum key length: 128 Unicode characters in UTF-8   Maximum value length:  256 Unicode characters in UTF-8   Can use alphanumeric characters (A–Z, a–z, 0–9), and the following characters: + - = . _ : / @.
         public let tags: [String: String]?
 
         public init(configuration: MapConfiguration, description: String? = nil, mapName: String, pricingPlan: PricingPlan, tags: [String: String]? = nil) {
@@ -862,11 +836,10 @@ extension Location {
     }
 
     public struct CreateMapResponse: AWSDecodableShape {
-
         /// The timestamp for when the map resource was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.
         @CustomCoding<ISO8601DateCoder>
         public var createTime: Date
-        /// The Amazon Resource Name (ARN) for the map resource. Used when you need to specify a resource across all AWS.   Format example: arn:aws:geo:region:account-id:maps/ExampleMap   
+        /// The Amazon Resource Name (ARN) for the map resource. Used when you need to specify a resource across all AWS.   Format example: arn:aws:geo:region:account-id:maps/ExampleMap
         public let mapArn: String
         /// The name of the map resource.
         public let mapName: String
@@ -885,18 +858,17 @@ extension Location {
     }
 
     public struct CreatePlaceIndexRequest: AWSEncodableShape {
-
         /// Specifies the data provider of geospatial data.  This field is case-sensitive. Enter the valid values as shown. For example, entering HERE will return an error.  Valid values include:    Esri     Here   Place index resources using HERE as a data provider can't be used to store results for locations in Japan. For more information, see the AWS Service Terms for Amazon Location Service.    For additional details on data providers, see the Amazon Location Service data providers page.
         public let dataSource: String
         /// Specifies the data storage option for requesting Places.
         public let dataSourceConfiguration: DataSourceConfiguration?
         /// The optional description for the place index resource.
         public let description: String?
-        /// The name of the place index resource.  Requirements:   Contain only alphanumeric characters (A–Z, a–z, 0–9), hyphens (-), periods (.), and underscores (_).   Must be a unique place index resource name.   No spaces allowed. For example, ExamplePlaceIndex.  
+        /// The name of the place index resource.  Requirements:   Contain only alphanumeric characters (A–Z, a–z, 0–9), hyphens (-), periods (.), and underscores (_).   Must be a unique place index resource name.   No spaces allowed. For example, ExamplePlaceIndex.
         public let indexName: String
         /// Specifies the pricing plan for your place index resource. For additional details and restrictions on each pricing plan option, see the Amazon Location Service pricing page.
         public let pricingPlan: PricingPlan
-        /// Applies one or more tags to the place index resource. A tag is a key-value pair helps manage, identify, search, and filter your resources by labelling them. Format: "key" : "value"  Restrictions:   Maximum 50 tags per resource   Each resource tag must be unique with a maximum of one value.   Maximum key length: 128 Unicode characters in UTF-8   Maximum value length: 256 Unicode characters in UTF-8   Can use alphanumeric characters (A–Z, a–z, 0–9), and the following characters: + - = . _ : / @.   
+        /// Applies one or more tags to the place index resource. A tag is a key-value pair helps manage, identify, search, and filter your resources by labelling them. Format: "key" : "value"  Restrictions:   Maximum 50 tags per resource   Each resource tag must be unique with a maximum of one value.   Maximum key length: 128 Unicode characters in UTF-8   Maximum value length: 256 Unicode characters in UTF-8   Can use alphanumeric characters (A–Z, a–z, 0–9), and the following characters: + - = . _ : / @.
         public let tags: [String: String]?
 
         public init(dataSource: String, dataSourceConfiguration: DataSourceConfiguration? = nil, description: String? = nil, indexName: String, pricingPlan: PricingPlan, tags: [String: String]? = nil) {
@@ -934,11 +906,10 @@ extension Location {
     }
 
     public struct CreatePlaceIndexResponse: AWSDecodableShape {
-
-        /// The timestamp for when the place index resource was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ. 
+        /// The timestamp for when the place index resource was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.
         @CustomCoding<ISO8601DateCoder>
         public var createTime: Date
-        /// The Amazon Resource Name (ARN) for the place index resource. Used to specify a resource across all AWS.    Format example: arn:aws:geo:region:account-id:place-index/ExamplePlaceIndex   
+        /// The Amazon Resource Name (ARN) for the place index resource. Used to specify a resource across all AWS.    Format example: arn:aws:geo:region:account-id:place-index/ExamplePlaceIndex
         public let indexArn: String
         /// The name for the place index resource.
         public let indexName: String
@@ -957,8 +928,7 @@ extension Location {
     }
 
     public struct CreateRouteCalculatorRequest: AWSEncodableShape {
-
-        /// The name of the route calculator resource.  Requirements:   Can use alphanumeric characters (A–Z, a–z, 0–9) , hyphens (-), periods (.), and underscores (_).   Must be a unique Route calculator resource name.   No spaces allowed. For example, ExampleRouteCalculator.  
+        /// The name of the route calculator resource.  Requirements:   Can use alphanumeric characters (A–Z, a–z, 0–9) , hyphens (-), periods (.), and underscores (_).   Must be a unique Route calculator resource name.   No spaces allowed. For example, ExampleRouteCalculator.
         public let calculatorName: String
         /// Specifies the data provider of traffic and road network data.  This field is case-sensitive. Enter the valid values as shown. For example, entering HERE returns an error.  Valid Values: Esri | Here  For more information about data providers, see Amazon Location Service data providers.
         public let dataSource: String
@@ -966,7 +936,7 @@ extension Location {
         public let description: String?
         /// Specifies the pricing plan for your route calculator resource. For additional details and restrictions on each pricing plan option, see Amazon Location Service pricing.
         public let pricingPlan: PricingPlan
-        /// Applies one or more tags to the route calculator resource. A tag is a key-value pair helps manage, identify, search, and filter your resources by labelling them.   For example: { "tag1" : "value1", "tag2" : "value2"}   Format: "key" : "value"  Restrictions:   Maximum 50 tags per resource   Each resource tag must be unique with a maximum of one value.   Maximum key length: 128 Unicode characters in UTF-8   Maximum value length: 256 Unicode characters in UTF-8   Can use alphanumeric characters (A–Z, a–z, 0–9), and the following characters: + - = . _ : / @.   
+        /// Applies one or more tags to the route calculator resource. A tag is a key-value pair helps manage, identify, search, and filter your resources by labelling them.   For example: { "tag1" : "value1", "tag2" : "value2"}   Format: "key" : "value"  Restrictions:   Maximum 50 tags per resource   Each resource tag must be unique with a maximum of one value.   Maximum key length: 128 Unicode characters in UTF-8   Maximum value length: 256 Unicode characters in UTF-8   Can use alphanumeric characters (A–Z, a–z, 0–9), and the following characters: + - = . _ : / @.
         public let tags: [String: String]?
 
         public init(calculatorName: String, dataSource: String, description: String? = nil, pricingPlan: PricingPlan, tags: [String: String]? = nil) {
@@ -1002,12 +972,11 @@ extension Location {
     }
 
     public struct CreateRouteCalculatorResponse: AWSDecodableShape {
-
-        /// The Amazon Resource Name (ARN) for the route calculator resource. Use the ARN when you specify a resource across all AWS.   Format example: arn:aws:geo:region:account-id:route-calculator/ExampleCalculator   
+        /// The Amazon Resource Name (ARN) for the route calculator resource. Use the ARN when you specify a resource across all AWS.   Format example: arn:aws:geo:region:account-id:route-calculator/ExampleCalculator
         public let calculatorArn: String
-        /// The name of the route calculator resource.    For example, ExampleRouteCalculator.  
+        /// The name of the route calculator resource.    For example, ExampleRouteCalculator.
         public let calculatorName: String
-        /// The timestamp when the route calculator resource was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.    For example, 2020–07-2T12:15:20.000Z+01:00   
+        /// The timestamp when the route calculator resource was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.    For example, 2020–07-2T12:15:20.000Z+01:00
         @CustomCoding<ISO8601DateCoder>
         public var createTime: Date
 
@@ -1025,7 +994,6 @@ extension Location {
     }
 
     public struct CreateTrackerRequest: AWSEncodableShape {
-
         /// An optional description for the tracker resource.
         public let description: String?
         /// A key identifier for an AWS KMS customer managed key. Enter a key ID, key ARN, alias name, or alias ARN.
@@ -1033,13 +1001,13 @@ extension Location {
         /// Specifies the pricing plan for the tracker resource. For additional details and restrictions on each pricing plan option, see the Amazon Location Service pricing page.
         public let pricingPlan: PricingPlan
         /// Specifies the data provider for the tracker resource.   Required value for the following pricing plans: MobileAssetTracking | MobileAssetManagement    For more information about Data Providers, and Pricing plans, see the Amazon Location Service product page.
-        /// 	        
+        ///
         /// 	           Amazon Location Service only uses PricingPlanDataSource to calculate billing for your tracker resource. Your data will not be shared with the data provider, and will remain in your AWS account or Region unless you move it.
-        /// 	         Valid Values: Esri | Here 
+        /// 	         Valid Values: Esri | Here
         public let pricingPlanDataSource: String?
-        /// Applies one or more tags to the tracker resource. A tag is a key-value pair helps manage, identify, search, and filter your resources by labelling them. Format: "key" : "value"  Restrictions:   Maximum 50 tags per resource   Each resource tag must be unique with a maximum of one value.   Maximum key length: 128 Unicode characters in UTF-8   Maximum value length: 256 Unicode characters in UTF-8   Can use alphanumeric characters (A–Z, a–z, 0–9), and the following characters: + - = . _ : / @.   
+        /// Applies one or more tags to the tracker resource. A tag is a key-value pair helps manage, identify, search, and filter your resources by labelling them. Format: "key" : "value"  Restrictions:   Maximum 50 tags per resource   Each resource tag must be unique with a maximum of one value.   Maximum key length: 128 Unicode characters in UTF-8   Maximum value length: 256 Unicode characters in UTF-8   Can use alphanumeric characters (A–Z, a–z, 0–9), and the following characters: + - = . _ : / @.
         public let tags: [String: String]?
-        /// The name for the tracker resource. Requirements:   Contain only alphanumeric characters (A-Z, a-z, 0-9) , hyphens (-), periods (.), and underscores (_).   Must be a unique tracker resource name.   No spaces allowed. For example, ExampleTracker.  
+        /// The name for the tracker resource. Requirements:   Contain only alphanumeric characters (A-Z, a-z, 0-9) , hyphens (-), periods (.), and underscores (_).   Must be a unique tracker resource name.   No spaces allowed. For example, ExampleTracker.
         public let trackerName: String
 
         public init(description: String? = nil, kmsKeyId: String? = nil, pricingPlan: PricingPlan, pricingPlanDataSource: String? = nil, tags: [String: String]? = nil, trackerName: String) {
@@ -1079,11 +1047,10 @@ extension Location {
     }
 
     public struct CreateTrackerResponse: AWSDecodableShape {
-
-        /// The timestamp for when the tracker resource was created in  ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ. 
+        /// The timestamp for when the tracker resource was created in  ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.
         @CustomCoding<ISO8601DateCoder>
         public var createTime: Date
-        /// The Amazon Resource Name (ARN) for the tracker resource. Used when you need to specify a resource across all AWS.   Format example: arn:aws:geo:region:account-id:tracker/ExampleTracker   
+        /// The Amazon Resource Name (ARN) for the tracker resource. Used when you need to specify a resource across all AWS.   Format example: arn:aws:geo:region:account-id:tracker/ExampleTracker
         public let trackerArn: String
         /// The name of the tracker resource.
         public let trackerName: String
@@ -1102,8 +1069,7 @@ extension Location {
     }
 
     public struct DataSourceConfiguration: AWSEncodableShape & AWSDecodableShape {
-
-        /// Specifies how the results of an operation will be stored by the caller.  Valid values include:    SingleUse specifies that the results won't be stored.     Storage specifies that the result can be cached or stored in a database.  Place index resources using HERE as a data provider can't be configured to store results for locations in Japan when choosing Storage for the IntendedUse parameter.    Default value:  SingleUse 
+        /// Specifies how the results of an operation will be stored by the caller.  Valid values include:    SingleUse specifies that the results won't be stored.     Storage specifies that the result can be cached or stored in a database.  Place index resources using HERE as a data provider can't be configured to store results for locations in Japan when choosing Storage for the IntendedUse parameter.    Default value:  SingleUse
         public let intendedUse: IntendedUse?
 
         public init(intendedUse: IntendedUse? = nil) {
@@ -1137,11 +1103,7 @@ extension Location {
     }
 
     public struct DeleteGeofenceCollectionResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteMapRequest: AWSEncodableShape {
@@ -1166,11 +1128,7 @@ extension Location {
     }
 
     public struct DeleteMapResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeletePlaceIndexRequest: AWSEncodableShape {
@@ -1195,11 +1153,7 @@ extension Location {
     }
 
     public struct DeletePlaceIndexResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteRouteCalculatorRequest: AWSEncodableShape {
@@ -1224,11 +1178,7 @@ extension Location {
     }
 
     public struct DeleteRouteCalculatorResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteTrackerRequest: AWSEncodableShape {
@@ -1253,11 +1203,7 @@ extension Location {
     }
 
     public struct DeleteTrackerResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DescribeGeofenceCollectionRequest: AWSEncodableShape {
@@ -1282,12 +1228,11 @@ extension Location {
     }
 
     public struct DescribeGeofenceCollectionResponse: AWSDecodableShape {
-
-        /// The Amazon Resource Name (ARN) for the geofence collection resource. Used when you need to specify a resource across all AWS.    Format example: arn:aws:geo:region:account-id:geofence-collection/ExampleGeofenceCollection   
+        /// The Amazon Resource Name (ARN) for the geofence collection resource. Used when you need to specify a resource across all AWS.    Format example: arn:aws:geo:region:account-id:geofence-collection/ExampleGeofenceCollection
         public let collectionArn: String
         /// The name of the geofence collection.
         public let collectionName: String
-        /// The timestamp for when the geofence resource was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ 
+        /// The timestamp for when the geofence resource was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ
         @CustomCoding<ISO8601DateCoder>
         public var createTime: Date
         /// The optional description for the geofence collection.
@@ -1300,7 +1245,7 @@ extension Location {
         public let pricingPlanDataSource: String?
         /// Displays the key, value pairs of tags associated with this resource.
         public let tags: [String: String]?
-        /// The timestamp for when the geofence collection was last updated in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ 
+        /// The timestamp for when the geofence collection was last updated in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ
         @CustomCoding<ISO8601DateCoder>
         public var updateTime: Date
 
@@ -1351,7 +1296,6 @@ extension Location {
     }
 
     public struct DescribeMapResponse: AWSDecodableShape {
-
         /// Specifies the map tile style selected from a partner data provider.
         public let configuration: MapConfiguration
         /// The timestamp for when the map resource was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.
@@ -1361,7 +1305,7 @@ extension Location {
         public let dataSource: String
         /// The optional description for the map resource.
         public let description: String
-        /// The Amazon Resource Name (ARN) for the map resource. Used when you need to specify a resource across all AWS.   Format example: arn:aws:geo:region:account-id:maps/ExampleMap   
+        /// The Amazon Resource Name (ARN) for the map resource. Used when you need to specify a resource across all AWS.   Format example: arn:aws:geo:region:account-id:maps/ExampleMap
         public let mapArn: String
         /// The map style selected from an available provider.
         public let mapName: String
@@ -1421,8 +1365,7 @@ extension Location {
     }
 
     public struct DescribePlaceIndexResponse: AWSDecodableShape {
-
-        /// The timestamp for when the place index resource was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ. 
+        /// The timestamp for when the place index resource was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.
         @CustomCoding<ISO8601DateCoder>
         public var createTime: Date
         /// The data provider of geospatial data. Indicates one of the available providers:    Esri     Here    For additional details on data providers, see the Amazon Location Service data providers page.
@@ -1431,7 +1374,7 @@ extension Location {
         public let dataSourceConfiguration: DataSourceConfiguration
         /// The optional description for the place index resource.
         public let description: String
-        /// The Amazon Resource Name (ARN) for the place index resource. Used to specify a resource across all AWS.    Format example: arn:aws:geo:region:account-id:place-index/ExamplePlaceIndex   
+        /// The Amazon Resource Name (ARN) for the place index resource. Used to specify a resource across all AWS.    Format example: arn:aws:geo:region:account-id:place-index/ExamplePlaceIndex
         public let indexArn: String
         /// The name of the place index resource being described.
         public let indexName: String
@@ -1439,7 +1382,7 @@ extension Location {
         public let pricingPlan: PricingPlan
         /// Tags associated with place index resource.
         public let tags: [String: String]?
-        /// The timestamp for when the place index resource was last updated in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ. 
+        /// The timestamp for when the place index resource was last updated in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.
         @CustomCoding<ISO8601DateCoder>
         public var updateTime: Date
 
@@ -1490,12 +1433,11 @@ extension Location {
     }
 
     public struct DescribeRouteCalculatorResponse: AWSDecodableShape {
-
-        /// The Amazon Resource Name (ARN) for the Route calculator resource. Use the ARN when you specify a resource across AWS.   Format example: arn:aws:geo:region:account-id:route-calculator/ExampleCalculator   
+        /// The Amazon Resource Name (ARN) for the Route calculator resource. Use the ARN when you specify a resource across AWS.   Format example: arn:aws:geo:region:account-id:route-calculator/ExampleCalculator
         public let calculatorArn: String
         /// The name of the route calculator resource being described.
         public let calculatorName: String
-        /// The timestamp when the route calculator resource was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.    For example, 2020–07-2T12:15:20.000Z+01:00   
+        /// The timestamp when the route calculator resource was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.    For example, 2020–07-2T12:15:20.000Z+01:00
         @CustomCoding<ISO8601DateCoder>
         public var createTime: Date
         /// The data provider of traffic and road network data. Indicates one of the available providers:    Esri     Here    For more information about data providers, see Amazon Location Service data providers.
@@ -1506,7 +1448,7 @@ extension Location {
         public let pricingPlan: PricingPlan
         /// Tags associated with route calculator resource.
         public let tags: [String: String]?
-        /// The timestamp when the route calculator resource was last updated in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.    For example, 2020–07-2T12:15:20.000Z+01:00   
+        /// The timestamp when the route calculator resource was last updated in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.    For example, 2020–07-2T12:15:20.000Z+01:00
         @CustomCoding<ISO8601DateCoder>
         public var updateTime: Date
 
@@ -1555,8 +1497,7 @@ extension Location {
     }
 
     public struct DescribeTrackerResponse: AWSDecodableShape {
-
-        /// The timestamp for when the tracker resource was created in  ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ. 
+        /// The timestamp for when the tracker resource was created in  ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.
         @CustomCoding<ISO8601DateCoder>
         public var createTime: Date
         /// The optional description for the tracker resource.
@@ -1569,11 +1510,11 @@ extension Location {
         public let pricingPlanDataSource: String?
         /// The tags associated with the tracker resource.
         public let tags: [String: String]?
-        /// The Amazon Resource Name (ARN) for the tracker resource. Used when you need to specify a resource across all AWS.   Format example: arn:aws:geo:region:account-id:tracker/ExampleTracker   
+        /// The Amazon Resource Name (ARN) for the tracker resource. Used when you need to specify a resource across all AWS.   Format example: arn:aws:geo:region:account-id:tracker/ExampleTracker
         public let trackerArn: String
         /// The name of the tracker resource.
         public let trackerName: String
-        /// The timestamp for when the tracker resource was last updated in  ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ. 
+        /// The timestamp for when the tracker resource was last updated in  ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.
         @CustomCoding<ISO8601DateCoder>
         public var updateTime: Date
 
@@ -1603,15 +1544,14 @@ extension Location {
     }
 
     public struct DevicePosition: AWSDecodableShape {
-
         /// The device whose position you retrieved.
         public let deviceId: String?
         /// The last known device position.
         public let position: [Double]
-        /// The timestamp for when the tracker resource received the device position in  ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ. 
+        /// The timestamp for when the tracker resource received the device position in  ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.
         @CustomCoding<ISO8601DateCoder>
         public var receivedTime: Date
-        /// The timestamp at which the device's position was determined. Uses  ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ. 
+        /// The timestamp at which the device's position was determined. Uses  ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.
         @CustomCoding<ISO8601DateCoder>
         public var sampleTime: Date
 
@@ -1631,12 +1571,11 @@ extension Location {
     }
 
     public struct DevicePositionUpdate: AWSEncodableShape {
-
         /// The device associated to the position update.
         public let deviceId: String
         /// The latest device position defined in WGS 84 format: [X or longitude, Y or latitude].
         public let position: [Double]
-        /// The timestamp at which the device's position was determined. Uses ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ 
+        /// The timestamp at which the device's position was determined. Uses ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ
         @CustomCoding<ISO8601DateCoder>
         public var sampleTime: Date
 
@@ -1663,11 +1602,11 @@ extension Location {
 
     public struct DisassociateTrackerConsumerRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "consumerArn", location: .uri(locationName: "ConsumerArn")), 
+            AWSMemberEncoding(label: "consumerArn", location: .uri(locationName: "ConsumerArn")),
             AWSMemberEncoding(label: "trackerName", location: .uri(locationName: "TrackerName"))
         ]
 
-        /// The Amazon Resource Name (ARN) for the geofence collection to be disassociated from the tracker resource. Used when you need to specify a resource across all AWS.    Format example: arn:aws:geo:region:account-id:geofence-collection/ExampleGeofenceCollectionConsumer   
+        /// The Amazon Resource Name (ARN) for the geofence collection to be disassociated from the tracker resource. Used when you need to specify a resource across all AWS.    Format example: arn:aws:geo:region:account-id:geofence-collection/ExampleGeofenceCollectionConsumer
         public let consumerArn: String
         /// The name of the tracker resource to be dissociated from the consumer.
         public let trackerName: String
@@ -1689,15 +1628,10 @@ extension Location {
     }
 
     public struct DisassociateTrackerConsumerResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct GeofenceGeometry: AWSEncodableShape & AWSDecodableShape {
-
         /// An array of 1 or more linear rings. A linear ring is an array of 4 or more vertices, where the first and last vertex are the same to form a closed boundary. Each vertex is a 2-dimensional point of the form: [longitude, latitude].  The first linear ring is an outer ring, describing the polygon's boundary. Subsequent linear rings may be inner or outer rings to describe holes and islands. Outer rings must list their vertices in counter-clockwise order around the ring's center, where the left side is the polygon's exterior. Inner rings must list their vertices in clockwise order, where the left side is the polygon's interior.
         public let polygon: [[[Double]]]?
 
@@ -1719,18 +1653,18 @@ extension Location {
 
     public struct GetDevicePositionHistoryRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "deviceId", location: .uri(locationName: "DeviceId")), 
+            AWSMemberEncoding(label: "deviceId", location: .uri(locationName: "DeviceId")),
             AWSMemberEncoding(label: "trackerName", location: .uri(locationName: "TrackerName"))
         ]
 
         /// The device whose position history you want to retrieve.
         public let deviceId: String
-        /// Specify the end time for the position history in  ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ. By default, the value will be the time that the request is made. Requirement:   The time specified for EndTimeExclusive must be after the time for StartTimeInclusive.  
+        /// Specify the end time for the position history in  ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ. By default, the value will be the time that the request is made. Requirement:   The time specified for EndTimeExclusive must be after the time for StartTimeInclusive.
         @OptionalCustomCoding<ISO8601DateCoder>
         public var endTimeExclusive: Date?
-        /// The pagination token specifying which page of results to return in the response. If no token is provided, the default page is the first page.  Default value: null 
+        /// The pagination token specifying which page of results to return in the response. If no token is provided, the default page is the first page.  Default value: null
         public let nextToken: String?
-        /// Specify the start time for the position history in  ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ. By default, the value will be 24 hours prior to the time that the request is made. Requirement:   The time specified for StartTimeInclusive must be before EndTimeExclusive.  
+        /// Specify the start time for the position history in  ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ. By default, the value will be 24 hours prior to the time that the request is made. Requirement:   The time specified for StartTimeInclusive must be before EndTimeExclusive.
         @OptionalCustomCoding<ISO8601DateCoder>
         public var startTimeInclusive: Date?
         /// The tracker resource receiving the request for the device position history.
@@ -1763,7 +1697,6 @@ extension Location {
     }
 
     public struct GetDevicePositionHistoryResponse: AWSDecodableShape {
-
         /// Contains the position history details for the requested device.
         public let devicePositions: [DevicePosition]
         /// A pagination token indicating there are additional pages available. You can use the token in a following request to fetch the next set of results.
@@ -1782,7 +1715,7 @@ extension Location {
 
     public struct GetDevicePositionRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "deviceId", location: .uri(locationName: "DeviceId")), 
+            AWSMemberEncoding(label: "deviceId", location: .uri(locationName: "DeviceId")),
             AWSMemberEncoding(label: "trackerName", location: .uri(locationName: "TrackerName"))
         ]
 
@@ -1809,15 +1742,14 @@ extension Location {
     }
 
     public struct GetDevicePositionResponse: AWSDecodableShape {
-
         /// The device whose position you retrieved.
         public let deviceId: String?
         /// The last known device position.
         public let position: [Double]
-        /// The timestamp for when the tracker resource received the device position in  ISO 8601  format: YYYY-MM-DDThh:mm:ss.sssZ. 
+        /// The timestamp for when the tracker resource received the device position in  ISO 8601  format: YYYY-MM-DDThh:mm:ss.sssZ.
         @CustomCoding<ISO8601DateCoder>
         public var receivedTime: Date
-        /// The timestamp at which the device's position was determined. Uses  ISO 8601  format: YYYY-MM-DDThh:mm:ss.sssZ. 
+        /// The timestamp at which the device's position was determined. Uses  ISO 8601  format: YYYY-MM-DDThh:mm:ss.sssZ.
         @CustomCoding<ISO8601DateCoder>
         public var sampleTime: Date
 
@@ -1838,7 +1770,7 @@ extension Location {
 
     public struct GetGeofenceRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "collectionName", location: .uri(locationName: "CollectionName")), 
+            AWSMemberEncoding(label: "collectionName", location: .uri(locationName: "CollectionName")),
             AWSMemberEncoding(label: "geofenceId", location: .uri(locationName: "GeofenceId"))
         ]
 
@@ -1865,17 +1797,16 @@ extension Location {
     }
 
     public struct GetGeofenceResponse: AWSDecodableShape {
-
-        /// The timestamp for when the geofence collection was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ 
+        /// The timestamp for when the geofence collection was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ
         @CustomCoding<ISO8601DateCoder>
         public var createTime: Date
         /// The geofence identifier.
         public let geofenceId: String
         /// Contains the geofence geometry details describing a polygon.
         public let geometry: GeofenceGeometry
-        /// Identifies the state of the geofence. A geofence will hold one of the following states:    ACTIVE — The geofence has been indexed by the system.     PENDING — The geofence is being processed by the system.    FAILED — The geofence failed to be indexed by the system.    DELETED — The geofence has been deleted from the system index.    DELETING — The geofence is being deleted from the system index.  
+        /// Identifies the state of the geofence. A geofence will hold one of the following states:    ACTIVE — The geofence has been indexed by the system.     PENDING — The geofence is being processed by the system.    FAILED — The geofence failed to be indexed by the system.    DELETED — The geofence has been deleted from the system index.    DELETING — The geofence is being deleted from the system index.
         public let status: String
-        /// The timestamp for when the geofence collection was last updated in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ 
+        /// The timestamp for when the geofence collection was last updated in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ
         @CustomCoding<ISO8601DateCoder>
         public var updateTime: Date
 
@@ -1898,8 +1829,8 @@ extension Location {
 
     public struct GetMapGlyphsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "fontStack", location: .uri(locationName: "FontStack")), 
-            AWSMemberEncoding(label: "fontUnicodeRange", location: .uri(locationName: "FontUnicodeRange")), 
+            AWSMemberEncoding(label: "fontStack", location: .uri(locationName: "FontStack")),
+            AWSMemberEncoding(label: "fontUnicodeRange", location: .uri(locationName: "FontUnicodeRange")),
             AWSMemberEncoding(label: "mapName", location: .uri(locationName: "MapName"))
         ]
 
@@ -1930,7 +1861,7 @@ extension Location {
         public static let _payloadPath: String = "blob"
         public static let _payloadOptions: AWSShapePayloadOptions = [.raw]
         public static var _encoding = [
-            AWSMemberEncoding(label: "blob", location: .body(locationName: "Blob")), 
+            AWSMemberEncoding(label: "blob", location: .body(locationName: "Blob")),
             AWSMemberEncoding(label: "contentType", location: .header(locationName: "Content-Type"))
         ]
 
@@ -1952,11 +1883,11 @@ extension Location {
 
     public struct GetMapSpritesRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "fileName", location: .uri(locationName: "FileName")), 
+            AWSMemberEncoding(label: "fileName", location: .uri(locationName: "FileName")),
             AWSMemberEncoding(label: "mapName", location: .uri(locationName: "MapName"))
         ]
 
-        /// The name of the sprite ﬁle. Use the following ﬁle names for the sprite sheet:    sprites.png     sprites@2x.png for high pixel density displays   For the JSON document contain image offsets. Use the following ﬁle names:     sprites.json     sprites@2x.json for high pixel density displays  
+        /// The name of the sprite ﬁle. Use the following ﬁle names for the sprite sheet:    sprites.png     sprites@2x.png for high pixel density displays   For the JSON document contain image offsets. Use the following ﬁle names:     sprites.json     sprites@2x.json for high pixel density displays
         public let fileName: String
         /// The map resource associated with the sprite ﬁle.
         public let mapName: String
@@ -1980,13 +1911,13 @@ extension Location {
         public static let _payloadPath: String = "blob"
         public static let _payloadOptions: AWSShapePayloadOptions = [.raw]
         public static var _encoding = [
-            AWSMemberEncoding(label: "blob", location: .body(locationName: "Blob")), 
+            AWSMemberEncoding(label: "blob", location: .body(locationName: "Blob")),
             AWSMemberEncoding(label: "contentType", location: .header(locationName: "Content-Type"))
         ]
 
         /// Contains the body of the sprite sheet or JSON offset ﬁle.
         public let blob: AWSPayload?
-        /// The content type of the sprite sheet and offsets. For example, the sprite sheet content type is image/png, and the sprite offset JSON document is application/json. 
+        /// The content type of the sprite sheet and offsets. For example, the sprite sheet content type is image/png, and the sprite offset JSON document is application/json.
         public let contentType: String?
 
         public init(blob: AWSPayload? = nil, contentType: String? = nil) {
@@ -2026,7 +1957,7 @@ extension Location {
         public static let _payloadPath: String = "blob"
         public static let _payloadOptions: AWSShapePayloadOptions = [.raw]
         public static var _encoding = [
-            AWSMemberEncoding(label: "blob", location: .body(locationName: "Blob")), 
+            AWSMemberEncoding(label: "blob", location: .body(locationName: "Blob")),
             AWSMemberEncoding(label: "contentType", location: .header(locationName: "Content-Type"))
         ]
 
@@ -2048,9 +1979,9 @@ extension Location {
 
     public struct GetMapTileRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "mapName", location: .uri(locationName: "MapName")), 
-            AWSMemberEncoding(label: "x", location: .uri(locationName: "X")), 
-            AWSMemberEncoding(label: "y", location: .uri(locationName: "Y")), 
+            AWSMemberEncoding(label: "mapName", location: .uri(locationName: "MapName")),
+            AWSMemberEncoding(label: "x", location: .uri(locationName: "X")),
+            AWSMemberEncoding(label: "y", location: .uri(locationName: "Y")),
             AWSMemberEncoding(label: "z", location: .uri(locationName: "Z"))
         ]
 
@@ -2058,7 +1989,7 @@ extension Location {
         public let mapName: String
         /// The X axis value for the map tile.
         public let x: String
-        /// The Y axis value for the map tile. 
+        /// The Y axis value for the map tile.
         public let y: String
         /// The zoom value for the map tile.
         public let z: String
@@ -2084,7 +2015,7 @@ extension Location {
         public static let _payloadPath: String = "blob"
         public static let _payloadOptions: AWSShapePayloadOptions = [.raw]
         public static var _encoding = [
-            AWSMemberEncoding(label: "blob", location: .body(locationName: "Blob")), 
+            AWSMemberEncoding(label: "blob", location: .body(locationName: "Blob")),
             AWSMemberEncoding(label: "contentType", location: .header(locationName: "Content-Type"))
         ]
 
@@ -2105,16 +2036,15 @@ extension Location {
     }
 
     public struct Leg: AWSDecodableShape {
-
-        /// The distance between the leg's StartPosition and EndPosition along a calculated route.    The default measurement is Kilometers unless the request specifies a DistanceUnit of Miles.  
+        /// The distance between the leg's StartPosition and EndPosition along a calculated route.    The default measurement is Kilometers unless the request specifies a DistanceUnit of Miles.
         public let distance: Double
         /// The estimated travel time between the leg's StartPosition and EndPosition. The travel mode and departure time that you specify in the request determines the calculated time.
         public let durationSeconds: Double
-        /// The terminating position of the leg. Follows the format [longitude,latitude].  If the EndPosition isn't located on a road, it's snapped to a nearby road.  
+        /// The terminating position of the leg. Follows the format [longitude,latitude].  If the EndPosition isn't located on a road, it's snapped to a nearby road.
         public let endPosition: [Double]
         /// Contains the calculated route's path as a linestring geometry.
         public let geometry: LegGeometry?
-        /// The starting position of the leg. Follows the format [longitude,latitude].  If the StartPosition isn't located on a road, it's snapped to a nearby road.  
+        /// The starting position of the leg. Follows the format [longitude,latitude].  If the StartPosition isn't located on a road, it's snapped to a nearby road.
         public let startPosition: [Double]
         /// Contains a list of steps, which represent subsections of a leg. Each step provides instructions for how to move to the next step in the leg such as the step's start position, end position, travel distance, travel duration, and geometry offset.
         public let steps: [Step]
@@ -2139,8 +2069,7 @@ extension Location {
     }
 
     public struct LegGeometry: AWSDecodableShape {
-
-        /// An ordered list of positions used to plot a route on a map.  The first position is closest to the start position for the leg, and the last position is the closest to the end position for the leg.   For example, [[-123.117, 49.284],[-123.115, 49.285],[-123.115, 49.285]]   
+        /// An ordered list of positions used to plot a route on a map.  The first position is closest to the start position for the leg, and the last position is the closest to the end position for the leg.   For example, [[-123.117, 49.284],[-123.115, 49.285],[-123.115, 49.285]]
         public let lineString: [[Double]]?
 
         public init(lineString: [[Double]]? = nil) {
@@ -2157,9 +2086,9 @@ extension Location {
             AWSMemberEncoding(label: "trackerName", location: .uri(locationName: "TrackerName"))
         ]
 
-        /// An optional limit for the number of entries returned in a single call. Default value: 100 
+        /// An optional limit for the number of entries returned in a single call. Default value: 100
         public let maxResults: Int?
-        /// The pagination token specifying which page of results to return in the response. If no token is provided, the default page is the first page. Default value: null 
+        /// The pagination token specifying which page of results to return in the response. If no token is provided, the default page is the first page. Default value: null
         public let nextToken: String?
         /// The tracker resource containing the requested devices.
         public let trackerName: String
@@ -2185,7 +2114,6 @@ extension Location {
     }
 
     public struct ListDevicePositionsResponse: AWSDecodableShape {
-
         /// Contains details about each device's last known position. These details includes the device ID, the time when the position was sampled on the device, the time that the service received the update, and the most recent coordinates.
         public let entries: [ListDevicePositionsResponseEntry]
         /// A pagination token indicating there are additional pages available. You can use the token in a following request to fetch the next set of results.
@@ -2203,7 +2131,6 @@ extension Location {
     }
 
     public struct ListDevicePositionsResponseEntry: AWSDecodableShape {
-
         /// The ID of the device for this position.
         public let deviceId: String
         /// The last known device position. Empty if no positions currently stored.
@@ -2226,10 +2153,9 @@ extension Location {
     }
 
     public struct ListGeofenceCollectionsRequest: AWSEncodableShape {
-
-        /// An optional limit for the number of resources returned in a single call.  Default value: 100 
+        /// An optional limit for the number of resources returned in a single call.  Default value: 100
         public let maxResults: Int?
-        /// The pagination token specifying which page of results to return in the response. If no token is provided, the default page is the first page.  Default value: null 
+        /// The pagination token specifying which page of results to return in the response. If no token is provided, the default page is the first page.  Default value: null
         public let nextToken: String?
 
         public init(maxResults: Int? = nil, nextToken: String? = nil) {
@@ -2249,10 +2175,9 @@ extension Location {
     }
 
     public struct ListGeofenceCollectionsResponse: AWSDecodableShape {
-
         /// Lists the geofence collections that exist in your AWS account.
         public let entries: [ListGeofenceCollectionsResponseEntry]
-        /// A pagination token indicating there are additional pages available. You can use the token in a following request to fetch the next set of results. 
+        /// A pagination token indicating there are additional pages available. You can use the token in a following request to fetch the next set of results.
         public let nextToken: String?
 
         public init(entries: [ListGeofenceCollectionsResponseEntry], nextToken: String? = nil) {
@@ -2267,10 +2192,9 @@ extension Location {
     }
 
     public struct ListGeofenceCollectionsResponseEntry: AWSDecodableShape {
-
         /// The name of the geofence collection.
         public let collectionName: String
-        /// The timestamp for when the geofence collection was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ 
+        /// The timestamp for when the geofence collection was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ
         @CustomCoding<ISO8601DateCoder>
         public var createTime: Date
         /// The description for the geofence collection
@@ -2279,7 +2203,7 @@ extension Location {
         public let pricingPlan: PricingPlan
         /// The specified data provider for the geofence collection.
         public let pricingPlanDataSource: String?
-        /// Specifies a timestamp for when the resource was last updated in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ 
+        /// Specifies a timestamp for when the resource was last updated in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ
         @CustomCoding<ISO8601DateCoder>
         public var updateTime: Date
 
@@ -2303,17 +2227,16 @@ extension Location {
     }
 
     public struct ListGeofenceResponseEntry: AWSDecodableShape {
-
-        /// The timestamp for when the geofence was stored in a geofence collection in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ 
+        /// The timestamp for when the geofence was stored in a geofence collection in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ
         @CustomCoding<ISO8601DateCoder>
         public var createTime: Date
         /// The geofence identifier.
         public let geofenceId: String
         /// Contains the geofence geometry details describing a polygon.
         public let geometry: GeofenceGeometry
-        /// Identifies the state of the geofence. A geofence will hold one of the following states:    ACTIVE — The geofence has been indexed by the system.     PENDING — The geofence is being processed by the system.    FAILED — The geofence failed to be indexed by the system.    DELETED — The geofence has been deleted from the system index.    DELETING — The geofence is being deleted from the system index.  
+        /// Identifies the state of the geofence. A geofence will hold one of the following states:    ACTIVE — The geofence has been indexed by the system.     PENDING — The geofence is being processed by the system.    FAILED — The geofence failed to be indexed by the system.    DELETED — The geofence has been deleted from the system index.    DELETING — The geofence is being deleted from the system index.
         public let status: String
-        /// The timestamp for when the geofence was last updated in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ 
+        /// The timestamp for when the geofence was last updated in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ
         @CustomCoding<ISO8601DateCoder>
         public var updateTime: Date
 
@@ -2341,7 +2264,7 @@ extension Location {
 
         /// The name of the geofence collection storing the list of geofences.
         public let collectionName: String
-        /// The pagination token specifying which page of results to return in the response. If no token is provided, the default page is the first page.  Default value: null 
+        /// The pagination token specifying which page of results to return in the response. If no token is provided, the default page is the first page.  Default value: null
         public let nextToken: String?
 
         public init(collectionName: String, nextToken: String? = nil) {
@@ -2363,10 +2286,9 @@ extension Location {
     }
 
     public struct ListGeofencesResponse: AWSDecodableShape {
-
         /// Contains a list of geofences stored in the geofence collection.
         public let entries: [ListGeofenceResponseEntry]
-        /// A pagination token indicating there are additional pages available. You can use the token in a following request to fetch the next set of results. 
+        /// A pagination token indicating there are additional pages available. You can use the token in a following request to fetch the next set of results.
         public let nextToken: String?
 
         public init(entries: [ListGeofenceResponseEntry], nextToken: String? = nil) {
@@ -2381,10 +2303,9 @@ extension Location {
     }
 
     public struct ListMapsRequest: AWSEncodableShape {
-
-        /// An optional limit for the number of resources returned in a single call.  Default value: 100 
+        /// An optional limit for the number of resources returned in a single call.  Default value: 100
         public let maxResults: Int?
-        /// The pagination token specifying which page of results to return in the response. If no token is provided, the default page is the first page. Default value: null 
+        /// The pagination token specifying which page of results to return in the response. If no token is provided, the default page is the first page. Default value: null
         public let nextToken: String?
 
         public init(maxResults: Int? = nil, nextToken: String? = nil) {
@@ -2404,10 +2325,9 @@ extension Location {
     }
 
     public struct ListMapsResponse: AWSDecodableShape {
-
         /// Contains a list of maps in your AWS account
         public let entries: [ListMapsResponseEntry]
-        /// A pagination token indicating there are additional pages available. You can use the token in a following request to fetch the next set of results. 
+        /// A pagination token indicating there are additional pages available. You can use the token in a following request to fetch the next set of results.
         public let nextToken: String?
 
         public init(entries: [ListMapsResponseEntry], nextToken: String? = nil) {
@@ -2422,7 +2342,6 @@ extension Location {
     }
 
     public struct ListMapsResponseEntry: AWSDecodableShape {
-
         /// The timestamp for when the map resource was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.
         @CustomCoding<ISO8601DateCoder>
         public var createTime: Date
@@ -2458,10 +2377,9 @@ extension Location {
     }
 
     public struct ListPlaceIndexesRequest: AWSEncodableShape {
-
-        /// An optional limit for the maximum number of results returned in a single call. Default value: 100 
+        /// An optional limit for the maximum number of results returned in a single call. Default value: 100
         public let maxResults: Int?
-        /// The pagination token specifying which page of results to return in the response. If no token is provided, the default page is the first page. Default value: null 
+        /// The pagination token specifying which page of results to return in the response. If no token is provided, the default page is the first page. Default value: null
         public let nextToken: String?
 
         public init(maxResults: Int? = nil, nextToken: String? = nil) {
@@ -2481,7 +2399,6 @@ extension Location {
     }
 
     public struct ListPlaceIndexesResponse: AWSDecodableShape {
-
         /// Lists the place index resources that exist in your AWS account
         public let entries: [ListPlaceIndexesResponseEntry]
         /// A pagination token indicating there are additional pages available. You can use the token in a following request to fetch the next set of results.
@@ -2499,8 +2416,7 @@ extension Location {
     }
 
     public struct ListPlaceIndexesResponseEntry: AWSDecodableShape {
-
-        /// The timestamp for when the place index resource was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ. 
+        /// The timestamp for when the place index resource was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.
         @CustomCoding<ISO8601DateCoder>
         public var createTime: Date
         /// The data provider of geospatial data. Indicates one of the available providers:    Esri     Here    For additional details on data providers, see the Amazon Location Service data providers page.
@@ -2511,7 +2427,7 @@ extension Location {
         public let indexName: String
         /// The pricing plan for the specified place index resource. For additional details and restrictions on each pricing plan option, see the Amazon Location Service pricing page.
         public let pricingPlan: PricingPlan
-        /// The timestamp for when the place index resource was last updated in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ. 
+        /// The timestamp for when the place index resource was last updated in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.
         @CustomCoding<ISO8601DateCoder>
         public var updateTime: Date
 
@@ -2535,10 +2451,9 @@ extension Location {
     }
 
     public struct ListRouteCalculatorsRequest: AWSEncodableShape {
-
-        /// An optional maximum number of results returned in a single call. Default Value: 100 
+        /// An optional maximum number of results returned in a single call. Default Value: 100
         public let maxResults: Int?
-        /// The pagination token specifying which page of results to return in the response. If no token is provided, the default page is the first page. Default Value: null 
+        /// The pagination token specifying which page of results to return in the response. If no token is provided, the default page is the first page. Default Value: null
         public let nextToken: String?
 
         public init(maxResults: Int? = nil, nextToken: String? = nil) {
@@ -2558,7 +2473,6 @@ extension Location {
     }
 
     public struct ListRouteCalculatorsResponse: AWSDecodableShape {
-
         /// Lists the route calculator resources that exist in your AWS account
         public let entries: [ListRouteCalculatorsResponseEntry]
         /// A pagination token indicating there are additional pages available. You can use the token in a subsequent request to fetch the next set of results.
@@ -2576,10 +2490,9 @@ extension Location {
     }
 
     public struct ListRouteCalculatorsResponseEntry: AWSDecodableShape {
-
         /// The name of the route calculator resource.
         public let calculatorName: String
-        /// The timestamp when the route calculator resource was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.    For example, 2020–07-2T12:15:20.000Z+01:00   
+        /// The timestamp when the route calculator resource was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.    For example, 2020–07-2T12:15:20.000Z+01:00
         @CustomCoding<ISO8601DateCoder>
         public var createTime: Date
         /// The data provider of traffic and road network data. Indicates one of the available providers:    Esri     Here    For more information about data providers, see Amazon Location Service data providers.
@@ -2588,7 +2501,7 @@ extension Location {
         public let description: String
         /// The pricing plan for the specified route calculator resource. For additional details and restrictions on each pricing plan option, see Amazon Location Service pricing.
         public let pricingPlan: PricingPlan
-        /// The timestamp when the route calculator resource was last updated in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.    For example, 2020–07-2T12:15:20.000Z+01:00   
+        /// The timestamp when the route calculator resource was last updated in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.    For example, 2020–07-2T12:15:20.000Z+01:00
         @CustomCoding<ISO8601DateCoder>
         public var updateTime: Date
 
@@ -2632,7 +2545,6 @@ extension Location {
     }
 
     public struct ListTagsForResourceResponse: AWSDecodableShape {
-
         /// The mapping from tag key to tag value for each tag associated with the specified resource.
         public let tags: [String: String]?
 
@@ -2650,9 +2562,9 @@ extension Location {
             AWSMemberEncoding(label: "trackerName", location: .uri(locationName: "TrackerName"))
         ]
 
-        /// An optional limit for the number of resources returned in a single call.  Default value: 100 
+        /// An optional limit for the number of resources returned in a single call.  Default value: 100
         public let maxResults: Int?
-        /// The pagination token specifying which page of results to return in the response. If no token is provided, the default page is the first page.  Default value: null 
+        /// The pagination token specifying which page of results to return in the response. If no token is provided, the default page is the first page.  Default value: null
         public let nextToken: String?
         /// The tracker resource whose associated geofence collections you want to list.
         public let trackerName: String
@@ -2678,10 +2590,9 @@ extension Location {
     }
 
     public struct ListTrackerConsumersResponse: AWSDecodableShape {
-
         /// Contains the list of geofence collection ARNs associated to the tracker resource.
         public let consumerArns: [String]
-        /// A pagination token indicating there are additional pages available. You can use the token in a following request to fetch the next set of results. 
+        /// A pagination token indicating there are additional pages available. You can use the token in a following request to fetch the next set of results.
         public let nextToken: String?
 
         public init(consumerArns: [String], nextToken: String? = nil) {
@@ -2696,10 +2607,9 @@ extension Location {
     }
 
     public struct ListTrackersRequest: AWSEncodableShape {
-
-        /// An optional limit for the number of resources returned in a single call.  Default value: 100 
+        /// An optional limit for the number of resources returned in a single call.  Default value: 100
         public let maxResults: Int?
-        /// The pagination token specifying which page of results to return in the response. If no token is provided, the default page is the first page.  Default value: null 
+        /// The pagination token specifying which page of results to return in the response. If no token is provided, the default page is the first page.  Default value: null
         public let nextToken: String?
 
         public init(maxResults: Int? = nil, nextToken: String? = nil) {
@@ -2719,10 +2629,9 @@ extension Location {
     }
 
     public struct ListTrackersResponse: AWSDecodableShape {
-
         /// Contains tracker resources in your AWS account. Details include tracker name, description and timestamps for when the tracker was created and last updated.
         public let entries: [ListTrackersResponseEntry]
-        /// A pagination token indicating there are additional pages available. You can use the token in a following request to fetch the next set of results.  
+        /// A pagination token indicating there are additional pages available. You can use the token in a following request to fetch the next set of results.
         public let nextToken: String?
 
         public init(entries: [ListTrackersResponseEntry], nextToken: String? = nil) {
@@ -2737,8 +2646,7 @@ extension Location {
     }
 
     public struct ListTrackersResponseEntry: AWSDecodableShape {
-
-        /// The timestamp for when the tracker resource was created in  ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ. 
+        /// The timestamp for when the tracker resource was created in  ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.
         @CustomCoding<ISO8601DateCoder>
         public var createTime: Date
         /// The description for the tracker resource.
@@ -2749,7 +2657,7 @@ extension Location {
         public let pricingPlanDataSource: String?
         /// The name of the tracker resource.
         public let trackerName: String
-        /// The timestamp at which the device's position was determined. Uses  ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ. 
+        /// The timestamp at which the device's position was determined. Uses  ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.
         @CustomCoding<ISO8601DateCoder>
         public var updateTime: Date
 
@@ -2773,8 +2681,7 @@ extension Location {
     }
 
     public struct MapConfiguration: AWSEncodableShape & AWSDecodableShape {
-
-        /// Specifies the map style selected from an available data provider. Valid styles: RasterEsriImagery, VectorEsriStreets, VectorEsriTopographic, VectorEsriNavigation, VectorEsriDarkGrayCanvas, VectorEsriLightGrayCanvas, VectorHereBerlin.  When using HERE as your data provider, and selecting the Style VectorHereBerlin, you may not use HERE Maps for Asset Management. See the AWS Service Terms for Amazon Location Service. 
+        /// Specifies the map style selected from an available data provider. Valid styles: RasterEsriImagery, VectorEsriStreets, VectorEsriTopographic, VectorEsriNavigation, VectorEsriDarkGrayCanvas, VectorEsriLightGrayCanvas, VectorHereBerlin.  When using HERE as your data provider, and selecting the Style VectorHereBerlin, you may not use HERE Maps for Asset Management. See the AWS Service Terms for Amazon Location Service.
         public let style: String
 
         public init(style: String) {
@@ -2793,8 +2700,7 @@ extension Location {
     }
 
     public struct Place: AWSDecodableShape {
-
-        /// The numerical portion of an address, such as a building number. 
+        /// The numerical portion of an address, such as a building number.
         public let addressNumber: String?
         /// A country/region specified using ISO 3166 3-digit country/region code. For example, CAN.
         public let country: String?
@@ -2805,7 +2711,7 @@ extension Location {
         public let municipality: String?
         /// The name of a community district. For example, Downtown.
         public let neighborhood: String?
-        /// A group of numbers and letters in a country-specific format, which accompanies the address for the purpose of identifying a location. 
+        /// A group of numbers and letters in a country-specific format, which accompanies the address for the purpose of identifying a location.
         public let postalCode: String?
         /// A name for an area or geographical division, such as a province or state name. For example, British Columbia.
         public let region: String?
@@ -2842,8 +2748,7 @@ extension Location {
     }
 
     public struct PlaceGeometry: AWSDecodableShape {
-
-        /// A single point geometry specifies a location for a Place using WGS 84 coordinates:    x — Specifies the x coordinate or longitude.     y — Specifies the y coordinate or latitude.   
+        /// A single point geometry specifies a location for a Place using WGS 84 coordinates:    x — Specifies the x coordinate or longitude.     y — Specifies the y coordinate or latitude.
         public let point: [Double]?
 
         public init(point: [Double]? = nil) {
@@ -2857,7 +2762,7 @@ extension Location {
 
     public struct PutGeofenceRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "collectionName", location: .uri(locationName: "CollectionName")), 
+            AWSMemberEncoding(label: "collectionName", location: .uri(locationName: "CollectionName")),
             AWSMemberEncoding(label: "geofenceId", location: .uri(locationName: "GeofenceId"))
         ]
 
@@ -2865,7 +2770,7 @@ extension Location {
         public let collectionName: String
         /// An identifier for the geofence. For example, ExampleGeofence-1.
         public let geofenceId: String
-        /// Contains the polygon details to specify the position of the geofence.  Each geofence polygon can have a maximum of 1,000 vertices. 
+        /// Contains the polygon details to specify the position of the geofence.  Each geofence polygon can have a maximum of 1,000 vertices.
         public let geometry: GeofenceGeometry
 
         public init(collectionName: String, geofenceId: String, geometry: GeofenceGeometry) {
@@ -2890,13 +2795,12 @@ extension Location {
     }
 
     public struct PutGeofenceResponse: AWSDecodableShape {
-
-        /// The timestamp for when the geofence was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ 
+        /// The timestamp for when the geofence was created in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ
         @CustomCoding<ISO8601DateCoder>
         public var createTime: Date
         /// The geofence identifier entered in the request.
         public let geofenceId: String
-        /// The timestamp for when the geofence was last updated in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ 
+        /// The timestamp for when the geofence was last updated in ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ
         @CustomCoding<ISO8601DateCoder>
         public var updateTime: Date
 
@@ -2914,7 +2818,6 @@ extension Location {
     }
 
     public struct SearchForPositionResult: AWSDecodableShape {
-
         /// Contains details about the relevant point of interest.
         public let place: Place
 
@@ -2928,7 +2831,6 @@ extension Location {
     }
 
     public struct SearchForTextResult: AWSDecodableShape {
-
         /// Contains details about the relevant point of interest.
         public let place: Place
 
@@ -2948,7 +2850,7 @@ extension Location {
 
         /// The name of the place index resource you want to use for the search.
         public let indexName: String
-        /// An optional paramer. The maximum number of results returned per request.  Default value: 50 
+        /// An optional paramer. The maximum number of results returned per request.  Default value: 50
         public let maxResults: Int?
         /// Specifies a coordinate for the query defined by a longitude, and latitude.   The first position is the X coordinate, or longitude.   The second position is the Y coordinate, or latitude.    For example, position=xLongitude&amp;position=yLatitude .
         public let position: [Double]
@@ -2976,7 +2878,6 @@ extension Location {
     }
 
     public struct SearchPlaceIndexForPositionResponse: AWSDecodableShape {
-
         /// Returns a list of Places closest to the specified position. Each result contains additional information about the Places returned.
         public let results: [SearchForPositionResult]
         /// Contains a summary of the request.
@@ -2994,10 +2895,9 @@ extension Location {
     }
 
     public struct SearchPlaceIndexForPositionSummary: AWSDecodableShape {
-
         /// The data provider of geospatial data. Indicates one of the available providers:   Esri   HERE   For additional details on data providers, see the Amazon Location Service data providers page.
         public let dataSource: String
-        /// An optional parameter. The maximum number of results returned per request.  Default value: 50 
+        /// An optional parameter. The maximum number of results returned per request.  Default value: 50
         public let maxResults: Int?
         /// The position given in the reverse geocoding request.
         public let position: [Double]
@@ -3022,13 +2922,13 @@ extension Location {
 
         /// Searches for results closest to the given position. An optional parameter defined by longitude, and latitude.   The first bias position is the X coordinate, or longitude.   The second bias position is the Y coordinate, or latitude.    For example, bias=xLongitude&amp;bias=yLatitude.
         public let biasPosition: [Double]?
-        /// Filters the results by returning only Places within the provided bounding box. An optional parameter. The first 2 bbox parameters describe the lower southwest corner:   The first bbox position is the X coordinate or longitude of the lower southwest corner.   The second bbox position is the Y coordinate or latitude of the lower southwest corner.   For example, bbox=xLongitudeSW&amp;bbox=yLatitudeSW. The next bbox parameters describe the upper northeast corner:   The third bbox position is the X coordinate, or longitude of the upper northeast corner.   The fourth bbox position is the Y coordinate, or longitude of the upper northeast corner.   For example, bbox=xLongitudeNE&amp;bbox=yLatitudeNE 
+        /// Filters the results by returning only Places within the provided bounding box. An optional parameter. The first 2 bbox parameters describe the lower southwest corner:   The first bbox position is the X coordinate or longitude of the lower southwest corner.   The second bbox position is the Y coordinate or latitude of the lower southwest corner.   For example, bbox=xLongitudeSW&amp;bbox=yLatitudeSW. The next bbox parameters describe the upper northeast corner:   The third bbox position is the X coordinate, or longitude of the upper northeast corner.   The fourth bbox position is the Y coordinate, or longitude of the upper northeast corner.   For example, bbox=xLongitudeNE&amp;bbox=yLatitudeNE
         public let filterBBox: [Double]?
-        /// Limits the search to the given a list of countries/regions. An optional parameter.   Use the ISO 3166 3-digit country code. For example, Australia uses three upper-case characters: AUS.  
+        /// Limits the search to the given a list of countries/regions. An optional parameter.   Use the ISO 3166 3-digit country code. For example, Australia uses three upper-case characters: AUS.
         public let filterCountries: [String]?
         /// The name of the place index resource you want to use for the search.
         public let indexName: String
-        /// An optional parameter. The maximum number of results returned per request.  The default: 50 
+        /// An optional parameter. The maximum number of results returned per request.  The default: 50
         public let maxResults: Int?
         /// The address, name, city, or region to be used in the search. In free-form text format. For example, 123 Any Street.
         public let text: String
@@ -3069,8 +2969,7 @@ extension Location {
     }
 
     public struct SearchPlaceIndexForTextResponse: AWSDecodableShape {
-
-        /// A list of Places closest to the specified position. Each result contains additional information about the specific point of interest. 
+        /// A list of Places closest to the specified position. Each result contains additional information about the specific point of interest.
         public let results: [SearchForTextResult]
         /// Contains a summary of the request. Contains the BiasPosition, DataSource, FilterBBox, FilterCountries, MaxResults, ResultBBox, and Text.
         public let summary: SearchPlaceIndexForTextSummary
@@ -3087,7 +2986,6 @@ extension Location {
     }
 
     public struct SearchPlaceIndexForTextSummary: AWSDecodableShape {
-
         /// Contains the coordinates for the bias position entered in the geocoding request.
         public let biasPosition: [Double]?
         /// The data provider of geospatial data. Indicates one of the available providers:   Esri   HERE   For additional details on data providers, see the Amazon Location Service data providers page.
@@ -3125,14 +3023,13 @@ extension Location {
     }
 
     public struct Step: AWSDecodableShape {
-
         /// The travel distance between the step's StartPosition and EndPosition.
         public let distance: Double
         /// The estimated travel time, in seconds, from the step's StartPosition to the EndPosition. . The travel mode and departure time that you specify in the request determines the calculated time.
         public let durationSeconds: Double
         /// The end position of a step. If the position the last step in the leg, this position is the same as the end position of the leg.
         public let endPosition: [Double]
-        /// Represents the start position, or index, in a sequence of steps within the leg's line string geometry. For example, the index of the first step in a leg geometry is 0.  Included in the response for queries that set IncludeLegGeometry to True. 
+        /// Represents the start position, or index, in a sequence of steps within the leg's line string geometry. For example, the index of the first step in a leg geometry is 0.  Included in the response for queries that set IncludeLegGeometry to True.
         public let geometryOffset: Int?
         /// The starting position of a step. If the position is the first step in the leg, this position is the same as the start position of the leg.
         public let startPosition: [Double]
@@ -3188,22 +3085,17 @@ extension Location {
     }
 
     public struct TagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct TruckDimensions: AWSEncodableShape {
-
-        /// The height of the truck.   For example, 4.5.  
+        /// The height of the truck.   For example, 4.5.
         public let height: Double?
-        /// The length of the truck.   For example, 15.5.  
+        /// The length of the truck.   For example, 15.5.
         public let length: Double?
-        ///  Specifies the unit of measurement for the truck dimensions. Default Value: Meters 
+        ///  Specifies the unit of measurement for the truck dimensions. Default Value: Meters
         public let unit: DimensionUnit?
-        /// The width of the truck.   For example, 4.5.  
+        /// The width of the truck.   For example, 4.5.
         public let width: Double?
 
         public init(height: Double? = nil, length: Double? = nil, unit: DimensionUnit? = nil, width: Double? = nil) {
@@ -3222,10 +3114,9 @@ extension Location {
     }
 
     public struct TruckWeight: AWSEncodableShape {
-
-        /// The total weight of the truck.    For example, 3500.  
+        /// The total weight of the truck.    For example, 3500.
         public let total: Double?
-        /// The unit of measurement to use for the truck weight. Default Value: Kilograms 
+        /// The unit of measurement to use for the truck weight. Default Value: Kilograms
         public let unit: VehicleWeightUnit?
 
         public init(total: Double? = nil, unit: VehicleWeightUnit? = nil) {
@@ -3241,7 +3132,7 @@ extension Location {
 
     public struct UntagResourceRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "ResourceArn")), 
+            AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "ResourceArn")),
             AWSMemberEncoding(label: "tagKeys", location: .querystring(locationName: "tagKeys"))
         ]
 
@@ -3266,10 +3157,6 @@ extension Location {
     }
 
     public struct UntagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 }

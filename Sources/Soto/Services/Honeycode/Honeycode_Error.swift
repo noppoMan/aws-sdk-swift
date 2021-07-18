@@ -50,7 +50,7 @@ public struct HoneycodeErrorType: AWSErrorType {
     /// return error code string
     public var errorCode: String { self.error.rawValue }
 
-    ///  You do not have sufficient access to perform this action. Check that the workbook is owned by you and your IAM policy allows access to the resource in the request. 
+    ///  You do not have sufficient access to perform this action. Check that the workbook is owned by you and your IAM policy allows access to the resource in the request.
     public static var accessDeniedException: Self { .init(.accessDeniedException) }
     /// The automation execution did not end successfully.
     public static var automationExecutionException: Self { .init(.automationExecutionException) }
@@ -62,13 +62,13 @@ public struct HoneycodeErrorType: AWSErrorType {
     public static var requestTimeoutException: Self { .init(.requestTimeoutException) }
     /// A Workbook, Table, App, Screen or Screen Automation was not found with the given ID.
     public static var resourceNotFoundException: Self { .init(.resourceNotFoundException) }
-    ///  The request caused service quota to be breached. 
+    ///  The request caused service quota to be breached.
     public static var serviceQuotaExceededException: Self { .init(.serviceQuotaExceededException) }
     /// Remote service is unreachable.
     public static var serviceUnavailableException: Self { .init(.serviceUnavailableException) }
     /// Tps(transactions per second) rate reached.
     public static var throttlingException: Self { .init(.throttlingException) }
-    ///  Request is invalid. The message in the response contains details on why the request is invalid. 
+    ///  Request is invalid. The message in the response contains details on why the request is invalid.
     public static var validationException: Self { .init(.validationException) }
 }
 

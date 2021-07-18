@@ -89,7 +89,6 @@ extension CostandUsageReportService {
     // MARK: Shapes
 
     public struct DeleteReportDefinitionRequest: AWSEncodableShape {
-
         /// The name of the report that you want to delete. The name must be unique, is case sensitive, and can't include spaces.
         public let reportName: String?
 
@@ -108,7 +107,6 @@ extension CostandUsageReportService {
     }
 
     public struct DeleteReportDefinitionResponse: AWSDecodableShape {
-
         public let responseMessage: String?
 
         public init(responseMessage: String? = nil) {
@@ -121,7 +119,6 @@ extension CostandUsageReportService {
     }
 
     public struct DescribeReportDefinitionsRequest: AWSEncodableShape {
-
         public let maxResults: Int?
         public let nextToken: String?
 
@@ -144,7 +141,6 @@ extension CostandUsageReportService {
     }
 
     public struct DescribeReportDefinitionsResponse: AWSDecodableShape {
-
         public let nextToken: String?
         /// A list of AWS Cost and Usage reports owned by the account.
         public let reportDefinitions: [ReportDefinition]?
@@ -161,7 +157,6 @@ extension CostandUsageReportService {
     }
 
     public struct ModifyReportDefinitionRequest: AWSEncodableShape {
-
         public let reportDefinition: ReportDefinition
         public let reportName: String
 
@@ -183,16 +178,11 @@ extension CostandUsageReportService {
     }
 
     public struct ModifyReportDefinitionResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct PutReportDefinitionRequest: AWSEncodableShape {
-
-        /// Represents the output of the PutReportDefinition operation. The content consists of the detailed  metadata and data file information. 
+        /// Represents the output of the PutReportDefinition operation. The content consists of the detailed  metadata and data file information.
         public let reportDefinition: ReportDefinition
 
         public init(reportDefinition: ReportDefinition) {
@@ -209,20 +199,15 @@ extension CostandUsageReportService {
     }
 
     public struct PutReportDefinitionResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct ReportDefinition: AWSEncodableShape & AWSDecodableShape {
-
         /// A list of manifests that you want Amazon Web Services to create for this report.
         public let additionalArtifacts: [AdditionalArtifact]?
-        /// A list of strings that indicate additional content that Amazon Web Services includes in the report, such as individual resource IDs. 
+        /// A list of strings that indicate additional content that Amazon Web Services includes in the report, such as individual resource IDs.
         public let additionalSchemaElements: [SchemaElement]
-        ///  The Amazon resource name of the billing view. You can get this value by using the billing view service public APIs. 
+        ///  The Amazon resource name of the billing view. You can get this value by using the billing view service public APIs.
         public let billingViewArn: String?
         public let compression: CompressionFormat
         public let format: ReportFormat

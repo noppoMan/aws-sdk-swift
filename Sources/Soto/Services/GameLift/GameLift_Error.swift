@@ -75,11 +75,11 @@ public struct GameLiftErrorType: AWSErrorType {
     public static var limitExceededException: Self { .init(.limitExceededException) }
     /// A service resource associated with the request could not be found. Clients should not retry such requests.
     public static var notFoundException: Self { .init(.notFoundException) }
-    /// The specified game server group has no available game servers to fulfill a ClaimGameServer request. Clients can retry such requests immediately or after a waiting period.  
+    /// The specified game server group has no available game servers to fulfill a ClaimGameServer request. Clients can retry such requests immediately or after a waiting period.
     public static var outOfCapacityException: Self { .init(.outOfCapacityException) }
-    ///  The requested tagging operation did not succeed. This may be due to invalid tag format or the maximum tag limit may have been exceeded. Resolve the issue before retrying. 
+    ///  The requested tagging operation did not succeed. This may be due to invalid tag format or the maximum tag limit may have been exceeded. Resolve the issue before retrying.
     public static var taggingFailedException: Self { .init(.taggingFailedException) }
-    /// The service is unable to resolve the routing for a particular alias because it has a terminal RoutingStrategy associated with it. The message returned in this exception is the message defined in the routing strategy itself. Such requests should only be retried if the routing strategy for the specified alias is modified. 
+    /// The service is unable to resolve the routing for a particular alias because it has a terminal RoutingStrategy associated with it. The message returned in this exception is the message defined in the routing strategy itself. Such requests should only be retried if the routing strategy for the specified alias is modified.
     public static var terminalRoutingStrategyException: Self { .init(.terminalRoutingStrategyException) }
     /// The client failed authentication. Clients should not retry such requests.
     public static var unauthorizedException: Self { .init(.unauthorizedException) }

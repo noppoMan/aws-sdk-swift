@@ -96,7 +96,7 @@ public struct SESErrorType: AWSErrorType {
     public static var eventDestinationAlreadyExistsException: Self { .init(.eventDestinationAlreadyExistsException) }
     /// Indicates that the event destination does not exist.
     public static var eventDestinationDoesNotExistException: Self { .init(.eventDestinationDoesNotExistException) }
-    /// Indicates that the sender address specified for a custom verification email is not verified, and is therefore not eligible to send the custom verification email. 
+    /// Indicates that the sender address specified for a custom verification email is not verified, and is therefore not eligible to send the custom verification email.
     public static var fromEmailAddressNotVerifiedException: Self { .init(.fromEmailAddressNotVerifiedException) }
     /// Indicates that the Amazon CloudWatch destination is invalid. See the error message for details.
     public static var invalidCloudWatchDestinationException: Self { .init(.invalidCloudWatchDestinationException) }
@@ -120,7 +120,7 @@ public struct SESErrorType: AWSErrorType {
     public static var invalidSnsTopicException: Self { .init(.invalidSnsTopicException) }
     /// Indicates that the template that you specified could not be rendered. This issue may occur when a template refers to a partial that does not exist.
     public static var invalidTemplateException: Self { .init(.invalidTemplateException) }
-    /// Indicates that the custom domain to be used for open and click tracking redirects is invalid. This error appears most often in the following situations:   When the tracking domain you specified is not verified in Amazon SES.   When the tracking domain you specified is not a valid domain or subdomain.  
+    /// Indicates that the custom domain to be used for open and click tracking redirects is invalid. This error appears most often in the following situations:   When the tracking domain you specified is not verified in Amazon SES.   When the tracking domain you specified is not a valid domain or subdomain.
     public static var invalidTrackingOptionsException: Self { .init(.invalidTrackingOptionsException) }
     /// Indicates that a resource could not be created because of service limits. For a list of Amazon SES limits, see the Amazon SES Developer Guide.
     public static var limitExceededException: Self { .init(.limitExceededException) }

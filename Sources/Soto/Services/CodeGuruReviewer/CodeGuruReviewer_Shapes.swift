@@ -95,25 +95,24 @@ extension CodeGuruReviewer {
     // MARK: Shapes
 
     public struct AssociateRepositoryRequest: AWSEncodableShape {
-
-        /// Amazon CodeGuru Reviewer uses this value to prevent the accidental creation of duplicate repository associations if there are failures and retries. 
+        /// Amazon CodeGuru Reviewer uses this value to prevent the accidental creation of duplicate repository associations if there are failures and retries.
         public let clientRequestToken: String?
-        /// A KMSKeyDetails object that contains:   The encryption option for this repository association. It is either owned by AWS  Key Management Service (KMS) (AWS_OWNED_CMK) or customer managed (CUSTOMER_MANAGED_CMK).   The ID of the AWS KMS key that  is associated with this respository association.  
+        /// A KMSKeyDetails object that contains:   The encryption option for this repository association. It is either owned by AWS  Key Management Service (KMS) (AWS_OWNED_CMK) or customer managed (CUSTOMER_MANAGED_CMK).   The ID of the AWS KMS key that  is associated with this respository association.
         public let kMSKeyDetails: KMSKeyDetails?
         /// The repository to associate.
         public let repository: Repository
-        /// 			An array of key-value pairs used to tag an associated repository. A tag is a custom attribute label with two parts: 
-        /// 		
-        /// 		        
+        /// 			An array of key-value pairs used to tag an associated repository. A tag is a custom attribute label with two parts:
+        ///
+        ///
         /// 				           A tag key (for example, CostCenter,
         /// 					Environment, Project, or Secret). Tag
         /// 					keys are case sensitive.
-        /// 			          
+        ///
         /// 				           An optional field known as a tag value (for example,
         /// 					111122223333, Production, or a team name).
         /// 					Omitting the tag value is the same as using an empty string. Like tag keys, tag
         /// 					values are case sensitive.
-        /// 			          
+        ///
         public let tags: [String: String]?
 
         public init(clientRequestToken: String? = AssociateRepositoryRequest.idempotencyToken(), kMSKeyDetails: KMSKeyDetails? = nil, repository: Repository, tags: [String: String]? = nil) {
@@ -147,21 +146,20 @@ extension CodeGuruReviewer {
     }
 
     public struct AssociateRepositoryResponse: AWSDecodableShape {
-
         /// Information about the repository association.
         public let repositoryAssociation: RepositoryAssociation?
-        /// 			An array of key-value pairs used to tag an associated repository. A tag is a custom attribute label with two parts: 
-        /// 		
-        /// 		        
+        /// 			An array of key-value pairs used to tag an associated repository. A tag is a custom attribute label with two parts:
+        ///
+        ///
         /// 				           A tag key (for example, CostCenter,
         /// 					Environment, Project, or Secret). Tag
         /// 					keys are case sensitive.
-        /// 			          
+        ///
         /// 				           An optional field known as a tag value (for example,
         /// 					111122223333, Production, or a team name).
         /// 					Omitting the tag value is the same as using an empty string. Like tag keys, tag
         /// 					values are case sensitive.
-        /// 			          
+        ///
         public let tags: [String: String]?
 
         public init(repositoryAssociation: RepositoryAssociation? = nil, tags: [String: String]? = nil) {
@@ -176,7 +174,6 @@ extension CodeGuruReviewer {
     }
 
     public struct BranchDiffSourceCodeType: AWSEncodableShape & AWSDecodableShape {
-
         /// The destination branch for a diff in an associated repository.
         public let destinationBranchName: String
         /// The source branch for a diff in an associated repository.
@@ -201,7 +198,6 @@ extension CodeGuruReviewer {
     }
 
     public struct CodeArtifacts: AWSEncodableShape & AWSDecodableShape {
-
         /// The S3 object key for a build artifacts .zip file that  contains .jar or .class files. This is required for a code review with security analysis. For more  information, see Create code reviews with security  analysis in the Amazon CodeGuru Reviewer User Guide.
         public let buildArtifactsObjectKey: String?
         /// The S3 object key for a source code .zip file. This is required for all code reviews.
@@ -228,7 +224,6 @@ extension CodeGuruReviewer {
     }
 
     public struct CodeCommitRepository: AWSEncodableShape {
-
         /// The name of the AWS CodeCommit repository. For more information, see  repositoryName  in the AWS CodeCommit API Reference.
         public let name: String
 
@@ -248,40 +243,39 @@ extension CodeGuruReviewer {
     }
 
     public struct CodeReview: AWSDecodableShape {
-
         /// They types of analysis performed during a repository analysis or a pull request review. You can specify either  Security, CodeQuality, or both.
         public let analysisTypes: [AnalysisType]?
-        /// 			The Amazon Resource Name (ARN) of the  
-        /// 			 RepositoryAssociation that contains 
-        /// 			the reviewed source code. You can retrieve associated repository ARNs by calling 
+        /// 			The Amazon Resource Name (ARN) of the
+        /// 			 RepositoryAssociation that contains
+        /// 			the reviewed source code. You can retrieve associated repository ARNs by calling
         /// 			 ListRepositoryAssociations .
-        /// 		
+        ///
         public let associationArn: String?
-        /// The Amazon Resource Name (ARN) of the  CodeReview object. 
+        /// The Amazon Resource Name (ARN) of the  CodeReview object.
         public let codeReviewArn: String?
-        ///  The time, in milliseconds since the epoch, when the code review was created. 
+        ///  The time, in milliseconds since the epoch, when the code review was created.
         public let createdTimeStamp: Date?
-        ///  The time, in milliseconds since the epoch, when the code review was last updated. 
+        ///  The time, in milliseconds since the epoch, when the code review was last updated.
         public let lastUpdatedTimeStamp: Date?
-        ///  The statistics from the code review. 
+        ///  The statistics from the code review.
         public let metrics: Metrics?
-        ///  The name of the code review. 
+        ///  The name of the code review.
         public let name: String?
         /// The owner of the repository. For an AWS CodeCommit repository, this is the AWS account ID of the  account that owns the repository. For a GitHub, GitHub Enterprise Server, or Bitbucket repository, this is the username for the account that owns the repository. For an S3 repository, it can be the username or AWS account ID.
         public let owner: String?
-        ///  The type of repository that contains the reviewed code (for example, GitHub or Bitbucket). 
+        ///  The type of repository that contains the reviewed code (for example, GitHub or Bitbucket).
         public let providerType: ProviderType?
-        ///  The pull request ID for the code review. 
+        ///  The pull request ID for the code review.
         public let pullRequestId: String?
-        ///  The name of the repository. 
+        ///  The name of the repository.
         public let repositoryName: String?
-        ///  The type of the source code for the code review. 
+        ///  The type of the source code for the code review.
         public let sourceCodeType: SourceCodeType?
-        /// The valid code review states are:    Completed: The code review is complete.     Pending: The code review started and has not completed or failed.     Failed: The code review failed.     Deleting: The code review is being deleted.   
+        /// The valid code review states are:    Completed: The code review is complete.     Pending: The code review started and has not completed or failed.     Failed: The code review failed.     Deleting: The code review is being deleted.
         public let state: JobState?
-        ///  The reason for the state of the code review. 
+        ///  The reason for the state of the code review.
         public let stateReason: String?
-        ///  The type of code review. 
+        ///  The type of code review.
         public let type: `Type`?
 
         public init(analysisTypes: [AnalysisType]? = nil, associationArn: String? = nil, codeReviewArn: String? = nil, createdTimeStamp: Date? = nil, lastUpdatedTimeStamp: Date? = nil, metrics: Metrics? = nil, name: String? = nil, owner: String? = nil, providerType: ProviderType? = nil, pullRequestId: String? = nil, repositoryName: String? = nil, sourceCodeType: SourceCodeType? = nil, state: JobState? = nil, stateReason: String? = nil, type: `Type`? = nil) {
@@ -322,29 +316,28 @@ extension CodeGuruReviewer {
     }
 
     public struct CodeReviewSummary: AWSDecodableShape {
-
-        /// The Amazon Resource Name (ARN) of the  CodeReview object. 
+        /// The Amazon Resource Name (ARN) of the  CodeReview object.
         public let codeReviewArn: String?
-        ///  The time, in milliseconds since the epoch, when the code review was created. 
+        ///  The time, in milliseconds since the epoch, when the code review was created.
         public let createdTimeStamp: Date?
-        ///  The time, in milliseconds since the epoch, when the code review was last updated. 
+        ///  The time, in milliseconds since the epoch, when the code review was last updated.
         public let lastUpdatedTimeStamp: Date?
-        ///  The statistics from the code review. 
+        ///  The statistics from the code review.
         public let metricsSummary: MetricsSummary?
-        ///  The name of the code review. 
+        ///  The name of the code review.
         public let name: String?
         /// The owner of the repository. For an AWS CodeCommit repository, this is the AWS account ID of the  account that owns the repository. For a GitHub, GitHub Enterprise Server, or Bitbucket repository, this is the username for the account that owns the repository. For an S3 repository, it can be the username or AWS account ID.
         public let owner: String?
-        ///  The provider type of the repository association. 
+        ///  The provider type of the repository association.
         public let providerType: ProviderType?
-        ///  The pull request ID for the code review. 
+        ///  The pull request ID for the code review.
         public let pullRequestId: String?
-        ///  The name of the repository. 
+        ///  The name of the repository.
         public let repositoryName: String?
         public let sourceCodeType: SourceCodeType?
-        ///  The state of the code review.  The valid code review states are:    Completed: The code review is complete.     Pending: The code review started and has not completed or failed.     Failed: The code review failed.     Deleting: The code review is being deleted.   
+        ///  The state of the code review.  The valid code review states are:    Completed: The code review is complete.     Pending: The code review started and has not completed or failed.     Failed: The code review failed.     Deleting: The code review is being deleted.
         public let state: JobState?
-        ///  The type of the code review. 
+        ///  The type of the code review.
         public let type: `Type`?
 
         public init(codeReviewArn: String? = nil, createdTimeStamp: Date? = nil, lastUpdatedTimeStamp: Date? = nil, metricsSummary: MetricsSummary? = nil, name: String? = nil, owner: String? = nil, providerType: ProviderType? = nil, pullRequestId: String? = nil, repositoryName: String? = nil, sourceCodeType: SourceCodeType? = nil, state: JobState? = nil, type: `Type`? = nil) {
@@ -379,11 +372,10 @@ extension CodeGuruReviewer {
     }
 
     public struct CodeReviewType: AWSEncodableShape {
-
         /// They types of analysis performed during a repository analysis or a pull request review. You can specify either  Security, CodeQuality, or both.
         public let analysisTypes: [AnalysisType]?
         ///  A code review that analyzes all code under a specified branch in an associated
-        /// 			repository. The associated repository is specified using its ARN in  CreateCodeReview . 
+        /// 			repository. The associated repository is specified using its ARN in  CreateCodeReview .
         public let repositoryAnalysis: RepositoryAnalysis
 
         public init(analysisTypes: [AnalysisType]? = nil, repositoryAnalysis: RepositoryAnalysis) {
@@ -402,12 +394,11 @@ extension CodeGuruReviewer {
     }
 
     public struct CommitDiffSourceCodeType: AWSEncodableShape & AWSDecodableShape {
-
-        ///  The SHA of the destination commit used to generate a commit diff. This field is required for a pull request code review. 
+        ///  The SHA of the destination commit used to generate a commit diff. This field is required for a pull request code review.
         public let destinationCommit: String?
         /// The SHA of the merge base of a commit.
         public let mergeBaseCommit: String?
-        ///  The SHA of the source commit used to generate a commit diff. This field is required for a pull request code review. 
+        ///  The SHA of the source commit used to generate a commit diff. This field is required for a pull request code review.
         public let sourceCommit: String?
 
         public init(destinationCommit: String? = nil, mergeBaseCommit: String? = nil, sourceCommit: String? = nil) {
@@ -433,14 +424,13 @@ extension CodeGuruReviewer {
     }
 
     public struct CreateCodeReviewRequest: AWSEncodableShape {
-
-        ///  Amazon CodeGuru Reviewer uses this value to prevent the accidental creation of duplicate code  reviews if there are failures and retries. 
+        ///  Amazon CodeGuru Reviewer uses this value to prevent the accidental creation of duplicate code  reviews if there are failures and retries.
         public let clientRequestToken: String?
-        ///  The name of the code review. The name of each code review in your AWS account must be unique. 
+        ///  The name of the code review. The name of each code review in your AWS account must be unique.
         public let name: String
-        ///  The Amazon Resource Name (ARN) of the    RepositoryAssociation object.  You can retrieve this ARN by calling   ListRepositoryAssociations .   A code review can only be created on an associated repository. This is the ARN of the  associated repository. 
+        ///  The Amazon Resource Name (ARN) of the    RepositoryAssociation object.  You can retrieve this ARN by calling   ListRepositoryAssociations .   A code review can only be created on an associated repository. This is the ARN of the  associated repository.
         public let repositoryAssociationArn: String
-        ///  The type of code review to create. This is specified using a   CodeReviewType  object. You can create a code review only of type RepositoryAnalysis.  
+        ///  The type of code review to create. This is specified using a   CodeReviewType  object. You can create a code review only of type RepositoryAnalysis.
         public let type: CodeReviewType
 
         public init(clientRequestToken: String? = CreateCodeReviewRequest.idempotencyToken(), name: String, repositoryAssociationArn: String, type: CodeReviewType) {
@@ -472,7 +462,6 @@ extension CodeGuruReviewer {
     }
 
     public struct CreateCodeReviewResponse: AWSDecodableShape {
-
         public let codeReview: CodeReview?
 
         public init(codeReview: CodeReview? = nil) {
@@ -489,7 +478,7 @@ extension CodeGuruReviewer {
             AWSMemberEncoding(label: "codeReviewArn", location: .uri(locationName: "CodeReviewArn"))
         ]
 
-        /// The Amazon Resource Name (ARN) of the  CodeReview object. 
+        /// The Amazon Resource Name (ARN) of the  CodeReview object.
         public let codeReviewArn: String
 
         public init(codeReviewArn: String) {
@@ -506,8 +495,7 @@ extension CodeGuruReviewer {
     }
 
     public struct DescribeCodeReviewResponse: AWSDecodableShape {
-
-        ///  Information about the code review. 
+        ///  Information about the code review.
         public let codeReview: CodeReview?
 
         public init(codeReview: CodeReview? = nil) {
@@ -521,16 +509,16 @@ extension CodeGuruReviewer {
 
     public struct DescribeRecommendationFeedbackRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "codeReviewArn", location: .uri(locationName: "CodeReviewArn")), 
-            AWSMemberEncoding(label: "recommendationId", location: .querystring(locationName: "RecommendationId")), 
+            AWSMemberEncoding(label: "codeReviewArn", location: .uri(locationName: "CodeReviewArn")),
+            AWSMemberEncoding(label: "recommendationId", location: .querystring(locationName: "RecommendationId")),
             AWSMemberEncoding(label: "userId", location: .querystring(locationName: "UserId"))
         ]
 
-        /// The Amazon Resource Name (ARN) of the  CodeReview object. 
+        /// The Amazon Resource Name (ARN) of the  CodeReview object.
         public let codeReviewArn: String
-        ///  The recommendation ID that can be used to track the provided recommendations and then to collect the feedback. 
+        ///  The recommendation ID that can be used to track the provided recommendations and then to collect the feedback.
         public let recommendationId: String
-        ///  Optional parameter to describe the feedback for a given user. If this is not supplied, it defaults to the user making the request.   The UserId is an IAM principal that can be specified as an AWS account ID or an Amazon Resource Name (ARN). For  more information, see  Specifying a Principal in the AWS Identity and Access Management User Guide. 
+        ///  Optional parameter to describe the feedback for a given user. If this is not supplied, it defaults to the user making the request.   The UserId is an IAM principal that can be specified as an AWS account ID or an Amazon Resource Name (ARN). For  more information, see  Specifying a Principal in the AWS Identity and Access Management User Guide.
         public let userId: String?
 
         public init(codeReviewArn: String, recommendationId: String, userId: String? = nil) {
@@ -553,8 +541,7 @@ extension CodeGuruReviewer {
     }
 
     public struct DescribeRecommendationFeedbackResponse: AWSDecodableShape {
-
-        ///  The recommendation feedback given by the user. 
+        ///  The recommendation feedback given by the user.
         public let recommendationFeedback: RecommendationFeedback?
 
         public init(recommendationFeedback: RecommendationFeedback? = nil) {
@@ -571,7 +558,7 @@ extension CodeGuruReviewer {
             AWSMemberEncoding(label: "associationArn", location: .uri(locationName: "AssociationArn"))
         ]
 
-        ///  The Amazon Resource Name (ARN) of the    RepositoryAssociation object.  You can retrieve this ARN by calling   ListRepositoryAssociations . 
+        ///  The Amazon Resource Name (ARN) of the    RepositoryAssociation object.  You can retrieve this ARN by calling   ListRepositoryAssociations .
         public let associationArn: String
 
         public init(associationArn: String) {
@@ -588,21 +575,20 @@ extension CodeGuruReviewer {
     }
 
     public struct DescribeRepositoryAssociationResponse: AWSDecodableShape {
-
         /// Information about the repository association.
         public let repositoryAssociation: RepositoryAssociation?
-        /// 			An array of key-value pairs used to tag an associated repository. A tag is a custom attribute label with two parts: 
-        /// 		
-        /// 		        
+        /// 			An array of key-value pairs used to tag an associated repository. A tag is a custom attribute label with two parts:
+        ///
+        ///
         /// 				           A tag key (for example, CostCenter,
         /// 					Environment, Project, or Secret). Tag
         /// 					keys are case sensitive.
-        /// 			          
+        ///
         /// 				           An optional field known as a tag value (for example,
         /// 					111122223333, Production, or a team name).
         /// 					Omitting the tag value is the same as using an empty string. Like tag keys, tag
         /// 					values are case sensitive.
-        /// 			          
+        ///
         public let tags: [String: String]?
 
         public init(repositoryAssociation: RepositoryAssociation? = nil, tags: [String: String]? = nil) {
@@ -621,7 +607,7 @@ extension CodeGuruReviewer {
             AWSMemberEncoding(label: "associationArn", location: .uri(locationName: "AssociationArn"))
         ]
 
-        ///  The Amazon Resource Name (ARN) of the    RepositoryAssociation object.  You can retrieve this ARN by calling   ListRepositoryAssociations . 
+        ///  The Amazon Resource Name (ARN) of the    RepositoryAssociation object.  You can retrieve this ARN by calling   ListRepositoryAssociations .
         public let associationArn: String
 
         public init(associationArn: String) {
@@ -638,21 +624,20 @@ extension CodeGuruReviewer {
     }
 
     public struct DisassociateRepositoryResponse: AWSDecodableShape {
-
         /// Information about the disassociated repository.
         public let repositoryAssociation: RepositoryAssociation?
-        /// 			An array of key-value pairs used to tag an associated repository. A tag is a custom attribute label with two parts: 
-        /// 		
-        /// 		        
+        /// 			An array of key-value pairs used to tag an associated repository. A tag is a custom attribute label with two parts:
+        ///
+        ///
         /// 				           A tag key (for example, CostCenter,
         /// 					Environment, Project, or Secret). Tag
         /// 					keys are case sensitive.
-        /// 			          
+        ///
         /// 				           An optional field known as a tag value (for example,
         /// 					111122223333, Production, or a team name).
         /// 					Omitting the tag value is the same as using an empty string. Like tag keys, tag
         /// 					values are case sensitive.
-        /// 			          
+        ///
         public let tags: [String: String]?
 
         public init(repositoryAssociation: RepositoryAssociation? = nil, tags: [String: String]? = nil) {
@@ -667,8 +652,7 @@ extension CodeGuruReviewer {
     }
 
     public struct EventInfo: AWSEncodableShape & AWSDecodableShape {
-
-        /// The name of the event. The possible names are pull_request, workflow_dispatch,  schedule, and push 
+        /// The name of the event. The possible names are pull_request, workflow_dispatch,  schedule, and push
         public let name: String?
         /// The state of an event. The state might be open, closed, or another state.
         public let state: String?
@@ -694,7 +678,6 @@ extension CodeGuruReviewer {
     }
 
     public struct KMSKeyDetails: AWSEncodableShape & AWSDecodableShape {
-
         /// The encryption option for a repository association. It is either owned by AWS  Key Management Service (KMS) (AWS_OWNED_CMK) or customer managed (CUSTOMER_MANAGED_CMK).
         public let encryptionOption: EncryptionOption?
         /// The ID of the AWS KMS key that is associated with a respository association.
@@ -719,25 +702,25 @@ extension CodeGuruReviewer {
 
     public struct ListCodeReviewsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "MaxResults")), 
-            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "NextToken")), 
-            AWSMemberEncoding(label: "providerTypes", location: .querystring(locationName: "ProviderTypes")), 
-            AWSMemberEncoding(label: "repositoryNames", location: .querystring(locationName: "RepositoryNames")), 
-            AWSMemberEncoding(label: "states", location: .querystring(locationName: "States")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "MaxResults")),
+            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "NextToken")),
+            AWSMemberEncoding(label: "providerTypes", location: .querystring(locationName: "ProviderTypes")),
+            AWSMemberEncoding(label: "repositoryNames", location: .querystring(locationName: "RepositoryNames")),
+            AWSMemberEncoding(label: "states", location: .querystring(locationName: "States")),
             AWSMemberEncoding(label: "type", location: .querystring(locationName: "Type"))
         ]
 
-        ///  The maximum number of results that are returned per call. The default is 100. 
+        ///  The maximum number of results that are returned per call. The default is 100.
         public let maxResults: Int?
-        ///  If nextToken is returned, there are more results available. The value of nextToken is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page. Keep all other arguments unchanged. 
+        ///  If nextToken is returned, there are more results available. The value of nextToken is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page. Keep all other arguments unchanged.
         public let nextToken: String?
-        ///  List of provider types for filtering that needs to be applied before displaying the result. For example, providerTypes=[GitHub]  lists code reviews from GitHub. 
+        ///  List of provider types for filtering that needs to be applied before displaying the result. For example, providerTypes=[GitHub]  lists code reviews from GitHub.
         public let providerTypes: [ProviderType]?
-        ///  List of repository names for filtering that needs to be applied before displaying the result. 
+        ///  List of repository names for filtering that needs to be applied before displaying the result.
         public let repositoryNames: [String]?
-        ///  List of states for filtering that needs to be applied before displaying the result. For example, states=[Pending] lists code reviews in the Pending state.  The valid code review states are:    Completed: The code review is complete.     Pending: The code review started and has not completed or failed.     Failed: The code review failed.     Deleting: The code review is being deleted.   
+        ///  List of states for filtering that needs to be applied before displaying the result. For example, states=[Pending] lists code reviews in the Pending state.  The valid code review states are:    Completed: The code review is complete.     Pending: The code review started and has not completed or failed.     Failed: The code review failed.     Deleting: The code review is being deleted.
         public let states: [JobState]?
-        ///  The type of code reviews to list in the response. 
+        ///  The type of code reviews to list in the response.
         public let type: `Type`
 
         public init(maxResults: Int? = nil, nextToken: String? = nil, providerTypes: [ProviderType]? = nil, repositoryNames: [String]? = nil, states: [JobState]? = nil, type: `Type`) {
@@ -771,10 +754,9 @@ extension CodeGuruReviewer {
     }
 
     public struct ListCodeReviewsResponse: AWSDecodableShape {
-
-        ///  A list of code reviews that meet the criteria of the request. 
+        ///  A list of code reviews that meet the criteria of the request.
         public let codeReviewSummaries: [CodeReviewSummary]?
-        ///  Pagination token. 
+        ///  Pagination token.
         public let nextToken: String?
 
         public init(codeReviewSummaries: [CodeReviewSummary]? = nil, nextToken: String? = nil) {
@@ -790,22 +772,22 @@ extension CodeGuruReviewer {
 
     public struct ListRecommendationFeedbackRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "codeReviewArn", location: .uri(locationName: "CodeReviewArn")), 
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "MaxResults")), 
-            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "NextToken")), 
-            AWSMemberEncoding(label: "recommendationIds", location: .querystring(locationName: "RecommendationIds")), 
+            AWSMemberEncoding(label: "codeReviewArn", location: .uri(locationName: "CodeReviewArn")),
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "MaxResults")),
+            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "NextToken")),
+            AWSMemberEncoding(label: "recommendationIds", location: .querystring(locationName: "RecommendationIds")),
             AWSMemberEncoding(label: "userIds", location: .querystring(locationName: "UserIds"))
         ]
 
-        /// The Amazon Resource Name (ARN) of the  CodeReview object. 
+        /// The Amazon Resource Name (ARN) of the  CodeReview object.
         public let codeReviewArn: String
-        ///  The maximum number of results that are returned per call. The default is 100. 
+        ///  The maximum number of results that are returned per call. The default is 100.
         public let maxResults: Int?
-        ///  If nextToken is returned, there are more results available. The value of nextToken is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page. Keep all other arguments unchanged. 
+        ///  If nextToken is returned, there are more results available. The value of nextToken is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page. Keep all other arguments unchanged.
         public let nextToken: String?
-        ///  Used to query the recommendation feedback for a given recommendation.  
+        ///  Used to query the recommendation feedback for a given recommendation.
         public let recommendationIds: [String]?
-        ///  An AWS user's account ID or Amazon Resource Name (ARN). Use this ID to query the recommendation feedback for a code review from that user.   The UserId is an IAM principal that can be specified as an AWS account ID or an Amazon Resource Name (ARN). For  more information, see  Specifying a Principal in the AWS Identity and Access Management User Guide. 
+        ///  An AWS user's account ID or Amazon Resource Name (ARN). Use this ID to query the recommendation feedback for a code review from that user.   The UserId is an IAM principal that can be specified as an AWS account ID or an Amazon Resource Name (ARN). For  more information, see  Specifying a Principal in the AWS Identity and Access Management User Guide.
         public let userIds: [String]?
 
         public init(codeReviewArn: String, maxResults: Int? = nil, nextToken: String? = nil, recommendationIds: [String]? = nil, userIds: [String]? = nil) {
@@ -842,10 +824,9 @@ extension CodeGuruReviewer {
     }
 
     public struct ListRecommendationFeedbackResponse: AWSDecodableShape {
-
-        ///  If nextToken is returned, there are more results available. The value of nextToken is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page. Keep all other arguments unchanged. 
+        ///  If nextToken is returned, there are more results available. The value of nextToken is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page. Keep all other arguments unchanged.
         public let nextToken: String?
-        ///  Recommendation feedback summaries corresponding to the code review ARN. 
+        ///  Recommendation feedback summaries corresponding to the code review ARN.
         public let recommendationFeedbackSummaries: [RecommendationFeedbackSummary]?
 
         public init(nextToken: String? = nil, recommendationFeedbackSummaries: [RecommendationFeedbackSummary]? = nil) {
@@ -861,16 +842,16 @@ extension CodeGuruReviewer {
 
     public struct ListRecommendationsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "codeReviewArn", location: .uri(locationName: "CodeReviewArn")), 
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "MaxResults")), 
+            AWSMemberEncoding(label: "codeReviewArn", location: .uri(locationName: "CodeReviewArn")),
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "MaxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "NextToken"))
         ]
 
-        /// The Amazon Resource Name (ARN) of the  CodeReview object. 
+        /// The Amazon Resource Name (ARN) of the  CodeReview object.
         public let codeReviewArn: String
-        ///  The maximum number of results that are returned per call. The default is 100. 
+        ///  The maximum number of results that are returned per call. The default is 100.
         public let maxResults: Int?
-        ///  Pagination token. 
+        ///  Pagination token.
         public let nextToken: String?
 
         public init(codeReviewArn: String, maxResults: Int? = nil, nextToken: String? = nil) {
@@ -893,10 +874,9 @@ extension CodeGuruReviewer {
     }
 
     public struct ListRecommendationsResponse: AWSDecodableShape {
-
-        ///  Pagination token. 
+        ///  Pagination token.
         public let nextToken: String?
-        ///  List of recommendations for the requested code review. 
+        ///  List of recommendations for the requested code review.
         public let recommendationSummaries: [RecommendationSummary]?
 
         public init(nextToken: String? = nil, recommendationSummaries: [RecommendationSummary]? = nil) {
@@ -912,25 +892,25 @@ extension CodeGuruReviewer {
 
     public struct ListRepositoryAssociationsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "MaxResults")), 
-            AWSMemberEncoding(label: "names", location: .querystring(locationName: "Name")), 
-            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "NextToken")), 
-            AWSMemberEncoding(label: "owners", location: .querystring(locationName: "Owner")), 
-            AWSMemberEncoding(label: "providerTypes", location: .querystring(locationName: "ProviderType")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "MaxResults")),
+            AWSMemberEncoding(label: "names", location: .querystring(locationName: "Name")),
+            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "NextToken")),
+            AWSMemberEncoding(label: "owners", location: .querystring(locationName: "Owner")),
+            AWSMemberEncoding(label: "providerTypes", location: .querystring(locationName: "ProviderType")),
             AWSMemberEncoding(label: "states", location: .querystring(locationName: "State"))
         ]
 
-        /// The maximum number of repository association results returned by ListRepositoryAssociations  in paginated output. When this parameter is used, ListRepositoryAssociations only returns  maxResults results in a single page with a nextToken response  element. The remaining results of the initial request  can be seen by sending another ListRepositoryAssociations request with the returned  nextToken value.  This value can be between 1 and 100. If this parameter is not used, ListRepositoryAssociations returns up to 100 results and a nextToken value if applicable. 
+        /// The maximum number of repository association results returned by ListRepositoryAssociations  in paginated output. When this parameter is used, ListRepositoryAssociations only returns  maxResults results in a single page with a nextToken response  element. The remaining results of the initial request  can be seen by sending another ListRepositoryAssociations request with the returned  nextToken value.  This value can be between 1 and 100. If this parameter is not used, ListRepositoryAssociations returns up to 100 results and a nextToken value if applicable.
         public let maxResults: Int?
         /// List of repository names to use as a filter.
         public let names: [String]?
-        /// The nextToken value returned from a previous paginated  ListRepositoryAssociations request where maxResults was used and the results  exceeded the value of that parameter. Pagination continues from the end of the previous results  that returned the nextToken value.    Treat this token as an opaque identifier that is only used to retrieve  the next items in a list and not for other programmatic purposes. 
+        /// The nextToken value returned from a previous paginated  ListRepositoryAssociations request where maxResults was used and the results  exceeded the value of that parameter. Pagination continues from the end of the previous results  that returned the nextToken value.    Treat this token as an opaque identifier that is only used to retrieve  the next items in a list and not for other programmatic purposes.
         public let nextToken: String?
-        /// List of owners to use as a filter.  For AWS CodeCommit, it is the name of the CodeCommit account that was used to associate the repository. For other repository source providers, such as Bitbucket and GitHub Enterprise Server, this is name of the account  that was used to associate the repository. 
+        /// List of owners to use as a filter.  For AWS CodeCommit, it is the name of the CodeCommit account that was used to associate the repository. For other repository source providers, such as Bitbucket and GitHub Enterprise Server, this is name of the account  that was used to associate the repository.
         public let owners: [String]?
         /// List of provider types to use as a filter.
         public let providerTypes: [ProviderType]?
-        /// List of repository association states to use as a filter. The valid repository association states are:    Associated: The repository  association is complete.     Associating: CodeGuru Reviewer is:                    Setting up pull request notifications. This is required  for pull requests to trigger a CodeGuru Reviewer review.    If your repository ProviderType is GitHub, GitHub Enterprise Server, or Bitbucket,  CodeGuru Reviewer creates webhooks in your repository to trigger CodeGuru Reviewer reviews. If you delete these webhooks,  reviews of code in your repository cannot be triggered.      Setting up source code access. This is required for CodeGuru Reviewer to securely  clone code in your repository.       Failed: The repository failed to associate or disassociate.     Disassociating: CodeGuru Reviewer is removing the repository's pull request notifications and  source code access.     Disassociated: CodeGuru Reviewer successfully disassociated the repository. You can create a new association  with this repository if you want to review source code in it later. You can control access to code reviews created in an  associated repository with tags after it has been disassociated. For more information, see Using tags to control access to  associated repositories in the Amazon CodeGuru Reviewer User Guide.   
+        /// List of repository association states to use as a filter. The valid repository association states are:    Associated: The repository  association is complete.     Associating: CodeGuru Reviewer is:                    Setting up pull request notifications. This is required  for pull requests to trigger a CodeGuru Reviewer review.    If your repository ProviderType is GitHub, GitHub Enterprise Server, or Bitbucket,  CodeGuru Reviewer creates webhooks in your repository to trigger CodeGuru Reviewer reviews. If you delete these webhooks,  reviews of code in your repository cannot be triggered.      Setting up source code access. This is required for CodeGuru Reviewer to securely  clone code in your repository.       Failed: The repository failed to associate or disassociate.     Disassociating: CodeGuru Reviewer is removing the repository's pull request notifications and  source code access.     Disassociated: CodeGuru Reviewer successfully disassociated the repository. You can create a new association  with this repository if you want to review source code in it later. You can control access to code reviews created in an  associated repository with tags after it has been disassociated. For more information, see Using tags to control access to  associated repositories in the Amazon CodeGuru Reviewer User Guide.
         public let states: [RepositoryAssociationState]?
 
         public init(maxResults: Int? = nil, names: [String]? = nil, nextToken: String? = nil, owners: [String]? = nil, providerTypes: [ProviderType]? = nil, states: [RepositoryAssociationState]? = nil) {
@@ -971,8 +951,7 @@ extension CodeGuruReviewer {
     }
 
     public struct ListRepositoryAssociationsResponse: AWSDecodableShape {
-
-        /// The nextToken value to include in a future ListRecommendations request.  When the results of a ListRecommendations request exceed maxResults, this  value can be used to retrieve the next page of results. This value is null when there are no more  results to return. 
+        /// The nextToken value to include in a future ListRecommendations request.  When the results of a ListRecommendations request exceed maxResults, this  value can be used to retrieve the next page of results. This value is null when there are no more  results to return.
         public let nextToken: String?
         /// A list of repository associations that meet the criteria of the request.
         public let repositoryAssociationSummaries: [RepositoryAssociationSummary]?
@@ -993,7 +972,7 @@ extension CodeGuruReviewer {
             AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "resourceArn"))
         ]
 
-        ///  The Amazon Resource Name (ARN) of the    RepositoryAssociation object.  You can retrieve this ARN by calling   ListRepositoryAssociations . 
+        ///  The Amazon Resource Name (ARN) of the    RepositoryAssociation object.  You can retrieve this ARN by calling   ListRepositoryAssociations .
         public let resourceArn: String
 
         public init(resourceArn: String) {
@@ -1010,19 +989,18 @@ extension CodeGuruReviewer {
     }
 
     public struct ListTagsForResourceResponse: AWSDecodableShape {
-
-        /// 			An array of key-value pairs used to tag an associated repository. A tag is a custom attribute label with two parts: 
-        /// 		
-        /// 		        
+        /// 			An array of key-value pairs used to tag an associated repository. A tag is a custom attribute label with two parts:
+        ///
+        ///
         /// 				           A tag key (for example, CostCenter,
         /// 					Environment, Project, or Secret). Tag
         /// 					keys are case sensitive.
-        /// 			          
+        ///
         /// 				           An optional field known as a tag value (for example,
         /// 					111122223333, Production, or a team name).
         /// 					Omitting the tag value is the same as using an empty string. Like tag keys, tag
         /// 					values are case sensitive.
-        /// 			          
+        ///
         public let tags: [String: String]?
 
         public init(tags: [String: String]? = nil) {
@@ -1035,10 +1013,9 @@ extension CodeGuruReviewer {
     }
 
     public struct Metrics: AWSDecodableShape {
-
-        ///  Total number of recommendations found in the code review. 
+        ///  Total number of recommendations found in the code review.
         public let findingsCount: Int64?
-        ///  Lines of code metered in the code review. For the initial code review pull request and all subsequent revisions,  this includes all lines of code in the files added to the pull request. In subsequent revisions, for files that already  existed in the pull request, this includes only the changed lines of code. In both cases, this does not include non-code lines such as comments  and import statements. For example, if you submit a pull request containing 5 files, each with 500 lines of code, and in  a subsequent revision you added a new file with 200 lines of code, and also modified a total of 25 lines across the initial 5 files,  MeteredLinesOfCodeCount includes the first 5 files (5 * 500 = 2,500 lines), the new file (200 lines) and the 25 changed lines of code for a total of 2,725 lines of code. 
+        ///  Lines of code metered in the code review. For the initial code review pull request and all subsequent revisions,  this includes all lines of code in the files added to the pull request. In subsequent revisions, for files that already  existed in the pull request, this includes only the changed lines of code. In both cases, this does not include non-code lines such as comments  and import statements. For example, if you submit a pull request containing 5 files, each with 500 lines of code, and in  a subsequent revision you added a new file with 200 lines of code, and also modified a total of 25 lines across the initial 5 files,  MeteredLinesOfCodeCount includes the first 5 files (5 * 500 = 2,500 lines), the new file (200 lines) and the 25 changed lines of code for a total of 2,725 lines of code.
         public let meteredLinesOfCodeCount: Int64?
 
         public init(findingsCount: Int64? = nil, meteredLinesOfCodeCount: Int64? = nil) {
@@ -1053,10 +1030,9 @@ extension CodeGuruReviewer {
     }
 
     public struct MetricsSummary: AWSDecodableShape {
-
-        ///  Total number of recommendations found in the code review. 
+        ///  Total number of recommendations found in the code review.
         public let findingsCount: Int64?
-        ///  Lines of code metered in the code review. For the initial code review pull request and all subsequent revisions,  this includes all lines of code in the files added to the pull request. In subsequent revisions, for files that already  existed in the pull request, this includes only the changed lines of code. In both cases, this does not include non-code lines such as comments  and import statements. For example, if you submit a pull request containing 5 files, each with 500 lines of code, and in  a subsequent revision you added a new file with 200 lines of code, and also modified a total of 25 lines across the initial 5 files,  MeteredLinesOfCodeCount includes the first 5 files (5 * 500 = 2,500 lines), the new file (200 lines) and the 25 changed lines of code for a total of 2,725 lines of code. 
+        ///  Lines of code metered in the code review. For the initial code review pull request and all subsequent revisions,  this includes all lines of code in the files added to the pull request. In subsequent revisions, for files that already  existed in the pull request, this includes only the changed lines of code. In both cases, this does not include non-code lines such as comments  and import statements. For example, if you submit a pull request containing 5 files, each with 500 lines of code, and in  a subsequent revision you added a new file with 200 lines of code, and also modified a total of 25 lines across the initial 5 files,  MeteredLinesOfCodeCount includes the first 5 files (5 * 500 = 2,500 lines), the new file (200 lines) and the 25 changed lines of code for a total of 2,725 lines of code.
         public let meteredLinesOfCodeCount: Int64?
 
         public init(findingsCount: Int64? = nil, meteredLinesOfCodeCount: Int64? = nil) {
@@ -1071,12 +1047,11 @@ extension CodeGuruReviewer {
     }
 
     public struct PutRecommendationFeedbackRequest: AWSEncodableShape {
-
-        /// The Amazon Resource Name (ARN) of the  CodeReview object. 
+        /// The Amazon Resource Name (ARN) of the  CodeReview object.
         public let codeReviewArn: String
-        ///  List for storing reactions. Reactions are utf-8 text code for emojis. If you send an empty list it clears all your feedback. 
+        ///  List for storing reactions. Reactions are utf-8 text code for emojis. If you send an empty list it clears all your feedback.
         public let reactions: [Reaction]
-        ///  The recommendation ID that can be used to track the provided recommendations and then to collect the feedback. 
+        ///  The recommendation ID that can be used to track the provided recommendations and then to collect the feedback.
         public let recommendationId: String
 
         public init(codeReviewArn: String, reactions: [Reaction], recommendationId: String) {
@@ -1102,26 +1077,21 @@ extension CodeGuruReviewer {
     }
 
     public struct PutRecommendationFeedbackResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct RecommendationFeedback: AWSDecodableShape {
-
-        /// The Amazon Resource Name (ARN) of the  CodeReview object. 
+        /// The Amazon Resource Name (ARN) of the  CodeReview object.
         public let codeReviewArn: String?
-        ///  The time at which the feedback was created. 
+        ///  The time at which the feedback was created.
         public let createdTimeStamp: Date?
-        ///  The time at which the feedback was last updated.  
+        ///  The time at which the feedback was last updated.
         public let lastUpdatedTimeStamp: Date?
-        ///  List for storing reactions. Reactions are utf-8 text code for emojis. You can send an empty list to clear off all your feedback. 
+        ///  List for storing reactions. Reactions are utf-8 text code for emojis. You can send an empty list to clear off all your feedback.
         public let reactions: [Reaction]?
-        ///  The recommendation ID that can be used to track the provided recommendations. Later on it can be used to collect the feedback. 
+        ///  The recommendation ID that can be used to track the provided recommendations. Later on it can be used to collect the feedback.
         public let recommendationId: String?
-        ///  The ID of the user that made the API call.   The UserId is an IAM principal that can be specified as an AWS account ID or an Amazon Resource Name (ARN). For  more information, see  Specifying a Principal in the AWS Identity and Access Management User Guide. 
+        ///  The ID of the user that made the API call.   The UserId is an IAM principal that can be specified as an AWS account ID or an Amazon Resource Name (ARN). For  more information, see  Specifying a Principal in the AWS Identity and Access Management User Guide.
         public let userId: String?
 
         public init(codeReviewArn: String? = nil, createdTimeStamp: Date? = nil, lastUpdatedTimeStamp: Date? = nil, reactions: [Reaction]? = nil, recommendationId: String? = nil, userId: String? = nil) {
@@ -1144,12 +1114,11 @@ extension CodeGuruReviewer {
     }
 
     public struct RecommendationFeedbackSummary: AWSDecodableShape {
-
-        ///  List for storing reactions. Reactions are utf-8 text code for emojis. 
+        ///  List for storing reactions. Reactions are utf-8 text code for emojis.
         public let reactions: [Reaction]?
-        ///  The recommendation ID that can be used to track the provided recommendations. Later on it can be used to collect the feedback. 
+        ///  The recommendation ID that can be used to track the provided recommendations. Later on it can be used to collect the feedback.
         public let recommendationId: String?
-        ///  The ID of the user that gave the feedback.   The UserId is an IAM principal that can be specified as an AWS account ID or an Amazon Resource Name (ARN). For  more information, see  Specifying a Principal in the AWS Identity and Access Management User Guide. 
+        ///  The ID of the user that gave the feedback.   The UserId is an IAM principal that can be specified as an AWS account ID or an Amazon Resource Name (ARN). For  more information, see  Specifying a Principal in the AWS Identity and Access Management User Guide.
         public let userId: String?
 
         public init(reactions: [Reaction]? = nil, recommendationId: String? = nil, userId: String? = nil) {
@@ -1166,18 +1135,17 @@ extension CodeGuruReviewer {
     }
 
     public struct RecommendationSummary: AWSDecodableShape {
-
-        ///  A description of the recommendation generated by CodeGuru Reviewer for the lines of code between the start line and the end line. 
+        ///  A description of the recommendation generated by CodeGuru Reviewer for the lines of code between the start line and the end line.
         public let description: String?
-        ///  Last line where the recommendation is applicable in the source commit or source branch. For a single line comment the start line and end line values are the same. 
+        ///  Last line where the recommendation is applicable in the source commit or source branch. For a single line comment the start line and end line values are the same.
         public let endLine: Int?
         /// Name of the file on which a recommendation is provided.
         public let filePath: String?
         /// The type of a recommendation.
         public let recommendationCategory: RecommendationCategory?
-        ///  The recommendation ID that can be used to track the provided recommendations. Later on it can be used to collect the feedback. 
+        ///  The recommendation ID that can be used to track the provided recommendations. Later on it can be used to collect the feedback.
         public let recommendationId: String?
-        ///  Start line from where the recommendation is applicable in the source commit or source branch. 
+        ///  Start line from where the recommendation is applicable in the source commit or source branch.
         public let startLine: Int?
 
         public init(description: String? = nil, endLine: Int? = nil, filePath: String? = nil, recommendationCategory: RecommendationCategory? = nil, recommendationId: String? = nil, startLine: Int? = nil) {
@@ -1200,12 +1168,11 @@ extension CodeGuruReviewer {
     }
 
     public struct Repository: AWSEncodableShape {
-
-        ///  Information about a Bitbucket repository. 
+        ///  Information about a Bitbucket repository.
         public let bitbucket: ThirdPartySourceRepository?
         /// Information about an AWS CodeCommit repository.
         public let codeCommit: CodeCommitRepository?
-        ///  Information about a GitHub Enterprise Server repository. 
+        ///  Information about a GitHub Enterprise Server repository.
         public let gitHubEnterpriseServer: ThirdPartySourceRepository?
         public let s3Bucket: S3Repository?
 
@@ -1232,8 +1199,7 @@ extension CodeGuruReviewer {
     }
 
     public struct RepositoryAnalysis: AWSEncodableShape {
-
-        ///  A  SourceCodeType that  specifies the tip of a branch in an associated repository.  
+        ///  A  SourceCodeType that  specifies the tip of a branch in an associated repository.
         public let repositoryHead: RepositoryHeadSourceCodeType?
         public let sourceCodeType: SourceCodeType?
 
@@ -1254,16 +1220,15 @@ extension CodeGuruReviewer {
     }
 
     public struct RepositoryAssociation: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) identifying the repository association.
         public let associationArn: String?
         /// The ID of the repository association.
         public let associationId: String?
-        ///  The Amazon Resource Name (ARN) of an AWS CodeStar Connections connection. Its format is  arn:aws:codestar-connections:region-id:aws-account_id:connection/connection-id. For more information, see   Connection in  the AWS CodeStar Connections API Reference. 
+        ///  The Amazon Resource Name (ARN) of an AWS CodeStar Connections connection. Its format is  arn:aws:codestar-connections:region-id:aws-account_id:connection/connection-id. For more information, see   Connection in  the AWS CodeStar Connections API Reference.
         public let connectionArn: String?
         /// The time, in milliseconds since the epoch, when the repository association was created.
         public let createdTimeStamp: Date?
-        /// A KMSKeyDetails object that contains:   The encryption option for this repository association. It is either owned by AWS  Key Management Service (KMS) (AWS_OWNED_CMK) or customer managed (CUSTOMER_MANAGED_CMK).   The ID of the AWS KMS key that  is associated with this respository association.  
+        /// A KMSKeyDetails object that contains:   The encryption option for this repository association. It is either owned by AWS  Key Management Service (KMS) (AWS_OWNED_CMK) or customer managed (CUSTOMER_MANAGED_CMK).   The ID of the AWS KMS key that  is associated with this respository association.
         public let kMSKeyDetails: KMSKeyDetails?
         /// The time, in milliseconds since the epoch, when the repository association was last updated.
         public let lastUpdatedTimeStamp: Date?
@@ -1274,7 +1239,7 @@ extension CodeGuruReviewer {
         /// The provider type of the repository association.
         public let providerType: ProviderType?
         public let s3RepositoryDetails: S3RepositoryDetails?
-        /// The state of the repository association. The valid repository association states are:    Associated: The repository  association is complete.     Associating: CodeGuru Reviewer is:                    Setting up pull request notifications. This is required  for pull requests to trigger a CodeGuru Reviewer review.    If your repository ProviderType is GitHub, GitHub Enterprise Server, or Bitbucket,  CodeGuru Reviewer creates webhooks in your repository to trigger CodeGuru Reviewer reviews. If you delete these webhooks,  reviews of code in your repository cannot be triggered.      Setting up source code access. This is required for CodeGuru Reviewer to securely  clone code in your repository.       Failed: The repository failed to associate or disassociate.     Disassociating: CodeGuru Reviewer is removing the repository's pull request notifications and  source code access.     Disassociated: CodeGuru Reviewer successfully disassociated the repository. You can create a new association  with this repository if you want to review source code in it later. You can control access to code reviews created in an  associated repository with tags after it has been disassociated. For more information, see Using tags to control access to  associated repositories in the Amazon CodeGuru Reviewer User Guide.   
+        /// The state of the repository association. The valid repository association states are:    Associated: The repository  association is complete.     Associating: CodeGuru Reviewer is:                    Setting up pull request notifications. This is required  for pull requests to trigger a CodeGuru Reviewer review.    If your repository ProviderType is GitHub, GitHub Enterprise Server, or Bitbucket,  CodeGuru Reviewer creates webhooks in your repository to trigger CodeGuru Reviewer reviews. If you delete these webhooks,  reviews of code in your repository cannot be triggered.      Setting up source code access. This is required for CodeGuru Reviewer to securely  clone code in your repository.       Failed: The repository failed to associate or disassociate.     Disassociating: CodeGuru Reviewer is removing the repository's pull request notifications and  source code access.     Disassociated: CodeGuru Reviewer successfully disassociated the repository. You can create a new association  with this repository if you want to review source code in it later. You can control access to code reviews created in an  associated repository with tags after it has been disassociated. For more information, see Using tags to control access to  associated repositories in the Amazon CodeGuru Reviewer User Guide.
         public let state: RepositoryAssociationState?
         /// A description of why the repository association is in the current state.
         public let stateReason: String?
@@ -1311,14 +1276,13 @@ extension CodeGuruReviewer {
     }
 
     public struct RepositoryAssociationSummary: AWSDecodableShape {
-
-        ///  The Amazon Resource Name (ARN) of the    RepositoryAssociation object.  You can retrieve this ARN by calling   ListRepositoryAssociations . 
+        ///  The Amazon Resource Name (ARN) of the    RepositoryAssociation object.  You can retrieve this ARN by calling   ListRepositoryAssociations .
         public let associationArn: String?
-        ///  The repository association ID. 
+        ///  The repository association ID.
         public let associationId: String?
-        ///  The Amazon Resource Name (ARN) of an AWS CodeStar Connections connection. Its format is  arn:aws:codestar-connections:region-id:aws-account_id:connection/connection-id. For more information, see   Connection in  the AWS CodeStar Connections API Reference. 
+        ///  The Amazon Resource Name (ARN) of an AWS CodeStar Connections connection. Its format is  arn:aws:codestar-connections:region-id:aws-account_id:connection/connection-id. For more information, see   Connection in  the AWS CodeStar Connections API Reference.
         public let connectionArn: String?
-        /// The time, in milliseconds since the epoch, since the repository association was last updated. 
+        /// The time, in milliseconds since the epoch, since the repository association was last updated.
         public let lastUpdatedTimeStamp: Date?
         /// The name of the repository association.
         public let name: String?
@@ -1326,7 +1290,7 @@ extension CodeGuruReviewer {
         public let owner: String?
         /// The provider type of the repository association.
         public let providerType: ProviderType?
-        /// The state of the repository association. The valid repository association states are:    Associated: The repository  association is complete.     Associating: CodeGuru Reviewer is:                    Setting up pull request notifications. This is required  for pull requests to trigger a CodeGuru Reviewer review.    If your repository ProviderType is GitHub, GitHub Enterprise Server, or Bitbucket,  CodeGuru Reviewer creates webhooks in your repository to trigger CodeGuru Reviewer reviews. If you delete these webhooks,  reviews of code in your repository cannot be triggered.      Setting up source code access. This is required for CodeGuru Reviewer to securely  clone code in your repository.       Failed: The repository failed to associate or disassociate.     Disassociating: CodeGuru Reviewer is removing the repository's pull request notifications and  source code access.     Disassociated: CodeGuru Reviewer successfully disassociated the repository. You can create a new association  with this repository if you want to review source code in it later. You can control access to code reviews created in an  associated repository with tags after it has been disassociated. For more information, see Using tags to control access to  associated repositories in the Amazon CodeGuru Reviewer User Guide.   
+        /// The state of the repository association. The valid repository association states are:    Associated: The repository  association is complete.     Associating: CodeGuru Reviewer is:                    Setting up pull request notifications. This is required  for pull requests to trigger a CodeGuru Reviewer review.    If your repository ProviderType is GitHub, GitHub Enterprise Server, or Bitbucket,  CodeGuru Reviewer creates webhooks in your repository to trigger CodeGuru Reviewer reviews. If you delete these webhooks,  reviews of code in your repository cannot be triggered.      Setting up source code access. This is required for CodeGuru Reviewer to securely  clone code in your repository.       Failed: The repository failed to associate or disassociate.     Disassociating: CodeGuru Reviewer is removing the repository's pull request notifications and  source code access.     Disassociated: CodeGuru Reviewer successfully disassociated the repository. You can create a new association  with this repository if you want to review source code in it later. You can control access to code reviews created in an  associated repository with tags after it has been disassociated. For more information, see Using tags to control access to  associated repositories in the Amazon CodeGuru Reviewer User Guide.
         public let state: RepositoryAssociationState?
 
         public init(associationArn: String? = nil, associationId: String? = nil, connectionArn: String? = nil, lastUpdatedTimeStamp: Date? = nil, name: String? = nil, owner: String? = nil, providerType: ProviderType? = nil, state: RepositoryAssociationState? = nil) {
@@ -1353,8 +1317,7 @@ extension CodeGuruReviewer {
     }
 
     public struct RepositoryHeadSourceCodeType: AWSEncodableShape & AWSDecodableShape {
-
-        ///  The name of the branch in an associated repository. The RepositoryHeadSourceCodeType specifies  the tip of this branch. 
+        ///  The name of the branch in an associated repository. The RepositoryHeadSourceCodeType specifies  the tip of this branch.
         public let branchName: String
 
         public init(branchName: String) {
@@ -1372,14 +1335,13 @@ extension CodeGuruReviewer {
     }
 
     public struct RequestMetadata: AWSEncodableShape & AWSDecodableShape {
-
         /// Information about the event associated with a code review.
         public let eventInfo: EventInfo?
         /// An identifier, such as a name or account ID, that is associated with the requester. The  Requester is used to capture the author/actor name of the event request.
         public let requester: String?
         /// The ID of the request. This is required for a pull request code review.
         public let requestId: String?
-        /// The name of the repository vendor used to upload code to an S3 bucket for a CI/CD code review. For example, if code and artifacts are uploaded to an S3 bucket for a CI/CD code review by GitHub scripts from a GitHub repository, then the repository association's ProviderType is S3Bucket and the CI/CD repository vendor name is GitHub. For more information, see the definition for ProviderType in RepositoryAssociation. 
+        /// The name of the repository vendor used to upload code to an S3 bucket for a CI/CD code review. For example, if code and artifacts are uploaded to an S3 bucket for a CI/CD code review by GitHub scripts from a GitHub repository, then the repository association's ProviderType is S3Bucket and the CI/CD repository vendor name is GitHub. For more information, see the definition for ProviderType in RepositoryAssociation.
         public let vendorName: VendorName?
 
         public init(eventInfo: EventInfo? = nil, requester: String? = nil, requestId: String? = nil, vendorName: VendorName? = nil) {
@@ -1407,13 +1369,12 @@ extension CodeGuruReviewer {
     }
 
     public struct S3BucketRepository: AWSEncodableShape & AWSDecodableShape {
-
-        /// 			An S3RepositoryDetails object that specifies the name of an S3 bucket and 
-        /// 			a CodeArtifacts object. The CodeArtifacts object includes the S3 
+        /// 			An S3RepositoryDetails object that specifies the name of an S3 bucket and
+        /// 			a CodeArtifacts object. The CodeArtifacts object includes the S3
         /// 			object keys for a source code .zip file and for a build artifacts .zip file.
-        /// 		
+        ///
         public let details: S3RepositoryDetails?
-        ///  The name of the repository when the ProviderType is S3Bucket. 
+        ///  The name of the repository when the ProviderType is S3Bucket.
         public let name: String
 
         public init(details: S3RepositoryDetails? = nil, name: String) {
@@ -1435,10 +1396,9 @@ extension CodeGuruReviewer {
     }
 
     public struct S3Repository: AWSEncodableShape {
-
-        /// The name of the S3 bucket used for associating a new S3 repository. It must begin with  codeguru-reviewer-. 
+        /// The name of the S3 bucket used for associating a new S3 repository. It must begin with  codeguru-reviewer-.
         public let bucketName: String
-        ///  The name of the repository in the S3 bucket. 
+        ///  The name of the repository in the S3 bucket.
         public let name: String
 
         public init(bucketName: String, name: String) {
@@ -1462,10 +1422,9 @@ extension CodeGuruReviewer {
     }
 
     public struct S3RepositoryDetails: AWSEncodableShape & AWSDecodableShape {
-
-        /// The name of the S3 bucket used for associating a new S3 repository. It must begin with  codeguru-reviewer-. 
+        /// The name of the S3 bucket used for associating a new S3 repository. It must begin with  codeguru-reviewer-.
         public let bucketName: String?
-        ///  A CodeArtifacts object. The CodeArtifacts object includes the S3  object key for a source code .zip file and for a build artifacts .zip file that contains .jar or .class files. 
+        ///  A CodeArtifacts object. The CodeArtifacts object includes the S3  object key for a source code .zip file and for a build artifacts .zip file that contains .jar or .class files.
         public let codeArtifacts: CodeArtifacts?
 
         public init(bucketName: String? = nil, codeArtifacts: CodeArtifacts? = nil) {
@@ -1487,18 +1446,17 @@ extension CodeGuruReviewer {
     }
 
     public struct SourceCodeType: AWSEncodableShape & AWSDecodableShape {
-
-        ///  A type of  SourceCodeType that  specifies a source branch name and a destination branch name in an associated repository. 
+        ///  A type of  SourceCodeType that  specifies a source branch name and a destination branch name in an associated repository.
         public let branchDiff: BranchDiffSourceCodeType?
-        ///  A  SourceCodeType that  specifies a commit diff created by a pull request on an associated repository. 
+        ///  A  SourceCodeType that  specifies a commit diff created by a pull request on an associated repository.
         public let commitDiff: CommitDiffSourceCodeType?
         public let repositoryHead: RepositoryHeadSourceCodeType?
-        /// Metadata that is associated with a code review. This applies to any type of code review supported by CodeGuru Reviewer. The  RequestMetadaa field captures any event metadata. For example, it might capture metadata associated with  an event trigger, such as a push or a pull request. 
+        /// Metadata that is associated with a code review. This applies to any type of code review supported by CodeGuru Reviewer. The  RequestMetadaa field captures any event metadata. For example, it might capture metadata associated with  an event trigger, such as a push or a pull request.
         public let requestMetadata: RequestMetadata?
-        /// 			Information about an associated repository in an S3 bucket that includes its name and an S3RepositoryDetails object. 
-        /// 			The S3RepositoryDetails object includes the name of an S3 bucket, an S3 key for a source code .zip file, and 
+        /// 			Information about an associated repository in an S3 bucket that includes its name and an S3RepositoryDetails object.
+        /// 			The S3RepositoryDetails object includes the name of an S3 bucket, an S3 key for a source code .zip file, and
         /// 			an S3 key for a build artifacts .zip file. S3BucketRepository is required in  SourceCodeType for  S3BucketRepository based code reviews.
-        /// 		
+        ///
         public let s3BucketRepository: S3BucketRepository?
 
         public init(branchDiff: BranchDiffSourceCodeType? = nil, commitDiff: CommitDiffSourceCodeType? = nil, repositoryHead: RepositoryHeadSourceCodeType? = nil, requestMetadata: RequestMetadata? = nil, s3BucketRepository: S3BucketRepository? = nil) {
@@ -1531,20 +1489,20 @@ extension CodeGuruReviewer {
             AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "resourceArn"))
         ]
 
-        ///  The Amazon Resource Name (ARN) of the    RepositoryAssociation object.  You can retrieve this ARN by calling   ListRepositoryAssociations . 
+        ///  The Amazon Resource Name (ARN) of the    RepositoryAssociation object.  You can retrieve this ARN by calling   ListRepositoryAssociations .
         public let resourceArn: String
-        /// 			An array of key-value pairs used to tag an associated repository. A tag is a custom attribute label with two parts: 
-        /// 		
-        /// 		        
+        /// 			An array of key-value pairs used to tag an associated repository. A tag is a custom attribute label with two parts:
+        ///
+        ///
         /// 				           A tag key (for example, CostCenter,
         /// 					Environment, Project, or Secret). Tag
         /// 					keys are case sensitive.
-        /// 			          
+        ///
         /// 				           An optional field known as a tag value (for example,
         /// 					111122223333, Production, or a team name).
         /// 					Omitting the tag value is the same as using an empty string. Like tag keys, tag
         /// 					values are case sensitive.
-        /// 			          
+        ///
         public let tags: [String: String]
 
         public init(resourceArn: String, tags: [String: String]) {
@@ -1571,20 +1529,15 @@ extension CodeGuruReviewer {
     }
 
     public struct TagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct ThirdPartySourceRepository: AWSEncodableShape {
-
-        ///  The Amazon Resource Name (ARN) of an AWS CodeStar Connections connection. Its format is  arn:aws:codestar-connections:region-id:aws-account_id:connection/connection-id. For more information, see   Connection in  the AWS CodeStar Connections API Reference. 
+        ///  The Amazon Resource Name (ARN) of an AWS CodeStar Connections connection. Its format is  arn:aws:codestar-connections:region-id:aws-account_id:connection/connection-id. For more information, see   Connection in  the AWS CodeStar Connections API Reference.
         public let connectionArn: String
-        ///  The name of the third party source repository. 
+        ///  The name of the third party source repository.
         public let name: String
-        ///  The owner of the repository. For a GitHub, GitHub Enterprise, or Bitbucket repository,  this is the username for the account that owns the repository. For an S3 repository,  this can be the username or AWS account ID. 
+        ///  The owner of the repository. For a GitHub, GitHub Enterprise, or Bitbucket repository,  this is the username for the account that owns the repository. For an S3 repository,  this can be the username or AWS account ID.
         public let owner: String
 
         public init(connectionArn: String, name: String, owner: String) {
@@ -1613,11 +1566,11 @@ extension CodeGuruReviewer {
 
     public struct UntagResourceRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "resourceArn")), 
+            AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "resourceArn")),
             AWSMemberEncoding(label: "tagKeys", location: .querystring(locationName: "tagKeys"))
         ]
 
-        ///  The Amazon Resource Name (ARN) of the    RepositoryAssociation object.  You can retrieve this ARN by calling   ListRepositoryAssociations . 
+        ///  The Amazon Resource Name (ARN) of the    RepositoryAssociation object.  You can retrieve this ARN by calling   ListRepositoryAssociations .
         public let resourceArn: String
         /// A list of the keys for each tag you want to remove from an associated repository.
         public let tagKeys: [String]
@@ -1643,10 +1596,6 @@ extension CodeGuruReviewer {
     }
 
     public struct UntagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 }

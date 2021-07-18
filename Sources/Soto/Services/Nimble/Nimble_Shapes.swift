@@ -247,7 +247,7 @@ extension Nimble {
 
     public struct AcceptEulasRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amz-Client-Token")), 
+            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amz-Client-Token")),
             AWSMemberEncoding(label: "studioId", location: .uri(locationName: "studioId"))
         ]
 
@@ -270,12 +270,11 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case eulaIds = "eulaIds"
+            case eulaIds
         }
     }
 
     public struct AcceptEulasResponse: AWSDecodableShape {
-
         /// A collection of EULA acceptances.
         public let eulaAcceptances: [EulaAcceptance]?
 
@@ -284,12 +283,11 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case eulaAcceptances = "eulaAcceptances"
+            case eulaAcceptances
         }
     }
 
     public struct ActiveDirectoryComputerAttribute: AWSEncodableShape & AWSDecodableShape {
-
         /// The name for the LDAP attribute.
         public let name: String?
         /// The value for the LDAP attribute.
@@ -308,13 +306,12 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case name = "name"
-            case value = "value"
+            case name
+            case value
         }
     }
 
     public struct ActiveDirectoryConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// A collection of custom attributes for an Active Directory computer.
         public let computerAttributes: [ActiveDirectoryComputerAttribute]?
         /// The directory ID of the AWS Directory Service for Microsoft AD to access using this studio component.
@@ -338,14 +335,13 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case computerAttributes = "computerAttributes"
-            case directoryId = "directoryId"
-            case organizationalUnitDistinguishedName = "organizationalUnitDistinguishedName"
+            case computerAttributes
+            case directoryId
+            case organizationalUnitDistinguishedName
         }
     }
 
     public struct ComputeFarmConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of an Active Directory user that is used on ComputeFarm worker instances.
         public let activeDirectoryUser: String?
         /// The endpoint of the ComputeFarm that is accessed by the studio component resource.
@@ -357,14 +353,14 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case activeDirectoryUser = "activeDirectoryUser"
-            case endpoint = "endpoint"
+            case activeDirectoryUser
+            case endpoint
         }
     }
 
     public struct CreateLaunchProfileRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amz-Client-Token")), 
+            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amz-Client-Token")),
             AWSMemberEncoding(label: "studioId", location: .uri(locationName: "studioId"))
         ]
 
@@ -414,18 +410,17 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case description = "description"
-            case ec2SubnetIds = "ec2SubnetIds"
-            case launchProfileProtocolVersions = "launchProfileProtocolVersions"
-            case name = "name"
-            case streamConfiguration = "streamConfiguration"
-            case studioComponentIds = "studioComponentIds"
-            case tags = "tags"
+            case description
+            case ec2SubnetIds
+            case launchProfileProtocolVersions
+            case name
+            case streamConfiguration
+            case studioComponentIds
+            case tags
         }
     }
 
     public struct CreateLaunchProfileResponse: AWSDecodableShape {
-
         /// The launch profile.
         public let launchProfile: LaunchProfile?
 
@@ -434,13 +429,13 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case launchProfile = "launchProfile"
+            case launchProfile
         }
     }
 
     public struct CreateStreamingImageRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amz-Client-Token")), 
+            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amz-Client-Token")),
             AWSMemberEncoding(label: "studioId", location: .uri(locationName: "studioId"))
         ]
 
@@ -475,15 +470,14 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case description = "description"
-            case ec2ImageId = "ec2ImageId"
-            case name = "name"
-            case tags = "tags"
+            case description
+            case ec2ImageId
+            case name
+            case tags
         }
     }
 
     public struct CreateStreamingImageResponse: AWSDecodableShape {
-
         public let streamingImage: StreamingImage?
 
         public init(streamingImage: StreamingImage? = nil) {
@@ -491,13 +485,13 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case streamingImage = "streamingImage"
+            case streamingImage
         }
     }
 
     public struct CreateStreamingSessionRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amz-Client-Token")), 
+            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amz-Client-Token")),
             AWSMemberEncoding(label: "studioId", location: .uri(locationName: "studioId"))
         ]
 
@@ -531,15 +525,14 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case ec2InstanceType = "ec2InstanceType"
-            case launchProfileId = "launchProfileId"
-            case streamingImageId = "streamingImageId"
-            case tags = "tags"
+            case ec2InstanceType
+            case launchProfileId
+            case streamingImageId
+            case tags
         }
     }
 
     public struct CreateStreamingSessionResponse: AWSDecodableShape {
-
         /// The session.
         public let session: StreamingSession?
 
@@ -548,14 +541,14 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case session = "session"
+            case session
         }
     }
 
     public struct CreateStreamingSessionStreamRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amz-Client-Token")), 
-            AWSMemberEncoding(label: "sessionId", location: .uri(locationName: "sessionId")), 
+            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amz-Client-Token")),
+            AWSMemberEncoding(label: "sessionId", location: .uri(locationName: "sessionId")),
             AWSMemberEncoding(label: "studioId", location: .uri(locationName: "studioId"))
         ]
 
@@ -583,12 +576,11 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case expirationInSeconds = "expirationInSeconds"
+            case expirationInSeconds
         }
     }
 
     public struct CreateStreamingSessionStreamResponse: AWSDecodableShape {
-
         /// The stream.
         public let stream: StreamingSessionStream?
 
@@ -597,13 +589,13 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case stream = "stream"
+            case stream
         }
     }
 
     public struct CreateStudioComponentRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amz-Client-Token")), 
+            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amz-Client-Token")),
             AWSMemberEncoding(label: "studioId", location: .uri(locationName: "studioId"))
         ]
 
@@ -662,20 +654,19 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case configuration = "configuration"
-            case description = "description"
-            case ec2SecurityGroupIds = "ec2SecurityGroupIds"
-            case initializationScripts = "initializationScripts"
-            case name = "name"
-            case scriptParameters = "scriptParameters"
-            case subtype = "subtype"
-            case tags = "tags"
-            case type = "type"
+            case configuration
+            case description
+            case ec2SecurityGroupIds
+            case initializationScripts
+            case name
+            case scriptParameters
+            case subtype
+            case tags
+            case type
         }
     }
 
     public struct CreateStudioComponentResponse: AWSDecodableShape {
-
         /// Information about the studio component.
         public let studioComponent: StudioComponent?
 
@@ -684,7 +675,7 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case studioComponent = "studioComponent"
+            case studioComponent
         }
     }
 
@@ -729,17 +720,16 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case adminRoleArn = "adminRoleArn"
-            case displayName = "displayName"
-            case studioEncryptionConfiguration = "studioEncryptionConfiguration"
-            case studioName = "studioName"
-            case tags = "tags"
-            case userRoleArn = "userRoleArn"
+            case adminRoleArn
+            case displayName
+            case studioEncryptionConfiguration
+            case studioName
+            case tags
+            case userRoleArn
         }
     }
 
     public struct CreateStudioResponse: AWSDecodableShape {
-
         /// Information about a studio.
         public let studio: Studio?
 
@@ -748,15 +738,15 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case studio = "studio"
+            case studio
         }
     }
 
     public struct DeleteLaunchProfileMemberRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amz-Client-Token")), 
-            AWSMemberEncoding(label: "launchProfileId", location: .uri(locationName: "launchProfileId")), 
-            AWSMemberEncoding(label: "principalId", location: .uri(locationName: "principalId")), 
+            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amz-Client-Token")),
+            AWSMemberEncoding(label: "launchProfileId", location: .uri(locationName: "launchProfileId")),
+            AWSMemberEncoding(label: "principalId", location: .uri(locationName: "principalId")),
             AWSMemberEncoding(label: "studioId", location: .uri(locationName: "studioId"))
         ]
 
@@ -785,17 +775,13 @@ extension Nimble {
     }
 
     public struct DeleteLaunchProfileMemberResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteLaunchProfileRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amz-Client-Token")), 
-            AWSMemberEncoding(label: "launchProfileId", location: .uri(locationName: "launchProfileId")), 
+            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amz-Client-Token")),
+            AWSMemberEncoding(label: "launchProfileId", location: .uri(locationName: "launchProfileId")),
             AWSMemberEncoding(label: "studioId", location: .uri(locationName: "studioId"))
         ]
 
@@ -821,7 +807,6 @@ extension Nimble {
     }
 
     public struct DeleteLaunchProfileResponse: AWSDecodableShape {
-
         /// The launch profile.
         public let launchProfile: LaunchProfile?
 
@@ -830,14 +815,14 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case launchProfile = "launchProfile"
+            case launchProfile
         }
     }
 
     public struct DeleteStreamingImageRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amz-Client-Token")), 
-            AWSMemberEncoding(label: "streamingImageId", location: .uri(locationName: "streamingImageId")), 
+            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amz-Client-Token")),
+            AWSMemberEncoding(label: "streamingImageId", location: .uri(locationName: "streamingImageId")),
             AWSMemberEncoding(label: "studioId", location: .uri(locationName: "studioId"))
         ]
 
@@ -863,7 +848,6 @@ extension Nimble {
     }
 
     public struct DeleteStreamingImageResponse: AWSDecodableShape {
-
         /// The streaming image.
         public let streamingImage: StreamingImage?
 
@@ -872,14 +856,14 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case streamingImage = "streamingImage"
+            case streamingImage
         }
     }
 
     public struct DeleteStreamingSessionRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amz-Client-Token")), 
-            AWSMemberEncoding(label: "sessionId", location: .uri(locationName: "sessionId")), 
+            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amz-Client-Token")),
+            AWSMemberEncoding(label: "sessionId", location: .uri(locationName: "sessionId")),
             AWSMemberEncoding(label: "studioId", location: .uri(locationName: "studioId"))
         ]
 
@@ -905,7 +889,6 @@ extension Nimble {
     }
 
     public struct DeleteStreamingSessionResponse: AWSDecodableShape {
-
         /// The session.
         public let session: StreamingSession?
 
@@ -914,14 +897,14 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case session = "session"
+            case session
         }
     }
 
     public struct DeleteStudioComponentRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amz-Client-Token")), 
-            AWSMemberEncoding(label: "studioComponentId", location: .uri(locationName: "studioComponentId")), 
+            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amz-Client-Token")),
+            AWSMemberEncoding(label: "studioComponentId", location: .uri(locationName: "studioComponentId")),
             AWSMemberEncoding(label: "studioId", location: .uri(locationName: "studioId"))
         ]
 
@@ -947,7 +930,6 @@ extension Nimble {
     }
 
     public struct DeleteStudioComponentResponse: AWSDecodableShape {
-
         /// Information about the studio component.
         public let studioComponent: StudioComponent?
 
@@ -956,14 +938,14 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case studioComponent = "studioComponent"
+            case studioComponent
         }
     }
 
     public struct DeleteStudioMemberRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amz-Client-Token")), 
-            AWSMemberEncoding(label: "principalId", location: .uri(locationName: "principalId")), 
+            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amz-Client-Token")),
+            AWSMemberEncoding(label: "principalId", location: .uri(locationName: "principalId")),
             AWSMemberEncoding(label: "studioId", location: .uri(locationName: "studioId"))
         ]
 
@@ -989,16 +971,12 @@ extension Nimble {
     }
 
     public struct DeleteStudioMemberResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteStudioRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amz-Client-Token")), 
+            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amz-Client-Token")),
             AWSMemberEncoding(label: "studioId", location: .uri(locationName: "studioId"))
         ]
 
@@ -1021,7 +999,6 @@ extension Nimble {
     }
 
     public struct DeleteStudioResponse: AWSDecodableShape {
-
         /// Information about a studio.
         public let studio: Studio?
 
@@ -1030,12 +1007,11 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case studio = "studio"
+            case studio
         }
     }
 
     public struct Eula: AWSDecodableShape {
-
         /// The EULA content.
         public let content: String?
         /// The Unix epoch timestamp in seconds for when the resource was created.
@@ -1058,16 +1034,15 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case content = "content"
-            case createdAt = "createdAt"
-            case eulaId = "eulaId"
-            case name = "name"
-            case updatedAt = "updatedAt"
+            case content
+            case createdAt
+            case eulaId
+            case name
+            case updatedAt
         }
     }
 
     public struct EulaAcceptance: AWSDecodableShape {
-
         /// The Unix epoch timestamp in seconds for when the EULA was accepted.
         @OptionalCustomCoding<ISO8601DateCoder>
         public var acceptedAt: Date?
@@ -1089,11 +1064,11 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case acceptedAt = "acceptedAt"
-            case acceptedBy = "acceptedBy"
-            case accepteeId = "accepteeId"
-            case eulaAcceptanceId = "eulaAcceptanceId"
-            case eulaId = "eulaId"
+            case acceptedAt
+            case acceptedBy
+            case accepteeId
+            case eulaAcceptanceId
+            case eulaId
         }
     }
 
@@ -1113,7 +1088,6 @@ extension Nimble {
     }
 
     public struct GetEulaResponse: AWSDecodableShape {
-
         /// The EULA.
         public let eula: Eula?
 
@@ -1122,13 +1096,13 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case eula = "eula"
+            case eula
         }
     }
 
     public struct GetLaunchProfileDetailsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "launchProfileId", location: .uri(locationName: "launchProfileId")), 
+            AWSMemberEncoding(label: "launchProfileId", location: .uri(locationName: "launchProfileId")),
             AWSMemberEncoding(label: "studioId", location: .uri(locationName: "studioId"))
         ]
 
@@ -1146,7 +1120,6 @@ extension Nimble {
     }
 
     public struct GetLaunchProfileDetailsResponse: AWSDecodableShape {
-
         /// The launch profile.
         public let launchProfile: LaunchProfile?
         /// A collection of streaming images.
@@ -1161,18 +1134,18 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case launchProfile = "launchProfile"
-            case streamingImages = "streamingImages"
-            case studioComponentSummaries = "studioComponentSummaries"
+            case launchProfile
+            case streamingImages
+            case studioComponentSummaries
         }
     }
 
     public struct GetLaunchProfileInitializationRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "launchProfileId", location: .uri(locationName: "launchProfileId")), 
-            AWSMemberEncoding(label: "launchProfileProtocolVersions", location: .querystring(locationName: "launchProfileProtocolVersions")), 
-            AWSMemberEncoding(label: "launchPurpose", location: .querystring(locationName: "launchPurpose")), 
-            AWSMemberEncoding(label: "platform", location: .querystring(locationName: "platform")), 
+            AWSMemberEncoding(label: "launchProfileId", location: .uri(locationName: "launchProfileId")),
+            AWSMemberEncoding(label: "launchProfileProtocolVersions", location: .querystring(locationName: "launchProfileProtocolVersions")),
+            AWSMemberEncoding(label: "launchPurpose", location: .querystring(locationName: "launchPurpose")),
+            AWSMemberEncoding(label: "platform", location: .querystring(locationName: "platform")),
             AWSMemberEncoding(label: "studioId", location: .uri(locationName: "studioId"))
         ]
 
@@ -1199,7 +1172,6 @@ extension Nimble {
     }
 
     public struct GetLaunchProfileInitializationResponse: AWSDecodableShape {
-
         /// The launch profile initialization.
         public let launchProfileInitialization: LaunchProfileInitialization?
 
@@ -1208,14 +1180,14 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case launchProfileInitialization = "launchProfileInitialization"
+            case launchProfileInitialization
         }
     }
 
     public struct GetLaunchProfileMemberRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "launchProfileId", location: .uri(locationName: "launchProfileId")), 
-            AWSMemberEncoding(label: "principalId", location: .uri(locationName: "principalId")), 
+            AWSMemberEncoding(label: "launchProfileId", location: .uri(locationName: "launchProfileId")),
+            AWSMemberEncoding(label: "principalId", location: .uri(locationName: "principalId")),
             AWSMemberEncoding(label: "studioId", location: .uri(locationName: "studioId"))
         ]
 
@@ -1236,7 +1208,6 @@ extension Nimble {
     }
 
     public struct GetLaunchProfileMemberResponse: AWSDecodableShape {
-
         /// The member.
         public let member: LaunchProfileMembership?
 
@@ -1245,13 +1216,13 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case member = "member"
+            case member
         }
     }
 
     public struct GetLaunchProfileRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "launchProfileId", location: .uri(locationName: "launchProfileId")), 
+            AWSMemberEncoding(label: "launchProfileId", location: .uri(locationName: "launchProfileId")),
             AWSMemberEncoding(label: "studioId", location: .uri(locationName: "studioId"))
         ]
 
@@ -1269,7 +1240,6 @@ extension Nimble {
     }
 
     public struct GetLaunchProfileResponse: AWSDecodableShape {
-
         /// The launch profile.
         public let launchProfile: LaunchProfile?
 
@@ -1278,13 +1248,13 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case launchProfile = "launchProfile"
+            case launchProfile
         }
     }
 
     public struct GetStreamingImageRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "streamingImageId", location: .uri(locationName: "streamingImageId")), 
+            AWSMemberEncoding(label: "streamingImageId", location: .uri(locationName: "streamingImageId")),
             AWSMemberEncoding(label: "studioId", location: .uri(locationName: "studioId"))
         ]
 
@@ -1302,7 +1272,6 @@ extension Nimble {
     }
 
     public struct GetStreamingImageResponse: AWSDecodableShape {
-
         /// The streaming image.
         public let streamingImage: StreamingImage?
 
@@ -1311,13 +1280,13 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case streamingImage = "streamingImage"
+            case streamingImage
         }
     }
 
     public struct GetStreamingSessionRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "sessionId", location: .uri(locationName: "sessionId")), 
+            AWSMemberEncoding(label: "sessionId", location: .uri(locationName: "sessionId")),
             AWSMemberEncoding(label: "studioId", location: .uri(locationName: "studioId"))
         ]
 
@@ -1335,7 +1304,6 @@ extension Nimble {
     }
 
     public struct GetStreamingSessionResponse: AWSDecodableShape {
-
         /// The session.
         public let session: StreamingSession?
 
@@ -1344,14 +1312,14 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case session = "session"
+            case session
         }
     }
 
     public struct GetStreamingSessionStreamRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "sessionId", location: .uri(locationName: "sessionId")), 
-            AWSMemberEncoding(label: "streamId", location: .uri(locationName: "streamId")), 
+            AWSMemberEncoding(label: "sessionId", location: .uri(locationName: "sessionId")),
+            AWSMemberEncoding(label: "streamId", location: .uri(locationName: "streamId")),
             AWSMemberEncoding(label: "studioId", location: .uri(locationName: "studioId"))
         ]
 
@@ -1372,7 +1340,6 @@ extension Nimble {
     }
 
     public struct GetStreamingSessionStreamResponse: AWSDecodableShape {
-
         /// The stream.
         public let stream: StreamingSessionStream?
 
@@ -1381,13 +1348,13 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case stream = "stream"
+            case stream
         }
     }
 
     public struct GetStudioComponentRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "studioComponentId", location: .uri(locationName: "studioComponentId")), 
+            AWSMemberEncoding(label: "studioComponentId", location: .uri(locationName: "studioComponentId")),
             AWSMemberEncoding(label: "studioId", location: .uri(locationName: "studioId"))
         ]
 
@@ -1405,7 +1372,6 @@ extension Nimble {
     }
 
     public struct GetStudioComponentResponse: AWSDecodableShape {
-
         /// Information about the studio component.
         public let studioComponent: StudioComponent?
 
@@ -1414,13 +1380,13 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case studioComponent = "studioComponent"
+            case studioComponent
         }
     }
 
     public struct GetStudioMemberRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "principalId", location: .uri(locationName: "principalId")), 
+            AWSMemberEncoding(label: "principalId", location: .uri(locationName: "principalId")),
             AWSMemberEncoding(label: "studioId", location: .uri(locationName: "studioId"))
         ]
 
@@ -1438,7 +1404,6 @@ extension Nimble {
     }
 
     public struct GetStudioMemberResponse: AWSDecodableShape {
-
         /// The member.
         public let member: StudioMembership?
 
@@ -1447,7 +1412,7 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case member = "member"
+            case member
         }
     }
 
@@ -1467,7 +1432,6 @@ extension Nimble {
     }
 
     public struct GetStudioResponse: AWSDecodableShape {
-
         /// Information about a studio.
         public let studio: Studio?
 
@@ -1476,12 +1440,11 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case studio = "studio"
+            case studio
         }
     }
 
     public struct LaunchProfile: AWSDecodableShape {
-
         /// The ARN of the resource.
         public let arn: String?
         /// The Unix epoch timestamp in seconds for when the resource was created.
@@ -1537,27 +1500,26 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdAt = "createdAt"
-            case createdBy = "createdBy"
-            case description = "description"
-            case ec2SubnetIds = "ec2SubnetIds"
-            case launchProfileId = "launchProfileId"
-            case launchProfileProtocolVersions = "launchProfileProtocolVersions"
-            case name = "name"
-            case state = "state"
-            case statusCode = "statusCode"
-            case statusMessage = "statusMessage"
-            case streamConfiguration = "streamConfiguration"
-            case studioComponentIds = "studioComponentIds"
-            case tags = "tags"
-            case updatedAt = "updatedAt"
-            case updatedBy = "updatedBy"
+            case arn
+            case createdAt
+            case createdBy
+            case description
+            case ec2SubnetIds
+            case launchProfileId
+            case launchProfileProtocolVersions
+            case name
+            case state
+            case statusCode
+            case statusMessage
+            case streamConfiguration
+            case studioComponentIds
+            case tags
+            case updatedAt
+            case updatedBy
         }
     }
 
     public struct LaunchProfileInitialization: AWSDecodableShape {
-
         /// A LaunchProfileInitializationActiveDirectory resource.
         public let activeDirectory: LaunchProfileInitializationActiveDirectory?
         /// The EC2 security groups that control access to the studio component.
@@ -1590,20 +1552,19 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case activeDirectory = "activeDirectory"
-            case ec2SecurityGroupIds = "ec2SecurityGroupIds"
-            case launchProfileId = "launchProfileId"
-            case launchProfileProtocolVersion = "launchProfileProtocolVersion"
-            case launchPurpose = "launchPurpose"
-            case name = "name"
-            case platform = "platform"
-            case systemInitializationScripts = "systemInitializationScripts"
-            case userInitializationScripts = "userInitializationScripts"
+            case activeDirectory
+            case ec2SecurityGroupIds
+            case launchProfileId
+            case launchProfileProtocolVersion
+            case launchPurpose
+            case name
+            case platform
+            case systemInitializationScripts
+            case userInitializationScripts
         }
     }
 
     public struct LaunchProfileInitializationActiveDirectory: AWSDecodableShape {
-
         /// A collection of custom attributes for an Active Directory computer.
         public let computerAttributes: [ActiveDirectoryComputerAttribute]?
         /// The directory ID of the AWS Directory Service for Microsoft AD to access using this launch profile.
@@ -1630,18 +1591,17 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case computerAttributes = "computerAttributes"
-            case directoryId = "directoryId"
-            case directoryName = "directoryName"
-            case dnsIpAddresses = "dnsIpAddresses"
-            case organizationalUnitDistinguishedName = "organizationalUnitDistinguishedName"
-            case studioComponentId = "studioComponentId"
-            case studioComponentName = "studioComponentName"
+            case computerAttributes
+            case directoryId
+            case directoryName
+            case dnsIpAddresses
+            case organizationalUnitDistinguishedName
+            case studioComponentId
+            case studioComponentName
         }
     }
 
     public struct LaunchProfileInitializationScript: AWSDecodableShape {
-
         /// The initialization script.
         public let script: String?
         /// The unique identifier for a studio component resource.
@@ -1656,14 +1616,13 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case script = "script"
-            case studioComponentId = "studioComponentId"
-            case studioComponentName = "studioComponentName"
+            case script
+            case studioComponentId
+            case studioComponentName
         }
     }
 
     public struct LaunchProfileMembership: AWSDecodableShape {
-
         /// The ID of the identity store.
         public let identityStoreId: String?
         /// The persona.
@@ -1678,14 +1637,13 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case identityStoreId = "identityStoreId"
-            case persona = "persona"
-            case principalId = "principalId"
+            case identityStoreId
+            case persona
+            case principalId
         }
     }
 
     public struct LicenseServiceConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// The endpoint of the license service that is accessed by the studio component resource.
         public let endpoint: String?
 
@@ -1694,14 +1652,14 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case endpoint = "endpoint"
+            case endpoint
         }
     }
 
     public struct ListEulaAcceptancesRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "eulaIds", location: .querystring(locationName: "eulaIds")), 
-            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")), 
+            AWSMemberEncoding(label: "eulaIds", location: .querystring(locationName: "eulaIds")),
+            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")),
             AWSMemberEncoding(label: "studioId", location: .uri(locationName: "studioId"))
         ]
 
@@ -1722,7 +1680,6 @@ extension Nimble {
     }
 
     public struct ListEulaAcceptancesResponse: AWSDecodableShape {
-
         /// A collection of EULA acceptances.
         public let eulaAcceptances: [EulaAcceptance]?
         /// The token for the next set of results, or null if there are no more results.
@@ -1734,14 +1691,14 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case eulaAcceptances = "eulaAcceptances"
-            case nextToken = "nextToken"
+            case eulaAcceptances
+            case nextToken
         }
     }
 
     public struct ListEulasRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "eulaIds", location: .querystring(locationName: "eulaIds")), 
+            AWSMemberEncoding(label: "eulaIds", location: .querystring(locationName: "eulaIds")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
@@ -1759,7 +1716,6 @@ extension Nimble {
     }
 
     public struct ListEulasResponse: AWSDecodableShape {
-
         /// A collection of EULA resources.
         public let eulas: [Eula]?
         /// The token for the next set of results, or null if there are no more results.
@@ -1771,16 +1727,16 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case eulas = "eulas"
-            case nextToken = "nextToken"
+            case eulas
+            case nextToken
         }
     }
 
     public struct ListLaunchProfileMembersRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "launchProfileId", location: .uri(locationName: "launchProfileId")), 
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
-            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")), 
+            AWSMemberEncoding(label: "launchProfileId", location: .uri(locationName: "launchProfileId")),
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
+            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")),
             AWSMemberEncoding(label: "studioId", location: .uri(locationName: "studioId"))
         ]
 
@@ -1809,7 +1765,6 @@ extension Nimble {
     }
 
     public struct ListLaunchProfileMembersResponse: AWSDecodableShape {
-
         /// A list of members.
         public let members: [LaunchProfileMembership]?
         /// The token for the next set of results, or null if there are no more results.
@@ -1821,17 +1776,17 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case members = "members"
-            case nextToken = "nextToken"
+            case members
+            case nextToken
         }
     }
 
     public struct ListLaunchProfilesRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
-            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")), 
-            AWSMemberEncoding(label: "principalId", location: .querystring(locationName: "principalId")), 
-            AWSMemberEncoding(label: "states", location: .querystring(locationName: "states")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
+            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")),
+            AWSMemberEncoding(label: "principalId", location: .querystring(locationName: "principalId")),
+            AWSMemberEncoding(label: "states", location: .querystring(locationName: "states")),
             AWSMemberEncoding(label: "studioId", location: .uri(locationName: "studioId"))
         ]
 
@@ -1863,7 +1818,6 @@ extension Nimble {
     }
 
     public struct ListLaunchProfilesResponse: AWSDecodableShape {
-
         /// A collection of launch profiles.
         public let launchProfiles: [LaunchProfile]?
         /// The token for the next set of results, or null if there are no more results.
@@ -1875,15 +1829,15 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case launchProfiles = "launchProfiles"
-            case nextToken = "nextToken"
+            case launchProfiles
+            case nextToken
         }
     }
 
     public struct ListStreamingImagesRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")), 
-            AWSMemberEncoding(label: "owner", location: .querystring(locationName: "owner")), 
+            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")),
+            AWSMemberEncoding(label: "owner", location: .querystring(locationName: "owner")),
             AWSMemberEncoding(label: "studioId", location: .uri(locationName: "studioId"))
         ]
 
@@ -1904,7 +1858,6 @@ extension Nimble {
     }
 
     public struct ListStreamingImagesResponse: AWSDecodableShape {
-
         /// The token for the next set of results, or null if there are no more results.
         public let nextToken: String?
         /// A collection of streaming images.
@@ -1916,16 +1869,16 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case streamingImages = "streamingImages"
+            case nextToken
+            case streamingImages
         }
     }
 
     public struct ListStreamingSessionsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "createdBy", location: .querystring(locationName: "createdBy")), 
-            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")), 
-            AWSMemberEncoding(label: "sessionIds", location: .querystring(locationName: "sessionIds")), 
+            AWSMemberEncoding(label: "createdBy", location: .querystring(locationName: "createdBy")),
+            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")),
+            AWSMemberEncoding(label: "sessionIds", location: .querystring(locationName: "sessionIds")),
             AWSMemberEncoding(label: "studioId", location: .uri(locationName: "studioId"))
         ]
 
@@ -1949,7 +1902,6 @@ extension Nimble {
     }
 
     public struct ListStreamingSessionsResponse: AWSDecodableShape {
-
         /// The token for the next set of results, or null if there are no more results.
         public let nextToken: String?
         /// A collection of streaming sessions.
@@ -1961,17 +1913,17 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case sessions = "sessions"
+            case nextToken
+            case sessions
         }
     }
 
     public struct ListStudioComponentsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
-            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")), 
-            AWSMemberEncoding(label: "states", location: .querystring(locationName: "states")), 
-            AWSMemberEncoding(label: "studioId", location: .uri(locationName: "studioId")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
+            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")),
+            AWSMemberEncoding(label: "states", location: .querystring(locationName: "states")),
+            AWSMemberEncoding(label: "studioId", location: .uri(locationName: "studioId")),
             AWSMemberEncoding(label: "types", location: .querystring(locationName: "types"))
         ]
 
@@ -2003,7 +1955,6 @@ extension Nimble {
     }
 
     public struct ListStudioComponentsResponse: AWSDecodableShape {
-
         /// The token for the next set of results, or null if there are no more results.
         public let nextToken: String?
         /// A collection of studio components.
@@ -2015,15 +1966,15 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case studioComponents = "studioComponents"
+            case nextToken
+            case studioComponents
         }
     }
 
     public struct ListStudioMembersRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
-            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
+            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")),
             AWSMemberEncoding(label: "studioId", location: .uri(locationName: "studioId"))
         ]
 
@@ -2049,7 +2000,6 @@ extension Nimble {
     }
 
     public struct ListStudioMembersResponse: AWSDecodableShape {
-
         /// A list of members.
         public let members: [StudioMembership]?
         /// The token for the next set of results, or null if there are no more results.
@@ -2061,8 +2011,8 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case members = "members"
-            case nextToken = "nextToken"
+            case members
+            case nextToken
         }
     }
 
@@ -2082,7 +2032,6 @@ extension Nimble {
     }
 
     public struct ListStudiosResponse: AWSDecodableShape {
-
         /// The token for the next set of results, or null if there are no more results.
         public let nextToken: String?
         /// A collection of studios.
@@ -2094,8 +2043,8 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case studios = "studios"
+            case nextToken
+            case studios
         }
     }
 
@@ -2115,7 +2064,6 @@ extension Nimble {
     }
 
     public struct ListTagsForResourceResponse: AWSDecodableShape {
-
         /// A collection of labels, in the form of key:value pairs, that apply to this resource.
         public let tags: [String: String]?
 
@@ -2124,12 +2072,11 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tags = "tags"
+            case tags
         }
     }
 
     public struct NewLaunchProfileMember: AWSEncodableShape {
-
         /// The persona.
         public let persona: LaunchProfilePersona
         /// The principal ID.
@@ -2141,13 +2088,12 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case persona = "persona"
-            case principalId = "principalId"
+            case persona
+            case principalId
         }
     }
 
     public struct NewStudioMember: AWSEncodableShape {
-
         /// The persona.
         public let persona: StudioPersona
         /// The principal ID.
@@ -2159,15 +2105,15 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case persona = "persona"
-            case principalId = "principalId"
+            case persona
+            case principalId
         }
     }
 
     public struct PutLaunchProfileMembersRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amz-Client-Token")), 
-            AWSMemberEncoding(label: "launchProfileId", location: .uri(locationName: "launchProfileId")), 
+            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amz-Client-Token")),
+            AWSMemberEncoding(label: "launchProfileId", location: .uri(locationName: "launchProfileId")),
             AWSMemberEncoding(label: "studioId", location: .uri(locationName: "studioId"))
         ]
 
@@ -2197,22 +2143,18 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case identityStoreId = "identityStoreId"
-            case members = "members"
+            case identityStoreId
+            case members
         }
     }
 
     public struct PutLaunchProfileMembersResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct PutStudioMembersRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amz-Client-Token")), 
+            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amz-Client-Token")),
             AWSMemberEncoding(label: "studioId", location: .uri(locationName: "studioId"))
         ]
 
@@ -2239,21 +2181,16 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case identityStoreId = "identityStoreId"
-            case members = "members"
+            case identityStoreId
+            case members
         }
     }
 
     public struct PutStudioMembersResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct ScriptParameterKeyValue: AWSEncodableShape & AWSDecodableShape {
-
         /// A script parameter key.
         public let key: String?
         /// A script parameter value.
@@ -2273,13 +2210,12 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case key = "key"
-            case value = "value"
+            case key
+            case value
         }
     }
 
     public struct SharedFileSystemConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// The endpoint of the shared file system that is accessed by the studio component resource.
         public let endpoint: String?
         /// The unique identifier for a file system.
@@ -2306,17 +2242,17 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case endpoint = "endpoint"
-            case fileSystemId = "fileSystemId"
-            case linuxMountPoint = "linuxMountPoint"
-            case shareName = "shareName"
-            case windowsMountDrive = "windowsMountDrive"
+            case endpoint
+            case fileSystemId
+            case linuxMountPoint
+            case shareName
+            case windowsMountDrive
         }
     }
 
     public struct StartStudioSSOConfigurationRepairRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amz-Client-Token")), 
+            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amz-Client-Token")),
             AWSMemberEncoding(label: "studioId", location: .uri(locationName: "studioId"))
         ]
 
@@ -2339,7 +2275,6 @@ extension Nimble {
     }
 
     public struct StartStudioSSOConfigurationRepairResponse: AWSDecodableShape {
-
         /// Information about a studio.
         public let studio: Studio?
 
@@ -2348,12 +2283,11 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case studio = "studio"
+            case studio
         }
     }
 
     public struct StreamConfiguration: AWSDecodableShape {
-
         /// Enable or disable the use of the system clipboard to copy and paste between the streaming session and streaming client.
         public let clipboardMode: StreamingClipboardMode?
         /// The EC2 instance types that users can select from when launching a streaming session with this launch profile.
@@ -2371,15 +2305,14 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clipboardMode = "clipboardMode"
-            case ec2InstanceTypes = "ec2InstanceTypes"
-            case maxSessionLengthInMinutes = "maxSessionLengthInMinutes"
-            case streamingImageIds = "streamingImageIds"
+            case clipboardMode
+            case ec2InstanceTypes
+            case maxSessionLengthInMinutes
+            case streamingImageIds
         }
     }
 
     public struct StreamConfigurationCreate: AWSEncodableShape {
-
         /// Enable or disable the use of the system clipboard to copy and paste between the streaming session and streaming client.
         public let clipboardMode: StreamingClipboardMode
         /// The EC2 instance types that users can select from when launching a streaming session with this launch profile.
@@ -2409,15 +2342,14 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clipboardMode = "clipboardMode"
-            case ec2InstanceTypes = "ec2InstanceTypes"
-            case maxSessionLengthInMinutes = "maxSessionLengthInMinutes"
-            case streamingImageIds = "streamingImageIds"
+            case clipboardMode
+            case ec2InstanceTypes
+            case maxSessionLengthInMinutes
+            case streamingImageIds
         }
     }
 
     public struct StreamingImage: AWSDecodableShape {
-
         /// The ARN of the resource.
         public let arn: String?
         /// A human-readable description of the streaming image.
@@ -2462,24 +2394,23 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case description = "description"
-            case ec2ImageId = "ec2ImageId"
-            case encryptionConfiguration = "encryptionConfiguration"
-            case eulaIds = "eulaIds"
-            case name = "name"
-            case owner = "owner"
-            case platform = "platform"
-            case state = "state"
-            case statusCode = "statusCode"
-            case statusMessage = "statusMessage"
-            case streamingImageId = "streamingImageId"
-            case tags = "tags"
+            case arn
+            case description
+            case ec2ImageId
+            case encryptionConfiguration
+            case eulaIds
+            case name
+            case owner
+            case platform
+            case state
+            case statusCode
+            case statusMessage
+            case streamingImageId
+            case tags
         }
     }
 
     public struct StreamingImageEncryptionConfiguration: AWSDecodableShape {
-
         /// The ARN for a KMS key that is used to encrypt studio data.
         public let keyArn: String?
         /// The type of KMS key that is used to encrypt studio data.
@@ -2491,13 +2422,12 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case keyArn = "keyArn"
-            case keyType = "keyType"
+            case keyArn
+            case keyType
         }
     }
 
     public struct StreamingSession: AWSDecodableShape {
-
         /// The ARN of the resource.
         public let arn: String?
         /// The Unix epoch timestamp in seconds for when the resource was created.
@@ -2548,25 +2478,24 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdAt = "createdAt"
-            case createdBy = "createdBy"
-            case ec2InstanceType = "ec2InstanceType"
-            case launchProfileId = "launchProfileId"
-            case sessionId = "sessionId"
-            case state = "state"
-            case statusCode = "statusCode"
-            case statusMessage = "statusMessage"
-            case streamingImageId = "streamingImageId"
-            case tags = "tags"
-            case terminateAt = "terminateAt"
-            case updatedAt = "updatedAt"
-            case updatedBy = "updatedBy"
+            case arn
+            case createdAt
+            case createdBy
+            case ec2InstanceType
+            case launchProfileId
+            case sessionId
+            case state
+            case statusCode
+            case statusMessage
+            case streamingImageId
+            case tags
+            case terminateAt
+            case updatedAt
+            case updatedBy
         }
     }
 
     public struct StreamingSessionStream: AWSDecodableShape {
-
         /// The Unix epoch timestamp in seconds for when the resource was created.
         @OptionalCustomCoding<ISO8601DateCoder>
         public var createdAt: Date?
@@ -2595,18 +2524,17 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case createdAt = "createdAt"
-            case createdBy = "createdBy"
-            case expiresAt = "expiresAt"
-            case state = "state"
-            case statusCode = "statusCode"
-            case streamId = "streamId"
-            case url = "url"
+            case createdAt
+            case createdBy
+            case expiresAt
+            case state
+            case statusCode
+            case streamId
+            case url
         }
     }
 
     public struct Studio: AWSDecodableShape {
-
         /// The IAM role that studio admins assume when logging in to the Nimble Studio portal.
         public let adminRoleArn: String?
         /// The Amazon Resource Name (ARN) that is assigned to a studio resource and uniquely identifies it. ARNs are unique across all Regions.
@@ -2662,27 +2590,26 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case adminRoleArn = "adminRoleArn"
-            case arn = "arn"
-            case createdAt = "createdAt"
-            case displayName = "displayName"
-            case homeRegion = "homeRegion"
-            case ssoClientId = "ssoClientId"
-            case state = "state"
-            case statusCode = "statusCode"
-            case statusMessage = "statusMessage"
-            case studioEncryptionConfiguration = "studioEncryptionConfiguration"
-            case studioId = "studioId"
-            case studioName = "studioName"
-            case studioUrl = "studioUrl"
-            case tags = "tags"
-            case updatedAt = "updatedAt"
-            case userRoleArn = "userRoleArn"
+            case adminRoleArn
+            case arn
+            case createdAt
+            case displayName
+            case homeRegion
+            case ssoClientId
+            case state
+            case statusCode
+            case statusMessage
+            case studioEncryptionConfiguration
+            case studioId
+            case studioName
+            case studioUrl
+            case tags
+            case updatedAt
+            case userRoleArn
         }
     }
 
     public struct StudioComponent: AWSDecodableShape {
-
         /// The ARN of the resource.
         public let arn: String?
         /// The configuration of the studio component, based on component type.
@@ -2744,29 +2671,28 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case configuration = "configuration"
-            case createdAt = "createdAt"
-            case createdBy = "createdBy"
-            case description = "description"
-            case ec2SecurityGroupIds = "ec2SecurityGroupIds"
-            case initializationScripts = "initializationScripts"
-            case name = "name"
-            case scriptParameters = "scriptParameters"
-            case state = "state"
-            case statusCode = "statusCode"
-            case statusMessage = "statusMessage"
-            case studioComponentId = "studioComponentId"
-            case subtype = "subtype"
-            case tags = "tags"
-            case type = "type"
-            case updatedAt = "updatedAt"
-            case updatedBy = "updatedBy"
+            case arn
+            case configuration
+            case createdAt
+            case createdBy
+            case description
+            case ec2SecurityGroupIds
+            case initializationScripts
+            case name
+            case scriptParameters
+            case state
+            case statusCode
+            case statusMessage
+            case studioComponentId
+            case subtype
+            case tags
+            case type
+            case updatedAt
+            case updatedBy
         }
     }
 
     public struct StudioComponentConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// The configuration for a Microsoft Active Directory (Microsoft AD) studio resource.
         public let activeDirectoryConfiguration: ActiveDirectoryConfiguration?
         /// The configuration for a render farm that is associated with a studio resource.
@@ -2789,15 +2715,14 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case activeDirectoryConfiguration = "activeDirectoryConfiguration"
-            case computeFarmConfiguration = "computeFarmConfiguration"
-            case licenseServiceConfiguration = "licenseServiceConfiguration"
-            case sharedFileSystemConfiguration = "sharedFileSystemConfiguration"
+            case activeDirectoryConfiguration
+            case computeFarmConfiguration
+            case licenseServiceConfiguration
+            case sharedFileSystemConfiguration
         }
     }
 
     public struct StudioComponentInitializationScript: AWSEncodableShape & AWSDecodableShape {
-
         /// The version number of the protocol that is used by the launch profile. The only valid version is "2021-03-31".
         public let launchProfileProtocolVersion: String?
         /// The platform of the initialization script, either WINDOWS or LINUX.
@@ -2822,15 +2747,14 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case launchProfileProtocolVersion = "launchProfileProtocolVersion"
-            case platform = "platform"
-            case runContext = "runContext"
-            case script = "script"
+            case launchProfileProtocolVersion
+            case platform
+            case runContext
+            case script
         }
     }
 
     public struct StudioComponentSummary: AWSDecodableShape {
-
         /// The Unix epoch timestamp in seconds for when the resource was created.
         @OptionalCustomCoding<ISO8601DateCoder>
         public var createdAt: Date?
@@ -2865,20 +2789,19 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case createdAt = "createdAt"
-            case createdBy = "createdBy"
-            case description = "description"
-            case name = "name"
-            case studioComponentId = "studioComponentId"
-            case subtype = "subtype"
-            case type = "type"
-            case updatedAt = "updatedAt"
-            case updatedBy = "updatedBy"
+            case createdAt
+            case createdBy
+            case description
+            case name
+            case studioComponentId
+            case subtype
+            case type
+            case updatedAt
+            case updatedBy
         }
     }
 
     public struct StudioEncryptionConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// The ARN for a KMS key that is used to encrypt studio data.
         public let keyArn: String?
         /// The type of KMS key that is used to encrypt studio data.
@@ -2895,13 +2818,12 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case keyArn = "keyArn"
-            case keyType = "keyType"
+            case keyArn
+            case keyType
         }
     }
 
     public struct StudioMembership: AWSDecodableShape {
-
         /// The ID of the identity store.
         public let identityStoreId: String?
         /// The persona.
@@ -2916,9 +2838,9 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case identityStoreId = "identityStoreId"
-            case persona = "persona"
-            case principalId = "principalId"
+            case identityStoreId
+            case persona
+            case principalId
         }
     }
 
@@ -2938,21 +2860,17 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tags = "tags"
+            case tags
         }
     }
 
     public struct TagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UntagResourceRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "resourceArn")), 
+            AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "resourceArn")),
             AWSMemberEncoding(label: "tagKeys", location: .querystring(locationName: "tagKeys"))
         ]
 
@@ -2970,18 +2888,14 @@ extension Nimble {
     }
 
     public struct UntagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateLaunchProfileMemberRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amz-Client-Token")), 
-            AWSMemberEncoding(label: "launchProfileId", location: .uri(locationName: "launchProfileId")), 
-            AWSMemberEncoding(label: "principalId", location: .uri(locationName: "principalId")), 
+            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amz-Client-Token")),
+            AWSMemberEncoding(label: "launchProfileId", location: .uri(locationName: "launchProfileId")),
+            AWSMemberEncoding(label: "principalId", location: .uri(locationName: "principalId")),
             AWSMemberEncoding(label: "studioId", location: .uri(locationName: "studioId"))
         ]
 
@@ -3010,12 +2924,11 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case persona = "persona"
+            case persona
         }
     }
 
     public struct UpdateLaunchProfileMemberResponse: AWSDecodableShape {
-
         /// The member.
         public let member: LaunchProfileMembership?
 
@@ -3024,14 +2937,14 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case member = "member"
+            case member
         }
     }
 
     public struct UpdateLaunchProfileRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amz-Client-Token")), 
-            AWSMemberEncoding(label: "launchProfileId", location: .uri(locationName: "launchProfileId")), 
+            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amz-Client-Token")),
+            AWSMemberEncoding(label: "launchProfileId", location: .uri(locationName: "launchProfileId")),
             AWSMemberEncoding(label: "studioId", location: .uri(locationName: "studioId"))
         ]
 
@@ -3078,16 +2991,15 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case description = "description"
-            case launchProfileProtocolVersions = "launchProfileProtocolVersions"
-            case name = "name"
-            case streamConfiguration = "streamConfiguration"
-            case studioComponentIds = "studioComponentIds"
+            case description
+            case launchProfileProtocolVersions
+            case name
+            case streamConfiguration
+            case studioComponentIds
         }
     }
 
     public struct UpdateLaunchProfileResponse: AWSDecodableShape {
-
         /// The launch profile.
         public let launchProfile: LaunchProfile?
 
@@ -3096,14 +3008,14 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case launchProfile = "launchProfile"
+            case launchProfile
         }
     }
 
     public struct UpdateStreamingImageRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amz-Client-Token")), 
-            AWSMemberEncoding(label: "streamingImageId", location: .uri(locationName: "streamingImageId")), 
+            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amz-Client-Token")),
+            AWSMemberEncoding(label: "streamingImageId", location: .uri(locationName: "streamingImageId")),
             AWSMemberEncoding(label: "studioId", location: .uri(locationName: "studioId"))
         ]
 
@@ -3134,13 +3046,12 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case description = "description"
-            case name = "name"
+            case description
+            case name
         }
     }
 
     public struct UpdateStreamingImageResponse: AWSDecodableShape {
-
         public let streamingImage: StreamingImage?
 
         public init(streamingImage: StreamingImage? = nil) {
@@ -3148,14 +3059,14 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case streamingImage = "streamingImage"
+            case streamingImage
         }
     }
 
     public struct UpdateStudioComponentRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amz-Client-Token")), 
-            AWSMemberEncoding(label: "studioComponentId", location: .uri(locationName: "studioComponentId")), 
+            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amz-Client-Token")),
+            AWSMemberEncoding(label: "studioComponentId", location: .uri(locationName: "studioComponentId")),
             AWSMemberEncoding(label: "studioId", location: .uri(locationName: "studioId"))
         ]
 
@@ -3214,19 +3125,18 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case configuration = "configuration"
-            case description = "description"
-            case ec2SecurityGroupIds = "ec2SecurityGroupIds"
-            case initializationScripts = "initializationScripts"
-            case name = "name"
-            case scriptParameters = "scriptParameters"
-            case subtype = "subtype"
-            case type = "type"
+            case configuration
+            case description
+            case ec2SecurityGroupIds
+            case initializationScripts
+            case name
+            case scriptParameters
+            case subtype
+            case type
         }
     }
 
     public struct UpdateStudioComponentResponse: AWSDecodableShape {
-
         /// Information about the studio component.
         public let studioComponent: StudioComponent?
 
@@ -3235,13 +3145,13 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case studioComponent = "studioComponent"
+            case studioComponent
         }
     }
 
     public struct UpdateStudioRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amz-Client-Token")), 
+            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amz-Client-Token")),
             AWSMemberEncoding(label: "studioId", location: .uri(locationName: "studioId"))
         ]
 
@@ -3271,14 +3181,13 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case adminRoleArn = "adminRoleArn"
-            case displayName = "displayName"
-            case userRoleArn = "userRoleArn"
+            case adminRoleArn
+            case displayName
+            case userRoleArn
         }
     }
 
     public struct UpdateStudioResponse: AWSDecodableShape {
-
         /// Information about a studio.
         public let studio: Studio?
 
@@ -3287,7 +3196,7 @@ extension Nimble {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case studio = "studio"
+            case studio
         }
     }
 }

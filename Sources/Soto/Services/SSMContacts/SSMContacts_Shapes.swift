@@ -58,7 +58,6 @@ extension SSMContacts {
     // MARK: Shapes
 
     public struct AcceptPageRequest: AWSEncodableShape {
-
         /// The accept code is a 6-digit code used to acknowledge the page.
         public let acceptCode: String
         /// The type indicates if the page was DELIVERED or READ.
@@ -103,16 +102,11 @@ extension SSMContacts {
     }
 
     public struct AcceptPageResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct ActivateContactChannelRequest: AWSEncodableShape {
-
-        /// The code sent to the contact channel when it was created in the contact. 
+        /// The code sent to the contact channel when it was created in the contact.
         public let activationCode: String
         /// The Amazon Resource Name (ARN) of the contact channel.
         public let contactChannelId: String
@@ -138,15 +132,10 @@ extension SSMContacts {
     }
 
     public struct ActivateContactChannelResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct ChannelTargetInfo: AWSEncodableShape & AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the contact channel.
         public let contactChannelId: String
         /// The number of minutes to wait to retry sending engagement in the case the engagement initially fails.
@@ -172,7 +161,6 @@ extension SSMContacts {
     }
 
     public struct Contact: AWSDecodableShape {
-
         /// The unique and identifiable alias of the contact or escalation plan.
         public let alias: String
         /// The Amazon Resource Name (ARN) of the contact or escalation plan.
@@ -198,8 +186,7 @@ extension SSMContacts {
     }
 
     public struct ContactChannel: AWSDecodableShape {
-
-        /// A Boolean value describing if the contact channel has been activated or not. If the contact channel isn't activated, Incident Manager can't engage the contact through it. 
+        /// A Boolean value describing if the contact channel has been activated or not. If the contact channel isn't activated, Incident Manager can't engage the contact through it.
         public let activationStatus: ActivationStatus
         /// The ARN of the contact that contains the contact channel.
         public let contactArn: String
@@ -209,7 +196,7 @@ extension SSMContacts {
         public let deliveryAddress: ContactChannelAddress
         /// The name of the contact channel.
         public let name: String
-        /// The type of the contact channel. Incident Manager supports three contact methods:   SMS   VOICE   EMAIL  
+        /// The type of the contact channel. Incident Manager supports three contact methods:   SMS   VOICE   EMAIL
         public let type: ChannelType?
 
         public init(activationStatus: ActivationStatus, contactArn: String, contactChannelArn: String, deliveryAddress: ContactChannelAddress, name: String, type: ChannelType? = nil) {
@@ -232,8 +219,7 @@ extension SSMContacts {
     }
 
     public struct ContactChannelAddress: AWSEncodableShape & AWSDecodableShape {
-
-        /// The format is dependent on the type of the contact channel. The following are the expected formats:   SMS - '+' followed by the country code and phone number   VOICE - '+' followed by the country code and phone number   EMAIL - any standard email format  
+        /// The format is dependent on the type of the contact channel. The following are the expected formats:   SMS - '+' followed by the country code and phone number   VOICE - '+' followed by the country code and phone number   EMAIL - any standard email format
         public let simpleAddress: String?
 
         public init(simpleAddress: String? = nil) {
@@ -251,7 +237,6 @@ extension SSMContacts {
     }
 
     public struct ContactTargetInfo: AWSEncodableShape & AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the contact.
         public let contactId: String?
         /// A Boolean value determining if the contact's acknowledgement stops the progress of stages in the plan.
@@ -275,18 +260,17 @@ extension SSMContacts {
     }
 
     public struct CreateContactChannelRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the contact you are adding the contact channel to.
         public let contactId: String
         /// If you want to activate the channel at a later time, you can choose to defer activation. Incident Manager can't engage your contact channel until it has been activated.
         public let deferActivation: Bool?
-        /// The details that Incident Manager uses when trying to engage the contact channel. The format is dependent on the type of the contact channel. The following are the expected formats:   SMS - '+' followed by the country code and phone number   VOICE - '+' followed by the country code and phone number   EMAIL - any standard email format  
+        /// The details that Incident Manager uses when trying to engage the contact channel. The format is dependent on the type of the contact channel. The following are the expected formats:   SMS - '+' followed by the country code and phone number   VOICE - '+' followed by the country code and phone number   EMAIL - any standard email format
         public let deliveryAddress: ContactChannelAddress
         /// A token ensuring that the action is called only once with the specified details.
         public let idempotencyToken: String?
         /// The name of the contact channel.
         public let name: String
-        /// Incident Manager supports three types of contact channels:    SMS     VOICE     EMAIL   
+        /// Incident Manager supports three types of contact channels:    SMS     VOICE     EMAIL
         public let type: ChannelType
 
         public init(contactId: String, deferActivation: Bool? = nil, deliveryAddress: ContactChannelAddress, idempotencyToken: String? = CreateContactChannelRequest.idempotencyToken(), name: String, type: ChannelType) {
@@ -321,7 +305,6 @@ extension SSMContacts {
     }
 
     public struct CreateContactChannelResult: AWSDecodableShape {
-
         /// The ARN of the contact channel.
         public let contactChannelArn: String
 
@@ -335,16 +318,15 @@ extension SSMContacts {
     }
 
     public struct CreateContactRequest: AWSEncodableShape {
-
-        /// The short name to quickly identify a contact or escalation plan. The contact alias must be unique and identifiable. 
+        /// The short name to quickly identify a contact or escalation plan. The contact alias must be unique and identifiable.
         public let alias: String
-        /// The full name of the contact or escalation plan.  
+        /// The full name of the contact or escalation plan.
         public let displayName: String?
         /// A token ensuring that the action is called only once with the specified details.
         public let idempotencyToken: String?
-        /// A list of stages. A contact has an engagement plan with stages that contact specified contact channels. An escalation plan uses stages that contact specified contacts. 
+        /// A list of stages. A contact has an engagement plan with stages that contact specified contact channels. An escalation plan uses stages that contact specified contacts.
         public let plan: Plan
-        /// Adds a tag to the target. You can only tag resources created in the first Region of your replication set. 
+        /// Adds a tag to the target. You can only tag resources created in the first Region of your replication set.
         public let tags: [Tag]?
         /// To create an escalation plan use ESCALATION. To create a contact use PERSONAL.
         public let type: ContactType
@@ -384,7 +366,6 @@ extension SSMContacts {
     }
 
     public struct CreateContactResult: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the created contact or escalation plan.
         public let contactArn: String
 
@@ -398,7 +379,6 @@ extension SSMContacts {
     }
 
     public struct DeactivateContactChannelRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the contact channel you're deactivating.
         public let contactChannelId: String
 
@@ -418,15 +398,10 @@ extension SSMContacts {
     }
 
     public struct DeactivateContactChannelResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteContactChannelRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the contact channel.
         public let contactChannelId: String
 
@@ -446,15 +421,10 @@ extension SSMContacts {
     }
 
     public struct DeleteContactChannelResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteContactRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the contact that you're deleting.
         public let contactId: String
 
@@ -474,15 +444,10 @@ extension SSMContacts {
     }
 
     public struct DeleteContactResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DescribeEngagementRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the engagement you want the details of.
         public let engagementId: String
 
@@ -502,7 +467,6 @@ extension SSMContacts {
     }
 
     public struct DescribeEngagementResult: AWSDecodableShape {
-
         /// The ARN of the escalation plan or contacts involved in the engagement.
         public let contactArn: String
         /// The secure content of the message that was sent to the contact. Use this field for engagements to VOICE and EMAIL.
@@ -552,7 +516,6 @@ extension SSMContacts {
     }
 
     public struct DescribePageRequest: AWSEncodableShape {
-
         /// The ID of the engagement to a contact channel.
         public let pageId: String
 
@@ -572,7 +535,6 @@ extension SSMContacts {
     }
 
     public struct DescribePageResult: AWSDecodableShape {
-
         /// The ARN of the contact that was engaged.
         public let contactArn: String
         /// The secure content of the message that was sent to the contact. Use this field for engagements to VOICE and EMAIL.
@@ -630,7 +592,6 @@ extension SSMContacts {
     }
 
     public struct Engagement: AWSDecodableShape {
-
         /// The ARN of the escalation plan or contact that Incident Manager is engaging.
         public let contactArn: String
         /// The Amazon Resource Name (ARN) of the engagement.
@@ -664,7 +625,6 @@ extension SSMContacts {
     }
 
     public struct GetContactChannelRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the contact channel you want information about.
         public let contactChannelId: String
 
@@ -684,14 +644,13 @@ extension SSMContacts {
     }
 
     public struct GetContactChannelResult: AWSDecodableShape {
-
         /// A Boolean value indicating if the contact channel has been activated or not.
         public let activationStatus: ActivationStatus?
         /// The ARN of the contact that the channel belongs to.
         public let contactArn: String
         /// The ARN of the contact channel.
         public let contactChannelArn: String
-        /// The details that Incident Manager uses when trying to engage the contact channel. 
+        /// The details that Incident Manager uses when trying to engage the contact channel.
         public let deliveryAddress: ContactChannelAddress
         /// The name of the contact channel
         public let name: String
@@ -718,7 +677,6 @@ extension SSMContacts {
     }
 
     public struct GetContactPolicyRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the contact or escalation plan.
         public let contactArn: String
 
@@ -738,7 +696,6 @@ extension SSMContacts {
     }
 
     public struct GetContactPolicyResult: AWSDecodableShape {
-
         /// The ARN of the contact or escalation plan.
         public let contactArn: String?
         /// Details about the resource policy attached to the contact or escalation plan.
@@ -756,7 +713,6 @@ extension SSMContacts {
     }
 
     public struct GetContactRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the contact or escalation plan.
         public let contactId: String
 
@@ -776,7 +732,6 @@ extension SSMContacts {
     }
 
     public struct GetContactResult: AWSDecodableShape {
-
         /// The alias of the contact or escalation plan. The alias is unique and identifiable.
         public let alias: String
         /// The ARN of the contact or escalation plan.
@@ -785,7 +740,7 @@ extension SSMContacts {
         public let displayName: String?
         /// Details about the specific timing or stages and targets of the escalation plan or engagement plan.
         public let plan: Plan
-        /// The type of contact, either PERSONAL or ESCALATION. 
+        /// The type of contact, either PERSONAL or ESCALATION.
         public let type: ContactType
 
         public init(alias: String, contactArn: String, displayName: String? = nil, plan: Plan, type: ContactType) {
@@ -806,8 +761,7 @@ extension SSMContacts {
     }
 
     public struct ListContactChannelsRequest: AWSEncodableShape {
-
-        /// The Amazon Resource Name (ARN) of the contact. 
+        /// The Amazon Resource Name (ARN) of the contact.
         public let contactId: String
         /// The maximum number of contact channels per page.
         public let maxResults: Int?
@@ -838,7 +792,6 @@ extension SSMContacts {
     }
 
     public struct ListContactChannelsResult: AWSDecodableShape {
-
         /// A list of contact channels related to the specified contact.
         public let contactChannels: [ContactChannel]
         /// The pagination token to continue to the next page of results.
@@ -856,7 +809,6 @@ extension SSMContacts {
     }
 
     public struct ListContactsRequest: AWSEncodableShape {
-
         /// Used to list only contacts who's aliases start with the specified prefix.
         public let aliasPrefix: String?
         /// The maximum number of contacts and escalation plans per page of results.
@@ -892,7 +844,6 @@ extension SSMContacts {
     }
 
     public struct ListContactsResult: AWSDecodableShape {
-
         /// A list of the contacts and escalation plans in your Incident Manager account.
         public let contacts: [Contact]?
         /// The pagination token to continue to the next page of results.
@@ -910,7 +861,6 @@ extension SSMContacts {
     }
 
     public struct ListEngagementsRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the incident you're listing engagements for.
         public let incidentId: String?
         /// The maximum number of engagements per page of results.
@@ -945,7 +895,6 @@ extension SSMContacts {
     }
 
     public struct ListEngagementsResult: AWSDecodableShape {
-
         /// A list of each engagement that occurred during the specified time range of an incident.
         public let engagements: [Engagement]
         /// The pagination token to continue to the next page of results.
@@ -963,7 +912,6 @@ extension SSMContacts {
     }
 
     public struct ListPageReceiptsRequest: AWSEncodableShape {
-
         /// The maximum number of acknowledgements per page of results.
         public let maxResults: Int?
         /// The pagination token to continue to the next page of results.
@@ -995,7 +943,6 @@ extension SSMContacts {
     }
 
     public struct ListPageReceiptsResult: AWSDecodableShape {
-
         /// The pagination token to continue to the next page of results.
         public let nextToken: String?
         /// A list of each acknowledgement.
@@ -1013,10 +960,9 @@ extension SSMContacts {
     }
 
     public struct ListPagesByContactRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the contact you are retrieving engagements for.
         public let contactId: String
-        /// The maximum number of engagements to contact channels to list per page of results. 
+        /// The maximum number of engagements to contact channels to list per page of results.
         public let maxResults: Int?
         /// The pagination token to continue to the next page of results.
         public let nextToken: String?
@@ -1045,7 +991,6 @@ extension SSMContacts {
     }
 
     public struct ListPagesByContactResult: AWSDecodableShape {
-
         /// The pagination token to continue to the next page of results.
         public let nextToken: String?
         /// The list of engagements to a contact's contact channel.
@@ -1063,7 +1008,6 @@ extension SSMContacts {
     }
 
     public struct ListPagesByEngagementRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the engagement.
         public let engagementId: String
         /// The maximum number of engagements to contact channels to list per page of results.
@@ -1095,7 +1039,6 @@ extension SSMContacts {
     }
 
     public struct ListPagesByEngagementResult: AWSDecodableShape {
-
         /// The pagination token to continue to the next page of results.
         public let nextToken: String?
         /// The list of engagements to contact channels.
@@ -1113,7 +1056,6 @@ extension SSMContacts {
     }
 
     public struct ListTagsForResourceRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the contact or escalation plan.
         public let resourceARN: String
 
@@ -1132,7 +1074,6 @@ extension SSMContacts {
     }
 
     public struct ListTagsForResourceResult: AWSDecodableShape {
-
         /// The tags related to the contact or escalation plan.
         public let tags: [Tag]?
 
@@ -1146,7 +1087,6 @@ extension SSMContacts {
     }
 
     public struct Page: AWSDecodableShape {
-
         /// The ARN of the contact that Incident Manager is engaging.
         public let contactArn: String
         /// The time the message was delivered to the contact channel.
@@ -1188,7 +1128,6 @@ extension SSMContacts {
     }
 
     public struct Plan: AWSEncodableShape & AWSDecodableShape {
-
         /// A list of stages that the escalation plan or engagement plan uses to engage contacts and contact methods.
         public let stages: [Stage]
 
@@ -1208,7 +1147,6 @@ extension SSMContacts {
     }
 
     public struct PutContactPolicyRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the contact or escalation plan.
         public let contactArn: String
         /// Details of the resource policy.
@@ -1223,7 +1161,7 @@ extension SSMContacts {
             try self.validate(self.contactArn, name: "contactArn", parent: name, max: 2048)
             try self.validate(self.contactArn, name: "contactArn", parent: name, min: 1)
             try self.validate(self.contactArn, name: "contactArn", parent: name, pattern: "^arn:(aws|aws-cn|aws-us-gov):ssm-contacts:[-\\w+=\\/,.@]*:[0-9]+:([\\w+=\\/,.@:-]+)*$")
-            try self.validate(self.policy, name: "policy", parent: name, max: 395000)
+            try self.validate(self.policy, name: "policy", parent: name, max: 395_000)
             try self.validate(self.policy, name: "policy", parent: name, min: 1)
             try self.validate(self.policy, name: "policy", parent: name, pattern: "\\S")
         }
@@ -1235,15 +1173,10 @@ extension SSMContacts {
     }
 
     public struct PutContactPolicyResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct Receipt: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the contact channel Incident Manager engaged.
         public let contactChannelArn: String?
         /// Information provided during the page acknowledgement.
@@ -1269,7 +1202,6 @@ extension SSMContacts {
     }
 
     public struct SendActivationCodeRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the contact channel.
         public let contactChannelId: String
 
@@ -1289,15 +1221,10 @@ extension SSMContacts {
     }
 
     public struct SendActivationCodeResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct Stage: AWSEncodableShape & AWSDecodableShape {
-
         /// The time to wait until beginning the next stage.
         public let durationInMinutes: Int
         /// The contacts or contact methods that the escalation plan or engagement plan is engaging.
@@ -1323,7 +1250,6 @@ extension SSMContacts {
     }
 
     public struct StartEngagementRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the contact being engaged.
         public let contactId: String
         /// The secure content of the message that was sent to the contact. Use this field for engagements to VOICE or EMAIL.
@@ -1389,7 +1315,6 @@ extension SSMContacts {
     }
 
     public struct StartEngagementResult: AWSDecodableShape {
-
         /// The ARN of the engagement.
         public let engagementArn: String
 
@@ -1403,10 +1328,9 @@ extension SSMContacts {
     }
 
     public struct StopEngagementRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the engagement.
         public let engagementId: String
-        /// The reason that you're stopping the engagement. 
+        /// The reason that you're stopping the engagement.
         public let reason: String?
 
         public init(engagementId: String, reason: String? = nil) {
@@ -1429,15 +1353,10 @@ extension SSMContacts {
     }
 
     public struct StopEngagementResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct Tag: AWSEncodableShape & AWSDecodableShape {
-
         /// Name of the object key.
         public let key: String?
         /// Value of the tag.
@@ -1464,7 +1383,6 @@ extension SSMContacts {
     }
 
     public struct TagResourceRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the contact or escalation plan.
         public let resourceARN: String
         /// A list of tags that you are adding to the contact or escalation plan.
@@ -1491,15 +1409,10 @@ extension SSMContacts {
     }
 
     public struct TagResourceResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct Target: AWSEncodableShape & AWSDecodableShape {
-
         /// Information about the contact channel Incident Manager is engaging.
         public let channelTargetInfo: ChannelTargetInfo?
         /// Information about the contact that Incident Manager is engaging.
@@ -1522,7 +1435,6 @@ extension SSMContacts {
     }
 
     public struct TimeRange: AWSEncodableShape {
-
         /// The end of the time range.
         public let endTime: Date?
         /// The start of the time range.
@@ -1540,7 +1452,6 @@ extension SSMContacts {
     }
 
     public struct UntagResourceRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the contact or escalation plan.
         public let resourceARN: String
         /// The key of the tag that you want to remove.
@@ -1569,18 +1480,13 @@ extension SSMContacts {
     }
 
     public struct UntagResourceResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateContactChannelRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the contact channel you want to update.
         public let contactChannelId: String
-        /// The details that Incident Manager uses when trying to engage the contact channel. 
+        /// The details that Incident Manager uses when trying to engage the contact channel.
         public let deliveryAddress: ContactChannelAddress?
         /// The name of the contact channel
         public let name: String?
@@ -1609,20 +1515,15 @@ extension SSMContacts {
     }
 
     public struct UpdateContactChannelResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateContactRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the contact or escalation plan you're updating.
         public let contactId: String
         /// The full name of the contact or escalation plan.
         public let displayName: String?
-        /// A list of stages. A contact has an engagement plan with stages for specified contact channels. An escalation plan uses these stages to contact specified contacts. 
+        /// A list of stages. A contact has an engagement plan with stages for specified contact channels. An escalation plan uses these stages to contact specified contacts.
         public let plan: Plan?
 
         public init(contactId: String, displayName: String? = nil, plan: Plan? = nil) {
@@ -1648,10 +1549,6 @@ extension SSMContacts {
     }
 
     public struct UpdateContactResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 }

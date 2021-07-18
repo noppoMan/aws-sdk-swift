@@ -37,19 +37,19 @@ extension Cloud9 {
     }
 
     public enum EnvironmentStatus: String, CustomStringConvertible, Codable {
-        case connecting = "connecting"
-        case creating = "creating"
-        case deleting = "deleting"
-        case error = "error"
-        case ready = "ready"
-        case stopped = "stopped"
-        case stopping = "stopping"
+        case connecting
+        case creating
+        case deleting
+        case error
+        case ready
+        case stopped
+        case stopping
         public var description: String { return self.rawValue }
     }
 
     public enum EnvironmentType: String, CustomStringConvertible, Codable {
-        case ec2 = "ec2"
-        case ssh = "ssh"
+        case ec2
+        case ssh
         public var description: String { return self.rawValue }
     }
 
@@ -75,7 +75,7 @@ extension Cloud9 {
     }
 
     public enum Permissions: String, CustomStringConvertible, Codable {
-        case owner = "owner"
+        case owner
         case readOnly = "read-only"
         case readWrite = "read-write"
         public var description: String { return self.rawValue }
@@ -84,7 +84,6 @@ extension Cloud9 {
     // MARK: Shapes
 
     public struct CreateEnvironmentEC2Request: AWSEncodableShape {
-
         /// The number of minutes until the running instance is shut down after the environment has last been used.
         public let automaticStopTimeMinutes: Int?
         /// A unique, case-sensitive string that helps Cloud9 to ensure this operation completes no more than one time. For more information, see Client Tokens in the Amazon EC2 API Reference.
@@ -93,7 +92,7 @@ extension Cloud9 {
         public let connectionType: ConnectionType?
         /// The description of the environment to create.
         public let description: String?
-        /// The identifier for the Amazon Machine Image (AMI) that's used to create the EC2 instance. To choose an AMI for the instance, you must specify a valid AMI alias or a valid Amazon EC2 Systems Manager (SSM) path. The default AMI is used if the parameter isn't explicitly assigned a value in the request. Because Amazon Linux AMI has ended standard support as of December 31, 2020, we recommend you choose Amazon Linux 2, which includes long term support through 2023.  AMI aliases      Amazon Linux (default): amazonlinux-1-x86_64     Amazon Linux 2: amazonlinux-2-x86_64    Ubuntu 18.04: ubuntu-18.04-x86_64     SSM paths     Amazon Linux (default): resolve:ssm:/aws/service/cloud9/amis/amazonlinux-1-x86_64     Amazon Linux 2: resolve:ssm:/aws/service/cloud9/amis/amazonlinux-2-x86_64    Ubuntu 18.04: resolve:ssm:/aws/service/cloud9/amis/ubuntu-18.04-x86_64   
+        /// The identifier for the Amazon Machine Image (AMI) that's used to create the EC2 instance. To choose an AMI for the instance, you must specify a valid AMI alias or a valid Amazon EC2 Systems Manager (SSM) path. The default AMI is used if the parameter isn't explicitly assigned a value in the request. Because Amazon Linux AMI has ended standard support as of December 31, 2020, we recommend you choose Amazon Linux 2, which includes long term support through 2023.  AMI aliases      Amazon Linux (default): amazonlinux-1-x86_64     Amazon Linux 2: amazonlinux-2-x86_64    Ubuntu 18.04: ubuntu-18.04-x86_64     SSM paths     Amazon Linux (default): resolve:ssm:/aws/service/cloud9/amis/amazonlinux-1-x86_64     Amazon Linux 2: resolve:ssm:/aws/service/cloud9/amis/amazonlinux-2-x86_64    Ubuntu 18.04: resolve:ssm:/aws/service/cloud9/amis/ubuntu-18.04-x86_64
         public let imageId: String?
         /// The type of instance to connect to the environment (for example, t2.micro).
         public let instanceType: String
@@ -140,21 +139,20 @@ extension Cloud9 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case automaticStopTimeMinutes = "automaticStopTimeMinutes"
-            case clientRequestToken = "clientRequestToken"
-            case connectionType = "connectionType"
-            case description = "description"
-            case imageId = "imageId"
-            case instanceType = "instanceType"
-            case name = "name"
-            case ownerArn = "ownerArn"
-            case subnetId = "subnetId"
-            case tags = "tags"
+            case automaticStopTimeMinutes
+            case clientRequestToken
+            case connectionType
+            case description
+            case imageId
+            case instanceType
+            case name
+            case ownerArn
+            case subnetId
+            case tags
         }
     }
 
     public struct CreateEnvironmentEC2Result: AWSDecodableShape {
-
         /// The ID of the environment that was created.
         public let environmentId: String?
 
@@ -163,15 +161,14 @@ extension Cloud9 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case environmentId = "environmentId"
+            case environmentId
         }
     }
 
     public struct CreateEnvironmentMembershipRequest: AWSEncodableShape {
-
         /// The ID of the environment that contains the environment member you want to add.
         public let environmentId: String
-        /// The type of environment member permissions you want to associate with this environment member. Available values include:    read-only: Has read-only access to the environment.    read-write: Has read-write access to the environment.  
+        /// The type of environment member permissions you want to associate with this environment member. Available values include:    read-only: Has read-only access to the environment.    read-write: Has read-write access to the environment.
         public let permissions: MemberPermissions
         /// The Amazon Resource Name (ARN) of the environment member you want to add.
         public let userArn: String
@@ -188,14 +185,13 @@ extension Cloud9 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case environmentId = "environmentId"
-            case permissions = "permissions"
-            case userArn = "userArn"
+            case environmentId
+            case permissions
+            case userArn
         }
     }
 
     public struct CreateEnvironmentMembershipResult: AWSDecodableShape {
-
         /// Information about the environment member that was added.
         public let membership: EnvironmentMember
 
@@ -204,12 +200,11 @@ extension Cloud9 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case membership = "membership"
+            case membership
         }
     }
 
     public struct DeleteEnvironmentMembershipRequest: AWSEncodableShape {
-
         /// The ID of the environment to delete the environment member from.
         public let environmentId: String
         /// The Amazon Resource Name (ARN) of the environment member to delete from the environment.
@@ -226,21 +221,16 @@ extension Cloud9 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case environmentId = "environmentId"
-            case userArn = "userArn"
+            case environmentId
+            case userArn
         }
     }
 
     public struct DeleteEnvironmentMembershipResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteEnvironmentRequest: AWSEncodableShape {
-
         /// The ID of the environment to delete.
         public let environmentId: String
 
@@ -253,20 +243,15 @@ extension Cloud9 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case environmentId = "environmentId"
+            case environmentId
         }
     }
 
     public struct DeleteEnvironmentResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DescribeEnvironmentMembershipsRequest: AWSEncodableShape {
-
         /// The ID of the environment to get environment member information about.
         public let environmentId: String?
         /// The maximum number of environment members to get information about.
@@ -294,16 +279,15 @@ extension Cloud9 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case environmentId = "environmentId"
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
-            case permissions = "permissions"
-            case userArn = "userArn"
+            case environmentId
+            case maxResults
+            case nextToken
+            case permissions
+            case userArn
         }
     }
 
     public struct DescribeEnvironmentMembershipsResult: AWSDecodableShape {
-
         /// Information about the environment members for the environment.
         public let memberships: [EnvironmentMember]?
         /// If there are more than 25 items in the list, only the first 25 items are returned, along with a unique string called a next token. To get the next batch of items in the list, call this operation again, adding the next token to the call.
@@ -315,13 +299,12 @@ extension Cloud9 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case memberships = "memberships"
-            case nextToken = "nextToken"
+            case memberships
+            case nextToken
         }
     }
 
     public struct DescribeEnvironmentStatusRequest: AWSEncodableShape {
-
         /// The ID of the environment to get status information about.
         public let environmentId: String
 
@@ -334,15 +317,14 @@ extension Cloud9 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case environmentId = "environmentId"
+            case environmentId
         }
     }
 
     public struct DescribeEnvironmentStatusResult: AWSDecodableShape {
-
         /// Any informational message about the status of the environment.
         public let message: String
-        /// The status of the environment. Available values include:    connecting: The environment is connecting.    creating: The environment is being created.    deleting: The environment is being deleted.    error: The environment is in an error state.    ready: The environment is ready.    stopped: The environment is stopped.    stopping: The environment is stopping.  
+        /// The status of the environment. Available values include:    connecting: The environment is connecting.    creating: The environment is being created.    deleting: The environment is being deleted.    error: The environment is in an error state.    ready: The environment is ready.    stopped: The environment is stopped.    stopping: The environment is stopping.
         public let status: EnvironmentStatus
 
         public init(message: String, status: EnvironmentStatus) {
@@ -351,13 +333,12 @@ extension Cloud9 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case message = "message"
-            case status = "status"
+            case message
+            case status
         }
     }
 
     public struct DescribeEnvironmentsRequest: AWSEncodableShape {
-
         /// The IDs of individual environments to get information about.
         public let environmentIds: [String]
 
@@ -374,12 +355,11 @@ extension Cloud9 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case environmentIds = "environmentIds"
+            case environmentIds
         }
     }
 
     public struct DescribeEnvironmentsResult: AWSDecodableShape {
-
         /// Information about the environments that are returned.
         public let environments: [Environment]?
 
@@ -388,12 +368,11 @@ extension Cloud9 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case environments = "environments"
+            case environments
         }
     }
 
     public struct Environment: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the environment.
         public let arn: String
         /// The connection type used for connecting to an Amazon EC2 environment. CONNECT_SSH is selected by default.
@@ -404,13 +383,13 @@ extension Cloud9 {
         public let id: String?
         /// The state of the environment in its creation or deletion lifecycle.
         public let lifecycle: EnvironmentLifecycle?
-        /// Describes the status of Amazon Web Services managed temporary credentials for the Cloud9 environment. Available values are:    ENABLED_ON_CREATE     ENABLED_BY_OWNER     DISABLED_BY_DEFAULT     DISABLED_BY_OWNER     DISABLED_BY_COLLABORATOR     PENDING_REMOVAL_BY_COLLABORATOR     PENDING_REMOVAL_BY_OWNER     FAILED_REMOVAL_BY_COLLABORATOR     ENABLED_BY_OWNER     DISABLED_BY_DEFAULT   
+        /// Describes the status of Amazon Web Services managed temporary credentials for the Cloud9 environment. Available values are:    ENABLED_ON_CREATE     ENABLED_BY_OWNER     DISABLED_BY_DEFAULT     DISABLED_BY_OWNER     DISABLED_BY_COLLABORATOR     PENDING_REMOVAL_BY_COLLABORATOR     PENDING_REMOVAL_BY_OWNER     FAILED_REMOVAL_BY_COLLABORATOR     ENABLED_BY_OWNER     DISABLED_BY_DEFAULT
         public let managedCredentialsStatus: ManagedCredentialsStatus?
         /// The name of the environment.
         public let name: String?
         /// The Amazon Resource Name (ARN) of the environment owner.
         public let ownerArn: String
-        /// The type of environment. Valid values include the following:    ec2: An Amazon Elastic Compute Cloud (Amazon EC2) instance connects to the environment.    ssh: Your own server connects to the environment.  
+        /// The type of environment. Valid values include the following:    ec2: An Amazon Elastic Compute Cloud (Amazon EC2) instance connects to the environment.    ssh: Your own server connects to the environment.
         public let type: EnvironmentType
 
         public init(arn: String, connectionType: ConnectionType? = nil, description: String? = nil, id: String? = nil, lifecycle: EnvironmentLifecycle? = nil, managedCredentialsStatus: ManagedCredentialsStatus? = nil, name: String? = nil, ownerArn: String, type: EnvironmentType) {
@@ -426,25 +405,24 @@ extension Cloud9 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case connectionType = "connectionType"
-            case description = "description"
-            case id = "id"
-            case lifecycle = "lifecycle"
-            case managedCredentialsStatus = "managedCredentialsStatus"
-            case name = "name"
-            case ownerArn = "ownerArn"
-            case type = "type"
+            case arn
+            case connectionType
+            case description
+            case id
+            case lifecycle
+            case managedCredentialsStatus
+            case name
+            case ownerArn
+            case type
         }
     }
 
     public struct EnvironmentLifecycle: AWSDecodableShape {
-
         /// If the environment failed to delete, the Amazon Resource Name (ARN) of the related Amazon Web Services resource.
         public let failureResource: String?
         /// Any informational message about the lifecycle state of the environment.
         public let reason: String?
-        /// The current creation or deletion lifecycle state of the environment.    CREATING: The environment is in the process of being created.    CREATED: The environment was successfully created.    CREATE_FAILED: The environment failed to be created.    DELETING: The environment is in the process of being deleted.    DELETE_FAILED: The environment failed to delete.  
+        /// The current creation or deletion lifecycle state of the environment.    CREATING: The environment is in the process of being created.    CREATED: The environment was successfully created.    CREATE_FAILED: The environment failed to be created.    DELETING: The environment is in the process of being deleted.    DELETE_FAILED: The environment failed to delete.
         public let status: EnvironmentLifecycleStatus?
 
         public init(failureResource: String? = nil, reason: String? = nil, status: EnvironmentLifecycleStatus? = nil) {
@@ -454,19 +432,18 @@ extension Cloud9 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case failureResource = "failureResource"
-            case reason = "reason"
-            case status = "status"
+            case failureResource
+            case reason
+            case status
         }
     }
 
     public struct EnvironmentMember: AWSDecodableShape {
-
         /// The ID of the environment for the environment member.
         public let environmentId: String
         /// The time, expressed in epoch time format, when the environment member last opened the environment.
         public let lastAccess: Date?
-        /// The type of environment member permissions associated with this environment member. Available values include:    owner: Owns the environment.    read-only: Has read-only access to the environment.    read-write: Has read-write access to the environment.  
+        /// The type of environment member permissions associated with this environment member. Available values include:    owner: Owns the environment.    read-only: Has read-only access to the environment.    read-write: Has read-write access to the environment.
         public let permissions: Permissions
         /// The Amazon Resource Name (ARN) of the environment member.
         public let userArn: String
@@ -482,16 +459,15 @@ extension Cloud9 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case environmentId = "environmentId"
-            case lastAccess = "lastAccess"
-            case permissions = "permissions"
-            case userArn = "userArn"
-            case userId = "userId"
+            case environmentId
+            case lastAccess
+            case permissions
+            case userArn
+            case userId
         }
     }
 
     public struct ListEnvironmentsRequest: AWSEncodableShape {
-
         /// The maximum number of environments to get identifiers for.
         public let maxResults: Int?
         /// During a previous call, if there are more than 25 items in the list, only the first 25 items are returned, along with a unique string called a next token. To get the next batch of items in the list, call this operation again, adding the next token to the call. To get all of the items in the list, keep calling this operation with each subsequent next token that is returned, until no more next tokens are returned.
@@ -508,13 +484,12 @@ extension Cloud9 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
+            case maxResults
+            case nextToken
         }
     }
 
     public struct ListEnvironmentsResult: AWSDecodableShape {
-
         /// The list of environment identifiers.
         public let environmentIds: [String]?
         /// If there are more than 25 items in the list, only the first 25 items are returned, along with a unique string called a next token. To get the next batch of items in the list, call this operation again, adding the next token to the call.
@@ -526,13 +501,12 @@ extension Cloud9 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case environmentIds = "environmentIds"
-            case nextToken = "nextToken"
+            case environmentIds
+            case nextToken
         }
     }
 
     public struct ListTagsForResourceRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the Cloud9 development environment to get the tags for.
         public let resourceARN: String
 
@@ -550,7 +524,6 @@ extension Cloud9 {
     }
 
     public struct ListTagsForResourceResponse: AWSDecodableShape {
-
         /// The list of tags associated with the Cloud9 development environment.
         public let tags: [Tag]?
 
@@ -564,7 +537,6 @@ extension Cloud9 {
     }
 
     public struct Tag: AWSEncodableShape & AWSDecodableShape {
-
         /// The name part of a tag.
         public let key: String
         /// The value part of a tag.
@@ -588,7 +560,6 @@ extension Cloud9 {
     }
 
     public struct TagResourceRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the Cloud9 development environment to add tags to.
         public let resourceARN: String
         /// The list of tags to add to the given Cloud9 development environment.
@@ -614,15 +585,10 @@ extension Cloud9 {
     }
 
     public struct TagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UntagResourceRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the Cloud9 development environment to remove tags from.
         public let resourceARN: String
         /// The tag names of the tags to remove from the given Cloud9 development environment.
@@ -649,18 +615,13 @@ extension Cloud9 {
     }
 
     public struct UntagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateEnvironmentMembershipRequest: AWSEncodableShape {
-
         /// The ID of the environment for the environment member whose settings you want to change.
         public let environmentId: String
-        /// The replacement type of environment member permissions you want to associate with this environment member. Available values include:    read-only: Has read-only access to the environment.    read-write: Has read-write access to the environment.  
+        /// The replacement type of environment member permissions you want to associate with this environment member. Available values include:    read-only: Has read-only access to the environment.    read-write: Has read-write access to the environment.
         public let permissions: MemberPermissions
         /// The Amazon Resource Name (ARN) of the environment member whose settings you want to change.
         public let userArn: String
@@ -677,14 +638,13 @@ extension Cloud9 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case environmentId = "environmentId"
-            case permissions = "permissions"
-            case userArn = "userArn"
+            case environmentId
+            case permissions
+            case userArn
         }
     }
 
     public struct UpdateEnvironmentMembershipResult: AWSDecodableShape {
-
         /// Information about the environment member whose settings were changed.
         public let membership: EnvironmentMember?
 
@@ -693,12 +653,11 @@ extension Cloud9 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case membership = "membership"
+            case membership
         }
     }
 
     public struct UpdateEnvironmentRequest: AWSEncodableShape {
-
         /// Any new or replacement description for the environment.
         public let description: String?
         /// The ID of the environment to change settings.
@@ -720,17 +679,13 @@ extension Cloud9 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case description = "description"
-            case environmentId = "environmentId"
-            case name = "name"
+            case description
+            case environmentId
+            case name
         }
     }
 
     public struct UpdateEnvironmentResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 }

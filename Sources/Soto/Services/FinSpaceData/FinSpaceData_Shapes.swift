@@ -71,12 +71,11 @@ extension Finspacedata {
     // MARK: Shapes
 
     public struct ChangesetInfo: AWSDecodableShape {
-
         /// The ARN identifier of the changeset.
         public let changesetArn: String?
         /// Tags associated with the changeset.
         public let changesetLabels: [String: String]?
-        /// Change type indicates how a changeset is applied to a dataset.    REPLACE - Changeset is considered as a replacement to all prior loaded changesets.    APPEND - Changeset is considered as an addition to the end of all prior loaded changesets.    MODIFY - Changeset is considered as a replacement to a specific prior ingested changeset.  
+        /// Change type indicates how a changeset is applied to a dataset.    REPLACE - Changeset is considered as a replacement to all prior loaded changesets.    APPEND - Changeset is considered as an addition to the end of all prior loaded changesets.    MODIFY - Changeset is considered as a replacement to a specific prior ingested changeset.
         public let changeType: ChangeType?
         /// The timestamp at which the changeset was created in FinSpace.
         public let createTimestamp: Date?
@@ -92,7 +91,7 @@ extension Finspacedata {
         public let id: String?
         /// Source path from which the files to create the changeset are sourced.
         public let sourceParams: [String: String]?
-        /// Type of the data source from which the files to create the changeset are sourced.    S3 - Amazon S3.  
+        /// Type of the data source from which the files to create the changeset are sourced.    S3 - Amazon S3.
         public let sourceType: SourceType?
         /// The status of changeset creation operation.
         public let status: ChangesetStatus?
@@ -119,20 +118,20 @@ extension Finspacedata {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case changesetArn = "changesetArn"
-            case changesetLabels = "changesetLabels"
-            case changeType = "changeType"
-            case createTimestamp = "createTimestamp"
-            case datasetId = "datasetId"
-            case errorInfo = "errorInfo"
-            case formatParams = "formatParams"
-            case formatType = "formatType"
-            case id = "id"
-            case sourceParams = "sourceParams"
-            case sourceType = "sourceType"
-            case status = "status"
-            case updatedByChangesetId = "updatedByChangesetId"
-            case updatesChangesetId = "updatesChangesetId"
+            case changesetArn
+            case changesetLabels
+            case changeType
+            case createTimestamp
+            case datasetId
+            case errorInfo
+            case formatParams
+            case formatType
+            case id
+            case sourceParams
+            case sourceType
+            case status
+            case updatedByChangesetId
+            case updatesChangesetId
         }
     }
 
@@ -141,7 +140,7 @@ extension Finspacedata {
             AWSMemberEncoding(label: "datasetId", location: .uri(locationName: "datasetId"))
         ]
 
-        /// Option to indicate how a changeset will be applied to a dataset.    REPLACE - Changeset will be considered as a replacement to all prior loaded changesets.    APPEND - Changeset will be considered as an addition to the end of all prior loaded changesets.  
+        /// Option to indicate how a changeset will be applied to a dataset.    REPLACE - Changeset will be considered as a replacement to all prior loaded changesets.    APPEND - Changeset will be considered as an addition to the end of all prior loaded changesets.
         public let changeType: ChangeType
         /// The unique identifier for the FinSpace dataset in which the changeset will be created.
         public let datasetId: String
@@ -151,7 +150,7 @@ extension Finspacedata {
         public let formatType: FormatType?
         /// Source path from which the files to create the changeset will be sourced.
         public let sourceParams: [String: String]
-        /// Type of the data source from which the files to create the changeset will be sourced.    S3 - Amazon S3.  
+        /// Type of the data source from which the files to create the changeset will be sourced.    S3 - Amazon S3.
         public let sourceType: SourceType
         /// Metadata tags to apply to this changeset.
         public let tags: [String: String]?
@@ -172,17 +171,16 @@ extension Finspacedata {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case changeType = "changeType"
-            case formatParams = "formatParams"
-            case formatType = "formatType"
-            case sourceParams = "sourceParams"
-            case sourceType = "sourceType"
-            case tags = "tags"
+            case changeType
+            case formatParams
+            case formatType
+            case sourceParams
+            case sourceType
+            case tags
         }
     }
 
     public struct CreateChangesetResponse: AWSDecodableShape {
-
         /// Returns the changeset details.
         public let changeset: ChangesetInfo?
 
@@ -191,12 +189,11 @@ extension Finspacedata {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case changeset = "changeset"
+            case changeset
         }
     }
 
     public struct Credentials: AWSDecodableShape {
-
         /// The access key identifier.
         public let accessKeyId: String?
         /// The access key.
@@ -211,15 +208,14 @@ extension Finspacedata {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accessKeyId = "accessKeyId"
-            case secretAccessKey = "secretAccessKey"
-            case sessionToken = "sessionToken"
+            case accessKeyId
+            case secretAccessKey
+            case sessionToken
         }
     }
 
     public struct ErrorInfo: AWSDecodableShape {
-
-        /// The category of the error.    VALIDATION -The inputs to this request are invalid.    SERVICE_QUOTA_EXCEEDED - Service quotas have been exceeded. Please contact AWS support to increase quotas.    ACCESS_DENIED - Missing required permission to perform this request.    RESOURCE_NOT_FOUND - One or more inputs to this request were not found.    THROTTLING - The system temporarily lacks sufficient resources to process the request.    INTERNAL_SERVICE_EXCEPTION - An internal service error has occurred.    CANCELLED - A user recoverable error has occurred.  
+        /// The category of the error.    VALIDATION -The inputs to this request are invalid.    SERVICE_QUOTA_EXCEEDED - Service quotas have been exceeded. Please contact AWS support to increase quotas.    ACCESS_DENIED - Missing required permission to perform this request.    RESOURCE_NOT_FOUND - One or more inputs to this request were not found.    THROTTLING - The system temporarily lacks sufficient resources to process the request.    INTERNAL_SERVICE_EXCEPTION - An internal service error has occurred.    CANCELLED - A user recoverable error has occurred.
         public let errorCategory: ErrorCategory?
         /// The text of the error message.
         public let errorMessage: String?
@@ -230,18 +226,18 @@ extension Finspacedata {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case errorCategory = "errorCategory"
-            case errorMessage = "errorMessage"
+            case errorCategory
+            case errorMessage
         }
     }
 
     public struct GetProgrammaticAccessCredentialsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "durationInMinutes", location: .querystring(locationName: "durationInMinutes")), 
+            AWSMemberEncoding(label: "durationInMinutes", location: .querystring(locationName: "durationInMinutes")),
             AWSMemberEncoding(label: "environmentId", location: .querystring(locationName: "environmentId"))
         ]
 
-        /// The time duration in which the credentials remain valid. 
+        /// The time duration in which the credentials remain valid.
         public let durationInMinutes: Int64?
         /// The habanero environment identifier.
         public let environmentId: String
@@ -262,7 +258,6 @@ extension Finspacedata {
     }
 
     public struct GetProgrammaticAccessCredentialsResponse: AWSDecodableShape {
-
         /// Returns the programmatic credentials.
         public let credentials: Credentials?
         /// Returns the duration in which the credentials will remain valid.
@@ -274,14 +269,13 @@ extension Finspacedata {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case credentials = "credentials"
-            case durationInMinutes = "durationInMinutes"
+            case credentials
+            case durationInMinutes
         }
     }
 
     public struct GetWorkingLocationRequest: AWSEncodableShape {
-
-        /// Specify the type of the working location.    SAGEMAKER - Use the Amazon S3 location as a temporary location to store data content when working with FinSpace Notebooks that run on SageMaker studio.    INGESTION - Use the Amazon S3 location as a staging location to copy your data content and then use the location with the changeset creation operation.  
+        /// Specify the type of the working location.    SAGEMAKER - Use the Amazon S3 location as a temporary location to store data content when working with FinSpace Notebooks that run on SageMaker studio.    INGESTION - Use the Amazon S3 location as a staging location to copy your data content and then use the location with the changeset creation operation.
         public let locationType: LocationType?
 
         public init(locationType: LocationType? = nil) {
@@ -289,12 +283,11 @@ extension Finspacedata {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case locationType = "locationType"
+            case locationType
         }
     }
 
     public struct GetWorkingLocationResponse: AWSDecodableShape {
-
         /// Returns the Amazon S3 bucket name for the working location.
         public let s3Bucket: String?
         /// Returns the Amazon S3 Path for the working location.
@@ -309,9 +302,9 @@ extension Finspacedata {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case s3Bucket = "s3Bucket"
-            case s3Path = "s3Path"
-            case s3Uri = "s3Uri"
+            case s3Bucket
+            case s3Path
+            case s3Uri
         }
     }
 }

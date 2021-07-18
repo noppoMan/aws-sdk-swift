@@ -44,7 +44,7 @@ public struct WorkMailMessageFlowErrorType: AWSErrorType {
     /// return error code string
     public var errorCode: String { self.error.rawValue }
 
-    /// WorkMail could not access the updated email content. Possible reasons:   You made the request in a region other than your S3 bucket region.   The S3 bucket owner is not the  same as the calling AWS account.   You have an incomplete or missing S3 bucket policy. For more information about policies, see   Updating message content with AWS Lambda in the WorkMail Administrator Guide.  
+    /// WorkMail could not access the updated email content. Possible reasons:   You made the request in a region other than your S3 bucket region.   The S3 bucket owner is not the  same as the calling AWS account.   You have an incomplete or missing S3 bucket policy. For more information about policies, see   Updating message content with AWS Lambda in the WorkMail Administrator Guide.
     public static var invalidContentLocation: Self { .init(.invalidContentLocation) }
     /// The requested email is not eligible for update. This is usually the case for a redirected email.
     public static var messageFrozen: Self { .init(.messageFrozen) }

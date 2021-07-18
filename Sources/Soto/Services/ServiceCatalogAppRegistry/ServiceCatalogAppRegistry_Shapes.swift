@@ -35,7 +35,6 @@ extension ServiceCatalogAppRegistry {
     // MARK: Shapes
 
     public struct Application: AWSDecodableShape {
-
         /// The Amazon resource name (ARN) that specifies the application across services.
         public let arn: String?
         /// The ISO-8601 formatted timestamp of the moment when the application was created.
@@ -64,18 +63,17 @@ extension ServiceCatalogAppRegistry {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case creationTime = "creationTime"
-            case description = "description"
-            case id = "id"
-            case lastUpdateTime = "lastUpdateTime"
-            case name = "name"
-            case tags = "tags"
+            case arn
+            case creationTime
+            case description
+            case id
+            case lastUpdateTime
+            case name
+            case tags
         }
     }
 
     public struct ApplicationSummary: AWSDecodableShape {
-
         /// The Amazon resource name (ARN) that specifies the application across services.
         public let arn: String?
         /// The ISO-8601 formatted timestamp of the moment when the application was created.
@@ -101,18 +99,18 @@ extension ServiceCatalogAppRegistry {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case creationTime = "creationTime"
-            case description = "description"
-            case id = "id"
-            case lastUpdateTime = "lastUpdateTime"
-            case name = "name"
+            case arn
+            case creationTime
+            case description
+            case id
+            case lastUpdateTime
+            case name
         }
     }
 
     public struct AssociateAttributeGroupRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "application", location: .uri(locationName: "application")), 
+            AWSMemberEncoding(label: "application", location: .uri(locationName: "application")),
             AWSMemberEncoding(label: "attributeGroup", location: .uri(locationName: "attributeGroup"))
         ]
 
@@ -139,7 +137,6 @@ extension ServiceCatalogAppRegistry {
     }
 
     public struct AssociateAttributeGroupResponse: AWSDecodableShape {
-
         /// The Amazon resource name (ARN) of the application that was augmented with attributes.
         public let applicationArn: String?
         /// The Amazon resource name (ARN) of the attribute group that contains the application's new attributes.
@@ -151,15 +148,15 @@ extension ServiceCatalogAppRegistry {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case applicationArn = "applicationArn"
-            case attributeGroupArn = "attributeGroupArn"
+            case applicationArn
+            case attributeGroupArn
         }
     }
 
     public struct AssociateResourceRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "application", location: .uri(locationName: "application")), 
-            AWSMemberEncoding(label: "resource", location: .uri(locationName: "resource")), 
+            AWSMemberEncoding(label: "application", location: .uri(locationName: "application")),
+            AWSMemberEncoding(label: "resource", location: .uri(locationName: "resource")),
             AWSMemberEncoding(label: "resourceType", location: .uri(locationName: "resourceType"))
         ]
 
@@ -189,7 +186,6 @@ extension ServiceCatalogAppRegistry {
     }
 
     public struct AssociateResourceResponse: AWSDecodableShape {
-
         /// The Amazon resource name (ARN) of the application that was augmented with attributes.
         public let applicationArn: String?
         /// The Amazon resource name (ARN) that specifies the resource.
@@ -201,13 +197,12 @@ extension ServiceCatalogAppRegistry {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case applicationArn = "applicationArn"
-            case resourceArn = "resourceArn"
+            case applicationArn
+            case resourceArn
         }
     }
 
     public struct AttributeGroup: AWSDecodableShape {
-
         /// The Amazon resource name (ARN) that specifies the attribute group across services.
         public let arn: String?
         /// The ISO-8601 formatted timestamp of the moment the attribute group was created.
@@ -236,18 +231,17 @@ extension ServiceCatalogAppRegistry {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case creationTime = "creationTime"
-            case description = "description"
-            case id = "id"
-            case lastUpdateTime = "lastUpdateTime"
-            case name = "name"
-            case tags = "tags"
+            case arn
+            case creationTime
+            case description
+            case id
+            case lastUpdateTime
+            case name
+            case tags
         }
     }
 
     public struct AttributeGroupSummary: AWSDecodableShape {
-
         /// The Amazon resource name (ARN) that specifies the attribute group across services.
         public let arn: String?
         /// The ISO-8601 formatted timestamp of the moment the attribute group was created.
@@ -273,17 +267,16 @@ extension ServiceCatalogAppRegistry {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case creationTime = "creationTime"
-            case description = "description"
-            case id = "id"
-            case lastUpdateTime = "lastUpdateTime"
-            case name = "name"
+            case arn
+            case creationTime
+            case description
+            case id
+            case lastUpdateTime
+            case name
         }
     }
 
     public struct CreateApplicationRequest: AWSEncodableShape {
-
         /// A unique identifier that you provide to ensure idempotency. If you retry a request that completed successfully using the same client token and the same parameters, the retry succeeds without performing any further actions. If you retry a successful request using the same client token, but one or more of the parameters are different, the retry fails.
         public let clientToken: String
         /// The description of the application.
@@ -319,15 +312,14 @@ extension ServiceCatalogAppRegistry {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientToken = "clientToken"
-            case description = "description"
-            case name = "name"
-            case tags = "tags"
+            case clientToken
+            case description
+            case name
+            case tags
         }
     }
 
     public struct CreateApplicationResponse: AWSDecodableShape {
-
         /// Information about the application.
         public let application: Application?
 
@@ -336,12 +328,11 @@ extension ServiceCatalogAppRegistry {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case application = "application"
+            case application
         }
     }
 
     public struct CreateAttributeGroupRequest: AWSEncodableShape {
-
         /// A JSON string in the form of nested key-value pairs that represent the attributes in the group and describes an application and its components.
         public let attributes: String
         /// A unique identifier that you provide to ensure idempotency. If you retry a request that completed successfully using the same client token and the same parameters, the retry succeeds without performing any further actions. If you retry a successful request using the same client token, but one or more of the parameters are different, the retry fails.
@@ -383,16 +374,15 @@ extension ServiceCatalogAppRegistry {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case attributes = "attributes"
-            case clientToken = "clientToken"
-            case description = "description"
-            case name = "name"
-            case tags = "tags"
+            case attributes
+            case clientToken
+            case description
+            case name
+            case tags
         }
     }
 
     public struct CreateAttributeGroupResponse: AWSDecodableShape {
-
         /// Information about the attribute group.
         public let attributeGroup: AttributeGroup?
 
@@ -401,7 +391,7 @@ extension ServiceCatalogAppRegistry {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case attributeGroup = "attributeGroup"
+            case attributeGroup
         }
     }
 
@@ -427,7 +417,6 @@ extension ServiceCatalogAppRegistry {
     }
 
     public struct DeleteApplicationResponse: AWSDecodableShape {
-
         /// Information about the deleted application.
         public let application: ApplicationSummary?
 
@@ -436,7 +425,7 @@ extension ServiceCatalogAppRegistry {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case application = "application"
+            case application
         }
     }
 
@@ -462,7 +451,6 @@ extension ServiceCatalogAppRegistry {
     }
 
     public struct DeleteAttributeGroupResponse: AWSDecodableShape {
-
         /// Information about the deleted attribute group.
         public let attributeGroup: AttributeGroupSummary?
 
@@ -471,13 +459,13 @@ extension ServiceCatalogAppRegistry {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case attributeGroup = "attributeGroup"
+            case attributeGroup
         }
     }
 
     public struct DisassociateAttributeGroupRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "application", location: .uri(locationName: "application")), 
+            AWSMemberEncoding(label: "application", location: .uri(locationName: "application")),
             AWSMemberEncoding(label: "attributeGroup", location: .uri(locationName: "attributeGroup"))
         ]
 
@@ -504,7 +492,6 @@ extension ServiceCatalogAppRegistry {
     }
 
     public struct DisassociateAttributeGroupResponse: AWSDecodableShape {
-
         /// The Amazon resource name (ARN) that specifies the application.
         public let applicationArn: String?
         /// The Amazon resource name (ARN) that specifies the attribute group.
@@ -516,15 +503,15 @@ extension ServiceCatalogAppRegistry {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case applicationArn = "applicationArn"
-            case attributeGroupArn = "attributeGroupArn"
+            case applicationArn
+            case attributeGroupArn
         }
     }
 
     public struct DisassociateResourceRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "application", location: .uri(locationName: "application")), 
-            AWSMemberEncoding(label: "resource", location: .uri(locationName: "resource")), 
+            AWSMemberEncoding(label: "application", location: .uri(locationName: "application")),
+            AWSMemberEncoding(label: "resource", location: .uri(locationName: "resource")),
             AWSMemberEncoding(label: "resourceType", location: .uri(locationName: "resourceType"))
         ]
 
@@ -554,7 +541,6 @@ extension ServiceCatalogAppRegistry {
     }
 
     public struct DisassociateResourceResponse: AWSDecodableShape {
-
         /// The Amazon resource name (ARN) that specifies the application.
         public let applicationArn: String?
         /// The Amazon resource name (ARN) that specifies the resource.
@@ -566,8 +552,8 @@ extension ServiceCatalogAppRegistry {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case applicationArn = "applicationArn"
-            case resourceArn = "resourceArn"
+            case applicationArn
+            case resourceArn
         }
     }
 
@@ -593,7 +579,6 @@ extension ServiceCatalogAppRegistry {
     }
 
     public struct GetApplicationResponse: AWSDecodableShape {
-
         /// The Amazon resource name (ARN) that specifies the application across services.
         public let arn: String?
         /// The number of top-level resources that were registered as part of this application.
@@ -625,14 +610,14 @@ extension ServiceCatalogAppRegistry {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case associatedResourceCount = "associatedResourceCount"
-            case creationTime = "creationTime"
-            case description = "description"
-            case id = "id"
-            case lastUpdateTime = "lastUpdateTime"
-            case name = "name"
-            case tags = "tags"
+            case arn
+            case associatedResourceCount
+            case creationTime
+            case description
+            case id
+            case lastUpdateTime
+            case name
+            case tags
         }
     }
 
@@ -658,7 +643,6 @@ extension ServiceCatalogAppRegistry {
     }
 
     public struct GetAttributeGroupResponse: AWSDecodableShape {
-
         /// The Amazon resource name (ARN) that specifies the attribute group across services.
         public let arn: String?
         /// A JSON string in the form of nested key-value pairs that represent the attributes in the group and describes an application and its components.
@@ -690,26 +674,26 @@ extension ServiceCatalogAppRegistry {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case attributes = "attributes"
-            case creationTime = "creationTime"
-            case description = "description"
-            case id = "id"
-            case lastUpdateTime = "lastUpdateTime"
-            case name = "name"
-            case tags = "tags"
+            case arn
+            case attributes
+            case creationTime
+            case description
+            case id
+            case lastUpdateTime
+            case name
+            case tags
         }
     }
 
     public struct ListApplicationsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
         /// The upper bound of the number of results to return (cannot exceed 25). If this parameter is omitted, it defaults to 25. This value is optional.
         public let maxResults: Int?
-        /// The token to use to get the next page of results after a previous API call. 
+        /// The token to use to get the next page of results after a previous API call.
         public let nextToken: String?
 
         public init(maxResults: Int? = nil, nextToken: String? = nil) {
@@ -729,10 +713,9 @@ extension ServiceCatalogAppRegistry {
     }
 
     public struct ListApplicationsResponse: AWSDecodableShape {
-
         /// This list of applications.
         public let applications: [ApplicationSummary]?
-        /// The token to use to get the next page of results after a previous API call. 
+        /// The token to use to get the next page of results after a previous API call.
         public let nextToken: String?
 
         public init(applications: [ApplicationSummary]? = nil, nextToken: String? = nil) {
@@ -741,15 +724,15 @@ extension ServiceCatalogAppRegistry {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case applications = "applications"
-            case nextToken = "nextToken"
+            case applications
+            case nextToken
         }
     }
 
     public struct ListAssociatedAttributeGroupsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "application", location: .uri(locationName: "application")), 
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "application", location: .uri(locationName: "application")),
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
@@ -757,7 +740,7 @@ extension ServiceCatalogAppRegistry {
         public let application: String
         /// The upper bound of the number of results to return (cannot exceed 25). If this parameter is omitted, it defaults to 25. This value is optional.
         public let maxResults: Int?
-        /// The token to use to get the next page of results after a previous API call. 
+        /// The token to use to get the next page of results after a previous API call.
         public let nextToken: String?
 
         public init(application: String, maxResults: Int? = nil, nextToken: String? = nil) {
@@ -781,10 +764,9 @@ extension ServiceCatalogAppRegistry {
     }
 
     public struct ListAssociatedAttributeGroupsResponse: AWSDecodableShape {
-
         /// A list of attribute group IDs.
         public let attributeGroups: [String]?
-        /// The token to use to get the next page of results after a previous API call. 
+        /// The token to use to get the next page of results after a previous API call.
         public let nextToken: String?
 
         public init(attributeGroups: [String]? = nil, nextToken: String? = nil) {
@@ -793,15 +775,15 @@ extension ServiceCatalogAppRegistry {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case attributeGroups = "attributeGroups"
-            case nextToken = "nextToken"
+            case attributeGroups
+            case nextToken
         }
     }
 
     public struct ListAssociatedResourcesRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "application", location: .uri(locationName: "application")), 
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "application", location: .uri(locationName: "application")),
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
@@ -809,7 +791,7 @@ extension ServiceCatalogAppRegistry {
         public let application: String
         /// The upper bound of the number of results to return (cannot exceed 25). If this parameter is omitted, it defaults to 25. This value is optional.
         public let maxResults: Int?
-        /// The token to use to get the next page of results after a previous API call. 
+        /// The token to use to get the next page of results after a previous API call.
         public let nextToken: String?
 
         public init(application: String, maxResults: Int? = nil, nextToken: String? = nil) {
@@ -833,8 +815,7 @@ extension ServiceCatalogAppRegistry {
     }
 
     public struct ListAssociatedResourcesResponse: AWSDecodableShape {
-
-        /// The token to use to get the next page of results after a previous API call. 
+        /// The token to use to get the next page of results after a previous API call.
         public let nextToken: String?
         /// Information about the resources.
         public let resources: [ResourceInfo]?
@@ -845,20 +826,20 @@ extension ServiceCatalogAppRegistry {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case resources = "resources"
+            case nextToken
+            case resources
         }
     }
 
     public struct ListAttributeGroupsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
         /// The upper bound of the number of results to return (cannot exceed 25). If this parameter is omitted, it defaults to 25. This value is optional.
         public let maxResults: Int?
-        /// The token to use to get the next page of results after a previous API call. 
+        /// The token to use to get the next page of results after a previous API call.
         public let nextToken: String?
 
         public init(maxResults: Int? = nil, nextToken: String? = nil) {
@@ -878,10 +859,9 @@ extension ServiceCatalogAppRegistry {
     }
 
     public struct ListAttributeGroupsResponse: AWSDecodableShape {
-
         /// This list of attribute groups.
         public let attributeGroups: [AttributeGroupSummary]?
-        /// The token to use to get the next page of results after a previous API call. 
+        /// The token to use to get the next page of results after a previous API call.
         public let nextToken: String?
 
         public init(attributeGroups: [AttributeGroupSummary]? = nil, nextToken: String? = nil) {
@@ -890,8 +870,8 @@ extension ServiceCatalogAppRegistry {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case attributeGroups = "attributeGroups"
-            case nextToken = "nextToken"
+            case attributeGroups
+            case nextToken
         }
     }
 
@@ -917,7 +897,6 @@ extension ServiceCatalogAppRegistry {
     }
 
     public struct ListTagsForResourceResponse: AWSDecodableShape {
-
         /// The tags on the resource.
         public let tags: [String: String]?
 
@@ -926,12 +905,11 @@ extension ServiceCatalogAppRegistry {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tags = "tags"
+            case tags
         }
     }
 
     public struct ResourceInfo: AWSDecodableShape {
-
         /// The Amazon resource name (ARN) that specifies the resource across services.
         public let arn: String?
         /// The name of the resource.
@@ -943,14 +921,14 @@ extension ServiceCatalogAppRegistry {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case name = "name"
+            case arn
+            case name
         }
     }
 
     public struct SyncResourceRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "resource", location: .uri(locationName: "resource")), 
+            AWSMemberEncoding(label: "resource", location: .uri(locationName: "resource")),
             AWSMemberEncoding(label: "resourceType", location: .uri(locationName: "resourceType"))
         ]
 
@@ -974,7 +952,6 @@ extension ServiceCatalogAppRegistry {
     }
 
     public struct SyncResourceResponse: AWSDecodableShape {
-
         /// The results of the output if an application is associated with an ARN value, which could be syncStarted or None.
         public let actionTaken: SyncAction?
         /// The Amazon resource name (ARN) that specifies the application.
@@ -989,9 +966,9 @@ extension ServiceCatalogAppRegistry {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case actionTaken = "actionTaken"
-            case applicationArn = "applicationArn"
-            case resourceArn = "resourceArn"
+            case actionTaken
+            case applicationArn
+            case resourceArn
         }
     }
 
@@ -1025,21 +1002,17 @@ extension ServiceCatalogAppRegistry {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tags = "tags"
+            case tags
         }
     }
 
     public struct TagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UntagResourceRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "resourceArn")), 
+            AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "resourceArn")),
             AWSMemberEncoding(label: "tagKeys", location: .querystring(locationName: "tagKeys"))
         ]
 
@@ -1069,11 +1042,7 @@ extension ServiceCatalogAppRegistry {
     }
 
     public struct UntagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateApplicationRequest: AWSEncodableShape {
@@ -1105,13 +1074,12 @@ extension ServiceCatalogAppRegistry {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case description = "description"
-            case name = "name"
+            case description
+            case name
         }
     }
 
     public struct UpdateApplicationResponse: AWSDecodableShape {
-
         /// The updated information of the application.
         public let application: Application?
 
@@ -1120,7 +1088,7 @@ extension ServiceCatalogAppRegistry {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case application = "application"
+            case application
         }
     }
 
@@ -1159,14 +1127,13 @@ extension ServiceCatalogAppRegistry {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case attributes = "attributes"
-            case description = "description"
-            case name = "name"
+            case attributes
+            case description
+            case name
         }
     }
 
     public struct UpdateAttributeGroupResponse: AWSDecodableShape {
-
         /// The updated information of the attribute group.
         public let attributeGroup: AttributeGroup?
 
@@ -1175,7 +1142,7 @@ extension ServiceCatalogAppRegistry {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case attributeGroup = "attributeGroup"
+            case attributeGroup
         }
     }
 }

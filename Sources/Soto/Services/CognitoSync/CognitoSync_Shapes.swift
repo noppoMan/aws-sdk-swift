@@ -30,8 +30,8 @@ extension CognitoSync {
     }
 
     public enum Operation: String, CustomStringConvertible, Codable {
-        case remove = "remove"
-        case replace = "replace"
+        case remove
+        case replace
         public var description: String { return self.rawValue }
     }
 
@@ -73,7 +73,6 @@ extension CognitoSync {
     }
 
     public struct BulkPublishResponse: AWSDecodableShape {
-
         /// A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
         public let identityPoolId: String?
 
@@ -87,7 +86,6 @@ extension CognitoSync {
     }
 
     public struct CognitoStreams: AWSEncodableShape & AWSDecodableShape {
-
         /// The ARN of the role Amazon Cognito can assume in order to publish to the stream. This role must grant access to Amazon Cognito (cognito-sync) to invoke PutRecord on your Cognito stream.
         public let roleArn: String?
         /// Status of the Cognito streams. Valid values are: ENABLED - Streaming of updates to identity pool is enabled. DISABLED - Streaming of updates to identity pool is disabled. Bulk publish will also fail if StreamingStatus is DISABLED.
@@ -117,7 +115,6 @@ extension CognitoSync {
     }
 
     public struct Dataset: AWSDecodableShape {
-
         /// Date on which the dataset was created.
         public let creationDate: Date?
         /// A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (dash), and '.' (dot).
@@ -156,8 +153,8 @@ extension CognitoSync {
 
     public struct DeleteDatasetRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "datasetName", location: .uri(locationName: "DatasetName")), 
-            AWSMemberEncoding(label: "identityId", location: .uri(locationName: "IdentityId")), 
+            AWSMemberEncoding(label: "datasetName", location: .uri(locationName: "DatasetName")),
+            AWSMemberEncoding(label: "identityId", location: .uri(locationName: "IdentityId")),
             AWSMemberEncoding(label: "identityPoolId", location: .uri(locationName: "IdentityPoolId"))
         ]
 
@@ -190,7 +187,6 @@ extension CognitoSync {
     }
 
     public struct DeleteDatasetResponse: AWSDecodableShape {
-
         /// A collection of data for an identity pool. An identity pool can have multiple datasets. A dataset is per identity and can be general or associated with a particular entity in an application (like a saved game). Datasets are automatically created if they don't exist. Data is synced by dataset, and a dataset can hold up to 1MB of key-value pairs.
         public let dataset: Dataset?
 
@@ -205,8 +201,8 @@ extension CognitoSync {
 
     public struct DescribeDatasetRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "datasetName", location: .uri(locationName: "DatasetName")), 
-            AWSMemberEncoding(label: "identityId", location: .uri(locationName: "IdentityId")), 
+            AWSMemberEncoding(label: "datasetName", location: .uri(locationName: "DatasetName")),
+            AWSMemberEncoding(label: "identityId", location: .uri(locationName: "IdentityId")),
             AWSMemberEncoding(label: "identityPoolId", location: .uri(locationName: "IdentityPoolId"))
         ]
 
@@ -239,7 +235,6 @@ extension CognitoSync {
     }
 
     public struct DescribeDatasetResponse: AWSDecodableShape {
-
         /// Meta data for a collection of data for an identity. An identity can have multiple datasets. A dataset can be general or associated with a particular entity in an application (like a saved game). Datasets are automatically created if they don't exist. Data is synced by dataset, and a dataset can hold up to 1MB of key-value pairs.
         public let dataset: Dataset?
 
@@ -274,7 +269,6 @@ extension CognitoSync {
     }
 
     public struct DescribeIdentityPoolUsageResponse: AWSDecodableShape {
-
         /// Information about the usage of the identity pool.
         public let identityPoolUsage: IdentityPoolUsage?
 
@@ -289,7 +283,7 @@ extension CognitoSync {
 
     public struct DescribeIdentityUsageRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "identityId", location: .uri(locationName: "IdentityId")), 
+            AWSMemberEncoding(label: "identityId", location: .uri(locationName: "IdentityId")),
             AWSMemberEncoding(label: "identityPoolId", location: .uri(locationName: "IdentityPoolId"))
         ]
 
@@ -316,7 +310,6 @@ extension CognitoSync {
     }
 
     public struct DescribeIdentityUsageResponse: AWSDecodableShape {
-
         /// Usage information for the identity.
         public let identityUsage: IdentityUsage?
 
@@ -351,7 +344,6 @@ extension CognitoSync {
     }
 
     public struct GetBulkPublishDetailsResponse: AWSDecodableShape {
-
         /// If BulkPublishStatus is SUCCEEDED, the time the last bulk publish operation completed.
         public let bulkPublishCompleteTime: Date?
         /// The date/time at which the last bulk publish was initiated.
@@ -402,7 +394,6 @@ extension CognitoSync {
     }
 
     public struct GetCognitoEventsResponse: AWSDecodableShape {
-
         /// The Cognito Events returned from the GetCognitoEvents request
         public let events: [String: String]?
 
@@ -437,7 +428,6 @@ extension CognitoSync {
     }
 
     public struct GetIdentityPoolConfigurationResponse: AWSDecodableShape {
-
         /// Options to apply to this identity pool for Amazon Cognito streams.
         public let cognitoStreams: CognitoStreams?
         /// A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito.
@@ -459,7 +449,6 @@ extension CognitoSync {
     }
 
     public struct IdentityPoolUsage: AWSDecodableShape {
-
         /// Data storage information for the identity pool.
         public let dataStorage: Int64?
         /// A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
@@ -485,7 +474,6 @@ extension CognitoSync {
     }
 
     public struct IdentityUsage: AWSDecodableShape {
-
         /// Number of datasets for the identity.
         public let datasetCount: Int?
         /// Total data storage for this identity.
@@ -516,9 +504,9 @@ extension CognitoSync {
 
     public struct ListDatasetsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "identityId", location: .uri(locationName: "IdentityId")), 
-            AWSMemberEncoding(label: "identityPoolId", location: .uri(locationName: "IdentityPoolId")), 
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "identityId", location: .uri(locationName: "IdentityId")),
+            AWSMemberEncoding(label: "identityPoolId", location: .uri(locationName: "IdentityPoolId")),
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
@@ -551,7 +539,6 @@ extension CognitoSync {
     }
 
     public struct ListDatasetsResponse: AWSDecodableShape {
-
         /// Number of datasets returned.
         public let count: Int?
         /// A set of datasets.
@@ -574,7 +561,7 @@ extension CognitoSync {
 
     public struct ListIdentityPoolUsageRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
@@ -592,7 +579,6 @@ extension CognitoSync {
     }
 
     public struct ListIdentityPoolUsageResponse: AWSDecodableShape {
-
         /// Total number of identities for the identity pool.
         public let count: Int?
         /// Usage information for the identity pools.
@@ -619,12 +605,12 @@ extension CognitoSync {
 
     public struct ListRecordsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "datasetName", location: .uri(locationName: "DatasetName")), 
-            AWSMemberEncoding(label: "identityId", location: .uri(locationName: "IdentityId")), 
-            AWSMemberEncoding(label: "identityPoolId", location: .uri(locationName: "IdentityPoolId")), 
-            AWSMemberEncoding(label: "lastSyncCount", location: .querystring(locationName: "lastSyncCount")), 
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
-            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")), 
+            AWSMemberEncoding(label: "datasetName", location: .uri(locationName: "DatasetName")),
+            AWSMemberEncoding(label: "identityId", location: .uri(locationName: "IdentityId")),
+            AWSMemberEncoding(label: "identityPoolId", location: .uri(locationName: "IdentityPoolId")),
+            AWSMemberEncoding(label: "lastSyncCount", location: .querystring(locationName: "lastSyncCount")),
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
+            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")),
             AWSMemberEncoding(label: "syncSessionToken", location: .querystring(locationName: "syncSessionToken"))
         ]
 
@@ -669,7 +655,6 @@ extension CognitoSync {
     }
 
     public struct ListRecordsResponse: AWSDecodableShape {
-
         /// Total number of records.
         public let count: Int?
         /// A boolean value specifying whether to delete the dataset locally.
@@ -715,7 +700,6 @@ extension CognitoSync {
     }
 
     public struct PushSync: AWSEncodableShape & AWSDecodableShape {
-
         /// List of SNS platform application ARNs that could be used by clients.
         public let applicationArns: [String]?
         /// A role configured to allow Cognito to call SNS on behalf of the developer.
@@ -742,7 +726,6 @@ extension CognitoSync {
     }
 
     public struct Record: AWSDecodableShape {
-
         /// The last modified date of the client device.
         public let deviceLastModifiedDate: Date?
         /// The key for the record.
@@ -776,7 +759,6 @@ extension CognitoSync {
     }
 
     public struct RecordPatch: AWSEncodableShape {
-
         /// The last modified date of the client device.
         public let deviceLastModifiedDate: Date?
         /// The key associated with the record patch.
@@ -799,7 +781,7 @@ extension CognitoSync {
         public func validate(name: String) throws {
             try self.validate(self.key, name: "key", parent: name, max: 1024)
             try self.validate(self.key, name: "key", parent: name, min: 1)
-            try self.validate(self.value, name: "value", parent: name, max: 1048575)
+            try self.validate(self.value, name: "value", parent: name, max: 1_048_575)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -813,7 +795,7 @@ extension CognitoSync {
 
     public struct RegisterDeviceRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "identityId", location: .uri(locationName: "IdentityId")), 
+            AWSMemberEncoding(label: "identityId", location: .uri(locationName: "IdentityId")),
             AWSMemberEncoding(label: "identityPoolId", location: .uri(locationName: "IdentityPoolId"))
         ]
 
@@ -849,7 +831,6 @@ extension CognitoSync {
     }
 
     public struct RegisterDeviceResponse: AWSDecodableShape {
-
         /// The unique ID generated for this device by Cognito.
         public let deviceId: String?
 
@@ -922,7 +903,6 @@ extension CognitoSync {
     }
 
     public struct SetIdentityPoolConfigurationResponse: AWSDecodableShape {
-
         /// Options to apply to this identity pool for Amazon Cognito streams.
         public let cognitoStreams: CognitoStreams?
         /// A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito.
@@ -945,9 +925,9 @@ extension CognitoSync {
 
     public struct SubscribeToDatasetRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "datasetName", location: .uri(locationName: "DatasetName")), 
-            AWSMemberEncoding(label: "deviceId", location: .uri(locationName: "DeviceId")), 
-            AWSMemberEncoding(label: "identityId", location: .uri(locationName: "IdentityId")), 
+            AWSMemberEncoding(label: "datasetName", location: .uri(locationName: "DatasetName")),
+            AWSMemberEncoding(label: "deviceId", location: .uri(locationName: "DeviceId")),
+            AWSMemberEncoding(label: "identityId", location: .uri(locationName: "IdentityId")),
             AWSMemberEncoding(label: "identityPoolId", location: .uri(locationName: "IdentityPoolId"))
         ]
 
@@ -985,18 +965,14 @@ extension CognitoSync {
     }
 
     public struct SubscribeToDatasetResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UnsubscribeFromDatasetRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "datasetName", location: .uri(locationName: "DatasetName")), 
-            AWSMemberEncoding(label: "deviceId", location: .uri(locationName: "DeviceId")), 
-            AWSMemberEncoding(label: "identityId", location: .uri(locationName: "IdentityId")), 
+            AWSMemberEncoding(label: "datasetName", location: .uri(locationName: "DatasetName")),
+            AWSMemberEncoding(label: "deviceId", location: .uri(locationName: "DeviceId")),
+            AWSMemberEncoding(label: "identityId", location: .uri(locationName: "IdentityId")),
             AWSMemberEncoding(label: "identityPoolId", location: .uri(locationName: "IdentityPoolId"))
         ]
 
@@ -1034,18 +1010,14 @@ extension CognitoSync {
     }
 
     public struct UnsubscribeFromDatasetResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateRecordsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "clientContext", location: .header(locationName: "x-amz-Client-Context")), 
-            AWSMemberEncoding(label: "datasetName", location: .uri(locationName: "DatasetName")), 
-            AWSMemberEncoding(label: "identityId", location: .uri(locationName: "IdentityId")), 
+            AWSMemberEncoding(label: "clientContext", location: .header(locationName: "x-amz-Client-Context")),
+            AWSMemberEncoding(label: "datasetName", location: .uri(locationName: "DatasetName")),
+            AWSMemberEncoding(label: "identityId", location: .uri(locationName: "IdentityId")),
             AWSMemberEncoding(label: "identityPoolId", location: .uri(locationName: "IdentityPoolId"))
         ]
 
@@ -1099,7 +1071,6 @@ extension CognitoSync {
     }
 
     public struct UpdateRecordsResponse: AWSDecodableShape {
-
         /// A list of records that have been updated.
         public let records: [Record]?
 

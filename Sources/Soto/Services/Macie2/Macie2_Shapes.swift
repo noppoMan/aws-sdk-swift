@@ -90,7 +90,7 @@ extension Macie2 {
     }
 
     public enum FindingStatisticsSortAttributeName: String, CustomStringConvertible, Codable {
-        case count = "count"
+        case count
         case groupkey = "groupKey"
         public var description: String { return self.rawValue }
     }
@@ -119,7 +119,7 @@ extension Macie2 {
         case classificationdetailsJobid = "classificationDetails.jobId"
         case resourcesaffectedS3BucketName = "resourcesAffected.s3Bucket.name"
         case severityDescription = "severity.description"
-        case type = "type"
+        case type
         public var description: String { return self.rawValue }
     }
 
@@ -175,7 +175,7 @@ extension Macie2 {
         case createdat = "createdAt"
         case jobstatus = "jobStatus"
         case jobtype = "jobType"
-        case name = "name"
+        case name
         public var description: String { return self.rawValue }
     }
 
@@ -183,7 +183,7 @@ extension Macie2 {
         case createdat = "createdAt"
         case jobstatus = "jobStatus"
         case jobtype = "jobType"
-        case name = "name"
+        case name
         public var description: String { return self.rawValue }
     }
 
@@ -323,7 +323,7 @@ extension Macie2 {
         case accountid = "accountId"
         case freetrialstartdate = "freeTrialStartDate"
         case servicelimit = "serviceLimit"
-        case total = "total"
+        case total
         public var description: String { return self.rawValue }
     }
 
@@ -331,7 +331,7 @@ extension Macie2 {
         case accountid = "accountId"
         case freetrialstartdate = "freeTrialStartDate"
         case servicelimitvalue = "serviceLimitValue"
-        case total = "total"
+        case total
         public var description: String { return self.rawValue }
     }
 
@@ -354,7 +354,6 @@ extension Macie2 {
     // MARK: Shapes
 
     public struct AcceptInvitationRequest: AWSEncodableShape {
-
         /// The Amazon Web Services account ID for the account that sent the invitation.
         public let administratorAccountId: String?
         /// The unique identifier for the invitation to accept.
@@ -369,22 +368,17 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case administratorAccountId = "administratorAccountId"
-            case invitationId = "invitationId"
-            case masterAccount = "masterAccount"
+            case administratorAccountId
+            case invitationId
+            case masterAccount
         }
     }
 
     public struct AcceptInvitationResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct AccessControlList: AWSDecodableShape {
-
         /// Specifies whether the ACL grants the general public with read access permissions for the bucket.
         public let allowsPublicReadAccess: Bool?
         /// Specifies whether the ACL grants the general public with write access permissions for the bucket.
@@ -396,13 +390,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case allowsPublicReadAccess = "allowsPublicReadAccess"
-            case allowsPublicWriteAccess = "allowsPublicWriteAccess"
+            case allowsPublicReadAccess
+            case allowsPublicWriteAccess
         }
     }
 
     public struct AccountDetail: AWSEncodableShape {
-
         /// The Amazon Web Services account ID for the account.
         public let accountId: String
         /// The email address for the account.
@@ -414,13 +407,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accountId = "accountId"
-            case email = "email"
+            case accountId
+            case email
         }
     }
 
     public struct AccountLevelPermissions: AWSDecodableShape {
-
         /// The block public access settings for the Amazon Web Services account that owns the bucket.
         public let blockPublicAccess: BlockPublicAccess?
 
@@ -429,12 +421,11 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case blockPublicAccess = "blockPublicAccess"
+            case blockPublicAccess
         }
     }
 
     public struct AdminAccount: AWSDecodableShape {
-
         /// The Amazon Web Services account ID for the account.
         public let accountId: String?
         /// The current status of the account as the delegated administrator of Amazon Macie for the organization.
@@ -446,13 +437,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accountId = "accountId"
-            case status = "status"
+            case accountId
+            case status
         }
     }
 
     public struct ApiCallDetails: AWSDecodableShape {
-
         /// The name of the operation that was invoked most recently and produced the finding.
         public let api: String?
         /// The URL of the Amazon Web Service that provides the operation, for example: s3.amazonaws.com.
@@ -472,15 +462,14 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case api = "api"
-            case apiServiceName = "apiServiceName"
-            case firstSeen = "firstSeen"
-            case lastSeen = "lastSeen"
+            case api
+            case apiServiceName
+            case firstSeen
+            case lastSeen
         }
     }
 
     public struct AssumedRole: AWSDecodableShape {
-
         /// The Amazon Web Services access key ID that identifies the credentials.
         public let accessKeyId: String?
         /// The unique identifier for the Amazon Web Services account that owns the entity that was used to get the credentials.
@@ -501,16 +490,15 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accessKeyId = "accessKeyId"
-            case accountId = "accountId"
-            case arn = "arn"
-            case principalId = "principalId"
-            case sessionContext = "sessionContext"
+            case accessKeyId
+            case accountId
+            case arn
+            case principalId
+            case sessionContext
         }
     }
 
     public struct AwsAccount: AWSDecodableShape {
-
         /// The unique identifier for the Amazon Web Services account.
         public let accountId: String?
         /// The unique identifier for the entity that performed the action.
@@ -522,13 +510,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accountId = "accountId"
-            case principalId = "principalId"
+            case accountId
+            case principalId
         }
     }
 
     public struct AwsService: AWSDecodableShape {
-
         /// The name of the Amazon Web Service that performed the action.
         public let invokedBy: String?
 
@@ -537,12 +524,11 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case invokedBy = "invokedBy"
+            case invokedBy
         }
     }
 
     public struct BatchGetCustomDataIdentifierSummary: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the custom data identifier.
         public let arn: String?
         /// The date and time, in UTC and extended ISO 8601 format, when the custom data identifier was created.
@@ -567,17 +553,16 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdAt = "createdAt"
-            case deleted = "deleted"
-            case description = "description"
-            case id = "id"
-            case name = "name"
+            case arn
+            case createdAt
+            case deleted
+            case description
+            case id
+            case name
         }
     }
 
     public struct BatchGetCustomDataIdentifiersRequest: AWSEncodableShape {
-
         /// An array of strings that lists the unique identifiers for the custom data identifiers to retrieve information about.
         public let ids: [String]?
 
@@ -586,12 +571,11 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case ids = "ids"
+            case ids
         }
     }
 
     public struct BatchGetCustomDataIdentifiersResponse: AWSDecodableShape {
-
         /// An array of objects, one for each custom data identifier that meets the criteria specified in the request.
         public let customDataIdentifiers: [BatchGetCustomDataIdentifierSummary]?
         /// An array of identifiers, one for each identifier that was specified in the request, but doesn't correlate to an existing custom data identifier.
@@ -603,13 +587,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case customDataIdentifiers = "customDataIdentifiers"
-            case notFoundIdentifierIds = "notFoundIdentifierIds"
+            case customDataIdentifiers
+            case notFoundIdentifierIds
         }
     }
 
     public struct BlockPublicAccess: AWSDecodableShape {
-
         /// Specifies whether Amazon S3 blocks public access control lists (ACLs) for the bucket and objects in the bucket.
         public let blockPublicAcls: Bool?
         /// Specifies whether Amazon S3 blocks public bucket policies for the bucket.
@@ -627,15 +610,14 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case blockPublicAcls = "blockPublicAcls"
-            case blockPublicPolicy = "blockPublicPolicy"
-            case ignorePublicAcls = "ignorePublicAcls"
-            case restrictPublicBuckets = "restrictPublicBuckets"
+            case blockPublicAcls
+            case blockPublicPolicy
+            case ignorePublicAcls
+            case restrictPublicBuckets
         }
     }
 
     public struct BucketCountByEffectivePermission: AWSDecodableShape {
-
         /// The total number of buckets that allow the general public to have read or write access to the bucket.
         public let publiclyAccessible: Int64?
         /// The total number of buckets that allow the general public to have read access to the bucket.
@@ -653,15 +635,14 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case publiclyAccessible = "publiclyAccessible"
-            case publiclyReadable = "publiclyReadable"
-            case publiclyWritable = "publiclyWritable"
-            case unknown = "unknown"
+            case publiclyAccessible
+            case publiclyReadable
+            case publiclyWritable
+            case unknown
         }
     }
 
     public struct BucketCountByEncryptionType: AWSDecodableShape {
-
         /// The total number of buckets that use an Key Management Service (KMS) customer master key (CMK) to encrypt new objects by default. These buckets use Amazon Web Services managed KMS encryption (AWS-KMS) or customer managed KMS encryption (SSE-KMS) by default.
         public let kmsManaged: Int64?
         /// The total number of buckets that use an Amazon S3 managed key to encrypt new objects by default. These buckets use Amazon S3 managed encryption (SSE-S3) by default.
@@ -679,15 +660,14 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case kmsManaged = "kmsManaged"
-            case s3Managed = "s3Managed"
-            case unencrypted = "unencrypted"
-            case unknown = "unknown"
+            case kmsManaged
+            case s3Managed
+            case unencrypted
+            case unknown
         }
     }
 
     public struct BucketCountBySharedAccessType: AWSDecodableShape {
-
         /// The total number of buckets that are shared with an Amazon Web Services account that isn't part of the same Amazon Macie organization.
         public let external: Int64?
         /// The total number of buckets that are shared with an Amazon Web Services account that's part of the same Amazon Macie organization.
@@ -705,15 +685,14 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case external = "external"
-            case `internal` = "internal"
-            case notShared = "notShared"
-            case unknown = "unknown"
+            case external
+            case `internal`
+            case notShared
+            case unknown
         }
     }
 
     public struct BucketCountPolicyAllowsUnencryptedObjectUploads: AWSDecodableShape {
-
         /// The total number of buckets that don't have a bucket policy or have a bucket policy that doesn't require server-side encryption of new objects. If a bucket policy exists, the policy doesn't require PutObject requests to include the x-amz-server-side-encryption header and it doesn't require the value for that header to be AES256 or aws:kms.
         public let allowsUnencryptedObjectUploads: Int64?
         /// The total number of buckets whose bucket policies require server-side encryption of new objects. PutObject requests for these buckets must include the x-amz-server-side-encryption header and the value for that header must be AES256 or aws:kms.
@@ -728,14 +707,13 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case allowsUnencryptedObjectUploads = "allowsUnencryptedObjectUploads"
-            case deniesUnencryptedObjectUploads = "deniesUnencryptedObjectUploads"
-            case unknown = "unknown"
+            case allowsUnencryptedObjectUploads
+            case deniesUnencryptedObjectUploads
+            case unknown
         }
     }
 
     public struct BucketCriteriaAdditionalProperties: AWSEncodableShape {
-
         /// The value for the property matches (equals) the specified value. If you specify multiple values, Macie uses OR logic to join the values.
         public let eq: [String]?
         /// The value for the property is greater than the specified value.
@@ -762,18 +740,17 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case eq = "eq"
-            case gt = "gt"
-            case gte = "gte"
-            case lt = "lt"
-            case lte = "lte"
-            case neq = "neq"
-            case prefix = "prefix"
+            case eq
+            case gt
+            case gte
+            case lt
+            case lte
+            case neq
+            case prefix
         }
     }
 
     public struct BucketLevelPermissions: AWSDecodableShape {
-
         /// The permissions settings of the access control list (ACL) for the bucket. This value is null if an ACL hasn't been defined for the bucket.
         public let accessControlList: AccessControlList?
         /// The block public access settings for the bucket.
@@ -788,14 +765,13 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accessControlList = "accessControlList"
-            case blockPublicAccess = "blockPublicAccess"
-            case bucketPolicy = "bucketPolicy"
+            case accessControlList
+            case blockPublicAccess
+            case bucketPolicy
         }
     }
 
     public struct BucketMetadata: AWSDecodableShape {
-
         /// The unique identifier for the Amazon Web Services account that owns the bucket.
         public let accountId: String?
         /// Specifies whether the bucket policy for the bucket requires server-side encryption of objects when objects are uploaded to the bucket. Possible values are: FALSE - The bucket policy requires server-side encryption of new objects. PutObject requests must include the x-amz-server-side-encryption header and the value for that header must be AES256 or aws:kms. TRUE - The bucket doesn't have a bucket policy or it has a bucket policy that doesn't require server-side encryption of new objects. If a bucket policy exists, it doesn't require PutObject requests to include the x-amz-server-side-encryption header and it doesn't require the value for that header to be AES256 or aws:kms. UNKNOWN - Amazon Macie can't determine whether the bucket policy requires server-side encryption of new objects.
@@ -869,33 +845,32 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accountId = "accountId"
-            case allowsUnencryptedObjectUploads = "allowsUnencryptedObjectUploads"
-            case bucketArn = "bucketArn"
-            case bucketCreatedAt = "bucketCreatedAt"
-            case bucketName = "bucketName"
-            case classifiableObjectCount = "classifiableObjectCount"
-            case classifiableSizeInBytes = "classifiableSizeInBytes"
-            case jobDetails = "jobDetails"
-            case lastUpdated = "lastUpdated"
-            case objectCount = "objectCount"
-            case objectCountByEncryptionType = "objectCountByEncryptionType"
-            case publicAccess = "publicAccess"
-            case region = "region"
-            case replicationDetails = "replicationDetails"
-            case serverSideEncryption = "serverSideEncryption"
-            case sharedAccess = "sharedAccess"
-            case sizeInBytes = "sizeInBytes"
-            case sizeInBytesCompressed = "sizeInBytesCompressed"
-            case tags = "tags"
-            case unclassifiableObjectCount = "unclassifiableObjectCount"
-            case unclassifiableObjectSizeInBytes = "unclassifiableObjectSizeInBytes"
-            case versioning = "versioning"
+            case accountId
+            case allowsUnencryptedObjectUploads
+            case bucketArn
+            case bucketCreatedAt
+            case bucketName
+            case classifiableObjectCount
+            case classifiableSizeInBytes
+            case jobDetails
+            case lastUpdated
+            case objectCount
+            case objectCountByEncryptionType
+            case publicAccess
+            case region
+            case replicationDetails
+            case serverSideEncryption
+            case sharedAccess
+            case sizeInBytes
+            case sizeInBytesCompressed
+            case tags
+            case unclassifiableObjectCount
+            case unclassifiableObjectSizeInBytes
+            case versioning
         }
     }
 
     public struct BucketPermissionConfiguration: AWSDecodableShape {
-
         /// The account-level permissions settings that apply to the bucket.
         public let accountLevelPermissions: AccountLevelPermissions?
         /// The bucket-level permissions settings for the bucket.
@@ -907,13 +882,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accountLevelPermissions = "accountLevelPermissions"
-            case bucketLevelPermissions = "bucketLevelPermissions"
+            case accountLevelPermissions
+            case bucketLevelPermissions
         }
     }
 
     public struct BucketPolicy: AWSDecodableShape {
-
         /// Specifies whether the bucket policy allows the general public to have read access to the bucket.
         public let allowsPublicReadAccess: Bool?
         /// Specifies whether the bucket policy allows the general public to have write access to the bucket.
@@ -925,13 +899,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case allowsPublicReadAccess = "allowsPublicReadAccess"
-            case allowsPublicWriteAccess = "allowsPublicWriteAccess"
+            case allowsPublicReadAccess
+            case allowsPublicWriteAccess
         }
     }
 
     public struct BucketPublicAccess: AWSDecodableShape {
-
         /// Specifies whether the bucket is publicly accessible due to the combination of permissions settings that apply to the bucket. Possible values are: NOT_PUBLIC - The bucket isn't publicly accessible. PUBLIC - The bucket is publicly accessible. UNKNOWN - Amazon Macie can't determine whether the bucket is publicly accessible.
         public let effectivePermission: EffectivePermission?
         /// The account-level and bucket-level permissions settings for the bucket.
@@ -943,13 +916,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case effectivePermission = "effectivePermission"
-            case permissionConfiguration = "permissionConfiguration"
+            case effectivePermission
+            case permissionConfiguration
         }
     }
 
     public struct BucketServerSideEncryption: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) or unique identifier (key ID) for the Key Management Service (KMS) customer master key (CMK) that's used by default to encrypt objects that are added to the bucket. This value is null if the bucket uses an Amazon S3 managed key to encrypt new objects or the bucket doesn't encrypt new objects by default.
         public let kmsMasterKeyId: String?
         /// The type of server-side encryption that's used by default when storing new objects in the bucket. Possible values are: AES256 - New objects are encrypted with an Amazon S3 managed key and use Amazon S3 managed encryption (SSE-S3). aws:kms - New objects are encrypted with an KMS CMK, specified by the kmsMasterKeyId property, and use Amazon Web Services managed KMS encryption (AWS-KMS) or customer managed KMS encryption (SSE-KMS). NONE - New objects aren't encrypted by default. Default encryption is disabled for the bucket.
@@ -961,13 +933,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case kmsMasterKeyId = "kmsMasterKeyId"
-            case type = "type"
+            case kmsMasterKeyId
+            case type
         }
     }
 
     public struct BucketSortCriteria: AWSEncodableShape {
-
         /// The name of the bucket property to sort the results by. This value can be one of the following properties that Amazon Macie defines as bucket metadata: accountId, bucketName, classifiableObjectCount, classifiableSizeInBytes, objectCount, or sizeInBytes.
         public let attributeName: String?
         /// The sort order to apply to the results, based on the value specified by the attributeName property. Valid values are: ASC, sort the results in ascending order; and, DESC, sort the results in descending order.
@@ -979,13 +950,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case attributeName = "attributeName"
-            case orderBy = "orderBy"
+            case attributeName
+            case orderBy
         }
     }
 
     public struct Cell: AWSDecodableShape {
-
         /// The location of the cell, as an absolute cell reference, that contains the sensitive data, for example Sheet2!C5 for cell C5 on Sheet2 in a Microsoft Excel workbook. This value is null for CSV and TSV files.
         public let cellReference: String?
         /// The column number of the column that contains the sensitive data. For a Microsoft Excel workbook, this value correlates to the alphabetical character(s) for a column identifier, for example: 1 for column A, 2 for column B, and so on.
@@ -1003,15 +973,14 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case cellReference = "cellReference"
-            case column = "column"
-            case columnName = "columnName"
-            case row = "row"
+            case cellReference
+            case column
+            case columnName
+            case row
         }
     }
 
     public struct ClassificationDetails: AWSDecodableShape {
-
         /// The path to the folder or file (in Amazon S3) that contains the corresponding sensitive data discovery result for the finding. If a finding applies to a large archive or compressed file, this value is the path to a folder. Otherwise, this value is the path to a file.
         public let detailedResultsLocation: String?
         /// The Amazon Resource Name (ARN) of the classification job that produced the finding.
@@ -1029,15 +998,14 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case detailedResultsLocation = "detailedResultsLocation"
-            case jobArn = "jobArn"
-            case jobId = "jobId"
-            case result = "result"
+            case detailedResultsLocation
+            case jobArn
+            case jobId
+            case result
         }
     }
 
     public struct ClassificationExportConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// The S3 bucket to store data classification results in, and the encryption settings to use when storing results in that bucket.
         public let s3Destination: S3Destination?
 
@@ -1046,12 +1014,11 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case s3Destination = "s3Destination"
+            case s3Destination
         }
     }
 
     public struct ClassificationResult: AWSDecodableShape {
-
         /// Specifies whether Amazon Macie detected additional occurrences of sensitive data in the S3 object. A finding includes location data for a maximum of 15 occurrences of sensitive data. This value can help you determine whether to investigate additional occurrences of sensitive data in an object. You can do this by referring to the corresponding sensitive data discovery result for the finding (ClassificationDetails.detailedResultsLocation).
         public let additionalOccurrences: Bool?
         /// The custom data identifiers that detected the sensitive data and the number of occurrences of the data that they detected.
@@ -1075,17 +1042,16 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case additionalOccurrences = "additionalOccurrences"
-            case customDataIdentifiers = "customDataIdentifiers"
-            case mimeType = "mimeType"
-            case sensitiveData = "sensitiveData"
-            case sizeClassified = "sizeClassified"
-            case status = "status"
+            case additionalOccurrences
+            case customDataIdentifiers
+            case mimeType
+            case sensitiveData
+            case sizeClassified
+            case status
         }
     }
 
     public struct ClassificationResultStatus: AWSDecodableShape {
-
         /// The status of the finding. Possible values are: COMPLETE - Amazon Macie successfully completed its analysis of the S3 object that the finding applies to. PARTIAL - Macie analyzed only a subset of the data in the S3 object that the finding applies to. For example, the object is an archive file that contains files in an unsupported format. SKIPPED - Macie wasn't able to analyze the S3 object that the finding applies to. For example, the object is a file in an unsupported format.
         public let code: String?
         /// A brief description of the status of the finding. Amazon Macie uses this value to notify you of any errors, warnings, or considerations that might impact your analysis of the finding.
@@ -1097,13 +1063,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case code = "code"
-            case reason = "reason"
+            case code
+            case reason
         }
     }
 
     public struct CreateClassificationJobRequest: AWSEncodableShape {
-
         /// A unique, case-sensitive token that you provide to ensure the idempotency of the request.
         public let clientToken: String
         /// The custom data identifiers to use for data analysis and classification.
@@ -1139,21 +1104,20 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientToken = "clientToken"
-            case customDataIdentifierIds = "customDataIdentifierIds"
-            case description = "description"
-            case initialRun = "initialRun"
-            case jobType = "jobType"
-            case name = "name"
-            case s3JobDefinition = "s3JobDefinition"
-            case samplingPercentage = "samplingPercentage"
-            case scheduleFrequency = "scheduleFrequency"
-            case tags = "tags"
+            case clientToken
+            case customDataIdentifierIds
+            case description
+            case initialRun
+            case jobType
+            case name
+            case s3JobDefinition
+            case samplingPercentage
+            case scheduleFrequency
+            case tags
         }
     }
 
     public struct CreateClassificationJobResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the job.
         public let jobArn: String?
         /// The unique identifier for the job.
@@ -1165,13 +1129,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case jobArn = "jobArn"
-            case jobId = "jobId"
+            case jobArn
+            case jobId
         }
     }
 
     public struct CreateCustomDataIdentifierRequest: AWSEncodableShape {
-
         /// A unique, case-sensitive token that you provide to ensure the idempotency of the request.
         public let clientToken: String?
         /// A custom description of the custom data identifier. The description can contain as many as 512 characters. We strongly recommend that you avoid including any sensitive data in the description of a custom data identifier. Other users of your account might be able to see the identifier's description, depending on the actions that they're allowed to perform in Amazon Macie.
@@ -1201,19 +1164,18 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientToken = "clientToken"
-            case description = "description"
-            case ignoreWords = "ignoreWords"
-            case keywords = "keywords"
-            case maximumMatchDistance = "maximumMatchDistance"
-            case name = "name"
-            case regex = "regex"
-            case tags = "tags"
+            case clientToken
+            case description
+            case ignoreWords
+            case keywords
+            case maximumMatchDistance
+            case name
+            case regex
+            case tags
         }
     }
 
     public struct CreateCustomDataIdentifierResponse: AWSDecodableShape {
-
         /// The unique identifier for the custom data identifier that was created.
         public let customDataIdentifierId: String?
 
@@ -1222,12 +1184,11 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case customDataIdentifierId = "customDataIdentifierId"
+            case customDataIdentifierId
         }
     }
 
     public struct CreateFindingsFilterRequest: AWSEncodableShape {
-
         /// The action to perform on findings that meet the filter criteria (findingCriteria). Valid values are: ARCHIVE, suppress (automatically archive) the findings; and, NOOP, don't perform any action on the findings.
         public let action: FindingsFilterAction
         /// A unique, case-sensitive token that you provide to ensure the idempotency of the request.
@@ -1254,18 +1215,17 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case action = "action"
-            case clientToken = "clientToken"
-            case description = "description"
-            case findingCriteria = "findingCriteria"
-            case name = "name"
-            case position = "position"
-            case tags = "tags"
+            case action
+            case clientToken
+            case description
+            case findingCriteria
+            case name
+            case position
+            case tags
         }
     }
 
     public struct CreateFindingsFilterResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the filter that was created.
         public let arn: String?
         /// The unique identifier for the filter that was created.
@@ -1277,13 +1237,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case id = "id"
+            case arn
+            case id
         }
     }
 
     public struct CreateInvitationsRequest: AWSEncodableShape {
-
         /// An array that lists Amazon Web Services account IDs, one for each account to send the invitation to.
         public let accountIds: [String]
         /// Specifies whether to send an email notification to the root user of each account that the invitation will be sent to. This notification is in addition to an alert that the root user receives in Personal Health Dashboard. To send an email notification to the root user of each account, set this value to true.
@@ -1298,14 +1257,13 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accountIds = "accountIds"
-            case disableEmailNotification = "disableEmailNotification"
-            case message = "message"
+            case accountIds
+            case disableEmailNotification
+            case message
         }
     }
 
     public struct CreateInvitationsResponse: AWSDecodableShape {
-
         /// An array of objects, one for each account whose invitation hasn't been processed. Each object identifies the account and explains why the invitation hasn't been processed for the account.
         public let unprocessedAccounts: [UnprocessedAccount]?
 
@@ -1314,12 +1272,11 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case unprocessedAccounts = "unprocessedAccounts"
+            case unprocessedAccounts
         }
     }
 
     public struct CreateMemberRequest: AWSEncodableShape {
-
         /// The details of the account to associate with the administrator account.
         public let account: AccountDetail
         /// A map of key-value pairs that specifies the tags to associate with the account in Amazon Macie. An account can have a maximum of 50 tags. Each tag consists of a tag key and an associated tag value. The maximum length of a tag key is 128 characters. The maximum length of a tag value is 256 characters.
@@ -1331,13 +1288,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case account = "account"
-            case tags = "tags"
+            case account
+            case tags
         }
     }
 
     public struct CreateMemberResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the account that was associated with the administrator account.
         public let arn: String?
 
@@ -1346,12 +1302,11 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
+            case arn
         }
     }
 
     public struct CreateSampleFindingsRequest: AWSEncodableShape {
-
         /// An array that lists one or more types of findings to include in the set of sample findings. Currently, the only supported value is Policy:IAMUser/S3BucketEncryptionDisabled.
         public let findingTypes: [FindingType]?
 
@@ -1360,20 +1315,15 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case findingTypes = "findingTypes"
+            case findingTypes
         }
     }
 
     public struct CreateSampleFindingsResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct CriteriaBlockForJob: AWSEncodableShape & AWSDecodableShape {
-
         /// An array of conditions, one for each condition that determines which buckets to include or exclude from the job. If you specify more than one condition, Amazon Macie uses AND logic to join the conditions.
         public let and: [CriteriaForJob]?
 
@@ -1382,12 +1332,11 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case and = "and"
+            case and
         }
     }
 
     public struct CriteriaForJob: AWSEncodableShape & AWSDecodableShape {
-
         /// A property-based condition that defines a property, operator, and one or more values for including or excluding buckets from the job.
         public let simpleCriterion: SimpleCriterionForJob?
         /// A tag-based condition that defines an operator and tag keys, tag values, or tag key and value pairs for including or excluding buckets from the job.
@@ -1399,13 +1348,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case simpleCriterion = "simpleCriterion"
-            case tagCriterion = "tagCriterion"
+            case simpleCriterion
+            case tagCriterion
         }
     }
 
     public struct CriterionAdditionalProperties: AWSEncodableShape & AWSDecodableShape {
-
         /// The value for the property matches (equals) the specified value. If you specify multiple values, Macie uses OR logic to join the values.
         public let eq: [String]?
         /// The value for the property exclusively matches (equals an exact match for) all the specified values. If you specify multiple values, Amazon Macie uses AND logic to join the values. You can use this operator with the following properties: customDataIdentifiers.detections.arn, customDataIdentifiers.detections.name, resourcesAffected.s3Bucket.tags.key, resourcesAffected.s3Bucket.tags.value, resourcesAffected.s3Object.tags.key, resourcesAffected.s3Object.tags.value, sensitiveData.category, and sensitiveData.detections.type.
@@ -1432,18 +1380,17 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case eq = "eq"
-            case eqExactMatch = "eqExactMatch"
-            case gt = "gt"
-            case gte = "gte"
-            case lt = "lt"
-            case lte = "lte"
-            case neq = "neq"
+            case eq
+            case eqExactMatch
+            case gt
+            case gte
+            case lt
+            case lte
+            case neq
         }
     }
 
     public struct CustomDataIdentifierSummary: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the custom data identifier.
         public let arn: String?
         /// The date and time, in UTC and extended ISO 8601 format, when the custom data identifier was created.
@@ -1465,16 +1412,15 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdAt = "createdAt"
-            case description = "description"
-            case id = "id"
-            case name = "name"
+            case arn
+            case createdAt
+            case description
+            case id
+            case name
         }
     }
 
     public struct CustomDataIdentifiers: AWSDecodableShape {
-
         /// The custom data identifiers that detected the data, and the number of occurrences of the data that each identifier detected.
         public let detections: [CustomDetection]?
         /// The total number of occurrences of the data that was detected by the custom data identifiers and produced the finding.
@@ -1486,13 +1432,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case detections = "detections"
-            case totalCount = "totalCount"
+            case detections
+            case totalCount
         }
     }
 
     public struct CustomDetection: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the custom data identifier.
         public let arn: String?
         /// The total number of occurrences of the sensitive data that the custom data identifier detected.
@@ -1510,23 +1455,18 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case count = "count"
-            case name = "name"
-            case occurrences = "occurrences"
+            case arn
+            case count
+            case name
+            case occurrences
         }
     }
 
     public struct DailySchedule: AWSEncodableShape & AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeclineInvitationsRequest: AWSEncodableShape {
-
         /// An array that lists Amazon Web Services account IDs, one for each account that sent an invitation to decline.
         public let accountIds: [String]
 
@@ -1535,12 +1475,11 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accountIds = "accountIds"
+            case accountIds
         }
     }
 
     public struct DeclineInvitationsResponse: AWSDecodableShape {
-
         /// An array of objects, one for each account whose invitation hasn't been declined. Each object identifies the account and explains why the request hasn't been processed for that account.
         public let unprocessedAccounts: [UnprocessedAccount]?
 
@@ -1549,12 +1488,11 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case unprocessedAccounts = "unprocessedAccounts"
+            case unprocessedAccounts
         }
     }
 
     public struct DefaultDetection: AWSDecodableShape {
-
         /// The total number of occurrences of the type of sensitive data that was detected.
         public let count: Int64?
         /// The location of 1-15 occurrences of the sensitive data that was detected. A finding includes location data for a maximum of 15 occurrences of sensitive data.
@@ -1569,9 +1507,9 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case count = "count"
-            case occurrences = "occurrences"
-            case type = "type"
+            case count
+            case occurrences
+            case type
         }
     }
 
@@ -1591,11 +1529,7 @@ extension Macie2 {
     }
 
     public struct DeleteCustomDataIdentifierResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteFindingsFilterRequest: AWSEncodableShape {
@@ -1614,15 +1548,10 @@ extension Macie2 {
     }
 
     public struct DeleteFindingsFilterResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteInvitationsRequest: AWSEncodableShape {
-
         /// An array that lists Amazon Web Services account IDs, one for each account that sent an invitation to delete.
         public let accountIds: [String]
 
@@ -1631,12 +1560,11 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accountIds = "accountIds"
+            case accountIds
         }
     }
 
     public struct DeleteInvitationsResponse: AWSDecodableShape {
-
         /// An array of objects, one for each account whose invitation hasn't been deleted. Each object identifies the account and explains why the request hasn't been processed for that account.
         public let unprocessedAccounts: [UnprocessedAccount]?
 
@@ -1645,7 +1573,7 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case unprocessedAccounts = "unprocessedAccounts"
+            case unprocessedAccounts
         }
     }
 
@@ -1665,15 +1593,10 @@ extension Macie2 {
     }
 
     public struct DeleteMemberResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DescribeBucketsRequest: AWSEncodableShape {
-
         /// The criteria to use to filter the query results.
         public let criteria: [String: BucketCriteriaAdditionalProperties]?
         /// The maximum number of items to include in each page of the response. The default value is 50.
@@ -1691,15 +1614,14 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case criteria = "criteria"
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
-            case sortCriteria = "sortCriteria"
+            case criteria
+            case maxResults
+            case nextToken
+            case sortCriteria
         }
     }
 
     public struct DescribeBucketsResponse: AWSDecodableShape {
-
         /// An array of objects, one for each bucket that meets the filter criteria specified in the request.
         public let buckets: [BucketMetadata]?
         /// The string to use in a subsequent request to get the next page of results in a paginated response. This value is null if there are no additional pages.
@@ -1711,8 +1633,8 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case buckets = "buckets"
-            case nextToken = "nextToken"
+            case buckets
+            case nextToken
         }
     }
 
@@ -1732,7 +1654,6 @@ extension Macie2 {
     }
 
     public struct DescribeClassificationJobResponse: AWSDecodableShape {
-
         /// The token that was provided to ensure the idempotency of the request to create the job.
         public let clientToken: String?
         /// The date and time, in UTC and extended ISO 8601 format, when the job was created.
@@ -1794,37 +1715,32 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientToken = "clientToken"
-            case createdAt = "createdAt"
-            case customDataIdentifierIds = "customDataIdentifierIds"
-            case description = "description"
-            case initialRun = "initialRun"
-            case jobArn = "jobArn"
-            case jobId = "jobId"
-            case jobStatus = "jobStatus"
-            case jobType = "jobType"
-            case lastRunErrorStatus = "lastRunErrorStatus"
-            case lastRunTime = "lastRunTime"
-            case name = "name"
-            case s3JobDefinition = "s3JobDefinition"
-            case samplingPercentage = "samplingPercentage"
-            case scheduleFrequency = "scheduleFrequency"
-            case statistics = "statistics"
-            case tags = "tags"
-            case userPausedDetails = "userPausedDetails"
+            case clientToken
+            case createdAt
+            case customDataIdentifierIds
+            case description
+            case initialRun
+            case jobArn
+            case jobId
+            case jobStatus
+            case jobType
+            case lastRunErrorStatus
+            case lastRunTime
+            case name
+            case s3JobDefinition
+            case samplingPercentage
+            case scheduleFrequency
+            case statistics
+            case tags
+            case userPausedDetails
         }
     }
 
     public struct DescribeOrganizationConfigurationRequest: AWSEncodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DescribeOrganizationConfigurationResponse: AWSDecodableShape {
-
         /// Specifies whether Amazon Macie is enabled automatically for accounts that are added to the Amazon Web Services organization.
         public let autoEnable: Bool?
         /// Specifies whether the maximum number of Amazon Macie member accounts are part of the Amazon Web Services organization.
@@ -1836,25 +1752,17 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case autoEnable = "autoEnable"
-            case maxAccountLimitReached = "maxAccountLimitReached"
+            case autoEnable
+            case maxAccountLimitReached
         }
     }
 
     public struct DisableMacieRequest: AWSEncodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DisableMacieResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DisableOrganizationAdminAccountRequest: AWSEncodableShape {
@@ -1873,43 +1781,23 @@ extension Macie2 {
     }
 
     public struct DisableOrganizationAdminAccountResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DisassociateFromAdministratorAccountRequest: AWSEncodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DisassociateFromAdministratorAccountResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DisassociateFromMasterAccountRequest: AWSEncodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DisassociateFromMasterAccountResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DisassociateMemberRequest: AWSEncodableShape {
@@ -1928,15 +1816,10 @@ extension Macie2 {
     }
 
     public struct DisassociateMemberResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DomainDetails: AWSDecodableShape {
-
         /// The name of the domain.
         public let domainName: String?
 
@@ -1945,12 +1828,11 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case domainName = "domainName"
+            case domainName
         }
     }
 
     public struct EnableMacieRequest: AWSEncodableShape {
-
         /// A unique, case-sensitive token that you provide to ensure the idempotency of the request.
         public let clientToken: String?
         /// Specifies how often to publish updates to policy findings for the account. This includes publishing updates to Security Hub and Amazon EventBridge (formerly called Amazon CloudWatch Events).
@@ -1965,22 +1847,17 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientToken = "clientToken"
-            case findingPublishingFrequency = "findingPublishingFrequency"
-            case status = "status"
+            case clientToken
+            case findingPublishingFrequency
+            case status
         }
     }
 
     public struct EnableMacieResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct EnableOrganizationAdminAccountRequest: AWSEncodableShape {
-
         /// The Amazon Web Services account ID for the account to designate as the delegated Amazon Macie administrator account for the organization.
         public let adminAccountId: String
         /// A unique, case-sensitive token that you provide to ensure the idempotency of the request.
@@ -1992,21 +1869,16 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case adminAccountId = "adminAccountId"
-            case clientToken = "clientToken"
+            case adminAccountId
+            case clientToken
         }
     }
 
     public struct EnableOrganizationAdminAccountResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct FederatedUser: AWSDecodableShape {
-
         /// The Amazon Web Services access key ID that identifies the credentials.
         public let accessKeyId: String?
         /// The unique identifier for the Amazon Web Services account that owns the entity that was used to get the credentials.
@@ -2027,16 +1899,15 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accessKeyId = "accessKeyId"
-            case accountId = "accountId"
-            case arn = "arn"
-            case principalId = "principalId"
-            case sessionContext = "sessionContext"
+            case accessKeyId
+            case accountId
+            case arn
+            case principalId
+            case sessionContext
         }
     }
 
     public struct Finding: AWSDecodableShape {
-
         /// The unique identifier for the Amazon Web Services account that the finding applies to. This is typically the account that owns the affected resource.
         public let accountId: String?
         /// Specifies whether the finding is archived (suppressed).
@@ -2098,29 +1969,28 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accountId = "accountId"
-            case archived = "archived"
-            case category = "category"
-            case classificationDetails = "classificationDetails"
-            case count = "count"
-            case createdAt = "createdAt"
-            case description = "description"
-            case id = "id"
-            case partition = "partition"
-            case policyDetails = "policyDetails"
-            case region = "region"
-            case resourcesAffected = "resourcesAffected"
-            case sample = "sample"
-            case schemaVersion = "schemaVersion"
-            case severity = "severity"
-            case title = "title"
-            case type = "type"
-            case updatedAt = "updatedAt"
+            case accountId
+            case archived
+            case category
+            case classificationDetails
+            case count
+            case createdAt
+            case description
+            case id
+            case partition
+            case policyDetails
+            case region
+            case resourcesAffected
+            case sample
+            case schemaVersion
+            case severity
+            case title
+            case type
+            case updatedAt
         }
     }
 
     public struct FindingAction: AWSDecodableShape {
-
         /// The type of action that occurred for the affected resource. This value is typically AWS_API_CALL, which indicates that an entity invoked an API operation for the resource.
         public let actionType: FindingActionType?
         /// The invocation details of the API operation that an entity invoked for the affected resource, if the value for the actionType property is AWS_API_CALL.
@@ -2132,13 +2002,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case actionType = "actionType"
-            case apiCallDetails = "apiCallDetails"
+            case actionType
+            case apiCallDetails
         }
     }
 
     public struct FindingActor: AWSDecodableShape {
-
         /// The domain name of the device that the entity used to perform the action on the affected resource.
         public let domainDetails: DomainDetails?
         /// The IP address of the device that the entity used to perform the action on the affected resource. This object also provides information such as the owner and geographic location for the IP address.
@@ -2153,14 +2022,13 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case domainDetails = "domainDetails"
-            case ipAddressDetails = "ipAddressDetails"
-            case userIdentity = "userIdentity"
+            case domainDetails
+            case ipAddressDetails
+            case userIdentity
         }
     }
 
     public struct FindingCriteria: AWSEncodableShape & AWSDecodableShape {
-
         /// A condition that specifies the property, operator, and one or more values to use to filter the results.
         public let criterion: [String: CriterionAdditionalProperties]?
 
@@ -2169,12 +2037,11 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case criterion = "criterion"
+            case criterion
         }
     }
 
     public struct FindingStatisticsSortCriteria: AWSEncodableShape {
-
         /// The grouping to sort the results by. Valid values are: count, sort the results by the number of findings in each group of results; and, groupKey, sort the results by the name of each group of results.
         public let attributeName: FindingStatisticsSortAttributeName?
         /// The sort order to apply to the results, based on the value for the property specified by the attributeName property. Valid values are: ASC, sort the results in ascending order; and, DESC, sort the results in descending order.
@@ -2186,13 +2053,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case attributeName = "attributeName"
-            case orderBy = "orderBy"
+            case attributeName
+            case orderBy
         }
     }
 
     public struct FindingsFilterListItem: AWSDecodableShape {
-
         /// The action that's performed on findings that meet the filter criteria. Possible values are: ARCHIVE, suppress (automatically archive) the findings; and, NOOP, don't perform any action on the findings.
         public let action: FindingsFilterAction?
         /// The Amazon Resource Name (ARN) of the filter.
@@ -2213,24 +2079,19 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case action = "action"
-            case arn = "arn"
-            case id = "id"
-            case name = "name"
-            case tags = "tags"
+            case action
+            case arn
+            case id
+            case name
+            case tags
         }
     }
 
     public struct GetAdministratorAccountRequest: AWSEncodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct GetAdministratorAccountResponse: AWSDecodableShape {
-
         /// The Amazon Web Services account ID for the administrator account. If the accounts are associated by a Macie membership invitation, this object also provides details about the invitation that was sent to establish the relationship between the accounts.
         public let administrator: Invitation?
 
@@ -2239,12 +2100,11 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case administrator = "administrator"
+            case administrator
         }
     }
 
     public struct GetBucketStatisticsRequest: AWSEncodableShape {
-
         /// The unique identifier for the Amazon Web Services account.
         public let accountId: String?
 
@@ -2253,12 +2113,11 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accountId = "accountId"
+            case accountId
         }
     }
 
     public struct GetBucketStatisticsResponse: AWSDecodableShape {
-
         /// The total number of buckets.
         public let bucketCount: Int64?
         /// The total number of buckets that are publicly accessible based on a combination of permissions settings for each bucket.
@@ -2304,32 +2163,27 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case bucketCount = "bucketCount"
-            case bucketCountByEffectivePermission = "bucketCountByEffectivePermission"
-            case bucketCountByEncryptionType = "bucketCountByEncryptionType"
-            case bucketCountByObjectEncryptionRequirement = "bucketCountByObjectEncryptionRequirement"
-            case bucketCountBySharedAccessType = "bucketCountBySharedAccessType"
-            case classifiableObjectCount = "classifiableObjectCount"
-            case classifiableSizeInBytes = "classifiableSizeInBytes"
-            case lastUpdated = "lastUpdated"
-            case objectCount = "objectCount"
-            case sizeInBytes = "sizeInBytes"
-            case sizeInBytesCompressed = "sizeInBytesCompressed"
-            case unclassifiableObjectCount = "unclassifiableObjectCount"
-            case unclassifiableObjectSizeInBytes = "unclassifiableObjectSizeInBytes"
+            case bucketCount
+            case bucketCountByEffectivePermission
+            case bucketCountByEncryptionType
+            case bucketCountByObjectEncryptionRequirement
+            case bucketCountBySharedAccessType
+            case classifiableObjectCount
+            case classifiableSizeInBytes
+            case lastUpdated
+            case objectCount
+            case sizeInBytes
+            case sizeInBytesCompressed
+            case unclassifiableObjectCount
+            case unclassifiableObjectSizeInBytes
         }
     }
 
     public struct GetClassificationExportConfigurationRequest: AWSEncodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct GetClassificationExportConfigurationResponse: AWSDecodableShape {
-
         /// The location where data classification results are stored, and the encryption settings that are used when storing results in that location.
         public let configuration: ClassificationExportConfiguration?
 
@@ -2338,7 +2192,7 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case configuration = "configuration"
+            case configuration
         }
     }
 
@@ -2358,7 +2212,6 @@ extension Macie2 {
     }
 
     public struct GetCustomDataIdentifierResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the custom data identifier.
         public let arn: String?
         /// The date and time, in UTC and extended ISO 8601 format, when the custom data identifier was created.
@@ -2398,22 +2251,21 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdAt = "createdAt"
-            case deleted = "deleted"
-            case description = "description"
-            case id = "id"
-            case ignoreWords = "ignoreWords"
-            case keywords = "keywords"
-            case maximumMatchDistance = "maximumMatchDistance"
-            case name = "name"
-            case regex = "regex"
-            case tags = "tags"
+            case arn
+            case createdAt
+            case deleted
+            case description
+            case id
+            case ignoreWords
+            case keywords
+            case maximumMatchDistance
+            case name
+            case regex
+            case tags
         }
     }
 
     public struct GetFindingStatisticsRequest: AWSEncodableShape {
-
         /// The criteria to use to filter the query results.
         public let findingCriteria: FindingCriteria?
         /// The finding property to use to group the query results. Valid values are: classificationDetails.jobId - The unique identifier for the classification job that produced the finding. resourcesAffected.s3Bucket.name - The name of the S3 bucket that the finding applies to. severity.description - The severity level of the finding, such as High or Medium. type - The type of finding, such as Policy:IAMUser/S3BucketPublic and SensitiveData:S3Object/Personal.
@@ -2431,15 +2283,14 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case findingCriteria = "findingCriteria"
-            case groupBy = "groupBy"
-            case size = "size"
-            case sortCriteria = "sortCriteria"
+            case findingCriteria
+            case groupBy
+            case size
+            case sortCriteria
         }
     }
 
     public struct GetFindingStatisticsResponse: AWSDecodableShape {
-
         /// An array of objects, one for each group of findings that meet the filter criteria specified in the request.
         public let countsByGroup: [GroupCount]?
 
@@ -2448,7 +2299,7 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case countsByGroup = "countsByGroup"
+            case countsByGroup
         }
     }
 
@@ -2468,7 +2319,6 @@ extension Macie2 {
     }
 
     public struct GetFindingsFilterResponse: AWSDecodableShape {
-
         /// The action that's performed on findings that meet the filter criteria (findingCriteria). Possible values are: ARCHIVE, suppress (automatically archive) the findings; and, NOOP, don't perform any action on the findings.
         public let action: FindingsFilterAction?
         /// The Amazon Resource Name (ARN) of the filter.
@@ -2498,27 +2348,22 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case action = "action"
-            case arn = "arn"
-            case description = "description"
-            case findingCriteria = "findingCriteria"
-            case id = "id"
-            case name = "name"
-            case position = "position"
-            case tags = "tags"
+            case action
+            case arn
+            case description
+            case findingCriteria
+            case id
+            case name
+            case position
+            case tags
         }
     }
 
     public struct GetFindingsPublicationConfigurationRequest: AWSEncodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct GetFindingsPublicationConfigurationResponse: AWSDecodableShape {
-
         /// The configuration settings that determine which findings are published to Security Hub.
         public let securityHubConfiguration: SecurityHubConfiguration?
 
@@ -2527,12 +2372,11 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case securityHubConfiguration = "securityHubConfiguration"
+            case securityHubConfiguration
         }
     }
 
     public struct GetFindingsRequest: AWSEncodableShape {
-
         /// An array of strings that lists the unique identifiers for the findings to retrieve.
         public let findingIds: [String]
         /// The criteria for sorting the results of the request.
@@ -2544,13 +2388,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case findingIds = "findingIds"
-            case sortCriteria = "sortCriteria"
+            case findingIds
+            case sortCriteria
         }
     }
 
     public struct GetFindingsResponse: AWSDecodableShape {
-
         /// An array of objects, one for each finding that meets the criteria specified in the request.
         public let findings: [Finding]?
 
@@ -2559,20 +2402,15 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case findings = "findings"
+            case findings
         }
     }
 
     public struct GetInvitationsCountRequest: AWSEncodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct GetInvitationsCountResponse: AWSDecodableShape {
-
         /// The total number of invitations that were received by the account, not including the currently accepted invitation.
         public let invitationsCount: Int64?
 
@@ -2581,20 +2419,15 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case invitationsCount = "invitationsCount"
+            case invitationsCount
         }
     }
 
     public struct GetMacieSessionRequest: AWSEncodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct GetMacieSessionResponse: AWSDecodableShape {
-
         /// The date and time, in UTC and extended ISO 8601 format, when the Amazon Macie account was created.
         @OptionalCustomCoding<ISO8601DateCoder>
         public var createdAt: Date?
@@ -2617,24 +2450,19 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case createdAt = "createdAt"
-            case findingPublishingFrequency = "findingPublishingFrequency"
-            case serviceRole = "serviceRole"
-            case status = "status"
-            case updatedAt = "updatedAt"
+            case createdAt
+            case findingPublishingFrequency
+            case serviceRole
+            case status
+            case updatedAt
         }
     }
 
     public struct GetMasterAccountRequest: AWSEncodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct GetMasterAccountResponse: AWSDecodableShape {
-
         /// (Deprecated) The Amazon Web Services account ID for the administrator account. If the accounts are associated by a Macie membership invitation, this object also provides details about the invitation that was sent to establish the relationship between the accounts.
         public let master: Invitation?
 
@@ -2643,7 +2471,7 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case master = "master"
+            case master
         }
     }
 
@@ -2663,7 +2491,6 @@ extension Macie2 {
     }
 
     public struct GetMemberResponse: AWSDecodableShape {
-
         /// The Amazon Web Services account ID for the account.
         public let accountId: String?
         /// The Amazon Web Services account ID for the administrator account.
@@ -2698,20 +2525,19 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accountId = "accountId"
-            case administratorAccountId = "administratorAccountId"
-            case arn = "arn"
-            case email = "email"
-            case invitedAt = "invitedAt"
-            case masterAccountId = "masterAccountId"
-            case relationshipStatus = "relationshipStatus"
-            case tags = "tags"
-            case updatedAt = "updatedAt"
+            case accountId
+            case administratorAccountId
+            case arn
+            case email
+            case invitedAt
+            case masterAccountId
+            case relationshipStatus
+            case tags
+            case updatedAt
         }
     }
 
     public struct GetUsageStatisticsRequest: AWSEncodableShape {
-
         /// An array of objects, one for each condition to use to filter the query results. If you specify more than one condition, Amazon Macie uses an AND operator to join the conditions.
         public let filterBy: [UsageStatisticsFilter]?
         /// The maximum number of items to include in each page of the response.
@@ -2732,16 +2558,15 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case filterBy = "filterBy"
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
-            case sortBy = "sortBy"
-            case timeRange = "timeRange"
+            case filterBy
+            case maxResults
+            case nextToken
+            case sortBy
+            case timeRange
         }
     }
 
     public struct GetUsageStatisticsResponse: AWSDecodableShape {
-
         /// The string to use in a subsequent request to get the next page of results in a paginated response. This value is null if there are no additional pages.
         public let nextToken: String?
         /// An array of objects that contains the results of the query. Each object contains the data for an account that meets the filter criteria specified in the request.
@@ -2756,9 +2581,9 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case records = "records"
-            case timeRange = "timeRange"
+            case nextToken
+            case records
+            case timeRange
         }
     }
 
@@ -2778,7 +2603,6 @@ extension Macie2 {
     }
 
     public struct GetUsageTotalsResponse: AWSDecodableShape {
-
         /// The inclusive time period that the usage data applies to. Possible values are: MONTH_TO_DATE, for the current calendar month to date; and, PAST_30_DAYS, for the preceding 30 days.
         public let timeRange: TimeRange?
         /// An array of objects that contains the results of the query. Each object contains the data for a specific usage metric.
@@ -2790,13 +2614,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case timeRange = "timeRange"
-            case usageTotals = "usageTotals"
+            case timeRange
+            case usageTotals
         }
     }
 
     public struct GroupCount: AWSDecodableShape {
-
         /// The total number of findings in the group of query results.
         public let count: Int64?
         /// The name of the property that defines the group in the query results, as specified by the groupBy property in the query request.
@@ -2808,13 +2631,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case count = "count"
-            case groupKey = "groupKey"
+            case count
+            case groupKey
         }
     }
 
     public struct IamUser: AWSDecodableShape {
-
         /// The unique identifier for the Amazon Web Services account that's associated with the IAM user who performed the action.
         public let accountId: String?
         /// The Amazon Resource Name (ARN) of the principal that performed the action. The last section of the ARN contains the name of the user who performed the action.
@@ -2832,15 +2654,14 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accountId = "accountId"
-            case arn = "arn"
-            case principalId = "principalId"
-            case userName = "userName"
+            case accountId
+            case arn
+            case principalId
+            case userName
         }
     }
 
     public struct Invitation: AWSDecodableShape {
-
         /// The Amazon Web Services account ID for the account that sent the invitation.
         public let accountId: String?
         /// The unique identifier for the invitation. Amazon Macie uses this identifier to validate the inviter account with the invitee account.
@@ -2859,15 +2680,14 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accountId = "accountId"
-            case invitationId = "invitationId"
-            case invitedAt = "invitedAt"
-            case relationshipStatus = "relationshipStatus"
+            case accountId
+            case invitationId
+            case invitedAt
+            case relationshipStatus
         }
     }
 
     public struct IpAddressDetails: AWSDecodableShape {
-
         /// The Internet Protocol version 4 (IPv4) address of the device.
         public let ipAddressV4: String?
         /// The city that the IP address originated from.
@@ -2888,16 +2708,15 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case ipAddressV4 = "ipAddressV4"
-            case ipCity = "ipCity"
-            case ipCountry = "ipCountry"
-            case ipGeoLocation = "ipGeoLocation"
-            case ipOwner = "ipOwner"
+            case ipAddressV4
+            case ipCity
+            case ipCountry
+            case ipGeoLocation
+            case ipOwner
         }
     }
 
     public struct IpCity: AWSDecodableShape {
-
         /// The name of the city.
         public let name: String?
 
@@ -2906,12 +2725,11 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case name = "name"
+            case name
         }
     }
 
     public struct IpCountry: AWSDecodableShape {
-
         /// The two-character code, in ISO 3166-1 alpha-2 format, for the country that the IP address originated from. For example, US for the United States.
         public let code: String?
         /// The name of the country that the IP address originated from.
@@ -2923,13 +2741,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case code = "code"
-            case name = "name"
+            case code
+            case name
         }
     }
 
     public struct IpGeoLocation: AWSDecodableShape {
-
         /// The latitude coordinate of the location, rounded to four decimal places.
         public let lat: Double?
         /// The longitude coordinate of the location, rounded to four decimal places.
@@ -2941,13 +2758,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case lat = "lat"
-            case lon = "lon"
+            case lat
+            case lon
         }
     }
 
     public struct IpOwner: AWSDecodableShape {
-
         /// The autonomous system number (ASN) for the autonomous system that included the IP address.
         public let asn: String?
         /// The organization identifier that's associated with the autonomous system number (ASN) for the autonomous system that included the IP address.
@@ -2965,16 +2781,15 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case asn = "asn"
-            case asnOrg = "asnOrg"
-            case isp = "isp"
-            case org = "org"
+            case asn
+            case asnOrg
+            case isp
+            case org
         }
     }
 
     public struct JobDetails: AWSDecodableShape {
-
-        /// Specifies whether any one-time or recurring jobs are configured to analyze data in the bucket. Possible values are: TRUE - The bucket is explicitly included in the bucket definition (S3BucketDefinitionForJob) for one or more jobs and at least one of those jobs has a status other than CANCELLED. Or the bucket matched the bucket criteria (S3BucketCriteriaForJob) for at least one job that previously ran. FALSE - The bucket isn't explicitly included in the bucket definition (S3BucketDefinitionForJob) for any jobs, all the jobs that explicitly include the bucket in their bucket definitions have a status of CANCELLED, or the bucket didn't match the bucket criteria (S3BucketCriteriaForJob) for any jobs that previously ran. UNKNOWN - An exception occurred when Amazon Macie attempted to retrieve job data for the bucket. 
+        /// Specifies whether any one-time or recurring jobs are configured to analyze data in the bucket. Possible values are: TRUE - The bucket is explicitly included in the bucket definition (S3BucketDefinitionForJob) for one or more jobs and at least one of those jobs has a status other than CANCELLED. Or the bucket matched the bucket criteria (S3BucketCriteriaForJob) for at least one job that previously ran. FALSE - The bucket isn't explicitly included in the bucket definition (S3BucketDefinitionForJob) for any jobs, all the jobs that explicitly include the bucket in their bucket definitions have a status of CANCELLED, or the bucket didn't match the bucket criteria (S3BucketCriteriaForJob) for any jobs that previously ran. UNKNOWN - An exception occurred when Amazon Macie attempted to retrieve job data for the bucket.
         public let isDefinedInJob: IsDefinedInJob?
         /// Specifies whether any recurring jobs are configured to analyze data in the bucket. Possible values are: TRUE - The bucket is explicitly included in the bucket definition (S3BucketDefinitionForJob) for one or more recurring jobs or the bucket matches the bucket criteria (S3BucketCriteriaForJob) for one or more recurring jobs. At least one of those jobs has a status other than CANCELLED. FALSE - The bucket isn't explicitly included in the bucket definition (S3BucketDefinitionForJob) for any recurring jobs, the bucket doesn't match the bucket criteria (S3BucketCriteriaForJob) for any recurring jobs, or all the recurring jobs that are configured to analyze data in the bucket have a status of CANCELLED. UNKNOWN - An exception occurred when Amazon Macie attempted to retrieve job data for the bucket.
         public let isMonitoredByJob: IsMonitoredByJob?
@@ -2992,15 +2807,14 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case isDefinedInJob = "isDefinedInJob"
-            case isMonitoredByJob = "isMonitoredByJob"
-            case lastJobId = "lastJobId"
-            case lastJobRunTime = "lastJobRunTime"
+            case isDefinedInJob
+            case isMonitoredByJob
+            case lastJobId
+            case lastJobRunTime
         }
     }
 
     public struct JobScheduleFrequency: AWSEncodableShape & AWSDecodableShape {
-
         /// Specifies a daily recurrence pattern for running the job.
         public let dailySchedule: DailySchedule?
         /// Specifies a monthly recurrence pattern for running the job.
@@ -3015,14 +2829,13 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case dailySchedule = "dailySchedule"
-            case monthlySchedule = "monthlySchedule"
-            case weeklySchedule = "weeklySchedule"
+            case dailySchedule
+            case monthlySchedule
+            case weeklySchedule
         }
     }
 
     public struct JobScopeTerm: AWSEncodableShape & AWSDecodableShape {
-
         /// A property-based condition that defines a property, operator, and one or more values for including or excluding objects from the job.
         public let simpleScopeTerm: SimpleScopeTerm?
         /// A tag-based condition that defines the operator and tag keys or tag key and value pairs for including or excluding objects from the job.
@@ -3034,13 +2847,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case simpleScopeTerm = "simpleScopeTerm"
-            case tagScopeTerm = "tagScopeTerm"
+            case simpleScopeTerm
+            case tagScopeTerm
         }
     }
 
     public struct JobScopingBlock: AWSEncodableShape & AWSDecodableShape {
-
         /// An array of conditions, one for each property- or tag-based condition that determines which objects to include or exclude from the job. If you specify more than one condition, Amazon Macie uses AND logic to join the conditions.
         public let and: [JobScopeTerm]?
 
@@ -3049,12 +2861,11 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case and = "and"
+            case and
         }
     }
 
     public struct JobSummary: AWSDecodableShape {
-
         /// The property- and tag-based conditions that determine which S3 buckets are included or excluded from the job's analysis. Each time the job runs, the job uses these criteria to determine which buckets to analyze. A job's definition can contain a bucketCriteria object or a bucketDefinitions array, not both.
         public let bucketCriteria: S3BucketCriteriaForJob?
         /// An array of objects, one for each Amazon Web Services account that owns specific S3 buckets for the job to analyze. Each object specifies the account ID for an account and one or more buckets to analyze for that account. A job's definition can contain a bucketDefinitions array or a bucketCriteria object, not both.
@@ -3088,20 +2899,19 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case bucketCriteria = "bucketCriteria"
-            case bucketDefinitions = "bucketDefinitions"
-            case createdAt = "createdAt"
-            case jobId = "jobId"
-            case jobStatus = "jobStatus"
-            case jobType = "jobType"
-            case lastRunErrorStatus = "lastRunErrorStatus"
-            case name = "name"
-            case userPausedDetails = "userPausedDetails"
+            case bucketCriteria
+            case bucketDefinitions
+            case createdAt
+            case jobId
+            case jobStatus
+            case jobType
+            case lastRunErrorStatus
+            case name
+            case userPausedDetails
         }
     }
 
     public struct KeyValuePair: AWSDecodableShape {
-
         /// One part of a key-value pair that comprises a tag. A tag key is a general label that acts as a category for more specific tag values.
         public let key: String?
         /// One part of a key-value pair that comprises a tag. A tag value acts as a descriptor for a tag key. A tag value can be an empty string.
@@ -3113,13 +2923,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case key = "key"
-            case value = "value"
+            case key
+            case value
         }
     }
 
     public struct LastRunErrorStatus: AWSDecodableShape {
-
         /// Specifies whether any account- or bucket-level access errors occurred when the job ran. For a recurring job, this value indicates the error status of the job's most recent run. Possible values are: ERROR - One or more errors occurred. Amazon Macie didn't process all the data specified for the job. NONE - No errors occurred. Macie processed all the data specified for the job.
         public let code: LastRunErrorStatusCode?
 
@@ -3128,12 +2937,11 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case code = "code"
+            case code
         }
     }
 
     public struct ListClassificationJobsRequest: AWSEncodableShape {
-
         /// The criteria to use to filter the results.
         public let filterCriteria: ListJobsFilterCriteria?
         /// The maximum number of items to include in each page of the response.
@@ -3151,15 +2959,14 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case filterCriteria = "filterCriteria"
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
-            case sortCriteria = "sortCriteria"
+            case filterCriteria
+            case maxResults
+            case nextToken
+            case sortCriteria
         }
     }
 
     public struct ListClassificationJobsResponse: AWSDecodableShape {
-
         /// An array of objects, one for each job that meets the filter criteria specified in the request.
         public let items: [JobSummary]?
         /// The string to use in a subsequent request to get the next page of results in a paginated response. This value is null if there are no additional pages.
@@ -3171,13 +2978,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case items = "items"
-            case nextToken = "nextToken"
+            case items
+            case nextToken
         }
     }
 
     public struct ListCustomDataIdentifiersRequest: AWSEncodableShape {
-
         /// The maximum number of items to include in each page of the response.
         public let maxResults: Int?
         /// The nextToken string that specifies which page of results to return in a paginated response.
@@ -3189,13 +2995,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
+            case maxResults
+            case nextToken
         }
     }
 
     public struct ListCustomDataIdentifiersResponse: AWSDecodableShape {
-
         /// An array of objects, one for each custom data identifier.
         public let items: [CustomDataIdentifierSummary]?
         /// The string to use in a subsequent request to get the next page of results in a paginated response. This value is null if there are no additional pages.
@@ -3207,14 +3012,14 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case items = "items"
-            case nextToken = "nextToken"
+            case items
+            case nextToken
         }
     }
 
     public struct ListFindingsFiltersRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
@@ -3237,7 +3042,6 @@ extension Macie2 {
     }
 
     public struct ListFindingsFiltersResponse: AWSDecodableShape {
-
         /// An array of objects, one for each filter that's associated with the account.
         public let findingsFilterListItems: [FindingsFilterListItem]?
         /// The string to use in a subsequent request to get the next page of results in a paginated response. This value is null if there are no additional pages.
@@ -3249,13 +3053,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case findingsFilterListItems = "findingsFilterListItems"
-            case nextToken = "nextToken"
+            case findingsFilterListItems
+            case nextToken
         }
     }
 
     public struct ListFindingsRequest: AWSEncodableShape {
-
         /// The criteria to use to filter the results.
         public let findingCriteria: FindingCriteria?
         /// The maximum number of items to include in each page of the response.
@@ -3273,15 +3076,14 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case findingCriteria = "findingCriteria"
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
-            case sortCriteria = "sortCriteria"
+            case findingCriteria
+            case maxResults
+            case nextToken
+            case sortCriteria
         }
     }
 
     public struct ListFindingsResponse: AWSDecodableShape {
-
         /// An array of strings, where each string is the unique identifier for a finding that meets the filter criteria specified in the request.
         public let findingIds: [String]?
         /// The string to use in a subsequent request to get the next page of results in a paginated response. This value is null if there are no additional pages.
@@ -3293,14 +3095,14 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case findingIds = "findingIds"
-            case nextToken = "nextToken"
+            case findingIds
+            case nextToken
         }
     }
 
     public struct ListInvitationsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
@@ -3323,7 +3125,6 @@ extension Macie2 {
     }
 
     public struct ListInvitationsResponse: AWSDecodableShape {
-
         /// An array of objects, one for each invitation that was received by the account.
         public let invitations: [Invitation]?
         /// The string to use in a subsequent request to get the next page of results in a paginated response. This value is null if there are no additional pages.
@@ -3335,13 +3136,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case invitations = "invitations"
-            case nextToken = "nextToken"
+            case invitations
+            case nextToken
         }
     }
 
     public struct ListJobsFilterCriteria: AWSEncodableShape {
-
         /// An array of objects, one for each condition that determines which jobs to exclude from the results.
         public let excludes: [ListJobsFilterTerm]?
         /// An array of objects, one for each condition that determines which jobs to include in the results.
@@ -3353,13 +3153,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case excludes = "excludes"
-            case includes = "includes"
+            case excludes
+            case includes
         }
     }
 
     public struct ListJobsFilterTerm: AWSEncodableShape {
-
         /// The operator to use to filter the results.
         public let comparator: JobComparator?
         /// The property to use to filter the results.
@@ -3374,14 +3173,13 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case comparator = "comparator"
-            case key = "key"
-            case values = "values"
+            case comparator
+            case key
+            case values
         }
     }
 
     public struct ListJobsSortCriteria: AWSEncodableShape {
-
         /// The property to sort the results by.
         public let attributeName: ListJobsSortAttributeName?
         /// The sort order to apply to the results, based on the value for the property specified by the attributeName property. Valid values are: ASC, sort the results in ascending order; and, DESC, sort the results in descending order.
@@ -3393,15 +3191,15 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case attributeName = "attributeName"
-            case orderBy = "orderBy"
+            case attributeName
+            case orderBy
         }
     }
 
     public struct ListMembersRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
-            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
+            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")),
             AWSMemberEncoding(label: "onlyAssociated", location: .querystring(locationName: "onlyAssociated"))
         ]
 
@@ -3427,7 +3225,6 @@ extension Macie2 {
     }
 
     public struct ListMembersResponse: AWSDecodableShape {
-
         /// An array of objects, one for each account that's associated with the administrator account and meets the criteria specified by the onlyAssociated request parameter.
         public let members: [Member]?
         /// The string to use in a subsequent request to get the next page of results in a paginated response. This value is null if there are no additional pages.
@@ -3439,14 +3236,14 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case members = "members"
-            case nextToken = "nextToken"
+            case members
+            case nextToken
         }
     }
 
     public struct ListOrganizationAdminAccountsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
@@ -3469,7 +3266,6 @@ extension Macie2 {
     }
 
     public struct ListOrganizationAdminAccountsResponse: AWSDecodableShape {
-
         /// An array of objects, one for each delegated Amazon Macie administrator account for the organization. Only one of these accounts can have a status of ENABLED.
         public let adminAccounts: [AdminAccount]?
         /// The string to use in a subsequent request to get the next page of results in a paginated response. This value is null if there are no additional pages.
@@ -3481,8 +3277,8 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case adminAccounts = "adminAccounts"
-            case nextToken = "nextToken"
+            case adminAccounts
+            case nextToken
         }
     }
 
@@ -3502,7 +3298,6 @@ extension Macie2 {
     }
 
     public struct ListTagsForResourceResponse: AWSDecodableShape {
-
         /// A map of key-value pairs that identifies the tags (keys and values) that are associated with the resource.
         public let tags: [String: String]?
 
@@ -3511,12 +3306,11 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tags = "tags"
+            case tags
         }
     }
 
     public struct MatchingBucket: AWSDecodableShape {
-
         /// The unique identifier for the Amazon Web Services account that owns the bucket.
         public let accountId: String?
         /// The name of the bucket.
@@ -3555,22 +3349,21 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accountId = "accountId"
-            case bucketName = "bucketName"
-            case classifiableObjectCount = "classifiableObjectCount"
-            case classifiableSizeInBytes = "classifiableSizeInBytes"
-            case jobDetails = "jobDetails"
-            case objectCount = "objectCount"
-            case objectCountByEncryptionType = "objectCountByEncryptionType"
-            case sizeInBytes = "sizeInBytes"
-            case sizeInBytesCompressed = "sizeInBytesCompressed"
-            case unclassifiableObjectCount = "unclassifiableObjectCount"
-            case unclassifiableObjectSizeInBytes = "unclassifiableObjectSizeInBytes"
+            case accountId
+            case bucketName
+            case classifiableObjectCount
+            case classifiableSizeInBytes
+            case jobDetails
+            case objectCount
+            case objectCountByEncryptionType
+            case sizeInBytes
+            case sizeInBytesCompressed
+            case unclassifiableObjectCount
+            case unclassifiableObjectSizeInBytes
         }
     }
 
     public struct MatchingResource: AWSDecodableShape {
-
         /// The details of an S3 bucket that Amazon Macie monitors and analyzes.
         public let matchingBucket: MatchingBucket?
 
@@ -3579,12 +3372,11 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case matchingBucket = "matchingBucket"
+            case matchingBucket
         }
     }
 
     public struct Member: AWSDecodableShape {
-
         /// The Amazon Web Services account ID for the account.
         public let accountId: String?
         /// The Amazon Web Services account ID for the administrator account.
@@ -3619,20 +3411,19 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accountId = "accountId"
-            case administratorAccountId = "administratorAccountId"
-            case arn = "arn"
-            case email = "email"
-            case invitedAt = "invitedAt"
-            case masterAccountId = "masterAccountId"
-            case relationshipStatus = "relationshipStatus"
-            case tags = "tags"
-            case updatedAt = "updatedAt"
+            case accountId
+            case administratorAccountId
+            case arn
+            case email
+            case invitedAt
+            case masterAccountId
+            case relationshipStatus
+            case tags
+            case updatedAt
         }
     }
 
     public struct MonthlySchedule: AWSEncodableShape & AWSDecodableShape {
-
         /// The numeric day of the month when Amazon Macie runs the job. This value can be an integer from 1 through 31. If this value exceeds the number of days in a certain month, Macie doesn't run the job that month. Macie runs the job only during months that have the specified day. For example, if this value is 31 and a month has only 30 days, Macie doesn't run the job that month. To run the job every month, specify a value that's less than 29.
         public let dayOfMonth: Int?
 
@@ -3641,12 +3432,11 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case dayOfMonth = "dayOfMonth"
+            case dayOfMonth
         }
     }
 
     public struct ObjectCountByEncryptionType: AWSDecodableShape {
-
         /// The total number of objects that are encrypted with a customer-managed key. The objects use customer-provided server-side encryption (SSE-C).
         public let customerManaged: Int64?
         /// The total number of objects that are encrypted with an Key Management Service (KMS) customer master key (CMK). The objects use Amazon Web Services managed KMS encryption (AWS-KMS) or customer managed KMS encryption (SSE-KMS).
@@ -3667,16 +3457,15 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case customerManaged = "customerManaged"
-            case kmsManaged = "kmsManaged"
-            case s3Managed = "s3Managed"
-            case unencrypted = "unencrypted"
-            case unknown = "unknown"
+            case customerManaged
+            case kmsManaged
+            case s3Managed
+            case unencrypted
+            case unknown
         }
     }
 
     public struct ObjectLevelStatistics: AWSDecodableShape {
-
         /// The total storage size (in bytes) or number of objects that Amazon Macie can't analyze because the objects don't have a file name extension for a supported file or storage format.
         public let fileType: Int64?
         /// The total storage size (in bytes) or number of objects that Amazon Macie can't analyze because the objects use an unsupported storage class.
@@ -3691,14 +3480,13 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case fileType = "fileType"
-            case storageClass = "storageClass"
-            case total = "total"
+            case fileType
+            case storageClass
+            case total
         }
     }
 
     public struct Occurrences: AWSDecodableShape {
-
         /// An array of objects, one for each occurrence of sensitive data in a Microsoft Excel workbook, CSV file, or TSV file. This value is null for all other types of files.Each Cell object specifies a cell or field that contains the sensitive data.
         public let cells: [Cell]?
         /// An array of objects, one for each occurrence of sensitive data in a non-binary text file, such as an HTML, TXT, or XML file. Each Range object specifies a line or inclusive range of lines that contains the sensitive data, and the position of the data on the specified line or lines. This value is often null for file types that are supported by Cell, Page, or Record objects. Exceptions are the location of sensitive data in: unstructured sections of an otherwise structured file, such as a comment in a file; a malformed file that Amazon Macie analyzes as plain text; and, a CSV or TSV file that has any column names that contain sensitive data.
@@ -3719,16 +3507,15 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case cells = "cells"
-            case lineRanges = "lineRanges"
-            case offsetRanges = "offsetRanges"
-            case pages = "pages"
-            case records = "records"
+            case cells
+            case lineRanges
+            case offsetRanges
+            case pages
+            case records
         }
     }
 
     public struct Page: AWSDecodableShape {
-
         /// Reserved for future use.
         public let lineRange: Range?
         /// Reserved for future use.
@@ -3743,14 +3530,13 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case lineRange = "lineRange"
-            case offsetRange = "offsetRange"
-            case pageNumber = "pageNumber"
+            case lineRange
+            case offsetRange
+            case pageNumber
         }
     }
 
     public struct PolicyDetails: AWSDecodableShape {
-
         /// The action that produced the finding.
         public let action: FindingAction?
         /// The entity that performed the action that produced the finding.
@@ -3762,13 +3548,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case action = "action"
-            case actor = "actor"
+            case action
+            case actor
         }
     }
 
     public struct PutClassificationExportConfigurationRequest: AWSEncodableShape {
-
         /// The location to store data classification results in, and the encryption settings to use when storing results in that location.
         public let configuration: ClassificationExportConfiguration
 
@@ -3777,12 +3562,11 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case configuration = "configuration"
+            case configuration
         }
     }
 
     public struct PutClassificationExportConfigurationResponse: AWSDecodableShape {
-
         /// The location where the data classification results are stored, and the encryption settings that are used when storing results in that location.
         public let configuration: ClassificationExportConfiguration?
 
@@ -3791,12 +3575,11 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case configuration = "configuration"
+            case configuration
         }
     }
 
     public struct PutFindingsPublicationConfigurationRequest: AWSEncodableShape {
-
         /// A unique, case-sensitive token that you provide to ensure the idempotency of the request.
         public let clientToken: String?
         /// The configuration settings that determine which findings to publish to Security Hub.
@@ -3808,21 +3591,16 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientToken = "clientToken"
-            case securityHubConfiguration = "securityHubConfiguration"
+            case clientToken
+            case securityHubConfiguration
         }
     }
 
     public struct PutFindingsPublicationConfigurationResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct Range: AWSDecodableShape {
-
         /// The number of lines from the beginning of the file to the end of the sensitive data.
         public let end: Int64?
         /// The number of lines from the beginning of the file to the beginning of the sensitive data.
@@ -3837,14 +3615,13 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case end = "end"
-            case start = "start"
-            case startColumn = "startColumn"
+            case end
+            case start
+            case startColumn
         }
     }
 
     public struct Record: AWSDecodableShape {
-
         /// The path, as a JSONPath expression, to the sensitive data. For an Avro object container or Parquet file, this is the path to the field in the record (recordIndex) that contains the data. For a JSON or JSON Lines file, this is the path to the field or array that contains the data. If the data is a value in an array, the path also indicates which value contains the data. If Amazon Macie detects sensitive data in the name of any element in the path, Macie omits this field. If the name of an element exceeds 20 characters, Macie truncates the name by removing characters from the beginning of the name. If the resulting full path exceeds 250 characters, Macie also truncates the path, starting with the first element in the path, until the path contains 250 or fewer characters.
         public let jsonPath: String?
         /// For an Avro object container or Parquet file, the record index, starting from 0, for the record that contains the sensitive data. For a JSON Lines file, the line index, starting from 0, for the line that contains the sensitive data. This value is always 0 for JSON files.
@@ -3856,13 +3633,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case jsonPath = "jsonPath"
-            case recordIndex = "recordIndex"
+            case jsonPath
+            case recordIndex
         }
     }
 
     public struct ReplicationDetails: AWSDecodableShape {
-
         /// Specifies whether the bucket is configured to replicate one or more objects to any destination.
         public let replicated: Bool?
         /// Specifies whether the bucket is configured to replicate one or more objects to an Amazon Web Services account that isn't part of the same Amazon Macie organization.
@@ -3877,14 +3653,13 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case replicated = "replicated"
-            case replicatedExternally = "replicatedExternally"
-            case replicationAccounts = "replicationAccounts"
+            case replicated
+            case replicatedExternally
+            case replicationAccounts
         }
     }
 
     public struct ResourcesAffected: AWSDecodableShape {
-
         /// The details of the S3 bucket that the finding applies to.
         public let s3Bucket: S3Bucket?
         /// The details of the S3 object that the finding applies to.
@@ -3896,13 +3671,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case s3Bucket = "s3Bucket"
-            case s3Object = "s3Object"
+            case s3Bucket
+            case s3Object
         }
     }
 
     public struct S3Bucket: AWSDecodableShape {
-
         /// Specifies whether the bucket policy for the bucket requires server-side encryption of objects when objects are uploaded to the bucket. Possible values are: FALSE - The bucket policy requires server-side encryption of new objects. PutObject requests must include the x-amz-server-side-encryption header and the value for that header must be AES256 or aws:kms. TRUE - The bucket doesn't have a bucket policy or it has a bucket policy that doesn't require server-side encryption of new objects. If a bucket policy exists, it doesn't require PutObject requests to include the x-amz-server-side-encryption header and it doesn't require the value for that header to be AES256 or aws:kms. UNKNOWN - Amazon Macie can't determine whether the bucket policy requires server-side encryption of objects.
         public let allowsUnencryptedObjectUploads: AllowsUnencryptedObjectUploads?
         /// The Amazon Resource Name (ARN) of the bucket.
@@ -3933,19 +3707,18 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case allowsUnencryptedObjectUploads = "allowsUnencryptedObjectUploads"
-            case arn = "arn"
-            case createdAt = "createdAt"
-            case defaultServerSideEncryption = "defaultServerSideEncryption"
-            case name = "name"
-            case owner = "owner"
-            case publicAccess = "publicAccess"
-            case tags = "tags"
+            case allowsUnencryptedObjectUploads
+            case arn
+            case createdAt
+            case defaultServerSideEncryption
+            case name
+            case owner
+            case publicAccess
+            case tags
         }
     }
 
     public struct S3BucketCriteriaForJob: AWSEncodableShape & AWSDecodableShape {
-
         /// The property- and tag-based conditions that determine which buckets to exclude from the job.
         public let excludes: CriteriaBlockForJob?
         /// The property- and tag-based conditions that determine which buckets to include in the job.
@@ -3957,13 +3730,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case excludes = "excludes"
-            case includes = "includes"
+            case excludes
+            case includes
         }
     }
 
     public struct S3BucketDefinitionForJob: AWSEncodableShape & AWSDecodableShape {
-
         /// The unique identifier for the Amazon Web Services account that owns the buckets.
         public let accountId: String
         /// An array that lists the names of the buckets.
@@ -3975,13 +3747,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accountId = "accountId"
-            case buckets = "buckets"
+            case accountId
+            case buckets
         }
     }
 
     public struct S3BucketOwner: AWSDecodableShape {
-
         /// The display name of the user who owns the bucket.
         public let displayName: String?
         /// The Amazon Web Services account ID for the user who owns the bucket.
@@ -3993,13 +3764,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case displayName = "displayName"
-            case id = "id"
+            case displayName
+            case id
         }
     }
 
     public struct S3Destination: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the bucket.
         public let bucketName: String
         /// The path prefix to use in the path to the location in the bucket. This prefix specifies where to store classification results in the bucket.
@@ -4014,14 +3784,13 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case bucketName = "bucketName"
-            case keyPrefix = "keyPrefix"
-            case kmsKeyArn = "kmsKeyArn"
+            case bucketName
+            case keyPrefix
+            case kmsKeyArn
         }
     }
 
     public struct S3JobDefinition: AWSEncodableShape & AWSDecodableShape {
-
         /// The property- and tag-based conditions that determine which S3 buckets to include or exclude from the analysis. Each time the job runs, the job uses these criteria to determine which buckets contain objects to analyze. A job's definition can contain a bucketCriteria object or a bucketDefinitions array, not both.
         public let bucketCriteria: S3BucketCriteriaForJob?
         /// An array of objects, one for each Amazon Web Services account that owns specific S3 buckets to analyze. Each object specifies the account ID for an account and one or more buckets to analyze for that account. A job's definition can contain a bucketDefinitions array or a bucketCriteria object, not both.
@@ -4036,14 +3805,13 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case bucketCriteria = "bucketCriteria"
-            case bucketDefinitions = "bucketDefinitions"
-            case scoping = "scoping"
+            case bucketCriteria
+            case bucketDefinitions
+            case scoping
         }
     }
 
     public struct S3Object: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the bucket that contains the object.
         public let bucketArn: String?
         /// The entity tag (ETag) that identifies the affected version of the object. If the object was overwritten or changed after Amazon Macie produced the finding, this value might be different from the current ETag for the object.
@@ -4086,23 +3854,22 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case bucketArn = "bucketArn"
-            case eTag = "eTag"
-            case `extension` = "extension"
-            case key = "key"
-            case lastModified = "lastModified"
-            case path = "path"
-            case publicAccess = "publicAccess"
-            case serverSideEncryption = "serverSideEncryption"
-            case size = "size"
-            case storageClass = "storageClass"
-            case tags = "tags"
-            case versionId = "versionId"
+            case bucketArn
+            case eTag
+            case `extension`
+            case key
+            case lastModified
+            case path
+            case publicAccess
+            case serverSideEncryption
+            case size
+            case storageClass
+            case tags
+            case versionId
         }
     }
 
     public struct Scoping: AWSEncodableShape & AWSDecodableShape {
-
         /// The property- and tag-based conditions that determine which objects to exclude from the analysis.
         public let excludes: JobScopingBlock?
         /// The property- and tag-based conditions that determine which objects to include in the analysis.
@@ -4114,13 +3881,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case excludes = "excludes"
-            case includes = "includes"
+            case excludes
+            case includes
         }
     }
 
     public struct SearchResourcesBucketCriteria: AWSEncodableShape {
-
         /// The property- and tag-based conditions that determine which buckets to exclude from the results.
         public let excludes: SearchResourcesCriteriaBlock?
         /// The property- and tag-based conditions that determine which buckets to include in the results.
@@ -4132,13 +3898,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case excludes = "excludes"
-            case includes = "includes"
+            case excludes
+            case includes
         }
     }
 
     public struct SearchResourcesCriteria: AWSEncodableShape {
-
         /// A property-based condition that defines a property, operator, and one or more values for including or excluding resources from the results.
         public let simpleCriterion: SearchResourcesSimpleCriterion?
         /// A tag-based condition that defines an operator and tag keys, tag values, or tag key and value pairs for including or excluding resources from the results.
@@ -4150,13 +3915,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case simpleCriterion = "simpleCriterion"
-            case tagCriterion = "tagCriterion"
+            case simpleCriterion
+            case tagCriterion
         }
     }
 
     public struct SearchResourcesCriteriaBlock: AWSEncodableShape {
-
         /// An array of objects, one for each property- or tag-based condition that includes or excludes resources from the query results. If you specify more than one condition, Amazon Macie uses AND logic to join the conditions.
         public let and: [SearchResourcesCriteria]?
 
@@ -4165,12 +3929,11 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case and = "and"
+            case and
         }
     }
 
     public struct SearchResourcesRequest: AWSEncodableShape {
-
         /// The filter conditions that determine which S3 buckets to include or exclude from the query results.
         public let bucketCriteria: SearchResourcesBucketCriteria?
         /// The maximum number of items to include in each page of the response. The default value is 50.
@@ -4188,15 +3951,14 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case bucketCriteria = "bucketCriteria"
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
-            case sortCriteria = "sortCriteria"
+            case bucketCriteria
+            case maxResults
+            case nextToken
+            case sortCriteria
         }
     }
 
     public struct SearchResourcesResponse: AWSDecodableShape {
-
         /// An array of objects, one for each resource that meets the filter criteria specified in the request.
         public let matchingResources: [MatchingResource]?
         /// The string to use in a subsequent request to get the next page of results in a paginated response. This value is null if there are no additional pages.
@@ -4208,13 +3970,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case matchingResources = "matchingResources"
-            case nextToken = "nextToken"
+            case matchingResources
+            case nextToken
         }
     }
 
     public struct SearchResourcesSimpleCriterion: AWSEncodableShape {
-
         /// The operator to use in the condition. Valid values are EQ (equals) and NE (not equals).
         public let comparator: SearchResourcesComparator?
         /// The property to use in the condition.
@@ -4229,14 +3990,13 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case comparator = "comparator"
-            case key = "key"
-            case values = "values"
+            case comparator
+            case key
+            case values
         }
     }
 
     public struct SearchResourcesSortCriteria: AWSEncodableShape {
-
         /// The property to sort the results by.
         public let attributeName: SearchResourcesSortAttributeName?
         /// The sort order to apply to the results, based on the value for the property specified by the attributeName property. Valid values are: ASC, sort the results in ascending order; and, DESC, sort the results in descending order.
@@ -4248,13 +4008,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case attributeName = "attributeName"
-            case orderBy = "orderBy"
+            case attributeName
+            case orderBy
         }
     }
 
     public struct SearchResourcesTagCriterion: AWSEncodableShape {
-
         /// The operator to use in the condition. Valid values are EQ (equals) and NE (not equals).
         public let comparator: SearchResourcesComparator?
         /// The tag keys, tag values, or tag key and value pairs to use in the condition.
@@ -4266,13 +4025,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case comparator = "comparator"
-            case tagValues = "tagValues"
+            case comparator
+            case tagValues
         }
     }
 
     public struct SearchResourcesTagCriterionPair: AWSEncodableShape {
-
         /// The value for the tag key to use in the condition.
         public let key: String?
         /// The tag value to use in the condition.
@@ -4284,13 +4042,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case key = "key"
-            case value = "value"
+            case key
+            case value
         }
     }
 
     public struct SecurityHubConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// Specifies whether to publish sensitive data findings to Security Hub. If you set this value to true, Amazon Macie automatically publishes all sensitive data findings that weren't suppressed by a findings filter. The default value is false.
         public let publishClassificationFindings: Bool
         /// Specifies whether to publish policy findings to Security Hub. If you set this value to true, Amazon Macie automatically publishes all new and updated policy findings that weren't suppressed by a findings filter. The default value is true.
@@ -4302,13 +4059,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case publishClassificationFindings = "publishClassificationFindings"
-            case publishPolicyFindings = "publishPolicyFindings"
+            case publishClassificationFindings
+            case publishPolicyFindings
         }
     }
 
     public struct SensitiveDataItem: AWSDecodableShape {
-
         /// The category of sensitive data that was detected. For example: CREDENTIALS, for credentials data such as private keys or Amazon Web Services secret keys; FINANCIAL_INFORMATION, for financial data such as credit card numbers; or, PERSONAL_INFORMATION, for personal health information, such as health insurance identification numbers, or personally identifiable information, such as driver's license identification numbers.
         public let category: SensitiveDataItemCategory?
         /// An array of objects, one for each type of sensitive data that was detected. Each object reports the number of occurrences of a specific type of sensitive data that was detected, and the location of up to 15 of those occurrences.
@@ -4323,14 +4079,13 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case category = "category"
-            case detections = "detections"
-            case totalCount = "totalCount"
+            case category
+            case detections
+            case totalCount
         }
     }
 
     public struct ServerSideEncryption: AWSDecodableShape {
-
         /// The server-side encryption algorithm that's used when storing data in the bucket or object. If default encryption is disabled for the bucket or the object isn't encrypted using server-side encryption, this value is NONE.
         public let encryptionType: EncryptionType?
         /// The Amazon Resource Name (ARN) or unique identifier (key ID) for the Key Management Service (KMS) customer master key (CMK) that's used to encrypt data in the bucket or the object. If an KMS CMK isn't used, this value is null.
@@ -4342,13 +4097,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case encryptionType = "encryptionType"
-            case kmsMasterKeyId = "kmsMasterKeyId"
+            case encryptionType
+            case kmsMasterKeyId
         }
     }
 
     public struct ServiceLimit: AWSDecodableShape {
-
         /// Specifies whether the account has met the quota that corresponds to the metric specified by the UsageByAccount.type field in the response.
         public let isServiceLimited: Bool?
         /// The unit of measurement for the value specified by the value field.
@@ -4363,14 +4117,13 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case isServiceLimited = "isServiceLimited"
-            case unit = "unit"
-            case value = "value"
+            case isServiceLimited
+            case unit
+            case value
         }
     }
 
     public struct SessionContext: AWSDecodableShape {
-
         /// The date and time when the credentials were issued, and whether the credentials were authenticated with a multi-factor authentication (MFA) device.
         public let attributes: SessionContextAttributes?
         /// The source and type of credentials that were issued to the entity.
@@ -4382,13 +4135,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case attributes = "attributes"
-            case sessionIssuer = "sessionIssuer"
+            case attributes
+            case sessionIssuer
         }
     }
 
     public struct SessionContextAttributes: AWSDecodableShape {
-
         /// The date and time, in UTC and ISO 8601 format, when the credentials were issued.
         @OptionalCustomCoding<ISO8601DateCoder>
         public var creationDate: Date?
@@ -4401,13 +4153,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case creationDate = "creationDate"
-            case mfaAuthenticated = "mfaAuthenticated"
+            case creationDate
+            case mfaAuthenticated
         }
     }
 
     public struct SessionIssuer: AWSDecodableShape {
-
         /// The unique identifier for the Amazon Web Services account that owns the entity that was used to get the credentials.
         public let accountId: String?
         /// The Amazon Resource Name (ARN) of the source account, IAM user, or role that was used to get the credentials.
@@ -4428,16 +4179,15 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accountId = "accountId"
-            case arn = "arn"
-            case principalId = "principalId"
-            case type = "type"
-            case userName = "userName"
+            case accountId
+            case arn
+            case principalId
+            case type
+            case userName
         }
     }
 
     public struct Severity: AWSDecodableShape {
-
         /// The qualitative representation of the finding's severity, ranging from Low (least severe) to High (most severe).
         public let description: SeverityDescription?
         /// The numerical representation of the finding's severity, ranging from 1 (least severe) to 3 (most severe).
@@ -4449,13 +4199,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case description = "description"
-            case score = "score"
+            case description
+            case score
         }
     }
 
     public struct SimpleCriterionForJob: AWSEncodableShape & AWSDecodableShape {
-
         /// The operator to use in the condition. Valid values are EQ (equals) and NE (not equals).
         public let comparator: JobComparator?
         /// The property to use in the condition.
@@ -4470,14 +4219,13 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case comparator = "comparator"
-            case key = "key"
-            case values = "values"
+            case comparator
+            case key
+            case values
         }
     }
 
     public struct SimpleScopeTerm: AWSEncodableShape & AWSDecodableShape {
-
         /// The operator to use in the condition. Valid values for each supported property (key) are: OBJECT_EXTENSION - EQ (equals) or NE (not equals) OBJECT_KEY - STARTS_WITH OBJECT_LAST_MODIFIED_DATE - Any operator except CONTAINS OBJECT_SIZE - Any operator except CONTAINS
         public let comparator: JobComparator?
         /// The object property to use in the condition.
@@ -4492,14 +4240,13 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case comparator = "comparator"
-            case key = "key"
-            case values = "values"
+            case comparator
+            case key
+            case values
         }
     }
 
     public struct SortCriteria: AWSEncodableShape {
-
         /// The name of the property to sort the results by. This value can be the name of any property that Amazon Macie defines for a finding.
         public let attributeName: String?
         /// The sort order to apply to the results, based on the value for the property specified by the attributeName property. Valid values are: ASC, sort the results in ascending order; and, DESC, sort the results in descending order.
@@ -4511,13 +4258,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case attributeName = "attributeName"
-            case orderBy = "orderBy"
+            case attributeName
+            case orderBy
         }
     }
 
     public struct Statistics: AWSDecodableShape {
-
         /// The approximate number of objects that the job has yet to process during its current run.
         public let approximateNumberOfObjectsToProcess: Double?
         /// The number of times that the job has run.
@@ -4529,13 +4275,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case approximateNumberOfObjectsToProcess = "approximateNumberOfObjectsToProcess"
-            case numberOfRuns = "numberOfRuns"
+            case approximateNumberOfObjectsToProcess
+            case numberOfRuns
         }
     }
 
     public struct TagCriterionForJob: AWSEncodableShape & AWSDecodableShape {
-
         /// The operator to use in the condition. Valid values are EQ (equals) and NE (not equals).
         public let comparator: JobComparator?
         /// The tag keys, tag values, or tag key and value pairs to use in the condition.
@@ -4547,13 +4292,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case comparator = "comparator"
-            case tagValues = "tagValues"
+            case comparator
+            case tagValues
         }
     }
 
     public struct TagCriterionPairForJob: AWSEncodableShape & AWSDecodableShape {
-
         /// The value for the tag key to use in the condition.
         public let key: String?
         /// The tag value to use in the condition.
@@ -4565,8 +4309,8 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case key = "key"
-            case value = "value"
+            case key
+            case value
         }
     }
 
@@ -4586,20 +4330,15 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tags = "tags"
+            case tags
         }
     }
 
     public struct TagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct TagScopeTerm: AWSEncodableShape & AWSDecodableShape {
-
         /// The operator to use in the condition. Valid values are EQ (equals) or NE (not equals).
         public let comparator: JobComparator?
         /// The object property to use in the condition. The only valid value is TAG.
@@ -4617,15 +4356,14 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case comparator = "comparator"
-            case key = "key"
-            case tagValues = "tagValues"
-            case target = "target"
+            case comparator
+            case key
+            case tagValues
+            case target
         }
     }
 
     public struct TagValuePair: AWSEncodableShape & AWSDecodableShape {
-
         /// The value for the tag key to use in the condition.
         public let key: String?
         /// The tag value, associated with the specified tag key (key), to use in the condition. To specify only a tag key for a condition, specify the tag key for the key property and set this value to an empty string.
@@ -4637,13 +4375,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case key = "key"
-            case value = "value"
+            case key
+            case value
         }
     }
 
     public struct TestCustomDataIdentifierRequest: AWSEncodableShape {
-
         /// An array that lists specific character sequences (ignore words) to exclude from the results. If the text matched by the regular expression is the same as any string in this array, Amazon Macie ignores it. The array can contain as many as 10 ignore words. Each ignore word can contain 4-90 characters. Ignore words are case sensitive.
         public let ignoreWords: [String]?
         /// An array that lists specific character sequences (keywords), one of which must be within proximity (maximumMatchDistance) of the regular expression to match. The array can contain as many as 50 keywords. Each keyword can contain 3-90 characters. Keywords aren't case sensitive.
@@ -4664,16 +4401,15 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case ignoreWords = "ignoreWords"
-            case keywords = "keywords"
-            case maximumMatchDistance = "maximumMatchDistance"
-            case regex = "regex"
-            case sampleText = "sampleText"
+            case ignoreWords
+            case keywords
+            case maximumMatchDistance
+            case regex
+            case sampleText
         }
     }
 
     public struct TestCustomDataIdentifierResponse: AWSDecodableShape {
-
         /// The number of instances of sample text that matched the detection criteria specified in the custom data identifier.
         public let matchCount: Int?
 
@@ -4682,12 +4418,11 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case matchCount = "matchCount"
+            case matchCount
         }
     }
 
     public struct UnprocessedAccount: AWSDecodableShape {
-
         /// The Amazon Web Services account ID for the account that the request applies to.
         public let accountId: String?
         /// The source of the issue or delay in processing the request.
@@ -4702,15 +4437,15 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accountId = "accountId"
-            case errorCode = "errorCode"
-            case errorMessage = "errorMessage"
+            case accountId
+            case errorCode
+            case errorMessage
         }
     }
 
     public struct UntagResourceRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "resourceArn")), 
+            AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "resourceArn")),
             AWSMemberEncoding(label: "tagKeys", location: .querystring(locationName: "tagKeys"))
         ]
 
@@ -4728,11 +4463,7 @@ extension Macie2 {
     }
 
     public struct UntagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateClassificationJobRequest: AWSEncodableShape {
@@ -4751,16 +4482,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case jobStatus = "jobStatus"
+            case jobStatus
         }
     }
 
     public struct UpdateClassificationJobResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateFindingsFilterRequest: AWSEncodableShape {
@@ -4794,17 +4521,16 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case action = "action"
-            case clientToken = "clientToken"
-            case description = "description"
-            case findingCriteria = "findingCriteria"
-            case name = "name"
-            case position = "position"
+            case action
+            case clientToken
+            case description
+            case findingCriteria
+            case name
+            case position
         }
     }
 
     public struct UpdateFindingsFilterResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the filter that was updated.
         public let arn: String?
         /// The unique identifier for the filter that was updated.
@@ -4816,13 +4542,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case id = "id"
+            case arn
+            case id
         }
     }
 
     public struct UpdateMacieSessionRequest: AWSEncodableShape {
-
         /// Specifies how often to publish updates to policy findings for the account. This includes publishing updates to Security Hub and Amazon EventBridge (formerly called Amazon CloudWatch Events).
         public let findingPublishingFrequency: FindingPublishingFrequency?
         /// Specifies a new status for the account. Valid values are: ENABLED, resume all Amazon Macie activities for the account; and, PAUSED, suspend all Macie activities for the account.
@@ -4834,17 +4559,13 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case findingPublishingFrequency = "findingPublishingFrequency"
-            case status = "status"
+            case findingPublishingFrequency
+            case status
         }
     }
 
     public struct UpdateMacieSessionResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateMemberSessionRequest: AWSEncodableShape {
@@ -4863,20 +4584,15 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case status = "status"
+            case status
         }
     }
 
     public struct UpdateMemberSessionResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateOrganizationConfigurationRequest: AWSEncodableShape {
-
         /// Specifies whether to enable Amazon Macie automatically for each account, when the account is added to the Amazon Web Services organization.
         public let autoEnable: Bool
 
@@ -4885,20 +4601,15 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case autoEnable = "autoEnable"
+            case autoEnable
         }
     }
 
     public struct UpdateOrganizationConfigurationResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UsageByAccount: AWSDecodableShape {
-
         /// The type of currency that the value for the metric (estimatedCost) is reported in.
         public let currency: Currency?
         /// The estimated value for the metric.
@@ -4916,15 +4627,14 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case currency = "currency"
-            case estimatedCost = "estimatedCost"
-            case serviceLimit = "serviceLimit"
-            case type = "type"
+            case currency
+            case estimatedCost
+            case serviceLimit
+            case type
         }
     }
 
     public struct UsageRecord: AWSDecodableShape {
-
         /// The unique identifier for the Amazon Web Services account that the data applies to.
         public let accountId: String?
         /// The date and time, in UTC and extended ISO 8601 format, when the free trial started for the account.
@@ -4940,14 +4650,13 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accountId = "accountId"
-            case freeTrialStartDate = "freeTrialStartDate"
-            case usage = "usage"
+            case accountId
+            case freeTrialStartDate
+            case usage
         }
     }
 
     public struct UsageStatisticsFilter: AWSEncodableShape {
-
         /// The operator to use in the condition. If the value for the key property is accountId, this value must be CONTAINS. If the value for the key property is any other supported field, this value can be EQ, GT, GTE, LT, LTE, or NE.
         public let comparator: UsageStatisticsFilterComparator?
         /// The field to use in the condition.
@@ -4962,14 +4671,13 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case comparator = "comparator"
-            case key = "key"
-            case values = "values"
+            case comparator
+            case key
+            case values
         }
     }
 
     public struct UsageStatisticsSortBy: AWSEncodableShape {
-
         /// The field to sort the results by.
         public let key: UsageStatisticsSortKey?
         /// The sort order to apply to the results, based on the value for the field specified by the key property. Valid values are: ASC, sort the results in ascending order; and, DESC, sort the results in descending order.
@@ -4981,13 +4689,12 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case key = "key"
-            case orderBy = "orderBy"
+            case key
+            case orderBy
         }
     }
 
     public struct UsageTotal: AWSDecodableShape {
-
         /// The type of currency that the value for the metric (estimatedCost) is reported in.
         public let currency: Currency?
         /// The estimated value for the metric.
@@ -5002,14 +4709,13 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case currency = "currency"
-            case estimatedCost = "estimatedCost"
-            case type = "type"
+            case currency
+            case estimatedCost
+            case type
         }
     }
 
     public struct UserIdentity: AWSDecodableShape {
-
         /// If the action was performed with temporary security credentials that were obtained using the AssumeRole operation of the Security Token Service (STS) API, the identifiers, session context, and other details about the identity.
         public let assumedRole: AssumedRole?
         /// If the action was performed using the credentials for another Amazon Web Services account, the details of that account.
@@ -5036,18 +4742,17 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case assumedRole = "assumedRole"
-            case awsAccount = "awsAccount"
-            case awsService = "awsService"
-            case federatedUser = "federatedUser"
-            case iamUser = "iamUser"
-            case root = "root"
-            case type = "type"
+            case assumedRole
+            case awsAccount
+            case awsService
+            case federatedUser
+            case iamUser
+            case root
+            case type
         }
     }
 
     public struct UserIdentityRoot: AWSDecodableShape {
-
         /// The unique identifier for the Amazon Web Services account.
         public let accountId: String?
         /// The Amazon Resource Name (ARN) of the principal that performed the action. The last section of the ARN contains the name of the user or role that performed the action.
@@ -5062,14 +4767,13 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accountId = "accountId"
-            case arn = "arn"
-            case principalId = "principalId"
+            case accountId
+            case arn
+            case principalId
         }
     }
 
     public struct UserPausedDetails: AWSDecodableShape {
-
         /// The date and time, in UTC and extended ISO 8601 format, when the job or job run will expire and be cancelled if you don't resume it first.
         @OptionalCustomCoding<ISO8601DateCoder>
         public var jobExpiresAt: Date?
@@ -5086,14 +4790,13 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case jobExpiresAt = "jobExpiresAt"
-            case jobImminentExpirationHealthEventArn = "jobImminentExpirationHealthEventArn"
-            case jobPausedAt = "jobPausedAt"
+            case jobExpiresAt
+            case jobImminentExpirationHealthEventArn
+            case jobPausedAt
         }
     }
 
     public struct WeeklySchedule: AWSEncodableShape & AWSDecodableShape {
-
         /// The day of the week when Amazon Macie runs the job.
         public let dayOfWeek: DayOfWeek?
 
@@ -5102,7 +4805,7 @@ extension Macie2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case dayOfWeek = "dayOfWeek"
+            case dayOfWeek
         }
     }
 }

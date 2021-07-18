@@ -20,7 +20,7 @@ import SotoCore
 // MARK: Paginators
 
 extension IoT {
-    ///   Returns a Device Defender's ML Detect Security Profile training model's status. 
+    ///   Returns a Device Defender's ML Detect Security Profile training model's status.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.
@@ -338,7 +338,7 @@ extension IoT {
         )
     }
 
-    ///   Lists your Device Defender audit listings. 
+    ///   Lists your Device Defender audit listings.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.
@@ -709,7 +709,7 @@ extension IoT {
         )
     }
 
-    ///   Lists your Device Defender detect custom metrics. 
+    ///   Lists your Device Defender detect custom metrics.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.
@@ -762,7 +762,7 @@ extension IoT {
         )
     }
 
-    ///   Lists mitigation actions executions for a Device Defender ML Detect Security Profile. 
+    ///   Lists mitigation actions executions for a Device Defender ML Detect Security Profile.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.
@@ -815,7 +815,7 @@ extension IoT {
         )
     }
 
-    ///   List of Device Defender ML Detect mitigation actions tasks. 
+    ///   List of Device Defender ML Detect mitigation actions tasks.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.
@@ -1506,7 +1506,7 @@ extension IoT {
 
     ///  Lists the things associated with the specified principal. A principal can be X.509
     ///  			certificates, IAM users, groups, and roles, Amazon Cognito identities or federated
-    ///  			identities. 
+    ///  			identities.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.
@@ -1771,7 +1771,7 @@ extension IoT {
         )
     }
 
-    ///  Lists the Device Defender security profiles you've created. You can filter security profiles by dimension or custom metric.   dimensionName and metricName cannot be used in the same request. 
+    ///  Lists the Device Defender security profiles you've created. You can filter security profiles by dimension or custom metric.   dimensionName and metricName cannot be used in the same request.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.
@@ -2413,10 +2413,10 @@ extension IoT {
     ///  				attributeValue parameters to filter your things.
     ///  			For example, calling ListThings with attributeName=Color and
     ///  			attributeValue=Red retrieves all things in the registry that contain an attribute
-    ///  				Color with the value Red. 
-    ///  		       
+    ///  				Color with the value Red.
+    ///
     ///  			         You will not be charged for calling this API if an Access denied error is returned. You will also not be charged if no attributes or pagination token was provided in request and no pagination token and no results were returned.
-    ///  		       
+    ///
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.

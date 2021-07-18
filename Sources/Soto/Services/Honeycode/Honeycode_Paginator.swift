@@ -20,7 +20,7 @@ import SotoCore
 // MARK: Paginators
 
 extension Honeycode {
-    ///   The ListTableColumns API allows you to retrieve a list of all the columns in a table in a workbook. 
+    ///   The ListTableColumns API allows you to retrieve a list of all the columns in a table in a workbook.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.
@@ -73,7 +73,7 @@ extension Honeycode {
         )
     }
 
-    ///   The ListTableRows API allows you to retrieve a list of all the rows in a table in a workbook. 
+    ///   The ListTableRows API allows you to retrieve a list of all the rows in a table in a workbook.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.
@@ -126,7 +126,7 @@ extension Honeycode {
         )
     }
 
-    ///   The ListTables API allows you to retrieve a list of all the tables in a workbook. 
+    ///   The ListTables API allows you to retrieve a list of all the tables in a workbook.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.
@@ -179,7 +179,7 @@ extension Honeycode {
         )
     }
 
-    ///   The QueryTableRows API allows you to use a filter formula to query for specific rows in a table. 
+    ///   The QueryTableRows API allows you to use a filter formula to query for specific rows in a table.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.

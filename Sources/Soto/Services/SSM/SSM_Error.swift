@@ -174,7 +174,7 @@ public struct SSMErrorType: AWSErrorType {
     public static var associationExecutionDoesNotExist: Self { .init(.associationExecutionDoesNotExist) }
     /// You can have at most 2,000 active associations.
     public static var associationLimitExceeded: Self { .init(.associationLimitExceeded) }
-    /// You have reached the maximum number versions allowed for an association. Each association has a limit of 1,000 versions. 
+    /// You have reached the maximum number versions allowed for an association. Each association has a limit of 1,000 versions.
     public static var associationVersionLimitExceeded: Self { .init(.associationVersionLimitExceeded) }
     /// Indicates that the Change Manager change template used in the change request was rejected or is still in a pending state.
     public static var automationDefinitionNotApprovedException: Self { .init(.automationDefinitionNotApprovedException) }
@@ -188,7 +188,7 @@ public struct SSMErrorType: AWSErrorType {
     public static var automationExecutionNotFoundException: Self { .init(.automationExecutionNotFoundException) }
     /// The specified step name and execution ID don't exist. Verify the information and try again.
     public static var automationStepNotFoundException: Self { .init(.automationStepNotFoundException) }
-    /// You specified too many custom compliance types. You can specify a maximum of 10 different types. 
+    /// You specified too many custom compliance types. You can specify a maximum of 10 different types.
     public static var complianceTypeCountLimitExceededException: Self { .init(.complianceTypeCountLimitExceededException) }
     /// You have exceeded the limit for custom schemas. Delete one or more custom schemas and try again.
     public static var customSchemaCountLimitExceededException: Self { .init(.customSchemaCountLimitExceededException) }
@@ -208,13 +208,13 @@ public struct SSMErrorType: AWSErrorType {
     public static var duplicateDocumentVersionName: Self { .init(.duplicateDocumentVersionName) }
     /// You can't specify an instance ID in more than one association.
     public static var duplicateInstanceId: Self { .init(.duplicateInstanceId) }
-    /// You attempted to register a LAMBDA or STEP_FUNCTIONS task in a region where the corresponding service isn't available. 
+    /// You attempted to register a LAMBDA or STEP_FUNCTIONS task in a region where the corresponding service isn't available.
     public static var featureNotAvailableException: Self { .init(.featureNotAvailableException) }
-    /// A hierarchy can have a maximum of 15 levels. For more information, see Requirements and constraints for parameter names in the Amazon Web Services Systems Manager User Guide. 
+    /// A hierarchy can have a maximum of 15 levels. For more information, see Requirements and constraints for parameter names in the Amazon Web Services Systems Manager User Guide.
     public static var hierarchyLevelLimitExceededException: Self { .init(.hierarchyLevelLimitExceededException) }
     /// Parameter Store doesn't support changing a parameter type in a hierarchy. For example, you can't change a parameter from a String type to a SecureString type. You must create a new, unique parameter.
     public static var hierarchyTypeMismatchException: Self { .init(.hierarchyTypeMismatchException) }
-    /// Error returned when an idempotent operation is retried and the parameters don't match the original call to the API with the same idempotency token. 
+    /// Error returned when an idempotent operation is retried and the parameters don't match the original call to the API with the same idempotency token.
     public static var idempotentParameterMismatch: Self { .init(.idempotentParameterMismatch) }
     /// There is a conflict in the policies specified for this parameter. You can't, for example, specify two Expiration policies for a parameter. Review your policies, and try again.
     public static var incompatiblePolicyException: Self { .init(.incompatiblePolicyException) }
@@ -228,7 +228,7 @@ public struct SSMErrorType: AWSErrorType {
     public static var invalidAggregatorException: Self { .init(.invalidAggregatorException) }
     /// The request doesn't meet the regular expression requirement.
     public static var invalidAllowedPatternException: Self { .init(.invalidAllowedPatternException) }
-    /// The association isn't valid or doesn't exist. 
+    /// The association isn't valid or doesn't exist.
     public static var invalidAssociation: Self { .init(.invalidAssociation) }
     /// The version you specified isn't valid. Use ListAssociationVersions to view all versions of an association according to the association ID. Or, use the $LATEST parameter to view the latest version of the association.
     public static var invalidAssociationVersion: Self { .init(.invalidAssociationVersion) }
@@ -264,7 +264,7 @@ public struct SSMErrorType: AWSErrorType {
     public static var invalidFilterOption: Self { .init(.invalidFilterOption) }
     /// The filter value isn't valid. Verify the value and try again.
     public static var invalidFilterValue: Self { .init(.invalidFilterValue) }
-    /// The following problems can cause this exception:   You don't have permission to access the instance.   Amazon Web Services Systems Manager Agent(SSM Agent) isn't running. Verify that SSM Agent is running.   SSM Agent isn't registered with the SSM endpoint. Try reinstalling SSM Agent.   The instance isn't in valid state. Valid states are: Running, Pending, Stopped, and Stopping. Invalid states are: Shutting-down and Terminated.  
+    /// The following problems can cause this exception:   You don't have permission to access the instance.   Amazon Web Services Systems Manager Agent(SSM Agent) isn't running. Verify that SSM Agent is running.   SSM Agent isn't registered with the SSM endpoint. Try reinstalling SSM Agent.   The instance isn't in valid state. Valid states are: Running, Pending, Stopped, and Stopping. Invalid states are: Shutting-down and Terminated.
     public static var invalidInstanceId: Self { .init(.invalidInstanceId) }
     /// The specified filter value isn't valid.
     public static var invalidInstanceInformationFilterValue: Self { .init(.invalidInstanceInformationFilterValue) }
@@ -294,7 +294,7 @@ public struct SSMErrorType: AWSErrorType {
     public static var invalidPermissionType: Self { .init(.invalidPermissionType) }
     /// The plugin name isn't valid.
     public static var invalidPluginName: Self { .init(.invalidPluginName) }
-    /// A policy attribute or its value is invalid. 
+    /// A policy attribute or its value is invalid.
     public static var invalidPolicyAttributeException: Self { .init(.invalidPolicyAttributeException) }
     /// The policy type isn't supported. Parameter Store supports the following policy types: Expiration, ExpirationNotification, and NoChangeNotification.
     public static var invalidPolicyTypeException: Self { .init(.invalidPolicyTypeException) }
@@ -314,9 +314,9 @@ public struct SSMErrorType: AWSErrorType {
     public static var invalidTypeNameException: Self { .init(.invalidTypeNameException) }
     /// The update isn't valid.
     public static var invalidUpdate: Self { .init(.invalidUpdate) }
-    /// The command ID and instance ID you specified didn't match any invocations. Verify the command ID and the instance ID and try again. 
+    /// The command ID and instance ID you specified didn't match any invocations. Verify the command ID and the instance ID and try again.
     public static var invocationDoesNotExist: Self { .init(.invocationDoesNotExist) }
-    /// The inventory item has invalid content. 
+    /// The inventory item has invalid content.
     public static var itemContentMismatchException: Self { .init(.itemContentMismatchException) }
     /// The inventory item size has exceeded the size limit.
     public static var itemSizeLimitExceededException: Self { .init(.itemSizeLimitExceededException) }
@@ -336,13 +336,13 @@ public struct SSMErrorType: AWSErrorType {
     public static var opsItemRelatedItemAssociationNotFoundException: Self { .init(.opsItemRelatedItemAssociationNotFoundException) }
     /// An OpsMetadata object already exists for the selected resource.
     public static var opsMetadataAlreadyExistsException: Self { .init(.opsMetadataAlreadyExistsException) }
-    /// One of the arguments passed is invalid. 
+    /// One of the arguments passed is invalid.
     public static var opsMetadataInvalidArgumentException: Self { .init(.opsMetadataInvalidArgumentException) }
     /// The OpsMetadata object exceeds the maximum number of OpsMetadata keys that you can assign to an application in Application Manager.
     public static var opsMetadataKeyLimitExceededException: Self { .init(.opsMetadataKeyLimitExceededException) }
     /// Your account reached the maximum number of OpsMetadata objects allowed by Application Manager. The maximum is 200 OpsMetadata objects. Delete one or more OpsMetadata object and try again.
     public static var opsMetadataLimitExceededException: Self { .init(.opsMetadataLimitExceededException) }
-    /// The OpsMetadata object doesn't exist. 
+    /// The OpsMetadata object doesn't exist.
     public static var opsMetadataNotFoundException: Self { .init(.opsMetadataNotFoundException) }
     /// The system is processing too many concurrent updates. Wait a few moments and try again.
     public static var opsMetadataTooManyUpdatesException: Self { .init(.opsMetadataTooManyUpdatesException) }
@@ -350,7 +350,7 @@ public struct SSMErrorType: AWSErrorType {
     public static var parameterAlreadyExists: Self { .init(.parameterAlreadyExists) }
     /// You have exceeded the number of parameters for this account. Delete one or more parameters and try again.
     public static var parameterLimitExceeded: Self { .init(.parameterLimitExceeded) }
-    /// Parameter Store retains the 100 most recently created versions of a parameter. After this number of versions has been created, Parameter Store deletes the oldest version when a new one is created. However, if the oldest version has a label attached to it, Parameter Store won't delete the version and instead presents this error message:  An error occurred (ParameterMaxVersionLimitExceeded) when calling the PutParameter operation: You attempted to create a new version of parameter-name by calling the PutParameter API with the overwrite flag. Version version-number, the oldest version, can't be deleted because it has a label associated with it. Move the label to another version of the parameter, and try again.  This safeguard is to prevent parameter versions with mission critical labels assigned to them from being deleted. To continue creating new parameters, first move the label from the oldest version of the parameter to a newer one for use in your operations. For information about moving parameter labels, see Move a parameter label (console) or Move a parameter label (CLI) in the Amazon Web Services Systems Manager User Guide. 
+    /// Parameter Store retains the 100 most recently created versions of a parameter. After this number of versions has been created, Parameter Store deletes the oldest version when a new one is created. However, if the oldest version has a label attached to it, Parameter Store won't delete the version and instead presents this error message:  An error occurred (ParameterMaxVersionLimitExceeded) when calling the PutParameter operation: You attempted to create a new version of parameter-name by calling the PutParameter API with the overwrite flag. Version version-number, the oldest version, can't be deleted because it has a label associated with it. Move the label to another version of the parameter, and try again.  This safeguard is to prevent parameter versions with mission critical labels assigned to them from being deleted. To continue creating new parameters, first move the label from the oldest version of the parameter to a newer one for use in your operations. For information about moving parameter labels, see Move a parameter label (console) or Move a parameter label (CLI) in the Amazon Web Services Systems Manager User Guide.
     public static var parameterMaxVersionLimitExceeded: Self { .init(.parameterMaxVersionLimitExceeded) }
     /// The parameter couldn't be found. Verify the name and try again.
     public static var parameterNotFound: Self { .init(.parameterNotFound) }

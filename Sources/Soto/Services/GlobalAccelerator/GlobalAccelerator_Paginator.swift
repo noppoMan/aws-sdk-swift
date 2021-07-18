@@ -20,7 +20,7 @@ import SotoCore
 // MARK: Paginators
 
 extension GlobalAccelerator {
-    ///  List the accelerators for an AWS account. 
+    ///  List the accelerators for an AWS account.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.
@@ -127,7 +127,7 @@ extension GlobalAccelerator {
         )
     }
 
-    ///  List the custom routing accelerators for an AWS account. 
+    ///  List the custom routing accelerators for an AWS account.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.
@@ -180,7 +180,7 @@ extension GlobalAccelerator {
         )
     }
 
-    ///  List the endpoint groups that are associated with a listener for a custom routing accelerator. 
+    ///  List the endpoint groups that are associated with a listener for a custom routing accelerator.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.
@@ -233,7 +233,7 @@ extension GlobalAccelerator {
         )
     }
 
-    ///  List the listeners for a custom routing accelerator. 
+    ///  List the listeners for a custom routing accelerator.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.
@@ -288,9 +288,9 @@ extension GlobalAccelerator {
 
     ///  Provides a complete mapping from the public accelerator IP address and port to destination EC2 instance
     ///  		IP addresses and ports in the virtual public cloud (VPC) subnet endpoint for a custom routing accelerator.
-    ///  		For each subnet endpoint that you add, Global Accelerator creates a new static port mapping for the accelerator. The port 
-    ///  		mappings don't change after Global Accelerator generates them, so you can retrieve and cache the full mapping on your servers. 
-    ///  	        If you remove a subnet from your accelerator, Global Accelerator removes (reclaims) the port mappings. If you add a subnet to 
+    ///  		For each subnet endpoint that you add, Global Accelerator creates a new static port mapping for the accelerator. The port
+    ///  		mappings don't change after Global Accelerator generates them, so you can retrieve and cache the full mapping on your servers.
+    ///  	        If you remove a subnet from your accelerator, Global Accelerator removes (reclaims) the port mappings. If you add a subnet to
     ///  		your accelerator, Global Accelerator creates new port mappings (the existing ones don't change). If you add or remove EC2 instances
     ///  		in your subnet, the port mappings don't change, because the mappings are created when you add the subnet to Global Accelerator.
     ///  	        The mappings also include a flag for each destination denoting which destination IP addresses and
@@ -348,7 +348,7 @@ extension GlobalAccelerator {
     }
 
     ///  List the port mappings for a specific EC2 instance (destination) in a VPC subnet endpoint. The
-    ///  			response is the mappings for one destination IP address. This is useful when your subnet endpoint has mappings that 
+    ///  			response is the mappings for one destination IP address. This is useful when your subnet endpoint has mappings that
     ///  			span multiple custom routing accelerators in your account, or for scenarios where you only want to
     ///  			list the port mappings for a specific destination instance.
     ///
@@ -403,7 +403,7 @@ extension GlobalAccelerator {
         )
     }
 
-    ///  List the endpoint groups that are associated with a listener. 
+    ///  List the endpoint groups that are associated with a listener.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.
@@ -456,7 +456,7 @@ extension GlobalAccelerator {
         )
     }
 
-    ///  List the listeners for an accelerator. 
+    ///  List the listeners for an accelerator.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.

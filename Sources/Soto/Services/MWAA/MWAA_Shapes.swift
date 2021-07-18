@@ -110,7 +110,6 @@ extension MWAA {
     }
 
     public struct CreateCliTokenResponse: AWSDecodableShape {
-
         /// Create an Airflow CLI login token response for the provided JWT token.
         public let cliToken: String?
         /// Create an Airflow CLI login token response for the provided webserver hostname.
@@ -170,7 +169,7 @@ extension MWAA {
         public let tags: [String: String]?
         /// The Apache Airflow Web server access mode. To learn more, see Apache Airflow access modes.
         public let webserverAccessMode: WebserverAccessMode?
-        /// The day and time of the week to start weekly maintenance updates of your environment in the following format: DAY:HH:MM. For example: TUE:03:30. You can specify a start time in 30 minute increments only. Supported input includes the following:   MON|TUE|WED|THU|FRI|SAT|SUN:([01]\\d|2[0-3]):(00|30)  
+        /// The day and time of the week to start weekly maintenance updates of your environment in the following format: DAY:HH:MM. For example: TUE:03:30. You can specify a start time in 30 minute increments only. Supported input includes the following:   MON|TUE|WED|THU|FRI|SAT|SUN:([01]\\d|2[0-3]):(00|30)
         public let weeklyMaintenanceWindowStart: String?
 
         public init(airflowConfigurationOptions: [String: String]? = nil, airflowVersion: String? = nil, dagS3Path: String, environmentClass: String? = nil, executionRoleArn: String, kmsKey: String? = nil, loggingConfiguration: LoggingConfigurationInput? = nil, maxWorkers: Int? = nil, minWorkers: Int? = nil, name: String, networkConfiguration: NetworkConfiguration, pluginsS3ObjectVersion: String? = nil, pluginsS3Path: String? = nil, requirementsS3ObjectVersion: String? = nil, requirementsS3Path: String? = nil, schedulers: Int? = nil, sourceBucketArn: String, tags: [String: String]? = nil, webserverAccessMode: WebserverAccessMode? = nil, weeklyMaintenanceWindowStart: String? = nil) {
@@ -278,7 +277,6 @@ extension MWAA {
     }
 
     public struct CreateEnvironmentOutput: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) returned in the response for the environment.
         public let arn: String?
 
@@ -313,7 +311,6 @@ extension MWAA {
     }
 
     public struct CreateWebLoginTokenResponse: AWSDecodableShape {
-
         /// Create an Airflow Web UI login token response for the provided webserver hostname.
         public let webServerHostname: String?
         /// Create an Airflow Web UI login token response for the provided JWT token.
@@ -352,15 +349,10 @@ extension MWAA {
     }
 
     public struct DeleteEnvironmentOutput: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct Dimension: AWSEncodableShape {
-
         /// Internal only API.
         public let name: String
         /// Internal only API.
@@ -378,7 +370,6 @@ extension MWAA {
     }
 
     public struct Environment: AWSDecodableShape {
-
         /// A list of key-value pairs containing the Apache Airflow configuration options attached to your environment. To learn more, see Apache Airflow configuration options.
         public let airflowConfigurationOptions: [String: String]?
         /// The Apache Airflow version on your environment. For example, v1.10.12.
@@ -511,7 +502,6 @@ extension MWAA {
     }
 
     public struct GetEnvironmentOutput: AWSDecodableShape {
-
         /// An object containing all available details about the environment.
         public let environment: Environment?
 
@@ -525,7 +515,6 @@ extension MWAA {
     }
 
     public struct LastUpdate: AWSDecodableShape {
-
         /// The day and time of the last update on the environment.
         public let createdAt: Date?
         /// The error that was encountered during the last update of the environment.
@@ -548,7 +537,7 @@ extension MWAA {
 
     public struct ListEnvironmentsInput: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "MaxResults")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "MaxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "NextToken"))
         ]
 
@@ -570,7 +559,6 @@ extension MWAA {
     }
 
     public struct ListEnvironmentsOutput: AWSDecodableShape {
-
         /// Returns the list of Amazon MWAA environments.
         public let environments: [String]
         /// Retrieves the next page of the results.
@@ -609,7 +597,6 @@ extension MWAA {
     }
 
     public struct ListTagsForResourceOutput: AWSDecodableShape {
-
         /// The key-value tag pairs associated to your environment. To learn more, see Tagging AWS resources.
         public let tags: [String: String]?
 
@@ -623,7 +610,6 @@ extension MWAA {
     }
 
     public struct LoggingConfiguration: AWSDecodableShape {
-
         public let dagProcessingLogs: ModuleLoggingConfiguration?
         public let schedulerLogs: ModuleLoggingConfiguration?
         public let taskLogs: ModuleLoggingConfiguration?
@@ -648,7 +634,6 @@ extension MWAA {
     }
 
     public struct LoggingConfigurationInput: AWSEncodableShape {
-
         public let dagProcessingLogs: ModuleLoggingConfigurationInput?
         public let schedulerLogs: ModuleLoggingConfigurationInput?
         public let taskLogs: ModuleLoggingConfigurationInput?
@@ -673,7 +658,6 @@ extension MWAA {
     }
 
     public struct MetricDatum: AWSEncodableShape {
-
         /// Internal only API.
         public let dimensions: [Dimension]?
         /// Internal only API.
@@ -706,7 +690,6 @@ extension MWAA {
     }
 
     public struct ModuleLoggingConfiguration: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) for the CloudWatch Logs group where the Apache Airflow log type (e.g. DagProcessingLogs) is published. For example, arn:aws:logs:us-east-1:123456789012:log-group:airflow-MyMWAAEnvironment-MwaaEnvironment-DAGProcessing:*.
         public let cloudWatchLogGroupArn: String?
         /// Indicates whether to enable the Apache Airflow log type (e.g. DagProcessingLogs) in CloudWatch Logs.
@@ -728,7 +711,6 @@ extension MWAA {
     }
 
     public struct ModuleLoggingConfigurationInput: AWSEncodableShape {
-
         /// Indicates whether to enable the Apache Airflow log type (e.g. DagProcessingLogs) in CloudWatch Logs.
         public let enabled: Bool
         /// Defines the Apache Airflow logs to send for the log type (e.g. DagProcessingLogs) to CloudWatch Logs. Valid values: CRITICAL, ERROR, WARNING, INFO.
@@ -746,7 +728,6 @@ extension MWAA {
     }
 
     public struct NetworkConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// A list of 1 or more security group IDs. Accepts up to 5 security group IDs. A security group must be attached to the same VPC as the subnets. To learn more, see Security in your VPC on Amazon MWAA.
         public let securityGroupIds: [String]?
         /// A list of 2 subnet IDs. Required to create an environment. Must be private subnets in two different availability zones. A subnet must be attached to the same VPC as the security group.
@@ -807,15 +788,10 @@ extension MWAA {
     }
 
     public struct PublishMetricsOutput: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct StatisticSet: AWSEncodableShape {
-
         /// Internal only API.
         public let maximum: Double?
         /// Internal only API.
@@ -877,22 +853,18 @@ extension MWAA {
     }
 
     public struct TagResourceOutput: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UntagResourceInput: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "ResourceArn")), 
+            AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "ResourceArn")),
             AWSMemberEncoding(label: "tagKeys", location: .querystring(locationName: "tagKeys"))
         ]
 
         /// The Amazon Resource Name (ARN) of the Amazon MWAA environment. For example, arn:aws:airflow:us-east-1:123456789012:environment/MyMWAAEnvironment.
         public let resourceArn: String
-        /// The key-value tag pair you want to remove. For example, "Environment": "Staging". 
+        /// The key-value tag pair you want to remove. For example, "Environment": "Staging".
         public let tagKeys: [String]
 
         public init(resourceArn: String, tagKeys: [String]) {
@@ -916,11 +888,7 @@ extension MWAA {
     }
 
     public struct UntagResourceOutput: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateEnvironmentInput: AWSEncodableShape {
@@ -962,7 +930,7 @@ extension MWAA {
         public let sourceBucketArn: String?
         /// The Apache Airflow Web server access mode. To learn more, see Apache Airflow access modes.
         public let webserverAccessMode: WebserverAccessMode?
-        /// The day and time of the week to start weekly maintenance updates of your environment in the following format: DAY:HH:MM. For example: TUE:03:30. You can specify a start time in 30 minute increments only. Supported input includes the following:   MON|TUE|WED|THU|FRI|SAT|SUN:([01]\\d|2[0-3]):(00|30)  
+        /// The day and time of the week to start weekly maintenance updates of your environment in the following format: DAY:HH:MM. For example: TUE:03:30. You can specify a start time in 30 minute increments only. Supported input includes the following:   MON|TUE|WED|THU|FRI|SAT|SUN:([01]\\d|2[0-3]):(00|30)
         public let weeklyMaintenanceWindowStart: String?
 
         public init(airflowConfigurationOptions: [String: String]? = nil, airflowVersion: String? = nil, dagS3Path: String? = nil, environmentClass: String? = nil, executionRoleArn: String? = nil, loggingConfiguration: LoggingConfigurationInput? = nil, maxWorkers: Int? = nil, minWorkers: Int? = nil, name: String, networkConfiguration: UpdateNetworkConfigurationInput? = nil, pluginsS3ObjectVersion: String? = nil, pluginsS3Path: String? = nil, requirementsS3ObjectVersion: String? = nil, requirementsS3Path: String? = nil, schedulers: Int? = nil, sourceBucketArn: String? = nil, webserverAccessMode: WebserverAccessMode? = nil, weeklyMaintenanceWindowStart: String? = nil) {
@@ -1053,7 +1021,6 @@ extension MWAA {
     }
 
     public struct UpdateEnvironmentOutput: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the Amazon MWAA environment. For example, arn:aws:airflow:us-east-1:123456789012:environment/MyMWAAEnvironment.
         public let arn: String?
 
@@ -1067,7 +1034,6 @@ extension MWAA {
     }
 
     public struct UpdateError: AWSDecodableShape {
-
         /// The error code that corresponds to the error with the last update.
         public let errorCode: String?
         /// The error message that corresponds to the error code.
@@ -1085,7 +1051,6 @@ extension MWAA {
     }
 
     public struct UpdateNetworkConfigurationInput: AWSEncodableShape {
-
         /// A list of 1 or more security group IDs. Accepts up to 5 security group IDs. A security group must be attached to the same VPC as the subnets. To learn more, see Security in your VPC on Amazon MWAA.
         public let securityGroupIds: [String]
 

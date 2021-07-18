@@ -57,7 +57,7 @@ extension WorkMailMessageFlow {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case messageContent = "messageContent"
+            case messageContent
         }
     }
 
@@ -84,20 +84,15 @@ extension WorkMailMessageFlow {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case content = "content"
+            case content
         }
     }
 
     public struct PutRawMessageContentResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct RawMessageContent: AWSEncodableShape {
-
         /// The S3 reference of an email message.
         public let s3Reference: S3Reference
 
@@ -110,12 +105,11 @@ extension WorkMailMessageFlow {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case s3Reference = "s3Reference"
+            case s3Reference
         }
     }
 
     public struct S3Reference: AWSEncodableShape {
-
         /// The S3 bucket name.
         public let bucket: String
         /// The S3 key object name.
@@ -142,9 +136,9 @@ extension WorkMailMessageFlow {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case bucket = "bucket"
-            case key = "key"
-            case objectVersion = "objectVersion"
+            case bucket
+            case key
+            case objectVersion
         }
     }
 }

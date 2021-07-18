@@ -128,7 +128,6 @@ extension AmplifyBackend {
     // MARK: Shapes
 
     public struct BackendAPIAppSyncAuthSettings: AWSEncodableShape & AWSDecodableShape {
-
         /// The Amazon Cognito user pool ID, if Amazon Cognito was used as an authentication setting to access your data models.
         public let cognitoUserPoolId: String?
         /// The API key description for API_KEY, if it was used as an authentication mechanism to access your data models.
@@ -158,19 +157,18 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case cognitoUserPoolId = "cognitoUserPoolId"
-            case description = "description"
-            case expirationTime = "expirationTime"
-            case openIDAuthTTL = "openIDAuthTTL"
-            case openIDClientId = "openIDClientId"
-            case openIDIatTTL = "openIDIatTTL"
-            case openIDIssueURL = "openIDIssueURL"
-            case openIDProviderName = "openIDProviderName"
+            case cognitoUserPoolId
+            case description
+            case expirationTime
+            case openIDAuthTTL
+            case openIDClientId
+            case openIDIatTTL
+            case openIDIssueURL
+            case openIDProviderName
         }
     }
 
     public struct BackendAPIAuthType: AWSEncodableShape & AWSDecodableShape {
-
         /// Describes the authentication mode.
         public let mode: Mode?
         /// Describes settings for the authentication mode.
@@ -182,13 +180,12 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case mode = "mode"
-            case settings = "settings"
+            case mode
+            case settings
         }
     }
 
     public struct BackendAPIConflictResolution: AWSEncodableShape & AWSDecodableShape {
-
         /// The strategy for conflict resolution.
         public let resolutionStrategy: ResolutionStrategy?
 
@@ -197,12 +194,11 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case resolutionStrategy = "resolutionStrategy"
+            case resolutionStrategy
         }
     }
 
     public struct BackendAPIResourceConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// Additional authentication methods used to interact with your data models.
         public let additionalAuthTypes: [BackendAPIAuthType]?
         /// The API name used to interact with the data model, configured as a part of your Amplify project.
@@ -226,17 +222,16 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case additionalAuthTypes = "additionalAuthTypes"
-            case apiName = "apiName"
-            case conflictResolution = "conflictResolution"
-            case defaultAuthType = "defaultAuthType"
-            case service = "service"
-            case transformSchema = "transformSchema"
+            case additionalAuthTypes
+            case apiName
+            case conflictResolution
+            case defaultAuthType
+            case service
+            case transformSchema
         }
     }
 
     public struct BackendAuthAppleProviderConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// Describes the client_id (also called Services ID) that comes from Apple.
         public let clientId: String?
         /// Describes the key_id that comes from Apple.
@@ -262,7 +257,6 @@ extension AmplifyBackend {
     }
 
     public struct BackendAuthSocialProviderConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// Describes the client_id, which can be obtained from the third-party social federation provider.
         public let clientId: String?
         /// Describes the client_secret, which can be obtained from third-party social federation providers.
@@ -280,7 +274,6 @@ extension AmplifyBackend {
     }
 
     public struct BackendJobRespObj: AWSDecodableShape {
-
         /// The app ID.
         public let appId: String
         /// The name of the backend environment.
@@ -310,20 +303,20 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case appId = "appId"
-            case backendEnvironmentName = "backendEnvironmentName"
-            case createTime = "createTime"
-            case error = "error"
-            case jobId = "jobId"
-            case operation = "operation"
-            case status = "status"
-            case updateTime = "updateTime"
+            case appId
+            case backendEnvironmentName
+            case createTime
+            case error
+            case jobId
+            case operation
+            case status
+            case updateTime
         }
     }
 
     public struct CloneBackendRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "appId", location: .uri(locationName: "AppId")), 
+            AWSMemberEncoding(label: "appId", location: .uri(locationName: "AppId")),
             AWSMemberEncoding(label: "backendEnvironmentName", location: .uri(locationName: "BackendEnvironmentName"))
         ]
 
@@ -341,12 +334,11 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case targetEnvironmentName = "targetEnvironmentName"
+            case targetEnvironmentName
         }
     }
 
     public struct CloneBackendResponse: AWSDecodableShape {
-
         /// The app ID.
         public let appId: String?
         /// The name of the backend environment.
@@ -370,12 +362,12 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case appId = "appId"
-            case backendEnvironmentName = "backendEnvironmentName"
-            case error = "error"
-            case jobId = "jobId"
-            case operation = "operation"
-            case status = "status"
+            case appId
+            case backendEnvironmentName
+            case error
+            case jobId
+            case operation
+            case status
         }
     }
 
@@ -401,14 +393,13 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case backendEnvironmentName = "backendEnvironmentName"
-            case resourceConfig = "resourceConfig"
-            case resourceName = "resourceName"
+            case backendEnvironmentName
+            case resourceConfig
+            case resourceName
         }
     }
 
     public struct CreateBackendAPIResponse: AWSDecodableShape {
-
         /// The app ID.
         public let appId: String?
         /// The name of the backend environment.
@@ -432,17 +423,16 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case appId = "appId"
-            case backendEnvironmentName = "backendEnvironmentName"
-            case error = "error"
-            case jobId = "jobId"
-            case operation = "operation"
-            case status = "status"
+            case appId
+            case backendEnvironmentName
+            case error
+            case jobId
+            case operation
+            case status
         }
     }
 
     public struct CreateBackendAuthForgotPasswordConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// Describes which mode to use (either SMS or email) to deliver messages to app users who want to recover their password.
         public let deliveryMethod: DeliveryMethod
         /// The configuration for the email sent when an app user forgets their password.
@@ -457,14 +447,13 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case deliveryMethod = "deliveryMethod"
-            case emailSettings = "emailSettings"
-            case smsSettings = "smsSettings"
+            case deliveryMethod
+            case emailSettings
+            case smsSettings
         }
     }
 
     public struct CreateBackendAuthIdentityPoolConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// Name of the Amazon Cognito identity pool used for authorization.
         public let identityPoolName: String
         /// Set to true or false based on whether you want to enable guest authorization to your Amplify app.
@@ -476,13 +465,12 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case identityPoolName = "identityPoolName"
-            case unauthenticatedLogin = "unauthenticatedLogin"
+            case identityPoolName
+            case unauthenticatedLogin
         }
     }
 
     public struct CreateBackendAuthMFAConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// Describes whether MFA should be [ON, OFF, or OPTIONAL] for authentication in your Amplify project.
         public let mFAMode: MFAMode
         /// Describes the configuration settings and methods for your Amplify app users to use MFA.
@@ -495,12 +483,11 @@ extension AmplifyBackend {
 
         private enum CodingKeys: String, CodingKey {
             case mFAMode = "MFAMode"
-            case settings = "settings"
+            case settings
         }
     }
 
     public struct CreateBackendAuthOAuthConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// The domain prefix for your Amplify app.
         public let domainPrefix: String?
         /// The OAuth grant type that you use to allow app users to authenticate from your Amplify app.
@@ -524,17 +511,16 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case domainPrefix = "domainPrefix"
-            case oAuthGrantType = "oAuthGrantType"
-            case oAuthScopes = "oAuthScopes"
-            case redirectSignInURIs = "redirectSignInURIs"
-            case redirectSignOutURIs = "redirectSignOutURIs"
-            case socialProviderSettings = "socialProviderSettings"
+            case domainPrefix
+            case oAuthGrantType
+            case oAuthScopes
+            case redirectSignInURIs
+            case redirectSignOutURIs
+            case socialProviderSettings
         }
     }
 
     public struct CreateBackendAuthPasswordPolicyConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// Additional constraints for the password used to access the backend of your Amplify project.
         public let additionalConstraints: [AdditionalConstraintsElement]?
         /// The minimum length of the password used to access the backend of your Amplify project.
@@ -546,8 +532,8 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case additionalConstraints = "additionalConstraints"
-            case minimumLength = "minimumLength"
+            case additionalConstraints
+            case minimumLength
         }
     }
 
@@ -573,14 +559,13 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case backendEnvironmentName = "backendEnvironmentName"
-            case resourceConfig = "resourceConfig"
-            case resourceName = "resourceName"
+            case backendEnvironmentName
+            case resourceConfig
+            case resourceName
         }
     }
 
     public struct CreateBackendAuthResourceConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// Defines whether you want to configure only authentication or both authentication and authorization settings.
         public let authResources: AuthResources
         /// Describes the authorization configuration for the Amazon Cognito identity pool, provisioned as a part of your auth resource in the Amplify project.
@@ -598,15 +583,14 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case authResources = "authResources"
-            case identityPoolConfigs = "identityPoolConfigs"
-            case service = "service"
-            case userPoolConfigs = "userPoolConfigs"
+            case authResources
+            case identityPoolConfigs
+            case service
+            case userPoolConfigs
         }
     }
 
     public struct CreateBackendAuthResponse: AWSDecodableShape {
-
         /// The app ID.
         public let appId: String?
         /// The name of the backend environment.
@@ -630,17 +614,16 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case appId = "appId"
-            case backendEnvironmentName = "backendEnvironmentName"
-            case error = "error"
-            case jobId = "jobId"
-            case operation = "operation"
-            case status = "status"
+            case appId
+            case backendEnvironmentName
+            case error
+            case jobId
+            case operation
+            case status
         }
     }
 
     public struct CreateBackendAuthUserPoolConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// Describes the forgotten password policy for your Amazon Cognito user pool, configured as a part of your Amplify project.
         public let forgotPassword: CreateBackendAuthForgotPasswordConfig?
         /// Describes whether to apply multi-factor authentication policies for your Amazon Cognito user pool configured as a part of your Amplify project.
@@ -667,13 +650,13 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case forgotPassword = "forgotPassword"
-            case mfa = "mfa"
-            case oAuth = "oAuth"
-            case passwordPolicy = "passwordPolicy"
-            case requiredSignUpAttributes = "requiredSignUpAttributes"
-            case signInMethod = "signInMethod"
-            case userPoolName = "userPoolName"
+            case forgotPassword
+            case mfa
+            case oAuth
+            case passwordPolicy
+            case requiredSignUpAttributes
+            case signInMethod
+            case userPoolName
         }
     }
 
@@ -693,12 +676,11 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case backendManagerAppId = "backendManagerAppId"
+            case backendManagerAppId
         }
     }
 
     public struct CreateBackendConfigResponse: AWSDecodableShape {
-
         /// The app ID.
         public let appId: String?
         /// The name of the backend environment.
@@ -716,15 +698,14 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case appId = "appId"
-            case backendEnvironmentName = "backendEnvironmentName"
-            case jobId = "jobId"
-            case status = "status"
+            case appId
+            case backendEnvironmentName
+            case jobId
+            case status
         }
     }
 
     public struct CreateBackendRequest: AWSEncodableShape {
-
         /// The app ID.
         public let appId: String
         /// The name of the app.
@@ -745,16 +726,15 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case appId = "appId"
-            case appName = "appName"
-            case backendEnvironmentName = "backendEnvironmentName"
-            case resourceConfig = "resourceConfig"
-            case resourceName = "resourceName"
+            case appId
+            case appName
+            case backendEnvironmentName
+            case resourceConfig
+            case resourceName
         }
     }
 
     public struct CreateBackendResponse: AWSDecodableShape {
-
         /// The app ID.
         public let appId: String?
         /// The name of the backend environment.
@@ -778,12 +758,12 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case appId = "appId"
-            case backendEnvironmentName = "backendEnvironmentName"
-            case error = "error"
-            case jobId = "jobId"
-            case operation = "operation"
-            case status = "status"
+            case appId
+            case backendEnvironmentName
+            case error
+            case jobId
+            case operation
+            case status
         }
     }
 
@@ -803,7 +783,6 @@ extension AmplifyBackend {
     }
 
     public struct CreateTokenResponse: AWSDecodableShape {
-
         /// The app ID.
         public let appId: String?
         /// One-time challenge code for authenticating into the Amplify Admin UI.
@@ -821,16 +800,16 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case appId = "appId"
-            case challengeCode = "challengeCode"
-            case sessionId = "sessionId"
-            case ttl = "ttl"
+            case appId
+            case challengeCode
+            case sessionId
+            case ttl
         }
     }
 
     public struct DeleteBackendAPIRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "appId", location: .uri(locationName: "AppId")), 
+            AWSMemberEncoding(label: "appId", location: .uri(locationName: "AppId")),
             AWSMemberEncoding(label: "backendEnvironmentName", location: .uri(locationName: "BackendEnvironmentName"))
         ]
 
@@ -851,13 +830,12 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case resourceConfig = "resourceConfig"
-            case resourceName = "resourceName"
+            case resourceConfig
+            case resourceName
         }
     }
 
     public struct DeleteBackendAPIResponse: AWSDecodableShape {
-
         /// The app ID.
         public let appId: String?
         /// The name of the backend environment.
@@ -881,18 +859,18 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case appId = "appId"
-            case backendEnvironmentName = "backendEnvironmentName"
-            case error = "error"
-            case jobId = "jobId"
-            case operation = "operation"
-            case status = "status"
+            case appId
+            case backendEnvironmentName
+            case error
+            case jobId
+            case operation
+            case status
         }
     }
 
     public struct DeleteBackendAuthRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "appId", location: .uri(locationName: "AppId")), 
+            AWSMemberEncoding(label: "appId", location: .uri(locationName: "AppId")),
             AWSMemberEncoding(label: "backendEnvironmentName", location: .uri(locationName: "BackendEnvironmentName"))
         ]
 
@@ -910,12 +888,11 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case resourceName = "resourceName"
+            case resourceName
         }
     }
 
     public struct DeleteBackendAuthResponse: AWSDecodableShape {
-
         /// The app ID.
         public let appId: String?
         /// The name of the backend environment.
@@ -939,18 +916,18 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case appId = "appId"
-            case backendEnvironmentName = "backendEnvironmentName"
-            case error = "error"
-            case jobId = "jobId"
-            case operation = "operation"
-            case status = "status"
+            case appId
+            case backendEnvironmentName
+            case error
+            case jobId
+            case operation
+            case status
         }
     }
 
     public struct DeleteBackendRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "appId", location: .uri(locationName: "AppId")), 
+            AWSMemberEncoding(label: "appId", location: .uri(locationName: "AppId")),
             AWSMemberEncoding(label: "backendEnvironmentName", location: .uri(locationName: "BackendEnvironmentName"))
         ]
 
@@ -968,7 +945,6 @@ extension AmplifyBackend {
     }
 
     public struct DeleteBackendResponse: AWSDecodableShape {
-
         /// The app ID.
         public let appId: String?
         /// The name of the backend environment.
@@ -992,18 +968,18 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case appId = "appId"
-            case backendEnvironmentName = "backendEnvironmentName"
-            case error = "error"
-            case jobId = "jobId"
-            case operation = "operation"
-            case status = "status"
+            case appId
+            case backendEnvironmentName
+            case error
+            case jobId
+            case operation
+            case status
         }
     }
 
     public struct DeleteTokenRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "appId", location: .uri(locationName: "AppId")), 
+            AWSMemberEncoding(label: "appId", location: .uri(locationName: "AppId")),
             AWSMemberEncoding(label: "sessionId", location: .uri(locationName: "SessionId"))
         ]
 
@@ -1021,7 +997,6 @@ extension AmplifyBackend {
     }
 
     public struct DeleteTokenResponse: AWSDecodableShape {
-
         /// Indicates whether the request succeeded or failed.
         public let isSuccess: Bool?
 
@@ -1030,12 +1005,11 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case isSuccess = "isSuccess"
+            case isSuccess
         }
     }
 
     public struct EmailSettings: AWSEncodableShape & AWSDecodableShape {
-
         /// The body of the email.
         public let emailMessage: String?
         /// The subject of the email.
@@ -1047,14 +1021,14 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case emailMessage = "emailMessage"
-            case emailSubject = "emailSubject"
+            case emailMessage
+            case emailSubject
         }
     }
 
     public struct GenerateBackendAPIModelsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "appId", location: .uri(locationName: "AppId")), 
+            AWSMemberEncoding(label: "appId", location: .uri(locationName: "AppId")),
             AWSMemberEncoding(label: "backendEnvironmentName", location: .uri(locationName: "BackendEnvironmentName"))
         ]
 
@@ -1072,12 +1046,11 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case resourceName = "resourceName"
+            case resourceName
         }
     }
 
     public struct GenerateBackendAPIModelsResponse: AWSDecodableShape {
-
         /// The app ID.
         public let appId: String?
         /// The name of the backend environment.
@@ -1101,18 +1074,18 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case appId = "appId"
-            case backendEnvironmentName = "backendEnvironmentName"
-            case error = "error"
-            case jobId = "jobId"
-            case operation = "operation"
-            case status = "status"
+            case appId
+            case backendEnvironmentName
+            case error
+            case jobId
+            case operation
+            case status
         }
     }
 
     public struct GetBackendAPIModelsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "appId", location: .uri(locationName: "AppId")), 
+            AWSMemberEncoding(label: "appId", location: .uri(locationName: "AppId")),
             AWSMemberEncoding(label: "backendEnvironmentName", location: .uri(locationName: "BackendEnvironmentName"))
         ]
 
@@ -1130,12 +1103,11 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case resourceName = "resourceName"
+            case resourceName
         }
     }
 
     public struct GetBackendAPIModelsResponse: AWSDecodableShape {
-
         /// Stringified JSON of the datastore model.
         public let models: String?
         /// The current status of the request.
@@ -1147,14 +1119,14 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case models = "models"
-            case status = "status"
+            case models
+            case status
         }
     }
 
     public struct GetBackendAPIRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "appId", location: .uri(locationName: "AppId")), 
+            AWSMemberEncoding(label: "appId", location: .uri(locationName: "AppId")),
             AWSMemberEncoding(label: "backendEnvironmentName", location: .uri(locationName: "BackendEnvironmentName"))
         ]
 
@@ -1175,13 +1147,12 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case resourceConfig = "resourceConfig"
-            case resourceName = "resourceName"
+            case resourceConfig
+            case resourceName
         }
     }
 
     public struct GetBackendAPIResponse: AWSDecodableShape {
-
         /// The app ID.
         public let appId: String?
         /// The name of the backend environment.
@@ -1202,17 +1173,17 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case appId = "appId"
-            case backendEnvironmentName = "backendEnvironmentName"
-            case error = "error"
-            case resourceConfig = "resourceConfig"
-            case resourceName = "resourceName"
+            case appId
+            case backendEnvironmentName
+            case error
+            case resourceConfig
+            case resourceName
         }
     }
 
     public struct GetBackendAuthRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "appId", location: .uri(locationName: "AppId")), 
+            AWSMemberEncoding(label: "appId", location: .uri(locationName: "AppId")),
             AWSMemberEncoding(label: "backendEnvironmentName", location: .uri(locationName: "BackendEnvironmentName"))
         ]
 
@@ -1230,12 +1201,11 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case resourceName = "resourceName"
+            case resourceName
         }
     }
 
     public struct GetBackendAuthResponse: AWSDecodableShape {
-
         /// The app ID.
         public let appId: String?
         /// The name of the backend environment.
@@ -1256,18 +1226,18 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case appId = "appId"
-            case backendEnvironmentName = "backendEnvironmentName"
-            case error = "error"
-            case resourceConfig = "resourceConfig"
-            case resourceName = "resourceName"
+            case appId
+            case backendEnvironmentName
+            case error
+            case resourceConfig
+            case resourceName
         }
     }
 
     public struct GetBackendJobRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "appId", location: .uri(locationName: "AppId")), 
-            AWSMemberEncoding(label: "backendEnvironmentName", location: .uri(locationName: "BackendEnvironmentName")), 
+            AWSMemberEncoding(label: "appId", location: .uri(locationName: "AppId")),
+            AWSMemberEncoding(label: "backendEnvironmentName", location: .uri(locationName: "BackendEnvironmentName")),
             AWSMemberEncoding(label: "jobId", location: .uri(locationName: "JobId"))
         ]
 
@@ -1288,7 +1258,6 @@ extension AmplifyBackend {
     }
 
     public struct GetBackendJobResponse: AWSDecodableShape {
-
         /// The app ID.
         public let appId: String?
         /// The name of the backend environment.
@@ -1318,14 +1287,14 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case appId = "appId"
-            case backendEnvironmentName = "backendEnvironmentName"
-            case createTime = "createTime"
-            case error = "error"
-            case jobId = "jobId"
-            case operation = "operation"
-            case status = "status"
-            case updateTime = "updateTime"
+            case appId
+            case backendEnvironmentName
+            case createTime
+            case error
+            case jobId
+            case operation
+            case status
+            case updateTime
         }
     }
 
@@ -1345,12 +1314,11 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case backendEnvironmentName = "backendEnvironmentName"
+            case backendEnvironmentName
         }
     }
 
     public struct GetBackendResponse: AWSDecodableShape {
-
         /// A stringified version of the current configs for your Amplify project.
         public let amplifyMetaConfig: String?
         /// The app ID.
@@ -1374,18 +1342,18 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case amplifyMetaConfig = "amplifyMetaConfig"
-            case appId = "appId"
-            case appName = "appName"
-            case backendEnvironmentList = "backendEnvironmentList"
-            case backendEnvironmentName = "backendEnvironmentName"
-            case error = "error"
+            case amplifyMetaConfig
+            case appId
+            case appName
+            case backendEnvironmentList
+            case backendEnvironmentName
+            case error
         }
     }
 
     public struct GetTokenRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "appId", location: .uri(locationName: "AppId")), 
+            AWSMemberEncoding(label: "appId", location: .uri(locationName: "AppId")),
             AWSMemberEncoding(label: "sessionId", location: .uri(locationName: "SessionId"))
         ]
 
@@ -1403,7 +1371,6 @@ extension AmplifyBackend {
     }
 
     public struct GetTokenResponse: AWSDecodableShape {
-
         /// The app ID.
         public let appId: String?
         /// The one-time challenge code for authenticating into the Amplify Admin UI.
@@ -1421,16 +1388,16 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case appId = "appId"
-            case challengeCode = "challengeCode"
-            case sessionId = "sessionId"
-            case ttl = "ttl"
+            case appId
+            case challengeCode
+            case sessionId
+            case ttl
         }
     }
 
     public struct ImportBackendAuthRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "appId", location: .uri(locationName: "AppId")), 
+            AWSMemberEncoding(label: "appId", location: .uri(locationName: "AppId")),
             AWSMemberEncoding(label: "backendEnvironmentName", location: .uri(locationName: "BackendEnvironmentName"))
         ]
 
@@ -1457,15 +1424,14 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case identityPoolId = "identityPoolId"
-            case nativeClientId = "nativeClientId"
-            case userPoolId = "userPoolId"
-            case webClientId = "webClientId"
+            case identityPoolId
+            case nativeClientId
+            case userPoolId
+            case webClientId
         }
     }
 
     public struct ImportBackendAuthResponse: AWSDecodableShape {
-
         /// The app ID.
         public let appId: String?
         /// The name of the backend environment.
@@ -1489,18 +1455,18 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case appId = "appId"
-            case backendEnvironmentName = "backendEnvironmentName"
-            case error = "error"
-            case jobId = "jobId"
-            case operation = "operation"
-            case status = "status"
+            case appId
+            case backendEnvironmentName
+            case error
+            case jobId
+            case operation
+            case status
         }
     }
 
     public struct ListBackendJobsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "appId", location: .uri(locationName: "AppId")), 
+            AWSMemberEncoding(label: "appId", location: .uri(locationName: "AppId")),
             AWSMemberEncoding(label: "backendEnvironmentName", location: .uri(locationName: "BackendEnvironmentName"))
         ]
 
@@ -1535,16 +1501,15 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case jobId = "jobId"
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
-            case operation = "operation"
-            case status = "status"
+            case jobId
+            case maxResults
+            case nextToken
+            case operation
+            case status
         }
     }
 
     public struct ListBackendJobsResponse: AWSDecodableShape {
-
         /// An array of jobs and their properties.
         public let jobs: [BackendJobRespObj]?
         /// The token for the next set of results.
@@ -1556,13 +1521,12 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case jobs = "jobs"
-            case nextToken = "nextToken"
+            case jobs
+            case nextToken
         }
     }
 
     public struct LoginAuthConfigReqObj: AWSEncodableShape & AWSDecodableShape {
-
         /// The Amazon Cognito identity pool ID used for the Amplify Admin UI login authorization.
         public let awsCognitoIdentityPoolId: String?
         /// The AWS Region for the Amplify Admin UI login.
@@ -1603,12 +1567,11 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case cleanAmplifyApp = "cleanAmplifyApp"
+            case cleanAmplifyApp
         }
     }
 
     public struct RemoveAllBackendsResponse: AWSDecodableShape {
-
         /// The app ID.
         public let appId: String?
         /// If the request fails, this error is returned.
@@ -1629,11 +1592,11 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case appId = "appId"
-            case error = "error"
-            case jobId = "jobId"
-            case operation = "operation"
-            case status = "status"
+            case appId
+            case error
+            case jobId
+            case operation
+            case status
         }
     }
 
@@ -1653,7 +1616,6 @@ extension AmplifyBackend {
     }
 
     public struct RemoveBackendConfigResponse: AWSDecodableShape {
-
         /// If the request fails, this error is returned.
         public let error: String?
 
@@ -1662,20 +1624,15 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case error = "error"
+            case error
         }
     }
 
     public struct ResourceConfig: AWSEncodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct Settings: AWSEncodableShape & AWSDecodableShape {
-
         /// The supported MFA types.
         public let mfaTypes: [MfaTypesElement]?
         /// The body of the SMS message.
@@ -1687,13 +1644,12 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case mfaTypes = "mfaTypes"
-            case smsMessage = "smsMessage"
+            case mfaTypes
+            case smsMessage
         }
     }
 
     public struct SmsSettings: AWSEncodableShape & AWSDecodableShape {
-
         /// The body of the SMS message.
         public let smsMessage: String?
 
@@ -1702,12 +1658,11 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case smsMessage = "smsMessage"
+            case smsMessage
         }
     }
 
     public struct SocialProviderSettings: AWSEncodableShape & AWSDecodableShape {
-
         public let facebook: BackendAuthSocialProviderConfig?
         public let google: BackendAuthSocialProviderConfig?
         public let loginWithAmazon: BackendAuthSocialProviderConfig?
@@ -1730,7 +1685,7 @@ extension AmplifyBackend {
 
     public struct UpdateBackendAPIRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "appId", location: .uri(locationName: "AppId")), 
+            AWSMemberEncoding(label: "appId", location: .uri(locationName: "AppId")),
             AWSMemberEncoding(label: "backendEnvironmentName", location: .uri(locationName: "BackendEnvironmentName"))
         ]
 
@@ -1751,13 +1706,12 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case resourceConfig = "resourceConfig"
-            case resourceName = "resourceName"
+            case resourceConfig
+            case resourceName
         }
     }
 
     public struct UpdateBackendAPIResponse: AWSDecodableShape {
-
         /// The app ID.
         public let appId: String?
         /// The name of the backend environment.
@@ -1781,17 +1735,16 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case appId = "appId"
-            case backendEnvironmentName = "backendEnvironmentName"
-            case error = "error"
-            case jobId = "jobId"
-            case operation = "operation"
-            case status = "status"
+            case appId
+            case backendEnvironmentName
+            case error
+            case jobId
+            case operation
+            case status
         }
     }
 
     public struct UpdateBackendAuthForgotPasswordConfig: AWSEncodableShape {
-
         /// Describes which mode to use (either SMS or email) to deliver messages to app users that want to recover their password.
         public let deliveryMethod: DeliveryMethod?
         /// The configuration for the email sent when an app user forgets their password.
@@ -1806,14 +1759,13 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case deliveryMethod = "deliveryMethod"
-            case emailSettings = "emailSettings"
-            case smsSettings = "smsSettings"
+            case deliveryMethod
+            case emailSettings
+            case smsSettings
         }
     }
 
     public struct UpdateBackendAuthIdentityPoolConfig: AWSEncodableShape {
-
         /// A boolean value that can be set to allow or disallow guest-level authorization into your Amplify app.
         public let unauthenticatedLogin: Bool?
 
@@ -1822,12 +1774,11 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case unauthenticatedLogin = "unauthenticatedLogin"
+            case unauthenticatedLogin
         }
     }
 
     public struct UpdateBackendAuthMFAConfig: AWSEncodableShape {
-
         /// The MFA mode for the backend of your Amplify project.
         public let mFAMode: MFAMode?
         /// The settings of your MFA configuration for the backend of your Amplify project.
@@ -1840,12 +1791,11 @@ extension AmplifyBackend {
 
         private enum CodingKeys: String, CodingKey {
             case mFAMode = "MFAMode"
-            case settings = "settings"
+            case settings
         }
     }
 
     public struct UpdateBackendAuthOAuthConfig: AWSEncodableShape {
-
         /// The Amazon Cognito domain prefix used to create a hosted UI for authentication.
         public let domainPrefix: String?
         /// The OAuth grant type to allow app users to authenticate from your Amplify app.
@@ -1869,17 +1819,16 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case domainPrefix = "domainPrefix"
-            case oAuthGrantType = "oAuthGrantType"
-            case oAuthScopes = "oAuthScopes"
-            case redirectSignInURIs = "redirectSignInURIs"
-            case redirectSignOutURIs = "redirectSignOutURIs"
-            case socialProviderSettings = "socialProviderSettings"
+            case domainPrefix
+            case oAuthGrantType
+            case oAuthScopes
+            case redirectSignInURIs
+            case redirectSignOutURIs
+            case socialProviderSettings
         }
     }
 
     public struct UpdateBackendAuthPasswordPolicyConfig: AWSEncodableShape {
-
         /// Describes additional constraints on password requirements to sign in to the auth resource, configured as a part of your Amplify project.
         public let additionalConstraints: [AdditionalConstraintsElement]?
         /// Describes the minimum length of the password required to sign in to the auth resource, configured as a part of your Amplify project.
@@ -1891,14 +1840,14 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case additionalConstraints = "additionalConstraints"
-            case minimumLength = "minimumLength"
+            case additionalConstraints
+            case minimumLength
         }
     }
 
     public struct UpdateBackendAuthRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "appId", location: .uri(locationName: "AppId")), 
+            AWSMemberEncoding(label: "appId", location: .uri(locationName: "AppId")),
             AWSMemberEncoding(label: "backendEnvironmentName", location: .uri(locationName: "BackendEnvironmentName"))
         ]
 
@@ -1919,13 +1868,12 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case resourceConfig = "resourceConfig"
-            case resourceName = "resourceName"
+            case resourceConfig
+            case resourceName
         }
     }
 
     public struct UpdateBackendAuthResourceConfig: AWSEncodableShape {
-
         /// Defines the service name to use when configuring an authentication resource in your Amplify project.
         public let authResources: AuthResources
         /// Describes the authorization configuration for the Amazon Cognito identity pool, provisioned as a part of your auth resource in the Amplify project.
@@ -1943,15 +1891,14 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case authResources = "authResources"
-            case identityPoolConfigs = "identityPoolConfigs"
-            case service = "service"
-            case userPoolConfigs = "userPoolConfigs"
+            case authResources
+            case identityPoolConfigs
+            case service
+            case userPoolConfigs
         }
     }
 
     public struct UpdateBackendAuthResponse: AWSDecodableShape {
-
         /// The app ID.
         public let appId: String?
         /// The name of the backend environment.
@@ -1975,17 +1922,16 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case appId = "appId"
-            case backendEnvironmentName = "backendEnvironmentName"
-            case error = "error"
-            case jobId = "jobId"
-            case operation = "operation"
-            case status = "status"
+            case appId
+            case backendEnvironmentName
+            case error
+            case jobId
+            case operation
+            case status
         }
     }
 
     public struct UpdateBackendAuthUserPoolConfig: AWSEncodableShape {
-
         /// Describes the forgot password policy for your Amazon Cognito user pool, configured as a part of your Amplify project.
         public let forgotPassword: UpdateBackendAuthForgotPasswordConfig?
         /// Describes whether to apply multi-factor authentication policies for your Amazon Cognito user pool configured as a part of your Amplify project.
@@ -2003,10 +1949,10 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case forgotPassword = "forgotPassword"
-            case mfa = "mfa"
-            case oAuth = "oAuth"
-            case passwordPolicy = "passwordPolicy"
+            case forgotPassword
+            case mfa
+            case oAuth
+            case passwordPolicy
         }
     }
 
@@ -2026,12 +1972,11 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case loginAuthConfig = "loginAuthConfig"
+            case loginAuthConfig
         }
     }
 
     public struct UpdateBackendConfigResponse: AWSDecodableShape {
-
         /// The app ID.
         public let appId: String?
         /// The app ID for the backend manager.
@@ -2049,17 +1994,17 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case appId = "appId"
-            case backendManagerAppId = "backendManagerAppId"
-            case error = "error"
-            case loginAuthConfig = "loginAuthConfig"
+            case appId
+            case backendManagerAppId
+            case error
+            case loginAuthConfig
         }
     }
 
     public struct UpdateBackendJobRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "appId", location: .uri(locationName: "AppId")), 
-            AWSMemberEncoding(label: "backendEnvironmentName", location: .uri(locationName: "BackendEnvironmentName")), 
+            AWSMemberEncoding(label: "appId", location: .uri(locationName: "AppId")),
+            AWSMemberEncoding(label: "backendEnvironmentName", location: .uri(locationName: "BackendEnvironmentName")),
             AWSMemberEncoding(label: "jobId", location: .uri(locationName: "JobId"))
         ]
 
@@ -2083,13 +2028,12 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case operation = "operation"
-            case status = "status"
+            case operation
+            case status
         }
     }
 
     public struct UpdateBackendJobResponse: AWSDecodableShape {
-
         /// The app ID.
         public let appId: String?
         /// The name of the backend environment.
@@ -2119,14 +2063,14 @@ extension AmplifyBackend {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case appId = "appId"
-            case backendEnvironmentName = "backendEnvironmentName"
-            case createTime = "createTime"
-            case error = "error"
-            case jobId = "jobId"
-            case operation = "operation"
-            case status = "status"
-            case updateTime = "updateTime"
+            case appId
+            case backendEnvironmentName
+            case createTime
+            case error
+            case jobId
+            case operation
+            case status
+            case updateTime
         }
     }
 }

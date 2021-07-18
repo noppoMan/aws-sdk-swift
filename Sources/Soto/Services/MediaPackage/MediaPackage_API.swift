@@ -128,7 +128,7 @@ public struct MediaPackage: AWSService {
     }
 
     /// Changes the Channel's first IngestEndpoint's username and password. WARNING - This API is deprecated. Please use RotateIngestEndpointCredentials instead
-    @available(*, deprecated, message:"This API is deprecated. Please use RotateIngestEndpointCredentials instead")
+    @available(*, deprecated, message: "This API is deprecated. Please use RotateIngestEndpointCredentials instead")
     public func rotateChannelCredentials(_ input: RotateChannelCredentialsRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<RotateChannelCredentialsResponse> {
         return self.client.execute(operation: "RotateChannelCredentials", path: "/channels/{Id}/credentials", httpMethod: .PUT, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }

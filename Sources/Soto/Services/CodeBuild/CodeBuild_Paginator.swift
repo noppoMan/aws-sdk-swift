@@ -73,7 +73,7 @@ extension CodeBuild {
         )
     }
 
-    ///   Returns a list of details about test cases for a report. 
+    ///   Returns a list of details about test cases for a report.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.
@@ -391,7 +391,7 @@ extension CodeBuild {
         )
     }
 
-    ///   Gets a list ARNs for the report groups in the current Amazon Web Services account. 
+    ///   Gets a list ARNs for the report groups in the current Amazon Web Services account.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.
@@ -444,7 +444,7 @@ extension CodeBuild {
         )
     }
 
-    ///   Returns a list of ARNs for the reports in the current Amazon Web Services account. 
+    ///   Returns a list of ARNs for the reports in the current Amazon Web Services account.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.
@@ -497,7 +497,7 @@ extension CodeBuild {
         )
     }
 
-    ///   Returns a list of ARNs for the reports that belong to a ReportGroup. 
+    ///   Returns a list of ARNs for the reports that belong to a ReportGroup.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.
@@ -550,7 +550,7 @@ extension CodeBuild {
         )
     }
 
-    ///   Gets a list of projects that are shared with other Amazon Web Services accounts or users. 
+    ///   Gets a list of projects that are shared with other Amazon Web Services accounts or users.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.
@@ -603,7 +603,7 @@ extension CodeBuild {
         )
     }
 
-    ///   Gets a list of report groups that are shared with other Amazon Web Services accounts or users. 
+    ///   Gets a list of report groups that are shared with other Amazon Web Services accounts or users.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.

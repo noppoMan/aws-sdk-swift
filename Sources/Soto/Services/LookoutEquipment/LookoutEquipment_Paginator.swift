@@ -20,7 +20,7 @@ import SotoCore
 // MARK: Paginators
 
 extension LookoutEquipment {
-    ///  Provides a list of all data ingestion jobs, including dataset name and ARN, S3 location of the input data, status, and so on. 
+    ///  Provides a list of all data ingestion jobs, including dataset name and ARN, S3 location of the input data, status, and so on.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.
@@ -73,7 +73,7 @@ extension LookoutEquipment {
         )
     }
 
-    ///  Lists all datasets currently available in your account, filtering on the dataset name. 
+    ///  Lists all datasets currently available in your account, filtering on the dataset name.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.
@@ -126,7 +126,7 @@ extension LookoutEquipment {
         )
     }
 
-    ///   Lists all inference executions that have been performed by the specified inference scheduler. 
+    ///   Lists all inference executions that have been performed by the specified inference scheduler.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.
@@ -179,7 +179,7 @@ extension LookoutEquipment {
         )
     }
 
-    ///  Retrieves a list of all inference schedulers currently available for your account. 
+    ///  Retrieves a list of all inference schedulers currently available for your account.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.
@@ -232,7 +232,7 @@ extension LookoutEquipment {
         )
     }
 
-    ///  Generates a list of all models in the account, including model name and ARN, dataset, and status. 
+    ///  Generates a list of all models in the account, including model name and ARN, dataset, and status.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.

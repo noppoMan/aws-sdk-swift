@@ -76,9 +76,9 @@ public struct LambdaErrorType: AWSErrorType {
 
     /// The specified code signing configuration does not exist.
     public static var codeSigningConfigNotFoundException: Self { .init(.codeSigningConfigNotFoundException) }
-    /// You have exceeded your maximum total code size per account. Learn more 
+    /// You have exceeded your maximum total code size per account. Learn more
     public static var codeStorageExceededException: Self { .init(.codeStorageExceededException) }
-    /// The code signature failed one or more of the validation checks for signature mismatch or expiry, and the code signing policy  is set to ENFORCE. Lambda blocks the deployment. 
+    /// The code signature failed one or more of the validation checks for signature mismatch or expiry, and the code signing policy  is set to ENFORCE. Lambda blocks the deployment.
     public static var codeVerificationFailedException: Self { .init(.codeVerificationFailedException) }
     /// Need additional permissions to configure VPC settings.
     public static var eC2AccessDeniedException: Self { .init(.eC2AccessDeniedException) }
@@ -116,15 +116,15 @@ public struct LambdaErrorType: AWSErrorType {
     public static var kMSDisabledException: Self { .init(.kMSDisabledException) }
     /// Lambda was unable to decrypt the environment variables because the KMS key used is in an invalid state for Decrypt. Check the function's KMS key settings.
     public static var kMSInvalidStateException: Self { .init(.kMSInvalidStateException) }
-    /// Lambda was unable to decrypt the environment variables because the KMS key was not found. Check the function's KMS key settings. 
+    /// Lambda was unable to decrypt the environment variables because the KMS key was not found. Check the function's KMS key settings.
     public static var kMSNotFoundException: Self { .init(.kMSNotFoundException) }
-    /// The permissions policy for the resource is too large. Learn more 
+    /// The permissions policy for the resource is too large. Learn more
     public static var policyLengthExceededException: Self { .init(.policyLengthExceededException) }
     /// The RevisionId provided does not match the latest RevisionId for the Lambda function or alias. Call the GetFunction or the GetAlias API to retrieve the latest RevisionId for your resource.
     public static var preconditionFailedException: Self { .init(.preconditionFailedException) }
     /// The specified configuration does not exist.
     public static var provisionedConcurrencyConfigNotFoundException: Self { .init(.provisionedConcurrencyConfigNotFoundException) }
-    /// The request payload exceeded the Invoke request body JSON input limit. For more information, see Limits. 
+    /// The request payload exceeded the Invoke request body JSON input limit. For more information, see Limits.
     public static var requestTooLargeException: Self { .init(.requestTooLargeException) }
     /// The resource already exists, or another operation is in progress.
     public static var resourceConflictException: Self { .init(.resourceConflictException) }

@@ -37,7 +37,7 @@ extension IoTSecureTunneling {
 
     public struct CloseTunnelRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "delete", location: .querystring(locationName: "delete")), 
+            AWSMemberEncoding(label: "delete", location: .querystring(locationName: "delete")),
             AWSMemberEncoding(label: "tunnelId", location: .uri(locationName: "tunnelId"))
         ]
 
@@ -60,15 +60,10 @@ extension IoTSecureTunneling {
     }
 
     public struct CloseTunnelResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct ConnectionState: AWSDecodableShape {
-
         /// The last time the connection status was updated.
         public let lastUpdatedAt: Date?
         /// The connection status of the tunnel. Valid values are CONNECTED and
@@ -81,8 +76,8 @@ extension IoTSecureTunneling {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case lastUpdatedAt = "lastUpdatedAt"
-            case status = "status"
+            case lastUpdatedAt
+            case status
         }
     }
 
@@ -106,7 +101,6 @@ extension IoTSecureTunneling {
     }
 
     public struct DescribeTunnelResponse: AWSDecodableShape {
-
         /// The tunnel being described.
         public let tunnel: Tunnel?
 
@@ -115,12 +109,11 @@ extension IoTSecureTunneling {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tunnel = "tunnel"
+            case tunnel
         }
     }
 
     public struct DestinationConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// A list of service names that identity the target application. The AWS IoT client running on the destination device reads
         /// 			this value and uses it to look up a port or an IP address and a port. The AWS IoT client
         /// 			instantiates the local proxy which uses this information to connect to the destination
@@ -147,8 +140,8 @@ extension IoTSecureTunneling {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case services = "services"
-            case thingName = "thingName"
+            case services
+            case thingName
         }
     }
 
@@ -173,7 +166,6 @@ extension IoTSecureTunneling {
     }
 
     public struct ListTagsForResourceResponse: AWSDecodableShape {
-
         /// The tags for the specified resource.
         public let tags: [Tag]?
 
@@ -182,14 +174,14 @@ extension IoTSecureTunneling {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tags = "tags"
+            case tags
         }
     }
 
     public struct ListTunnelsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
-            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
+            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")),
             AWSMemberEncoding(label: "thingName", location: .querystring(locationName: "thingName"))
         ]
 
@@ -219,7 +211,6 @@ extension IoTSecureTunneling {
     }
 
     public struct ListTunnelsResponse: AWSDecodableShape {
-
         /// A token to used to retrieve the next set of results.
         public let nextToken: String?
         /// A short description of the tunnels in an AWS account.
@@ -231,14 +222,13 @@ extension IoTSecureTunneling {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case tunnelSummaries = "tunnelSummaries"
+            case nextToken
+            case tunnelSummaries
         }
     }
 
     public struct OpenTunnelRequest: AWSEncodableShape {
-
-        /// A short text description of the tunnel. 
+        /// A short text description of the tunnel.
         public let description: String?
         /// The destination configuration for the OpenTunnel request.
         public let destinationConfig: DestinationConfig?
@@ -266,15 +256,14 @@ extension IoTSecureTunneling {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case description = "description"
-            case destinationConfig = "destinationConfig"
-            case tags = "tags"
-            case timeoutConfig = "timeoutConfig"
+            case description
+            case destinationConfig
+            case tags
+            case timeoutConfig
         }
     }
 
     public struct OpenTunnelResponse: AWSDecodableShape {
-
         /// The access token the destination local proxy uses to connect to AWS IoT Secure
         /// 			Tunneling.
         public let destinationAccessToken: String?
@@ -282,7 +271,7 @@ extension IoTSecureTunneling {
         /// 			Tunneling.
         public let sourceAccessToken: String?
         /// The Amazon Resource Name for the tunnel. The tunnel ARN format is
-        /// 				arn:aws:tunnel:::tunnel/ 
+        /// 				arn:aws:tunnel:::tunnel/
         public let tunnelArn: String?
         /// A unique alpha-numeric tunnel ID.
         public let tunnelId: String?
@@ -295,15 +284,14 @@ extension IoTSecureTunneling {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case destinationAccessToken = "destinationAccessToken"
-            case sourceAccessToken = "sourceAccessToken"
-            case tunnelArn = "tunnelArn"
-            case tunnelId = "tunnelId"
+            case destinationAccessToken
+            case sourceAccessToken
+            case tunnelArn
+            case tunnelId
         }
     }
 
     public struct Tag: AWSEncodableShape & AWSDecodableShape {
-
         /// The key of the tag.
         public let key: String
         /// The value of the tag.
@@ -323,13 +311,12 @@ extension IoTSecureTunneling {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case key = "key"
-            case value = "value"
+            case key
+            case value
         }
     }
 
     public struct TagResourceRequest: AWSEncodableShape {
-
         /// The ARN of the resource.
         public let resourceArn: String
         /// The tags for the resource.
@@ -351,24 +338,19 @@ extension IoTSecureTunneling {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case resourceArn = "resourceArn"
-            case tags = "tags"
+            case resourceArn
+            case tags
         }
     }
 
     public struct TagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct TimeoutConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// The maximum amount of time (in minutes) a tunnel can remain open. If not specified,
         /// 			maxLifetimeTimeoutMinutes defaults to 720 minutes. Valid values are from 1 minute to 12
-        /// 			hours (720 minutes) 
+        /// 			hours (720 minutes)
         public let maxLifetimeTimeoutMinutes: Int?
 
         public init(maxLifetimeTimeoutMinutes: Int? = nil) {
@@ -381,12 +363,11 @@ extension IoTSecureTunneling {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxLifetimeTimeoutMinutes = "maxLifetimeTimeoutMinutes"
+            case maxLifetimeTimeoutMinutes
         }
     }
 
     public struct Tunnel: AWSDecodableShape {
-
         /// The time when the tunnel was created.
         public let createdAt: Date?
         /// A description of the tunnel.
@@ -408,7 +389,7 @@ extension IoTSecureTunneling {
         /// Timeout configuration for the tunnel.
         public let timeoutConfig: TimeoutConfig?
         /// The Amazon Resource Name (ARN) of a tunnel. The tunnel ARN format is
-        /// 				arn:aws:tunnel:::tunnel/ 
+        /// 				arn:aws:tunnel:::tunnel/
         public let tunnelArn: String?
         /// A unique alpha-numeric ID that identifies a tunnel.
         public let tunnelId: String?
@@ -428,22 +409,21 @@ extension IoTSecureTunneling {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case createdAt = "createdAt"
-            case description = "description"
-            case destinationConfig = "destinationConfig"
-            case destinationConnectionState = "destinationConnectionState"
-            case lastUpdatedAt = "lastUpdatedAt"
-            case sourceConnectionState = "sourceConnectionState"
-            case status = "status"
-            case tags = "tags"
-            case timeoutConfig = "timeoutConfig"
-            case tunnelArn = "tunnelArn"
-            case tunnelId = "tunnelId"
+            case createdAt
+            case description
+            case destinationConfig
+            case destinationConnectionState
+            case lastUpdatedAt
+            case sourceConnectionState
+            case status
+            case tags
+            case timeoutConfig
+            case tunnelArn
+            case tunnelId
         }
     }
 
     public struct TunnelSummary: AWSDecodableShape {
-
         /// The time the tunnel was created.
         public let createdAt: Date?
         /// A description of the tunnel.
@@ -453,7 +433,7 @@ extension IoTSecureTunneling {
         /// The status of a tunnel. Valid values are: Open and Closed.
         public let status: TunnelStatus?
         /// The Amazon Resource Name of the tunnel. The tunnel ARN format is
-        /// 				arn:aws:tunnel:::tunnel/ 
+        /// 				arn:aws:tunnel:::tunnel/
         public let tunnelArn: String?
         /// The unique alpha-numeric identifier for the tunnel.
         public let tunnelId: String?
@@ -468,17 +448,16 @@ extension IoTSecureTunneling {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case createdAt = "createdAt"
-            case description = "description"
-            case lastUpdatedAt = "lastUpdatedAt"
-            case status = "status"
-            case tunnelArn = "tunnelArn"
-            case tunnelId = "tunnelId"
+            case createdAt
+            case description
+            case lastUpdatedAt
+            case status
+            case tunnelArn
+            case tunnelId
         }
     }
 
     public struct UntagResourceRequest: AWSEncodableShape {
-
         /// The resource ARN.
         public let resourceArn: String
         /// The keys of the tags to remove.
@@ -501,16 +480,12 @@ extension IoTSecureTunneling {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case resourceArn = "resourceArn"
-            case tagKeys = "tagKeys"
+            case resourceArn
+            case tagKeys
         }
     }
 
     public struct UntagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 }

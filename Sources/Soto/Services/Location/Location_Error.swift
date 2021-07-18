@@ -56,7 +56,7 @@ public struct LocationErrorType: AWSErrorType {
     public static var resourceNotFoundException: Self { .init(.resourceNotFoundException) }
     /// The request was denied due to request throttling.
     public static var throttlingException: Self { .init(.throttlingException) }
-    /// The input failed to meet the constraints specified by the AWS service. 
+    /// The input failed to meet the constraints specified by the AWS service.
     public static var validationException: Self { .init(.validationException) }
 }
 

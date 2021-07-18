@@ -66,7 +66,6 @@ extension ApplicationCostProfiler {
     }
 
     public struct DeleteReportDefinitionResult: AWSDecodableShape {
-
         /// ID of the report that was deleted.
         public let reportId: String?
 
@@ -75,7 +74,7 @@ extension ApplicationCostProfiler {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case reportId = "reportId"
+            case reportId
         }
     }
 
@@ -101,7 +100,6 @@ extension ApplicationCostProfiler {
     }
 
     public struct GetReportDefinitionResult: AWSDecodableShape {
-
         /// Timestamp (milliseconds) when this report definition was created.
         public let createdAt: Date
         /// Amazon Simple Storage Service (Amazon S3) location where the report is uploaded.
@@ -128,18 +126,17 @@ extension ApplicationCostProfiler {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case createdAt = "createdAt"
-            case destinationS3Location = "destinationS3Location"
-            case format = "format"
-            case lastUpdated = "lastUpdated"
-            case reportDescription = "reportDescription"
-            case reportFrequency = "reportFrequency"
-            case reportId = "reportId"
+            case createdAt
+            case destinationS3Location
+            case format
+            case lastUpdated
+            case reportDescription
+            case reportFrequency
+            case reportId
         }
     }
 
     public struct ImportApplicationUsageRequest: AWSEncodableShape {
-
         /// Amazon S3 location to import application usage data from.
         public let sourceS3Location: SourceS3Location
 
@@ -152,12 +149,11 @@ extension ApplicationCostProfiler {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case sourceS3Location = "sourceS3Location"
+            case sourceS3Location
         }
     }
 
     public struct ImportApplicationUsageResult: AWSDecodableShape {
-
         /// ID of the import request.
         public let importId: String
 
@@ -166,13 +162,13 @@ extension ApplicationCostProfiler {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case importId = "importId"
+            case importId
         }
     }
 
     public struct ListReportDefinitionsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
@@ -189,7 +185,7 @@ extension ApplicationCostProfiler {
         public func validate(name: String) throws {
             try self.validate(self.maxResults, name: "maxResults", parent: name, max: 100)
             try self.validate(self.maxResults, name: "maxResults", parent: name, min: 1)
-            try self.validate(self.nextToken, name: "nextToken", parent: name, max: 102400)
+            try self.validate(self.nextToken, name: "nextToken", parent: name, max: 102_400)
             try self.validate(self.nextToken, name: "nextToken", parent: name, min: 1)
             try self.validate(self.nextToken, name: "nextToken", parent: name, pattern: "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$")
         }
@@ -198,7 +194,6 @@ extension ApplicationCostProfiler {
     }
 
     public struct ListReportDefinitionsResult: AWSDecodableShape {
-
         /// The value of the next token, if it exists. Null if there are no more results.
         public let nextToken: String?
         /// The retrieved reports.
@@ -210,13 +205,12 @@ extension ApplicationCostProfiler {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case reportDefinitions = "reportDefinitions"
+            case nextToken
+            case reportDefinitions
         }
     }
 
     public struct PutReportDefinitionRequest: AWSEncodableShape {
-
         /// Required. Amazon Simple Storage Service (Amazon S3) location where Application Cost Profiler uploads the report.
         public let destinationS3Location: S3Location
         /// Required. The format to use for the generated report.
@@ -247,16 +241,15 @@ extension ApplicationCostProfiler {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case destinationS3Location = "destinationS3Location"
-            case format = "format"
-            case reportDescription = "reportDescription"
-            case reportFrequency = "reportFrequency"
-            case reportId = "reportId"
+            case destinationS3Location
+            case format
+            case reportDescription
+            case reportFrequency
+            case reportId
         }
     }
 
     public struct PutReportDefinitionResult: AWSDecodableShape {
-
         /// ID of the report.
         public let reportId: String?
 
@@ -265,12 +258,11 @@ extension ApplicationCostProfiler {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case reportId = "reportId"
+            case reportId
         }
     }
 
     public struct ReportDefinition: AWSDecodableShape {
-
         /// Timestamp (milliseconds) when this report definition was created.
         public let createdAt: Date?
         /// The location in Amazon Simple Storage Service (Amazon S3) the reports should be saved to.
@@ -297,18 +289,17 @@ extension ApplicationCostProfiler {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case createdAt = "createdAt"
-            case destinationS3Location = "destinationS3Location"
-            case format = "format"
-            case lastUpdatedAt = "lastUpdatedAt"
-            case reportDescription = "reportDescription"
-            case reportFrequency = "reportFrequency"
-            case reportId = "reportId"
+            case createdAt
+            case destinationS3Location
+            case format
+            case lastUpdatedAt
+            case reportDescription
+            case reportFrequency
+            case reportId
         }
     }
 
     public struct S3Location: AWSEncodableShape & AWSDecodableShape {
-
         /// Name of the S3 bucket.
         public let bucket: String
         /// Prefix for the location to write to.
@@ -329,13 +320,12 @@ extension ApplicationCostProfiler {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case bucket = "bucket"
-            case prefix = "prefix"
+            case bucket
+            case prefix
         }
     }
 
     public struct SourceS3Location: AWSEncodableShape {
-
         /// Name of the bucket.
         public let bucket: String
         /// Key of the object.
@@ -359,9 +349,9 @@ extension ApplicationCostProfiler {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case bucket = "bucket"
-            case key = "key"
-            case region = "region"
+            case bucket
+            case key
+            case region
         }
     }
 
@@ -400,15 +390,14 @@ extension ApplicationCostProfiler {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case destinationS3Location = "destinationS3Location"
-            case format = "format"
-            case reportDescription = "reportDescription"
-            case reportFrequency = "reportFrequency"
+            case destinationS3Location
+            case format
+            case reportDescription
+            case reportFrequency
         }
     }
 
     public struct UpdateReportDefinitionResult: AWSDecodableShape {
-
         /// ID of the report.
         public let reportId: String?
 
@@ -417,7 +406,7 @@ extension ApplicationCostProfiler {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case reportId = "reportId"
+            case reportId
         }
     }
 }

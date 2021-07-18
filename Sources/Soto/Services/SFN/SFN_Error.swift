@@ -70,7 +70,7 @@ public struct SFNErrorType: AWSErrorType {
     public static var activityLimitExceeded: Self { .init(.activityLimitExceeded) }
     /// The maximum number of workers concurrently polling for activity tasks has been reached.
     public static var activityWorkerLimitExceeded: Self { .init(.activityWorkerLimitExceeded) }
-    /// The execution has the same name as another execution (but a different input).  Executions with the same name and input are considered idempotent. 
+    /// The execution has the same name as another execution (but a different input).  Executions with the same name and input are considered idempotent.
     public static var executionAlreadyExists: Self { .init(.executionAlreadyExists) }
     /// The specified execution does not exist.
     public static var executionDoesNotExist: Self { .init(.executionDoesNotExist) }

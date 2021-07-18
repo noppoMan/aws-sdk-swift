@@ -346,7 +346,7 @@ public struct MediaLive: AWSService {
     // MARK: Streaming API Calls
 
     /// Get the latest thumbnail data for the input device.
-    public func describeInputDeviceThumbnailStreaming(_ input: DescribeInputDeviceThumbnailRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil, _ stream: @escaping (ByteBuffer, EventLoop)->EventLoopFuture<Void>) -> EventLoopFuture<DescribeInputDeviceThumbnailResponse> {
+    public func describeInputDeviceThumbnailStreaming(_ input: DescribeInputDeviceThumbnailRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil, _ stream: @escaping (ByteBuffer, EventLoop) -> EventLoopFuture<Void>) -> EventLoopFuture<DescribeInputDeviceThumbnailResponse> {
         return self.client.execute(operation: "DescribeInputDeviceThumbnail", path: "/prod/inputDevices/{InputDeviceId}/thumbnailData", httpMethod: .GET, serviceConfig: self.config, input: input, logger: logger, on: eventLoop, stream: stream)
     }
 }

@@ -78,7 +78,6 @@ extension RAM {
     // MARK: Shapes
 
     public struct AcceptResourceShareInvitationRequest: AWSEncodableShape {
-
         /// A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
         public let clientToken: String?
         /// The Amazon Resource Name (ARN) of the invitation.
@@ -90,13 +89,12 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientToken = "clientToken"
-            case resourceShareInvitationArn = "resourceShareInvitationArn"
+            case clientToken
+            case resourceShareInvitationArn
         }
     }
 
     public struct AcceptResourceShareInvitationResponse: AWSDecodableShape {
-
         /// A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
         public let clientToken: String?
         /// Information about the invitation.
@@ -108,13 +106,12 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientToken = "clientToken"
-            case resourceShareInvitation = "resourceShareInvitation"
+            case clientToken
+            case resourceShareInvitation
         }
     }
 
     public struct AssociateResourceSharePermissionRequest: AWSEncodableShape {
-
         /// A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
         public let clientToken: String?
         /// The Amazon Resource Name (ARN) of the AWS RAM permissions to associate with the resource share.
@@ -135,16 +132,15 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientToken = "clientToken"
-            case permissionArn = "permissionArn"
-            case permissionVersion = "permissionVersion"
-            case replace = "replace"
-            case resourceShareArn = "resourceShareArn"
+            case clientToken
+            case permissionArn
+            case permissionVersion
+            case replace
+            case resourceShareArn
         }
     }
 
     public struct AssociateResourceSharePermissionResponse: AWSDecodableShape {
-
         /// A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
         public let clientToken: String?
         /// Indicates whether the request succeeded.
@@ -156,13 +152,12 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientToken = "clientToken"
-            case returnValue = "returnValue"
+            case clientToken
+            case returnValue
         }
     }
 
     public struct AssociateResourceShareRequest: AWSEncodableShape {
-
         /// A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
         public let clientToken: String?
         /// The principals to associate with the resource share. The possible values are IDs of  	AWS accounts, and the ARNs of organizational units (OU) or organizations from AWS  	Organizations.
@@ -180,15 +175,14 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientToken = "clientToken"
-            case principals = "principals"
-            case resourceArns = "resourceArns"
-            case resourceShareArn = "resourceShareArn"
+            case clientToken
+            case principals
+            case resourceArns
+            case resourceShareArn
         }
     }
 
     public struct AssociateResourceShareResponse: AWSDecodableShape {
-
         /// A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
         public let clientToken: String?
         /// Information about the associations.
@@ -200,13 +194,12 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientToken = "clientToken"
-            case resourceShareAssociations = "resourceShareAssociations"
+            case clientToken
+            case resourceShareAssociations
         }
     }
 
     public struct CreateResourceShareRequest: AWSEncodableShape {
-
         /// Indicates whether principals outside your AWS organization can be associated with a resource share.
         public let allowExternalPrincipals: Bool?
         /// A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
@@ -235,18 +228,17 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case allowExternalPrincipals = "allowExternalPrincipals"
-            case clientToken = "clientToken"
-            case name = "name"
-            case permissionArns = "permissionArns"
-            case principals = "principals"
-            case resourceArns = "resourceArns"
-            case tags = "tags"
+            case allowExternalPrincipals
+            case clientToken
+            case name
+            case permissionArns
+            case principals
+            case resourceArns
+            case tags
         }
     }
 
     public struct CreateResourceShareResponse: AWSDecodableShape {
-
         /// A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
         public let clientToken: String?
         /// Information about the resource share.
@@ -258,14 +250,14 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientToken = "clientToken"
-            case resourceShare = "resourceShare"
+            case clientToken
+            case resourceShare
         }
     }
 
     public struct DeleteResourceShareRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "clientToken", location: .querystring(locationName: "clientToken")), 
+            AWSMemberEncoding(label: "clientToken", location: .querystring(locationName: "clientToken")),
             AWSMemberEncoding(label: "resourceShareArn", location: .querystring(locationName: "resourceShareArn"))
         ]
 
@@ -283,7 +275,6 @@ extension RAM {
     }
 
     public struct DeleteResourceShareResponse: AWSDecodableShape {
-
         /// A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
         public let clientToken: String?
         /// Indicates whether the request succeeded.
@@ -295,13 +286,12 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientToken = "clientToken"
+            case clientToken
             case returnValue = "return"
         }
     }
 
     public struct DisassociateResourceSharePermissionRequest: AWSEncodableShape {
-
         /// A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
         public let clientToken: String?
         /// The ARN of the permission to disassociate from the resource share.
@@ -316,14 +306,13 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientToken = "clientToken"
-            case permissionArn = "permissionArn"
-            case resourceShareArn = "resourceShareArn"
+            case clientToken
+            case permissionArn
+            case resourceShareArn
         }
     }
 
     public struct DisassociateResourceSharePermissionResponse: AWSDecodableShape {
-
         /// A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
         public let clientToken: String?
         /// Indicates whether the request succeeded.
@@ -335,13 +324,12 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientToken = "clientToken"
-            case returnValue = "returnValue"
+            case clientToken
+            case returnValue
         }
     }
 
     public struct DisassociateResourceShareRequest: AWSEncodableShape {
-
         /// A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
         public let clientToken: String?
         /// The principals.
@@ -359,15 +347,14 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientToken = "clientToken"
-            case principals = "principals"
-            case resourceArns = "resourceArns"
-            case resourceShareArn = "resourceShareArn"
+            case clientToken
+            case principals
+            case resourceArns
+            case resourceShareArn
         }
     }
 
     public struct DisassociateResourceShareResponse: AWSDecodableShape {
-
         /// A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
         public let clientToken: String?
         /// Information about the associations.
@@ -379,21 +366,16 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientToken = "clientToken"
-            case resourceShareAssociations = "resourceShareAssociations"
+            case clientToken
+            case resourceShareAssociations
         }
     }
 
     public struct EnableSharingWithAwsOrganizationRequest: AWSEncodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct EnableSharingWithAwsOrganizationResponse: AWSDecodableShape {
-
         /// Indicates whether the request succeeded.
         public let returnValue: Bool?
 
@@ -407,7 +389,6 @@ extension RAM {
     }
 
     public struct GetPermissionRequest: AWSEncodableShape {
-
         /// The ARN of the permission.
         public let permissionArn: String
         /// The identifier for the version of the permission.
@@ -419,13 +400,12 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case permissionArn = "permissionArn"
-            case permissionVersion = "permissionVersion"
+            case permissionArn
+            case permissionVersion
         }
     }
 
     public struct GetPermissionResponse: AWSDecodableShape {
-
         /// Information about the permission.
         public let permission: ResourceSharePermissionDetail?
 
@@ -434,12 +414,11 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case permission = "permission"
+            case permission
         }
     }
 
     public struct GetResourcePoliciesRequest: AWSEncodableShape {
-
         /// The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned nextToken value.
         public let maxResults: Int?
         /// The token for the next page of results.
@@ -462,15 +441,14 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
-            case principal = "principal"
-            case resourceArns = "resourceArns"
+            case maxResults
+            case nextToken
+            case principal
+            case resourceArns
         }
     }
 
     public struct GetResourcePoliciesResponse: AWSDecodableShape {
-
         /// The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         public let nextToken: String?
         /// A key policy document, in JSON format.
@@ -482,13 +460,12 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case policies = "policies"
+            case nextToken
+            case policies
         }
     }
 
     public struct GetResourceShareAssociationsRequest: AWSEncodableShape {
-
         /// The association status.
         public let associationStatus: ResourceShareAssociationStatus?
         /// The association type. Specify PRINCIPAL to list the principals that are  		associated with the specified resource share. Specify RESOURCE to list  		the resources that are associated with the specified resource share.
@@ -520,18 +497,17 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case associationStatus = "associationStatus"
-            case associationType = "associationType"
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
-            case principal = "principal"
-            case resourceArn = "resourceArn"
-            case resourceShareArns = "resourceShareArns"
+            case associationStatus
+            case associationType
+            case maxResults
+            case nextToken
+            case principal
+            case resourceArn
+            case resourceShareArns
         }
     }
 
     public struct GetResourceShareAssociationsResponse: AWSDecodableShape {
-
         /// The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         public let nextToken: String?
         /// Information about the associations.
@@ -543,13 +519,12 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case resourceShareAssociations = "resourceShareAssociations"
+            case nextToken
+            case resourceShareAssociations
         }
     }
 
     public struct GetResourceShareInvitationsRequest: AWSEncodableShape {
-
         /// The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned nextToken value.
         public let maxResults: Int?
         /// The token for the next page of results.
@@ -572,15 +547,14 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
-            case resourceShareArns = "resourceShareArns"
-            case resourceShareInvitationArns = "resourceShareInvitationArns"
+            case maxResults
+            case nextToken
+            case resourceShareArns
+            case resourceShareInvitationArns
         }
     }
 
     public struct GetResourceShareInvitationsResponse: AWSDecodableShape {
-
         /// The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         public let nextToken: String?
         /// Information about the invitations.
@@ -592,13 +566,12 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case resourceShareInvitations = "resourceShareInvitations"
+            case nextToken
+            case resourceShareInvitations
         }
     }
 
     public struct GetResourceSharesRequest: AWSEncodableShape {
-
         /// The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned nextToken value.
         public let maxResults: Int?
         /// The name of the resource share.
@@ -633,19 +606,18 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxResults = "maxResults"
-            case name = "name"
-            case nextToken = "nextToken"
-            case permissionArn = "permissionArn"
-            case resourceOwner = "resourceOwner"
-            case resourceShareArns = "resourceShareArns"
-            case resourceShareStatus = "resourceShareStatus"
-            case tagFilters = "tagFilters"
+            case maxResults
+            case name
+            case nextToken
+            case permissionArn
+            case resourceOwner
+            case resourceShareArns
+            case resourceShareStatus
+            case tagFilters
         }
     }
 
     public struct GetResourceSharesResponse: AWSDecodableShape {
-
         /// The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         public let nextToken: String?
         /// Information about the resource shares.
@@ -657,13 +629,12 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case resourceShares = "resourceShares"
+            case nextToken
+            case resourceShares
         }
     }
 
     public struct ListPendingInvitationResourcesRequest: AWSEncodableShape {
-
         /// The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned nextToken value.
         public let maxResults: Int?
         /// The token for the next page of results.
@@ -683,14 +654,13 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
-            case resourceShareInvitationArn = "resourceShareInvitationArn"
+            case maxResults
+            case nextToken
+            case resourceShareInvitationArn
         }
     }
 
     public struct ListPendingInvitationResourcesResponse: AWSDecodableShape {
-
         /// The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         public let nextToken: String?
         /// Information about the resources included the resource share.
@@ -702,18 +672,17 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case resources = "resources"
+            case nextToken
+            case resources
         }
     }
 
     public struct ListPermissionsRequest: AWSEncodableShape {
-
         /// The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned nextToken value.
         public let maxResults: Int?
         /// The token for the next page of results.
         public let nextToken: String?
-        /// Specifies the resource type for which to list permissions. For example, to list only 
+        /// Specifies the resource type for which to list permissions. For example, to list only
         /// 		permissions that apply to EC2 subnets, specify ec2:Subnet.
         public let resourceType: String?
 
@@ -729,14 +698,13 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
-            case resourceType = "resourceType"
+            case maxResults
+            case nextToken
+            case resourceType
         }
     }
 
     public struct ListPermissionsResponse: AWSDecodableShape {
-
         /// The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         public let nextToken: String?
         /// Information about the permissions.
@@ -748,13 +716,12 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case permissions = "permissions"
+            case nextToken
+            case permissions
         }
     }
 
     public struct ListPrincipalsRequest: AWSEncodableShape {
-
         /// The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned nextToken value.
         public let maxResults: Int?
         /// The token for the next page of results.
@@ -767,7 +734,7 @@ extension RAM {
         public let resourceOwner: ResourceOwner
         /// The Amazon Resource Names (ARN) of the resource shares.
         public let resourceShareArns: [String]?
-        /// The resource type. 	     Valid values: acm-pca:CertificateAuthority | appmesh:Mesh | codebuild:Project | codebuild:ReportGroup | ec2:CapacityReservation | ec2:DedicatedHost | ec2:LocalGatewayRouteTable | ec2:PrefixList | ec2:Subnet | ec2:TrafficMirrorTarget | ec2:TransitGateway | imagebuilder:Component | imagebuilder:Image | imagebuilder:ImageRecipe | imagebuilder:ContainerRecipe | glue:Catalog | glue:Database | glue:Table | license-manager:LicenseConfiguration I network-firewall:FirewallPolicy | network-firewall:StatefulRuleGroup | network-firewall:StatelessRuleGroup | outposts:Outpost | resource-groups:Group | rds:Cluster | route53resolver:ResolverQueryLogConfig | route53resolver:ResolverRule 
+        /// The resource type. 	     Valid values: acm-pca:CertificateAuthority | appmesh:Mesh | codebuild:Project | codebuild:ReportGroup | ec2:CapacityReservation | ec2:DedicatedHost | ec2:LocalGatewayRouteTable | ec2:PrefixList | ec2:Subnet | ec2:TrafficMirrorTarget | ec2:TransitGateway | imagebuilder:Component | imagebuilder:Image | imagebuilder:ImageRecipe | imagebuilder:ContainerRecipe | glue:Catalog | glue:Database | glue:Table | license-manager:LicenseConfiguration I network-firewall:FirewallPolicy | network-firewall:StatefulRuleGroup | network-firewall:StatelessRuleGroup | outposts:Outpost | resource-groups:Group | rds:Cluster | route53resolver:ResolverQueryLogConfig | route53resolver:ResolverRule
         public let resourceType: String?
 
         public init(maxResults: Int? = nil, nextToken: String? = nil, principals: [String]? = nil, resourceArn: String? = nil, resourceOwner: ResourceOwner, resourceShareArns: [String]? = nil, resourceType: String? = nil) {
@@ -786,18 +753,17 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
-            case principals = "principals"
-            case resourceArn = "resourceArn"
-            case resourceOwner = "resourceOwner"
-            case resourceShareArns = "resourceShareArns"
-            case resourceType = "resourceType"
+            case maxResults
+            case nextToken
+            case principals
+            case resourceArn
+            case resourceOwner
+            case resourceShareArns
+            case resourceType
         }
     }
 
     public struct ListPrincipalsResponse: AWSDecodableShape {
-
         /// The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         public let nextToken: String?
         /// The principals.
@@ -809,13 +775,12 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case principals = "principals"
+            case nextToken
+            case principals
         }
     }
 
     public struct ListResourceSharePermissionsRequest: AWSEncodableShape {
-
         /// The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned nextToken value.
         public let maxResults: Int?
         /// The token for the next page of results.
@@ -835,14 +800,13 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
-            case resourceShareArn = "resourceShareArn"
+            case maxResults
+            case nextToken
+            case resourceShareArn
         }
     }
 
     public struct ListResourceSharePermissionsResponse: AWSDecodableShape {
-
         /// The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         public let nextToken: String?
         /// The permissions associated with the resource share.
@@ -854,13 +818,12 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case permissions = "permissions"
+            case nextToken
+            case permissions
         }
     }
 
     public struct ListResourceTypesRequest: AWSEncodableShape {
-
         /// The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned nextToken value.
         public let maxResults: Int?
         /// The token for the next page of results.
@@ -877,13 +840,12 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
+            case maxResults
+            case nextToken
         }
     }
 
     public struct ListResourceTypesResponse: AWSDecodableShape {
-
         /// The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         public let nextToken: String?
         /// The shareable resource types supported by AWS RAM.
@@ -895,13 +857,12 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case resourceTypes = "resourceTypes"
+            case nextToken
+            case resourceTypes
         }
     }
 
     public struct ListResourcesRequest: AWSEncodableShape {
-
         /// The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned nextToken value.
         public let maxResults: Int?
         /// The token for the next page of results.
@@ -914,7 +875,7 @@ extension RAM {
         public let resourceOwner: ResourceOwner
         /// The Amazon Resource Names (ARN) of the resource shares.
         public let resourceShareArns: [String]?
-        /// The resource type. 	     Valid values: acm-pca:CertificateAuthority | appmesh:Mesh | codebuild:Project | codebuild:ReportGroup | ec2:CapacityReservation | ec2:DedicatedHost | ec2:LocalGatewayRouteTable | ec2:PrefixList | ec2:Subnet | ec2:TrafficMirrorTarget | ec2:TransitGateway | imagebuilder:Component | imagebuilder:Image | imagebuilder:ImageRecipe | imagebuilder:ContainerRecipe | glue:Catalog | glue:Database | glue:Table | license-manager:LicenseConfiguration I network-firewall:FirewallPolicy | network-firewall:StatefulRuleGroup | network-firewall:StatelessRuleGroup | outposts:Outpost | resource-groups:Group | rds:Cluster | route53resolver:ResolverQueryLogConfig | route53resolver:ResolverRule 
+        /// The resource type. 	     Valid values: acm-pca:CertificateAuthority | appmesh:Mesh | codebuild:Project | codebuild:ReportGroup | ec2:CapacityReservation | ec2:DedicatedHost | ec2:LocalGatewayRouteTable | ec2:PrefixList | ec2:Subnet | ec2:TrafficMirrorTarget | ec2:TransitGateway | imagebuilder:Component | imagebuilder:Image | imagebuilder:ImageRecipe | imagebuilder:ContainerRecipe | glue:Catalog | glue:Database | glue:Table | license-manager:LicenseConfiguration I network-firewall:FirewallPolicy | network-firewall:StatefulRuleGroup | network-firewall:StatelessRuleGroup | outposts:Outpost | resource-groups:Group | rds:Cluster | route53resolver:ResolverQueryLogConfig | route53resolver:ResolverRule
         public let resourceType: String?
 
         public init(maxResults: Int? = nil, nextToken: String? = nil, principal: String? = nil, resourceArns: [String]? = nil, resourceOwner: ResourceOwner, resourceShareArns: [String]? = nil, resourceType: String? = nil) {
@@ -933,18 +894,17 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
-            case principal = "principal"
-            case resourceArns = "resourceArns"
-            case resourceOwner = "resourceOwner"
-            case resourceShareArns = "resourceShareArns"
-            case resourceType = "resourceType"
+            case maxResults
+            case nextToken
+            case principal
+            case resourceArns
+            case resourceOwner
+            case resourceShareArns
+            case resourceType
         }
     }
 
     public struct ListResourcesResponse: AWSDecodableShape {
-
         /// The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         public let nextToken: String?
         /// Information about the resources.
@@ -956,13 +916,12 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case resources = "resources"
+            case nextToken
+            case resources
         }
     }
 
     public struct Principal: AWSDecodableShape {
-
         /// The time when the principal was associated with the resource share.
         public let creationTime: Date?
         /// Indicates whether the principal belongs to the same AWS organization as the AWS account that owns the resource share.
@@ -983,11 +942,11 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case creationTime = "creationTime"
-            case external = "external"
-            case id = "id"
-            case lastUpdatedTime = "lastUpdatedTime"
-            case resourceShareArn = "resourceShareArn"
+            case creationTime
+            case external
+            case id
+            case lastUpdatedTime
+            case resourceShareArn
         }
     }
 
@@ -1007,7 +966,6 @@ extension RAM {
     }
 
     public struct PromoteResourceShareCreatedFromPolicyResponse: AWSDecodableShape {
-
         /// Indicates whether the request succeeded.
         public let returnValue: Bool?
 
@@ -1021,7 +979,6 @@ extension RAM {
     }
 
     public struct RejectResourceShareInvitationRequest: AWSEncodableShape {
-
         /// A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
         public let clientToken: String?
         /// The Amazon Resource Name (ARN) of the invitation.
@@ -1033,13 +990,12 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientToken = "clientToken"
-            case resourceShareInvitationArn = "resourceShareInvitationArn"
+            case clientToken
+            case resourceShareInvitationArn
         }
     }
 
     public struct RejectResourceShareInvitationResponse: AWSDecodableShape {
-
         /// A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
         public let clientToken: String?
         /// Information about the invitation.
@@ -1051,13 +1007,12 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientToken = "clientToken"
-            case resourceShareInvitation = "resourceShareInvitation"
+            case clientToken
+            case resourceShareInvitation
         }
     }
 
     public struct Resource: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the resource.
         public let arn: String?
         /// The time when the resource was associated with the resource share.
@@ -1088,38 +1043,37 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case creationTime = "creationTime"
-            case lastUpdatedTime = "lastUpdatedTime"
-            case resourceGroupArn = "resourceGroupArn"
-            case resourceShareArn = "resourceShareArn"
-            case status = "status"
-            case statusMessage = "statusMessage"
-            case type = "type"
+            case arn
+            case creationTime
+            case lastUpdatedTime
+            case resourceGroupArn
+            case resourceShareArn
+            case status
+            case statusMessage
+            case type
         }
     }
 
     public struct ResourceShare: AWSDecodableShape {
-
         /// Indicates whether principals outside your AWS organization can be associated with a resource share.
         public let allowExternalPrincipals: Bool?
         /// The time when the resource share was created.
         public let creationTime: Date?
         /// Indicates how the resource share was created. Possible values include:
-        /// 	         
+        ///
         /// 			             CREATED_FROM_POLICY - Indicates that the resource share was created from an AWS Identity
         /// 					and Access Management (AWS IAM) policy attached to a resource. These resource shares are
         /// 					visible only to the AWS account that created it. They cannot be modified in
         /// 					AWS RAM.
-        /// 		           
-        /// 			             PROMOTING_TO_STANDARD - The resource share is in the process 
-        /// 				of being promoted. For more information, see 
+        ///
+        /// 			             PROMOTING_TO_STANDARD - The resource share is in the process
+        /// 				of being promoted. For more information, see
         /// 				PromoteResourceShareCreatedFromPolicy.
-        /// 		           
+        ///
         /// 			             STANDARD - Indicates that the resource share was created in AWS RAM using the console or
         /// 					APIs. These resource shares are visible to all principals. They can be modified
         /// 					in AWS RAM.
-        /// 		           
+        ///
         public let featureSet: ResourceShareFeatureSet?
         /// The time when the resource share was last updated.
         public let lastUpdatedTime: Date?
@@ -1150,21 +1104,20 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case allowExternalPrincipals = "allowExternalPrincipals"
-            case creationTime = "creationTime"
-            case featureSet = "featureSet"
-            case lastUpdatedTime = "lastUpdatedTime"
-            case name = "name"
-            case owningAccountId = "owningAccountId"
-            case resourceShareArn = "resourceShareArn"
-            case status = "status"
-            case statusMessage = "statusMessage"
-            case tags = "tags"
+            case allowExternalPrincipals
+            case creationTime
+            case featureSet
+            case lastUpdatedTime
+            case name
+            case owningAccountId
+            case resourceShareArn
+            case status
+            case statusMessage
+            case tags
         }
     }
 
     public struct ResourceShareAssociation: AWSDecodableShape {
-
         /// The associated entity. For resource associations, this is the ARN of the resource. For principal associations, this is the ID of an AWS account or the ARN of an OU or organization from AWS Organizations.
         public let associatedEntity: String?
         /// The association type.
@@ -1197,20 +1150,19 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case associatedEntity = "associatedEntity"
-            case associationType = "associationType"
-            case creationTime = "creationTime"
-            case external = "external"
-            case lastUpdatedTime = "lastUpdatedTime"
-            case resourceShareArn = "resourceShareArn"
-            case resourceShareName = "resourceShareName"
-            case status = "status"
-            case statusMessage = "statusMessage"
+            case associatedEntity
+            case associationType
+            case creationTime
+            case external
+            case lastUpdatedTime
+            case resourceShareArn
+            case resourceShareName
+            case status
+            case statusMessage
         }
     }
 
     public struct ResourceShareInvitation: AWSDecodableShape {
-
         /// The date and time when the invitation was sent.
         public let invitationTimestamp: Date?
         /// The ID of the AWS account that received the invitation.
@@ -1243,20 +1195,19 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case invitationTimestamp = "invitationTimestamp"
-            case receiverAccountId = "receiverAccountId"
-            case receiverArn = "receiverArn"
-            case resourceShareArn = "resourceShareArn"
-            case resourceShareAssociations = "resourceShareAssociations"
-            case resourceShareInvitationArn = "resourceShareInvitationArn"
-            case resourceShareName = "resourceShareName"
-            case senderAccountId = "senderAccountId"
-            case status = "status"
+            case invitationTimestamp
+            case receiverAccountId
+            case receiverArn
+            case resourceShareArn
+            case resourceShareAssociations
+            case resourceShareInvitationArn
+            case resourceShareName
+            case senderAccountId
+            case status
         }
     }
 
     public struct ResourceSharePermissionDetail: AWSDecodableShape {
-
         /// The ARN of the permission.
         public let arn: String?
         /// The date and time when the permission was created.
@@ -1291,20 +1242,19 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case creationTime = "creationTime"
-            case defaultVersion = "defaultVersion"
-            case isResourceTypeDefault = "isResourceTypeDefault"
-            case lastUpdatedTime = "lastUpdatedTime"
-            case name = "name"
-            case permission = "permission"
-            case resourceType = "resourceType"
-            case version = "version"
+            case arn
+            case creationTime
+            case defaultVersion
+            case isResourceTypeDefault
+            case lastUpdatedTime
+            case name
+            case permission
+            case resourceType
+            case version
         }
     }
 
     public struct ResourceSharePermissionSummary: AWSDecodableShape {
-
         /// The ARN of the permission.
         public let arn: String?
         /// The date and time when the permission was created.
@@ -1337,20 +1287,19 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case creationTime = "creationTime"
-            case defaultVersion = "defaultVersion"
-            case isResourceTypeDefault = "isResourceTypeDefault"
-            case lastUpdatedTime = "lastUpdatedTime"
-            case name = "name"
-            case resourceType = "resourceType"
-            case status = "status"
-            case version = "version"
+            case arn
+            case creationTime
+            case defaultVersion
+            case isResourceTypeDefault
+            case lastUpdatedTime
+            case name
+            case resourceType
+            case status
+            case version
         }
     }
 
     public struct ServiceNameAndResourceType: AWSDecodableShape {
-
         /// The shareable resource types.
         public let resourceType: String?
         /// The name of the AWS services to which the resources belong.
@@ -1362,13 +1311,12 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case resourceType = "resourceType"
-            case serviceName = "serviceName"
+            case resourceType
+            case serviceName
         }
     }
 
     public struct Tag: AWSEncodableShape & AWSDecodableShape {
-
         /// The key of the tag.
         public let key: String?
         /// The value of the tag.
@@ -1380,13 +1328,12 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case key = "key"
-            case value = "value"
+            case key
+            case value
         }
     }
 
     public struct TagFilter: AWSEncodableShape {
-
         /// The tag key.
         public let tagKey: String?
         /// The tag values.
@@ -1398,13 +1345,12 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tagKey = "tagKey"
-            case tagValues = "tagValues"
+            case tagKey
+            case tagValues
         }
     }
 
     public struct TagResourceRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the resource share.
         public let resourceShareArn: String
         /// One or more tags.
@@ -1416,21 +1362,16 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case resourceShareArn = "resourceShareArn"
-            case tags = "tags"
+            case resourceShareArn
+            case tags
         }
     }
 
     public struct TagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UntagResourceRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the resource share.
         public let resourceShareArn: String
         /// The tag keys of the tags to remove.
@@ -1442,21 +1383,16 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case resourceShareArn = "resourceShareArn"
-            case tagKeys = "tagKeys"
+            case resourceShareArn
+            case tagKeys
         }
     }
 
     public struct UntagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateResourceShareRequest: AWSEncodableShape {
-
         /// Indicates whether principals outside your AWS organization can be associated with a resource share.
         public let allowExternalPrincipals: Bool?
         /// A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
@@ -1474,15 +1410,14 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case allowExternalPrincipals = "allowExternalPrincipals"
-            case clientToken = "clientToken"
-            case name = "name"
-            case resourceShareArn = "resourceShareArn"
+            case allowExternalPrincipals
+            case clientToken
+            case name
+            case resourceShareArn
         }
     }
 
     public struct UpdateResourceShareResponse: AWSDecodableShape {
-
         /// A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
         public let clientToken: String?
         /// Information about the resource share.
@@ -1494,8 +1429,8 @@ extension RAM {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientToken = "clientToken"
-            case resourceShare = "resourceShare"
+            case clientToken
+            case resourceShare
         }
     }
 }

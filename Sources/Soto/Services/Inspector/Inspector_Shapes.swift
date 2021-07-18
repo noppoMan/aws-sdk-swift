@@ -141,7 +141,6 @@ extension Inspector {
     // MARK: Shapes
 
     public struct AddAttributesToFindingsRequest: AWSEncodableShape {
-
         /// The array of attributes that you want to assign to specified findings.
         public let attributes: [Attribute]
         /// The ARNs that specify the findings that you want to assign attributes to.
@@ -166,13 +165,12 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case attributes = "attributes"
-            case findingArns = "findingArns"
+            case attributes
+            case findingArns
         }
     }
 
     public struct AddAttributesToFindingsResponse: AWSDecodableShape {
-
         /// Attribute details that cannot be described. An error code is provided for each failed item.
         public let failedItems: [String: FailedItemDetails]
 
@@ -181,13 +179,12 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case failedItems = "failedItems"
+            case failedItems
         }
     }
 
     public struct AgentFilter: AWSEncodableShape {
-
-        /// The detailed health state of the agent. Values can be set to IDLE, RUNNING, SHUTDOWN, UNHEALTHY, THROTTLED, and UNKNOWN. 
+        /// The detailed health state of the agent. Values can be set to IDLE, RUNNING, SHUTDOWN, UNHEALTHY, THROTTLED, and UNKNOWN.
         public let agentHealthCodes: [AgentHealthCode]
         /// The current health state of the agent. Values can be set to HEALTHY or UNHEALTHY.
         public let agentHealths: [AgentHealth]
@@ -203,13 +200,12 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case agentHealthCodes = "agentHealthCodes"
-            case agentHealths = "agentHealths"
+            case agentHealthCodes
+            case agentHealths
         }
     }
 
     public struct AgentPreview: AWSDecodableShape {
-
         /// The health status of the Amazon Inspector Agent.
         public let agentHealth: AgentHealth?
         /// The ID of the EC2 instance where the agent is installed.
@@ -239,19 +235,18 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case agentHealth = "agentHealth"
-            case agentId = "agentId"
-            case agentVersion = "agentVersion"
-            case autoScalingGroup = "autoScalingGroup"
-            case hostname = "hostname"
-            case ipv4Address = "ipv4Address"
-            case kernelVersion = "kernelVersion"
-            case operatingSystem = "operatingSystem"
+            case agentHealth
+            case agentId
+            case agentVersion
+            case autoScalingGroup
+            case hostname
+            case ipv4Address
+            case kernelVersion
+            case operatingSystem
         }
     }
 
     public struct AssessmentRun: AWSDecodableShape {
-
         /// The ARN of the assessment run.
         public let arn: String
         /// The ARN of the assessment template that is associated with the assessment run.
@@ -302,26 +297,25 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case assessmentTemplateArn = "assessmentTemplateArn"
-            case completedAt = "completedAt"
-            case createdAt = "createdAt"
-            case dataCollected = "dataCollected"
-            case durationInSeconds = "durationInSeconds"
-            case findingCounts = "findingCounts"
-            case name = "name"
-            case notifications = "notifications"
-            case rulesPackageArns = "rulesPackageArns"
-            case startedAt = "startedAt"
-            case state = "state"
-            case stateChangedAt = "stateChangedAt"
-            case stateChanges = "stateChanges"
-            case userAttributesForFindings = "userAttributesForFindings"
+            case arn
+            case assessmentTemplateArn
+            case completedAt
+            case createdAt
+            case dataCollected
+            case durationInSeconds
+            case findingCounts
+            case name
+            case notifications
+            case rulesPackageArns
+            case startedAt
+            case state
+            case stateChangedAt
+            case stateChanges
+            case userAttributesForFindings
         }
     }
 
     public struct AssessmentRunAgent: AWSDecodableShape {
-
         /// The current health state of the agent.
         public let agentHealth: AgentHealth
         /// The detailed health state of the agent.
@@ -348,18 +342,17 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case agentHealth = "agentHealth"
-            case agentHealthCode = "agentHealthCode"
-            case agentHealthDetails = "agentHealthDetails"
-            case agentId = "agentId"
-            case assessmentRunArn = "assessmentRunArn"
-            case autoScalingGroup = "autoScalingGroup"
-            case telemetryMetadata = "telemetryMetadata"
+            case agentHealth
+            case agentHealthCode
+            case agentHealthDetails
+            case agentId
+            case assessmentRunArn
+            case autoScalingGroup
+            case telemetryMetadata
         }
     }
 
     public struct AssessmentRunFilter: AWSEncodableShape {
-
         /// For a record to match a filter, the value that is specified for this data type property must inclusively match any value between the specified minimum and maximum values of the completedAt property of the AssessmentRun data type.
         public let completionTimeRange: TimestampRange?
         /// For a record to match a filter, the value that is specified for this data type property must inclusively match any value between the specified minimum and maximum values of the durationInSeconds property of the AssessmentRun data type.
@@ -398,18 +391,17 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case completionTimeRange = "completionTimeRange"
-            case durationRange = "durationRange"
-            case namePattern = "namePattern"
-            case rulesPackageArns = "rulesPackageArns"
-            case startTimeRange = "startTimeRange"
-            case stateChangeTimeRange = "stateChangeTimeRange"
-            case states = "states"
+            case completionTimeRange
+            case durationRange
+            case namePattern
+            case rulesPackageArns
+            case startTimeRange
+            case stateChangeTimeRange
+            case states
         }
     }
 
     public struct AssessmentRunNotification: AWSDecodableShape {
-
         /// The date of the notification.
         public let date: Date
         /// The Boolean value that specifies whether the notification represents an error.
@@ -433,17 +425,16 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case date = "date"
-            case error = "error"
-            case event = "event"
-            case message = "message"
-            case snsPublishStatusCode = "snsPublishStatusCode"
-            case snsTopicArn = "snsTopicArn"
+            case date
+            case error
+            case event
+            case message
+            case snsPublishStatusCode
+            case snsTopicArn
         }
     }
 
     public struct AssessmentRunStateChange: AWSDecodableShape {
-
         /// The assessment run state.
         public let state: AssessmentRunState
         /// The last time the assessment run state changed.
@@ -455,13 +446,12 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case state = "state"
-            case stateChangedAt = "stateChangedAt"
+            case state
+            case stateChangedAt
         }
     }
 
     public struct AssessmentTarget: AWSDecodableShape {
-
         /// The ARN that specifies the Amazon Inspector assessment target.
         public let arn: String
         /// The time at which the assessment target is created.
@@ -482,16 +472,15 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdAt = "createdAt"
-            case name = "name"
-            case resourceGroupArn = "resourceGroupArn"
-            case updatedAt = "updatedAt"
+            case arn
+            case createdAt
+            case name
+            case resourceGroupArn
+            case updatedAt
         }
     }
 
     public struct AssessmentTargetFilter: AWSEncodableShape {
-
         /// For a record to match a filter, an explicit value or a string that contains a wildcard that is specified for this data type property must match the value of the assessmentTargetName property of the AssessmentTarget data type.
         public let assessmentTargetNamePattern: String?
 
@@ -505,12 +494,11 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case assessmentTargetNamePattern = "assessmentTargetNamePattern"
+            case assessmentTargetNamePattern
         }
     }
 
     public struct AssessmentTemplate: AWSDecodableShape {
-
         /// The ARN of the assessment template.
         public let arn: String
         /// The number of existing assessment runs associated with this assessment template. This value can be zero or a positive integer.
@@ -543,20 +531,19 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case assessmentRunCount = "assessmentRunCount"
-            case assessmentTargetArn = "assessmentTargetArn"
-            case createdAt = "createdAt"
-            case durationInSeconds = "durationInSeconds"
-            case lastAssessmentRunArn = "lastAssessmentRunArn"
-            case name = "name"
-            case rulesPackageArns = "rulesPackageArns"
-            case userAttributesForFindings = "userAttributesForFindings"
+            case arn
+            case assessmentRunCount
+            case assessmentTargetArn
+            case createdAt
+            case durationInSeconds
+            case lastAssessmentRunArn
+            case name
+            case rulesPackageArns
+            case userAttributesForFindings
         }
     }
 
     public struct AssessmentTemplateFilter: AWSEncodableShape {
-
         /// For a record to match a filter, the value specified for this data type property must inclusively match any value between the specified minimum and maximum values of the durationInSeconds property of the AssessmentTemplate data type.
         public let durationRange: DurationRange?
         /// For a record to match a filter, an explicit value or a string that contains a wildcard that is specified for this data type property must match the value of the assessmentTemplateName property of the AssessmentTemplate data type.
@@ -582,14 +569,13 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case durationRange = "durationRange"
-            case namePattern = "namePattern"
-            case rulesPackageArns = "rulesPackageArns"
+            case durationRange
+            case namePattern
+            case rulesPackageArns
         }
     }
 
     public struct AssetAttributes: AWSDecodableShape {
-
         /// The ID of the agent that is installed on the EC2 instance where the finding is generated.
         public let agentId: String?
         /// The ID of the Amazon Machine Image (AMI) that is installed on the EC2 instance where the finding is generated.
@@ -619,19 +605,18 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case agentId = "agentId"
-            case amiId = "amiId"
-            case autoScalingGroup = "autoScalingGroup"
-            case hostname = "hostname"
-            case ipv4Addresses = "ipv4Addresses"
-            case networkInterfaces = "networkInterfaces"
-            case schemaVersion = "schemaVersion"
-            case tags = "tags"
+            case agentId
+            case amiId
+            case autoScalingGroup
+            case hostname
+            case ipv4Addresses
+            case networkInterfaces
+            case schemaVersion
+            case tags
         }
     }
 
     public struct Attribute: AWSEncodableShape & AWSDecodableShape {
-
         /// The attribute key.
         public let key: String
         /// The value assigned to the attribute key.
@@ -650,13 +635,12 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case key = "key"
-            case value = "value"
+            case key
+            case value
         }
     }
 
     public struct CreateAssessmentTargetRequest: AWSEncodableShape {
-
         /// The user-defined name that identifies the assessment target that you want to create. The name must be unique within the AWS account.
         public let assessmentTargetName: String
         /// The ARN that specifies the resource group that is used to create the assessment target. If resourceGroupArn is not specified, all EC2 instances in the current AWS account and region are included in the assessment target.
@@ -675,13 +659,12 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case assessmentTargetName = "assessmentTargetName"
-            case resourceGroupArn = "resourceGroupArn"
+            case assessmentTargetName
+            case resourceGroupArn
         }
     }
 
     public struct CreateAssessmentTargetResponse: AWSDecodableShape {
-
         /// The ARN that specifies the assessment target that is created.
         public let assessmentTargetArn: String
 
@@ -690,12 +673,11 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case assessmentTargetArn = "assessmentTargetArn"
+            case assessmentTargetArn
         }
     }
 
     public struct CreateAssessmentTemplateRequest: AWSEncodableShape {
-
         /// The ARN that specifies the assessment target for which you want to create the assessment template.
         public let assessmentTargetArn: String
         /// The user-defined name that identifies the assessment template that you want to create. You can create several assessment templates for an assessment target. The names of the assessment templates that correspond to a particular assessment target must be unique.
@@ -734,16 +716,15 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case assessmentTargetArn = "assessmentTargetArn"
-            case assessmentTemplateName = "assessmentTemplateName"
-            case durationInSeconds = "durationInSeconds"
-            case rulesPackageArns = "rulesPackageArns"
-            case userAttributesForFindings = "userAttributesForFindings"
+            case assessmentTargetArn
+            case assessmentTemplateName
+            case durationInSeconds
+            case rulesPackageArns
+            case userAttributesForFindings
         }
     }
 
     public struct CreateAssessmentTemplateResponse: AWSDecodableShape {
-
         /// The ARN that specifies the assessment template that is created.
         public let assessmentTemplateArn: String
 
@@ -752,12 +733,11 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case assessmentTemplateArn = "assessmentTemplateArn"
+            case assessmentTemplateArn
         }
     }
 
     public struct CreateExclusionsPreviewRequest: AWSEncodableShape {
-
         /// The ARN that specifies the assessment template for which you want to create an exclusions preview.
         public let assessmentTemplateArn: String
 
@@ -771,12 +751,11 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case assessmentTemplateArn = "assessmentTemplateArn"
+            case assessmentTemplateArn
         }
     }
 
     public struct CreateExclusionsPreviewResponse: AWSDecodableShape {
-
         /// Specifies the unique identifier of the requested exclusions preview. You can use the unique identifier to retrieve the exclusions preview when running the GetExclusionsPreview API.
         public let previewToken: String
 
@@ -785,12 +764,11 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case previewToken = "previewToken"
+            case previewToken
         }
     }
 
     public struct CreateResourceGroupRequest: AWSEncodableShape {
-
         /// A collection of keys and an array of possible values, '[{"key":"key1","values":["Value1","Value2"]},{"key":"Key2","values":["Value3"]}]'. For example,'[{"key":"Name","values":["TestEC2Instance"]}]'.
         public let resourceGroupTags: [ResourceGroupTag]
 
@@ -807,12 +785,11 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case resourceGroupTags = "resourceGroupTags"
+            case resourceGroupTags
         }
     }
 
     public struct CreateResourceGroupResponse: AWSDecodableShape {
-
         /// The ARN that specifies the resource group that is created.
         public let resourceGroupArn: String
 
@@ -821,12 +798,11 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case resourceGroupArn = "resourceGroupArn"
+            case resourceGroupArn
         }
     }
 
     public struct DeleteAssessmentRunRequest: AWSEncodableShape {
-
         /// The ARN that specifies the assessment run that you want to delete.
         public let assessmentRunArn: String
 
@@ -840,12 +816,11 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case assessmentRunArn = "assessmentRunArn"
+            case assessmentRunArn
         }
     }
 
     public struct DeleteAssessmentTargetRequest: AWSEncodableShape {
-
         /// The ARN that specifies the assessment target that you want to delete.
         public let assessmentTargetArn: String
 
@@ -859,12 +834,11 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case assessmentTargetArn = "assessmentTargetArn"
+            case assessmentTargetArn
         }
     }
 
     public struct DeleteAssessmentTemplateRequest: AWSEncodableShape {
-
         /// The ARN that specifies the assessment template that you want to delete.
         public let assessmentTemplateArn: String
 
@@ -878,12 +852,11 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case assessmentTemplateArn = "assessmentTemplateArn"
+            case assessmentTemplateArn
         }
     }
 
     public struct DescribeAssessmentRunsRequest: AWSEncodableShape {
-
         /// The ARN that specifies the assessment run that you want to describe.
         public let assessmentRunArns: [String]
 
@@ -901,12 +874,11 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case assessmentRunArns = "assessmentRunArns"
+            case assessmentRunArns
         }
     }
 
     public struct DescribeAssessmentRunsResponse: AWSDecodableShape {
-
         /// Information about the assessment run.
         public let assessmentRuns: [AssessmentRun]
         /// Assessment run details that cannot be described. An error code is provided for each failed item.
@@ -918,13 +890,12 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case assessmentRuns = "assessmentRuns"
-            case failedItems = "failedItems"
+            case assessmentRuns
+            case failedItems
         }
     }
 
     public struct DescribeAssessmentTargetsRequest: AWSEncodableShape {
-
         /// The ARNs that specifies the assessment targets that you want to describe.
         public let assessmentTargetArns: [String]
 
@@ -942,12 +913,11 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case assessmentTargetArns = "assessmentTargetArns"
+            case assessmentTargetArns
         }
     }
 
     public struct DescribeAssessmentTargetsResponse: AWSDecodableShape {
-
         /// Information about the assessment targets.
         public let assessmentTargets: [AssessmentTarget]
         /// Assessment target details that cannot be described. An error code is provided for each failed item.
@@ -959,13 +929,12 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case assessmentTargets = "assessmentTargets"
-            case failedItems = "failedItems"
+            case assessmentTargets
+            case failedItems
         }
     }
 
     public struct DescribeAssessmentTemplatesRequest: AWSEncodableShape {
-
         public let assessmentTemplateArns: [String]
 
         public init(assessmentTemplateArns: [String]) {
@@ -982,12 +951,11 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case assessmentTemplateArns = "assessmentTemplateArns"
+            case assessmentTemplateArns
         }
     }
 
     public struct DescribeAssessmentTemplatesResponse: AWSDecodableShape {
-
         /// Information about the assessment templates.
         public let assessmentTemplates: [AssessmentTemplate]
         /// Assessment template details that cannot be described. An error code is provided for each failed item.
@@ -999,13 +967,12 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case assessmentTemplates = "assessmentTemplates"
-            case failedItems = "failedItems"
+            case assessmentTemplates
+            case failedItems
         }
     }
 
     public struct DescribeCrossAccountAccessRoleResponse: AWSDecodableShape {
-
         /// The date when the cross-account access role was registered.
         public let registeredAt: Date
         /// The ARN that specifies the IAM role that Amazon Inspector uses to access your AWS account.
@@ -1020,14 +987,13 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case registeredAt = "registeredAt"
-            case roleArn = "roleArn"
-            case valid = "valid"
+            case registeredAt
+            case roleArn
+            case valid
         }
     }
 
     public struct DescribeExclusionsRequest: AWSEncodableShape {
-
         /// The list of ARNs that specify the exclusions that you want to describe.
         public let exclusionArns: [String]
         /// The locale into which you want to translate the exclusion's title, description, and recommendation.
@@ -1048,13 +1014,12 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case exclusionArns = "exclusionArns"
-            case locale = "locale"
+            case exclusionArns
+            case locale
         }
     }
 
     public struct DescribeExclusionsResponse: AWSDecodableShape {
-
         /// Information about the exclusions.
         public let exclusions: [String: Exclusion]
         /// Exclusion details that cannot be described. An error code is provided for each failed item.
@@ -1066,13 +1031,12 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case exclusions = "exclusions"
-            case failedItems = "failedItems"
+            case exclusions
+            case failedItems
         }
     }
 
     public struct DescribeFindingsRequest: AWSEncodableShape {
-
         /// The ARN that specifies the finding that you want to describe.
         public let findingArns: [String]
         /// The locale into which you want to translate a finding description, recommendation, and the short description that identifies the finding.
@@ -1093,13 +1057,12 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case findingArns = "findingArns"
-            case locale = "locale"
+            case findingArns
+            case locale
         }
     }
 
     public struct DescribeFindingsResponse: AWSDecodableShape {
-
         /// Finding details that cannot be described. An error code is provided for each failed item.
         public let failedItems: [String: FailedItemDetails]
         /// Information about the finding.
@@ -1111,13 +1074,12 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case failedItems = "failedItems"
-            case findings = "findings"
+            case failedItems
+            case findings
         }
     }
 
     public struct DescribeResourceGroupsRequest: AWSEncodableShape {
-
         /// The ARN that specifies the resource group that you want to describe.
         public let resourceGroupArns: [String]
 
@@ -1135,12 +1097,11 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case resourceGroupArns = "resourceGroupArns"
+            case resourceGroupArns
         }
     }
 
     public struct DescribeResourceGroupsResponse: AWSDecodableShape {
-
         /// Resource group details that cannot be described. An error code is provided for each failed item.
         public let failedItems: [String: FailedItemDetails]
         /// Information about a resource group.
@@ -1152,13 +1113,12 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case failedItems = "failedItems"
-            case resourceGroups = "resourceGroups"
+            case failedItems
+            case resourceGroups
         }
     }
 
     public struct DescribeRulesPackagesRequest: AWSEncodableShape {
-
         /// The locale that you want to translate a rules package description into.
         public let locale: Locale?
         /// The ARN that specifies the rules package that you want to describe.
@@ -1179,13 +1139,12 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case locale = "locale"
-            case rulesPackageArns = "rulesPackageArns"
+            case locale
+            case rulesPackageArns
         }
     }
 
     public struct DescribeRulesPackagesResponse: AWSDecodableShape {
-
         /// Rules package details that cannot be described. An error code is provided for each failed item.
         public let failedItems: [String: FailedItemDetails]
         /// Information about the rules package.
@@ -1197,13 +1156,12 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case failedItems = "failedItems"
-            case rulesPackages = "rulesPackages"
+            case failedItems
+            case rulesPackages
         }
     }
 
     public struct DurationRange: AWSEncodableShape {
-
         /// The maximum value of the duration range. Must be less than or equal to 604800 seconds (1 week).
         public let maxSeconds: Int?
         /// The minimum value of the duration range. Must be greater than zero.
@@ -1222,13 +1180,12 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxSeconds = "maxSeconds"
-            case minSeconds = "minSeconds"
+            case maxSeconds
+            case minSeconds
         }
     }
 
     public struct EventSubscription: AWSDecodableShape {
-
         /// The event for which Amazon Simple Notification Service (SNS) notifications are sent.
         public let event: InspectorEvent
         /// The time at which SubscribeToEvent is called.
@@ -1240,13 +1197,12 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case event = "event"
-            case subscribedAt = "subscribedAt"
+            case event
+            case subscribedAt
         }
     }
 
     public struct Exclusion: AWSDecodableShape {
-
         /// The ARN that specifies the exclusion.
         public let arn: String
         /// The system-defined attributes for the exclusion.
@@ -1270,17 +1226,16 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case attributes = "attributes"
-            case description = "description"
-            case recommendation = "recommendation"
-            case scopes = "scopes"
-            case title = "title"
+            case arn
+            case attributes
+            case description
+            case recommendation
+            case scopes
+            case title
         }
     }
 
     public struct ExclusionPreview: AWSDecodableShape {
-
         /// The system-defined attributes for the exclusion preview.
         public let attributes: [Attribute]?
         /// The description of the exclusion preview.
@@ -1301,16 +1256,15 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case attributes = "attributes"
-            case description = "description"
-            case recommendation = "recommendation"
-            case scopes = "scopes"
-            case title = "title"
+            case attributes
+            case description
+            case recommendation
+            case scopes
+            case title
         }
     }
 
     public struct FailedItemDetails: AWSDecodableShape {
-
         /// The status code of a failed item.
         public let failureCode: FailedItemErrorCode
         /// Indicates whether you can immediately retry a request for this item for a specified resource.
@@ -1322,13 +1276,12 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case failureCode = "failureCode"
-            case retryable = "retryable"
+            case failureCode
+            case retryable
         }
     }
 
     public struct Finding: AWSDecodableShape {
-
         /// The ARN that specifies the finding.
         public let arn: String
         /// A collection of attributes of the host from which the finding is generated.
@@ -1388,29 +1341,28 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case assetAttributes = "assetAttributes"
-            case assetType = "assetType"
-            case attributes = "attributes"
-            case confidence = "confidence"
-            case createdAt = "createdAt"
-            case description = "description"
-            case id = "id"
-            case indicatorOfCompromise = "indicatorOfCompromise"
-            case numericSeverity = "numericSeverity"
-            case recommendation = "recommendation"
-            case schemaVersion = "schemaVersion"
-            case service = "service"
-            case serviceAttributes = "serviceAttributes"
-            case severity = "severity"
-            case title = "title"
-            case updatedAt = "updatedAt"
-            case userAttributes = "userAttributes"
+            case arn
+            case assetAttributes
+            case assetType
+            case attributes
+            case confidence
+            case createdAt
+            case description
+            case id
+            case indicatorOfCompromise
+            case numericSeverity
+            case recommendation
+            case schemaVersion
+            case service
+            case serviceAttributes
+            case severity
+            case title
+            case updatedAt
+            case userAttributes
         }
     }
 
     public struct FindingFilter: AWSEncodableShape {
-
         /// For a record to match a filter, one of the values that is specified for this data type property must be the exact match of the value of the agentId property of the Finding data type.
         public let agentIds: [String]?
         /// For a record to match a filter, the list of values that are specified for this data type property must be contained in the list of values of the attributes property of the Finding data type.
@@ -1471,24 +1423,23 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case agentIds = "agentIds"
-            case attributes = "attributes"
-            case autoScalingGroups = "autoScalingGroups"
-            case creationTimeRange = "creationTimeRange"
-            case ruleNames = "ruleNames"
-            case rulesPackageArns = "rulesPackageArns"
-            case severities = "severities"
-            case userAttributes = "userAttributes"
+            case agentIds
+            case attributes
+            case autoScalingGroups
+            case creationTimeRange
+            case ruleNames
+            case rulesPackageArns
+            case severities
+            case userAttributes
         }
     }
 
     public struct GetAssessmentReportRequest: AWSEncodableShape {
-
         /// The ARN that specifies the assessment run for which you want to generate a report.
         public let assessmentRunArn: String
         /// Specifies the file format (html or pdf) of the assessment report that you want to generate.
         public let reportFileFormat: ReportFileFormat
-        /// Specifies the type of the assessment report that you want to generate. There are two types of assessment reports: a finding report and a full report. For more information, see Assessment Reports. 
+        /// Specifies the type of the assessment report that you want to generate. There are two types of assessment reports: a finding report and a full report. For more information, see Assessment Reports.
         public let reportType: ReportType
 
         public init(assessmentRunArn: String, reportFileFormat: ReportFileFormat, reportType: ReportType) {
@@ -1503,15 +1454,14 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case assessmentRunArn = "assessmentRunArn"
-            case reportFileFormat = "reportFileFormat"
-            case reportType = "reportType"
+            case assessmentRunArn
+            case reportFileFormat
+            case reportType
         }
     }
 
     public struct GetAssessmentReportResponse: AWSDecodableShape {
-
-        /// Specifies the status of the request to generate an assessment report. 
+        /// Specifies the status of the request to generate an assessment report.
         public let status: ReportStatus
         /// Specifies the URL where you can find the generated assessment report. This parameter is only returned if the report is successfully generated.
         public let url: String?
@@ -1522,13 +1472,12 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case status = "status"
-            case url = "url"
+            case status
+            case url
         }
     }
 
     public struct GetExclusionsPreviewRequest: AWSEncodableShape {
-
         /// The ARN that specifies the assessment template for which the exclusions preview was requested.
         public let assessmentTemplateArn: String
         /// The locale into which you want to translate the exclusion's title, description, and recommendation.
@@ -1557,16 +1506,15 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case assessmentTemplateArn = "assessmentTemplateArn"
-            case locale = "locale"
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
-            case previewToken = "previewToken"
+            case assessmentTemplateArn
+            case locale
+            case maxResults
+            case nextToken
+            case previewToken
         }
     }
 
     public struct GetExclusionsPreviewResponse: AWSDecodableShape {
-
         /// Information about the exclusions included in the preview.
         public let exclusionPreviews: [ExclusionPreview]?
         /// When a response is generated, if there is more data to be listed, this parameters is present in the response and contains the value to use for the nextToken parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.
@@ -1581,14 +1529,13 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case exclusionPreviews = "exclusionPreviews"
-            case nextToken = "nextToken"
-            case previewStatus = "previewStatus"
+            case exclusionPreviews
+            case nextToken
+            case previewStatus
         }
     }
 
     public struct GetTelemetryMetadataRequest: AWSEncodableShape {
-
         /// The ARN that specifies the assessment run that has the telemetry data that you want to obtain.
         public let assessmentRunArn: String
 
@@ -1602,12 +1549,11 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case assessmentRunArn = "assessmentRunArn"
+            case assessmentRunArn
         }
     }
 
     public struct GetTelemetryMetadataResponse: AWSDecodableShape {
-
         /// Telemetry details.
         public let telemetryMetadata: [TelemetryMetadata]
 
@@ -1616,12 +1562,11 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case telemetryMetadata = "telemetryMetadata"
+            case telemetryMetadata
         }
     }
 
     public struct InspectorServiceAttributes: AWSDecodableShape {
-
         /// The ARN of the assessment run during which the finding is generated.
         public let assessmentRunArn: String?
         /// The ARN of the rules package that is used to generate the finding.
@@ -1636,14 +1581,13 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case assessmentRunArn = "assessmentRunArn"
-            case rulesPackageArn = "rulesPackageArn"
-            case schemaVersion = "schemaVersion"
+            case assessmentRunArn
+            case rulesPackageArn
+            case schemaVersion
         }
     }
 
     public struct ListAssessmentRunAgentsRequest: AWSEncodableShape {
-
         /// The ARN that specifies the assessment run whose agents you want to list.
         public let assessmentRunArn: String
         /// You can use this parameter to specify a subset of data to be included in the action's response. For a record to match a filter, all specified filter attributes must match. When multiple values are specified for a filter attribute, any of the values can match.
@@ -1669,15 +1613,14 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case assessmentRunArn = "assessmentRunArn"
-            case filter = "filter"
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
+            case assessmentRunArn
+            case filter
+            case maxResults
+            case nextToken
         }
     }
 
     public struct ListAssessmentRunAgentsResponse: AWSDecodableShape {
-
         /// A list of ARNs that specifies the agents returned by the action.
         public let assessmentRunAgents: [AssessmentRunAgent]
         ///  When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the nextToken parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.
@@ -1689,13 +1632,12 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case assessmentRunAgents = "assessmentRunAgents"
-            case nextToken = "nextToken"
+            case assessmentRunAgents
+            case nextToken
         }
     }
 
     public struct ListAssessmentRunsRequest: AWSEncodableShape {
-
         /// The ARNs that specify the assessment templates whose assessment runs you want to list.
         public let assessmentTemplateArns: [String]?
         /// You can use this parameter to specify a subset of data to be included in the action's response. For a record to match a filter, all specified filter attributes must match. When multiple values are specified for a filter attribute, any of the values can match.
@@ -1724,15 +1666,14 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case assessmentTemplateArns = "assessmentTemplateArns"
-            case filter = "filter"
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
+            case assessmentTemplateArns
+            case filter
+            case maxResults
+            case nextToken
         }
     }
 
     public struct ListAssessmentRunsResponse: AWSDecodableShape {
-
         /// A list of ARNs that specifies the assessment runs that are returned by the action.
         public let assessmentRunArns: [String]
         ///  When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the nextToken parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.
@@ -1744,13 +1685,12 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case assessmentRunArns = "assessmentRunArns"
-            case nextToken = "nextToken"
+            case assessmentRunArns
+            case nextToken
         }
     }
 
     public struct ListAssessmentTargetsRequest: AWSEncodableShape {
-
         /// You can use this parameter to specify a subset of data to be included in the action's response. For a record to match a filter, all specified filter attributes must match. When multiple values are specified for a filter attribute, any of the values can match.
         public let filter: AssessmentTargetFilter?
         /// You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.
@@ -1771,14 +1711,13 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case filter = "filter"
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
+            case filter
+            case maxResults
+            case nextToken
         }
     }
 
     public struct ListAssessmentTargetsResponse: AWSDecodableShape {
-
         /// A list of ARNs that specifies the assessment targets that are returned by the action.
         public let assessmentTargetArns: [String]
         ///  When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the nextToken parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.
@@ -1790,13 +1729,12 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case assessmentTargetArns = "assessmentTargetArns"
-            case nextToken = "nextToken"
+            case assessmentTargetArns
+            case nextToken
         }
     }
 
     public struct ListAssessmentTemplatesRequest: AWSEncodableShape {
-
         /// A list of ARNs that specifies the assessment targets whose assessment templates you want to list.
         public let assessmentTargetArns: [String]?
         /// You can use this parameter to specify a subset of data to be included in the action's response. For a record to match a filter, all specified filter attributes must match. When multiple values are specified for a filter attribute, any of the values can match.
@@ -1825,15 +1763,14 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case assessmentTargetArns = "assessmentTargetArns"
-            case filter = "filter"
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
+            case assessmentTargetArns
+            case filter
+            case maxResults
+            case nextToken
         }
     }
 
     public struct ListAssessmentTemplatesResponse: AWSDecodableShape {
-
         /// A list of ARNs that specifies the assessment templates returned by the action.
         public let assessmentTemplateArns: [String]
         ///  When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the nextToken parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.
@@ -1845,13 +1782,12 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case assessmentTemplateArns = "assessmentTemplateArns"
-            case nextToken = "nextToken"
+            case assessmentTemplateArns
+            case nextToken
         }
     }
 
     public struct ListEventSubscriptionsRequest: AWSEncodableShape {
-
         /// You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.
         public let maxResults: Int?
         /// You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the ListEventSubscriptions action. Subsequent calls to the action fill nextToken in the request with the value of NextToken from the previous response to continue listing data.
@@ -1873,14 +1809,13 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
-            case resourceArn = "resourceArn"
+            case maxResults
+            case nextToken
+            case resourceArn
         }
     }
 
     public struct ListEventSubscriptionsResponse: AWSDecodableShape {
-
         ///  When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the nextToken parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.
         public let nextToken: String?
         /// Details of the returned event subscriptions.
@@ -1892,13 +1827,12 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case subscriptions = "subscriptions"
+            case nextToken
+            case subscriptions
         }
     }
 
     public struct ListExclusionsRequest: AWSEncodableShape {
-
         /// The ARN of the assessment run that generated the exclusions that you want to list.
         public let assessmentRunArn: String
         /// You can use this parameter to indicate the maximum number of items you want in the response. The default value is 100. The maximum value is 500.
@@ -1920,14 +1854,13 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case assessmentRunArn = "assessmentRunArn"
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
+            case assessmentRunArn
+            case maxResults
+            case nextToken
         }
     }
 
     public struct ListExclusionsResponse: AWSDecodableShape {
-
         /// A list of exclusions' ARNs returned by the action.
         public let exclusionArns: [String]
         /// When a response is generated, if there is more data to be listed, this parameters is present in the response and contains the value to use for the nextToken parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.
@@ -1939,13 +1872,12 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case exclusionArns = "exclusionArns"
-            case nextToken = "nextToken"
+            case exclusionArns
+            case nextToken
         }
     }
 
     public struct ListFindingsRequest: AWSEncodableShape {
-
         /// The ARNs of the assessment runs that generate the findings that you want to list.
         public let assessmentRunArns: [String]?
         /// You can use this parameter to specify a subset of data to be included in the action's response. For a record to match a filter, all specified filter attributes must match. When multiple values are specified for a filter attribute, any of the values can match.
@@ -1974,15 +1906,14 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case assessmentRunArns = "assessmentRunArns"
-            case filter = "filter"
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
+            case assessmentRunArns
+            case filter
+            case maxResults
+            case nextToken
         }
     }
 
     public struct ListFindingsResponse: AWSDecodableShape {
-
         /// A list of ARNs that specifies the findings returned by the action.
         public let findingArns: [String]
         ///  When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the nextToken parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.
@@ -1994,13 +1925,12 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case findingArns = "findingArns"
-            case nextToken = "nextToken"
+            case findingArns
+            case nextToken
         }
     }
 
     public struct ListRulesPackagesRequest: AWSEncodableShape {
-
         /// You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.
         public let maxResults: Int?
         /// You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the ListRulesPackages action. Subsequent calls to the action fill nextToken in the request with the value of NextToken from the previous response to continue listing data.
@@ -2017,13 +1947,12 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
+            case maxResults
+            case nextToken
         }
     }
 
     public struct ListRulesPackagesResponse: AWSDecodableShape {
-
         ///  When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the nextToken parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.
         public let nextToken: String?
         /// The list of ARNs that specifies the rules packages returned by the action.
@@ -2035,13 +1964,12 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case rulesPackageArns = "rulesPackageArns"
+            case nextToken
+            case rulesPackageArns
         }
     }
 
     public struct ListTagsForResourceRequest: AWSEncodableShape {
-
         /// The ARN that specifies the assessment template whose tags you want to list.
         public let resourceArn: String
 
@@ -2055,12 +1983,11 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case resourceArn = "resourceArn"
+            case resourceArn
         }
     }
 
     public struct ListTagsForResourceResponse: AWSDecodableShape {
-
         /// A collection of key and value pairs.
         public let tags: [Tag]
 
@@ -2069,12 +1996,11 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tags = "tags"
+            case tags
         }
     }
 
     public struct NetworkInterface: AWSDecodableShape {
-
         /// The IP addresses associated with the network interface.
         public let ipv6Addresses: [String]?
         /// The ID of the network interface.
@@ -2110,21 +2036,20 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case ipv6Addresses = "ipv6Addresses"
-            case networkInterfaceId = "networkInterfaceId"
-            case privateDnsName = "privateDnsName"
-            case privateIpAddress = "privateIpAddress"
-            case privateIpAddresses = "privateIpAddresses"
-            case publicDnsName = "publicDnsName"
-            case publicIp = "publicIp"
-            case securityGroups = "securityGroups"
-            case subnetId = "subnetId"
-            case vpcId = "vpcId"
+            case ipv6Addresses
+            case networkInterfaceId
+            case privateDnsName
+            case privateIpAddress
+            case privateIpAddresses
+            case publicDnsName
+            case publicIp
+            case securityGroups
+            case subnetId
+            case vpcId
         }
     }
 
     public struct PreviewAgentsRequest: AWSEncodableShape {
-
         /// You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.
         public let maxResults: Int?
         /// You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the PreviewAgents action. Subsequent calls to the action fill nextToken in the request with the value of NextToken from the previous response to continue listing data.
@@ -2146,14 +2071,13 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
-            case previewAgentsArn = "previewAgentsArn"
+            case maxResults
+            case nextToken
+            case previewAgentsArn
         }
     }
 
     public struct PreviewAgentsResponse: AWSDecodableShape {
-
         /// The resulting list of agents.
         public let agentPreviews: [AgentPreview]
         ///  When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the nextToken parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.
@@ -2165,13 +2089,12 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case agentPreviews = "agentPreviews"
-            case nextToken = "nextToken"
+            case agentPreviews
+            case nextToken
         }
     }
 
     public struct PrivateIp: AWSDecodableShape {
-
         /// The DNS name of the private IP address.
         public let privateDnsName: String?
         /// The full IP address of the network inteface.
@@ -2183,14 +2106,13 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case privateDnsName = "privateDnsName"
-            case privateIpAddress = "privateIpAddress"
+            case privateDnsName
+            case privateIpAddress
         }
     }
 
     public struct RegisterCrossAccountAccessRoleRequest: AWSEncodableShape {
-
-        /// The ARN of the IAM role that grants Amazon Inspector access to AWS Services needed to perform security assessments. 
+        /// The ARN of the IAM role that grants Amazon Inspector access to AWS Services needed to perform security assessments.
         public let roleArn: String
 
         public init(roleArn: String) {
@@ -2203,12 +2125,11 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case roleArn = "roleArn"
+            case roleArn
         }
     }
 
     public struct RemoveAttributesFromFindingsRequest: AWSEncodableShape {
-
         /// The array of attribute keys that you want to remove from specified findings.
         public let attributeKeys: [String]
         /// The ARNs that specify the findings that you want to remove attributes from.
@@ -2234,13 +2155,12 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case attributeKeys = "attributeKeys"
-            case findingArns = "findingArns"
+            case attributeKeys
+            case findingArns
         }
     }
 
     public struct RemoveAttributesFromFindingsResponse: AWSDecodableShape {
-
         /// Attributes details that cannot be described. An error code is provided for each failed item.
         public let failedItems: [String: FailedItemDetails]
 
@@ -2249,12 +2169,11 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case failedItems = "failedItems"
+            case failedItems
         }
     }
 
     public struct ResourceGroup: AWSDecodableShape {
-
         /// The ARN of the resource group.
         public let arn: String
         /// The time at which resource group is created.
@@ -2269,14 +2188,13 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdAt = "createdAt"
-            case tags = "tags"
+            case arn
+            case createdAt
+            case tags
         }
     }
 
     public struct ResourceGroupTag: AWSEncodableShape & AWSDecodableShape {
-
         /// A tag key.
         public let key: String
         /// The value assigned to a tag key.
@@ -2295,13 +2213,12 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case key = "key"
-            case value = "value"
+            case key
+            case value
         }
     }
 
     public struct RulesPackage: AWSDecodableShape {
-
         /// The ARN of the rules package.
         public let arn: String
         /// The description of the rules package.
@@ -2322,16 +2239,15 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case description = "description"
-            case name = "name"
-            case provider = "provider"
-            case version = "version"
+            case arn
+            case description
+            case name
+            case provider
+            case version
         }
     }
 
     public struct Scope: AWSDecodableShape {
-
         /// The type of the scope.
         public let key: ScopeType?
         /// The resource identifier for the specified scope type.
@@ -2343,13 +2259,12 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case key = "key"
-            case value = "value"
+            case key
+            case value
         }
     }
 
     public struct SecurityGroup: AWSDecodableShape {
-
         /// The ID of the security group.
         public let groupId: String?
         /// The name of the security group.
@@ -2361,13 +2276,12 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case groupId = "groupId"
-            case groupName = "groupName"
+            case groupId
+            case groupName
         }
     }
 
     public struct SetTagsForResourceRequest: AWSEncodableShape {
-
         /// The ARN of the assessment template that you want to set tags to.
         public let resourceArn: String
         /// A collection of key and value pairs that you want to set to the assessment template.
@@ -2388,13 +2302,12 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case resourceArn = "resourceArn"
-            case tags = "tags"
+            case resourceArn
+            case tags
         }
     }
 
     public struct StartAssessmentRunRequest: AWSEncodableShape {
-
         /// You can specify the name for the assessment run. The name must be unique for the assessment template whose ARN is used to start the assessment run.
         public let assessmentRunName: String?
         /// The ARN of the assessment template of the assessment run that you want to start.
@@ -2413,13 +2326,12 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case assessmentRunName = "assessmentRunName"
-            case assessmentTemplateArn = "assessmentTemplateArn"
+            case assessmentRunName
+            case assessmentTemplateArn
         }
     }
 
     public struct StartAssessmentRunResponse: AWSDecodableShape {
-
         /// The ARN of the assessment run that has been started.
         public let assessmentRunArn: String
 
@@ -2428,12 +2340,11 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case assessmentRunArn = "assessmentRunArn"
+            case assessmentRunArn
         }
     }
 
     public struct StopAssessmentRunRequest: AWSEncodableShape {
-
         /// The ARN of the assessment run that you want to stop.
         public let assessmentRunArn: String
         /// An input option that can be set to either START_EVALUATION or SKIP_EVALUATION. START_EVALUATION (the default value), stops the AWS agent from collecting data and begins the results evaluation and the findings generation process. SKIP_EVALUATION cancels the assessment run immediately, after which no findings are generated.
@@ -2450,13 +2361,12 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case assessmentRunArn = "assessmentRunArn"
-            case stopAction = "stopAction"
+            case assessmentRunArn
+            case stopAction
         }
     }
 
     public struct SubscribeToEventRequest: AWSEncodableShape {
-
         /// The event for which you want to receive SNS notifications.
         public let event: InspectorEvent
         /// The ARN of the assessment template that is used during the event for which you want to receive SNS notifications.
@@ -2478,14 +2388,13 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case event = "event"
-            case resourceArn = "resourceArn"
-            case topicArn = "topicArn"
+            case event
+            case resourceArn
+            case topicArn
         }
     }
 
     public struct Subscription: AWSDecodableShape {
-
         /// The list of existing event subscriptions.
         public let eventSubscriptions: [EventSubscription]
         /// The ARN of the assessment template that is used during the event for which the SNS notification is sent.
@@ -2500,14 +2409,13 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case eventSubscriptions = "eventSubscriptions"
-            case resourceArn = "resourceArn"
-            case topicArn = "topicArn"
+            case eventSubscriptions
+            case resourceArn
+            case topicArn
         }
     }
 
     public struct Tag: AWSEncodableShape & AWSDecodableShape {
-
         /// A tag key.
         public let key: String
         /// A value assigned to a tag key.
@@ -2526,13 +2434,12 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case key = "key"
-            case value = "value"
+            case key
+            case value
         }
     }
 
     public struct TelemetryMetadata: AWSDecodableShape {
-
         /// The count of messages that the agent sends to the Amazon Inspector service.
         public let count: Int64
         /// The data size of messages that the agent sends to the Amazon Inspector service.
@@ -2547,14 +2454,13 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case count = "count"
-            case dataSize = "dataSize"
-            case messageType = "messageType"
+            case count
+            case dataSize
+            case messageType
         }
     }
 
     public struct TimestampRange: AWSEncodableShape {
-
         /// The minimum value of the timestamp range.
         public let beginDate: Date?
         /// The maximum value of the timestamp range.
@@ -2566,13 +2472,12 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case beginDate = "beginDate"
-            case endDate = "endDate"
+            case beginDate
+            case endDate
         }
     }
 
     public struct UnsubscribeFromEventRequest: AWSEncodableShape {
-
         /// The event for which you want to stop receiving SNS notifications.
         public let event: InspectorEvent
         /// The ARN of the assessment template that is used during the event for which you want to stop receiving SNS notifications.
@@ -2594,14 +2499,13 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case event = "event"
-            case resourceArn = "resourceArn"
-            case topicArn = "topicArn"
+            case event
+            case resourceArn
+            case topicArn
         }
     }
 
     public struct UpdateAssessmentTargetRequest: AWSEncodableShape {
-
         /// The ARN of the assessment target that you want to update.
         public let assessmentTargetArn: String
         /// The name of the assessment target that you want to update.
@@ -2625,9 +2529,9 @@ extension Inspector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case assessmentTargetArn = "assessmentTargetArn"
-            case assessmentTargetName = "assessmentTargetName"
-            case resourceGroupArn = "resourceGroupArn"
+            case assessmentTargetArn
+            case assessmentTargetName
+            case resourceGroupArn
         }
     }
 }

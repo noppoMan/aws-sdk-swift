@@ -444,7 +444,7 @@ extension CloudDirectory {
         )
     }
 
-    ///  Lists all attributes that are associated with an object. 
+    ///  Lists all attributes that are associated with an object.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.

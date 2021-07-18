@@ -73,7 +73,7 @@ extension SecurityHub {
         )
     }
 
-    ///  Returns information about product integrations in Security Hub. You can optionally provide an integration ARN. If you provide an integration ARN, then the results only include that integration. If you do not provide an integration ARN, then the results include all of the available product integrations. 
+    ///  Returns information about product integrations in Security Hub. You can optionally provide an integration ARN. If you provide an integration ARN, then the results only include that integration. If you do not provide an integration ARN, then the results include all of the available product integrations.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.
@@ -126,7 +126,7 @@ extension SecurityHub {
         )
     }
 
-    ///  Returns a list of the available standards in Security Hub. For each standard, the results include the standard ARN, the name, and a description. 
+    ///  Returns a list of the available standards in Security Hub. For each standard, the results include the standard ARN, the name, and a description.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.

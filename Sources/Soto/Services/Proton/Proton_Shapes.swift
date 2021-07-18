@@ -88,7 +88,6 @@ extension Proton {
     // MARK: Shapes
 
     public struct AcceptEnvironmentAccountConnectionInput: AWSEncodableShape {
-
         /// The ID of the environment account connection.
         public let id: String
 
@@ -101,12 +100,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case id = "id"
+            case id
         }
     }
 
     public struct AcceptEnvironmentAccountConnectionOutput: AWSDecodableShape {
-
         /// The environment account connection data that's returned by AWS Proton.
         public let environmentAccountConnection: EnvironmentAccountConnection
 
@@ -115,12 +113,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case environmentAccountConnection = "environmentAccountConnection"
+            case environmentAccountConnection
         }
     }
 
     public struct AccountSettings: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the AWS Proton pipeline service role.
         public let pipelineServiceRoleArn: String?
 
@@ -129,12 +126,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case pipelineServiceRoleArn = "pipelineServiceRoleArn"
+            case pipelineServiceRoleArn
         }
     }
 
     public struct CancelEnvironmentDeploymentInput: AWSEncodableShape {
-
         /// The name of the environment with the deployment to cancel.
         public let environmentName: String
 
@@ -149,12 +145,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case environmentName = "environmentName"
+            case environmentName
         }
     }
 
     public struct CancelEnvironmentDeploymentOutput: AWSDecodableShape {
-
         /// The environment summary data that's returned by AWS Proton.
         public let environment: Environment
 
@@ -163,12 +158,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case environment = "environment"
+            case environment
         }
     }
 
     public struct CancelServiceInstanceDeploymentInput: AWSEncodableShape {
-
         /// The name of the service instance with the deployment to cancel.
         public let serviceInstanceName: String
         /// The name of the service with the service instance deployment to cancel.
@@ -189,13 +183,12 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case serviceInstanceName = "serviceInstanceName"
-            case serviceName = "serviceName"
+            case serviceInstanceName
+            case serviceName
         }
     }
 
     public struct CancelServiceInstanceDeploymentOutput: AWSDecodableShape {
-
         /// The service instance summary data that's returned by AWS Proton.
         public let serviceInstance: ServiceInstance
 
@@ -204,12 +197,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case serviceInstance = "serviceInstance"
+            case serviceInstance
         }
     }
 
     public struct CancelServicePipelineDeploymentInput: AWSEncodableShape {
-
         /// The name of the service with the service pipeline deployment to cancel.
         public let serviceName: String
 
@@ -224,12 +216,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case serviceName = "serviceName"
+            case serviceName
         }
     }
 
     public struct CancelServicePipelineDeploymentOutput: AWSDecodableShape {
-
         /// The service pipeline detail data that's returned by AWS Proton.
         public let pipeline: ServicePipeline
 
@@ -238,12 +229,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case pipeline = "pipeline"
+            case pipeline
         }
     }
 
     public struct CompatibleEnvironmentTemplate: AWSDecodableShape {
-
         /// The major version of the compatible environment template.
         public let majorVersion: String
         /// The compatible environment template name.
@@ -255,13 +245,12 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case majorVersion = "majorVersion"
-            case templateName = "templateName"
+            case majorVersion
+            case templateName
         }
     }
 
     public struct CompatibleEnvironmentTemplateInput: AWSEncodableShape {
-
         /// The major version of the compatible environment template.
         public let majorVersion: String
         /// The compatible environment template name.
@@ -282,13 +271,12 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case majorVersion = "majorVersion"
-            case templateName = "templateName"
+            case majorVersion
+            case templateName
         }
     }
 
     public struct CreateEnvironmentAccountConnectionInput: AWSEncodableShape {
-
         /// When included, if two identicial requests are made with the same client token, AWS Proton returns the environment account connection that the first request created.
         public let clientToken: String?
         /// The name of the AWS Proton environment that's created in the associated management account.
@@ -317,15 +305,14 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientToken = "clientToken"
-            case environmentName = "environmentName"
-            case managementAccountId = "managementAccountId"
-            case roleArn = "roleArn"
+            case clientToken
+            case environmentName
+            case managementAccountId
+            case roleArn
         }
     }
 
     public struct CreateEnvironmentAccountConnectionOutput: AWSDecodableShape {
-
         /// The environment account connection detail data that's returned by AWS Proton.
         public let environmentAccountConnection: EnvironmentAccountConnection
 
@@ -334,12 +321,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case environmentAccountConnection = "environmentAccountConnection"
+            case environmentAccountConnection
         }
     }
 
     public struct CreateEnvironmentInput: AWSEncodableShape {
-
         /// A description of the environment that's being created and deployed.
         public let description: String?
         /// The ID of the environment account connection that you provide if you're provisioning your environment infrastructure resources to an environment account. You must include either the environmentAccountConnectionId or protonServiceRoleArn parameter and value. For more information, see Environment account connections in the AWS Proton Administration guide.
@@ -397,20 +383,19 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case description = "description"
-            case environmentAccountConnectionId = "environmentAccountConnectionId"
-            case name = "name"
-            case protonServiceRoleArn = "protonServiceRoleArn"
-            case spec = "spec"
-            case tags = "tags"
-            case templateMajorVersion = "templateMajorVersion"
-            case templateMinorVersion = "templateMinorVersion"
-            case templateName = "templateName"
+            case description
+            case environmentAccountConnectionId
+            case name
+            case protonServiceRoleArn
+            case spec
+            case tags
+            case templateMajorVersion
+            case templateMinorVersion
+            case templateName
         }
     }
 
     public struct CreateEnvironmentOutput: AWSDecodableShape {
-
         /// The environment detail data that's returned by AWS Proton.
         public let environment: Environment
 
@@ -419,12 +404,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case environment = "environment"
+            case environment
         }
     }
 
     public struct CreateEnvironmentTemplateInput: AWSEncodableShape {
-
         /// A description of the environment template.
         public let description: String?
         /// The environment template name as displayed in the developer interface.
@@ -463,17 +447,16 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case description = "description"
-            case displayName = "displayName"
-            case encryptionKey = "encryptionKey"
-            case name = "name"
-            case provisioning = "provisioning"
-            case tags = "tags"
+            case description
+            case displayName
+            case encryptionKey
+            case name
+            case provisioning
+            case tags
         }
     }
 
     public struct CreateEnvironmentTemplateOutput: AWSDecodableShape {
-
         /// The environment template detail data that's returned by AWS Proton.
         public let environmentTemplate: EnvironmentTemplate
 
@@ -482,12 +465,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case environmentTemplate = "environmentTemplate"
+            case environmentTemplate
         }
     }
 
     public struct CreateEnvironmentTemplateVersionInput: AWSEncodableShape {
-
         /// When included, if two identicial requests are made with the same client token, AWS Proton returns the environment template version that the first request created.
         public let clientToken: String?
         /// A description of the new version of an environment template.
@@ -528,17 +510,16 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientToken = "clientToken"
-            case description = "description"
-            case majorVersion = "majorVersion"
-            case source = "source"
-            case tags = "tags"
-            case templateName = "templateName"
+            case clientToken
+            case description
+            case majorVersion
+            case source
+            case tags
+            case templateName
         }
     }
 
     public struct CreateEnvironmentTemplateVersionOutput: AWSDecodableShape {
-
         /// The environment template detail data that's returned by AWS Proton.
         public let environmentTemplateVersion: EnvironmentTemplateVersion
 
@@ -547,12 +528,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case environmentTemplateVersion = "environmentTemplateVersion"
+            case environmentTemplateVersion
         }
     }
 
     public struct CreateServiceInput: AWSEncodableShape {
-
         /// The name of the code repository branch that holds the code that's deployed in AWS Proton. Don't include this parameter if your service template doesn't include a service pipeline.
         public let branchName: String?
         /// A description of the AWS Proton service.
@@ -616,21 +596,20 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case branchName = "branchName"
-            case description = "description"
-            case name = "name"
-            case repositoryConnectionArn = "repositoryConnectionArn"
-            case repositoryId = "repositoryId"
-            case spec = "spec"
-            case tags = "tags"
-            case templateMajorVersion = "templateMajorVersion"
-            case templateMinorVersion = "templateMinorVersion"
-            case templateName = "templateName"
+            case branchName
+            case description
+            case name
+            case repositoryConnectionArn
+            case repositoryId
+            case spec
+            case tags
+            case templateMajorVersion
+            case templateMinorVersion
+            case templateName
         }
     }
 
     public struct CreateServiceOutput: AWSDecodableShape {
-
         /// The service detail data that's returned by AWS Proton.
         public let service: Service
 
@@ -639,12 +618,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case service = "service"
+            case service
         }
     }
 
     public struct CreateServiceTemplateInput: AWSEncodableShape {
-
         /// A description of the service template.
         public let description: String?
         /// The name of the service template as displayed in the developer interface.
@@ -683,17 +661,16 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case description = "description"
-            case displayName = "displayName"
-            case encryptionKey = "encryptionKey"
-            case name = "name"
-            case pipelineProvisioning = "pipelineProvisioning"
-            case tags = "tags"
+            case description
+            case displayName
+            case encryptionKey
+            case name
+            case pipelineProvisioning
+            case tags
         }
     }
 
     public struct CreateServiceTemplateOutput: AWSDecodableShape {
-
         /// The service template detail data that's returned by AWS Proton.
         public let serviceTemplate: ServiceTemplate
 
@@ -702,12 +679,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case serviceTemplate = "serviceTemplate"
+            case serviceTemplate
         }
     }
 
     public struct CreateServiceTemplateVersionInput: AWSEncodableShape {
-
         /// When included, if two identicial requests are made with the same client token, AWS Proton returns the service template version that the first request created.
         public let clientToken: String?
         /// An array of compatible environment template objects for the new version of a service template.
@@ -756,18 +732,17 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientToken = "clientToken"
-            case compatibleEnvironmentTemplates = "compatibleEnvironmentTemplates"
-            case description = "description"
-            case majorVersion = "majorVersion"
-            case source = "source"
-            case tags = "tags"
-            case templateName = "templateName"
+            case clientToken
+            case compatibleEnvironmentTemplates
+            case description
+            case majorVersion
+            case source
+            case tags
+            case templateName
         }
     }
 
     public struct CreateServiceTemplateVersionOutput: AWSDecodableShape {
-
         /// The service template version summary of detail data that's returned by AWS Proton.
         public let serviceTemplateVersion: ServiceTemplateVersion
 
@@ -776,12 +751,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case serviceTemplateVersion = "serviceTemplateVersion"
+            case serviceTemplateVersion
         }
     }
 
     public struct DeleteEnvironmentAccountConnectionInput: AWSEncodableShape {
-
         /// The ID of the environment account connection to delete.
         public let id: String
 
@@ -794,12 +768,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case id = "id"
+            case id
         }
     }
 
     public struct DeleteEnvironmentAccountConnectionOutput: AWSDecodableShape {
-
         /// The environment account connection detail data that's returned by AWS Proton.
         public let environmentAccountConnection: EnvironmentAccountConnection?
 
@@ -808,12 +781,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case environmentAccountConnection = "environmentAccountConnection"
+            case environmentAccountConnection
         }
     }
 
     public struct DeleteEnvironmentInput: AWSEncodableShape {
-
         /// The name of the environment to delete.
         public let name: String
 
@@ -828,12 +800,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case name = "name"
+            case name
         }
     }
 
     public struct DeleteEnvironmentOutput: AWSDecodableShape {
-
         /// The environment detail data that's returned by AWS Proton.
         public let environment: Environment?
 
@@ -842,12 +813,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case environment = "environment"
+            case environment
         }
     }
 
     public struct DeleteEnvironmentTemplateInput: AWSEncodableShape {
-
         /// The name of the environment template to delete.
         public let name: String
 
@@ -862,12 +832,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case name = "name"
+            case name
         }
     }
 
     public struct DeleteEnvironmentTemplateOutput: AWSDecodableShape {
-
         /// The environment template detail data that's returned by AWS Proton.
         public let environmentTemplate: EnvironmentTemplate?
 
@@ -876,12 +845,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case environmentTemplate = "environmentTemplate"
+            case environmentTemplate
         }
     }
 
     public struct DeleteEnvironmentTemplateVersionInput: AWSEncodableShape {
-
         /// The environment template major version to delete.
         public let majorVersion: String
         /// The environment template minor version to delete.
@@ -908,14 +876,13 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case majorVersion = "majorVersion"
-            case minorVersion = "minorVersion"
-            case templateName = "templateName"
+            case majorVersion
+            case minorVersion
+            case templateName
         }
     }
 
     public struct DeleteEnvironmentTemplateVersionOutput: AWSDecodableShape {
-
         /// The environment template version detail data that's returned by AWS Proton.
         public let environmentTemplateVersion: EnvironmentTemplateVersion?
 
@@ -924,12 +891,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case environmentTemplateVersion = "environmentTemplateVersion"
+            case environmentTemplateVersion
         }
     }
 
     public struct DeleteServiceInput: AWSEncodableShape {
-
         /// The name of the service to delete.
         public let name: String
 
@@ -944,12 +910,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case name = "name"
+            case name
         }
     }
 
     public struct DeleteServiceOutput: AWSDecodableShape {
-
         /// The service detail data that's returned by AWS Proton.
         public let service: Service?
 
@@ -958,12 +923,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case service = "service"
+            case service
         }
     }
 
     public struct DeleteServiceTemplateInput: AWSEncodableShape {
-
         /// The name of the service template to delete.
         public let name: String
 
@@ -978,12 +942,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case name = "name"
+            case name
         }
     }
 
     public struct DeleteServiceTemplateOutput: AWSDecodableShape {
-
         /// The service template detail data that's returned by AWS Proton.
         public let serviceTemplate: ServiceTemplate?
 
@@ -992,12 +955,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case serviceTemplate = "serviceTemplate"
+            case serviceTemplate
         }
     }
 
     public struct DeleteServiceTemplateVersionInput: AWSEncodableShape {
-
         /// The service template major version to delete.
         public let majorVersion: String
         /// The service template minor version to delete.
@@ -1024,14 +986,13 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case majorVersion = "majorVersion"
-            case minorVersion = "minorVersion"
-            case templateName = "templateName"
+            case majorVersion
+            case minorVersion
+            case templateName
         }
     }
 
     public struct DeleteServiceTemplateVersionOutput: AWSDecodableShape {
-
         /// The service template version detail data that's returned by AWS Proton.
         public let serviceTemplateVersion: ServiceTemplateVersion?
 
@@ -1040,12 +1001,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case serviceTemplateVersion = "serviceTemplateVersion"
+            case serviceTemplateVersion
         }
     }
 
     public struct Environment: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the environment.
         public let arn: String
         /// The time when the environment was created.
@@ -1099,27 +1059,26 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdAt = "createdAt"
-            case deploymentStatus = "deploymentStatus"
-            case deploymentStatusMessage = "deploymentStatusMessage"
-            case description = "description"
-            case environmentAccountConnectionId = "environmentAccountConnectionId"
-            case environmentAccountId = "environmentAccountId"
-            case lastDeploymentAttemptedAt = "lastDeploymentAttemptedAt"
-            case lastDeploymentSucceededAt = "lastDeploymentSucceededAt"
-            case name = "name"
-            case protonServiceRoleArn = "protonServiceRoleArn"
-            case provisioning = "provisioning"
-            case spec = "spec"
-            case templateMajorVersion = "templateMajorVersion"
-            case templateMinorVersion = "templateMinorVersion"
-            case templateName = "templateName"
+            case arn
+            case createdAt
+            case deploymentStatus
+            case deploymentStatusMessage
+            case description
+            case environmentAccountConnectionId
+            case environmentAccountId
+            case lastDeploymentAttemptedAt
+            case lastDeploymentSucceededAt
+            case name
+            case protonServiceRoleArn
+            case provisioning
+            case spec
+            case templateMajorVersion
+            case templateMinorVersion
+            case templateName
         }
     }
 
     public struct EnvironmentAccountConnection: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the environment account connection.
         public let arn: String
         /// The environment account that's connected to the environment account connection.
@@ -1152,20 +1111,19 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case environmentAccountId = "environmentAccountId"
-            case environmentName = "environmentName"
-            case id = "id"
-            case lastModifiedAt = "lastModifiedAt"
-            case managementAccountId = "managementAccountId"
-            case requestedAt = "requestedAt"
-            case roleArn = "roleArn"
-            case status = "status"
+            case arn
+            case environmentAccountId
+            case environmentName
+            case id
+            case lastModifiedAt
+            case managementAccountId
+            case requestedAt
+            case roleArn
+            case status
         }
     }
 
     public struct EnvironmentAccountConnectionSummary: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the environment account connection.
         public let arn: String
         /// The ID of the environment account that's connected to the environment account connection.
@@ -1198,20 +1156,19 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case environmentAccountId = "environmentAccountId"
-            case environmentName = "environmentName"
-            case id = "id"
-            case lastModifiedAt = "lastModifiedAt"
-            case managementAccountId = "managementAccountId"
-            case requestedAt = "requestedAt"
-            case roleArn = "roleArn"
-            case status = "status"
+            case arn
+            case environmentAccountId
+            case environmentName
+            case id
+            case lastModifiedAt
+            case managementAccountId
+            case requestedAt
+            case roleArn
+            case status
         }
     }
 
     public struct EnvironmentSummary: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the environment.
         public let arn: String
         /// The time when the environment was created.
@@ -1262,26 +1219,25 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdAt = "createdAt"
-            case deploymentStatus = "deploymentStatus"
-            case deploymentStatusMessage = "deploymentStatusMessage"
-            case description = "description"
-            case environmentAccountConnectionId = "environmentAccountConnectionId"
-            case environmentAccountId = "environmentAccountId"
-            case lastDeploymentAttemptedAt = "lastDeploymentAttemptedAt"
-            case lastDeploymentSucceededAt = "lastDeploymentSucceededAt"
-            case name = "name"
-            case protonServiceRoleArn = "protonServiceRoleArn"
-            case provisioning = "provisioning"
-            case templateMajorVersion = "templateMajorVersion"
-            case templateMinorVersion = "templateMinorVersion"
-            case templateName = "templateName"
+            case arn
+            case createdAt
+            case deploymentStatus
+            case deploymentStatusMessage
+            case description
+            case environmentAccountConnectionId
+            case environmentAccountId
+            case lastDeploymentAttemptedAt
+            case lastDeploymentSucceededAt
+            case name
+            case protonServiceRoleArn
+            case provisioning
+            case templateMajorVersion
+            case templateMinorVersion
+            case templateName
         }
     }
 
     public struct EnvironmentTemplate: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the environment template.
         public let arn: String
         /// The time when the environment template was created.
@@ -1314,20 +1270,19 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdAt = "createdAt"
-            case description = "description"
-            case displayName = "displayName"
-            case encryptionKey = "encryptionKey"
-            case lastModifiedAt = "lastModifiedAt"
-            case name = "name"
-            case provisioning = "provisioning"
-            case recommendedVersion = "recommendedVersion"
+            case arn
+            case createdAt
+            case description
+            case displayName
+            case encryptionKey
+            case lastModifiedAt
+            case name
+            case provisioning
+            case recommendedVersion
         }
     }
 
     public struct EnvironmentTemplateFilter: AWSEncodableShape {
-
         /// Include majorVersion to filter search for a major version.
         public let majorVersion: String
         /// Include templateName to filter search for a template name.
@@ -1348,13 +1303,12 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case majorVersion = "majorVersion"
-            case templateName = "templateName"
+            case majorVersion
+            case templateName
         }
     }
 
     public struct EnvironmentTemplateSummary: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the environment template.
         public let arn: String
         /// The time when the environment template was created.
@@ -1384,19 +1338,18 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdAt = "createdAt"
-            case description = "description"
-            case displayName = "displayName"
-            case lastModifiedAt = "lastModifiedAt"
-            case name = "name"
-            case provisioning = "provisioning"
-            case recommendedVersion = "recommendedVersion"
+            case arn
+            case createdAt
+            case description
+            case displayName
+            case lastModifiedAt
+            case name
+            case provisioning
+            case recommendedVersion
         }
     }
 
     public struct EnvironmentTemplateVersion: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the version of an environment template.
         public let arn: String
         /// The time when the version of an environment template was created.
@@ -1435,22 +1388,21 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdAt = "createdAt"
-            case description = "description"
-            case lastModifiedAt = "lastModifiedAt"
-            case majorVersion = "majorVersion"
-            case minorVersion = "minorVersion"
-            case recommendedMinorVersion = "recommendedMinorVersion"
-            case schema = "schema"
-            case status = "status"
-            case statusMessage = "statusMessage"
-            case templateName = "templateName"
+            case arn
+            case createdAt
+            case description
+            case lastModifiedAt
+            case majorVersion
+            case minorVersion
+            case recommendedMinorVersion
+            case schema
+            case status
+            case statusMessage
+            case templateName
         }
     }
 
     public struct EnvironmentTemplateVersionSummary: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the version of an environment template.
         public let arn: String
         /// The time when the version of an environment template was created.
@@ -1486,29 +1438,24 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdAt = "createdAt"
-            case description = "description"
-            case lastModifiedAt = "lastModifiedAt"
-            case majorVersion = "majorVersion"
-            case minorVersion = "minorVersion"
-            case recommendedMinorVersion = "recommendedMinorVersion"
-            case status = "status"
-            case statusMessage = "statusMessage"
-            case templateName = "templateName"
+            case arn
+            case createdAt
+            case description
+            case lastModifiedAt
+            case majorVersion
+            case minorVersion
+            case recommendedMinorVersion
+            case status
+            case statusMessage
+            case templateName
         }
     }
 
     public struct GetAccountSettingsInput: AWSEncodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct GetAccountSettingsOutput: AWSDecodableShape {
-
         /// The AWS Proton pipeline service role detail data that's returned by AWS Proton.
         public let accountSettings: AccountSettings?
 
@@ -1517,12 +1464,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accountSettings = "accountSettings"
+            case accountSettings
         }
     }
 
     public struct GetEnvironmentAccountConnectionInput: AWSEncodableShape {
-
         /// The ID of the environment account connection.
         public let id: String
 
@@ -1535,12 +1481,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case id = "id"
+            case id
         }
     }
 
     public struct GetEnvironmentAccountConnectionOutput: AWSDecodableShape {
-
         /// The environment account connection detail data that's returned by AWS Proton.
         public let environmentAccountConnection: EnvironmentAccountConnection
 
@@ -1549,12 +1494,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case environmentAccountConnection = "environmentAccountConnection"
+            case environmentAccountConnection
         }
     }
 
     public struct GetEnvironmentInput: AWSEncodableShape {
-
         /// The name of the environment that you want to get the detail data for.
         public let name: String
 
@@ -1569,12 +1513,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case name = "name"
+            case name
         }
     }
 
     public struct GetEnvironmentOutput: AWSDecodableShape {
-
         /// The environment detail data that's returned by AWS Proton.
         public let environment: Environment
 
@@ -1583,12 +1526,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case environment = "environment"
+            case environment
         }
     }
 
     public struct GetEnvironmentTemplateInput: AWSEncodableShape {
-
         /// The name of the environment template that you want to get the detail data for.
         public let name: String
 
@@ -1603,12 +1545,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case name = "name"
+            case name
         }
     }
 
     public struct GetEnvironmentTemplateOutput: AWSDecodableShape {
-
         /// The environment template detail data that's returned by AWS Proton.
         public let environmentTemplate: EnvironmentTemplate
 
@@ -1617,12 +1558,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case environmentTemplate = "environmentTemplate"
+            case environmentTemplate
         }
     }
 
     public struct GetEnvironmentTemplateVersionInput: AWSEncodableShape {
-
         /// To view environment template major version detail data, include majorVersion.
         public let majorVersion: String
         /// To view environment template minor version detail data, include minorVersion.
@@ -1649,14 +1589,13 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case majorVersion = "majorVersion"
-            case minorVersion = "minorVersion"
-            case templateName = "templateName"
+            case majorVersion
+            case minorVersion
+            case templateName
         }
     }
 
     public struct GetEnvironmentTemplateVersionOutput: AWSDecodableShape {
-
         /// The environment template version detail data that's returned by AWS Proton.
         public let environmentTemplateVersion: EnvironmentTemplateVersion
 
@@ -1665,12 +1604,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case environmentTemplateVersion = "environmentTemplateVersion"
+            case environmentTemplateVersion
         }
     }
 
     public struct GetServiceInput: AWSEncodableShape {
-
         /// The name of the service that you want to get the detail data for.
         public let name: String
 
@@ -1685,12 +1623,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case name = "name"
+            case name
         }
     }
 
     public struct GetServiceInstanceInput: AWSEncodableShape {
-
         /// The name of a service instance that you want to get the detail data for.
         public let name: String
         /// The name of the service that the service instance belongs to.
@@ -1711,13 +1648,12 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case name = "name"
-            case serviceName = "serviceName"
+            case name
+            case serviceName
         }
     }
 
     public struct GetServiceInstanceOutput: AWSDecodableShape {
-
         /// The service instance detail data that's returned by AWS Proton.
         public let serviceInstance: ServiceInstance
 
@@ -1726,12 +1662,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case serviceInstance = "serviceInstance"
+            case serviceInstance
         }
     }
 
     public struct GetServiceOutput: AWSDecodableShape {
-
         /// The service detail data that's returned by AWS Proton.
         public let service: Service?
 
@@ -1740,12 +1675,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case service = "service"
+            case service
         }
     }
 
     public struct GetServiceTemplateInput: AWSEncodableShape {
-
         /// The name of the service template that you want to get detail data for.
         public let name: String
 
@@ -1760,12 +1694,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case name = "name"
+            case name
         }
     }
 
     public struct GetServiceTemplateOutput: AWSDecodableShape {
-
         /// The service template detail data that's returned by AWS Proton.
         public let serviceTemplate: ServiceTemplate
 
@@ -1774,12 +1707,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case serviceTemplate = "serviceTemplate"
+            case serviceTemplate
         }
     }
 
     public struct GetServiceTemplateVersionInput: AWSEncodableShape {
-
         /// To view service template major version detail data, include majorVersion.
         public let majorVersion: String
         /// To view service template minor version detail data, include minorVersion.
@@ -1806,14 +1738,13 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case majorVersion = "majorVersion"
-            case minorVersion = "minorVersion"
-            case templateName = "templateName"
+            case majorVersion
+            case minorVersion
+            case templateName
         }
     }
 
     public struct GetServiceTemplateVersionOutput: AWSDecodableShape {
-
         /// The service template version detail data that's returned by AWS Proton.
         public let serviceTemplateVersion: ServiceTemplateVersion
 
@@ -1822,12 +1753,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case serviceTemplateVersion = "serviceTemplateVersion"
+            case serviceTemplateVersion
         }
     }
 
     public struct ListEnvironmentAccountConnectionsInput: AWSEncodableShape {
-
         /// The environment name that's associated with each listed environment account connection.
         public let environmentName: String?
         /// The maximum number of environment account connections to list.
@@ -1857,17 +1787,16 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case environmentName = "environmentName"
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
-            case requestedBy = "requestedBy"
-            case statuses = "statuses"
+            case environmentName
+            case maxResults
+            case nextToken
+            case requestedBy
+            case statuses
         }
     }
 
     public struct ListEnvironmentAccountConnectionsOutput: AWSDecodableShape {
-
-        /// An array of environment account connections with details that's returned by AWS Proton. 
+        /// An array of environment account connections with details that's returned by AWS Proton.
         public let environmentAccountConnections: [EnvironmentAccountConnectionSummary]
         /// A token to indicate the location of the next environment account connection in the array of environment account connections, after the current requested list of environment account connections.
         public let nextToken: String?
@@ -1878,13 +1807,12 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case environmentAccountConnections = "environmentAccountConnections"
-            case nextToken = "nextToken"
+            case environmentAccountConnections
+            case nextToken
         }
     }
 
     public struct ListEnvironmentTemplateVersionsInput: AWSEncodableShape {
-
         /// To view a list of minor of versions under a major version of an environment template, include majorVersion. To view a list of major versions of an environment template, exclude majorVersion.
         public let majorVersion: String?
         /// The maximum number of major or minor versions of an environment template to list.
@@ -1914,15 +1842,14 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case majorVersion = "majorVersion"
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
-            case templateName = "templateName"
+            case majorVersion
+            case maxResults
+            case nextToken
+            case templateName
         }
     }
 
     public struct ListEnvironmentTemplateVersionsOutput: AWSDecodableShape {
-
         /// A token to indicate the location of the next major or minor version in the array of major or minor versions of an environment template, after the list of major or minor versions that was previously requested.
         public let nextToken: String?
         /// An array of major or minor versions of an environment template detail data.
@@ -1934,13 +1861,12 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case templateVersions = "templateVersions"
+            case nextToken
+            case templateVersions
         }
     }
 
     public struct ListEnvironmentTemplatesInput: AWSEncodableShape {
-
         /// The maximum number of environment templates to list.
         public let maxResults: Int?
         /// A token to indicate the location of the next environment template in the array of environment templates, after the list of environment templates that was previously requested.
@@ -1958,13 +1884,12 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
+            case maxResults
+            case nextToken
         }
     }
 
     public struct ListEnvironmentTemplatesOutput: AWSDecodableShape {
-
         /// A token to indicate the location of the next environment template in the array of environment templates, after the current requested list of environment templates.
         public let nextToken: String?
         /// An array of environment templates with detail data.
@@ -1976,13 +1901,12 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case templates = "templates"
+            case nextToken
+            case templates
         }
     }
 
     public struct ListEnvironmentsInput: AWSEncodableShape {
-
         /// An array of the versions of the environment template.
         public let environmentTemplates: [EnvironmentTemplateFilter]?
         /// The maximum number of environments to list.
@@ -2006,14 +1930,13 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case environmentTemplates = "environmentTemplates"
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
+            case environmentTemplates
+            case maxResults
+            case nextToken
         }
     }
 
     public struct ListEnvironmentsOutput: AWSDecodableShape {
-
         /// An array of environment detail data summaries.
         public let environments: [EnvironmentSummary]
         /// A token to indicate the location of the next environment in the array of environments, after the current requested list of environments.
@@ -2025,13 +1948,12 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case environments = "environments"
-            case nextToken = "nextToken"
+            case environments
+            case nextToken
         }
     }
 
     public struct ListServiceInstancesInput: AWSEncodableShape {
-
         /// The maximum number of service instances to list.
         public let maxResults: Int?
         /// A token to indicate the location of the next service in the array of service instances, after the list of service instances that was previously requested.
@@ -2055,14 +1977,13 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
-            case serviceName = "serviceName"
+            case maxResults
+            case nextToken
+            case serviceName
         }
     }
 
     public struct ListServiceInstancesOutput: AWSDecodableShape {
-
         /// A token to indicate the location of the next service instance in the array of service instances, after the current requested list of service instances.
         public let nextToken: String?
         /// An array of service instances with summaries of detail data.
@@ -2074,13 +1995,12 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case serviceInstances = "serviceInstances"
+            case nextToken
+            case serviceInstances
         }
     }
 
     public struct ListServiceTemplateVersionsInput: AWSEncodableShape {
-
         /// To view a list of minor of versions under a major version of a service template, include majorVersion. To view a list of major versions of a service template, exclude majorVersion.
         public let majorVersion: String?
         /// The maximum number of major or minor versions of a service template to list.
@@ -2110,15 +2030,14 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case majorVersion = "majorVersion"
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
-            case templateName = "templateName"
+            case majorVersion
+            case maxResults
+            case nextToken
+            case templateName
         }
     }
 
     public struct ListServiceTemplateVersionsOutput: AWSDecodableShape {
-
         /// A token to indicate the location of the next major or minor version in the array of major or minor versions of a service template, after the list of major or minor versions that was previously requested.
         public let nextToken: String?
         /// An array of major or minor versions of a service template with detail data.
@@ -2130,13 +2049,12 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case templateVersions = "templateVersions"
+            case nextToken
+            case templateVersions
         }
     }
 
     public struct ListServiceTemplatesInput: AWSEncodableShape {
-
         /// The maximum number of service templates to list.
         public let maxResults: Int?
         /// A token to indicate the location of the next service template in the array of service templates, after the list of service templates previously requested.
@@ -2154,13 +2072,12 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
+            case maxResults
+            case nextToken
         }
     }
 
     public struct ListServiceTemplatesOutput: AWSDecodableShape {
-
         /// A token to indicate the location of the next service template in the array of service templates, after the current requested list of service templates.
         public let nextToken: String?
         /// An array of service templates with detail data.
@@ -2172,13 +2089,12 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case templates = "templates"
+            case nextToken
+            case templates
         }
     }
 
     public struct ListServicesInput: AWSEncodableShape {
-
         /// The maximum number of services to list.
         public let maxResults: Int?
         /// A token to indicate the location of the next service in the array of services, after the list of services that was previously requested.
@@ -2196,13 +2112,12 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
+            case maxResults
+            case nextToken
         }
     }
 
     public struct ListServicesOutput: AWSDecodableShape {
-
         /// A token to indicate the location of the next service in the array of services, after the current requested list of services.
         public let nextToken: String?
         /// An array of services with summaries of detail data.
@@ -2214,15 +2129,15 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case services = "services"
+            case nextToken
+            case services
         }
     }
 
     public struct ListTagsForResourceInput: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
-            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
+            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")),
             AWSMemberEncoding(label: "resourceArn", location: .querystring(locationName: "resourceArn"))
         ]
 
@@ -2250,7 +2165,6 @@ extension Proton {
     }
 
     public struct ListTagsForResourceOutput: AWSDecodableShape {
-
         /// A token to indicate the location of the next resource tag in the array of resource tags, after the current requested list of resource tags.
         public let nextToken: String?
         /// An array of resource tags with detail data.
@@ -2262,13 +2176,12 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case tags = "tags"
+            case nextToken
+            case tags
         }
     }
 
     public struct RejectEnvironmentAccountConnectionInput: AWSEncodableShape {
-
         /// The ID of the environment account connection to reject.
         public let id: String
 
@@ -2281,12 +2194,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case id = "id"
+            case id
         }
     }
 
     public struct RejectEnvironmentAccountConnectionOutput: AWSDecodableShape {
-
         /// The environment connection account detail data that's returned by AWS Proton.
         public let environmentAccountConnection: EnvironmentAccountConnection
 
@@ -2295,12 +2207,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case environmentAccountConnection = "environmentAccountConnection"
+            case environmentAccountConnection
         }
     }
 
     public struct S3ObjectSource: AWSEncodableShape {
-
         /// The name of the S3 bucket that contains a template bundle.
         public let bucket: String
         /// The path to the S3 bucket that contains a template bundle.
@@ -2320,13 +2231,12 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case bucket = "bucket"
-            case key = "key"
+            case bucket
+            case key
         }
     }
 
     public struct Service: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the service.
         public let arn: String
         /// The name of the code repository branch that holds the code that's deployed in AWS Proton.
@@ -2371,24 +2281,23 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case branchName = "branchName"
-            case createdAt = "createdAt"
-            case description = "description"
-            case lastModifiedAt = "lastModifiedAt"
-            case name = "name"
-            case pipeline = "pipeline"
-            case repositoryConnectionArn = "repositoryConnectionArn"
-            case repositoryId = "repositoryId"
-            case spec = "spec"
-            case status = "status"
-            case statusMessage = "statusMessage"
-            case templateName = "templateName"
+            case arn
+            case branchName
+            case createdAt
+            case description
+            case lastModifiedAt
+            case name
+            case pipeline
+            case repositoryConnectionArn
+            case repositoryId
+            case spec
+            case status
+            case statusMessage
+            case templateName
         }
     }
 
     public struct ServiceInstance: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the service instance.
         public let arn: String
         /// The time when the service instance was created.
@@ -2433,24 +2342,23 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdAt = "createdAt"
-            case deploymentStatus = "deploymentStatus"
-            case deploymentStatusMessage = "deploymentStatusMessage"
-            case environmentName = "environmentName"
-            case lastDeploymentAttemptedAt = "lastDeploymentAttemptedAt"
-            case lastDeploymentSucceededAt = "lastDeploymentSucceededAt"
-            case name = "name"
-            case serviceName = "serviceName"
-            case spec = "spec"
-            case templateMajorVersion = "templateMajorVersion"
-            case templateMinorVersion = "templateMinorVersion"
-            case templateName = "templateName"
+            case arn
+            case createdAt
+            case deploymentStatus
+            case deploymentStatusMessage
+            case environmentName
+            case lastDeploymentAttemptedAt
+            case lastDeploymentSucceededAt
+            case name
+            case serviceName
+            case spec
+            case templateMajorVersion
+            case templateMinorVersion
+            case templateName
         }
     }
 
     public struct ServiceInstanceSummary: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the service instance.
         public let arn: String
         /// The time when the service instance was created.
@@ -2492,23 +2400,22 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdAt = "createdAt"
-            case deploymentStatus = "deploymentStatus"
-            case deploymentStatusMessage = "deploymentStatusMessage"
-            case environmentName = "environmentName"
-            case lastDeploymentAttemptedAt = "lastDeploymentAttemptedAt"
-            case lastDeploymentSucceededAt = "lastDeploymentSucceededAt"
-            case name = "name"
-            case serviceName = "serviceName"
-            case templateMajorVersion = "templateMajorVersion"
-            case templateMinorVersion = "templateMinorVersion"
-            case templateName = "templateName"
+            case arn
+            case createdAt
+            case deploymentStatus
+            case deploymentStatusMessage
+            case environmentName
+            case lastDeploymentAttemptedAt
+            case lastDeploymentSucceededAt
+            case name
+            case serviceName
+            case templateMajorVersion
+            case templateMinorVersion
+            case templateName
         }
     }
 
     public struct ServicePipeline: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the service pipeline.
         public let arn: String
         /// The time when the service pipeline was created.
@@ -2544,21 +2451,20 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdAt = "createdAt"
-            case deploymentStatus = "deploymentStatus"
-            case deploymentStatusMessage = "deploymentStatusMessage"
-            case lastDeploymentAttemptedAt = "lastDeploymentAttemptedAt"
-            case lastDeploymentSucceededAt = "lastDeploymentSucceededAt"
-            case spec = "spec"
-            case templateMajorVersion = "templateMajorVersion"
-            case templateMinorVersion = "templateMinorVersion"
-            case templateName = "templateName"
+            case arn
+            case createdAt
+            case deploymentStatus
+            case deploymentStatusMessage
+            case lastDeploymentAttemptedAt
+            case lastDeploymentSucceededAt
+            case spec
+            case templateMajorVersion
+            case templateMinorVersion
+            case templateName
         }
     }
 
     public struct ServiceSummary: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the service.
         public let arn: String
         /// The time when the service was created.
@@ -2588,19 +2494,18 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdAt = "createdAt"
-            case description = "description"
-            case lastModifiedAt = "lastModifiedAt"
-            case name = "name"
-            case status = "status"
-            case statusMessage = "statusMessage"
-            case templateName = "templateName"
+            case arn
+            case createdAt
+            case description
+            case lastModifiedAt
+            case name
+            case status
+            case statusMessage
+            case templateName
         }
     }
 
     public struct ServiceTemplate: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the service template.
         public let arn: String
         /// The time when the service template was created.
@@ -2633,20 +2538,19 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdAt = "createdAt"
-            case description = "description"
-            case displayName = "displayName"
-            case encryptionKey = "encryptionKey"
-            case lastModifiedAt = "lastModifiedAt"
-            case name = "name"
-            case pipelineProvisioning = "pipelineProvisioning"
-            case recommendedVersion = "recommendedVersion"
+            case arn
+            case createdAt
+            case description
+            case displayName
+            case encryptionKey
+            case lastModifiedAt
+            case name
+            case pipelineProvisioning
+            case recommendedVersion
         }
     }
 
     public struct ServiceTemplateSummary: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the service template.
         public let arn: String
         /// The time when the service template was created.
@@ -2676,19 +2580,18 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdAt = "createdAt"
-            case description = "description"
-            case displayName = "displayName"
-            case lastModifiedAt = "lastModifiedAt"
-            case name = "name"
-            case pipelineProvisioning = "pipelineProvisioning"
-            case recommendedVersion = "recommendedVersion"
+            case arn
+            case createdAt
+            case description
+            case displayName
+            case lastModifiedAt
+            case name
+            case pipelineProvisioning
+            case recommendedVersion
         }
     }
 
     public struct ServiceTemplateVersion: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the version of a service template.
         public let arn: String
         /// An array of compatible environment template names for the major version of a service template.
@@ -2730,23 +2633,22 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case compatibleEnvironmentTemplates = "compatibleEnvironmentTemplates"
-            case createdAt = "createdAt"
-            case description = "description"
-            case lastModifiedAt = "lastModifiedAt"
-            case majorVersion = "majorVersion"
-            case minorVersion = "minorVersion"
-            case recommendedMinorVersion = "recommendedMinorVersion"
-            case schema = "schema"
-            case status = "status"
-            case statusMessage = "statusMessage"
-            case templateName = "templateName"
+            case arn
+            case compatibleEnvironmentTemplates
+            case createdAt
+            case description
+            case lastModifiedAt
+            case majorVersion
+            case minorVersion
+            case recommendedMinorVersion
+            case schema
+            case status
+            case statusMessage
+            case templateName
         }
     }
 
     public struct ServiceTemplateVersionSummary: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the version of a service template.
         public let arn: String
         /// The time when the version of a service template was created.
@@ -2782,21 +2684,20 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdAt = "createdAt"
-            case description = "description"
-            case lastModifiedAt = "lastModifiedAt"
-            case majorVersion = "majorVersion"
-            case minorVersion = "minorVersion"
-            case recommendedMinorVersion = "recommendedMinorVersion"
-            case status = "status"
-            case statusMessage = "statusMessage"
-            case templateName = "templateName"
+            case arn
+            case createdAt
+            case description
+            case lastModifiedAt
+            case majorVersion
+            case minorVersion
+            case recommendedMinorVersion
+            case status
+            case statusMessage
+            case templateName
         }
     }
 
     public struct Tag: AWSEncodableShape & AWSDecodableShape {
-
         /// The key of the resource tag.
         public let key: String
         /// The value of the resource tag.
@@ -2814,8 +2715,8 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case key = "key"
-            case value = "value"
+            case key
+            case value
         }
     }
 
@@ -2844,16 +2745,12 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tags = "tags"
+            case tags
         }
     }
 
     public struct TagResourceOutput: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UntagResourceInput: AWSEncodableShape {
@@ -2882,20 +2779,15 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tagKeys = "tagKeys"
+            case tagKeys
         }
     }
 
     public struct UntagResourceOutput: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateAccountSettingsInput: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the AWS Proton pipeline service role.
         public let pipelineServiceRoleArn: String?
 
@@ -2909,12 +2801,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case pipelineServiceRoleArn = "pipelineServiceRoleArn"
+            case pipelineServiceRoleArn
         }
     }
 
     public struct UpdateAccountSettingsOutput: AWSDecodableShape {
-
         /// The AWS Proton pipeline service role detail data that's returned by AWS Proton.
         public let accountSettings: AccountSettings
 
@@ -2923,12 +2814,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accountSettings = "accountSettings"
+            case accountSettings
         }
     }
 
     public struct UpdateEnvironmentAccountConnectionInput: AWSEncodableShape {
-
         /// The ID of the environment account connection to update.
         public let id: String
         /// The Amazon Resource Name (ARN) of the IAM service role that is associated with the environment account connection to update.
@@ -2946,13 +2836,12 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case id = "id"
-            case roleArn = "roleArn"
+            case id
+            case roleArn
         }
     }
 
     public struct UpdateEnvironmentAccountConnectionOutput: AWSDecodableShape {
-
         /// The environment account connection detail data that's returned by AWS Proton.
         public let environmentAccountConnection: EnvironmentAccountConnection
 
@@ -2961,13 +2850,12 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case environmentAccountConnection = "environmentAccountConnection"
+            case environmentAccountConnection
         }
     }
 
     public struct UpdateEnvironmentInput: AWSEncodableShape {
-
-        /// There are four modes for updating an environment as described in the following. The deploymentType field defines the mode.     NONE  In this mode, a deployment doesn't occur. Only the requested metadata parameters are updated.     CURRENT_VERSION  In this mode, the environment is deployed and updated with the new spec that you provide. Only requested parameters are updated. Don’t include minor or major version parameters when you use this deployment-type.     MINOR_VERSION  In this mode, the environment is deployed and updated with the published, recommended (latest) minor version of the current major version in use, by default. You can also specify a different minor version of the current major version in use.     MAJOR_VERSION  In this mode, the environment is deployed and updated with the published, recommended (latest) major and minor version of the current template, by default. You can also specify a different major version that is higher than the major version in use and a minor version (optional).  
+        /// There are four modes for updating an environment as described in the following. The deploymentType field defines the mode.     NONE  In this mode, a deployment doesn't occur. Only the requested metadata parameters are updated.     CURRENT_VERSION  In this mode, the environment is deployed and updated with the new spec that you provide. Only requested parameters are updated. Don’t include minor or major version parameters when you use this deployment-type.     MINOR_VERSION  In this mode, the environment is deployed and updated with the published, recommended (latest) minor version of the current major version in use, by default. You can also specify a different minor version of the current major version in use.     MAJOR_VERSION  In this mode, the environment is deployed and updated with the published, recommended (latest) major and minor version of the current template, by default. You can also specify a different major version that is higher than the major version in use and a minor version (optional).
         public let deploymentType: DeploymentUpdateType
         /// A description of the environment update.
         public let description: String?
@@ -3014,19 +2902,18 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case deploymentType = "deploymentType"
-            case description = "description"
-            case environmentAccountConnectionId = "environmentAccountConnectionId"
-            case name = "name"
-            case protonServiceRoleArn = "protonServiceRoleArn"
-            case spec = "spec"
-            case templateMajorVersion = "templateMajorVersion"
-            case templateMinorVersion = "templateMinorVersion"
+            case deploymentType
+            case description
+            case environmentAccountConnectionId
+            case name
+            case protonServiceRoleArn
+            case spec
+            case templateMajorVersion
+            case templateMinorVersion
         }
     }
 
     public struct UpdateEnvironmentOutput: AWSDecodableShape {
-
         /// The environment detail data that's returned by AWS Proton.
         public let environment: Environment
 
@@ -3035,12 +2922,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case environment = "environment"
+            case environment
         }
     }
 
     public struct UpdateEnvironmentTemplateInput: AWSEncodableShape {
-
         /// A description of the environment template update.
         public let description: String?
         /// The name of the environment template to update as displayed in the developer interface.
@@ -3064,14 +2950,13 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case description = "description"
-            case displayName = "displayName"
-            case name = "name"
+            case description
+            case displayName
+            case name
         }
     }
 
     public struct UpdateEnvironmentTemplateOutput: AWSDecodableShape {
-
         /// The environment template detail data that's returned by AWS Proton.
         public let environmentTemplate: EnvironmentTemplate
 
@@ -3080,12 +2965,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case environmentTemplate = "environmentTemplate"
+            case environmentTemplate
         }
     }
 
     public struct UpdateEnvironmentTemplateVersionInput: AWSEncodableShape {
-
         /// A description of environment template version to update.
         public let description: String?
         /// To update a major version of an environment template, include majorVersion.
@@ -3119,16 +3003,15 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case description = "description"
-            case majorVersion = "majorVersion"
-            case minorVersion = "minorVersion"
-            case status = "status"
-            case templateName = "templateName"
+            case description
+            case majorVersion
+            case minorVersion
+            case status
+            case templateName
         }
     }
 
     public struct UpdateEnvironmentTemplateVersionOutput: AWSDecodableShape {
-
         /// The environment template version detail data that's returned by AWS Proton.
         public let environmentTemplateVersion: EnvironmentTemplateVersion
 
@@ -3137,12 +3020,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case environmentTemplateVersion = "environmentTemplateVersion"
+            case environmentTemplateVersion
         }
     }
 
     public struct UpdateServiceInput: AWSEncodableShape {
-
         /// The edited service description.
         public let description: String?
         /// The name of the service to edit.
@@ -3166,15 +3048,14 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case description = "description"
-            case name = "name"
-            case spec = "spec"
+            case description
+            case name
+            case spec
         }
     }
 
     public struct UpdateServiceInstanceInput: AWSEncodableShape {
-
-        /// The deployment type. There are four modes for updating a service instance as described in the following. The deploymentType field defines the mode.     NONE  In this mode, a deployment doesn't occur. Only the requested metadata parameters are updated.     CURRENT_VERSION  In this mode, the service instance is deployed and updated with the new spec that you provide. Only requested parameters are updated. Don’t include minor or major version parameters when you use this deployment-type.     MINOR_VERSION  In this mode, the service instance is deployed and updated with the published, recommended (latest) minor version of the current major version in use, by default. You can also specify a different minor version of the current major version in use.     MAJOR_VERSION  In this mode, the service instance is deployed and updated with the published, recommended (latest) major and minor version of the current template, by default. You can also specify a different major version that is higher than the major version in use and a minor version (optional).  
+        /// The deployment type. There are four modes for updating a service instance as described in the following. The deploymentType field defines the mode.     NONE  In this mode, a deployment doesn't occur. Only the requested metadata parameters are updated.     CURRENT_VERSION  In this mode, the service instance is deployed and updated with the new spec that you provide. Only requested parameters are updated. Don’t include minor or major version parameters when you use this deployment-type.     MINOR_VERSION  In this mode, the service instance is deployed and updated with the published, recommended (latest) minor version of the current major version in use, by default. You can also specify a different minor version of the current major version in use.     MAJOR_VERSION  In this mode, the service instance is deployed and updated with the published, recommended (latest) major and minor version of the current template, by default. You can also specify a different major version that is higher than the major version in use and a minor version (optional).
         public let deploymentType: DeploymentUpdateType
         /// The name of the service instance to update.
         public let name: String
@@ -3214,17 +3095,16 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case deploymentType = "deploymentType"
-            case name = "name"
-            case serviceName = "serviceName"
-            case spec = "spec"
-            case templateMajorVersion = "templateMajorVersion"
-            case templateMinorVersion = "templateMinorVersion"
+            case deploymentType
+            case name
+            case serviceName
+            case spec
+            case templateMajorVersion
+            case templateMinorVersion
         }
     }
 
     public struct UpdateServiceInstanceOutput: AWSDecodableShape {
-
         /// The service instance summary data returned by AWS Proton.
         public let serviceInstance: ServiceInstance
 
@@ -3233,12 +3113,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case serviceInstance = "serviceInstance"
+            case serviceInstance
         }
     }
 
     public struct UpdateServiceOutput: AWSDecodableShape {
-
         /// The service detail data that's returned by AWS Proton.
         public let service: Service
 
@@ -3247,13 +3126,12 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case service = "service"
+            case service
         }
     }
 
     public struct UpdateServicePipelineInput: AWSEncodableShape {
-
-        /// The deployment type. There are four modes for updating a service pipeline as described in the following. The deploymentType field defines the mode.     NONE  In this mode, a deployment doesn't occur. Only the requested metadata parameters are updated.     CURRENT_VERSION  In this mode, the service pipeline is deployed and updated with the new spec that you provide. Only requested parameters are updated. Don’t include minor or major version parameters when you use this deployment-type.     MINOR_VERSION  In this mode, the service pipeline is deployed and updated with the published, recommended (latest) minor version of the current major version in use, by default. You can also specify a different minor version of the current major version in use.     MAJOR_VERSION  In this mode, the service pipeline is deployed and updated with the published, recommended (latest) major and minor version of the current template, by default. You can also specify a different major version that is higher than the major version in use and a minor version (optional).  
+        /// The deployment type. There are four modes for updating a service pipeline as described in the following. The deploymentType field defines the mode.     NONE  In this mode, a deployment doesn't occur. Only the requested metadata parameters are updated.     CURRENT_VERSION  In this mode, the service pipeline is deployed and updated with the new spec that you provide. Only requested parameters are updated. Don’t include minor or major version parameters when you use this deployment-type.     MINOR_VERSION  In this mode, the service pipeline is deployed and updated with the published, recommended (latest) minor version of the current major version in use, by default. You can also specify a different minor version of the current major version in use.     MAJOR_VERSION  In this mode, the service pipeline is deployed and updated with the published, recommended (latest) major and minor version of the current template, by default. You can also specify a different major version that is higher than the major version in use and a minor version (optional).
         public let deploymentType: DeploymentUpdateType
         /// The name of the service to that the pipeline is associated with.
         public let serviceName: String
@@ -3287,16 +3165,15 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case deploymentType = "deploymentType"
-            case serviceName = "serviceName"
-            case spec = "spec"
-            case templateMajorVersion = "templateMajorVersion"
-            case templateMinorVersion = "templateMinorVersion"
+            case deploymentType
+            case serviceName
+            case spec
+            case templateMajorVersion
+            case templateMinorVersion
         }
     }
 
     public struct UpdateServicePipelineOutput: AWSDecodableShape {
-
         /// The pipeline details returned by AWS Proton.
         public let pipeline: ServicePipeline
 
@@ -3305,12 +3182,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case pipeline = "pipeline"
+            case pipeline
         }
     }
 
     public struct UpdateServiceTemplateInput: AWSEncodableShape {
-
         /// A description of the service template update.
         public let description: String?
         /// The name of the service template to update as displayed in the developer interface.
@@ -3334,14 +3210,13 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case description = "description"
-            case displayName = "displayName"
-            case name = "name"
+            case description
+            case displayName
+            case name
         }
     }
 
     public struct UpdateServiceTemplateOutput: AWSDecodableShape {
-
         /// The service template detail data that's returned by AWS Proton.
         public let serviceTemplate: ServiceTemplate
 
@@ -3350,12 +3225,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case serviceTemplate = "serviceTemplate"
+            case serviceTemplate
         }
     }
 
     public struct UpdateServiceTemplateVersionInput: AWSEncodableShape {
-
         /// An array of compatible environment names for a service template major or minor version to update.
         public let compatibleEnvironmentTemplates: [CompatibleEnvironmentTemplateInput]?
         /// A description of a service template version to update.
@@ -3397,17 +3271,16 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case compatibleEnvironmentTemplates = "compatibleEnvironmentTemplates"
-            case description = "description"
-            case majorVersion = "majorVersion"
-            case minorVersion = "minorVersion"
-            case status = "status"
-            case templateName = "templateName"
+            case compatibleEnvironmentTemplates
+            case description
+            case majorVersion
+            case minorVersion
+            case status
+            case templateName
         }
     }
 
     public struct UpdateServiceTemplateVersionOutput: AWSDecodableShape {
-
         /// The service template version detail data that's returned by AWS Proton.
         public let serviceTemplateVersion: ServiceTemplateVersion
 
@@ -3416,12 +3289,11 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case serviceTemplateVersion = "serviceTemplateVersion"
+            case serviceTemplateVersion
         }
     }
 
     public struct TemplateVersionSourceInput: AWSEncodableShape {
-
         /// An S3 source object that includes the template bundle S3 path and name for a template minor version.
         public let s3: S3ObjectSource?
 
@@ -3434,7 +3306,7 @@ extension Proton {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case s3 = "s3"
+            case s3
         }
     }
 }

@@ -29,13 +29,13 @@ extension Savingsplans {
 
     public enum SavingsPlanOfferingFilterAttribute: String, CustomStringConvertible, Codable {
         case instancefamily = "instanceFamily"
-        case region = "region"
+        case region
         public var description: String { return self.rawValue }
     }
 
     public enum SavingsPlanOfferingPropertyKey: String, CustomStringConvertible, Codable {
         case instancefamily = "instanceFamily"
-        case region = "region"
+        case region
         public var description: String { return self.rawValue }
     }
 
@@ -59,19 +59,19 @@ extension Savingsplans {
         case instancetype = "instanceType"
         case productdescription = "productDescription"
         case productid = "productId"
-        case region = "region"
-        case tenancy = "tenancy"
+        case region
+        case tenancy
         public var description: String { return self.rawValue }
     }
 
     public enum SavingsPlanRateFilterName: String, CustomStringConvertible, Codable {
         case instancetype = "instanceType"
-        case operation = "operation"
+        case operation
         case productdescription = "productDescription"
         case producttype = "productType"
-        case region = "region"
+        case region
         case servicecode = "serviceCode"
-        case tenancy = "tenancy"
+        case tenancy
         case usagetype = "usageType"
         public var description: String { return self.rawValue }
     }
@@ -80,8 +80,8 @@ extension Savingsplans {
         case instancefamily = "instanceFamily"
         case instancetype = "instanceType"
         case productdescription = "productDescription"
-        case region = "region"
-        case tenancy = "tenancy"
+        case region
+        case tenancy
         public var description: String { return self.rawValue }
     }
 
@@ -102,12 +102,12 @@ extension Savingsplans {
     }
 
     public enum SavingsPlanState: String, CustomStringConvertible, Codable {
-        case active = "active"
+        case active
         case paymentFailed = "payment-failed"
         case paymentPending = "payment-pending"
-        case queued = "queued"
+        case queued
         case queuedDeleted = "queued-deleted"
-        case retired = "retired"
+        case retired
         public var description: String { return self.rawValue }
     }
 
@@ -119,22 +119,21 @@ extension Savingsplans {
     }
 
     public enum SavingsPlansFilterName: String, CustomStringConvertible, Codable {
-        case commitment = "commitment"
+        case commitment
         case ec2InstanceFamily = "ec2-instance-family"
-        case end = "end"
+        case end
         case paymentOption = "payment-option"
-        case region = "region"
+        case region
         case savingsPlanType = "savings-plan-type"
-        case start = "start"
-        case term = "term"
-        case upfront = "upfront"
+        case start
+        case term
+        case upfront
         public var description: String { return self.rawValue }
     }
 
     // MARK: Shapes
 
     public struct CreateSavingsPlanRequest: AWSEncodableShape {
-
         /// Unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
         public let clientToken: String?
         /// The hourly commitment, in USD. This is a value between 0.001 and 1 million. You cannot specify more than three digits after the decimal point.
@@ -158,17 +157,16 @@ extension Savingsplans {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientToken = "clientToken"
-            case commitment = "commitment"
-            case purchaseTime = "purchaseTime"
-            case savingsPlanOfferingId = "savingsPlanOfferingId"
-            case tags = "tags"
-            case upfrontPaymentAmount = "upfrontPaymentAmount"
+            case clientToken
+            case commitment
+            case purchaseTime
+            case savingsPlanOfferingId
+            case tags
+            case upfrontPaymentAmount
         }
     }
 
     public struct CreateSavingsPlanResponse: AWSDecodableShape {
-
         /// The ID of the Savings Plan.
         public let savingsPlanId: String?
 
@@ -177,12 +175,11 @@ extension Savingsplans {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case savingsPlanId = "savingsPlanId"
+            case savingsPlanId
         }
     }
 
     public struct DeleteQueuedSavingsPlanRequest: AWSEncodableShape {
-
         /// The ID of the Savings Plan.
         public let savingsPlanId: String
 
@@ -191,20 +188,15 @@ extension Savingsplans {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case savingsPlanId = "savingsPlanId"
+            case savingsPlanId
         }
     }
 
     public struct DeleteQueuedSavingsPlanResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DescribeSavingsPlanRatesRequest: AWSEncodableShape {
-
         /// The filters.
         public let filters: [SavingsPlanRateFilter]?
         /// The maximum number of results to return with a single call. To retrieve additional results, make another call with the returned token value.
@@ -229,15 +221,14 @@ extension Savingsplans {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case filters = "filters"
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
-            case savingsPlanId = "savingsPlanId"
+            case filters
+            case maxResults
+            case nextToken
+            case savingsPlanId
         }
     }
 
     public struct DescribeSavingsPlanRatesResponse: AWSDecodableShape {
-
         /// The token to use to retrieve the next page of results. This value is null when there are no more  results to return.
         public let nextToken: String?
         /// The ID of the Savings Plan.
@@ -252,14 +243,13 @@ extension Savingsplans {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case savingsPlanId = "savingsPlanId"
-            case searchResults = "searchResults"
+            case nextToken
+            case savingsPlanId
+            case searchResults
         }
     }
 
     public struct DescribeSavingsPlansOfferingRatesRequest: AWSEncodableShape {
-
         /// The filters.
         public let filters: [SavingsPlanOfferingRateFilterElement]?
         /// The maximum number of results to return with a single call. To retrieve additional results, make another call with the returned token value.
@@ -316,21 +306,20 @@ extension Savingsplans {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case filters = "filters"
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
-            case operations = "operations"
-            case products = "products"
-            case savingsPlanOfferingIds = "savingsPlanOfferingIds"
-            case savingsPlanPaymentOptions = "savingsPlanPaymentOptions"
-            case savingsPlanTypes = "savingsPlanTypes"
-            case serviceCodes = "serviceCodes"
-            case usageTypes = "usageTypes"
+            case filters
+            case maxResults
+            case nextToken
+            case operations
+            case products
+            case savingsPlanOfferingIds
+            case savingsPlanPaymentOptions
+            case savingsPlanTypes
+            case serviceCodes
+            case usageTypes
         }
     }
 
     public struct DescribeSavingsPlansOfferingRatesResponse: AWSDecodableShape {
-
         /// The token to use to retrieve the next page of results. This value is null when there are no more  results to return.
         public let nextToken: String?
         /// Information about the Savings Plans offering rates.
@@ -342,13 +331,12 @@ extension Savingsplans {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case searchResults = "searchResults"
+            case nextToken
+            case searchResults
         }
     }
 
     public struct DescribeSavingsPlansOfferingsRequest: AWSEncodableShape {
-
         /// The currencies.
         public let currencies: [CurrencyCode]?
         /// The descriptions.
@@ -424,24 +412,23 @@ extension Savingsplans {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case currencies = "currencies"
-            case descriptions = "descriptions"
-            case durations = "durations"
-            case filters = "filters"
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
-            case offeringIds = "offeringIds"
-            case operations = "operations"
-            case paymentOptions = "paymentOptions"
-            case planTypes = "planTypes"
-            case productType = "productType"
-            case serviceCodes = "serviceCodes"
-            case usageTypes = "usageTypes"
+            case currencies
+            case descriptions
+            case durations
+            case filters
+            case maxResults
+            case nextToken
+            case offeringIds
+            case operations
+            case paymentOptions
+            case planTypes
+            case productType
+            case serviceCodes
+            case usageTypes
         }
     }
 
     public struct DescribeSavingsPlansOfferingsResponse: AWSDecodableShape {
-
         /// The token to use to retrieve the next page of results. This value is null when there are no more  results to return.
         public let nextToken: String?
         /// Information about the Savings Plans offerings.
@@ -453,13 +440,12 @@ extension Savingsplans {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case searchResults = "searchResults"
+            case nextToken
+            case searchResults
         }
     }
 
     public struct DescribeSavingsPlansRequest: AWSEncodableShape {
-
         /// The filters.
         public let filters: [SavingsPlanFilter]?
         /// The maximum number of results to return with a single call. To retrieve additional results, make another call with the returned token value.
@@ -494,17 +480,16 @@ extension Savingsplans {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case filters = "filters"
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
-            case savingsPlanArns = "savingsPlanArns"
-            case savingsPlanIds = "savingsPlanIds"
-            case states = "states"
+            case filters
+            case maxResults
+            case nextToken
+            case savingsPlanArns
+            case savingsPlanIds
+            case states
         }
     }
 
     public struct DescribeSavingsPlansResponse: AWSDecodableShape {
-
         /// The token to use to retrieve the next page of results. This value is null when there are no more  results to return.
         public let nextToken: String?
         /// Information about the Savings Plans.
@@ -516,13 +501,12 @@ extension Savingsplans {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case savingsPlans = "savingsPlans"
+            case nextToken
+            case savingsPlans
         }
     }
 
     public struct ListTagsForResourceRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the resource.
         public let resourceArn: String
 
@@ -535,12 +519,11 @@ extension Savingsplans {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case resourceArn = "resourceArn"
+            case resourceArn
         }
     }
 
     public struct ListTagsForResourceResponse: AWSDecodableShape {
-
         /// Information about the tags.
         public let tags: [String: String]?
 
@@ -549,12 +532,11 @@ extension Savingsplans {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tags = "tags"
+            case tags
         }
     }
 
     public struct ParentSavingsPlanOffering: AWSDecodableShape {
-
         /// The currency.
         public let currency: CurrencyCode?
         /// The duration, in seconds.
@@ -578,17 +560,16 @@ extension Savingsplans {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case currency = "currency"
-            case durationSeconds = "durationSeconds"
-            case offeringId = "offeringId"
-            case paymentOption = "paymentOption"
-            case planDescription = "planDescription"
-            case planType = "planType"
+            case currency
+            case durationSeconds
+            case offeringId
+            case paymentOption
+            case planDescription
+            case planType
         }
     }
 
     public struct SavingsPlan: AWSDecodableShape {
-
         /// The hourly commitment, in USD.
         public let commitment: String?
         /// The currency.
@@ -648,29 +629,28 @@ extension Savingsplans {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case commitment = "commitment"
-            case currency = "currency"
-            case description = "description"
-            case ec2InstanceFamily = "ec2InstanceFamily"
-            case end = "end"
-            case offeringId = "offeringId"
-            case paymentOption = "paymentOption"
-            case productTypes = "productTypes"
-            case recurringPaymentAmount = "recurringPaymentAmount"
-            case region = "region"
-            case savingsPlanArn = "savingsPlanArn"
-            case savingsPlanId = "savingsPlanId"
-            case savingsPlanType = "savingsPlanType"
-            case start = "start"
-            case state = "state"
-            case tags = "tags"
-            case termDurationInSeconds = "termDurationInSeconds"
-            case upfrontPaymentAmount = "upfrontPaymentAmount"
+            case commitment
+            case currency
+            case description
+            case ec2InstanceFamily
+            case end
+            case offeringId
+            case paymentOption
+            case productTypes
+            case recurringPaymentAmount
+            case region
+            case savingsPlanArn
+            case savingsPlanId
+            case savingsPlanType
+            case start
+            case state
+            case tags
+            case termDurationInSeconds
+            case upfrontPaymentAmount
         }
     }
 
     public struct SavingsPlanFilter: AWSEncodableShape {
-
         /// The filter name.
         public let name: SavingsPlansFilterName?
         /// The filter value.
@@ -682,13 +662,12 @@ extension Savingsplans {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case name = "name"
-            case values = "values"
+            case name
+            case values
         }
     }
 
     public struct SavingsPlanOffering: AWSDecodableShape {
-
         /// The currency.
         public let currency: CurrencyCode?
         /// The description.
@@ -727,22 +706,21 @@ extension Savingsplans {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case currency = "currency"
-            case description = "description"
-            case durationSeconds = "durationSeconds"
-            case offeringId = "offeringId"
-            case operation = "operation"
-            case paymentOption = "paymentOption"
-            case planType = "planType"
-            case productTypes = "productTypes"
-            case properties = "properties"
-            case serviceCode = "serviceCode"
-            case usageType = "usageType"
+            case currency
+            case description
+            case durationSeconds
+            case offeringId
+            case operation
+            case paymentOption
+            case planType
+            case productTypes
+            case properties
+            case serviceCode
+            case usageType
         }
     }
 
     public struct SavingsPlanOfferingFilterElement: AWSEncodableShape {
-
         /// The filter name.
         public let name: SavingsPlanOfferingFilterAttribute?
         /// The filter values.
@@ -760,13 +738,12 @@ extension Savingsplans {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case name = "name"
-            case values = "values"
+            case name
+            case values
         }
     }
 
     public struct SavingsPlanOfferingProperty: AWSDecodableShape {
-
         /// The property name.
         public let name: SavingsPlanOfferingPropertyKey?
         /// The property value.
@@ -778,13 +755,12 @@ extension Savingsplans {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case name = "name"
-            case value = "value"
+            case name
+            case value
         }
     }
 
     public struct SavingsPlanOfferingRate: AWSDecodableShape {
-
         /// The specific AWS operation for the line item in the billing report.
         public let operation: String?
         /// The product type.
@@ -814,19 +790,18 @@ extension Savingsplans {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case operation = "operation"
-            case productType = "productType"
-            case properties = "properties"
-            case rate = "rate"
-            case savingsPlanOffering = "savingsPlanOffering"
-            case serviceCode = "serviceCode"
-            case unit = "unit"
-            case usageType = "usageType"
+            case operation
+            case productType
+            case properties
+            case rate
+            case savingsPlanOffering
+            case serviceCode
+            case unit
+            case usageType
         }
     }
 
     public struct SavingsPlanOfferingRateFilterElement: AWSEncodableShape {
-
         /// The filter name.
         public let name: SavingsPlanRateFilterAttribute?
         /// The filter values.
@@ -844,13 +819,12 @@ extension Savingsplans {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case name = "name"
-            case values = "values"
+            case name
+            case values
         }
     }
 
     public struct SavingsPlanOfferingRateProperty: AWSDecodableShape {
-
         /// The property name.
         public let name: String?
         /// The property value.
@@ -862,13 +836,12 @@ extension Savingsplans {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case name = "name"
-            case value = "value"
+            case name
+            case value
         }
     }
 
     public struct SavingsPlanRate: AWSDecodableShape {
-
         /// The currency.
         public let currency: CurrencyCode?
         /// The specific AWS operation for the line item in the billing report.
@@ -898,19 +871,18 @@ extension Savingsplans {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case currency = "currency"
-            case operation = "operation"
-            case productType = "productType"
-            case properties = "properties"
-            case rate = "rate"
-            case serviceCode = "serviceCode"
-            case unit = "unit"
-            case usageType = "usageType"
+            case currency
+            case operation
+            case productType
+            case properties
+            case rate
+            case serviceCode
+            case unit
+            case usageType
         }
     }
 
     public struct SavingsPlanRateFilter: AWSEncodableShape {
-
         /// The filter name.
         public let name: SavingsPlanRateFilterName?
         /// The filter values.
@@ -922,13 +894,12 @@ extension Savingsplans {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case name = "name"
-            case values = "values"
+            case name
+            case values
         }
     }
 
     public struct SavingsPlanRateProperty: AWSDecodableShape {
-
         /// The property name.
         public let name: SavingsPlanRatePropertyKey?
         /// The property value.
@@ -940,13 +911,12 @@ extension Savingsplans {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case name = "name"
-            case value = "value"
+            case name
+            case value
         }
     }
 
     public struct TagResourceRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the resource.
         public let resourceArn: String
         /// One or more tags. For example, { "tags": {"key1":"value1", "key2":"value2"} }.
@@ -962,21 +932,16 @@ extension Savingsplans {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case resourceArn = "resourceArn"
-            case tags = "tags"
+            case resourceArn
+            case tags
         }
     }
 
     public struct TagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UntagResourceRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the resource.
         public let resourceArn: String
         /// The tag keys.
@@ -992,16 +957,12 @@ extension Savingsplans {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case resourceArn = "resourceArn"
-            case tagKeys = "tagKeys"
+            case resourceArn
+            case tagKeys
         }
     }
 
     public struct UntagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 }

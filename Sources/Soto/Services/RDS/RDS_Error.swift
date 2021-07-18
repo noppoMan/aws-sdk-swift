@@ -164,7 +164,7 @@ public struct RDSErrorType: AWSErrorType {
     /// The DB security group authorization quota has been reached.
     public static var authorizationQuotaExceededFault: Self { .init(.authorizationQuotaExceededFault) }
     public static var backupPolicyNotFoundFault: Self { .init(.backupPolicyNotFoundFault) }
-    ///  CertificateIdentifier doesn't refer to an existing certificate. 
+    ///  CertificateIdentifier doesn't refer to an existing certificate.
     public static var certificateNotFoundFault: Self { .init(.certificateNotFoundFault) }
     ///  CustomAvailabilityZoneName is already used by an existing custom Availability Zone.
     public static var customAvailabilityZoneAlreadyExistsFault: Self { .init(.customAvailabilityZoneAlreadyExistsFault) }
@@ -174,7 +174,7 @@ public struct RDSErrorType: AWSErrorType {
     public static var customAvailabilityZoneQuotaExceededFault: Self { .init(.customAvailabilityZoneQuotaExceededFault) }
     /// The user already has a DB cluster with the given identifier.
     public static var dBClusterAlreadyExistsFault: Self { .init(.dBClusterAlreadyExistsFault) }
-    ///  BacktrackIdentifier doesn't refer to an existing backtrack. 
+    ///  BacktrackIdentifier doesn't refer to an existing backtrack.
     public static var dBClusterBacktrackNotFoundFault: Self { .init(.dBClusterBacktrackNotFoundFault) }
     /// The specified custom endpoint can't be created because it already exists.
     public static var dBClusterEndpointAlreadyExistsFault: Self { .init(.dBClusterEndpointAlreadyExistsFault) }
@@ -182,9 +182,9 @@ public struct RDSErrorType: AWSErrorType {
     public static var dBClusterEndpointNotFoundFault: Self { .init(.dBClusterEndpointNotFoundFault) }
     /// The cluster already has the maximum number of custom endpoints.
     public static var dBClusterEndpointQuotaExceededFault: Self { .init(.dBClusterEndpointQuotaExceededFault) }
-    ///  DBClusterIdentifier doesn't refer to an existing DB cluster. 
+    ///  DBClusterIdentifier doesn't refer to an existing DB cluster.
     public static var dBClusterNotFoundFault: Self { .init(.dBClusterNotFoundFault) }
-    ///  DBClusterParameterGroupName doesn't refer to an existing DB cluster parameter group. 
+    ///  DBClusterParameterGroupName doesn't refer to an existing DB cluster parameter group.
     public static var dBClusterParameterGroupNotFoundFault: Self { .init(.dBClusterParameterGroupNotFoundFault) }
     /// The user attempted to create a new DB cluster and the user has already reached the maximum allowed DB cluster quota.
     public static var dBClusterQuotaExceededFault: Self { .init(.dBClusterQuotaExceededFault) }
@@ -196,7 +196,7 @@ public struct RDSErrorType: AWSErrorType {
     public static var dBClusterRoleQuotaExceededFault: Self { .init(.dBClusterRoleQuotaExceededFault) }
     /// The user already has a DB cluster snapshot with the given identifier.
     public static var dBClusterSnapshotAlreadyExistsFault: Self { .init(.dBClusterSnapshotAlreadyExistsFault) }
-    ///  DBClusterSnapshotIdentifier doesn't refer to an existing DB cluster snapshot. 
+    ///  DBClusterSnapshotIdentifier doesn't refer to an existing DB cluster snapshot.
     public static var dBClusterSnapshotNotFoundFault: Self { .init(.dBClusterSnapshotNotFoundFault) }
     /// The user already has a DB instance with the given identifier.
     public static var dBInstanceAlreadyExistsFault: Self { .init(.dBInstanceAlreadyExistsFault) }
@@ -204,7 +204,7 @@ public struct RDSErrorType: AWSErrorType {
     public static var dBInstanceAutomatedBackupNotFoundFault: Self { .init(.dBInstanceAutomatedBackupNotFoundFault) }
     /// The quota for retained automated backups was exceeded. This prevents you from retaining any additional automated backups. The retained automated backups  quota is the same as your DB Instance quota.
     public static var dBInstanceAutomatedBackupQuotaExceededFault: Self { .init(.dBInstanceAutomatedBackupQuotaExceededFault) }
-    ///  DBInstanceIdentifier doesn't refer to an existing DB instance. 
+    ///  DBInstanceIdentifier doesn't refer to an existing DB instance.
     public static var dBInstanceNotFoundFault: Self { .init(.dBInstanceNotFoundFault) }
     /// The specified RoleArn or FeatureName value is already associated with the DB instance.
     public static var dBInstanceRoleAlreadyExistsFault: Self { .init(.dBInstanceRoleAlreadyExistsFault) }
@@ -216,7 +216,7 @@ public struct RDSErrorType: AWSErrorType {
     public static var dBLogFileNotFoundFault: Self { .init(.dBLogFileNotFoundFault) }
     /// A DB parameter group with the same name exists.
     public static var dBParameterGroupAlreadyExistsFault: Self { .init(.dBParameterGroupAlreadyExistsFault) }
-    ///  DBParameterGroupName doesn't refer to an existing DB parameter group. 
+    ///  DBParameterGroupName doesn't refer to an existing DB parameter group.
     public static var dBParameterGroupNotFoundFault: Self { .init(.dBParameterGroupNotFoundFault) }
     /// The request would result in the user exceeding the allowed number of DB parameter groups.
     public static var dBParameterGroupQuotaExceededFault: Self { .init(.dBParameterGroupQuotaExceededFault) }
@@ -238,25 +238,25 @@ public struct RDSErrorType: AWSErrorType {
     public static var dBProxyTargetGroupNotFoundFault: Self { .init(.dBProxyTargetGroupNotFoundFault) }
     /// The specified RDS DB instance or Aurora DB cluster isn't available for a proxy owned by your Amazon Web Services account in the specified Amazon Web Services Region.
     public static var dBProxyTargetNotFoundFault: Self { .init(.dBProxyTargetNotFoundFault) }
-    ///  A DB security group with the name specified in DBSecurityGroupName already exists. 
+    ///  A DB security group with the name specified in DBSecurityGroupName already exists.
     public static var dBSecurityGroupAlreadyExistsFault: Self { .init(.dBSecurityGroupAlreadyExistsFault) }
-    ///  DBSecurityGroupName doesn't refer to an existing DB security group. 
+    ///  DBSecurityGroupName doesn't refer to an existing DB security group.
     public static var dBSecurityGroupNotFoundFault: Self { .init(.dBSecurityGroupNotFoundFault) }
     /// A DB security group isn't allowed for this action.
     public static var dBSecurityGroupNotSupportedFault: Self { .init(.dBSecurityGroupNotSupportedFault) }
     /// The request would result in the user exceeding the allowed number of DB security groups.
     public static var dBSecurityGroupQuotaExceededFault: Self { .init(.dBSecurityGroupQuotaExceededFault) }
-    ///  DBSnapshotIdentifier is already used by an existing snapshot. 
+    ///  DBSnapshotIdentifier is already used by an existing snapshot.
     public static var dBSnapshotAlreadyExistsFault: Self { .init(.dBSnapshotAlreadyExistsFault) }
-    ///  DBSnapshotIdentifier doesn't refer to an existing DB snapshot. 
+    ///  DBSnapshotIdentifier doesn't refer to an existing DB snapshot.
     public static var dBSnapshotNotFoundFault: Self { .init(.dBSnapshotNotFoundFault) }
-    ///  DBSubnetGroupName is already used by an existing DB subnet group. 
+    ///  DBSubnetGroupName is already used by an existing DB subnet group.
     public static var dBSubnetGroupAlreadyExistsFault: Self { .init(.dBSubnetGroupAlreadyExistsFault) }
     /// Subnets in the DB subnet group should cover at least two Availability Zones unless there is only one Availability Zone.
     public static var dBSubnetGroupDoesNotCoverEnoughAZs: Self { .init(.dBSubnetGroupDoesNotCoverEnoughAZs) }
     /// The DBSubnetGroup shouldn't be specified while creating read replicas that lie in the same region as the source instance.
     public static var dBSubnetGroupNotAllowedFault: Self { .init(.dBSubnetGroupNotAllowedFault) }
-    ///  DBSubnetGroupName doesn't refer to an existing DB subnet group. 
+    ///  DBSubnetGroupName doesn't refer to an existing DB subnet group.
     public static var dBSubnetGroupNotFoundFault: Self { .init(.dBSubnetGroupNotFoundFault) }
     /// The request would result in the user exceeding the allowed number of DB subnet groups.
     public static var dBSubnetGroupQuotaExceededFault: Self { .init(.dBSubnetGroupQuotaExceededFault) }
@@ -264,7 +264,7 @@ public struct RDSErrorType: AWSErrorType {
     public static var dBSubnetQuotaExceededFault: Self { .init(.dBSubnetQuotaExceededFault) }
     /// The DB upgrade failed because a resource the DB depends on can't be modified.
     public static var dBUpgradeDependencyFailureFault: Self { .init(.dBUpgradeDependencyFailureFault) }
-    ///  Domain doesn't refer to an existing Active Directory domain. 
+    ///  Domain doesn't refer to an existing Active Directory domain.
     public static var domainNotFoundFault: Self { .init(.domainNotFoundFault) }
     /// You have reached the maximum number of event subscriptions.
     public static var eventSubscriptionQuotaExceededFault: Self { .init(.eventSubscriptionQuotaExceededFault) }
@@ -274,7 +274,7 @@ public struct RDSErrorType: AWSErrorType {
     public static var exportTaskNotFoundFault: Self { .init(.exportTaskNotFoundFault) }
     /// The GlobalClusterIdentifier already exists. Choose a new global database identifier (unique name) to create a new global database cluster.
     public static var globalClusterAlreadyExistsFault: Self { .init(.globalClusterAlreadyExistsFault) }
-    /// The GlobalClusterIdentifier doesn't refer to an existing global database cluster. 
+    /// The GlobalClusterIdentifier doesn't refer to an existing global database cluster.
     public static var globalClusterNotFoundFault: Self { .init(.globalClusterNotFoundFault) }
     /// The number of global database clusters for this account is already at the maximum allowed.
     public static var globalClusterQuotaExceededFault: Self { .init(.globalClusterQuotaExceededFault) }
@@ -304,7 +304,7 @@ public struct RDSErrorType: AWSErrorType {
     public static var invalidDBClusterSnapshotStateFault: Self { .init(.invalidDBClusterSnapshotStateFault) }
     /// The requested operation can't be performed while the cluster is in this state.
     public static var invalidDBClusterStateFault: Self { .init(.invalidDBClusterStateFault) }
-    /// The automated backup is in an invalid state.  	    For example, this automated backup is associated with an active instance. 
+    /// The automated backup is in an invalid state.  	    For example, this automated backup is associated with an active instance.
     public static var invalidDBInstanceAutomatedBackupStateFault: Self { .init(.invalidDBInstanceAutomatedBackupStateFault) }
     /// The DB instance isn't in a valid state.
     public static var invalidDBInstanceStateFault: Self { .init(.invalidDBInstanceStateFault) }
@@ -322,7 +322,7 @@ public struct RDSErrorType: AWSErrorType {
     public static var invalidDBSubnetGroupFault: Self { .init(.invalidDBSubnetGroupFault) }
     /// The DB subnet group cannot be deleted because it's in use.
     public static var invalidDBSubnetGroupStateFault: Self { .init(.invalidDBSubnetGroupStateFault) }
-    ///  The DB subnet isn't in the available state. 
+    ///  The DB subnet isn't in the available state.
     public static var invalidDBSubnetStateFault: Self { .init(.invalidDBSubnetStateFault) }
     /// This error can occur if someone else is modifying a subscription. You should retry the action.
     public static var invalidEventSubscriptionStateFault: Self { .init(.invalidEventSubscriptionStateFault) }
@@ -332,9 +332,9 @@ public struct RDSErrorType: AWSErrorType {
     public static var invalidExportSourceStateFault: Self { .init(.invalidExportSourceStateFault) }
     /// You can't cancel an export task that has completed.
     public static var invalidExportTaskStateFault: Self { .init(.invalidExportTaskStateFault) }
-    /// The global cluster is in an invalid state and can't perform the requested operation. 
+    /// The global cluster is in an invalid state and can't perform the requested operation.
     public static var invalidGlobalClusterStateFault: Self { .init(.invalidGlobalClusterStateFault) }
-    ///  The option group isn't in the available state. 
+    ///  The option group isn't in the available state.
     public static var invalidOptionGroupStateFault: Self { .init(.invalidOptionGroupStateFault) }
     /// Cannot restore from VPC backup to non-VPC DB instance.
     public static var invalidRestoreFault: Self { .init(.invalidRestoreFault) }
@@ -352,7 +352,7 @@ public struct RDSErrorType: AWSErrorType {
     public static var optionGroupNotFoundFault: Self { .init(.optionGroupNotFoundFault) }
     /// The quota of 20 option groups was exceeded for this Amazon Web Services account.
     public static var optionGroupQuotaExceededFault: Self { .init(.optionGroupQuotaExceededFault) }
-    ///  SourceDBInstanceIdentifier refers to a DB instance with BackupRetentionPeriod equal to 0. 
+    ///  SourceDBInstanceIdentifier refers to a DB instance with BackupRetentionPeriod equal to 0.
     public static var pointInTimeRestoreNotEnabledFault: Self { .init(.pointInTimeRestoreNotEnabledFault) }
     /// Provisioned IOPS not available in the specified Availability Zone.
     public static var provisionedIopsNotAvailableInAZFault: Self { .init(.provisionedIopsNotAvailableInAZFault) }
@@ -380,7 +380,7 @@ public struct RDSErrorType: AWSErrorType {
     public static var sourceNotFoundFault: Self { .init(.sourceNotFoundFault) }
     /// The request would result in the user exceeding the allowed amount of storage available across all DB instances.
     public static var storageQuotaExceededFault: Self { .init(.storageQuotaExceededFault) }
-    /// Storage of the StorageType specified can't be associated with the DB instance. 
+    /// Storage of the StorageType specified can't be associated with the DB instance.
     public static var storageTypeNotSupportedFault: Self { .init(.storageTypeNotSupportedFault) }
     /// The DB subnet is already in use in the Availability Zone.
     public static var subnetAlreadyInUse: Self { .init(.subnetAlreadyInUse) }

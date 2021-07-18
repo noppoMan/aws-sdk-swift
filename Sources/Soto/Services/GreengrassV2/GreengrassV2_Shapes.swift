@@ -118,14 +118,14 @@ extension GreengrassV2 {
     }
 
     public enum LambdaFilesystemPermission: String, CustomStringConvertible, Codable {
-        case ro = "ro"
-        case rw = "rw"
+        case ro
+        case rw
         public var description: String { return self.rawValue }
     }
 
     public enum LambdaInputPayloadEncodingType: String, CustomStringConvertible, Codable {
-        case binary = "binary"
-        case json = "json"
+        case binary
+        case json
         public var description: String { return self.rawValue }
     }
 
@@ -144,7 +144,6 @@ extension GreengrassV2 {
     // MARK: Shapes
 
     public struct AssociateClientDeviceWithCoreDeviceEntry: AWSEncodableShape {
-
         /// The name of the AWS IoT thing that represents the client device to associate.
         public let thingName: String
 
@@ -158,12 +157,11 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case thingName = "thingName"
+            case thingName
         }
     }
 
     public struct AssociateClientDeviceWithCoreDeviceErrorEntry: AWSDecodableShape {
-
         /// The error code for the request.
         public let code: String?
         /// A message that provides additional information about the error.
@@ -178,14 +176,13 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case code = "code"
-            case message = "message"
-            case thingName = "thingName"
+            case code
+            case message
+            case thingName
         }
     }
 
     public struct AssociatedClientDevice: AWSDecodableShape {
-
         /// The time that the client device was associated, expressed in ISO 8601 format.
         public let associationTimestamp: Date?
         /// The name of the AWS IoT thing that represents the associated client device.
@@ -197,8 +194,8 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case associationTimestamp = "associationTimestamp"
-            case thingName = "thingName"
+            case associationTimestamp
+            case thingName
         }
     }
 
@@ -228,12 +225,11 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case entries = "entries"
+            case entries
         }
     }
 
     public struct BatchAssociateClientDeviceWithCoreDeviceResponse: AWSDecodableShape {
-
         /// The list of any errors for the entries in the request. Each error entry contains the name of the AWS IoT thing that failed to associate.
         public let errorEntries: [AssociateClientDeviceWithCoreDeviceErrorEntry]?
 
@@ -242,7 +238,7 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case errorEntries = "errorEntries"
+            case errorEntries
         }
     }
 
@@ -272,12 +268,11 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case entries = "entries"
+            case entries
         }
     }
 
     public struct BatchDisassociateClientDeviceFromCoreDeviceResponse: AWSDecodableShape {
-
         /// The list of errors (if any) for the entries in the request. Each error entry contains the name of the AWS IoT thing that failed to disassociate.
         public let errorEntries: [DisassociateClientDeviceFromCoreDeviceErrorEntry]?
 
@@ -286,7 +281,7 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case errorEntries = "errorEntries"
+            case errorEntries
         }
     }
 
@@ -310,7 +305,6 @@ extension GreengrassV2 {
     }
 
     public struct CancelDeploymentResponse: AWSDecodableShape {
-
         /// A message that communicates if the cancel was successful.
         public let message: String?
 
@@ -319,12 +313,11 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case message = "message"
+            case message
         }
     }
 
     public struct CloudComponentStatus: AWSDecodableShape {
-
         /// The state of the component.
         public let componentState: CloudComponentState?
         /// A dictionary of errors that communicate why the component is in an error state. For example, if AWS IoT Greengrass can't access an artifact for the component, then errors contains the artifact's URI as a key, and the error message as the value for that key.
@@ -339,14 +332,13 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case componentState = "componentState"
-            case errors = "errors"
-            case message = "message"
+            case componentState
+            case errors
+            case message
         }
     }
 
     public struct Component: AWSDecodableShape {
-
         /// The ARN of the component version.
         public let arn: String?
         /// The name of the component.
@@ -361,14 +353,13 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case componentName = "componentName"
-            case latestVersion = "latestVersion"
+            case arn
+            case componentName
+            case latestVersion
         }
     }
 
     public struct ComponentCandidate: AWSEncodableShape {
-
         /// The name of the component.
         public let componentName: String?
         /// The version of the component.
@@ -396,14 +387,13 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case componentName = "componentName"
-            case componentVersion = "componentVersion"
-            case versionRequirements = "versionRequirements"
+            case componentName
+            case componentVersion
+            case versionRequirements
         }
     }
 
     public struct ComponentConfigurationUpdate: AWSEncodableShape & AWSDecodableShape {
-
         /// A serialized JSON string that contains the configuration object to merge to target devices. The core device merges this configuration with the component's existing configuration. If this is the first time a component deploys on a device, the core device merges this configuration with the component's default configuration. This means that the core device keeps it's existing configuration for keys and values that you don't specify in this object. For more information, see Merge configuration updates in the AWS IoT Greengrass V2 Developer Guide.
         public let merge: String?
         /// The list of configuration nodes to reset to default values on target devices. Use JSON pointers to specify each node to reset. JSON pointers start with a forward slash (/) and use forward slashes to separate the key for each level in the object. For more information, see the JSON pointer specification and Reset configuration updates in the AWS IoT Greengrass V2 Developer Guide.
@@ -423,14 +413,13 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case merge = "merge"
-            case reset = "reset"
+            case merge
+            case reset
         }
     }
 
     public struct ComponentDependencyRequirement: AWSEncodableShape {
-
-        /// The type of this dependency. Choose from the following options:    SOFT – The component doesn't restart if the dependency changes state.    HARD – The component restarts if the dependency changes state.   Default: HARD 
+        /// The type of this dependency. Choose from the following options:    SOFT – The component doesn't restart if the dependency changes state.    HARD – The component restarts if the dependency changes state.   Default: HARD
         public let dependencyType: ComponentDependencyType?
         /// The component version requirement for the component dependency. AWS IoT Greengrass V2 uses semantic version constraints. For more information, see Semantic Versioning.
         public let versionRequirement: String?
@@ -445,13 +434,12 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case dependencyType = "dependencyType"
-            case versionRequirement = "versionRequirement"
+            case dependencyType
+            case versionRequirement
         }
     }
 
     public struct ComponentDeploymentSpecification: AWSEncodableShape & AWSDecodableShape {
-
         /// The version of the component.
         public let componentVersion: String?
         /// The configuration updates to deploy for the component. You can define reset updates and merge updates. A reset updates the keys that you specify to the default configuration for the component. A merge updates the core device's component configuration with the keys and values that you specify. The AWS IoT Greengrass Core software applies reset updates before it applies merge updates. For more information, see Update component configurations in the AWS IoT Greengrass V2 Developer Guide.
@@ -474,14 +462,13 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case componentVersion = "componentVersion"
-            case configurationUpdate = "configurationUpdate"
-            case runWith = "runWith"
+            case componentVersion
+            case configurationUpdate
+            case runWith
         }
     }
 
     public struct ComponentLatestVersion: AWSDecodableShape {
-
         /// The ARN of the component version.
         public let arn: String?
         /// The version of the component.
@@ -505,17 +492,16 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case componentVersion = "componentVersion"
-            case creationTimestamp = "creationTimestamp"
-            case description = "description"
-            case platforms = "platforms"
-            case publisher = "publisher"
+            case arn
+            case componentVersion
+            case creationTimestamp
+            case description
+            case platforms
+            case publisher
         }
     }
 
     public struct ComponentPlatform: AWSEncodableShape & AWSDecodableShape {
-
         /// A dictionary of attributes for the platform. The AWS IoT Greengrass Core software defines the os and platform by default. You can specify additional platform attributes for a core device when you deploy the AWS IoT Greengrass nucleus component. For more information, see the AWS IoT Greengrass nucleus component in the AWS IoT Greengrass V2 Developer Guide.
         public let attributes: [String: String]?
         /// The friendly name of the platform. This name helps you identify the platform. If you omit this parameter, AWS IoT Greengrass creates a friendly name from the os and architecture of the platform.
@@ -535,13 +521,12 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case attributes = "attributes"
-            case name = "name"
+            case attributes
+            case name
         }
     }
 
     public struct ComponentRunWith: AWSEncodableShape & AWSDecodableShape {
-
         /// The POSIX system user and (optional) group to use to run this component. Specify the user and group separated by a colon (:) in the following format: user:group. The group is optional. If you don't specify a group, the AWS IoT Greengrass Core software uses the primary user for the group.
         public let posixUser: String?
 
@@ -554,12 +539,11 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case posixUser = "posixUser"
+            case posixUser
         }
     }
 
     public struct ComponentVersionListItem: AWSDecodableShape {
-
         /// The ARN of the component version.
         public let arn: String?
         /// The name of the component.
@@ -574,19 +558,18 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case componentName = "componentName"
-            case componentVersion = "componentVersion"
+            case arn
+            case componentName
+            case componentVersion
         }
     }
 
     public struct CoreDevice: AWSDecodableShape {
-
         /// The name of the core device. This is also the name of the AWS IoT thing.
         public let coreDeviceThingName: String?
         /// The time at which the core device's status last updated, expressed in ISO 8601 format.
         public let lastStatusUpdateTimestamp: Date?
-        /// The status of the core device. Core devices can have the following statuses:    HEALTHY – The AWS IoT Greengrass Core software and all components run on the core device without issue.    UNHEALTHY – The AWS IoT Greengrass Core software or a component is in a failed state on the core device.  
+        /// The status of the core device. Core devices can have the following statuses:    HEALTHY – The AWS IoT Greengrass Core software and all components run on the core device without issue.    UNHEALTHY – The AWS IoT Greengrass Core software or a component is in a failed state on the core device.
         public let status: CoreDeviceStatus?
 
         public init(coreDeviceThingName: String? = nil, lastStatusUpdateTimestamp: Date? = nil, status: CoreDeviceStatus? = nil) {
@@ -596,14 +579,13 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case coreDeviceThingName = "coreDeviceThingName"
-            case lastStatusUpdateTimestamp = "lastStatusUpdateTimestamp"
-            case status = "status"
+            case coreDeviceThingName
+            case lastStatusUpdateTimestamp
+            case status
         }
     }
 
     public struct CreateComponentVersionRequest: AWSEncodableShape {
-
         /// The recipe to use to create the component. The recipe defines the component's metadata, parameters, dependencies, lifecycle, artifacts, and platform compatibility. You must specify either inlineRecipe or lambdaFunction.
         public let inlineRecipe: Data?
         /// The parameters to create a component from a Lambda function. You must specify either inlineRecipe or lambdaFunction.
@@ -630,14 +612,13 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case inlineRecipe = "inlineRecipe"
-            case lambdaFunction = "lambdaFunction"
-            case tags = "tags"
+            case inlineRecipe
+            case lambdaFunction
+            case tags
         }
     }
 
     public struct CreateComponentVersionResponse: AWSDecodableShape {
-
         /// The ARN of the component version.
         public let arn: String?
         /// The name of the component.
@@ -658,16 +639,15 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case componentName = "componentName"
-            case componentVersion = "componentVersion"
-            case creationTimestamp = "creationTimestamp"
-            case status = "status"
+            case arn
+            case componentName
+            case componentVersion
+            case creationTimestamp
+            case status
         }
     }
 
     public struct CreateDeploymentRequest: AWSEncodableShape {
-
         /// The components to deploy. This is a dictionary, where each key is the name of a component, and each key's value is the version and configuration to deploy for that component.
         public let components: [String: ComponentDeploymentSpecification]?
         /// The name of the deployment. You can create deployments without names. If you create a deployment without a name, the AWS IoT Greengrass V2 console shows the deployment name as :, where targetType and targetName are the type and name of the deployment target.
@@ -709,17 +689,16 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case components = "components"
-            case deploymentName = "deploymentName"
-            case deploymentPolicies = "deploymentPolicies"
-            case iotJobConfiguration = "iotJobConfiguration"
-            case tags = "tags"
-            case targetArn = "targetArn"
+            case components
+            case deploymentName
+            case deploymentPolicies
+            case iotJobConfiguration
+            case tags
+            case targetArn
         }
     }
 
     public struct CreateDeploymentResponse: AWSDecodableShape {
-
         /// The ID of the deployment.
         public let deploymentId: String?
         /// The ARN of the AWS IoT job that applies the deployment to target devices.
@@ -734,9 +713,9 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case deploymentId = "deploymentId"
-            case iotJobArn = "iotJobArn"
-            case iotJobId = "iotJobId"
+            case deploymentId
+            case iotJobArn
+            case iotJobId
         }
     }
 
@@ -780,7 +759,6 @@ extension GreengrassV2 {
     }
 
     public struct Deployment: AWSDecodableShape {
-
         /// The time at which the deployment was created, expressed in ISO 8601 format.
         public let creationTimestamp: Date?
         /// The ID of the deployment.
@@ -807,21 +785,20 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case creationTimestamp = "creationTimestamp"
-            case deploymentId = "deploymentId"
-            case deploymentName = "deploymentName"
-            case deploymentStatus = "deploymentStatus"
-            case isLatestForTarget = "isLatestForTarget"
-            case revisionId = "revisionId"
-            case targetArn = "targetArn"
+            case creationTimestamp
+            case deploymentId
+            case deploymentName
+            case deploymentStatus
+            case isLatestForTarget
+            case revisionId
+            case targetArn
         }
     }
 
     public struct DeploymentComponentUpdatePolicy: AWSEncodableShape & AWSDecodableShape {
-
-        /// Whether or not to notify components and wait for components to become safe to update. Choose from the following options:    NOTIFY_COMPONENTS – The deployment notifies each component before it stops and updates that component. Components can use the SubscribeToComponentUpdates IPC operation to receive these notifications. Then, components can respond with the DeferComponentUpdate IPC operation. For more information, see Create deployments in the AWS IoT Greengrass V2 Developer Guide.    SKIP_NOTIFY_COMPONENTS – The deployment doesn't notify components or wait for them to be safe to update.   Default: NOTIFY_COMPONENTS 
+        /// Whether or not to notify components and wait for components to become safe to update. Choose from the following options:    NOTIFY_COMPONENTS – The deployment notifies each component before it stops and updates that component. Components can use the SubscribeToComponentUpdates IPC operation to receive these notifications. Then, components can respond with the DeferComponentUpdate IPC operation. For more information, see Create deployments in the AWS IoT Greengrass V2 Developer Guide.    SKIP_NOTIFY_COMPONENTS – The deployment doesn't notify components or wait for them to be safe to update.   Default: NOTIFY_COMPONENTS
         public let action: DeploymentComponentUpdatePolicyAction?
-        /// The amount of time in seconds that each component on a device has to report that it's safe to update. If the component waits for longer than this timeout, then the deployment proceeds on the device. Default: 60 
+        /// The amount of time in seconds that each component on a device has to report that it's safe to update. If the component waits for longer than this timeout, then the deployment proceeds on the device. Default: 60
         public let timeoutInSeconds: Int?
 
         public init(action: DeploymentComponentUpdatePolicyAction? = nil, timeoutInSeconds: Int? = nil) {
@@ -830,14 +807,13 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case action = "action"
-            case timeoutInSeconds = "timeoutInSeconds"
+            case action
+            case timeoutInSeconds
         }
     }
 
     public struct DeploymentConfigurationValidationPolicy: AWSEncodableShape & AWSDecodableShape {
-
-        /// The amount of time in seconds that a component can validate its configuration updates. If the validation time exceeds this timeout, then the deployment proceeds for the device. Default: 30 
+        /// The amount of time in seconds that a component can validate its configuration updates. If the validation time exceeds this timeout, then the deployment proceeds for the device. Default: 30
         public let timeoutInSeconds: Int?
 
         public init(timeoutInSeconds: Int? = nil) {
@@ -845,12 +821,11 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case timeoutInSeconds = "timeoutInSeconds"
+            case timeoutInSeconds
         }
     }
 
     public struct DeploymentIoTJobConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// The stop configuration for the job. This configuration defines when and how to stop a job rollout.
         public let abortConfig: IoTJobAbortConfig?
         /// The rollout configuration for the job. This configuration defines the rate at which the job rolls out to the fleet of target devices.
@@ -870,19 +845,18 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case abortConfig = "abortConfig"
-            case jobExecutionsRolloutConfig = "jobExecutionsRolloutConfig"
-            case timeoutConfig = "timeoutConfig"
+            case abortConfig
+            case jobExecutionsRolloutConfig
+            case timeoutConfig
         }
     }
 
     public struct DeploymentPolicies: AWSEncodableShape & AWSDecodableShape {
-
         /// The component update policy for the configuration deployment. This policy defines when it's safe to deploy the configuration to devices.
         public let componentUpdatePolicy: DeploymentComponentUpdatePolicy?
         /// The configuration validation policy for the configuration deployment. This policy defines how long each component has to validate its configure updates.
         public let configurationValidationPolicy: DeploymentConfigurationValidationPolicy?
-        /// The failure handling policy for the configuration deployment. This policy defines what to do if the deployment fails. Default: ROLLBACK 
+        /// The failure handling policy for the configuration deployment. This policy defines what to do if the deployment fails. Default: ROLLBACK
         public let failureHandlingPolicy: DeploymentFailureHandlingPolicy?
 
         public init(componentUpdatePolicy: DeploymentComponentUpdatePolicy? = nil, configurationValidationPolicy: DeploymentConfigurationValidationPolicy? = nil, failureHandlingPolicy: DeploymentFailureHandlingPolicy? = nil) {
@@ -892,9 +866,9 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case componentUpdatePolicy = "componentUpdatePolicy"
-            case configurationValidationPolicy = "configurationValidationPolicy"
-            case failureHandlingPolicy = "failureHandlingPolicy"
+            case componentUpdatePolicy
+            case configurationValidationPolicy
+            case failureHandlingPolicy
         }
     }
 
@@ -918,7 +892,6 @@ extension GreengrassV2 {
     }
 
     public struct DescribeComponentResponse: AWSDecodableShape {
-
         /// The ARN of the component version.
         public let arn: String?
         /// The name of the component.
@@ -951,20 +924,19 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case componentName = "componentName"
-            case componentVersion = "componentVersion"
-            case creationTimestamp = "creationTimestamp"
-            case description = "description"
-            case platforms = "platforms"
-            case publisher = "publisher"
-            case status = "status"
-            case tags = "tags"
+            case arn
+            case componentName
+            case componentVersion
+            case creationTimestamp
+            case description
+            case platforms
+            case publisher
+            case status
+            case tags
         }
     }
 
     public struct DisassociateClientDeviceFromCoreDeviceEntry: AWSEncodableShape {
-
         /// The name of the AWS IoT thing that represents the client device to disassociate.
         public let thingName: String
 
@@ -978,12 +950,11 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case thingName = "thingName"
+            case thingName
         }
     }
 
     public struct DisassociateClientDeviceFromCoreDeviceErrorEntry: AWSDecodableShape {
-
         /// The error code for the request.
         public let code: String?
         /// A message that provides additional information about the error.
@@ -998,14 +969,13 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case code = "code"
-            case message = "message"
-            case thingName = "thingName"
+            case code
+            case message
+            case thingName
         }
     }
 
     public struct EffectiveDeployment: AWSDecodableShape {
-
         /// The status of the deployment job on the AWS IoT Greengrass core device.
         public let coreDeviceExecutionStatus: EffectiveDeploymentExecutionStatus
         /// The time at which the deployment was created, expressed in ISO 8601 format.
@@ -1041,22 +1011,22 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case coreDeviceExecutionStatus = "coreDeviceExecutionStatus"
-            case creationTimestamp = "creationTimestamp"
-            case deploymentId = "deploymentId"
-            case deploymentName = "deploymentName"
-            case description = "description"
-            case iotJobArn = "iotJobArn"
-            case iotJobId = "iotJobId"
-            case modifiedTimestamp = "modifiedTimestamp"
-            case reason = "reason"
-            case targetArn = "targetArn"
+            case coreDeviceExecutionStatus
+            case creationTimestamp
+            case deploymentId
+            case deploymentName
+            case description
+            case iotJobArn
+            case iotJobId
+            case modifiedTimestamp
+            case reason
+            case targetArn
         }
     }
 
     public struct GetComponentRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "arn", location: .uri(locationName: "arn")), 
+            AWSMemberEncoding(label: "arn", location: .uri(locationName: "arn")),
             AWSMemberEncoding(label: "recipeOutputFormat", location: .querystring(locationName: "recipeOutputFormat"))
         ]
 
@@ -1078,7 +1048,6 @@ extension GreengrassV2 {
     }
 
     public struct GetComponentResponse: AWSDecodableShape {
-
         /// The recipe of the component version.
         public let recipe: Data
         /// The format of the recipe.
@@ -1093,15 +1062,15 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case recipe = "recipe"
-            case recipeOutputFormat = "recipeOutputFormat"
-            case tags = "tags"
+            case recipe
+            case recipeOutputFormat
+            case tags
         }
     }
 
     public struct GetComponentVersionArtifactRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "arn", location: .uri(locationName: "arn")), 
+            AWSMemberEncoding(label: "arn", location: .uri(locationName: "arn")),
             AWSMemberEncoding(label: "artifactName", location: .uri(locationName: "artifactName"))
         ]
 
@@ -1124,7 +1093,6 @@ extension GreengrassV2 {
     }
 
     public struct GetComponentVersionArtifactResponse: AWSDecodableShape {
-
         /// The URL of the artifact.
         public let preSignedUrl: String
 
@@ -1133,7 +1101,7 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case preSignedUrl = "preSignedUrl"
+            case preSignedUrl
         }
     }
 
@@ -1158,7 +1126,6 @@ extension GreengrassV2 {
     }
 
     public struct GetCoreDeviceResponse: AWSDecodableShape {
-
         /// The computer architecture of the core device.
         public let architecture: String?
         /// The name of the core device. This is also the name of the AWS IoT thing.
@@ -1169,7 +1136,7 @@ extension GreengrassV2 {
         public let lastStatusUpdateTimestamp: Date?
         /// The operating system platform that the core device runs.
         public let platform: String?
-        /// The status of the core device. The core device status can be:    HEALTHY – The AWS IoT Greengrass Core software and all components run on the core device without issue.    UNHEALTHY – The AWS IoT Greengrass Core software or a component is in a failed state on the core device.  
+        /// The status of the core device. The core device status can be:    HEALTHY – The AWS IoT Greengrass Core software and all components run on the core device without issue.    UNHEALTHY – The AWS IoT Greengrass Core software or a component is in a failed state on the core device.
         public let status: CoreDeviceStatus?
         /// A list of key-value pairs that contain metadata for the resource. For more information, see Tag your resources in the AWS IoT Greengrass V2 Developer Guide.
         public let tags: [String: String]?
@@ -1185,13 +1152,13 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case architecture = "architecture"
-            case coreDeviceThingName = "coreDeviceThingName"
-            case coreVersion = "coreVersion"
-            case lastStatusUpdateTimestamp = "lastStatusUpdateTimestamp"
-            case platform = "platform"
-            case status = "status"
-            case tags = "tags"
+            case architecture
+            case coreDeviceThingName
+            case coreVersion
+            case lastStatusUpdateTimestamp
+            case platform
+            case status
+            case tags
         }
     }
 
@@ -1215,7 +1182,6 @@ extension GreengrassV2 {
     }
 
     public struct GetDeploymentResponse: AWSDecodableShape {
-
         /// The components to deploy. This is a dictionary, where each key is the name of a component, and each key's value is the version and configuration to deploy for that component.
         public let components: [String: ComponentDeploymentSpecification]?
         /// The time at which the deployment was created, expressed in ISO 8601 format.
@@ -1260,24 +1226,23 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case components = "components"
-            case creationTimestamp = "creationTimestamp"
-            case deploymentId = "deploymentId"
-            case deploymentName = "deploymentName"
-            case deploymentPolicies = "deploymentPolicies"
-            case deploymentStatus = "deploymentStatus"
-            case iotJobArn = "iotJobArn"
-            case iotJobConfiguration = "iotJobConfiguration"
-            case iotJobId = "iotJobId"
-            case isLatestForTarget = "isLatestForTarget"
-            case revisionId = "revisionId"
-            case tags = "tags"
-            case targetArn = "targetArn"
+            case components
+            case creationTimestamp
+            case deploymentId
+            case deploymentName
+            case deploymentPolicies
+            case deploymentStatus
+            case iotJobArn
+            case iotJobConfiguration
+            case iotJobId
+            case isLatestForTarget
+            case revisionId
+            case tags
+            case targetArn
         }
     }
 
     public struct InstalledComponent: AWSDecodableShape {
-
         /// The name of the component.
         public let componentName: String?
         /// The version of the component.
@@ -1298,16 +1263,15 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case componentName = "componentName"
-            case componentVersion = "componentVersion"
-            case isRoot = "isRoot"
-            case lifecycleState = "lifecycleState"
-            case lifecycleStateDetails = "lifecycleStateDetails"
+            case componentName
+            case componentVersion
+            case isRoot
+            case lifecycleState
+            case lifecycleStateDetails
         }
     }
 
     public struct IoTJobAbortConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// The list of criteria that define when and how to cancel the configuration deployment.
         public let criteriaList: [IoTJobAbortCriteria]
 
@@ -1323,12 +1287,11 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case criteriaList = "criteriaList"
+            case criteriaList
         }
     }
 
     public struct IoTJobAbortCriteria: AWSEncodableShape & AWSDecodableShape {
-
         /// The action to perform when the criteria are met.
         public let action: IoTJobAbortAction
         /// The type of job deployment failure that can cancel a job.
@@ -1351,15 +1314,14 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case action = "action"
-            case failureType = "failureType"
-            case minNumberOfExecutedThings = "minNumberOfExecutedThings"
-            case thresholdPercentage = "thresholdPercentage"
+            case action
+            case failureType
+            case minNumberOfExecutedThings
+            case thresholdPercentage
         }
     }
 
     public struct IoTJobExecutionsRolloutConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// The exponential rate to increase the job rollout rate.
         public let exponentialRate: IoTJobExponentialRolloutRate?
         /// The maximum number of devices that receive a pending job notification, per minute.
@@ -1377,13 +1339,12 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case exponentialRate = "exponentialRate"
-            case maximumPerMinute = "maximumPerMinute"
+            case exponentialRate
+            case maximumPerMinute
         }
     }
 
     public struct IoTJobExponentialRolloutRate: AWSEncodableShape & AWSDecodableShape {
-
         /// The minimum number of devices that receive a pending job notification, per minute, when the job starts. This parameter defines the initial rollout rate of the job.
         public let baseRatePerMinute: Int
         /// The exponential factor to increase the rollout rate for the job. This parameter supports up to one digit after the decimal (for example, you can specify 1.5, but not 1.55).
@@ -1406,14 +1367,13 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case baseRatePerMinute = "baseRatePerMinute"
-            case incrementFactor = "incrementFactor"
-            case rateIncreaseCriteria = "rateIncreaseCriteria"
+            case baseRatePerMinute
+            case incrementFactor
+            case rateIncreaseCriteria
         }
     }
 
     public struct IoTJobRateIncreaseCriteria: AWSEncodableShape & AWSDecodableShape {
-
         /// The number of devices to receive the job notification before the rollout rate increases.
         public let numberOfNotifiedThings: Int?
         /// The number of devices to successfully run the configuration job before the rollout rate increases.
@@ -1430,13 +1390,12 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case numberOfNotifiedThings = "numberOfNotifiedThings"
-            case numberOfSucceededThings = "numberOfSucceededThings"
+            case numberOfNotifiedThings
+            case numberOfSucceededThings
         }
     }
 
     public struct IoTJobTimeoutConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// The amount of time, in minutes, that devices have to complete the job. The timer starts when the job status is set to IN_PROGRESS. If the job status doesn't change to a terminal state before the time expires, then the job status is set to TIMED_OUT. The timeout interval must be between 1 minute and 7 days (10080 minutes).
         public let inProgressTimeoutInMinutes: Int64?
 
@@ -1445,17 +1404,16 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case inProgressTimeoutInMinutes = "inProgressTimeoutInMinutes"
+            case inProgressTimeoutInMinutes
         }
     }
 
     public struct LambdaContainerParams: AWSEncodableShape {
-
         /// The list of system devices that the container can access.
         public let devices: [LambdaDeviceMount]?
         /// The memory size of the container, expressed in kilobytes. Default: 16384 (16 MB)
         public let memorySizeInKB: Int?
-        /// Whether or not the container can read information from the device's /sys folder. Default: false 
+        /// Whether or not the container can read information from the device's /sys folder. Default: false
         public let mountROSysfs: Bool?
         /// The list of volumes that the container can access.
         public let volumes: [LambdaVolumeMount]?
@@ -1468,20 +1426,19 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case devices = "devices"
-            case memorySizeInKB = "memorySizeInKB"
-            case mountROSysfs = "mountROSysfs"
-            case volumes = "volumes"
+            case devices
+            case memorySizeInKB
+            case mountROSysfs
+            case volumes
         }
     }
 
     public struct LambdaDeviceMount: AWSEncodableShape {
-
-        /// Whether or not to add the component's system user as an owner of the device. Default: false 
+        /// Whether or not to add the component's system user as an owner of the device. Default: false
         public let addGroupOwner: Bool?
         /// The mount path for the device in the file system.
         public let path: String
-        /// The permission to access the device: read/only (ro) or read/write (rw). Default: ro 
+        /// The permission to access the device: read/only (ro) or read/write (rw). Default: ro
         public let permission: LambdaFilesystemPermission?
 
         public init(addGroupOwner: Bool? = nil, path: String, permission: LambdaFilesystemPermission? = nil) {
@@ -1491,17 +1448,16 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case addGroupOwner = "addGroupOwner"
-            case path = "path"
-            case permission = "permission"
+            case addGroupOwner
+            case path
+            case permission
         }
     }
 
     public struct LambdaEventSource: AWSEncodableShape {
-
         /// The topic to which to subscribe to receive event messages.
         public let topic: String
-        /// The type of event source. Choose from the following options:    PUB_SUB – Subscribe to local publish/subscribe messages. This event source type doesn't support MQTT wildcards (+ and #) in the event source topic.    IOT_CORE – Subscribe to AWS IoT Core MQTT messages. This event source type supports MQTT wildcards (+ and #) in the event source topic.  
+        /// The type of event source. Choose from the following options:    PUB_SUB – Subscribe to local publish/subscribe messages. This event source type doesn't support MQTT wildcards (+ and #) in the event source topic.    IOT_CORE – Subscribe to AWS IoT Core MQTT messages. This event source type supports MQTT wildcards (+ and #) in the event source topic.
         public let type: LambdaEventSourceType
 
         public init(topic: String, type: LambdaEventSourceType) {
@@ -1510,20 +1466,19 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case topic = "topic"
-            case type = "type"
+            case topic
+            case type
         }
     }
 
     public struct LambdaExecutionParameters: AWSEncodableShape {
-
         /// The map of environment variables that are available to the Lambda function when it runs.
         public let environmentVariables: [String: String]?
         /// The list of event sources to which to subscribe to receive work messages. The Lambda function runs when it receives a message from an event source. You can subscribe this function to local publish/subscribe messages and AWS IoT Core MQTT messages.
         public let eventSources: [LambdaEventSource]?
         /// The list of arguments to pass to the Lambda function when it runs.
         public let execArgs: [String]?
-        /// The encoding type that the Lambda function supports. Default: json 
+        /// The encoding type that the Lambda function supports. Default: json
         public let inputPayloadEncodingType: LambdaInputPayloadEncodingType?
         /// The parameters for the Linux process that contains the Lambda function.
         public let linuxProcessParams: LambdaLinuxProcessParams?
@@ -1533,7 +1488,7 @@ extension GreengrassV2 {
         public let maxInstancesCount: Int?
         /// The maximum size of the message queue for the Lambda function component. The AWS IoT Greengrass core stores messages in a FIFO (first-in-first-out) queue until it can run the Lambda function to consume each message.
         public let maxQueueSize: Int?
-        /// Whether or not the Lambda function is pinned, or long-lived.   A pinned Lambda function starts when AWS IoT Greengrass starts and keeps running in its own container.   A non-pinned Lambda function starts only when it receives a work item and exists after it idles for maxIdleTimeInSeconds. If the function has multiple work items, the AWS IoT Greengrass Core software creates multiple instances of the function.   Default: true 
+        /// Whether or not the Lambda function is pinned, or long-lived.   A pinned Lambda function starts when AWS IoT Greengrass starts and keeps running in its own container.   A non-pinned Lambda function starts only when it receives a work item and exists after it idles for maxIdleTimeInSeconds. If the function has multiple work items, the AWS IoT Greengrass Core software creates multiple instances of the function.   Default: true
         public let pinned: Bool?
         /// The interval in seconds at which a pinned (also known as long-lived) Lambda function component sends status updates to the Lambda manager component.
         public let statusTimeoutInSeconds: Int?
@@ -1561,22 +1516,21 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case environmentVariables = "environmentVariables"
-            case eventSources = "eventSources"
-            case execArgs = "execArgs"
-            case inputPayloadEncodingType = "inputPayloadEncodingType"
-            case linuxProcessParams = "linuxProcessParams"
-            case maxIdleTimeInSeconds = "maxIdleTimeInSeconds"
-            case maxInstancesCount = "maxInstancesCount"
-            case maxQueueSize = "maxQueueSize"
-            case pinned = "pinned"
-            case statusTimeoutInSeconds = "statusTimeoutInSeconds"
-            case timeoutInSeconds = "timeoutInSeconds"
+            case environmentVariables
+            case eventSources
+            case execArgs
+            case inputPayloadEncodingType
+            case linuxProcessParams
+            case maxIdleTimeInSeconds
+            case maxInstancesCount
+            case maxQueueSize
+            case pinned
+            case statusTimeoutInSeconds
+            case timeoutInSeconds
         }
     }
 
     public struct LambdaFunctionRecipeSource: AWSEncodableShape {
-
         /// The component versions on which this Lambda function component depends.
         public let componentDependencies: [String: ComponentDependencyRequirement]?
         /// The system and runtime parameters for the Lambda function as it runs on the AWS IoT Greengrass core device.
@@ -1618,20 +1572,19 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case componentDependencies = "componentDependencies"
-            case componentLambdaParameters = "componentLambdaParameters"
-            case componentName = "componentName"
-            case componentPlatforms = "componentPlatforms"
-            case componentVersion = "componentVersion"
-            case lambdaArn = "lambdaArn"
+            case componentDependencies
+            case componentLambdaParameters
+            case componentName
+            case componentPlatforms
+            case componentVersion
+            case lambdaArn
         }
     }
 
     public struct LambdaLinuxProcessParams: AWSEncodableShape {
-
         /// The parameters for the container in which the Lambda function runs.
         public let containerParams: LambdaContainerParams?
-        /// The isolation mode for the process that contains the Lambda function. The process can run in an isolated runtime environment inside the AWS IoT Greengrass container, or as a regular process outside any container. Default: GreengrassContainer 
+        /// The isolation mode for the process that contains the Lambda function. The process can run in an isolated runtime environment inside the AWS IoT Greengrass container, or as a regular process outside any container. Default: GreengrassContainer
         public let isolationMode: LambdaIsolationMode?
 
         public init(containerParams: LambdaContainerParams? = nil, isolationMode: LambdaIsolationMode? = nil) {
@@ -1640,18 +1593,17 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case containerParams = "containerParams"
-            case isolationMode = "isolationMode"
+            case containerParams
+            case isolationMode
         }
     }
 
     public struct LambdaVolumeMount: AWSEncodableShape {
-
-        /// Whether or not to add the AWS IoT Greengrass user group as an owner of the volume. Default: false 
+        /// Whether or not to add the AWS IoT Greengrass user group as an owner of the volume. Default: false
         public let addGroupOwner: Bool?
         /// The path to the logical volume in the file system.
         public let destinationPath: String
-        /// The permission to access the volume: read/only (ro) or read/write (rw). Default: ro 
+        /// The permission to access the volume: read/only (ro) or read/write (rw). Default: ro
         public let permission: LambdaFilesystemPermission?
         /// The path to the physical volume in the file system.
         public let sourcePath: String
@@ -1664,17 +1616,17 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case addGroupOwner = "addGroupOwner"
-            case destinationPath = "destinationPath"
-            case permission = "permission"
-            case sourcePath = "sourcePath"
+            case addGroupOwner
+            case destinationPath
+            case permission
+            case sourcePath
         }
     }
 
     public struct ListClientDevicesAssociatedWithCoreDeviceRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "coreDeviceThingName", location: .uri(locationName: "coreDeviceThingName")), 
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "coreDeviceThingName", location: .uri(locationName: "coreDeviceThingName")),
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
@@ -1702,7 +1654,6 @@ extension GreengrassV2 {
     }
 
     public struct ListClientDevicesAssociatedWithCoreDeviceResponse: AWSDecodableShape {
-
         /// A list that describes the client devices that are associated with the core device.
         public let associatedClientDevices: [AssociatedClientDevice]?
         /// The token for the next set of results, or null if there are no additional results.
@@ -1714,15 +1665,15 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case associatedClientDevices = "associatedClientDevices"
-            case nextToken = "nextToken"
+            case associatedClientDevices
+            case nextToken
         }
     }
 
     public struct ListComponentVersionsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "arn", location: .uri(locationName: "arn")), 
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "arn", location: .uri(locationName: "arn")),
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
@@ -1749,7 +1700,6 @@ extension GreengrassV2 {
     }
 
     public struct ListComponentVersionsResponse: AWSDecodableShape {
-
         /// A list of versions that exist for the component.
         public let componentVersions: [ComponentVersionListItem]?
         /// The token for the next set of results, or null if there are no additional results.
@@ -1761,15 +1711,15 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case componentVersions = "componentVersions"
-            case nextToken = "nextToken"
+            case componentVersions
+            case nextToken
         }
     }
 
     public struct ListComponentsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
-            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
+            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")),
             AWSMemberEncoding(label: "scope", location: .querystring(locationName: "scope"))
         ]
 
@@ -1777,7 +1727,7 @@ extension GreengrassV2 {
         public let maxResults: Int?
         /// The token to be used for the next set of paginated results.
         public let nextToken: String?
-        /// The scope of the components to list. Default: PRIVATE 
+        /// The scope of the components to list. Default: PRIVATE
         public let scope: ComponentVisibilityScope?
 
         public init(maxResults: Int? = nil, nextToken: String? = nil, scope: ComponentVisibilityScope? = nil) {
@@ -1795,7 +1745,6 @@ extension GreengrassV2 {
     }
 
     public struct ListComponentsResponse: AWSDecodableShape {
-
         /// A list that summarizes each component.
         public let components: [Component]?
         /// The token for the next set of results, or null if there are no additional results.
@@ -1807,16 +1756,16 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case components = "components"
-            case nextToken = "nextToken"
+            case components
+            case nextToken
         }
     }
 
     public struct ListCoreDevicesRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
-            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")), 
-            AWSMemberEncoding(label: "status", location: .querystring(locationName: "status")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
+            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")),
+            AWSMemberEncoding(label: "status", location: .querystring(locationName: "status")),
             AWSMemberEncoding(label: "thingGroupArn", location: .querystring(locationName: "thingGroupArn"))
         ]
 
@@ -1824,7 +1773,7 @@ extension GreengrassV2 {
         public let maxResults: Int?
         /// The token to be used for the next set of paginated results.
         public let nextToken: String?
-        /// The core device status by which to filter. If you specify this parameter, the list includes only core devices that have this status. Choose one of the following options:    HEALTHY – The AWS IoT Greengrass Core software and all components run on the core device without issue.    UNHEALTHY – The AWS IoT Greengrass Core software or a component is in a failed state on the core device.  
+        /// The core device status by which to filter. If you specify this parameter, the list includes only core devices that have this status. Choose one of the following options:    HEALTHY – The AWS IoT Greengrass Core software and all components run on the core device without issue.    UNHEALTHY – The AWS IoT Greengrass Core software or a component is in a failed state on the core device.
         public let status: CoreDeviceStatus?
         /// The ARN of the AWS IoT thing group by which to filter. If you specify this parameter, the list includes only core devices that are members of this thing group.
         public let thingGroupArn: String?
@@ -1846,7 +1795,6 @@ extension GreengrassV2 {
     }
 
     public struct ListCoreDevicesResponse: AWSDecodableShape {
-
         /// A list that summarizes each core device.
         public let coreDevices: [CoreDevice]?
         /// The token for the next set of results, or null if there are no additional results.
@@ -1858,20 +1806,20 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case coreDevices = "coreDevices"
-            case nextToken = "nextToken"
+            case coreDevices
+            case nextToken
         }
     }
 
     public struct ListDeploymentsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "historyFilter", location: .querystring(locationName: "historyFilter")), 
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
-            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")), 
+            AWSMemberEncoding(label: "historyFilter", location: .querystring(locationName: "historyFilter")),
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
+            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")),
             AWSMemberEncoding(label: "targetArn", location: .querystring(locationName: "targetArn"))
         ]
 
-        /// The filter for the list of deployments. Choose one of the following options:    ALL – The list includes all deployments.    LATEST_ONLY – The list includes only the latest revision of each deployment.   Default: LATEST_ONLY 
+        /// The filter for the list of deployments. Choose one of the following options:    ALL – The list includes all deployments.    LATEST_ONLY – The list includes only the latest revision of each deployment.   Default: LATEST_ONLY
         public let historyFilter: DeploymentHistoryFilter?
         /// The maximum number of results to be returned per paginated request.
         public let maxResults: Int?
@@ -1897,7 +1845,6 @@ extension GreengrassV2 {
     }
 
     public struct ListDeploymentsResponse: AWSDecodableShape {
-
         /// A list that summarizes each deployment.
         public let deployments: [Deployment]?
         /// The token for the next set of results, or null if there are no additional results.
@@ -1909,15 +1856,15 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case deployments = "deployments"
-            case nextToken = "nextToken"
+            case deployments
+            case nextToken
         }
     }
 
     public struct ListEffectiveDeploymentsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "coreDeviceThingName", location: .uri(locationName: "coreDeviceThingName")), 
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "coreDeviceThingName", location: .uri(locationName: "coreDeviceThingName")),
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
@@ -1945,7 +1892,6 @@ extension GreengrassV2 {
     }
 
     public struct ListEffectiveDeploymentsResponse: AWSDecodableShape {
-
         /// A list that summarizes each deployment on the core device.
         public let effectiveDeployments: [EffectiveDeployment]?
         /// The token for the next set of results, or null if there are no additional results.
@@ -1957,15 +1903,15 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case effectiveDeployments = "effectiveDeployments"
-            case nextToken = "nextToken"
+            case effectiveDeployments
+            case nextToken
         }
     }
 
     public struct ListInstalledComponentsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "coreDeviceThingName", location: .uri(locationName: "coreDeviceThingName")), 
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "coreDeviceThingName", location: .uri(locationName: "coreDeviceThingName")),
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
@@ -1993,7 +1939,6 @@ extension GreengrassV2 {
     }
 
     public struct ListInstalledComponentsResponse: AWSDecodableShape {
-
         /// A list that summarizes each component on the core device.
         public let installedComponents: [InstalledComponent]?
         /// The token for the next set of results, or null if there are no additional results.
@@ -2005,8 +1950,8 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case installedComponents = "installedComponents"
-            case nextToken = "nextToken"
+            case installedComponents
+            case nextToken
         }
     }
 
@@ -2030,7 +1975,6 @@ extension GreengrassV2 {
     }
 
     public struct ListTagsForResourceResponse: AWSDecodableShape {
-
         /// A list of key-value pairs that contain metadata for the resource. For more information, see Tag your resources in the AWS IoT Greengrass V2 Developer Guide.
         public let tags: [String: String]?
 
@@ -2039,12 +1983,11 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tags = "tags"
+            case tags
         }
     }
 
     public struct ResolveComponentCandidatesRequest: AWSEncodableShape {
-
         /// The list of components to resolve.
         public let componentCandidates: [ComponentCandidate]
         /// The platform to use to resolve compatible components.
@@ -2063,13 +2006,12 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case componentCandidates = "componentCandidates"
-            case platform = "platform"
+            case componentCandidates
+            case platform
         }
     }
 
     public struct ResolveComponentCandidatesResponse: AWSDecodableShape {
-
         /// A list of components that meet the requirements that you specify in the request. This list includes each component's recipe that you can use to install the component.
         public let resolvedComponentVersions: [ResolvedComponentVersion]?
 
@@ -2078,12 +2020,11 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case resolvedComponentVersions = "resolvedComponentVersions"
+            case resolvedComponentVersions
         }
     }
 
     public struct ResolvedComponentVersion: AWSDecodableShape {
-
         /// The ARN of the component version.
         public let arn: String?
         /// The name of the component.
@@ -2101,10 +2042,10 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case componentName = "componentName"
-            case componentVersion = "componentVersion"
-            case recipe = "recipe"
+            case arn
+            case componentName
+            case componentVersion
+            case recipe
         }
     }
 
@@ -2136,21 +2077,17 @@ extension GreengrassV2 {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tags = "tags"
+            case tags
         }
     }
 
     public struct TagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UntagResourceRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "resourceArn")), 
+            AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "resourceArn")),
             AWSMemberEncoding(label: "tagKeys", location: .querystring(locationName: "tagKeys"))
         ]
 
@@ -2179,10 +2116,6 @@ extension GreengrassV2 {
     }
 
     public struct UntagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 }

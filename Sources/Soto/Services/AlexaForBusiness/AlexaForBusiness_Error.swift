@@ -67,7 +67,7 @@ public struct AlexaForBusinessErrorType: AWSErrorType {
     public static var invalidDeviceException: Self { .init(.invalidDeviceException) }
     /// A password in SecretsManager is in an invalid state.
     public static var invalidSecretsManagerResourceException: Self { .init(.invalidSecretsManagerResourceException) }
-    /// The service linked role is locked for deletion. 
+    /// The service linked role is locked for deletion.
     public static var invalidServiceLinkedRoleStateException: Self { .init(.invalidServiceLinkedRoleStateException) }
     /// The attempt to update a user is invalid due to the user's current status.
     public static var invalidUserStatusException: Self { .init(.invalidUserStatusException) }

@@ -107,8 +107,7 @@ extension FraudDetector {
     // MARK: Shapes
 
     public struct BatchCreateVariableError: AWSDecodableShape {
-
-        /// The error code. 
+        /// The error code.
         public let code: Int?
         /// The error message.
         public let message: String?
@@ -122,14 +121,13 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case code = "code"
-            case message = "message"
-            case name = "name"
+            case code
+            case message
+            case name
         }
     }
 
     public struct BatchCreateVariableRequest: AWSEncodableShape {
-
         /// A collection of key and value pairs.
         public let tags: [Tag]?
         /// The list of variables for the batch create variable request.
@@ -150,13 +148,12 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tags = "tags"
-            case variableEntries = "variableEntries"
+            case tags
+            case variableEntries
         }
     }
 
     public struct BatchCreateVariableResult: AWSDecodableShape {
-
         /// Provides the errors for the BatchCreateVariable request.
         public let errors: [BatchCreateVariableError]?
 
@@ -165,17 +162,16 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case errors = "errors"
+            case errors
         }
     }
 
     public struct BatchGetVariableError: AWSDecodableShape {
-
-        /// The error code. 
+        /// The error code.
         public let code: Int?
         /// The error message.
         public let message: String?
-        /// The error name. 
+        /// The error name.
         public let name: String?
 
         public init(code: Int? = nil, message: String? = nil, name: String? = nil) {
@@ -185,14 +181,13 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case code = "code"
-            case message = "message"
-            case name = "name"
+            case code
+            case message
+            case name
         }
     }
 
     public struct BatchGetVariableRequest: AWSEncodableShape {
-
         /// The list of variable names to get.
         public let names: [String]
 
@@ -206,12 +201,11 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case names = "names"
+            case names
         }
     }
 
     public struct BatchGetVariableResult: AWSDecodableShape {
-
         /// The errors from the request.
         public let errors: [BatchGetVariableError]?
         /// The returned variables.
@@ -223,20 +217,19 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case errors = "errors"
-            case variables = "variables"
+            case errors
+            case variables
         }
     }
 
     public struct BatchPrediction: AWSDecodableShape {
-
         /// The ARN of batch prediction job.
         public let arn: String?
         /// Timestamp of when the batch prediction job comleted.
         public let completionTime: String?
         /// The name of the detector.
         public let detectorName: String?
-        /// The detector version. 
+        /// The detector version.
         public let detectorVersion: String?
         /// The name of the event type.
         public let eventTypeName: String?
@@ -280,26 +273,25 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case completionTime = "completionTime"
-            case detectorName = "detectorName"
-            case detectorVersion = "detectorVersion"
-            case eventTypeName = "eventTypeName"
-            case failureReason = "failureReason"
-            case iamRoleArn = "iamRoleArn"
-            case inputPath = "inputPath"
-            case jobId = "jobId"
-            case lastHeartbeatTime = "lastHeartbeatTime"
-            case outputPath = "outputPath"
-            case processedRecordsCount = "processedRecordsCount"
-            case startTime = "startTime"
-            case status = "status"
-            case totalRecordsCount = "totalRecordsCount"
+            case arn
+            case completionTime
+            case detectorName
+            case detectorVersion
+            case eventTypeName
+            case failureReason
+            case iamRoleArn
+            case inputPath
+            case jobId
+            case lastHeartbeatTime
+            case outputPath
+            case processedRecordsCount
+            case startTime
+            case status
+            case totalRecordsCount
         }
     }
 
     public struct CancelBatchPredictionJobRequest: AWSEncodableShape {
-
         /// The ID of the batch prediction job to cancel.
         public let jobId: String
 
@@ -314,20 +306,15 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case jobId = "jobId"
+            case jobId
         }
     }
 
     public struct CancelBatchPredictionJobResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct CreateBatchPredictionJobRequest: AWSEncodableShape {
-
         /// The name of the detector.
         public let detectorName: String
         /// The detector version.
@@ -385,27 +372,22 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case detectorName = "detectorName"
-            case detectorVersion = "detectorVersion"
-            case eventTypeName = "eventTypeName"
-            case iamRoleArn = "iamRoleArn"
-            case inputPath = "inputPath"
-            case jobId = "jobId"
-            case outputPath = "outputPath"
-            case tags = "tags"
+            case detectorName
+            case detectorVersion
+            case eventTypeName
+            case iamRoleArn
+            case inputPath
+            case jobId
+            case outputPath
+            case tags
         }
     }
 
     public struct CreateBatchPredictionJobResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct CreateDetectorVersionRequest: AWSEncodableShape {
-
         /// The description of the detector version.
         public let description: String?
         /// The ID of the detector under which you want to create a new version.
@@ -453,21 +435,20 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case description = "description"
-            case detectorId = "detectorId"
-            case externalModelEndpoints = "externalModelEndpoints"
-            case modelVersions = "modelVersions"
-            case ruleExecutionMode = "ruleExecutionMode"
-            case rules = "rules"
-            case tags = "tags"
+            case description
+            case detectorId
+            case externalModelEndpoints
+            case modelVersions
+            case ruleExecutionMode
+            case rules
+            case tags
         }
     }
 
     public struct CreateDetectorVersionResult: AWSDecodableShape {
-
         /// The ID for the created version's parent detector.
         public let detectorId: String?
-        /// The ID for the created detector. 
+        /// The ID for the created detector.
         public let detectorVersionId: String?
         /// The status of the detector version.
         public let status: DetectorVersionStatus?
@@ -479,21 +460,20 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case detectorId = "detectorId"
-            case detectorVersionId = "detectorVersionId"
-            case status = "status"
+            case detectorId
+            case detectorVersionId
+            case status
         }
     }
 
     public struct CreateModelRequest: AWSEncodableShape {
-
-        /// The model description. 
+        /// The model description.
         public let description: String?
         /// The name of the event type.
         public let eventTypeName: String
         /// The model ID.
         public let modelId: String
-        /// The model type. 
+        /// The model type.
         public let modelType: ModelTypeEnum
         /// A collection of key and value pairs.
         public let tags: [Tag]?
@@ -519,27 +499,22 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case description = "description"
-            case eventTypeName = "eventTypeName"
-            case modelId = "modelId"
-            case modelType = "modelType"
-            case tags = "tags"
+            case description
+            case eventTypeName
+            case modelId
+            case modelType
+            case tags
         }
     }
 
     public struct CreateModelResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct CreateModelVersionRequest: AWSEncodableShape {
-
         /// Details for the external events data used for model version training. Required if trainingDataSource is EXTERNAL_EVENTS.
         public let externalEventsDetail: ExternalEventsDetail?
-        /// The model ID. 
+        /// The model ID.
         public let modelId: String
         /// The model type.
         public let modelType: ModelTypeEnum
@@ -547,7 +522,7 @@ extension FraudDetector {
         public let tags: [Tag]?
         /// The training data schema.
         public let trainingDataSchema: TrainingDataSchema
-        /// The training data source location in Amazon S3. 
+        /// The training data source location in Amazon S3.
         public let trainingDataSource: TrainingDataSourceEnum
 
         public init(externalEventsDetail: ExternalEventsDetail? = nil, modelId: String, modelType: ModelTypeEnum, tags: [Tag]? = nil, trainingDataSchema: TrainingDataSchema, trainingDataSource: TrainingDataSourceEnum) {
@@ -571,24 +546,23 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case externalEventsDetail = "externalEventsDetail"
-            case modelId = "modelId"
-            case modelType = "modelType"
-            case tags = "tags"
-            case trainingDataSchema = "trainingDataSchema"
-            case trainingDataSource = "trainingDataSource"
+            case externalEventsDetail
+            case modelId
+            case modelType
+            case tags
+            case trainingDataSchema
+            case trainingDataSource
         }
     }
 
     public struct CreateModelVersionResult: AWSDecodableShape {
-
         /// The model ID.
         public let modelId: String?
         /// The model type.
         public let modelType: ModelTypeEnum?
         /// The model version number of the model version created.
         public let modelVersionNumber: String?
-        /// The model version status. 
+        /// The model version status.
         public let status: String?
 
         public init(modelId: String? = nil, modelType: ModelTypeEnum? = nil, modelVersionNumber: String? = nil, status: String? = nil) {
@@ -599,15 +573,14 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case modelId = "modelId"
-            case modelType = "modelType"
-            case modelVersionNumber = "modelVersionNumber"
-            case status = "status"
+            case modelId
+            case modelType
+            case modelVersionNumber
+            case status
         }
     }
 
     public struct CreateRuleRequest: AWSEncodableShape {
-
         /// The rule description.
         public let description: String?
         /// The detector ID for the rule's parent detector.
@@ -652,18 +625,17 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case description = "description"
-            case detectorId = "detectorId"
-            case expression = "expression"
-            case language = "language"
-            case outcomes = "outcomes"
-            case ruleId = "ruleId"
-            case tags = "tags"
+            case description
+            case detectorId
+            case expression
+            case language
+            case outcomes
+            case ruleId
+            case tags
         }
     }
 
     public struct CreateRuleResult: AWSDecodableShape {
-
         /// The created rule.
         public let rule: Rule?
 
@@ -672,12 +644,11 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case rule = "rule"
+            case rule
         }
     }
 
     public struct CreateVariableRequest: AWSEncodableShape {
-
         /// The source of the data.
         public let dataSource: DataSource
         /// The data type.
@@ -691,7 +662,7 @@ extension FraudDetector {
         /// A collection of key and value pairs.
         public let tags: [Tag]?
         /// The variable type. For more information see Variable types.
-        /// 				 Valid Values: AUTH_CODE | AVS | BILLING_ADDRESS_L1 | BILLING_ADDRESS_L2 | BILLING_CITY | BILLING_COUNTRY | BILLING_NAME | BILLING_PHONE | BILLING_STATE | BILLING_ZIP | CARD_BIN | CATEGORICAL | CURRENCY_CODE | EMAIL_ADDRESS | FINGERPRINT | FRAUD_LABEL | FREE_FORM_TEXT | IP_ADDRESS | NUMERIC | ORDER_ID | PAYMENT_TYPE | PHONE_NUMBER | PRICE | PRODUCT_CATEGORY | SHIPPING_ADDRESS_L1 | SHIPPING_ADDRESS_L2 | SHIPPING_CITY | SHIPPING_COUNTRY | SHIPPING_NAME | SHIPPING_PHONE | SHIPPING_STATE | SHIPPING_ZIP | USERAGENT 
+        /// 				 Valid Values: AUTH_CODE | AVS | BILLING_ADDRESS_L1 | BILLING_ADDRESS_L2 | BILLING_CITY | BILLING_COUNTRY | BILLING_NAME | BILLING_PHONE | BILLING_STATE | BILLING_ZIP | CARD_BIN | CATEGORICAL | CURRENCY_CODE | EMAIL_ADDRESS | FINGERPRINT | FRAUD_LABEL | FREE_FORM_TEXT | IP_ADDRESS | NUMERIC | ORDER_ID | PAYMENT_TYPE | PHONE_NUMBER | PRICE | PRODUCT_CATEGORY | SHIPPING_ADDRESS_L1 | SHIPPING_ADDRESS_L2 | SHIPPING_CITY | SHIPPING_COUNTRY | SHIPPING_NAME | SHIPPING_PHONE | SHIPPING_STATE | SHIPPING_ZIP | USERAGENT
         public let variableType: String?
 
         public init(dataSource: DataSource, dataType: DataType, defaultValue: String, description: String? = nil, name: String, tags: [Tag]? = nil, variableType: String? = nil) {
@@ -712,26 +683,21 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case dataSource = "dataSource"
-            case dataType = "dataType"
-            case defaultValue = "defaultValue"
-            case description = "description"
-            case name = "name"
-            case tags = "tags"
-            case variableType = "variableType"
+            case dataSource
+            case dataType
+            case defaultValue
+            case description
+            case name
+            case tags
+            case variableType
         }
     }
 
     public struct CreateVariableResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DataValidationMetrics: AWSDecodableShape {
-
         /// The field-specific model training validation messages.
         public let fieldLevelMessages: [FieldValidationMessage]?
         /// The file-specific model training validation messages.
@@ -743,13 +709,12 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case fieldLevelMessages = "fieldLevelMessages"
-            case fileLevelMessages = "fileLevelMessages"
+            case fieldLevelMessages
+            case fileLevelMessages
         }
     }
 
     public struct DeleteBatchPredictionJobRequest: AWSEncodableShape {
-
         /// The ID of the batch prediction job to delete.
         public let jobId: String
 
@@ -764,20 +729,15 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case jobId = "jobId"
+            case jobId
         }
     }
 
     public struct DeleteBatchPredictionJobResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteDetectorRequest: AWSEncodableShape {
-
         /// The ID of the detector to delete.
         public let detectorId: String
 
@@ -792,20 +752,15 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case detectorId = "detectorId"
+            case detectorId
         }
     }
 
     public struct DeleteDetectorResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteDetectorVersionRequest: AWSEncodableShape {
-
         /// The ID of the parent detector for the detector version to delete.
         public let detectorId: String
         /// The ID of the detector version to delete.
@@ -826,21 +781,16 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case detectorId = "detectorId"
-            case detectorVersionId = "detectorVersionId"
+            case detectorId
+            case detectorVersionId
         }
     }
 
     public struct DeleteDetectorVersionResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteEntityTypeRequest: AWSEncodableShape {
-
         /// The name of the entity type to delete.
         public let name: String
 
@@ -855,20 +805,15 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case name = "name"
+            case name
         }
     }
 
     public struct DeleteEntityTypeResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteEventRequest: AWSEncodableShape {
-
         /// The ID of the event to delete.
         public let eventId: String
         /// The name of the event type.
@@ -889,21 +834,16 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case eventId = "eventId"
-            case eventTypeName = "eventTypeName"
+            case eventId
+            case eventTypeName
         }
     }
 
     public struct DeleteEventResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteEventTypeRequest: AWSEncodableShape {
-
         /// The name of the event type to delete.
         public let name: String
 
@@ -918,20 +858,15 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case name = "name"
+            case name
         }
     }
 
     public struct DeleteEventTypeResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteExternalModelRequest: AWSEncodableShape {
-
         /// The endpoint of the Amazon Sagemaker model to delete.
         public let modelEndpoint: String
 
@@ -946,20 +881,15 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case modelEndpoint = "modelEndpoint"
+            case modelEndpoint
         }
     }
 
     public struct DeleteExternalModelResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteLabelRequest: AWSEncodableShape {
-
         /// The name of the label to delete.
         public let name: String
 
@@ -974,20 +904,15 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case name = "name"
+            case name
         }
     }
 
     public struct DeleteLabelResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteModelRequest: AWSEncodableShape {
-
         /// The model ID of the model to delete.
         public let modelId: String
         /// The model type of the model to delete.
@@ -1005,21 +930,16 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case modelId = "modelId"
-            case modelType = "modelType"
+            case modelId
+            case modelType
         }
     }
 
     public struct DeleteModelResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteModelVersionRequest: AWSEncodableShape {
-
         /// The model ID of the model version to delete.
         public let modelId: String
         /// The model type of the model version to delete.
@@ -1043,22 +963,17 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case modelId = "modelId"
-            case modelType = "modelType"
-            case modelVersionNumber = "modelVersionNumber"
+            case modelId
+            case modelType
+            case modelVersionNumber
         }
     }
 
     public struct DeleteModelVersionResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteOutcomeRequest: AWSEncodableShape {
-
         /// The name of the outcome to delete.
         public let name: String
 
@@ -1073,20 +988,15 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case name = "name"
+            case name
         }
     }
 
     public struct DeleteOutcomeResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteRuleRequest: AWSEncodableShape {
-
         public let rule: Rule
 
         public init(rule: Rule) {
@@ -1098,20 +1008,15 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case rule = "rule"
+            case rule
         }
     }
 
     public struct DeleteRuleResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteVariableRequest: AWSEncodableShape {
-
         /// The name of the variable to delete.
         public let name: String
 
@@ -1120,20 +1025,15 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case name = "name"
+            case name
         }
     }
 
     public struct DeleteVariableResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DescribeDetectorRequest: AWSEncodableShape {
-
         /// The detector ID.
         public let detectorId: String
         /// The maximum number of results to return for the request.
@@ -1156,14 +1056,13 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case detectorId = "detectorId"
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
+            case detectorId
+            case maxResults
+            case nextToken
         }
     }
 
     public struct DescribeDetectorResult: AWSDecodableShape {
-
         /// The detector ARN.
         public let arn: String?
         /// The detector ID.
@@ -1181,15 +1080,14 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case detectorId = "detectorId"
-            case detectorVersionSummaries = "detectorVersionSummaries"
-            case nextToken = "nextToken"
+            case arn
+            case detectorId
+            case detectorVersionSummaries
+            case nextToken
         }
     }
 
     public struct DescribeModelVersionsRequest: AWSEncodableShape {
-
         /// The maximum number of results to return.
         public let maxResults: Int?
         /// The model ID.
@@ -1221,16 +1119,15 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxResults = "maxResults"
-            case modelId = "modelId"
-            case modelType = "modelType"
-            case modelVersionNumber = "modelVersionNumber"
-            case nextToken = "nextToken"
+            case maxResults
+            case modelId
+            case modelType
+            case modelVersionNumber
+            case nextToken
         }
     }
 
     public struct DescribeModelVersionsResult: AWSDecodableShape {
-
         /// The model version details.
         public let modelVersionDetails: [ModelVersionDetail]?
         /// The next token.
@@ -1242,13 +1139,12 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case modelVersionDetails = "modelVersionDetails"
-            case nextToken = "nextToken"
+            case modelVersionDetails
+            case nextToken
         }
     }
 
     public struct Detector: AWSDecodableShape {
-
         /// The detector ARN.
         public let arn: String?
         /// Timestamp of when the detector was created.
@@ -1272,24 +1168,23 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdTime = "createdTime"
-            case description = "description"
-            case detectorId = "detectorId"
-            case eventTypeName = "eventTypeName"
-            case lastUpdatedTime = "lastUpdatedTime"
+            case arn
+            case createdTime
+            case description
+            case detectorId
+            case eventTypeName
+            case lastUpdatedTime
         }
     }
 
     public struct DetectorVersionSummary: AWSDecodableShape {
-
-        /// The detector version description. 
+        /// The detector version description.
         public let description: String?
-        /// The detector version ID. 
+        /// The detector version ID.
         public let detectorVersionId: String?
         /// Timestamp of when the detector version was last updated.
         public let lastUpdatedTime: String?
-        /// The detector version status. 
+        /// The detector version status.
         public let status: DetectorVersionStatus?
 
         public init(description: String? = nil, detectorVersionId: String? = nil, lastUpdatedTime: String? = nil, status: DetectorVersionStatus? = nil) {
@@ -1300,15 +1195,14 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case description = "description"
-            case detectorVersionId = "detectorVersionId"
-            case lastUpdatedTime = "lastUpdatedTime"
-            case status = "status"
+            case description
+            case detectorVersionId
+            case lastUpdatedTime
+            case status
         }
     }
 
     public struct Entity: AWSEncodableShape {
-
         /// The entity ID. If you do not know the entityId, you can pass unknown, which is areserved string literal.
         public let entityId: String
         /// The entity type.
@@ -1326,13 +1220,12 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case entityId = "entityId"
-            case entityType = "entityType"
+            case entityId
+            case entityType
         }
     }
 
     public struct EntityType: AWSDecodableShape {
-
         /// The entity type ARN.
         public let arn: String?
         /// Timestamp of when the entity type was created.
@@ -1353,16 +1246,15 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdTime = "createdTime"
-            case description = "description"
-            case lastUpdatedTime = "lastUpdatedTime"
-            case name = "name"
+            case arn
+            case createdTime
+            case description
+            case lastUpdatedTime
+            case name
         }
     }
 
     public struct EventType: AWSDecodableShape {
-
         /// The entity type ARN.
         public let arn: String?
         /// Timestamp of when the event type was created.
@@ -1392,19 +1284,18 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdTime = "createdTime"
-            case description = "description"
-            case entityTypes = "entityTypes"
-            case eventVariables = "eventVariables"
-            case labels = "labels"
-            case lastUpdatedTime = "lastUpdatedTime"
-            case name = "name"
+            case arn
+            case createdTime
+            case description
+            case entityTypes
+            case eventVariables
+            case labels
+            case lastUpdatedTime
+            case name
         }
     }
 
     public struct ExternalEventsDetail: AWSEncodableShape & AWSDecodableShape {
-
         /// The ARN of the role that provides Amazon Fraud Detector access to the data location.
         public let dataAccessRoleArn: String
         /// The Amazon S3 bucket location for the data.
@@ -1425,20 +1316,19 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case dataAccessRoleArn = "dataAccessRoleArn"
-            case dataLocation = "dataLocation"
+            case dataAccessRoleArn
+            case dataLocation
         }
     }
 
     public struct ExternalModel: AWSDecodableShape {
-
         /// The model ARN.
         public let arn: String?
         /// Timestamp of when the model was last created.
         public let createdTime: String?
         /// The input configuration.
         public let inputConfiguration: ModelInputConfiguration?
-        /// The role used to invoke the model. 
+        /// The role used to invoke the model.
         public let invokeModelEndpointRoleArn: String?
         /// Timestamp of when the model was last updated.
         public let lastUpdatedTime: String?
@@ -1464,20 +1354,19 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdTime = "createdTime"
-            case inputConfiguration = "inputConfiguration"
-            case invokeModelEndpointRoleArn = "invokeModelEndpointRoleArn"
-            case lastUpdatedTime = "lastUpdatedTime"
-            case modelEndpoint = "modelEndpoint"
-            case modelEndpointStatus = "modelEndpointStatus"
-            case modelSource = "modelSource"
-            case outputConfiguration = "outputConfiguration"
+            case arn
+            case createdTime
+            case inputConfiguration
+            case invokeModelEndpointRoleArn
+            case lastUpdatedTime
+            case modelEndpoint
+            case modelEndpointStatus
+            case modelSource
+            case outputConfiguration
         }
     }
 
     public struct FieldValidationMessage: AWSDecodableShape {
-
         /// The message content.
         public let content: String?
         /// The field name.
@@ -1498,16 +1387,15 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case content = "content"
-            case fieldName = "fieldName"
-            case identifier = "identifier"
-            case title = "title"
-            case type = "type"
+            case content
+            case fieldName
+            case identifier
+            case title
+            case type
         }
     }
 
     public struct FileValidationMessage: AWSDecodableShape {
-
         /// The message content.
         public let content: String?
         /// The message title.
@@ -1522,14 +1410,13 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case content = "content"
-            case title = "title"
-            case type = "type"
+            case content
+            case title
+            case type
         }
     }
 
     public struct GetBatchPredictionJobsRequest: AWSEncodableShape {
-
         /// The batch prediction job for which to get the details.
         public let jobId: String?
         /// The maximum number of objects to return for the request.
@@ -1552,14 +1439,13 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case jobId = "jobId"
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
+            case jobId
+            case maxResults
+            case nextToken
         }
     }
 
     public struct GetBatchPredictionJobsResult: AWSDecodableShape {
-
         /// An array containing the details of each batch prediction job.
         public let batchPredictions: [BatchPrediction]?
         /// The next token for the subsequent request.
@@ -1571,13 +1457,12 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case batchPredictions = "batchPredictions"
-            case nextToken = "nextToken"
+            case batchPredictions
+            case nextToken
         }
     }
 
     public struct GetDetectorVersionRequest: AWSEncodableShape {
-
         /// The detector ID.
         public let detectorId: String
         /// The detector version ID.
@@ -1598,16 +1483,15 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case detectorId = "detectorId"
-            case detectorVersionId = "detectorVersionId"
+            case detectorId
+            case detectorVersionId
         }
     }
 
     public struct GetDetectorVersionResult: AWSDecodableShape {
-
         /// The detector version ARN.
         public let arn: String?
-        /// The timestamp when the detector version was created. 
+        /// The timestamp when the detector version was created.
         public let createdTime: String?
         /// The detector version description.
         public let description: String?
@@ -1617,9 +1501,9 @@ extension FraudDetector {
         public let detectorVersionId: String?
         /// The Amazon SageMaker model endpoints included in the detector version.
         public let externalModelEndpoints: [String]?
-        /// The timestamp when the detector version was last updated. 
+        /// The timestamp when the detector version was last updated.
         public let lastUpdatedTime: String?
-        /// The model versions included in the detector version. 
+        /// The model versions included in the detector version.
         public let modelVersions: [ModelVersion]?
         /// The execution mode of the rule in the dectector
         /// 	         FIRST_MATCHED indicates that Amazon Fraud Detector evaluates rules sequentially, first to last, stopping at the first matched rule. Amazon Fraud dectector then provides the outcomes for that single rule.
@@ -1645,22 +1529,21 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdTime = "createdTime"
-            case description = "description"
-            case detectorId = "detectorId"
-            case detectorVersionId = "detectorVersionId"
-            case externalModelEndpoints = "externalModelEndpoints"
-            case lastUpdatedTime = "lastUpdatedTime"
-            case modelVersions = "modelVersions"
-            case ruleExecutionMode = "ruleExecutionMode"
-            case rules = "rules"
-            case status = "status"
+            case arn
+            case createdTime
+            case description
+            case detectorId
+            case detectorVersionId
+            case externalModelEndpoints
+            case lastUpdatedTime
+            case modelVersions
+            case ruleExecutionMode
+            case rules
+            case status
         }
     }
 
     public struct GetDetectorsRequest: AWSEncodableShape {
-
         /// The detector ID.
         public let detectorId: String?
         /// The maximum number of objects to return for the request.
@@ -1683,14 +1566,13 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case detectorId = "detectorId"
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
+            case detectorId
+            case maxResults
+            case nextToken
         }
     }
 
     public struct GetDetectorsResult: AWSDecodableShape {
-
         /// The detectors.
         public let detectors: [Detector]?
         /// The next page token.
@@ -1702,13 +1584,12 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case detectors = "detectors"
-            case nextToken = "nextToken"
+            case detectors
+            case nextToken
         }
     }
 
     public struct GetEntityTypesRequest: AWSEncodableShape {
-
         /// The maximum number of objects to return for the request.
         public let maxResults: Int?
         /// The name.
@@ -1731,14 +1612,13 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxResults = "maxResults"
-            case name = "name"
-            case nextToken = "nextToken"
+            case maxResults
+            case name
+            case nextToken
         }
     }
 
     public struct GetEntityTypesResult: AWSDecodableShape {
-
         /// An array of entity types.
         public let entityTypes: [EntityType]?
         /// The next page token.
@@ -1750,13 +1630,12 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case entityTypes = "entityTypes"
-            case nextToken = "nextToken"
+            case entityTypes
+            case nextToken
         }
     }
 
     public struct GetEventPredictionRequest: AWSEncodableShape {
-
         /// The detector ID.
         public let detectorId: String
         /// The detector version ID.
@@ -1769,7 +1648,7 @@ extension FraudDetector {
         public let eventTimestamp: String
         /// The event type associated with the detector specified for the prediction.
         public let eventTypeName: String
-        /// Names of the event type's variables you defined in Amazon Fraud Detector to represent data elements and  their corresponding values for the event you are sending for evaluation.    You must provide at least one eventVariable   If detectorVersion is associated with a modelVersion, you must provide at least one associated eventVariable     To ensure highest possible fraud prediction and to simplify your data preparation, Amazon Fraud Detector will replace all missing variables or values as follows:   For Amazon Fraud Detector trained models:  If a null value is provided explicitly for a variable or if a variable is missing, model will replace the null value or the missing variable (no variable name in the eventVariables map)  with calculated default mean/medians for numeric variables and with special values for categorical variables.   For External models ( for example, imported SageMaker):  If a null value is provided explicitly for a variable, the model and rules will use “null” as the value. If a variable is not provided (no variable name in the eventVariables map), model and rules  will use the default value that is provided for the variable. 
+        /// Names of the event type's variables you defined in Amazon Fraud Detector to represent data elements and  their corresponding values for the event you are sending for evaluation.    You must provide at least one eventVariable   If detectorVersion is associated with a modelVersion, you must provide at least one associated eventVariable     To ensure highest possible fraud prediction and to simplify your data preparation, Amazon Fraud Detector will replace all missing variables or values as follows:   For Amazon Fraud Detector trained models:  If a null value is provided explicitly for a variable or if a variable is missing, model will replace the null value or the missing variable (no variable name in the eventVariables map)  with calculated default mean/medians for numeric variables and with special values for categorical variables.   For External models ( for example, imported SageMaker):  If a null value is provided explicitly for a variable, the model and rules will use “null” as the value. If a variable is not provided (no variable name in the eventVariables map), model and rules  will use the default value that is provided for the variable.
         public let eventVariables: [String: String]
         /// The Amazon SageMaker model endpoint input data blobs.
         public let externalModelEndpointDataBlobs: [String: ModelEndpointDataBlob]?
@@ -1805,19 +1684,18 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case detectorId = "detectorId"
-            case detectorVersionId = "detectorVersionId"
-            case entities = "entities"
-            case eventId = "eventId"
-            case eventTimestamp = "eventTimestamp"
-            case eventTypeName = "eventTypeName"
-            case eventVariables = "eventVariables"
-            case externalModelEndpointDataBlobs = "externalModelEndpointDataBlobs"
+            case detectorId
+            case detectorVersionId
+            case entities
+            case eventId
+            case eventTimestamp
+            case eventTypeName
+            case eventVariables
+            case externalModelEndpointDataBlobs
         }
     }
 
     public struct GetEventPredictionResult: AWSDecodableShape {
-
         /// The model scores. Amazon Fraud Detector generates model scores between 0 and 1000, where 0 is low fraud risk and 1000 is high fraud risk. Model scores are directly related to the false positive rate (FPR). For example, a score of 600 corresponds to an estimated 10% false positive rate whereas a score of 900 corresponds to an estimated 2% false positive rate.
         public let modelScores: [ModelScores]?
         /// The results.
@@ -1829,13 +1707,12 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case modelScores = "modelScores"
-            case ruleResults = "ruleResults"
+            case modelScores
+            case ruleResults
         }
     }
 
     public struct GetEventTypesRequest: AWSEncodableShape {
-
         /// The maximum number of objects to return for the request.
         public let maxResults: Int?
         /// The name.
@@ -1858,14 +1735,13 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxResults = "maxResults"
-            case name = "name"
-            case nextToken = "nextToken"
+            case maxResults
+            case name
+            case nextToken
         }
     }
 
     public struct GetEventTypesResult: AWSDecodableShape {
-
         /// An array of event types.
         public let eventTypes: [EventType]?
         /// The next page token.
@@ -1877,13 +1753,12 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case eventTypes = "eventTypes"
-            case nextToken = "nextToken"
+            case eventTypes
+            case nextToken
         }
     }
 
     public struct GetExternalModelsRequest: AWSEncodableShape {
-
         /// The maximum number of objects to return for the request.
         public let maxResults: Int?
         /// The Amazon SageMaker model endpoint.
@@ -1903,14 +1778,13 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxResults = "maxResults"
-            case modelEndpoint = "modelEndpoint"
-            case nextToken = "nextToken"
+            case maxResults
+            case modelEndpoint
+            case nextToken
         }
     }
 
     public struct GetExternalModelsResult: AWSDecodableShape {
-
         /// Gets the Amazon SageMaker models.
         public let externalModels: [ExternalModel]?
         /// The next page token to be used in subsequent requests.
@@ -1922,13 +1796,12 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case externalModels = "externalModels"
-            case nextToken = "nextToken"
+            case externalModels
+            case nextToken
         }
     }
 
     public struct GetKMSEncryptionKeyResult: AWSDecodableShape {
-
         /// The KMS encryption key.
         public let kmsKey: KMSKey?
 
@@ -1937,12 +1810,11 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case kmsKey = "kmsKey"
+            case kmsKey
         }
     }
 
     public struct GetLabelsRequest: AWSEncodableShape {
-
         /// The maximum number of objects to return for the request.
         public let maxResults: Int?
         /// The name of the label or labels to get.
@@ -1965,14 +1837,13 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxResults = "maxResults"
-            case name = "name"
-            case nextToken = "nextToken"
+            case maxResults
+            case name
+            case nextToken
         }
     }
 
     public struct GetLabelsResult: AWSDecodableShape {
-
         /// An array of labels.
         public let labels: [Label]?
         /// The next page token.
@@ -1984,13 +1855,12 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case labels = "labels"
-            case nextToken = "nextToken"
+            case labels
+            case nextToken
         }
     }
 
     public struct GetModelVersionRequest: AWSEncodableShape {
-
         /// The model ID.
         public let modelId: String
         /// The model type.
@@ -2014,14 +1884,13 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case modelId = "modelId"
-            case modelType = "modelType"
-            case modelVersionNumber = "modelVersionNumber"
+            case modelId
+            case modelType
+            case modelVersionNumber
         }
     }
 
     public struct GetModelVersionResult: AWSDecodableShape {
-
         /// The model version ARN.
         public let arn: String?
         /// The event details.
@@ -2034,7 +1903,7 @@ extension FraudDetector {
         public let modelVersionNumber: String?
         /// The model version status.
         /// 	        Possible values are:
-        /// 	           TRAINING_IN_PROGRESS     TRAINING_COMPLETE     ACTIVATE_REQUESTED     ACTIVATE_IN_PROGRESS     ACTIVE     INACTIVATE_REQUESTED     INACTIVATE_IN_PROGRESS     INACTIVE     ERROR   
+        /// 	           TRAINING_IN_PROGRESS     TRAINING_COMPLETE     ACTIVATE_REQUESTED     ACTIVATE_IN_PROGRESS     ACTIVE     INACTIVATE_REQUESTED     INACTIVATE_IN_PROGRESS     INACTIVE     ERROR
         public let status: String?
         /// The training data schema.
         public let trainingDataSchema: TrainingDataSchema?
@@ -2053,20 +1922,19 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case externalEventsDetail = "externalEventsDetail"
-            case modelId = "modelId"
-            case modelType = "modelType"
-            case modelVersionNumber = "modelVersionNumber"
-            case status = "status"
-            case trainingDataSchema = "trainingDataSchema"
-            case trainingDataSource = "trainingDataSource"
+            case arn
+            case externalEventsDetail
+            case modelId
+            case modelType
+            case modelVersionNumber
+            case status
+            case trainingDataSchema
+            case trainingDataSource
         }
     }
 
     public struct GetModelsRequest: AWSEncodableShape {
-
-        /// The maximum number of objects to return for the request. 
+        /// The maximum number of objects to return for the request.
         public let maxResults: Int?
         /// The model ID.
         public let modelId: String?
@@ -2091,15 +1959,14 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxResults = "maxResults"
-            case modelId = "modelId"
-            case modelType = "modelType"
-            case nextToken = "nextToken"
+            case maxResults
+            case modelId
+            case modelType
+            case nextToken
         }
     }
 
     public struct GetModelsResult: AWSDecodableShape {
-
         /// The array of models.
         public let models: [Model]?
         /// The next page token to be used in subsequent requests.
@@ -2111,18 +1978,17 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case models = "models"
-            case nextToken = "nextToken"
+            case models
+            case nextToken
         }
     }
 
     public struct GetOutcomesRequest: AWSEncodableShape {
-
-        /// The maximum number of objects to return for the request. 
+        /// The maximum number of objects to return for the request.
         public let maxResults: Int?
         /// The name of the outcome or outcomes to get.
         public let name: String?
-        /// The next page token for the request. 
+        /// The next page token for the request.
         public let nextToken: String?
 
         public init(maxResults: Int? = nil, name: String? = nil, nextToken: String? = nil) {
@@ -2140,17 +2006,16 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxResults = "maxResults"
-            case name = "name"
-            case nextToken = "nextToken"
+            case maxResults
+            case name
+            case nextToken
         }
     }
 
     public struct GetOutcomesResult: AWSDecodableShape {
-
         /// The next page token for subsequent requests.
         public let nextToken: String?
-        /// The outcomes. 
+        /// The outcomes.
         public let outcomes: [Outcome]?
 
         public init(nextToken: String? = nil, outcomes: [Outcome]? = nil) {
@@ -2159,13 +2024,12 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case outcomes = "outcomes"
+            case nextToken
+            case outcomes
         }
     }
 
     public struct GetRulesRequest: AWSEncodableShape {
-
         /// The detector ID.
         public let detectorId: String
         /// The maximum number of rules to return for the request.
@@ -2200,16 +2064,15 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case detectorId = "detectorId"
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
-            case ruleId = "ruleId"
-            case ruleVersion = "ruleVersion"
+            case detectorId
+            case maxResults
+            case nextToken
+            case ruleId
+            case ruleVersion
         }
     }
 
     public struct GetRulesResult: AWSDecodableShape {
-
         /// The next page token to be used in subsequent requests.
         public let nextToken: String?
         /// The details of the requested rule.
@@ -2221,18 +2084,17 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case ruleDetails = "ruleDetails"
+            case nextToken
+            case ruleDetails
         }
     }
 
     public struct GetVariablesRequest: AWSEncodableShape {
-
-        /// The max size per page determined for the get variable request. 
+        /// The max size per page determined for the get variable request.
         public let maxResults: Int?
-        /// The name of the variable. 
+        /// The name of the variable.
         public let name: String?
-        /// The next page token of the get variable request. 
+        /// The next page token of the get variable request.
         public let nextToken: String?
 
         public init(maxResults: Int? = nil, name: String? = nil, nextToken: String? = nil) {
@@ -2247,17 +2109,16 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxResults = "maxResults"
-            case name = "name"
-            case nextToken = "nextToken"
+            case maxResults
+            case name
+            case nextToken
         }
     }
 
     public struct GetVariablesResult: AWSDecodableShape {
-
-        /// The next page token to be used in subsequent requests. 
+        /// The next page token to be used in subsequent requests.
         public let nextToken: String?
-        /// The names of the variables returned. 
+        /// The names of the variables returned.
         public let variables: [Variable]?
 
         public init(nextToken: String? = nil, variables: [Variable]? = nil) {
@@ -2266,13 +2127,12 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case variables = "variables"
+            case nextToken
+            case variables
         }
     }
 
     public struct KMSKey: AWSDecodableShape {
-
         /// The encryption key ARN.
         public let kmsEncryptionKeyArn: String?
 
@@ -2281,12 +2141,11 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case kmsEncryptionKeyArn = "kmsEncryptionKeyArn"
+            case kmsEncryptionKeyArn
         }
     }
 
     public struct Label: AWSDecodableShape {
-
         /// The label ARN.
         public let arn: String?
         /// Timestamp of when the event type was created.
@@ -2307,17 +2166,16 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdTime = "createdTime"
-            case description = "description"
-            case lastUpdatedTime = "lastUpdatedTime"
-            case name = "name"
+            case arn
+            case createdTime
+            case description
+            case lastUpdatedTime
+            case name
         }
     }
 
     public struct LabelSchema: AWSEncodableShape & AWSDecodableShape {
-
-        /// The label mapper maps the Amazon Fraud Detector supported model classification labels (FRAUD, LEGIT) to the appropriate event type labels. For example, if "FRAUD" and "LEGIT" are Amazon Fraud Detector supported labels, this mapper could be: {"FRAUD" => ["0"], "LEGIT" => ["1"]} or {"FRAUD" => ["false"], "LEGIT" => ["true"]} or {"FRAUD" => ["fraud", "abuse"], "LEGIT" => ["legit", "safe"]}. The value part of the mapper is a list, because you may have multiple label variants from your event type for a single Amazon Fraud Detector label. 
+        /// The label mapper maps the Amazon Fraud Detector supported model classification labels (FRAUD, LEGIT) to the appropriate event type labels. For example, if "FRAUD" and "LEGIT" are Amazon Fraud Detector supported labels, this mapper could be: {"FRAUD" => ["0"], "LEGIT" => ["1"]} or {"FRAUD" => ["false"], "LEGIT" => ["true"]} or {"FRAUD" => ["fraud", "abuse"], "LEGIT" => ["legit", "safe"]}. The value part of the mapper is a list, because you may have multiple label variants from your event type for a single Amazon Fraud Detector label.
         public let labelMapper: [String: [String]]
 
         public init(labelMapper: [String: [String]]) {
@@ -2325,13 +2183,12 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case labelMapper = "labelMapper"
+            case labelMapper
         }
     }
 
     public struct ListTagsForResourceRequest: AWSEncodableShape {
-
-        /// The maximum number of objects to return for the request. 
+        /// The maximum number of objects to return for the request.
         public let maxResults: Int?
         /// The next token from the previous results.
         public let nextToken: String?
@@ -2353,15 +2210,14 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
-            case resourceARN = "resourceARN"
+            case maxResults
+            case nextToken
+            case resourceARN
         }
     }
 
     public struct ListTagsForResourceResult: AWSDecodableShape {
-
-        /// The next token for subsequent requests. 
+        /// The next token for subsequent requests.
         public let nextToken: String?
         /// A collection of key and value pairs.
         public let tags: [Tag]?
@@ -2372,13 +2228,12 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case tags = "tags"
+            case nextToken
+            case tags
         }
     }
 
     public struct LogitMetric: AWSDecodableShape {
-
         /// The relative importance of the variable.
         public let variableImportance: Float
         /// The name of the variable.
@@ -2393,14 +2248,13 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case variableImportance = "variableImportance"
-            case variableName = "variableName"
-            case variableType = "variableType"
+            case variableImportance
+            case variableName
+            case variableType
         }
     }
 
     public struct MetricDataPoint: AWSDecodableShape {
-
         /// The false positive rate. This is the percentage of total legitimate events that are incorrectly predicted as fraud.
         public let fpr: Float?
         /// The percentage of fraud events correctly predicted as fraudulent as compared to all events predicted as fraudulent.
@@ -2418,15 +2272,14 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case fpr = "fpr"
-            case precision = "precision"
-            case threshold = "threshold"
-            case tpr = "tpr"
+            case fpr
+            case precision
+            case threshold
+            case tpr
         }
     }
 
     public struct Model: AWSDecodableShape {
-
         /// The ARN of the model.
         public let arn: String?
         /// Timestamp of when the model was created.
@@ -2453,21 +2306,20 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdTime = "createdTime"
-            case description = "description"
-            case eventTypeName = "eventTypeName"
-            case lastUpdatedTime = "lastUpdatedTime"
-            case modelId = "modelId"
-            case modelType = "modelType"
+            case arn
+            case createdTime
+            case description
+            case eventTypeName
+            case lastUpdatedTime
+            case modelId
+            case modelType
         }
     }
 
     public struct ModelEndpointDataBlob: AWSEncodableShape {
-
         /// The byte buffer of the Amazon SageMaker model endpoint input data blob.
         public let byteBuffer: Data?
-        /// The content type of the Amazon SageMaker model endpoint input data blob. 
+        /// The content type of the Amazon SageMaker model endpoint input data blob.
         public let contentType: String?
 
         public init(byteBuffer: Data? = nil, contentType: String? = nil) {
@@ -2481,20 +2333,19 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case byteBuffer = "byteBuffer"
-            case contentType = "contentType"
+            case byteBuffer
+            case contentType
         }
     }
 
     public struct ModelInputConfiguration: AWSEncodableShape & AWSDecodableShape {
-
-        ///  Template for constructing the CSV input-data sent to SageMaker. At event-evaluation, the placeholders for variable-names in the template will be replaced with the variable values before being sent to SageMaker. 
+        ///  Template for constructing the CSV input-data sent to SageMaker. At event-evaluation, the placeholders for variable-names in the template will be replaced with the variable values before being sent to SageMaker.
         public let csvInputTemplate: String?
         /// The event type name.
         public let eventTypeName: String?
         ///  The format of the model input configuration. The format differs depending on if it is passed through to SageMaker or constructed by Amazon Fraud Detector.
         public let format: ModelInputDataFormat?
-        ///  Template for constructing the JSON input-data sent to SageMaker. At event-evaluation, the placeholders for variable names in the template will be replaced with the variable values before being sent to SageMaker. 
+        ///  Template for constructing the JSON input-data sent to SageMaker. At event-evaluation, the placeholders for variable names in the template will be replaced with the variable values before being sent to SageMaker.
         public let jsonInputTemplate: String?
         /// The event variables.
         public let useEventVariables: Bool
@@ -2514,21 +2365,20 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case csvInputTemplate = "csvInputTemplate"
-            case eventTypeName = "eventTypeName"
-            case format = "format"
-            case jsonInputTemplate = "jsonInputTemplate"
-            case useEventVariables = "useEventVariables"
+            case csvInputTemplate
+            case eventTypeName
+            case format
+            case jsonInputTemplate
+            case useEventVariables
         }
     }
 
     public struct ModelOutputConfiguration: AWSEncodableShape & AWSDecodableShape {
-
-        /// A map of CSV index values in the SageMaker response to the Amazon Fraud Detector variables. 
+        /// A map of CSV index values in the SageMaker response to the Amazon Fraud Detector variables.
         public let csvIndexToVariableMap: [String: String]?
         /// The format of the model output configuration.
         public let format: ModelOutputDataFormat
-        /// A map of JSON keys in response from SageMaker to the Amazon Fraud Detector variables. 
+        /// A map of JSON keys in response from SageMaker to the Amazon Fraud Detector variables.
         public let jsonKeyToVariableMap: [String: String]?
 
         public init(csvIndexToVariableMap: [String: String]? = nil, format: ModelOutputDataFormat, jsonKeyToVariableMap: [String: String]? = nil) {
@@ -2538,14 +2388,13 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case csvIndexToVariableMap = "csvIndexToVariableMap"
-            case format = "format"
-            case jsonKeyToVariableMap = "jsonKeyToVariableMap"
+            case csvIndexToVariableMap
+            case format
+            case jsonKeyToVariableMap
         }
     }
 
     public struct ModelScores: AWSDecodableShape {
-
         /// The model version.
         public let modelVersion: ModelVersion?
         /// The model's fraud prediction scores.
@@ -2557,13 +2406,12 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case modelVersion = "modelVersion"
-            case scores = "scores"
+            case modelVersion
+            case scores
         }
     }
 
     public struct ModelVersion: AWSEncodableShape & AWSDecodableShape {
-
         /// The model version ARN.
         public let arn: String?
         /// The model ID.
@@ -2591,15 +2439,14 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case modelId = "modelId"
-            case modelType = "modelType"
-            case modelVersionNumber = "modelVersionNumber"
+            case arn
+            case modelId
+            case modelType
+            case modelVersionNumber
         }
     }
 
     public struct ModelVersionDetail: AWSDecodableShape {
-
         /// The model version ARN.
         public let arn: String?
         /// The timestamp when the model was created.
@@ -2638,22 +2485,21 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdTime = "createdTime"
-            case externalEventsDetail = "externalEventsDetail"
-            case lastUpdatedTime = "lastUpdatedTime"
-            case modelId = "modelId"
-            case modelType = "modelType"
-            case modelVersionNumber = "modelVersionNumber"
-            case status = "status"
-            case trainingDataSchema = "trainingDataSchema"
-            case trainingDataSource = "trainingDataSource"
-            case trainingResult = "trainingResult"
+            case arn
+            case createdTime
+            case externalEventsDetail
+            case lastUpdatedTime
+            case modelId
+            case modelType
+            case modelVersionNumber
+            case status
+            case trainingDataSchema
+            case trainingDataSource
+            case trainingResult
         }
     }
 
     public struct Outcome: AWSDecodableShape {
-
         /// The outcome ARN.
         public let arn: String?
         /// The timestamp when the outcome was created.
@@ -2674,19 +2520,18 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdTime = "createdTime"
-            case description = "description"
-            case lastUpdatedTime = "lastUpdatedTime"
-            case name = "name"
+            case arn
+            case createdTime
+            case description
+            case lastUpdatedTime
+            case name
         }
     }
 
     public struct PutDetectorRequest: AWSEncodableShape {
-
         /// The description of the detector.
         public let description: String?
-        /// The detector ID. 
+        /// The detector ID.
         public let detectorId: String
         /// The name of the event type.
         public let eventTypeName: String
@@ -2716,23 +2561,18 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case description = "description"
-            case detectorId = "detectorId"
-            case eventTypeName = "eventTypeName"
-            case tags = "tags"
+            case description
+            case detectorId
+            case eventTypeName
+            case tags
         }
     }
 
     public struct PutDetectorResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct PutEntityTypeRequest: AWSEncodableShape {
-
         /// The description.
         public let description: String?
         /// The name of the entity type.
@@ -2759,22 +2599,17 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case description = "description"
-            case name = "name"
-            case tags = "tags"
+            case description
+            case name
+            case tags
         }
     }
 
     public struct PutEntityTypeResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct PutEventTypeRequest: AWSEncodableShape {
-
         /// The description of the event type.
         public let description: String?
         /// The entity type for the event type. Example entity types: customer, merchant, account.
@@ -2812,25 +2647,20 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case description = "description"
-            case entityTypes = "entityTypes"
-            case eventVariables = "eventVariables"
-            case labels = "labels"
-            case name = "name"
-            case tags = "tags"
+            case description
+            case entityTypes
+            case eventVariables
+            case labels
+            case name
+            case tags
         }
     }
 
     public struct PutEventTypeResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct PutExternalModelRequest: AWSEncodableShape {
-
         /// The model endpoint input configuration.
         public let inputConfiguration: ModelInputConfiguration
         /// The IAM role used to invoke the model endpoint.
@@ -2868,26 +2698,21 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case inputConfiguration = "inputConfiguration"
-            case invokeModelEndpointRoleArn = "invokeModelEndpointRoleArn"
-            case modelEndpoint = "modelEndpoint"
-            case modelEndpointStatus = "modelEndpointStatus"
-            case modelSource = "modelSource"
-            case outputConfiguration = "outputConfiguration"
-            case tags = "tags"
+            case inputConfiguration
+            case invokeModelEndpointRoleArn
+            case modelEndpoint
+            case modelEndpointStatus
+            case modelSource
+            case outputConfiguration
+            case tags
         }
     }
 
     public struct PutExternalModelResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct PutKMSEncryptionKeyRequest: AWSEncodableShape {
-
         /// The KMS encryption key ARN.
         public let kmsEncryptionKeyArn: String
 
@@ -2902,20 +2727,15 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case kmsEncryptionKeyArn = "kmsEncryptionKeyArn"
+            case kmsEncryptionKeyArn
         }
     }
 
     public struct PutKMSEncryptionKeyResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct PutLabelRequest: AWSEncodableShape {
-
         /// The label description.
         public let description: String?
         /// The label name.
@@ -2941,22 +2761,17 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case description = "description"
-            case name = "name"
-            case tags = "tags"
+            case description
+            case name
+            case tags
         }
     }
 
     public struct PutLabelResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct PutOutcomeRequest: AWSEncodableShape {
-
         /// The outcome description.
         public let description: String?
         /// The name of the outcome.
@@ -2983,22 +2798,17 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case description = "description"
-            case name = "name"
-            case tags = "tags"
+            case description
+            case name
+            case tags
         }
     }
 
     public struct PutOutcomeResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct Rule: AWSEncodableShape & AWSDecodableShape {
-
         /// The detector for which the rule is associated.
         public let detectorId: String
         /// The rule ID.
@@ -3025,14 +2835,13 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case detectorId = "detectorId"
-            case ruleId = "ruleId"
-            case ruleVersion = "ruleVersion"
+            case detectorId
+            case ruleId
+            case ruleVersion
         }
     }
 
     public struct RuleDetail: AWSDecodableShape {
-
         /// The rule ARN.
         public let arn: String?
         /// The timestamp of when the rule was created.
@@ -3068,21 +2877,20 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdTime = "createdTime"
-            case description = "description"
-            case detectorId = "detectorId"
-            case expression = "expression"
-            case language = "language"
-            case lastUpdatedTime = "lastUpdatedTime"
-            case outcomes = "outcomes"
-            case ruleId = "ruleId"
-            case ruleVersion = "ruleVersion"
+            case arn
+            case createdTime
+            case description
+            case detectorId
+            case expression
+            case language
+            case lastUpdatedTime
+            case outcomes
+            case ruleId
+            case ruleVersion
         }
     }
 
     public struct RuleResult: AWSDecodableShape {
-
         /// The outcomes of the matched rule, based on the rule execution mode.
         public let outcomes: [String]?
         /// The rule ID that was matched, based on the rule execution mode.
@@ -3094,13 +2902,12 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case outcomes = "outcomes"
-            case ruleId = "ruleId"
+            case outcomes
+            case ruleId
         }
     }
 
     public struct Tag: AWSEncodableShape & AWSDecodableShape {
-
         /// A tag key.
         public let key: String
         /// A value assigned to a tag key.
@@ -3119,13 +2926,12 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case key = "key"
-            case value = "value"
+            case key
+            case value
         }
     }
 
     public struct TagResourceRequest: AWSEncodableShape {
-
         /// The resource ARN.
         public let resourceARN: String
         /// The tags to assign to the resource.
@@ -3147,21 +2953,16 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case resourceARN = "resourceARN"
-            case tags = "tags"
+            case resourceARN
+            case tags
         }
     }
 
     public struct TagResourceResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct TrainingDataSchema: AWSEncodableShape & AWSDecodableShape {
-
         public let labelSchema: LabelSchema
         /// The training data schema variables.
         public let modelVariables: [String]
@@ -3172,13 +2973,12 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case labelSchema = "labelSchema"
-            case modelVariables = "modelVariables"
+            case labelSchema
+            case modelVariables
         }
     }
 
     public struct TrainingMetrics: AWSDecodableShape {
-
         /// The area under the curve. This summarizes true positive rate (TPR) and false positive rate (FPR) across all possible model score thresholds. A model with no predictive power has an AUC of 0.5, whereas a perfect model has a score of 1.0.
         public let auc: Float?
         /// The data points details.
@@ -3190,13 +2990,12 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case auc = "auc"
-            case metricDataPoints = "metricDataPoints"
+            case auc
+            case metricDataPoints
         }
     }
 
     public struct TrainingResult: AWSDecodableShape {
-
         /// The validation metrics.
         public let dataValidationMetrics: DataValidationMetrics?
         /// The training metric details.
@@ -3211,14 +3010,13 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case dataValidationMetrics = "dataValidationMetrics"
-            case trainingMetrics = "trainingMetrics"
-            case variableImportanceMetrics = "variableImportanceMetrics"
+            case dataValidationMetrics
+            case trainingMetrics
+            case variableImportanceMetrics
         }
     }
 
     public struct UntagResourceRequest: AWSEncodableShape {
-
         /// The ARN of the resource from which to remove the tag.
         public let resourceARN: String
         /// The resource ARN.
@@ -3242,26 +3040,21 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case resourceARN = "resourceARN"
-            case tagKeys = "tagKeys"
+            case resourceARN
+            case tagKeys
         }
     }
 
     public struct UntagResourceResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateDetectorVersionMetadataRequest: AWSEncodableShape {
-
         /// The description.
         public let description: String
         /// The detector ID.
         public let detectorId: String
-        /// The detector version ID. 
+        /// The detector version ID.
         public let detectorVersionId: String
 
         public init(description: String, detectorId: String, detectorVersionId: String) {
@@ -3282,27 +3075,22 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case description = "description"
-            case detectorId = "detectorId"
-            case detectorVersionId = "detectorVersionId"
+            case description
+            case detectorId
+            case detectorVersionId
         }
     }
 
     public struct UpdateDetectorVersionMetadataResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateDetectorVersionRequest: AWSEncodableShape {
-
-        /// The detector version description. 
+        /// The detector version description.
         public let description: String?
         /// The parent detector ID for the detector version you want to update.
         public let detectorId: String
-        /// The detector version ID. 
+        /// The detector version ID.
         public let detectorVersionId: String
         /// The Amazon SageMaker model endpoints to include in the detector version.
         public let externalModelEndpoints: [String]
@@ -3343,29 +3131,24 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case description = "description"
-            case detectorId = "detectorId"
-            case detectorVersionId = "detectorVersionId"
-            case externalModelEndpoints = "externalModelEndpoints"
-            case modelVersions = "modelVersions"
-            case ruleExecutionMode = "ruleExecutionMode"
-            case rules = "rules"
+            case description
+            case detectorId
+            case detectorVersionId
+            case externalModelEndpoints
+            case modelVersions
+            case ruleExecutionMode
+            case rules
         }
     }
 
     public struct UpdateDetectorVersionResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateDetectorVersionStatusRequest: AWSEncodableShape {
-
-        /// The detector ID. 
+        /// The detector ID.
         public let detectorId: String
-        /// The detector version ID. 
+        /// The detector version ID.
         public let detectorVersionId: String
         /// The new status.
         public let status: DetectorVersionStatus
@@ -3386,22 +3169,17 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case detectorId = "detectorId"
-            case detectorVersionId = "detectorVersionId"
-            case status = "status"
+            case detectorId
+            case detectorVersionId
+            case status
         }
     }
 
     public struct UpdateDetectorVersionStatusResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateModelRequest: AWSEncodableShape {
-
         /// The new model description.
         public let description: String?
         /// The model ID.
@@ -3424,22 +3202,17 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case description = "description"
-            case modelId = "modelId"
-            case modelType = "modelType"
+            case description
+            case modelId
+            case modelType
         }
     }
 
     public struct UpdateModelResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateModelVersionRequest: AWSEncodableShape {
-
         /// The event details.
         public let externalEventsDetail: ExternalEventsDetail?
         /// The major version number.
@@ -3474,16 +3247,15 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case externalEventsDetail = "externalEventsDetail"
-            case majorVersionNumber = "majorVersionNumber"
-            case modelId = "modelId"
-            case modelType = "modelType"
-            case tags = "tags"
+            case externalEventsDetail
+            case majorVersionNumber
+            case modelId
+            case modelType
+            case tags
         }
     }
 
     public struct UpdateModelVersionResult: AWSDecodableShape {
-
         /// The model ID.
         public let modelId: String?
         /// The model type.
@@ -3501,15 +3273,14 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case modelId = "modelId"
-            case modelType = "modelType"
-            case modelVersionNumber = "modelVersionNumber"
-            case status = "status"
+            case modelId
+            case modelType
+            case modelVersionNumber
+            case status
         }
     }
 
     public struct UpdateModelVersionStatusRequest: AWSEncodableShape {
-
         /// The model ID of the model version to update.
         public let modelId: String
         /// The model type.
@@ -3536,23 +3307,18 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case modelId = "modelId"
-            case modelType = "modelType"
-            case modelVersionNumber = "modelVersionNumber"
-            case status = "status"
+            case modelId
+            case modelType
+            case modelVersionNumber
+            case status
         }
     }
 
     public struct UpdateModelVersionStatusResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateRuleMetadataRequest: AWSEncodableShape {
-
         /// The rule description.
         public let description: String
         /// The rule to update.
@@ -3570,21 +3336,16 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case description = "description"
-            case rule = "rule"
+            case description
+            case rule
         }
     }
 
     public struct UpdateRuleMetadataResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateRuleVersionRequest: AWSEncodableShape {
-
         /// The description.
         public let description: String?
         /// The rule expression.
@@ -3621,17 +3382,16 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case description = "description"
-            case expression = "expression"
-            case language = "language"
-            case outcomes = "outcomes"
-            case rule = "rule"
-            case tags = "tags"
+            case description
+            case expression
+            case language
+            case outcomes
+            case rule
+            case tags
         }
     }
 
     public struct UpdateRuleVersionResult: AWSDecodableShape {
-
         /// The new rule version that was created.
         public let rule: Rule?
 
@@ -3640,12 +3400,11 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case rule = "rule"
+            case rule
         }
     }
 
     public struct UpdateVariableRequest: AWSEncodableShape {
-
         /// The new default value of the variable.
         public let defaultValue: String?
         /// The new description.
@@ -3663,23 +3422,18 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case defaultValue = "defaultValue"
-            case description = "description"
-            case name = "name"
-            case variableType = "variableType"
+            case defaultValue
+            case description
+            case name
+            case variableType
         }
     }
 
     public struct UpdateVariableResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct Variable: AWSDecodableShape {
-
         /// The ARN of the variable.
         public let arn: String?
         /// The time when the variable was created.
@@ -3690,13 +3444,13 @@ extension FraudDetector {
         public let dataType: DataType?
         /// The default value of the variable.
         public let defaultValue: String?
-        /// The description of the variable. 
+        /// The description of the variable.
         public let description: String?
         /// The time when variable was last updated.
         public let lastUpdatedTime: String?
         /// The name of the variable.
         public let name: String?
-        /// The variable type of the variable. Valid Values: AUTH_CODE | AVS | BILLING_ADDRESS_L1 | BILLING_ADDRESS_L2 | BILLING_CITY | BILLING_COUNTRY | BILLING_NAME | BILLING_PHONE | BILLING_STATE | BILLING_ZIP | CARD_BIN | CATEGORICAL | CURRENCY_CODE | EMAIL_ADDRESS | FINGERPRINT | FRAUD_LABEL | FREE_FORM_TEXT | IP_ADDRESS | NUMERIC | ORDER_ID | PAYMENT_TYPE | PHONE_NUMBER | PRICE | PRODUCT_CATEGORY | SHIPPING_ADDRESS_L1 | SHIPPING_ADDRESS_L2 | SHIPPING_CITY | SHIPPING_COUNTRY | SHIPPING_NAME | SHIPPING_PHONE | SHIPPING_STATE | SHIPPING_ZIP | USERAGENT  
+        /// The variable type of the variable. Valid Values: AUTH_CODE | AVS | BILLING_ADDRESS_L1 | BILLING_ADDRESS_L2 | BILLING_CITY | BILLING_COUNTRY | BILLING_NAME | BILLING_PHONE | BILLING_STATE | BILLING_ZIP | CARD_BIN | CATEGORICAL | CURRENCY_CODE | EMAIL_ADDRESS | FINGERPRINT | FRAUD_LABEL | FREE_FORM_TEXT | IP_ADDRESS | NUMERIC | ORDER_ID | PAYMENT_TYPE | PHONE_NUMBER | PRICE | PRODUCT_CATEGORY | SHIPPING_ADDRESS_L1 | SHIPPING_ADDRESS_L2 | SHIPPING_CITY | SHIPPING_COUNTRY | SHIPPING_NAME | SHIPPING_PHONE | SHIPPING_STATE | SHIPPING_ZIP | USERAGENT
         public let variableType: String?
 
         public init(arn: String? = nil, createdTime: String? = nil, dataSource: DataSource? = nil, dataType: DataType? = nil, defaultValue: String? = nil, description: String? = nil, lastUpdatedTime: String? = nil, name: String? = nil, variableType: String? = nil) {
@@ -3712,20 +3466,19 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdTime = "createdTime"
-            case dataSource = "dataSource"
-            case dataType = "dataType"
-            case defaultValue = "defaultValue"
-            case description = "description"
-            case lastUpdatedTime = "lastUpdatedTime"
-            case name = "name"
-            case variableType = "variableType"
+            case arn
+            case createdTime
+            case dataSource
+            case dataType
+            case defaultValue
+            case description
+            case lastUpdatedTime
+            case name
+            case variableType
         }
     }
 
     public struct VariableEntry: AWSEncodableShape {
-
         /// The data source of the variable.
         public let dataSource: String?
         /// The data type of the variable.
@@ -3736,7 +3489,7 @@ extension FraudDetector {
         public let description: String?
         /// The name of the variable.
         public let name: String?
-        /// The type of the variable. For more information see Variable types. Valid Values: AUTH_CODE | AVS | BILLING_ADDRESS_L1 | BILLING_ADDRESS_L2 | BILLING_CITY | BILLING_COUNTRY | BILLING_NAME | BILLING_PHONE | BILLING_STATE | BILLING_ZIP | CARD_BIN | CATEGORICAL | CURRENCY_CODE | EMAIL_ADDRESS | FINGERPRINT | FRAUD_LABEL | FREE_FORM_TEXT | IP_ADDRESS | NUMERIC | ORDER_ID | PAYMENT_TYPE | PHONE_NUMBER | PRICE | PRODUCT_CATEGORY | SHIPPING_ADDRESS_L1 | SHIPPING_ADDRESS_L2 | SHIPPING_CITY | SHIPPING_COUNTRY | SHIPPING_NAME | SHIPPING_PHONE | SHIPPING_STATE | SHIPPING_ZIP | USERAGENT  
+        /// The type of the variable. For more information see Variable types. Valid Values: AUTH_CODE | AVS | BILLING_ADDRESS_L1 | BILLING_ADDRESS_L2 | BILLING_CITY | BILLING_COUNTRY | BILLING_NAME | BILLING_PHONE | BILLING_STATE | BILLING_ZIP | CARD_BIN | CATEGORICAL | CURRENCY_CODE | EMAIL_ADDRESS | FINGERPRINT | FRAUD_LABEL | FREE_FORM_TEXT | IP_ADDRESS | NUMERIC | ORDER_ID | PAYMENT_TYPE | PHONE_NUMBER | PRICE | PRODUCT_CATEGORY | SHIPPING_ADDRESS_L1 | SHIPPING_ADDRESS_L2 | SHIPPING_CITY | SHIPPING_COUNTRY | SHIPPING_NAME | SHIPPING_PHONE | SHIPPING_STATE | SHIPPING_ZIP | USERAGENT
         public let variableType: String?
 
         public init(dataSource: String? = nil, dataType: String? = nil, defaultValue: String? = nil, description: String? = nil, name: String? = nil, variableType: String? = nil) {
@@ -3749,17 +3502,16 @@ extension FraudDetector {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case dataSource = "dataSource"
-            case dataType = "dataType"
-            case defaultValue = "defaultValue"
-            case description = "description"
-            case name = "name"
-            case variableType = "variableType"
+            case dataSource
+            case dataType
+            case defaultValue
+            case description
+            case name
+            case variableType
         }
     }
 
     public struct VariableImportanceMetrics: AWSDecodableShape {
-
         /// List of variable metrics.
         public let logitMetrics: [LogitMetric]?
 

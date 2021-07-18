@@ -366,7 +366,7 @@ extension Kendra {
         case dateValue(Date)
         /// A long integer value.
         case longValue(Int64)
-        /// A list of strings. 
+        /// A list of strings.
         case stringListValue([String])
         /// A string, such as "department".
         case stringValue(String)
@@ -418,8 +418,8 @@ extension Kendra {
                     try validate($0, name: "stringListValue[]", parent: name, min: 1)
                 }
             case .stringValue(let value):
-                try validate(value, name: "stringValue", parent: name, max: 2048)
-                try validate(value, name: "stringValue", parent: name, min: 1)
+                try self.validate(value, name: "stringValue", parent: name, max: 2048)
+                try self.validate(value, name: "stringValue", parent: name, min: 1)
             default:
                 break
             }
@@ -436,7 +436,6 @@ extension Kendra {
     // MARK: Shapes
 
     public struct AccessControlListConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// Path to the Amazon Web Services S3 bucket that contains the ACL files.
         public let keyPath: String?
 
@@ -455,7 +454,6 @@ extension Kendra {
     }
 
     public struct AclConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// A list of groups, separated by semi-colons, that filters a query response based on user context. The document is only returned to users that are in one of the groups specified in the UserContext field of the Query operation.
         public let allowedGroupsColumnName: String
 
@@ -475,7 +473,6 @@ extension Kendra {
     }
 
     public struct AdditionalResultAttribute: AWSDecodableShape {
-
         /// The key that identifies the attribute.
         public let key: String
         /// An object that contains the attribute value.
@@ -497,7 +494,6 @@ extension Kendra {
     }
 
     public struct AdditionalResultAttributeValue: AWSDecodableShape {
-
         /// The text associated with the attribute and information about the highlight to apply to the text.
         public let textWithHighlightsValue: TextWithHighlights?
 
@@ -511,7 +507,6 @@ extension Kendra {
     }
 
     public class AttributeFilter: AWSEncodableShape {
-
         /// Performs a logical AND operation on all supplied filters.
         public let andAllFilters: [AttributeFilter]?
         /// Returns true when a document contains all of the specified document attributes. This filter is only applicable to StringListValue metadata.
@@ -578,7 +573,6 @@ extension Kendra {
     }
 
     public struct AuthenticationConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// The list of configuration information that's required to connect to and  crawl a website host using basic authentication credentials. The list includes the name and port number of the website host.
         public let basicAuthentication: [BasicAuthenticationConfiguration]?
 
@@ -599,7 +593,6 @@ extension Kendra {
     }
 
     public struct BasicAuthenticationConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// Your secret ARN, which you can create in AWS Secrets Manager  You use a secret if basic authentication credentials are required to connect  to a website. The secret stores your credentials of user name and password.
         public let credentials: String
         /// The name of the website host you want to connect to using  authentication credentials. For example, the host name of https://a.example.com/page1.html is  "a.example.com".
@@ -632,7 +625,6 @@ extension Kendra {
     }
 
     public struct BatchDeleteDocumentRequest: AWSEncodableShape {
-
         public let dataSourceSyncJobMetricTarget: DataSourceSyncJobMetricTarget?
         /// One or more identifiers for documents to delete from the index.
         public let documentIdList: [String]
@@ -666,7 +658,6 @@ extension Kendra {
     }
 
     public struct BatchDeleteDocumentResponse: AWSDecodableShape {
-
         /// A list of documents that could not be removed from the index. Each entry contains an error message that indicates why the document couldn't be removed from the index.
         public let failedDocuments: [BatchDeleteDocumentResponseFailedDocument]?
 
@@ -680,7 +671,6 @@ extension Kendra {
     }
 
     public struct BatchDeleteDocumentResponseFailedDocument: AWSDecodableShape {
-
         /// The error code for why the document couldn't be removed from the index.
         public let errorCode: ErrorCode?
         /// An explanation for why the document couldn't be removed from the index.
@@ -702,7 +692,6 @@ extension Kendra {
     }
 
     public struct BatchGetDocumentStatusRequest: AWSEncodableShape {
-
         /// A list of DocumentInfo objects that identify the documents for which to get the status. You identify the documents by their document ID and optional attributes.
         public let documentInfoList: [DocumentInfo]
         /// The identifier of the index to add documents to. The index ID is returned by the  CreateIndex operation.
@@ -731,7 +720,6 @@ extension Kendra {
     }
 
     public struct BatchGetDocumentStatusResponse: AWSDecodableShape {
-
         /// The status of documents. The status indicates if the document is waiting to be indexed, is in the process of indexing, has completed indexing, or failed indexing. If a document failed indexing, the status provides the reason why.
         public let documentStatusList: [Status]?
         /// A list of documents that Amazon Kendra couldn't get the status for. The list includes the ID of the document and the reason that the status couldn't be found.
@@ -749,7 +737,6 @@ extension Kendra {
     }
 
     public struct BatchGetDocumentStatusResponseError: AWSDecodableShape {
-
         /// The unique identifier of the document whose status could not be retrieved.
         public let documentId: String?
         /// Indicates the source of the error.
@@ -771,7 +758,6 @@ extension Kendra {
     }
 
     public struct BatchPutDocumentRequest: AWSEncodableShape {
-
         /// One or more documents to add to the index. Documents can include custom attributes. For example,  'DataSourceId' and 'DataSourceSyncJobId' are custom  attributes that provide information on the synchronization  of documents running on a data source. Note,  'DataSourceSyncJobId' could be an optional custom attribute  as Amazon Kendra will use the ID of a running sync job. Documents have the following file size limits.   5 MB total size for inline documents   50 MB total size for files from an S3 bucket   5 MB extracted text for any file   For more information about file size and transaction per second quotas, see Quotas.
         public let documents: [Document]
         /// The identifier of the index to add the documents to. You need to create the index first using the CreateIndex operation.
@@ -807,8 +793,7 @@ extension Kendra {
     }
 
     public struct BatchPutDocumentResponse: AWSDecodableShape {
-
-        /// A list of documents that were not added to the index because the document failed a validation check. Each document contains an error message that indicates why the document couldn't be added to the index. If there was an error adding a document to an index the error is reported in your Amazon Web Services CloudWatch log. For more information, see Monitoring Amazon Kendra with Amazon CloudWatch Logs 
+        /// A list of documents that were not added to the index because the document failed a validation check. Each document contains an error message that indicates why the document couldn't be added to the index. If there was an error adding a document to an index the error is reported in your Amazon Web Services CloudWatch log. For more information, see Monitoring Amazon Kendra with Amazon CloudWatch Logs
         public let failedDocuments: [BatchPutDocumentResponseFailedDocument]?
 
         public init(failedDocuments: [BatchPutDocumentResponseFailedDocument]? = nil) {
@@ -821,7 +806,6 @@ extension Kendra {
     }
 
     public struct BatchPutDocumentResponseFailedDocument: AWSDecodableShape {
-
         /// The type of error that caused the document to fail to be indexed.
         public let errorCode: ErrorCode?
         /// A description of the reason why the document could not be indexed.
@@ -843,7 +827,6 @@ extension Kendra {
     }
 
     public struct CapacityUnitsConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// The amount of extra query capacity for an index and  GetQuerySuggestions  capacity. A single extra capacity unit for an index provides 0.5 queries per second or  approximately 40,000 queries per day.  GetQuerySuggestions capacity is 5 times the provisioned query  capacity for an index. For example, the base capacity for an index is 0.5  queries per second, so GetQuerySuggestions capacity is 2.5 calls per second.  If adding another 0.5 queries per second to total 1 queries per second for an  index, the GetQuerySuggestions capacity is 5 calls per second.
         public let queryCapacityUnits: Int
         /// The amount of extra storage capacity for an index. A single capacity unit for an index provides 150 GB of storage space or  500,000 documents, whichever is reached first.
@@ -866,7 +849,6 @@ extension Kendra {
     }
 
     public struct ClearQuerySuggestionsRequest: AWSEncodableShape {
-
         /// The identifier of the index you want to clear query suggestions from.
         public let indexId: String
 
@@ -886,7 +868,6 @@ extension Kendra {
     }
 
     public struct ClickFeedback: AWSEncodableShape {
-
         /// The Unix timestamp of the date and time that the result was clicked.
         public let clickTime: Date
         /// The unique identifier of the search result that was clicked.
@@ -909,7 +890,6 @@ extension Kendra {
     }
 
     public struct ColumnConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// One to five columns that indicate when a document in the database has changed.
         public let changeDetectingColumns: [String]
         /// The column that contains the contents of the document.
@@ -963,10 +943,9 @@ extension Kendra {
     }
 
     public struct ConfluenceAttachmentConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// Defines how attachment metadata fields should be mapped to index fields. Before you can map a field, you must first create an index field with a matching type using the console or the UpdateIndex operation. If you specify the AttachentFieldMappings parameter, you must specify at least one field mapping.
         public let attachmentFieldMappings: [ConfluenceAttachmentToIndexFieldMapping]?
-        /// Indicates whether Amazon Kendra indexes attachments to the pages and blogs in the Confluence data source. 
+        /// Indicates whether Amazon Kendra indexes attachments to the pages and blogs in the Confluence data source.
         public let crawlAttachments: Bool?
 
         public init(attachmentFieldMappings: [ConfluenceAttachmentToIndexFieldMapping]? = nil, crawlAttachments: Bool? = nil) {
@@ -989,8 +968,7 @@ extension Kendra {
     }
 
     public struct ConfluenceAttachmentToIndexFieldMapping: AWSEncodableShape & AWSDecodableShape {
-
-        /// The name of the field in the data source.  You must first create the index field using the UpdateIndex operation. 
+        /// The name of the field in the data source.  You must first create the index field using the UpdateIndex operation.
         public let dataSourceFieldName: ConfluenceAttachmentFieldName?
         /// The format for date fields in the data source. If the field specified in DataSourceFieldName is a date field you must specify the date format. If the field is not a date field, an exception is thrown.
         public let dateFieldFormat: String?
@@ -1020,7 +998,6 @@ extension Kendra {
     }
 
     public struct ConfluenceBlogConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// Defines how blog metadata fields should be mapped to index fields. Before you can map a field, you must first create an index field with a matching type using the console or the UpdateIndex operation. If you specify the BlogFieldMappings parameter, you must specify at least one field mapping.
         public let blogFieldMappings: [ConfluenceBlogToIndexFieldMapping]?
 
@@ -1042,8 +1019,7 @@ extension Kendra {
     }
 
     public struct ConfluenceBlogToIndexFieldMapping: AWSEncodableShape & AWSDecodableShape {
-
-        /// The name of the field in the data source. 
+        /// The name of the field in the data source.
         public let dataSourceFieldName: ConfluenceBlogFieldName?
         /// The format for date fields in the data source. If the field specified in DataSourceFieldName is a date field you must specify the date format. If the field is not a date field, an exception is thrown.
         public let dateFieldFormat: String?
@@ -1073,7 +1049,6 @@ extension Kendra {
     }
 
     public struct ConfluenceConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// Specifies configuration information for indexing attachments to Confluence blogs and pages.
         public let attachmentConfiguration: ConfluenceAttachmentConfiguration?
         ///  Specifies configuration information for indexing Confluence blogs.
@@ -1084,7 +1059,7 @@ extension Kendra {
         public let inclusionPatterns: [String]?
         /// Specifies configuration information for indexing Confluence pages.
         public let pageConfiguration: ConfluencePageConfiguration?
-        /// The Amazon Resource Name (ARN) of an Secrets Managersecret that contains the key/value pairs required to connect to your Confluence server. The secret must contain a JSON structure with the following keys:   username - The user name or email address of a user with administrative privileges for the Confluence server.   password - The password associated with the user logging in to the Confluence server.  
+        /// The Amazon Resource Name (ARN) of an Secrets Managersecret that contains the key/value pairs required to connect to your Confluence server. The secret must contain a JSON structure with the following keys:   username - The user name or email address of a user with administrative privileges for the Confluence server.   password - The password associated with the user logging in to the Confluence server.
         public let secretArn: String
         /// The URL of your Confluence instance. Use the full URL of the server. For example, https://server.example.com:port/. You can also use an IP address, for example, https://192.168.1.113/.
         public let serverUrl: String
@@ -1147,7 +1122,6 @@ extension Kendra {
     }
 
     public struct ConfluencePageConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// Defines how page metadata fields should be mapped to index fields. Before you can map a field, you must first create an index field with a matching type using the console or the UpdateIndex operation. If you specify the PageFieldMappings parameter, you must specify at least one field mapping.
         public let pageFieldMappings: [ConfluencePageToIndexFieldMapping]?
 
@@ -1169,8 +1143,7 @@ extension Kendra {
     }
 
     public struct ConfluencePageToIndexFieldMapping: AWSEncodableShape & AWSDecodableShape {
-
-        /// The name of the field in the data source. 
+        /// The name of the field in the data source.
         public let dataSourceFieldName: ConfluencePageFieldName?
         /// The format for date fields in the data source. If the field specified in DataSourceFieldName is a date field you must specify the date format. If the field is not a date field, an exception is thrown.
         public let dateFieldFormat: String?
@@ -1200,7 +1173,6 @@ extension Kendra {
     }
 
     public struct ConfluenceSpaceConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// Specifies whether Amazon Kendra should index archived spaces.
         public let crawlArchivedSpaces: Bool?
         /// Specifies whether Amazon Kendra should index personal spaces. Users can add restrictions to items in personal spaces. If personal spaces are indexed, queries without user context information may return restricted items from a personal space in their results. For more information, see Filtering on user context.
@@ -1250,8 +1222,7 @@ extension Kendra {
     }
 
     public struct ConfluenceSpaceToIndexFieldMapping: AWSEncodableShape & AWSDecodableShape {
-
-        /// The name of the field in the data source. 
+        /// The name of the field in the data source.
         public let dataSourceFieldName: ConfluenceSpaceFieldName?
         /// The format for date fields in the data source. If the field specified in DataSourceFieldName is a date field you must specify the date format. If the field is not a date field, an exception is thrown.
         public let dateFieldFormat: String?
@@ -1281,7 +1252,6 @@ extension Kendra {
     }
 
     public struct ConnectionConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the host for the database. Can be either a string (host.subdomain.domain.tld) or an IPv4 or IPv6 address.
         public let databaseHost: String
         /// The name of the database containing the document data.
@@ -1327,7 +1297,6 @@ extension Kendra {
     }
 
     public struct CreateDataSourceRequest: AWSEncodableShape {
-
         /// A token that you provide to identify the request to create a data source. Multiple calls to the CreateDataSource operation with the same client token will create only one data source.
         public let clientToken: String?
         /// The connector configuration information that is required to access the repository. You can't specify the Configuration parameter when the Type parameter is set to CUSTOM. If you do, you receive a ValidationException exception. The Configuration parameter is required for all other data sources.
@@ -1394,7 +1363,6 @@ extension Kendra {
     }
 
     public struct CreateDataSourceResponse: AWSDecodableShape {
-
         /// A unique identifier for the data source.
         public let id: String
 
@@ -1408,8 +1376,7 @@ extension Kendra {
     }
 
     public struct CreateFaqRequest: AWSEncodableShape {
-
-        /// A token that you provide to identify the request to create a FAQ. Multiple calls to the CreateFaqRequest operation with the same client token will create only one FAQ. 
+        /// A token that you provide to identify the request to create a FAQ. Multiple calls to the CreateFaqRequest operation with the same client token will create only one FAQ.
         public let clientToken: String?
         /// A description of the FAQ.
         public let description: String?
@@ -1471,7 +1438,6 @@ extension Kendra {
     }
 
     public struct CreateFaqResponse: AWSDecodableShape {
-
         /// The unique identifier of the FAQ.
         public let id: String?
 
@@ -1485,7 +1451,6 @@ extension Kendra {
     }
 
     public struct CreateIndexRequest: AWSEncodableShape {
-
         /// A token that you provide to identify the request to create an index. Multiple calls to the CreateIndex operation with the same client token will create only one index.
         public let clientToken: String?
         /// A description for the index.
@@ -1500,7 +1465,7 @@ extension Kendra {
         public let serverSideEncryptionConfiguration: ServerSideEncryptionConfiguration?
         /// A list of key-value pairs that identify the index. You can use the tags to identify and organize your resources and to control access to resources.
         public let tags: [Tag]?
-        /// The user context policy.  ATTRIBUTE_FILTER  All indexed content is searchable and displayable for all users. If there is an access control list, it is ignored. You can filter on user and group attributes.   USER_TOKEN  Enables SSO and token-based user access control. All documents with no access control and all documents accessible to the user will be searchable and displayable.   
+        /// The user context policy.  ATTRIBUTE_FILTER  All indexed content is searchable and displayable for all users. If there is an access control list, it is ignored. You can filter on user and group attributes.   USER_TOKEN  Enables SSO and token-based user access control. All documents with no access control and all documents accessible to the user will be searchable and displayable.
         public let userContextPolicy: UserContextPolicy?
         /// The user token configuration.
         public let userTokenConfigurations: [UserTokenConfiguration]?
@@ -1553,7 +1518,6 @@ extension Kendra {
     }
 
     public struct CreateIndexResponse: AWSDecodableShape {
-
         /// The unique identifier of the index. Use this identifier when you query an index, set up a data source, or index a document.
         public let id: String?
 
@@ -1567,7 +1531,6 @@ extension Kendra {
     }
 
     public struct CreateQuerySuggestionsBlockListRequest: AWSEncodableShape {
-
         /// A token that you provide to identify the request to create a  query suggestions block list.
         public let clientToken: String?
         /// A user-friendly description for the block list. For example, the description "List of all offensive words that can  appear in user queries and need to be blocked from suggestions."
@@ -1626,7 +1589,6 @@ extension Kendra {
     }
 
     public struct CreateQuerySuggestionsBlockListResponse: AWSDecodableShape {
-
         /// The unique identifier of the created block list.
         public let id: String?
 
@@ -1640,20 +1602,19 @@ extension Kendra {
     }
 
     public struct CreateThesaurusRequest: AWSEncodableShape {
-
-        /// A token that you provide to identify the request to create a  thesaurus. Multiple calls to the CreateThesaurus operation  with the same client token will create only one index. 
+        /// A token that you provide to identify the request to create a  thesaurus. Multiple calls to the CreateThesaurus operation  with the same client token will create only one index.
         public let clientToken: String?
         /// The description for the new thesaurus.
         public let description: String?
-        /// The unique identifier of the index for the new thesaurus. 
+        /// The unique identifier of the index for the new thesaurus.
         public let indexId: String
         /// The name for the new thesaurus.
         public let name: String
-        /// An AWS Identity and Access Management (IAM) role that gives Amazon Kendra permissions  to access thesaurus file specified in SourceS3Path. 
+        /// An AWS Identity and Access Management (IAM) role that gives Amazon Kendra permissions  to access thesaurus file specified in SourceS3Path.
         public let roleArn: String
-        /// The thesaurus file Amazon S3 source path. 
+        /// The thesaurus file Amazon S3 source path.
         public let sourceS3Path: S3Path
-        /// A list of key-value pairs that identify the thesaurus. You can use  the tags to identify and organize your resources and to control  access to resources. 
+        /// A list of key-value pairs that identify the thesaurus. You can use  the tags to identify and organize your resources and to control  access to resources.
         public let tags: [Tag]?
 
         public init(clientToken: String? = CreateThesaurusRequest.idempotencyToken(), description: String? = nil, indexId: String, name: String, roleArn: String, sourceS3Path: S3Path, tags: [Tag]? = nil) {
@@ -1699,8 +1660,7 @@ extension Kendra {
     }
 
     public struct CreateThesaurusResponse: AWSDecodableShape {
-
-        /// The unique identifier of the thesaurus.  
+        /// The unique identifier of the thesaurus.
         public let id: String?
 
         public init(id: String? = nil) {
@@ -1713,12 +1673,11 @@ extension Kendra {
     }
 
     public struct DataSourceConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// Provides configuration information for connecting to a Confluence data source.
         public let confluenceConfiguration: ConfluenceConfiguration?
         /// Provides information necessary to create a data source connector for a database.
         public let databaseConfiguration: DatabaseConfiguration?
-        /// Provides configuration for data sources that connect to Google Drive. 
+        /// Provides configuration for data sources that connect to Google Drive.
         public let googleDriveConfiguration: GoogleDriveConfiguration?
         /// Provides configuration for data sources that connect to Microsoft OneDrive.
         public let oneDriveConfiguration: OneDriveConfiguration?
@@ -1770,7 +1729,6 @@ extension Kendra {
     }
 
     public struct DataSourceGroup: AWSEncodableShape {
-
         /// The identifier of the data source group you want to add  to your list of data source groups. This is for filtering  search results based on the groups' access to documents in  that data source.
         public let dataSourceId: String
         /// The identifier of the group you want to add to your list  of groups. This is for filtering search results based on the  groups' access to documents.
@@ -1797,7 +1755,6 @@ extension Kendra {
     }
 
     public struct DataSourceSummary: AWSDecodableShape {
-
         /// The UNIX datetime that the data source was created.
         public let createdAt: Date?
         /// The unique identifier for the data source.
@@ -1808,7 +1765,7 @@ extension Kendra {
         public let status: DataSourceStatus?
         /// The type of the data source.
         public let type: DataSourceType?
-        /// The UNIX datetime that the data source was lasted updated. 
+        /// The UNIX datetime that the data source was lasted updated.
         public let updatedAt: Date?
 
         public init(createdAt: Date? = nil, id: String? = nil, name: String? = nil, status: DataSourceStatus? = nil, type: DataSourceType? = nil, updatedAt: Date? = nil) {
@@ -1831,7 +1788,6 @@ extension Kendra {
     }
 
     public struct DataSourceSyncJob: AWSDecodableShape {
-
         /// If the reason that the synchronization failed is due to an error with the underlying data source, this field contains a code that identifies the error.
         public let dataSourceErrorCode: String?
         /// The UNIX datetime that the synchronization job was completed.
@@ -1873,7 +1829,6 @@ extension Kendra {
     }
 
     public struct DataSourceSyncJobMetricTarget: AWSEncodableShape {
-
         /// The ID of the data source that is running the sync job.
         public let dataSourceId: String
         /// The ID of the sync job that is running on the data source. If the ID of a sync job is not provided and there is a sync job  running, then the ID of this sync job is used and metrics are  generated for this sync job. If the ID of a sync job is not provided and there is no sync job  running, then no metrics are generated and documents are   indexed/deleted at the index level without sync job metrics included.
@@ -1900,7 +1855,6 @@ extension Kendra {
     }
 
     public struct DataSourceSyncJobMetrics: AWSDecodableShape {
-
         /// The number of documents added from the data source up to now in the data source sync.
         public let documentsAdded: String?
         /// The number of documents deleted from the data source up to now in the data source sync run.
@@ -1930,7 +1884,6 @@ extension Kendra {
     }
 
     public struct DataSourceToIndexFieldMapping: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the column or attribute in the data source.
         public let dataSourceFieldName: String
         /// The type of data stored in the column or attribute.
@@ -1964,7 +1917,6 @@ extension Kendra {
     }
 
     public struct DataSourceVpcConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// A list of identifiers of security groups within your Amazon VPC. The security groups should enable Amazon Kendra to connect to the data source.
         public let securityGroupIds: [String]
         /// A list of identifiers for subnets within your Amazon VPC. The subnets should be able to connect to each other in the VPC, and they should have outgoing access to the Internet through a NAT device.
@@ -1999,7 +1951,6 @@ extension Kendra {
     }
 
     public struct DatabaseConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// Information about the database column that provides information for user context filtering.
         public let aclConfiguration: AclConfiguration?
         /// Information about where the index should get the document information from the database.
@@ -2039,7 +1990,6 @@ extension Kendra {
     }
 
     public struct DeleteDataSourceRequest: AWSEncodableShape {
-
         /// The unique identifier of the data source to delete.
         public let id: String
         /// The unique identifier of the index associated with the data source.
@@ -2066,7 +2016,6 @@ extension Kendra {
     }
 
     public struct DeleteFaqRequest: AWSEncodableShape {
-
         /// The identifier of the FAQ to remove.
         public let id: String
         /// The index to remove the FAQ from.
@@ -2093,7 +2042,6 @@ extension Kendra {
     }
 
     public struct DeleteIndexRequest: AWSEncodableShape {
-
         /// The identifier of the index to delete.
         public let id: String
 
@@ -2113,14 +2061,13 @@ extension Kendra {
     }
 
     public struct DeletePrincipalMappingRequest: AWSEncodableShape {
-
         /// The identifier of the data source you want to delete a group from. This is useful if a group is tied to multiple data sources and you want  to delete a group from accessing documents in a certain data source. For example,  the groups "Research", "Engineering", and "Sales and Marketing" are all tied to  the company's documents stored in the data sources Confluence and Salesforce.  You want to delete "Research" and "Engineering" groups from Salesforce, so that these groups cannot access customer-related documents stored in Salesforce.  Only "Sales and Marketing" should access documents in the Salesforce data source.
         public let dataSourceId: String?
         /// The identifier of the group you want to delete.
         public let groupId: String
         /// The identifier of the index you want to delete a group from.
         public let indexId: String
-        /// The timestamp identifier you specify to ensure Amazon Kendra does not  override the latest DELETE action with previous actions.  The highest number ID, which is the ordering ID, is the latest action  you want to process and apply on top of other actions with lower number  IDs. This prevents previous actions with lower number IDs from possibly  overriding the latest action. The ordering ID can be the UNIX time of the last update you made to a group  members list. You would then provide this list when calling  PutPrincipalMapping. This ensures your DELETE action  for that updated group with the latest members list doesn't get overwritten  by earlier DELETE actions for the same group which are yet to  be processed. The default ordering ID is the current UNIX time in milliseconds that the  action was received by Amazon Kendra. 
+        /// The timestamp identifier you specify to ensure Amazon Kendra does not  override the latest DELETE action with previous actions.  The highest number ID, which is the ordering ID, is the latest action  you want to process and apply on top of other actions with lower number  IDs. This prevents previous actions with lower number IDs from possibly  overriding the latest action. The ordering ID can be the UNIX time of the last update you made to a group  members list. You would then provide this list when calling  PutPrincipalMapping. This ensures your DELETE action  for that updated group with the latest members list doesn't get overwritten  by earlier DELETE actions for the same group which are yet to  be processed. The default ordering ID is the current UNIX time in milliseconds that the  action was received by Amazon Kendra.
         public let orderingId: Int64?
 
         public init(dataSourceId: String? = nil, groupId: String, indexId: String, orderingId: Int64? = nil) {
@@ -2140,7 +2087,7 @@ extension Kendra {
             try self.validate(self.indexId, name: "indexId", parent: name, max: 36)
             try self.validate(self.indexId, name: "indexId", parent: name, min: 36)
             try self.validate(self.indexId, name: "indexId", parent: name, pattern: "^[a-zA-Z0-9][a-zA-Z0-9-]*$")
-            try self.validate(self.orderingId, name: "orderingId", parent: name, max: 32535158400000)
+            try self.validate(self.orderingId, name: "orderingId", parent: name, max: 32_535_158_400_000)
             try self.validate(self.orderingId, name: "orderingId", parent: name, min: 0)
         }
 
@@ -2153,7 +2100,6 @@ extension Kendra {
     }
 
     public struct DeleteQuerySuggestionsBlockListRequest: AWSEncodableShape {
-
         /// The unique identifier of the block list that needs to be deleted.
         public let id: String
         /// The identifier of the you want to delete a block list from.
@@ -2180,7 +2126,6 @@ extension Kendra {
     }
 
     public struct DeleteThesaurusRequest: AWSEncodableShape {
-
         /// The identifier of the thesaurus to delete.
         public let id: String
         /// The identifier of the index associated with the thesaurus to delete.
@@ -2207,7 +2152,6 @@ extension Kendra {
     }
 
     public struct DescribeDataSourceRequest: AWSEncodableShape {
-
         /// The unique identifier of the data source to describe.
         public let id: String
         /// The identifier of the index that contains the data source.
@@ -2234,7 +2178,6 @@ extension Kendra {
     }
 
     public struct DescribeDataSourceResponse: AWSDecodableShape {
-
         /// Information that describes where the data source is located and how the data source is configured. The specific information in the description depends on the data source provider.
         public let configuration: DataSourceConfiguration?
         /// The Unix timestamp of when the data source was created.
@@ -2292,7 +2235,6 @@ extension Kendra {
     }
 
     public struct DescribeFaqRequest: AWSEncodableShape {
-
         /// The unique identifier of the FAQ.
         public let id: String
         /// The identifier of the index that contains the FAQ.
@@ -2319,7 +2261,6 @@ extension Kendra {
     }
 
     public struct DescribeFaqResponse: AWSDecodableShape {
-
         /// The date and time that the FAQ was created.
         public let createdAt: Date?
         /// The description of the FAQ that you provided when it was created.
@@ -2372,7 +2313,6 @@ extension Kendra {
     }
 
     public struct DescribeIndexRequest: AWSEncodableShape {
-
         /// The name of the index to describe.
         public let id: String
 
@@ -2392,7 +2332,6 @@ extension Kendra {
     }
 
     public struct DescribeIndexResponse: AWSDecodableShape {
-
         /// For Enterprise edition indexes, you can choose to use additional capacity to meet the needs of your application. This contains the capacity units used for the index. A 0 for the query capacity or the storage capacity indicates that the index is using the default capacity for the index.
         public let capacityUnits: CapacityUnitsConfiguration?
         /// The Unix datetime that the index was created.
@@ -2462,7 +2401,6 @@ extension Kendra {
     }
 
     public struct DescribePrincipalMappingRequest: AWSEncodableShape {
-
         /// The identifier of the data source to check the processing of  PUT and DELETE actions for mapping  users to their groups.
         public let dataSourceId: String?
         /// The identifier of the group required to check the processing of  PUT and DELETE actions for mapping users  to their groups.
@@ -2496,12 +2434,11 @@ extension Kendra {
     }
 
     public struct DescribePrincipalMappingResponse: AWSDecodableShape {
-
         /// Shows the identifier of the data source to see information on  the processing of PUT and DELETE actions  for mapping users to their groups.
         public let dataSourceId: String?
         /// Shows the identifier of the group to see information on the  processing of PUT and DELETE actions  for mapping users to their groups.
         public let groupId: String?
-        /// Shows the following information on the processing of PUT and  DELETE actions for mapping users to their groups:   Status – the status can be either  PROCESSING, SUCCEEDED, DELETING,  DELETED, or FAILED.   Last updated – the last date-time an action was updated.   Received – the last date-time an action was received or submitted.   Ordering ID – the latest action that should process and apply  after other actions.   Failure reason – the reason an action could not be processed.  
+        /// Shows the following information on the processing of PUT and  DELETE actions for mapping users to their groups:   Status – the status can be either  PROCESSING, SUCCEEDED, DELETING,  DELETED, or FAILED.   Last updated – the last date-time an action was updated.   Received – the last date-time an action was received or submitted.   Ordering ID – the latest action that should process and apply  after other actions.   Failure reason – the reason an action could not be processed.
         public let groupOrderingIdSummaries: [GroupOrderingIdSummary]?
         /// Shows the identifier of the index to see information on the  processing of PUT and DELETE actions  for mapping users to their groups.
         public let indexId: String?
@@ -2522,7 +2459,6 @@ extension Kendra {
     }
 
     public struct DescribeQuerySuggestionsBlockListRequest: AWSEncodableShape {
-
         /// The unique identifier of the block list.
         public let id: String
         /// The identifier of the index for the block list.
@@ -2549,7 +2485,6 @@ extension Kendra {
     }
 
     public struct DescribeQuerySuggestionsBlockListResponse: AWSDecodableShape {
-
         /// Shows the date-time a block list for query suggestions was last created.
         public let createdAt: Date?
         /// Shows the description for the block list.
@@ -2607,7 +2542,6 @@ extension Kendra {
     }
 
     public struct DescribeQuerySuggestionsConfigRequest: AWSEncodableShape {
-
         /// The identifier of the index you want to describe query suggestions  settings for.
         public let indexId: String
 
@@ -2627,10 +2561,9 @@ extension Kendra {
     }
 
     public struct DescribeQuerySuggestionsConfigResponse: AWSDecodableShape {
-
         /// Shows whether Amazon Kendra uses all queries or only uses queries that  include user information to generate query suggestions.
         public let includeQueriesWithoutUserInformation: Bool?
-        /// Shows the date-time query suggestions for an index was last cleared. After you clear suggestions, Amazon Kendra learns new suggestions based  on new queries added to the query log from the time you cleared suggestions.  Amazon Kendra only considers re-occurences of a query from the time you cleared  suggestions. 
+        /// Shows the date-time query suggestions for an index was last cleared. After you clear suggestions, Amazon Kendra learns new suggestions based  on new queries added to the query log from the time you cleared suggestions.  Amazon Kendra only considers re-occurences of a query from the time you cleared  suggestions.
         public let lastClearTime: Date?
         /// Shows the date-time query suggestions for an index was last updated.
         public let lastSuggestionsBuildTime: Date?
@@ -2673,7 +2606,6 @@ extension Kendra {
     }
 
     public struct DescribeThesaurusRequest: AWSEncodableShape {
-
         /// The identifier of the thesaurus to describe.
         public let id: String
         /// The identifier of the index associated with the thesaurus to describe.
@@ -2700,12 +2632,11 @@ extension Kendra {
     }
 
     public struct DescribeThesaurusResponse: AWSDecodableShape {
-
         /// The Unix datetime that the thesaurus was created.
         public let createdAt: Date?
         /// The thesaurus description.
         public let description: String?
-        /// When the Status field value is FAILED, the ErrorMessage field provides more information. 
+        /// When the Status field value is FAILED, the ErrorMessage field provides more information.
         public let errorMessage: String?
         /// The size of the thesaurus file in bytes.
         public let fileSizeBytes: Int64?
@@ -2715,14 +2646,14 @@ extension Kendra {
         public let indexId: String?
         /// The thesaurus name.
         public let name: String?
-        /// An AWS Identity and Access Management (IAM) role that gives Amazon Kendra permissions  to access thesaurus file specified in SourceS3Path. 
+        /// An AWS Identity and Access Management (IAM) role that gives Amazon Kendra permissions  to access thesaurus file specified in SourceS3Path.
         public let roleArn: String?
         public let sourceS3Path: S3Path?
-        /// The current status of the thesaurus. When the value is ACTIVE,  queries are able to use the thesaurus. If the Status field value  is FAILED, the ErrorMessage field provides more information.  If the status is ACTIVE_BUT_UPDATE_FAILED, it means that Amazon Kendra could not ingest the new thesaurus file. The old thesaurus file is still active. 
+        /// The current status of the thesaurus. When the value is ACTIVE,  queries are able to use the thesaurus. If the Status field value  is FAILED, the ErrorMessage field provides more information.  If the status is ACTIVE_BUT_UPDATE_FAILED, it means that Amazon Kendra could not ingest the new thesaurus file. The old thesaurus file is still active.
         public let status: ThesaurusStatus?
         /// The number of synonym rules in the thesaurus file.
         public let synonymRuleCount: Int64?
-        /// The number of unique terms in the thesaurus file. For example, the synonyms a,b,c and a=>d, the term count would be 4. 
+        /// The number of unique terms in the thesaurus file. For example, the synonyms a,b,c and a=>d, the term count would be 4.
         public let termCount: Int64?
         /// The Unix datetime that the thesaurus was last updated.
         public let updatedAt: Date?
@@ -2761,7 +2692,6 @@ extension Kendra {
     }
 
     public struct Document: AWSEncodableShape {
-
         /// Information on user and group access rights, which is used for  user context filtering.
         public let accessControlList: [Principal]?
         /// Custom attributes to apply to the document. Use the custom attributes to provide additional information for searching, to provide facets for refining searches, and to provide additional information in the query response.
@@ -2819,7 +2749,6 @@ extension Kendra {
     }
 
     public struct DocumentAttribute: AWSEncodableShape & AWSDecodableShape {
-
         /// The identifier for the attribute.
         public let key: String
         /// The value of the attribute.
@@ -2844,7 +2773,6 @@ extension Kendra {
     }
 
     public struct DocumentAttributeValueCountPair: AWSDecodableShape {
-
         /// The number of documents in the response that have the attribute value for the key.
         public let count: Int?
         /// The value of the attribute. For example, "HR."
@@ -2862,8 +2790,7 @@ extension Kendra {
     }
 
     public struct DocumentInfo: AWSEncodableShape {
-
-        /// Attributes that identify a specific version of a document to check. The only valid attributes are:   version   datasourceId   jobExecutionId   The attributes follow these rules:    dataSourceId and jobExecutionId must be used together.    version is ignored if dataSourceId and jobExecutionId are not provided.   If dataSourceId and jobExecutionId are provided, but version is not, the version defaults to "0".  
+        /// Attributes that identify a specific version of a document to check. The only valid attributes are:   version   datasourceId   jobExecutionId   The attributes follow these rules:    dataSourceId and jobExecutionId must be used together.    version is ignored if dataSourceId and jobExecutionId are not provided.   If dataSourceId and jobExecutionId are provided, but version is not, the version defaults to "0".
         public let attributes: [DocumentAttribute]?
         /// The unique identifier of the document.
         public let documentId: String
@@ -2888,14 +2815,13 @@ extension Kendra {
     }
 
     public struct DocumentMetadataConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the index field.
         public let name: String
         /// Provides manual tuning parameters to determine how the field affects the search results.
         public let relevance: Relevance?
         /// Provides information about how the field is used during a search.
         public let search: Search?
-        /// The data type of the index field. 
+        /// The data type of the index field.
         public let type: DocumentAttributeValueType
 
         public init(name: String, relevance: Relevance? = nil, search: Search? = nil, type: DocumentAttributeValueType) {
@@ -2920,7 +2846,6 @@ extension Kendra {
     }
 
     public struct DocumentRelevanceConfiguration: AWSEncodableShape {
-
         /// The name of the tuning configuration to override document relevance  at the index level.
         public let name: String
         public let relevance: Relevance
@@ -2943,7 +2868,6 @@ extension Kendra {
     }
 
     public struct DocumentsMetadataConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// A prefix used to filter metadata configuration files in the Amazon Web Services S3 bucket. The S3 bucket might contain multiple metadata files. Use S3Prefix to include only the desired metadata files.
         public let s3Prefix: String?
 
@@ -2962,7 +2886,6 @@ extension Kendra {
     }
 
     public struct Facet: AWSEncodableShape {
-
         /// The unique key for the document attribute.
         public let documentAttributeKey: String?
 
@@ -2982,7 +2905,6 @@ extension Kendra {
     }
 
     public struct FacetResult: AWSDecodableShape {
-
         /// The key for the facet values. This is the same as the DocumentAttributeKey provided in the query.
         public let documentAttributeKey: String?
         /// An array of key/value pairs, where the key is the value of the attribute and the count is the number of documents that share the key value.
@@ -3004,7 +2926,6 @@ extension Kendra {
     }
 
     public struct FaqStatistics: AWSDecodableShape {
-
         /// The total number of FAQ questions and answers contained in the index.
         public let indexedQuestionAnswersCount: Int
 
@@ -3018,10 +2939,9 @@ extension Kendra {
     }
 
     public struct FaqSummary: AWSDecodableShape {
-
         /// The UNIX datetime that the FAQ was added to the index.
         public let createdAt: Date?
-        /// The file type used to create the FAQ. 
+        /// The file type used to create the FAQ.
         public let fileFormat: FaqFileFormat?
         /// The unique identifier of the FAQ.
         public let id: String?
@@ -3052,7 +2972,6 @@ extension Kendra {
     }
 
     public struct GetQuerySuggestionsRequest: AWSEncodableShape {
-
         /// The identifier of the index you want to get query suggestions from.
         public let indexId: String
         /// The maximum number of query suggestions you want to show  to your users.
@@ -3081,7 +3000,6 @@ extension Kendra {
     }
 
     public struct GetQuerySuggestionsResponse: AWSDecodableShape {
-
         /// The unique identifier for a list of query suggestions for an index.
         public let querySuggestionsId: String?
         /// A list of query suggestions for an index.
@@ -3099,7 +3017,6 @@ extension Kendra {
     }
 
     public struct GoogleDriveConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// A list of MIME types to exclude from the index. All documents matching the specified MIME type are excluded.  For a list of MIME types, see Using a Google Workspace Drive data source.
         public let excludeMimeTypes: [String]?
         /// A list of identifiers or shared drives to exclude from the index. All files and folders stored on the shared drive are excluded.
@@ -3176,7 +3093,6 @@ extension Kendra {
     }
 
     public struct GroupMembers: AWSEncodableShape {
-
         /// A list of sub groups that belong to a group. For example, the sub  groups "Research", "Engineering", and "Sales and Marketing" all belong  to the group "Company".
         public let memberGroups: [MemberGroup]?
         /// A list of users that belong to a group. For example, a list of interns  all belong to the "Interns" group.
@@ -3212,7 +3128,6 @@ extension Kendra {
     }
 
     public struct GroupOrderingIdSummary: AWSDecodableShape {
-
         /// The reason an action could not be processed. An action can be a  PUT or DELETE action for mapping users  to their groups.
         public let failureReason: String?
         /// The last date-time an action was updated. An action can be a  PUT or DELETE action for mapping users  to their groups.
@@ -3242,10 +3157,9 @@ extension Kendra {
     }
 
     public struct GroupSummary: AWSDecodableShape {
-
-        ///  The identifier of the group you want group summary information on. 
+        ///  The identifier of the group you want group summary information on.
         public let groupId: String?
-        ///  The timestamp identifier used for the latest PUT or DELETE  action. 
+        ///  The timestamp identifier used for the latest PUT or DELETE  action.
         public let orderingId: Int64?
 
         public init(groupId: String? = nil, orderingId: Int64? = nil) {
@@ -3260,7 +3174,6 @@ extension Kendra {
     }
 
     public struct HierarchicalPrincipal: AWSEncodableShape {
-
         /// A list of principal lists  that define the hierarchy for which documents users should have access to.  Each hierarchical list specifies which user or group has allow or deny  access for each document.
         public let principalList: [Principal]
 
@@ -3280,14 +3193,13 @@ extension Kendra {
     }
 
     public struct Highlight: AWSDecodableShape {
-
         /// The zero-based location in the response string where the highlight starts.
         public let beginOffset: Int
         /// The zero-based location in the response string where the highlight ends.
         public let endOffset: Int
         /// Indicates whether the response is the best response. True if this is the best response; otherwise, false.
         public let topAnswer: Bool?
-        /// The highlight type. 
+        /// The highlight type.
         public let type: HighlightType?
 
         public init(beginOffset: Int, endOffset: Int, topAnswer: Bool? = nil, type: HighlightType? = nil) {
@@ -3306,10 +3218,9 @@ extension Kendra {
     }
 
     public struct IndexConfigurationSummary: AWSDecodableShape {
-
         /// The Unix timestamp when the index was created.
         public let createdAt: Date
-        /// Indicates whether the index is a enterprise edition index or a developer edition index. 
+        /// Indicates whether the index is a enterprise edition index or a developer edition index.
         public let edition: IndexEdition?
         /// A unique identifier for the index. Use this to identify the index when you are using operations such as Query, DescribeIndex, UpdateIndex, and DeleteIndex.
         public let id: String?
@@ -3340,7 +3251,6 @@ extension Kendra {
     }
 
     public struct IndexStatistics: AWSDecodableShape {
-
         /// The number of question and answer topics in the index.
         public let faqStatistics: FaqStatistics
         /// The number of text documents indexed.
@@ -3358,7 +3268,6 @@ extension Kendra {
     }
 
     public struct JsonTokenTypeConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// The group attribute field.
         public let groupAttributeField: String
         /// The user name attribute field.
@@ -3383,7 +3292,6 @@ extension Kendra {
     }
 
     public struct JwtTokenTypeConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// The regular expression that identifies the claim.
         public let claimRegex: String?
         /// The group attribute field.
@@ -3442,7 +3350,6 @@ extension Kendra {
     }
 
     public struct ListDataSourceSyncJobsRequest: AWSEncodableShape {
-
         /// The identifier of the data source.
         public let id: String
         /// The identifier of the index that contains the data source.
@@ -3451,7 +3358,7 @@ extension Kendra {
         public let maxResults: Int?
         /// If the result of the previous request to GetDataSourceSyncJobHistory was truncated, include the NextToken to fetch the next set of jobs.
         public let nextToken: String?
-        /// When specified, the synchronization jobs returned in the list are limited to jobs between the specified dates. 
+        /// When specified, the synchronization jobs returned in the list are limited to jobs between the specified dates.
         public let startTimeFilter: TimeRange?
         /// When specified, only returns synchronization jobs with the Status field equal to the specified status.
         public let statusFilter: DataSourceSyncJobStatus?
@@ -3489,7 +3396,6 @@ extension Kendra {
     }
 
     public struct ListDataSourceSyncJobsResponse: AWSDecodableShape {
-
         /// A history of synchronization jobs for the data source.
         public let history: [DataSourceSyncJob]?
         /// The GetDataSourceSyncJobHistory operation returns a page of vocabularies at a time. The maximum size of the page is set by the MaxResults parameter. If there are more jobs in the list than the page size, Amazon Kendra returns the NextPage token. Include the token in the next request to the GetDataSourceSyncJobHistory operation to return in the next page of jobs.
@@ -3507,12 +3413,11 @@ extension Kendra {
     }
 
     public struct ListDataSourcesRequest: AWSEncodableShape {
-
         /// The identifier of the index that contains the data source.
         public let indexId: String
         /// The maximum number of data sources to return.
         public let maxResults: Int?
-        /// If the previous response was incomplete (because there is more data to retrieve), Amazon Kendra returns a pagination token in the response. You can use this pagination token to retrieve the next set of data sources (DataSourceSummaryItems). 
+        /// If the previous response was incomplete (because there is more data to retrieve), Amazon Kendra returns a pagination token in the response. You can use this pagination token to retrieve the next set of data sources (DataSourceSummaryItems).
         public let nextToken: String?
 
         public init(indexId: String, maxResults: Int? = nil, nextToken: String? = nil) {
@@ -3539,8 +3444,7 @@ extension Kendra {
     }
 
     public struct ListDataSourcesResponse: AWSDecodableShape {
-
-        /// If the response is truncated, Amazon Kendra returns this token that you can use in the subsequent request to retrieve the next set of data sources. 
+        /// If the response is truncated, Amazon Kendra returns this token that you can use in the subsequent request to retrieve the next set of data sources.
         public let nextToken: String?
         /// An array of summary information for one or more data sources.
         public let summaryItems: [DataSourceSummary]?
@@ -3557,7 +3461,6 @@ extension Kendra {
     }
 
     public struct ListFaqsRequest: AWSEncodableShape {
-
         /// The index that contains the FAQ lists.
         public let indexId: String
         /// The maximum number of FAQs to return in the response. If there are fewer results in the list, this response contains only the actual results.
@@ -3589,7 +3492,6 @@ extension Kendra {
     }
 
     public struct ListFaqsResponse: AWSDecodableShape {
-
         /// information about the FAQs associated with the specified index.
         public let faqSummaryItems: [FaqSummary]?
         /// The ListFaqs operation returns a page of FAQs at a time. The maximum size of the page is set by the MaxResults parameter. If there are more jobs in the list than the page size, Amazon Kendra returns the NextPage token. Include the token in the next request to the ListFaqs operation to return the next page of FAQs.
@@ -3607,14 +3509,13 @@ extension Kendra {
     }
 
     public struct ListGroupsOlderThanOrderingIdRequest: AWSEncodableShape {
-
         /// The identifier of the data source for getting a list of groups mapped  to users before a given ordering timestamp identifier.
         public let dataSourceId: String?
         /// The identifier of the index for getting a list of groups mapped  to users before a given ordering or timestamp identifier.
         public let indexId: String
-        ///  The maximum results shown for a list of groups that are mapped to users before a  given ordering or timestamp identifier.  
+        ///  The maximum results shown for a list of groups that are mapped to users before a  given ordering or timestamp identifier.
         public let maxResults: Int?
-        ///  The next items in the list of groups that go beyond the maximum. 
+        ///  The next items in the list of groups that go beyond the maximum.
         public let nextToken: String?
         /// The timestamp identifier used for the latest PUT or  DELETE action for mapping users to their groups.
         public let orderingId: Int64
@@ -3638,7 +3539,7 @@ extension Kendra {
             try self.validate(self.maxResults, name: "maxResults", parent: name, min: 1)
             try self.validate(self.nextToken, name: "nextToken", parent: name, max: 800)
             try self.validate(self.nextToken, name: "nextToken", parent: name, min: 1)
-            try self.validate(self.orderingId, name: "orderingId", parent: name, max: 32535158400000)
+            try self.validate(self.orderingId, name: "orderingId", parent: name, max: 32_535_158_400_000)
             try self.validate(self.orderingId, name: "orderingId", parent: name, min: 0)
         }
 
@@ -3652,10 +3553,9 @@ extension Kendra {
     }
 
     public struct ListGroupsOlderThanOrderingIdResponse: AWSDecodableShape {
-
-        ///  Summary information for list of groups that are mapped to users before a  given ordering or timestamp identifier. 
+        ///  Summary information for list of groups that are mapped to users before a  given ordering or timestamp identifier.
         public let groupsSummaries: [GroupSummary]?
-        ///  The next items in the list of groups that go beyond the maximum. 
+        ///  The next items in the list of groups that go beyond the maximum.
         public let nextToken: String?
 
         public init(groupsSummaries: [GroupSummary]? = nil, nextToken: String? = nil) {
@@ -3670,10 +3570,9 @@ extension Kendra {
     }
 
     public struct ListIndicesRequest: AWSEncodableShape {
-
         /// The maximum number of data sources to return.
         public let maxResults: Int?
-        /// If the previous response was incomplete (because there is more data to retrieve), Amazon Kendra returns a pagination token in the response. You can use this pagination token to retrieve the next set of indexes (DataSourceSummaryItems). 
+        /// If the previous response was incomplete (because there is more data to retrieve), Amazon Kendra returns a pagination token in the response. You can use this pagination token to retrieve the next set of indexes (DataSourceSummaryItems).
         public let nextToken: String?
 
         public init(maxResults: Int? = nil, nextToken: String? = nil) {
@@ -3695,7 +3594,6 @@ extension Kendra {
     }
 
     public struct ListIndicesResponse: AWSDecodableShape {
-
         /// An array of summary information for one or more indexes.
         public let indexConfigurationSummaryItems: [IndexConfigurationSummary]?
         /// If the response is truncated, Amazon Kendra returns this token that you can use in the subsequent request to retrieve the next set of indexes.
@@ -3713,7 +3611,6 @@ extension Kendra {
     }
 
     public struct ListQuerySuggestionsBlockListsRequest: AWSEncodableShape {
-
         /// The identifier of the index for a list of all block lists that exist for  that index. For information on the current quota limits for block lists, see  Quotas  for Amazon Kendra.
         public let indexId: String
         /// The maximum number of block lists to return.
@@ -3745,7 +3642,6 @@ extension Kendra {
     }
 
     public struct ListQuerySuggestionsBlockListsResponse: AWSDecodableShape {
-
         /// Summary items for a block list. This includes summary items on the block list ID, block list name, when the  block list was created, when the block list was last updated, and the count  of block words/phrases in the block list. For information on the current quota limits for block lists, see  Quotas  for Amazon Kendra.
         public let blockListSummaryItems: [QuerySuggestionsBlockListSummary]?
         /// If the response is truncated, Amazon Kendra returns this token that you can use  in the subsequent request to retrieve the next set of block lists.
@@ -3763,7 +3659,6 @@ extension Kendra {
     }
 
     public struct ListTagsForResourceRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the index, FAQ, or data source to get a list of tags for.
         public let resourceARN: String
 
@@ -3782,7 +3677,6 @@ extension Kendra {
     }
 
     public struct ListTagsForResourceResponse: AWSDecodableShape {
-
         /// A list of tags associated with the index, FAQ, or data source.
         public let tags: [Tag]?
 
@@ -3796,12 +3690,11 @@ extension Kendra {
     }
 
     public struct ListThesauriRequest: AWSEncodableShape {
-
         /// The identifier of the index associated with the thesaurus to list.
         public let indexId: String
         /// The maximum number of thesauri to return.
         public let maxResults: Int?
-        /// If the previous response was incomplete (because there is more data to retrieve), Amazon Kendra returns a pagination token in the response. You can use this pagination token to retrieve the next set of thesauri (ThesaurusSummaryItems).  
+        /// If the previous response was incomplete (because there is more data to retrieve), Amazon Kendra returns a pagination token in the response. You can use this pagination token to retrieve the next set of thesauri (ThesaurusSummaryItems).
         public let nextToken: String?
 
         public init(indexId: String, maxResults: Int? = nil, nextToken: String? = nil) {
@@ -3828,8 +3721,7 @@ extension Kendra {
     }
 
     public struct ListThesauriResponse: AWSDecodableShape {
-
-        /// If the response is truncated, Amazon Kendra returns this  token that you can use in the subsequent request to  retrieve the next set of thesauri. 
+        /// If the response is truncated, Amazon Kendra returns this  token that you can use in the subsequent request to  retrieve the next set of thesauri.
         public let nextToken: String?
         /// An array of summary information for one or more thesauruses.
         public let thesaurusSummaryItems: [ThesaurusSummary]?
@@ -3846,7 +3738,6 @@ extension Kendra {
     }
 
     public struct MemberGroup: AWSEncodableShape {
-
         /// The identifier of the data source for the sub group  you want to map to a group.
         public let dataSourceId: String?
         /// The identifier of the sub group you want to map to a group.
@@ -3873,7 +3764,6 @@ extension Kendra {
     }
 
     public struct MemberUser: AWSEncodableShape {
-
         /// The identifier of the user you want to map to a group.
         public let userId: String
 
@@ -3893,8 +3783,7 @@ extension Kendra {
     }
 
     public struct OneDriveConfiguration: AWSEncodableShape & AWSDecodableShape {
-
-        /// A Boolean value that specifies whether local groups are disabled (True) or enabled (False). 
+        /// A Boolean value that specifies whether local groups are disabled (True) or enabled (False).
         public let disableLocalGroups: Bool?
         /// List of regular expressions applied to documents. Items that match the exclusion pattern are not indexed. If you provide both an inclusion pattern and an exclusion pattern, any item that matches the exclusion pattern isn't indexed.  The exclusion pattern is applied to the file name.
         public let exclusionPatterns: [String]?
@@ -3906,7 +3795,7 @@ extension Kendra {
         public let oneDriveUsers: OneDriveUsers
         /// The Amazon Resource Name (ARN) of an Secrets Managersecret that contains the user name and password to connect to OneDrive. The user namd should be the application ID for the OneDrive application, and the password is the application key for the OneDrive application.
         public let secretArn: String
-        /// The Azure Active Directory domain of the organization. 
+        /// The Azure Active Directory domain of the organization.
         public let tenantDomain: String
 
         public init(disableLocalGroups: Bool? = nil, exclusionPatterns: [String]? = nil, fieldMappings: [DataSourceToIndexFieldMapping]? = nil, inclusionPatterns: [String]? = nil, oneDriveUsers: OneDriveUsers, secretArn: String, tenantDomain: String) {
@@ -3956,7 +3845,6 @@ extension Kendra {
     }
 
     public struct OneDriveUsers: AWSEncodableShape & AWSDecodableShape {
-
         /// A list of users whose documents should be indexed. Specify the user names in email format, for example, username@tenantdomain. If you need to index the documents of more than 100 users, use the OneDriveUserS3Path field to specify the location of a file containing a list of users.
         public let oneDriveUserList: [String]?
         /// The S3 bucket location of a file containing a list of users whose documents should be indexed.
@@ -3985,7 +3873,6 @@ extension Kendra {
     }
 
     public struct Principal: AWSEncodableShape {
-
         /// Whether to allow or deny access to the principal.
         public let access: ReadAccessType
         /// The identifier of the data source the principal should  access documents from.
@@ -4020,7 +3907,6 @@ extension Kendra {
     }
 
     public struct ProxyConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// Your secret ARN, which you can create in AWS Secrets Manager  The credentials are optional. You use a secret if web proxy credentials  are required to connect to a website host. Amazon Kendra currently support basic  authentication to connect to a web proxy server. The secret stores your  credentials.
         public let credentials: String?
         /// The name of the website host you want to connect to  via a web proxy server. For example, the host name of https://a.example.com/page1.html  is "a.example.com".
@@ -4053,7 +3939,6 @@ extension Kendra {
     }
 
     public struct PutPrincipalMappingRequest: AWSEncodableShape {
-
         /// The identifier of the data source you want to map users to their groups. This is useful if a group is tied to multiple data sources, but you only want  the group to access documents of a certain data source. For example, the groups  "Research", "Engineering", and "Sales and Marketing" are all tied to the company's  documents stored in the data sources Confluence and Salesforce. However,  "Sales and Marketing" team only needs access to customer-related documents  stored in Salesforce.
         public let dataSourceId: String?
         /// The identifier of the group you want to map its users to.
@@ -4087,7 +3972,7 @@ extension Kendra {
             try self.validate(self.indexId, name: "indexId", parent: name, max: 36)
             try self.validate(self.indexId, name: "indexId", parent: name, min: 36)
             try self.validate(self.indexId, name: "indexId", parent: name, pattern: "^[a-zA-Z0-9][a-zA-Z0-9-]*$")
-            try self.validate(self.orderingId, name: "orderingId", parent: name, max: 32535158400000)
+            try self.validate(self.orderingId, name: "orderingId", parent: name, max: 32_535_158_400_000)
             try self.validate(self.orderingId, name: "orderingId", parent: name, min: 0)
             try self.validate(self.roleArn, name: "roleArn", parent: name, max: 1284)
             try self.validate(self.roleArn, name: "roleArn", parent: name, min: 1)
@@ -4105,7 +3990,6 @@ extension Kendra {
     }
 
     public struct QueryRequest: AWSEncodableShape {
-
         /// Enables filtered searches based on document attributes. You can only provide one attribute filter; however, the AndAllFilters, NotFilter, and OrAllFilters parameters contain a list of other filters. The AttributeFilter parameter enables you to create a set of filtering rules that a document must satisfy to be included in the query results.
         public let attributeFilter: AttributeFilter?
         /// Overrides relevance tuning configurations of fields or attributes set at the index level. If you use this API to override the relevance tuning configured at the index  level, but there is no relevance tuning configured at the index level, then Amazon Kendra does not apply any relevance tuning. If there is relevance tuning configured at the index level, but you do not use this API  to override any relevance tuning in the index, then Amazon Kendra uses the relevance tuning that is configured at the index level. If there is relevance tuning configured for fields at the index level,  but you use this API to override only some of these fields, then for the fields you did not override, the importance is set to 1.
@@ -4122,7 +4006,7 @@ extension Kendra {
         public let queryResultTypeFilter: QueryResultType?
         /// The text to search for.
         public let queryText: String
-        /// An array of document attributes to include in the response. No other document attributes are included in the response. By default all document attributes are included in the response. 
+        /// An array of document attributes to include in the response. No other document attributes are included in the response. By default all document attributes are included in the response.
         public let requestedDocumentAttributes: [String]?
         /// Provides information that determines how the results of the query are sorted. You can set the field that Amazon Kendra should sort the results on, and specify whether the results should be sorted in ascending or descending order. In the case of ties in sorting the results, the results are sorted by relevance. If you don't provide sorting configuration, the results are sorted by the relevance that Amazon Kendra determines for the result.
         public let sortingConfiguration: SortingConfiguration?
@@ -4192,7 +4076,6 @@ extension Kendra {
     }
 
     public struct QueryResult: AWSDecodableShape {
-
         /// Contains the facet results. A FacetResult contains the counts for each attribute key that was specified in the Facets input parameter.
         public let facetResults: [FacetResult]?
         /// The unique identifier for the search. You use QueryId to identify the search when using the feedback API.
@@ -4218,7 +4101,6 @@ extension Kendra {
     }
 
     public struct QueryResultItem: AWSDecodableShape {
-
         /// One or more additional attributes associated with the query result.
         public let additionalAttributes: [AdditionalResultAttribute]?
         /// An array of document attributes for the document that the query result maps to. For example, the document author (Author) or the source URI (SourceUri) of the document.
@@ -4237,7 +4119,7 @@ extension Kendra {
         public let id: String?
         /// Indicates the confidence that Amazon Kendra has that a result matches the query that you provided. Each result is placed into a bin that indicates the confidence, VERY_HIGH, HIGH, MEDIUM and LOW. You can use the score to determine if a response meets the confidence needed for your application. The field is only set to LOW when the Type field is set to DOCUMENT and Amazon Kendra is not confident that the result matches the query.
         public let scoreAttributes: ScoreAttributes?
-        /// The type of document. 
+        /// The type of document.
         public let type: QueryResultType?
 
         public init(additionalAttributes: [AdditionalResultAttribute]? = nil, documentAttributes: [DocumentAttribute]? = nil, documentExcerpt: TextWithHighlights? = nil, documentId: String? = nil, documentTitle: TextWithHighlights? = nil, documentURI: String? = nil, feedbackToken: String? = nil, id: String? = nil, scoreAttributes: ScoreAttributes? = nil, type: QueryResultType? = nil) {
@@ -4268,7 +4150,6 @@ extension Kendra {
     }
 
     public struct QuerySuggestionsBlockListSummary: AWSDecodableShape {
-
         /// The date-time summary information for a query suggestions  block list was last created.
         public let createdAt: Date?
         /// The identifier of a block list.
@@ -4302,7 +4183,6 @@ extension Kendra {
     }
 
     public struct Relevance: AWSEncodableShape & AWSDecodableShape {
-
         /// Specifies the time period that the boost applies to. For example, to make the boost apply to documents with the field value within the last month, you would use "2628000s". Once the field value is beyond the specified range, the effect of the boost drops off. The higher the importance, the faster the effect drops off. If you don't specify a value, the default is 3 months. The value of the field is a numeric string followed by the character "s", for example "86400s" for one day, or "604800s" for one week.  Only applies to DATE fields.
         public let duration: String?
         /// Indicates that this field determines how "fresh" a document is. For example, if document 1 was created on November 5, and document 2 was created on October 31, document 1 is "fresher" than document 2. You can only set the Freshness field on one DATE type field. Only applies to DATE fields.
@@ -4346,7 +4226,6 @@ extension Kendra {
     }
 
     public struct RelevanceFeedback: AWSEncodableShape {
-
         /// Whether to document was relevant or not relevant to the search.
         public let relevanceValue: RelevanceType
         /// The unique identifier of the search result that the user provided relevance feedback for.
@@ -4369,15 +4248,14 @@ extension Kendra {
     }
 
     public struct S3DataSourceConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// Provides the path to the S3 bucket that contains the user context filtering files for the data source. For the format of the file, see Access control for S3 data sources.
         public let accessControlListConfiguration: AccessControlListConfiguration?
         /// The name of the bucket that contains the documents.
         public let bucketName: String
         public let documentsMetadataConfiguration: DocumentsMetadataConfiguration?
-        /// A list of glob patterns for documents that should not be indexed. If a document that matches an inclusion prefix or inclusion pattern also matches an exclusion pattern, the document is not indexed. Some examples  are:    *.png , *.jpg will exclude  all PNG and JPEG image files in a directory  (files with the extensions .png and .jpg).    *internal* will exclude all  files in a directory that contain 'internal' in the file name,  such as 'internal', 'internal_only', 'company_internal'.    **/*internal* will exclude  all internal-related files in a directory and its subdirectories.  
+        /// A list of glob patterns for documents that should not be indexed. If a document that matches an inclusion prefix or inclusion pattern also matches an exclusion pattern, the document is not indexed. Some examples  are:    *.png , *.jpg will exclude  all PNG and JPEG image files in a directory  (files with the extensions .png and .jpg).    *internal* will exclude all  files in a directory that contain 'internal' in the file name,  such as 'internal', 'internal_only', 'company_internal'.    **/*internal* will exclude  all internal-related files in a directory and its subdirectories.
         public let exclusionPatterns: [String]?
-        /// A list of glob patterns for documents that should be indexed. If a document that matches an inclusion pattern also matches an exclusion pattern, the document is not indexed. Some examples  are:    *.txt will include all text files  in a directory (files with the extension .txt).    **/*.txt will include all text  files in a directory and its subdirectories.    *tax* will include all files in  a directory that contain 'tax' in the file name, such as 'tax',  'taxes', 'income_tax'.  
+        /// A list of glob patterns for documents that should be indexed. If a document that matches an inclusion pattern also matches an exclusion pattern, the document is not indexed. Some examples  are:    *.txt will include all text files  in a directory (files with the extension .txt).    **/*.txt will include all text  files in a directory and its subdirectories.    *tax* will include all files in  a directory that contain 'tax' in the file name, such as 'tax',  'taxes', 'income_tax'.
         public let inclusionPatterns: [String]?
         /// A list of S3 prefixes for the documents that should be included in the index.
         public let inclusionPrefixes: [String]?
@@ -4425,7 +4303,6 @@ extension Kendra {
     }
 
     public struct S3Path: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the S3 bucket that contains the file.
         public let bucket: String
         /// The name of the file.
@@ -4451,7 +4328,6 @@ extension Kendra {
     }
 
     public struct SalesforceChatterFeedConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the column in the Salesforce FeedItem table that contains the content to index. Typically this is the Body column.
         public let documentDataFieldName: String
         /// The name of the column in the Salesforce FeedItem table that contains the title of the document. This is typically the Title column.
@@ -4493,7 +4369,6 @@ extension Kendra {
     }
 
     public struct SalesforceConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// Specifies configuration information for Salesforce chatter feeds.
         public let chatterFeedConfiguration: SalesforceChatterFeedConfiguration?
         /// Indicates whether Amazon Kendra should index attachments to Salesforce objects.
@@ -4504,11 +4379,11 @@ extension Kendra {
         public let includeAttachmentFilePatterns: [String]?
         /// Specifies configuration information for the knowledge article types that Amazon Kendra indexes. Amazon Kendra indexes standard knowledge articles and the standard fields of knowledge articles, or the custom fields of custom knowledge articles, but not both.
         public let knowledgeArticleConfiguration: SalesforceKnowledgeArticleConfiguration?
-        /// The Amazon Resource Name (ARN) of an Secrets Managersecret that contains the key/value pairs required to connect to your Salesforce instance. The secret must contain a JSON structure with the following keys:   authenticationUrl - The OAUTH endpoint that Amazon Kendra connects to get an OAUTH token.    consumerKey - The application public key generated when you created your Salesforce application.   consumerSecret - The application private key generated when you created your Salesforce application.   password - The password associated with the user logging in to the Salesforce instance.   securityToken - The token associated with the user account logging in to the Salesforce instance.   username - The user name of the user logging in to the Salesforce instance.  
+        /// The Amazon Resource Name (ARN) of an Secrets Managersecret that contains the key/value pairs required to connect to your Salesforce instance. The secret must contain a JSON structure with the following keys:   authenticationUrl - The OAUTH endpoint that Amazon Kendra connects to get an OAUTH token.    consumerKey - The application public key generated when you created your Salesforce application.   consumerSecret - The application private key generated when you created your Salesforce application.   password - The password associated with the user logging in to the Salesforce instance.   securityToken - The token associated with the user account logging in to the Salesforce instance.   username - The user name of the user logging in to the Salesforce instance.
         public let secretArn: String
         /// The instance URL for the Salesforce site that you want to index.
         public let serverUrl: String
-        /// Provides configuration information for processing attachments to Salesforce standard objects. 
+        /// Provides configuration information for processing attachments to Salesforce standard objects.
         public let standardObjectAttachmentConfiguration: SalesforceStandardObjectAttachmentConfiguration?
         /// Specifies the Salesforce standard objects that Amazon Kendra indexes.
         public let standardObjectConfigurations: [SalesforceStandardObjectConfiguration]?
@@ -4566,7 +4441,6 @@ extension Kendra {
     }
 
     public struct SalesforceCustomKnowledgeArticleTypeConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the field in the custom knowledge article that contains the document data to index.
         public let documentDataFieldName: String
         /// The name of the field in the custom knowledge article that contains the document title.
@@ -4609,7 +4483,6 @@ extension Kendra {
     }
 
     public struct SalesforceKnowledgeArticleConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// Provides configuration information for custom Salesforce knowledge articles.
         public let customKnowledgeArticleTypeConfigurations: [SalesforceCustomKnowledgeArticleTypeConfiguration]?
         /// Specifies the document states that should be included when Amazon Kendra indexes knowledge articles. You must specify at least one state.
@@ -4642,7 +4515,6 @@ extension Kendra {
     }
 
     public struct SalesforceStandardKnowledgeArticleTypeConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the field that contains the document data to index.
         public let documentDataFieldName: String
         /// The name of the field that contains the document title.
@@ -4678,7 +4550,6 @@ extension Kendra {
     }
 
     public struct SalesforceStandardObjectAttachmentConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the field used for the document title.
         public let documentTitleFieldName: String?
         /// One or more objects that map fields in attachments to Amazon Kendra index fields.
@@ -4707,7 +4578,6 @@ extension Kendra {
     }
 
     public struct SalesforceStandardObjectConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the field in the standard object table that contains the document contents.
         public let documentDataFieldName: String
         /// The name of the field in the standard object table that contains the document title.
@@ -4747,7 +4617,6 @@ extension Kendra {
     }
 
     public struct ScoreAttributes: AWSDecodableShape {
-
         /// A relative ranking for how well the response matches the query.
         public let scoreConfidence: ScoreConfidence?
 
@@ -4761,7 +4630,6 @@ extension Kendra {
     }
 
     public struct Search: AWSEncodableShape & AWSDecodableShape {
-
         /// Determines whether the field is returned in the query response. The default is true.
         public let displayable: Bool?
         /// Indicates that the field can be used to create search facets, a count of results for each value in the field. The default is false .
@@ -4787,7 +4655,6 @@ extension Kendra {
     }
 
     public struct SeedUrlConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// The list of seed or starting point URLs of the  websites you want to crawl. The list can include a maximum of 100 seed URLs.
         public let seedUrls: [String]
         /// You can choose one of the following modes:    HOST_ONLY – crawl only the website host names.  For example, if the seed URL is "abc.example.com",  then only URLs with host name "abc.example.com" are crawled.    SUBDOMAINS – crawl the website host names with  subdomains. For example, if the seed URL is  "abc.example.com", then  "a.abc.example.com" and "b.abc.example.com" are also crawled.    EVERYTHING – crawl the website host names with  subdomains and other domains that the webpages link to.   The default mode is set to HOST_ONLY.
@@ -4814,7 +4681,6 @@ extension Kendra {
     }
 
     public struct ServerSideEncryptionConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// The identifier of the KMScustomer master key (CMK). Amazon Kendra doesn't support asymmetric CMKs.
         public let kmsKeyId: String?
 
@@ -4833,10 +4699,9 @@ extension Kendra {
     }
 
     public struct ServiceNowConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// Determines the type of authentication used to connect to the ServiceNow instance. If you choose HTTP_BASIC, Amazon Kendra is authenticated using the user name and password provided in the AWS Secrets Manager secret in the SecretArn field. When you choose OAUTH2, Amazon Kendra is authenticated using the OAuth token and secret provided in the Secrets Manager secret, and the user name and password are used to determine which information Amazon Kendra has access to. When you use OAUTH2 authentication, you must generate a token and a client secret using the ServiceNow console. For more information, see Using a ServiceNow data source.
         public let authenticationType: ServiceNowAuthenticationType?
-        /// The ServiceNow instance that the data source connects to. The host endpoint should look like the following: {instance}.service-now.com. 
+        /// The ServiceNow instance that the data source connects to. The host endpoint should look like the following: {instance}.service-now.com.
         public let hostUrl: String
         /// Provides configuration information for crawling knowledge articles in the ServiceNow site.
         public let knowledgeArticleConfiguration: ServiceNowKnowledgeArticleConfiguration?
@@ -4878,18 +4743,17 @@ extension Kendra {
     }
 
     public struct ServiceNowKnowledgeArticleConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// Indicates whether Amazon Kendra should index attachments to knowledge articles.
         public let crawlAttachments: Bool?
         /// The name of the ServiceNow field that is mapped to the index document contents field in the Amazon Kendra index.
         public let documentDataFieldName: String
         /// The name of the ServiceNow field that is mapped to the index document title field.
         public let documentTitleFieldName: String?
-        /// List of regular expressions applied to knowledge articles. Items that don't match the inclusion pattern are not indexed. The regex is applied to the field specified in the PatternTargetField 
+        /// List of regular expressions applied to knowledge articles. Items that don't match the inclusion pattern are not indexed. The regex is applied to the field specified in the PatternTargetField
         public let excludeAttachmentFilePatterns: [String]?
         /// Mapping between ServiceNow fields and Amazon Kendra index fields. You must create the index field before you map the field.
         public let fieldMappings: [DataSourceToIndexFieldMapping]?
-        /// A query that selects the knowledge articles to index. The query can return articles from multiple knowledge bases, and the knowledge bases can be public or private. The query string must be one generated by the ServiceNow console. For more information, see Specifying documents to index with a query. 
+        /// A query that selects the knowledge articles to index. The query can return articles from multiple knowledge bases, and the knowledge bases can be public or private. The query string must be one generated by the ServiceNow console. For more information, see Specifying documents to index with a query.
         public let filterQuery: String?
         /// List of regular expressions applied to knowledge articles. Items that don't match the inclusion pattern are not indexed. The regex is applied to the field specified in the PatternTargetField.
         public let includeAttachmentFilePatterns: [String]?
@@ -4943,8 +4807,7 @@ extension Kendra {
     }
 
     public struct ServiceNowServiceCatalogConfiguration: AWSEncodableShape & AWSDecodableShape {
-
-        /// Indicates whether Amazon Kendra should crawl attachments to the service catalog items. 
+        /// Indicates whether Amazon Kendra should crawl attachments to the service catalog items.
         public let crawlAttachments: Bool?
         /// The name of the ServiceNow field that is mapped to the index document contents field in the Amazon Kendra index.
         public let documentDataFieldName: String
@@ -5001,10 +4864,9 @@ extension Kendra {
     }
 
     public struct SharePointConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         ///  TRUE to include attachments to documents stored in your Microsoft SharePoint site in the index; otherwise, FALSE.
         public let crawlAttachments: Bool?
-        /// A Boolean value that specifies whether local groups are disabled (True) or enabled (False). 
+        /// A Boolean value that specifies whether local groups are disabled (True) or enabled (False).
         public let disableLocalGroups: Bool?
         /// The Microsoft SharePoint attribute field that contains the title of the document.
         public let documentTitleFieldName: String?
@@ -5090,7 +4952,6 @@ extension Kendra {
     }
 
     public struct SiteMapsConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// The list of sitemap URLs of the websites  you want to crawl. The list can include a maximum of three sitemap URLs.
         public let siteMaps: [String]
 
@@ -5113,8 +4974,7 @@ extension Kendra {
     }
 
     public struct SortingConfiguration: AWSEncodableShape {
-
-        /// The name of the document attribute used to sort the response. You can use any field that has the Sortable flag set to true. You can also sort by any of the following built-in attributes:   _category   _created_at   _last_updated_at   _version   _view_count  
+        /// The name of the document attribute used to sort the response. You can use any field that has the Sortable flag set to true. You can also sort by any of the following built-in attributes:   _category   _created_at   _last_updated_at   _version   _view_count
         public let documentAttributeKey: String
         /// The order that the results should be returned in. In case of ties, the relevance assigned to the result by Amazon Kendra is used as the tie-breaker.
         public let sortOrder: SortOrder
@@ -5137,7 +4997,6 @@ extension Kendra {
     }
 
     public struct SqlConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// Determines whether Amazon Kendra encloses SQL identifiers for tables and column names in double quotes (") when making a database query. By default, Amazon Kendra passes SQL identifiers the way that they are entered into the data source configuration. It does not change the case of identifiers or enclose them in quotes. PostgreSQL internally converts uppercase characters to lower case characters in identifiers unless they are quoted. Choosing this option encloses identifiers in quotes so that PostgreSQL does not convert the character's case. For MySQL databases, you must enable the ansi_quotes option when you set this field to DOUBLE_QUOTES.
         public let queryIdentifiersEnclosingOption: QueryIdentifiersEnclosingOption?
 
@@ -5151,7 +5010,6 @@ extension Kendra {
     }
 
     public struct StartDataSourceSyncJobRequest: AWSEncodableShape {
-
         /// The identifier of the data source to synchronize.
         public let id: String
         /// The identifier of the index that contains the data source.
@@ -5178,7 +5036,6 @@ extension Kendra {
     }
 
     public struct StartDataSourceSyncJobResponse: AWSDecodableShape {
-
         /// Identifies a particular synchronization job.
         public let executionId: String?
 
@@ -5192,7 +5049,6 @@ extension Kendra {
     }
 
     public struct Status: AWSDecodableShape {
-
         /// The unique identifier of the document.
         public let documentId: String?
         /// The current status of a document. If the document was submitted for deletion, the status is NOT_FOUND after the document is deleted.
@@ -5218,7 +5074,6 @@ extension Kendra {
     }
 
     public struct StopDataSourceSyncJobRequest: AWSEncodableShape {
-
         /// The identifier of the data source for which to stop the synchronization jobs.
         public let id: String
         /// The identifier of the index that contains the data source.
@@ -5245,8 +5100,7 @@ extension Kendra {
     }
 
     public struct SubmitFeedbackRequest: AWSEncodableShape {
-
-        /// Tells Amazon Kendra that a particular search result link was chosen by the user. 
+        /// Tells Amazon Kendra that a particular search result link was chosen by the user.
         public let clickFeedbackItems: [ClickFeedback]?
         /// The identifier of the index that was queried.
         public let indexId: String
@@ -5286,7 +5140,6 @@ extension Kendra {
     }
 
     public struct Suggestion: AWSDecodableShape {
-
         /// The unique UUID (universally unique identifier) of a single  query suggestion.
         public let id: String?
         /// The value for the unique UUID (universally unique identifier)  of a single query suggestion. The value is the text string of a suggestion.
@@ -5304,7 +5157,6 @@ extension Kendra {
     }
 
     public struct SuggestionHighlight: AWSDecodableShape {
-
         /// The zero-based location in the response string where the highlight starts.
         public let beginOffset: Int?
         /// The zero-based location in the response string where the highlight ends.
@@ -5322,7 +5174,6 @@ extension Kendra {
     }
 
     public struct SuggestionTextWithHighlights: AWSDecodableShape {
-
         /// The beginning and end of the query suggestion text that should be highlighted.
         public let highlights: [SuggestionHighlight]?
         /// The query suggestion text to display to the user.
@@ -5340,7 +5191,6 @@ extension Kendra {
     }
 
     public struct SuggestionValue: AWSDecodableShape {
-
         /// The SuggestionTextWithHighlights structure that contains  the query suggestion text and highlights.
         public let text: SuggestionTextWithHighlights?
 
@@ -5354,7 +5204,6 @@ extension Kendra {
     }
 
     public struct Tag: AWSEncodableShape & AWSDecodableShape {
-
         /// The key for the tag. Keys are not case sensitive and must be unique for the index, FAQ, or data source.
         public let key: String
         /// The value associated with the tag. The value may be an empty string but it can't be null.
@@ -5378,7 +5227,6 @@ extension Kendra {
     }
 
     public struct TagResourceRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the index, FAQ, or data source to tag.
         public let resourceARN: String
         /// A list of tag keys to add to the index, FAQ, or data source. If a tag already exists, the existing value is replaced with the new value.
@@ -5405,15 +5253,10 @@ extension Kendra {
     }
 
     public struct TagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct TextDocumentStatistics: AWSDecodableShape {
-
         /// The total size, in bytes, of the indexed documents.
         public let indexedTextBytes: Int64
         /// The number of text documents indexed.
@@ -5431,7 +5274,6 @@ extension Kendra {
     }
 
     public struct TextWithHighlights: AWSDecodableShape {
-
         /// The beginning and end of the text that should be highlighted.
         public let highlights: [Highlight]?
         /// The text to display to the user.
@@ -5449,7 +5291,6 @@ extension Kendra {
     }
 
     public struct ThesaurusSummary: AWSDecodableShape {
-
         /// The Unix datetime that the thesaurus was created.
         public let createdAt: Date?
         /// The identifier of the thesaurus.
@@ -5479,7 +5320,6 @@ extension Kendra {
     }
 
     public struct TimeRange: AWSEncodableShape {
-
         /// The UNIX datetime of the end of the time range.
         public let endTime: Date?
         /// The UNIX datetime of the beginning of the time range.
@@ -5497,7 +5337,6 @@ extension Kendra {
     }
 
     public struct UntagResourceRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the index, FAQ, or data source to remove the tag from.
         public let resourceARN: String
         /// A list of tag keys to remove from the index, FAQ, or data source. If a tag key does not exist on the resource, it is ignored.
@@ -5525,15 +5364,10 @@ extension Kendra {
     }
 
     public struct UntagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateDataSourceRequest: AWSEncodableShape {
-
         public let configuration: DataSourceConfiguration?
         /// The new description for the data source.
         public let description: String?
@@ -5588,12 +5422,11 @@ extension Kendra {
     }
 
     public struct UpdateIndexRequest: AWSEncodableShape {
-
         /// Sets the number of additional storage and query capacity units that should be used by the index. You can change the capacity of the index up to 5 times per day. If you are using extra storage units, you can't reduce the storage capacity below that required to meet the storage needs for your index.
         public let capacityUnits: CapacityUnitsConfiguration?
         /// A new description for the index.
         public let description: String?
-        /// The document metadata to update. 
+        /// The document metadata to update.
         public let documentMetadataConfigurationUpdates: [DocumentMetadataConfiguration]?
         /// The identifier of the index to update.
         public let id: String
@@ -5653,7 +5486,6 @@ extension Kendra {
     }
 
     public struct UpdateQuerySuggestionsBlockListRequest: AWSEncodableShape {
-
         /// The description for a block list.
         public let description: String?
         /// The unique identifier of a block list.
@@ -5705,7 +5537,6 @@ extension Kendra {
     }
 
     public struct UpdateQuerySuggestionsConfigRequest: AWSEncodableShape {
-
         ///  TRUE to include queries without user information (i.e. all queries,  irrespective of the user), otherwise FALSE to only include queries  with user information. If you pass user information to Amazon Kendra along with the queries, you can set this  flag to FALSE and instruct Amazon Kendra to only consider queries with user  information. If you set to FALSE, Amazon Kendra only considers queries searched at least  MinimumQueryCount times across MinimumNumberOfQueryingUsers  unique users for suggestions. If you set to TRUE, Amazon Kendra ignores all user information and learns  from all queries.
         public let includeQueriesWithoutUserInformation: Bool?
         /// The identifier of the index you want to update query suggestions settings for.
@@ -5749,7 +5580,6 @@ extension Kendra {
     }
 
     public struct UpdateThesaurusRequest: AWSEncodableShape {
-
         /// The updated description of the thesaurus.
         public let description: String?
         /// The identifier of the thesaurus to update.
@@ -5800,7 +5630,6 @@ extension Kendra {
     }
 
     public struct Urls: AWSEncodableShape & AWSDecodableShape {
-
         /// Provides the configuration of the seed or starting point URLs of the websites  you want to crawl. You can choose to crawl only the website host names, or the website host names  with subdomains, or the website host names with subdomains and other domains  that the webpages link to. You can list up to 100 seed URLs.
         public let seedUrlConfiguration: SeedUrlConfiguration?
         /// Provides the configuration of the sitemap URLs of the websites you want to crawl. Only URLs belonging to the same website host names are crawled. You can list up to  three sitemap URLs.
@@ -5823,7 +5652,6 @@ extension Kendra {
     }
 
     public struct UserContext: AWSEncodableShape {
-
         /// The list of data source groups you want to filter search results  based on groups' access to documents in that data source.
         public let dataSourceGroups: [DataSourceGroup]?
         /// The list of groups you want to filter search results based on the  groups' access to documents.
@@ -5853,7 +5681,7 @@ extension Kendra {
             }
             try self.validate(self.groups, name: "groups", parent: name, max: 2048)
             try self.validate(self.groups, name: "groups", parent: name, min: 1)
-            try self.validate(self.token, name: "token", parent: name, max: 100000)
+            try self.validate(self.token, name: "token", parent: name, max: 100_000)
             try self.validate(self.token, name: "token", parent: name, min: 1)
             try self.validate(self.token, name: "token", parent: name, pattern: "^\\P{C}*$")
             try self.validate(self.userId, name: "userId", parent: name, max: 200)
@@ -5870,7 +5698,6 @@ extension Kendra {
     }
 
     public struct UserTokenConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// Information about the JSON token type configuration.
         public let jsonTokenTypeConfiguration: JsonTokenTypeConfiguration?
         /// Information about the JWT token type configuration.
@@ -5893,7 +5720,6 @@ extension Kendra {
     }
 
     public struct WebCrawlerConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// Provides configuration information required to connect to websites using  authentication. You can connect to websites using basic authentication of user name and password. You must provide the website host name and port number. For example, the host name  of https://a.example.com/page1.html is "a.example.com" and the port is 443, the  standard port for HTTPS. You use a secret in AWS Secrets Manager to store  your authentication credentials.
         public let authenticationConfiguration: AuthenticationConfiguration?
         /// Specifies the number of levels in a website that you want to crawl. The first level begins from the website seed or starting point URL.  For example, if a website has 3 levels – index level (i.e. seed in this  example), sections level, and subsections level – and you are only  interested in crawling information up to the sections level (i.e.  levels 0-1), you can set your depth to 1. The default crawl depth is set to 2.
@@ -5910,7 +5736,7 @@ extension Kendra {
         public let urlExclusionPatterns: [String]?
         /// The regular expression pattern to include certain URLs to crawl. If there is a regular expression pattern to exclude certain URLs that  conflicts with the include pattern, the exclude pattern takes precedence.
         public let urlInclusionPatterns: [String]?
-        /// Specifies the seed or starting point URLs of the  websites or the sitemap URLs of the websites you want to crawl. You can include website subdomains. You can list up to 100 seed  URLs and up to three sitemap URLs.  When selecting websites to index, you must adhere to  the Amazon Acceptable Use Policy  and all other Amazon terms. Remember that you must only use the Amazon Kendra  web crawler to index your own webpages, or webpages that you have  authorization to index. 
+        /// Specifies the seed or starting point URLs of the  websites or the sitemap URLs of the websites you want to crawl. You can include website subdomains. You can list up to 100 seed  URLs and up to three sitemap URLs.  When selecting websites to index, you must adhere to  the Amazon Acceptable Use Policy  and all other Amazon terms. Remember that you must only use the Amazon Kendra  web crawler to index your own webpages, or webpages that you have  authorization to index.
         public let urls: Urls
 
         public init(authenticationConfiguration: AuthenticationConfiguration? = nil, crawlDepth: Int? = nil, maxContentSizePerPageInMegaBytes: Float? = nil, maxLinksPerPage: Int? = nil, maxUrlsPerMinuteCrawlRate: Int? = nil, proxyConfiguration: ProxyConfiguration? = nil, urlExclusionPatterns: [String]? = nil, urlInclusionPatterns: [String]? = nil, urls: Urls) {

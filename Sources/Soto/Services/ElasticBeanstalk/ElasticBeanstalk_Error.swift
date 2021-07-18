@@ -77,13 +77,13 @@ public struct ElasticBeanstalkErrorType: AWSErrorType {
     public static var resourceNotFoundException: Self { .init(.resourceNotFoundException) }
     /// The type of the specified Amazon Resource Name (ARN) isn't supported for this operation.
     public static var resourceTypeNotSupportedException: Self { .init(.resourceTypeNotSupportedException) }
-    /// The specified S3 bucket does not belong to the S3 region in which the service is running. The following regions are supported:  
+    /// The specified S3 bucket does not belong to the S3 region in which the service is running. The following regions are supported:
     /// 	              IAD/us-east-1
-    /// 	            
+    ///
     /// 	              PDX/us-west-2
-    /// 	            
+    ///
     /// 	              DUB/eu-west-1
-    /// 	            
+    ///
     public static var s3LocationNotInServiceRegionException: Self { .init(.s3LocationNotInServiceRegionException) }
     /// The specified account does not have a subscription to Amazon S3.
     public static var s3SubscriptionRequiredException: Self { .init(.s3SubscriptionRequiredException) }

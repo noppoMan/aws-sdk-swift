@@ -79,7 +79,7 @@ extension ECS {
     ///  			of results to a single attribute name to only return results that have that name. You
     ///  			can also filter the results by attribute name and value, for example, to see which
     ///  			container instances in a cluster are running a Linux AMI
-    ///  			(ecs.os-type=linux). 
+    ///  			(ecs.os-type=linux).
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.

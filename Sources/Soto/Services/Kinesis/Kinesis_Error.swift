@@ -74,7 +74,7 @@ public struct KinesisErrorType: AWSErrorType {
     public static var kMSOptInRequired: Self { .init(.kMSOptInRequired) }
     /// The request was denied due to request throttling. For more information about throttling, see Limits in the AWS Key Management Service Developer Guide.
     public static var kMSThrottlingException: Self { .init(.kMSThrottlingException) }
-    /// The requested resource exceeds the maximum number allowed, or the number of concurrent stream requests exceeds the maximum number allowed. 
+    /// The requested resource exceeds the maximum number allowed, or the number of concurrent stream requests exceeds the maximum number allowed.
     public static var limitExceededException: Self { .init(.limitExceededException) }
     /// The request rate for the stream is too high, or the requested data is too large for the available throughput. Reduce the frequency or size of your requests. For more information, see Streams Limits in the Amazon Kinesis Data Streams Developer Guide, and Error Retries and Exponential Backoff in AWS in the AWS General Reference.
     public static var provisionedThroughputExceededException: Self { .init(.provisionedThroughputExceededException) }

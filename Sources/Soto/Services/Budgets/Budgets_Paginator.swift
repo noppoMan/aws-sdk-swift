@@ -20,7 +20,7 @@ import SotoCore
 // MARK: Paginators
 
 extension Budgets {
-    ///   Describes a budget action history detail. 
+    ///   Describes a budget action history detail.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.
@@ -73,7 +73,7 @@ extension Budgets {
         )
     }
 
-    ///   Describes all of the budget actions for an account. 
+    ///   Describes all of the budget actions for an account.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.
@@ -126,7 +126,7 @@ extension Budgets {
         )
     }
 
-    ///   Describes all of the budget actions for a budget. 
+    ///   Describes all of the budget actions for a budget.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.
@@ -233,9 +233,9 @@ extension Budgets {
     }
 
     ///  Lists the budgets that are associated with an account.
-    ///  		       
-    ///  			         The Request Syntax section shows the BudgetLimit syntax. For PlannedBudgetLimits, see the Examples section. 
-    ///  		       
+    ///
+    ///  			         The Request Syntax section shows the BudgetLimit syntax. For PlannedBudgetLimits, see the Examples section.
+    ///
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.

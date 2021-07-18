@@ -66,8 +66,7 @@ extension Codestarnotifications {
     // MARK: Shapes
 
     public struct CreateNotificationRuleRequest: AWSEncodableShape {
-
-        /// A unique, client-generated idempotency token that, when provided in a request, ensures the request cannot be repeated with a changed parameter. If a request with the same parameters is received and a token is included, the request returns information about the initial request that used that token.  The AWS SDKs prepopulate client request tokens. If you are using an AWS SDK, an idempotency token is created for you. 
+        /// A unique, client-generated idempotency token that, when provided in a request, ensures the request cannot be repeated with a changed parameter. If a request with the same parameters is received and a token is included, the request returns information about the initial request that used that token.  The AWS SDKs prepopulate client request tokens. If you are using an AWS SDK, an idempotency token is created for you.
         public let clientRequestToken: String?
         /// The level of detail to include in the notifications for this resource. BASIC will include only the  contents of the event as it would appear in AWS CloudWatch. FULL will include any supplemental information provided by AWS CodeStar Notifications and/or the service for the resource for which the notification is created.
         public let detailType: DetailType
@@ -79,7 +78,7 @@ extension Codestarnotifications {
         public let resource: String
         /// The status of the notification rule. The default value is ENABLED. If the status is set to DISABLED, notifications aren't sent for the notification rule.
         public let status: NotificationRuleStatus?
-        /// A list of tags to apply to this notification rule. Key names cannot start with "aws". 
+        /// A list of tags to apply to this notification rule. Key names cannot start with "aws".
         public let tags: [String: String]?
         /// A list of Amazon Resource Names (ARNs) of SNS topics to associate with the notification rule.
         public let targets: [Target]
@@ -133,7 +132,6 @@ extension Codestarnotifications {
     }
 
     public struct CreateNotificationRuleResult: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the notification rule.
         public let arn: String?
 
@@ -147,7 +145,6 @@ extension Codestarnotifications {
     }
 
     public struct DeleteNotificationRuleRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the notification rule you want to delete.
         public let arn: String
 
@@ -165,7 +162,6 @@ extension Codestarnotifications {
     }
 
     public struct DeleteNotificationRuleResult: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the deleted notification rule.
         public let arn: String?
 
@@ -179,7 +175,6 @@ extension Codestarnotifications {
     }
 
     public struct DeleteTargetRequest: AWSEncodableShape {
-
         /// A Boolean value that can be used to delete all associations with this SNS topic. The default value is FALSE. If set to TRUE, all associations between that target and every notification rule in your AWS account are deleted.
         public let forceUnsubscribeAll: Bool?
         /// The Amazon Resource Name (ARN) of the SNS topic to delete.
@@ -202,15 +197,10 @@ extension Codestarnotifications {
     }
 
     public struct DeleteTargetResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DescribeNotificationRuleRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the notification rule.
         public let arn: String
 
@@ -228,7 +218,6 @@ extension Codestarnotifications {
     }
 
     public struct DescribeNotificationRuleResult: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the notification rule.
         public let arn: String
         /// The name or email alias of the person who created the notification rule.
@@ -282,7 +271,6 @@ extension Codestarnotifications {
     }
 
     public struct EventTypeSummary: AWSDecodableShape {
-
         /// The system-generated ID of the event.
         public let eventTypeId: String?
         /// The name of the event.
@@ -308,7 +296,6 @@ extension Codestarnotifications {
     }
 
     public struct ListEventTypesFilter: AWSEncodableShape {
-
         /// The system-generated name of the filter type you want to filter by.
         public let name: ListEventTypesFilterName
         /// The name of the resource type (for example, pipeline) or service name (for example, CodePipeline) that you want to filter by.
@@ -326,7 +313,6 @@ extension Codestarnotifications {
     }
 
     public struct ListEventTypesRequest: AWSEncodableShape {
-
         /// The filters to use to return information by service or resource type.
         public let filters: [ListEventTypesFilter]?
         /// A non-negative integer used to limit the number of returned results. The default number is 50. The maximum number of results that can be returned is 100.
@@ -354,7 +340,6 @@ extension Codestarnotifications {
     }
 
     public struct ListEventTypesResult: AWSDecodableShape {
-
         /// Information about each event, including service name, resource type, event ID, and event name.
         public let eventTypes: [EventTypeSummary]?
         /// An enumeration token that can be used in a request to return the next batch of the results.
@@ -372,7 +357,6 @@ extension Codestarnotifications {
     }
 
     public struct ListNotificationRulesFilter: AWSEncodableShape {
-
         /// The name of the attribute you want to use to filter the returned notification rules.
         public let name: ListNotificationRulesFilterName
         /// The value of the attribute you want to use to filter the returned notification rules. For example, if you specify filtering by RESOURCE  in Name, you might specify the ARN of a pipeline in AWS CodePipeline for the value.
@@ -390,8 +374,7 @@ extension Codestarnotifications {
     }
 
     public struct ListNotificationRulesRequest: AWSEncodableShape {
-
-        /// The filters to use to return information by service or resource type. For valid values, see ListNotificationRulesFilter.  A filter with the same name can appear more than once when used with OR statements. Filters with different names should be applied with AND statements. 
+        /// The filters to use to return information by service or resource type. For valid values, see ListNotificationRulesFilter.  A filter with the same name can appear more than once when used with OR statements. Filters with different names should be applied with AND statements.
         public let filters: [ListNotificationRulesFilter]?
         /// A non-negative integer used to limit the number of returned results. The maximum number of results that can be returned is 100.
         public let maxResults: Int?
@@ -418,10 +401,9 @@ extension Codestarnotifications {
     }
 
     public struct ListNotificationRulesResult: AWSDecodableShape {
-
         /// An enumeration token that can be used in a request to return the next batch of the results.
         public let nextToken: String?
-        /// The list of notification rules for the AWS account, by Amazon Resource Name (ARN) and ID. 
+        /// The list of notification rules for the AWS account, by Amazon Resource Name (ARN) and ID.
         public let notificationRules: [NotificationRuleSummary]?
 
         public init(nextToken: String? = nil, notificationRules: [NotificationRuleSummary]? = nil) {
@@ -436,7 +418,6 @@ extension Codestarnotifications {
     }
 
     public struct ListTagsForResourceRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) for the notification rule.
         public let arn: String
 
@@ -454,7 +435,6 @@ extension Codestarnotifications {
     }
 
     public struct ListTagsForResourceResult: AWSDecodableShape {
-
         /// The tags associated with the notification rule.
         public let tags: [String: String]?
 
@@ -468,7 +448,6 @@ extension Codestarnotifications {
     }
 
     public struct ListTargetsFilter: AWSEncodableShape {
-
         /// The name of the attribute you want to use to filter the returned targets.
         public let name: ListTargetsFilterName
         /// The value of the attribute you want to use to filter the returned targets. For example, if you specify SNS for the Target type, you could specify an Amazon Resource Name (ARN) for a topic as the value.
@@ -486,8 +465,7 @@ extension Codestarnotifications {
     }
 
     public struct ListTargetsRequest: AWSEncodableShape {
-
-        /// The filters to use to return information by service or resource type. Valid filters include target type, target address, and target status.  A filter with the same name can appear more than once when used with OR statements. Filters with different names should be applied with AND statements. 
+        /// The filters to use to return information by service or resource type. Valid filters include target type, target address, and target status.  A filter with the same name can appear more than once when used with OR statements. Filters with different names should be applied with AND statements.
         public let filters: [ListTargetsFilter]?
         /// A non-negative integer used to limit the number of returned results. The maximum number of results that can be returned is 100.
         public let maxResults: Int?
@@ -514,10 +492,9 @@ extension Codestarnotifications {
     }
 
     public struct ListTargetsResult: AWSDecodableShape {
-
         /// An enumeration token that can be used in a request to return the next batch of results.
         public let nextToken: String?
-        /// The list of notification rule targets. 
+        /// The list of notification rule targets.
         public let targets: [TargetSummary]?
 
         public init(nextToken: String? = nil, targets: [TargetSummary]? = nil) {
@@ -532,7 +509,6 @@ extension Codestarnotifications {
     }
 
     public struct NotificationRuleSummary: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the notification rule.
         public let arn: String?
         /// The unique ID of the notification rule.
@@ -550,7 +526,6 @@ extension Codestarnotifications {
     }
 
     public struct SubscribeRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the notification rule for which you want to create the association.
         public let arn: String
         /// An enumeration token that, when provided in a request, returns the next batch of the results.
@@ -579,7 +554,6 @@ extension Codestarnotifications {
     }
 
     public struct SubscribeResult: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the notification rule for which you have created assocations.
         public let arn: String?
 
@@ -593,7 +567,6 @@ extension Codestarnotifications {
     }
 
     public struct TagResourceRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the notification rule to tag.
         public let arn: String
         /// The list of tags to associate with the resource. Tag key names cannot start with "aws".
@@ -622,7 +595,6 @@ extension Codestarnotifications {
     }
 
     public struct TagResourceResult: AWSDecodableShape {
-
         /// The list of tags associated with the resource.
         public let tags: [String: String]?
 
@@ -636,7 +608,6 @@ extension Codestarnotifications {
     }
 
     public struct Target: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the SNS topic.
         public let targetAddress: String?
         /// The target type. Can be an Amazon SNS topic.
@@ -660,7 +631,6 @@ extension Codestarnotifications {
     }
 
     public struct TargetSummary: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the SNS topic.
         public let targetAddress: String?
         /// The status of the target.
@@ -682,7 +652,6 @@ extension Codestarnotifications {
     }
 
     public struct UnsubscribeRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the notification rule.
         public let arn: String
         /// The ARN of the SNS topic to unsubscribe from the notification rule.
@@ -706,7 +675,6 @@ extension Codestarnotifications {
     }
 
     public struct UnsubscribeResult: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the the notification rule from which you have removed a subscription.
         public let arn: String
 
@@ -720,7 +688,6 @@ extension Codestarnotifications {
     }
 
     public struct UntagResourceRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the notification rule from which to remove the tags.
         public let arn: String
         /// The key names of the tags to remove.
@@ -747,15 +714,10 @@ extension Codestarnotifications {
     }
 
     public struct UntagResourceResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateNotificationRuleRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the notification rule.
         public let arn: String
         /// The level of detail to include in the notifications for this resource. BASIC will include only the  contents of the event as it would appear in AWS CloudWatch. FULL will include any supplemental information provided by AWS CodeStar Notifications and/or the service for the resource for which the notification is created.
@@ -804,10 +766,6 @@ extension Codestarnotifications {
     }
 
     public struct UpdateNotificationRuleResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 }

@@ -184,7 +184,6 @@ extension FSx {
     // MARK: Shapes
 
     public struct ActiveDirectoryBackupAttributes: AWSDecodableShape {
-
         /// The ID of the AWS Managed Microsoft Active Directory instance to which the file system is joined.
         public let activeDirectoryId: String?
         /// The fully qualified domain name of the self-managed AD directory.
@@ -205,16 +204,15 @@ extension FSx {
     }
 
     public struct AdministrativeAction: AWSDecodableShape {
-
         public let administrativeActionType: AdministrativeActionType?
         public let failureDetails: AdministrativeActionFailureDetails?
         /// Provides the percent complete of a STORAGE_OPTIMIZATION administrative action.  Does not apply to any other administrative action type.
         public let progressPercent: Int?
         /// Time that the administrative action request was received.
         public let requestTime: Date?
-        /// Describes the status of the administrative action, as follows:    FAILED - Amazon FSx failed to process the administrative action successfully.    IN_PROGRESS - Amazon FSx is processing the administrative action.    PENDING - Amazon FSx is waiting to process the administrative action.    COMPLETED - Amazon FSx has finished processing the administrative task.    UPDATED_OPTIMIZING - For a storage capacity increase update, Amazon FSx has updated the file system with the new storage capacity, and is now performing the storage optimization process. For more information, see Managing storage capacity in the Amazon FSx for Windows File Server User Guide and Managing storage and throughput capacity in the Amazon FSx for Lustre User Guide.  
+        /// Describes the status of the administrative action, as follows:    FAILED - Amazon FSx failed to process the administrative action successfully.    IN_PROGRESS - Amazon FSx is processing the administrative action.    PENDING - Amazon FSx is waiting to process the administrative action.    COMPLETED - Amazon FSx has finished processing the administrative task.    UPDATED_OPTIMIZING - For a storage capacity increase update, Amazon FSx has updated the file system with the new storage capacity, and is now performing the storage optimization process. For more information, see Managing storage capacity in the Amazon FSx for Windows File Server User Guide and Managing storage and throughput capacity in the Amazon FSx for Lustre User Guide.
         public let status: Status?
-        /// Describes the target value for the administration action,   provided in the UpdateFileSystem operation.   Returned for FILE_SYSTEM_UPDATE administrative actions.  
+        /// Describes the target value for the administration action,   provided in the UpdateFileSystem operation.   Returned for FILE_SYSTEM_UPDATE administrative actions.
         public let targetFileSystemValues: FileSystem?
 
         public init(administrativeActionType: AdministrativeActionType? = nil, failureDetails: AdministrativeActionFailureDetails? = nil, progressPercent: Int? = nil, requestTime: Date? = nil, status: Status? = nil, targetFileSystemValues: FileSystem? = nil) {
@@ -237,7 +235,6 @@ extension FSx {
     }
 
     public struct AdministrativeActionFailureDetails: AWSDecodableShape {
-
         /// Error message providing details about the failed administrative action.
         public let message: String?
 
@@ -251,8 +248,7 @@ extension FSx {
     }
 
     public struct Alias: AWSDecodableShape {
-
-        /// Describes the state of the DNS alias.   AVAILABLE - The DNS alias is associated with an Amazon FSx file system.   CREATING - Amazon FSx is creating the DNS alias and associating it with the file system.   CREATE_FAILED - Amazon FSx was unable to associate the DNS alias with the file system.   DELETING - Amazon FSx is disassociating the DNS alias from the file system and deleting it.   DELETE_FAILED - Amazon FSx was unable to disassocate the DNS alias from the file system.  
+        /// Describes the state of the DNS alias.   AVAILABLE - The DNS alias is associated with an Amazon FSx file system.   CREATING - Amazon FSx is creating the DNS alias and associating it with the file system.   CREATE_FAILED - Amazon FSx was unable to associate the DNS alias with the file system.   DELETING - Amazon FSx is disassociating the DNS alias from the file system and deleting it.   DELETE_FAILED - Amazon FSx was unable to disassocate the DNS alias from the file system.
         public let lifecycle: AliasLifecycle?
         /// The name of the DNS alias. The alias name has to meet the following requirements:   Formatted as a fully-qualified domain name (FQDN), hostname.domain, for example, accounting.example.com.   Can contain alphanumeric characters, the underscore (_), and the hyphen (-).   Cannot start or end with a hyphen.   Can start with a numeric.   For DNS names, Amazon FSx stores alphabetic characters as lowercase letters (a-z), regardless of how you specify them:  as uppercase letters, lowercase letters, or the corresponding letters in escape codes.
         public let name: String?
@@ -269,7 +265,6 @@ extension FSx {
     }
 
     public struct AssociateFileSystemAliasesRequest: AWSEncodableShape {
-
         /// An array of one or more DNS alias names to associate with the file system.  The alias name has to comply with the following formatting requirements:   Formatted as a fully-qualified domain name (FQDN),  hostname.domain ,  for example, accounting.corp.example.com.   Can contain alphanumeric characters and the hyphen (-).   Cannot start or end with a hyphen.   Can start with a numeric.   For DNS alias names, Amazon FSx stores alphabetic characters as lowercase letters (a-z), regardless of how you specify them:  as uppercase letters, lowercase letters, or the corresponding letters in escape codes.
         public let aliases: [String]
         public let clientRequestToken: String?
@@ -305,7 +300,6 @@ extension FSx {
     }
 
     public struct AssociateFileSystemAliasesResponse: AWSDecodableShape {
-
         /// An array of the DNS aliases that Amazon FSx is associating with the file system.
         public let aliases: [Alias]?
 
@@ -319,7 +313,6 @@ extension FSx {
     }
 
     public struct Backup: AWSDecodableShape {
-
         /// The ID of the backup.
         public let backupId: String
         /// The time when a particular backup was created.
@@ -330,9 +323,9 @@ extension FSx {
         public let failureDetails: BackupFailureDetails?
         /// Metadata of the file system associated with the backup. This metadata is persisted even if the file system is deleted.
         public let fileSystem: FileSystem
-        /// The ID of the AWS Key Management Service (AWS KMS) key used to encrypt the  backup of the Amazon FSx file system's data at rest.  
+        /// The ID of the AWS Key Management Service (AWS KMS) key used to encrypt the  backup of the Amazon FSx file system's data at rest.
         public let kmsKeyId: String?
-        /// The lifecycle status of the backup.    AVAILABLE - The backup is fully available.    PENDING - For user-initiated backups on Lustre file systems only; Amazon FSx has not started creating the backup.    CREATING - Amazon FSx is creating the backup.    TRANSFERRING - For user-initiated backups on Lustre file systems only; Amazon FSx is transferring the backup to S3.    COPYING - Amazon FSx is copying the backup.    DELETED - Amazon FSx deleted the backup and it is no longer available.    FAILED - Amazon FSx could not complete the backup.  
+        /// The lifecycle status of the backup.    AVAILABLE - The backup is fully available.    PENDING - For user-initiated backups on Lustre file systems only; Amazon FSx has not started creating the backup.    CREATING - Amazon FSx is creating the backup.    TRANSFERRING - For user-initiated backups on Lustre file systems only; Amazon FSx is transferring the backup to S3.    COPYING - Amazon FSx is copying the backup.    DELETED - Amazon FSx deleted the backup and it is no longer available.    FAILED - Amazon FSx could not complete the backup.
         public let lifecycle: BackupLifecycle
         public let ownerId: String?
         public let progressPercent: Int?
@@ -382,7 +375,6 @@ extension FSx {
     }
 
     public struct BackupFailureDetails: AWSDecodableShape {
-
         /// A message describing the backup creation failure.
         public let message: String?
 
@@ -396,7 +388,6 @@ extension FSx {
     }
 
     public struct CancelDataRepositoryTaskRequest: AWSEncodableShape {
-
         /// Specifies the data repository task to cancel.
         public let taskId: String
 
@@ -416,8 +407,7 @@ extension FSx {
     }
 
     public struct CancelDataRepositoryTaskResponse: AWSDecodableShape {
-
-        /// The lifecycle status of the data repository task, as follows:    PENDING - Amazon FSx has not started the task.    EXECUTING - Amazon FSx is processing the task.    FAILED -  Amazon FSx was not able to complete the task. For example, there may be files the task failed to process.  The DataRepositoryTaskFailureDetails property provides more information about task failures.    SUCCEEDED - FSx completed the task successfully.    CANCELED - Amazon FSx canceled the task and it did not complete.    CANCELING - FSx is in process of canceling the task.  
+        /// The lifecycle status of the data repository task, as follows:    PENDING - Amazon FSx has not started the task.    EXECUTING - Amazon FSx is processing the task.    FAILED -  Amazon FSx was not able to complete the task. For example, there may be files the task failed to process.  The DataRepositoryTaskFailureDetails property provides more information about task failures.    SUCCEEDED - FSx completed the task successfully.    CANCELED - Amazon FSx canceled the task and it did not complete.    CANCELING - FSx is in process of canceling the task.
         public let lifecycle: DataRepositoryTaskLifecycle?
         /// The ID of the task being canceled.
         public let taskId: String?
@@ -434,12 +424,11 @@ extension FSx {
     }
 
     public struct CompletionReport: AWSEncodableShape & AWSDecodableShape {
-
         /// Set Enabled to True to generate a CompletionReport when the task completes.  If set to true, then you need to provide a report Scope, Path, and Format.  Set Enabled to False if you do not want a CompletionReport generated when the task completes.
         public let enabled: Bool
-        /// Required if Enabled is set to true. Specifies the format of the CompletionReport. REPORT_CSV_20191124 is the only format currently supported. When Format is set to REPORT_CSV_20191124, the CompletionReport is provided in CSV format, and is delivered to {path}/task-{id}/failures.csv.  
+        /// Required if Enabled is set to true. Specifies the format of the CompletionReport. REPORT_CSV_20191124 is the only format currently supported. When Format is set to REPORT_CSV_20191124, the CompletionReport is provided in CSV format, and is delivered to {path}/task-{id}/failures.csv.
         public let format: ReportFormat?
-        /// Required if Enabled is set to true. Specifies the location of the report on the file system's linked S3 data repository. An absolute path that defines where the completion report will be stored in the destination location.  The Path you provide must be located within the file system’s ExportPath.  An example Path value is "s3://myBucket/myExportPath/optionalPrefix". The report provides the following information for each file in the report: FilePath, FileStatus, and ErrorCode. To learn more about a file system's ExportPath, see . 
+        /// Required if Enabled is set to true. Specifies the location of the report on the file system's linked S3 data repository. An absolute path that defines where the completion report will be stored in the destination location.  The Path you provide must be located within the file system’s ExportPath.  An example Path value is "s3://myBucket/myExportPath/optionalPrefix". The report provides the following information for each file in the report: FilePath, FileStatus, and ErrorCode. To learn more about a file system's ExportPath, see .
         public let path: String?
         /// Required if Enabled is set to true. Specifies the scope of the CompletionReport; FAILED_FILES_ONLY is the only scope currently supported.  When Scope is set to FAILED_FILES_ONLY, the CompletionReport only contains information about files that the data repository task failed to process.
         public let scope: ReportScope?
@@ -466,7 +455,6 @@ extension FSx {
     }
 
     public struct CopyBackupRequest: AWSEncodableShape {
-
         public let clientRequestToken: String?
         /// A boolean flag indicating whether tags from the source backup should be copied to the backup copy. This value defaults to false. If you set CopyTags to true and the source backup has existing tags, you can use the Tags parameter to create new tags, provided that the sum of the source backup tags and the new tags doesn't exceed 50. Both sets of tags are merged. If there are tag conflicts (for example, two tags with the same key but different values), the tags created with the Tags parameter take precedence.
         public let copyTags: Bool?
@@ -517,7 +505,6 @@ extension FSx {
     }
 
     public struct CopyBackupResponse: AWSDecodableShape {
-
         public let backup: Backup?
 
         public init(backup: Backup? = nil) {
@@ -530,7 +517,6 @@ extension FSx {
     }
 
     public struct CreateBackupRequest: AWSEncodableShape {
-
         /// (Optional) A string of up to 64 ASCII characters that Amazon FSx uses to ensure idempotent creation. This string is automatically filled on your behalf when you use the AWS Command Line Interface (AWS CLI) or an AWS SDK.
         public let clientRequestToken: String?
         /// The ID of the file system to back up.
@@ -566,7 +552,6 @@ extension FSx {
     }
 
     public struct CreateBackupResponse: AWSDecodableShape {
-
         /// A description of the backup.
         public let backup: Backup?
 
@@ -580,7 +565,6 @@ extension FSx {
     }
 
     public struct CreateDataRepositoryTaskRequest: AWSEncodableShape {
-
         public let clientRequestToken: String?
         public let fileSystemId: String
         /// (Optional) The path or paths on the Amazon FSx file system to use when the data repository task is processed.  The default path is the file system root directory. The paths you provide need to be relative to the mount point of the file system.  If the mount point is /mnt/fsx and /mnt/fsx/path1 is a directory or  file on the file system you want to export, then the path to provide is path1. If a path that you provide isn't valid, the task fails.
@@ -631,7 +615,6 @@ extension FSx {
     }
 
     public struct CreateDataRepositoryTaskResponse: AWSDecodableShape {
-
         /// The description of the data repository task that you just created.
         public let dataRepositoryTask: DataRepositoryTask?
 
@@ -645,7 +628,6 @@ extension FSx {
     }
 
     public struct CreateFileSystemFromBackupRequest: AWSEncodableShape {
-
         public let backupId: String
         /// A string of up to 64 ASCII characters that Amazon FSx uses to ensure idempotent creation. This string is automatically filled on your behalf when you use the AWS Command Line Interface (AWS CLI) or an AWS SDK.
         public let clientRequestToken: String?
@@ -653,7 +635,7 @@ extension FSx {
         public let lustreConfiguration: CreateFileSystemLustreConfiguration?
         /// A list of IDs for the security groups that apply to the specified network interfaces created for file system access. These security groups apply to all network interfaces. This value isn't returned in later DescribeFileSystem requests.
         public let securityGroupIds: [String]?
-        /// Sets the storage type for the Windows file system you're creating from a backup.  Valid values are SSD and HDD.   Set to SSD to use solid state drive storage.  Supported on all Windows deployment types.   Set to HDD to use hard disk drive storage.  Supported on SINGLE_AZ_2 and MULTI_AZ_1 Windows file system deployment types.      Default value is SSD.    HDD and SSD storage types have different minimum storage capacity requirements.  A restored file system's storage capacity is tied to the file system that was backed up.  You can create a file system that uses HDD storage from a backup of a file system that  used SSD storage only if the original SSD file system had a storage capacity of at least 2000 GiB.   
+        /// Sets the storage type for the Windows file system you're creating from a backup.  Valid values are SSD and HDD.   Set to SSD to use solid state drive storage.  Supported on all Windows deployment types.   Set to HDD to use hard disk drive storage.  Supported on SINGLE_AZ_2 and MULTI_AZ_1 Windows file system deployment types.      Default value is SSD.    HDD and SSD storage types have different minimum storage capacity requirements.  A restored file system's storage capacity is tied to the file system that was backed up.  You can create a file system that uses HDD storage from a backup of a file system that  used SSD storage only if the original SSD file system had a storage capacity of at least 2000 GiB.
         public let storageType: StorageType?
         /// Specifies the IDs of the subnets that the file system will be accessible from. For Windows MULTI_AZ_1  file system deployment types, provide exactly two subnet IDs, one for the preferred file server  and one for the standby file server. You specify one of these subnets as the preferred subnet  using the WindowsConfiguration > PreferredSubnetID property. For Windows SINGLE_AZ_1 and SINGLE_AZ_2 deployment  types and Lustre file systems, provide exactly one subnet ID. The file server is launched in that subnet's Availability Zone.
         public let subnetIds: [String]
@@ -719,7 +701,6 @@ extension FSx {
     }
 
     public struct CreateFileSystemFromBackupResponse: AWSDecodableShape {
-
         /// A description of the file system.
         public let fileSystem: FileSystem?
 
@@ -733,7 +714,6 @@ extension FSx {
     }
 
     public struct CreateFileSystemLustreConfiguration: AWSEncodableShape {
-
         ///  (Optional) When you create your file system, your existing S3 objects appear as file and directory listings.  Use this property to choose how Amazon FSx keeps your file and directory listings up to date  as you add or modify objects in your linked S3 bucket. AutoImportPolicy can have the following values:     NONE - (Default) AutoImport is off. Amazon FSx only updates  file and directory listings from the linked S3 bucket  when the file system is created. FSx does not update file and directory  listings for any new or changed objects after choosing this option.    NEW - AutoImport is on. Amazon FSx automatically imports directory listings of any new objects added to the linked S3 bucket that  do not currently exist in the FSx file system.     NEW_CHANGED - AutoImport is on. Amazon FSx automatically imports  file and directory listings of any new objects added to the S3 bucket and any  existing objects that are changed in the S3 bucket after you choose this option.     For more information, see Automatically import updates from your S3 bucket.
         public let autoImportPolicy: AutoImportPolicyType?
         public let automaticBackupRetentionDays: Int?
@@ -782,7 +762,7 @@ extension FSx {
             try self.validate(self.exportPath, name: "exportPath", parent: name, max: 4357)
             try self.validate(self.exportPath, name: "exportPath", parent: name, min: 3)
             try self.validate(self.exportPath, name: "exportPath", parent: name, pattern: "^[^\\u0000\\u0085\\u2028\\u2029\\r\\n]{3,4357}$")
-            try self.validate(self.importedFileChunkSize, name: "importedFileChunkSize", parent: name, max: 512000)
+            try self.validate(self.importedFileChunkSize, name: "importedFileChunkSize", parent: name, max: 512_000)
             try self.validate(self.importedFileChunkSize, name: "importedFileChunkSize", parent: name, min: 1)
             try self.validate(self.importPath, name: "importPath", parent: name, max: 4357)
             try self.validate(self.importPath, name: "importPath", parent: name, min: 3)
@@ -811,7 +791,6 @@ extension FSx {
     }
 
     public struct CreateFileSystemRequest: AWSEncodableShape {
-
         /// A string of up to 64 ASCII characters that Amazon FSx uses to ensure idempotent creation. This string is automatically filled on your behalf when you use the AWS Command Line Interface (AWS CLI) or an AWS SDK.
         public let clientRequestToken: String?
         /// The type of Amazon FSx file system to create, either WINDOWS or LUSTRE.
@@ -820,15 +799,15 @@ extension FSx {
         public let lustreConfiguration: CreateFileSystemLustreConfiguration?
         /// A list of IDs specifying the security groups to apply to all network interfaces created for file system access. This list isn't returned in later requests to describe the file system.
         public let securityGroupIds: [String]?
-        /// Sets the storage capacity of the file system that you're creating.       For Lustre file systems:   For SCRATCH_2 and PERSISTENT_1 SSD deployment types, valid values are  1200 GiB, 2400 GiB, and increments of 2400 GiB.   For PERSISTENT HDD file systems, valid values are increments of 6000 GiB for  12 MB/s/TiB file systems and increments of 1800 GiB for 40 MB/s/TiB file systems.   For SCRATCH_1 deployment type, valid values are  1200 GiB, 2400 GiB, and increments of 3600 GiB.   For Windows file systems:   If StorageType=SSD, valid values are 32 GiB - 65,536 GiB (64 TiB).   If StorageType=HDD, valid values are 2000 GiB - 65,536 GiB (64 TiB).  
+        /// Sets the storage capacity of the file system that you're creating.       For Lustre file systems:   For SCRATCH_2 and PERSISTENT_1 SSD deployment types, valid values are  1200 GiB, 2400 GiB, and increments of 2400 GiB.   For PERSISTENT HDD file systems, valid values are increments of 6000 GiB for  12 MB/s/TiB file systems and increments of 1800 GiB for 40 MB/s/TiB file systems.   For SCRATCH_1 deployment type, valid values are  1200 GiB, 2400 GiB, and increments of 3600 GiB.   For Windows file systems:   If StorageType=SSD, valid values are 32 GiB - 65,536 GiB (64 TiB).   If StorageType=HDD, valid values are 2000 GiB - 65,536 GiB (64 TiB).
         public let storageCapacity: Int
-        /// Sets the storage type for the file system you're creating.  Valid values are SSD and HDD.   Set to SSD to use solid state drive storage.  SSD is supported on all Windows and Lustre deployment types.   Set to HDD to use hard disk drive storage.  HDD is supported on SINGLE_AZ_2 and MULTI_AZ_1 Windows file system deployment types, and on PERSISTENT Lustre file system deployment types.      Default value is SSD. For more information, see   Storage Type Options in the Amazon FSx for Windows User Guide and  Multiple Storage Options  in the Amazon FSx for Lustre User Guide. 
+        /// Sets the storage type for the file system you're creating.  Valid values are SSD and HDD.   Set to SSD to use solid state drive storage.  SSD is supported on all Windows and Lustre deployment types.   Set to HDD to use hard disk drive storage.  HDD is supported on SINGLE_AZ_2 and MULTI_AZ_1 Windows file system deployment types, and on PERSISTENT Lustre file system deployment types.      Default value is SSD. For more information, see   Storage Type Options in the Amazon FSx for Windows User Guide and  Multiple Storage Options  in the Amazon FSx for Lustre User Guide.
         public let storageType: StorageType?
         /// Specifies the IDs of the subnets that the file system will be accessible from. For Windows MULTI_AZ_1  file system deployment types, provide exactly two subnet IDs, one for the preferred file server  and one for the standby file server. You specify one of these subnets as the preferred subnet  using the WindowsConfiguration > PreferredSubnetID property. For more information,  see  Availability and durability: Single-AZ and Multi-AZ file systems. For Windows SINGLE_AZ_1 and SINGLE_AZ_2 file system deployment types and Lustre file systems, provide exactly one subnet ID. The file server is launched in that subnet's Availability Zone.
         public let subnetIds: [String]
         /// The tags to apply to the file system being created. The key value of the Name tag appears in the console as the file system name.
         public let tags: [Tag]?
-        /// The Microsoft Windows configuration for the file system being created.  
+        /// The Microsoft Windows configuration for the file system being created.
         public let windowsConfiguration: CreateFileSystemWindowsConfiguration?
 
         public init(clientRequestToken: String? = CreateFileSystemRequest.idempotencyToken(), fileSystemType: FileSystemType, kmsKeyId: String? = nil, lustreConfiguration: CreateFileSystemLustreConfiguration? = nil, securityGroupIds: [String]? = nil, storageCapacity: Int, storageType: StorageType? = nil, subnetIds: [String], tags: [Tag]? = nil, windowsConfiguration: CreateFileSystemWindowsConfiguration? = nil) {
@@ -858,7 +837,7 @@ extension FSx {
                 try validate($0, name: "securityGroupIds[]", parent: name, pattern: "^(sg-[0-9a-f]{8,})$")
             }
             try self.validate(self.securityGroupIds, name: "securityGroupIds", parent: name, max: 50)
-            try self.validate(self.storageCapacity, name: "storageCapacity", parent: name, max: 2147483647)
+            try self.validate(self.storageCapacity, name: "storageCapacity", parent: name, max: 2_147_483_647)
             try self.validate(self.storageCapacity, name: "storageCapacity", parent: name, min: 0)
             try self.subnetIds.forEach {
                 try validate($0, name: "subnetIds[]", parent: name, max: 24)
@@ -889,7 +868,6 @@ extension FSx {
     }
 
     public struct CreateFileSystemResponse: AWSDecodableShape {
-
         /// The configuration of the file system that was created.
         public let fileSystem: FileSystem?
 
@@ -903,7 +881,6 @@ extension FSx {
     }
 
     public struct CreateFileSystemWindowsConfiguration: AWSEncodableShape {
-
         /// The ID for an existing AWS Managed Microsoft Active Directory (AD) instance that the file system should join when it's created.
         public let activeDirectoryId: String?
         /// An array of one or more DNS alias names that you want to associate with the Amazon FSx file system.  Aliases allow you to use existing DNS names to access the data in your Amazon FSx file system.  You can associate up to 50 aliases with a file system at any time.  You can associate additional DNS aliases after you create the file system using the AssociateFileSystemAliases operation.  You can remove DNS aliases from the file system after it is created using the DisassociateFileSystemAliases operation. You only need to specify the alias name in the request payload. For more information, see Working with DNS Aliases and  Walkthrough 5: Using DNS aliases to access your file system, including additional steps you must take to be able to access your file system using a DNS alias. An alias name has to meet the following requirements:   Formatted as a fully-qualified domain name (FQDN), hostname.domain, for example, accounting.example.com.   Can contain alphanumeric characters, the underscore (_), and the hyphen (-).   Cannot start or end with a hyphen.   Can start with a numeric.   For DNS alias names, Amazon FSx stores alphabetic characters as lowercase letters (a-z), regardless of how you specify them:  as uppercase letters, lowercase letters, or the corresponding letters in escape codes.
@@ -918,7 +895,7 @@ extension FSx {
         public let dailyAutomaticBackupStartTime: String?
         /// Specifies the file system deployment type, valid values are the following:    MULTI_AZ_1 - Deploys a high availability file system that is configured  for Multi-AZ redundancy to tolerate temporary Availability Zone (AZ) unavailability. You  can only deploy a Multi-AZ file system in AWS Regions that have a minimum of three Availability Zones. Also  supports HDD storage type    SINGLE_AZ_1 - (Default) Choose to deploy a file system that is configured for single AZ redundancy.    SINGLE_AZ_2 - The latest generation Single AZ file system.  Specifies a file system that is configured for single AZ redundancy and supports HDD storage type.   For more information, see   Availability and Durability: Single-AZ and Multi-AZ File Systems.
         public let deploymentType: WindowsDeploymentType?
-        /// Required when DeploymentType is set to MULTI_AZ_1. This specifies the subnet  in which you want the preferred file server to be located. For in-AWS applications, we recommend that you launch  your clients in the same Availability Zone (AZ) as your preferred file server to reduce cross-AZ  data transfer costs and minimize latency. 
+        /// Required when DeploymentType is set to MULTI_AZ_1. This specifies the subnet  in which you want the preferred file server to be located. For in-AWS applications, we recommend that you launch  your clients in the same Availability Zone (AZ) as your preferred file server to reduce cross-AZ  data transfer costs and minimize latency.
         public let preferredSubnetId: String?
         public let selfManagedActiveDirectoryConfiguration: SelfManagedActiveDirectoryConfiguration?
         /// The throughput of an Amazon FSx file system, measured in megabytes per second, in 2 to the nth increments, between 2^3 (8) and 2^11 (2048).
@@ -983,7 +960,6 @@ extension FSx {
     }
 
     public struct DataRepositoryConfiguration: AWSDecodableShape {
-
         /// Describes the file system's linked S3 data repository's AutoImportPolicy.  The AutoImportPolicy configures how Amazon FSx keeps your file and directory listings up to date  as you add or modify objects in your linked S3 bucket. AutoImportPolicy can have the following values:    NONE - (Default) AutoImport is off. Amazon FSx only updates  file and directory listings from the linked S3 bucket  when the file system is created. FSx does not update file and directory  listings for any new or changed objects after choosing this option.    NEW - AutoImport is on. Amazon FSx automatically imports directory listings of any new objects added to the linked S3 bucket that  do not currently exist in the FSx file system.     NEW_CHANGED - AutoImport is on. Amazon FSx automatically imports  file and directory listings of any new objects added to the S3 bucket and any  existing objects that are changed in the S3 bucket after you choose this option.     For more information, see Automatically import updates from your S3 bucket.
         public let autoImportPolicy: AutoImportPolicyType?
         /// The export path to the Amazon S3 bucket (and prefix) that you are using to store new and changed Lustre file system files in S3.
@@ -994,7 +970,7 @@ extension FSx {
         public let importedFileChunkSize: Int?
         /// The import path to the Amazon S3 bucket (and optional prefix) that you're using as the data repository for your FSx for Lustre file system, for example s3://import-bucket/optional-prefix. If a prefix is specified after the Amazon S3 bucket name, only object keys with that prefix are loaded into the file system.
         public let importPath: String?
-        /// Describes the state of the file system's S3 durable data repository, if it is configured with an S3 repository.  The lifecycle can have the following values:    CREATING - The data repository configuration between  the FSx file system and the linked S3 data repository is being created.  The data repository is unavailable.    AVAILABLE - The data repository is available for use.    MISCONFIGURED - Amazon FSx cannot automatically import updates from the S3 bucket  until the data repository configuration is corrected. For more information, see  Troubleshooting a Misconfigured linked S3 bucket.     UPDATING - The data repository is undergoing a customer initiated update and availability may be impacted.  
+        /// Describes the state of the file system's S3 durable data repository, if it is configured with an S3 repository.  The lifecycle can have the following values:    CREATING - The data repository configuration between  the FSx file system and the linked S3 data repository is being created.  The data repository is unavailable.    AVAILABLE - The data repository is available for use.    MISCONFIGURED - Amazon FSx cannot automatically import updates from the S3 bucket  until the data repository configuration is corrected. For more information, see  Troubleshooting a Misconfigured linked S3 bucket.     UPDATING - The data repository is undergoing a customer initiated update and availability may be impacted.
         public let lifecycle: DataRepositoryLifecycle?
 
         public init(autoImportPolicy: AutoImportPolicyType? = nil, exportPath: String? = nil, failureDetails: DataRepositoryFailureDetails? = nil, importedFileChunkSize: Int? = nil, importPath: String? = nil, lifecycle: DataRepositoryLifecycle? = nil) {
@@ -1017,7 +993,6 @@ extension FSx {
     }
 
     public struct DataRepositoryFailureDetails: AWSDecodableShape {
-
         public let message: String?
 
         public init(message: String? = nil) {
@@ -1030,14 +1005,13 @@ extension FSx {
     }
 
     public struct DataRepositoryTask: AWSDecodableShape {
-
         public let creationTime: Date
         /// The time that Amazon FSx completed processing the task, populated after the task is complete.
         public let endTime: Date?
         /// Failure message describing why the task failed, it is populated only when Lifecycle is set to FAILED.
         public let failureDetails: DataRepositoryTaskFailureDetails?
         public let fileSystemId: String
-        /// The lifecycle status of the data repository task, as follows:    PENDING - Amazon FSx has not started the task.    EXECUTING - Amazon FSx is processing the task.    FAILED -  Amazon FSx was not able to complete the task. For example, there may be files the task failed to process.  The DataRepositoryTaskFailureDetails property provides more information about task failures.    SUCCEEDED - FSx completed the task successfully.    CANCELED - Amazon FSx canceled the task and it did not complete.    CANCELING - FSx is in process of canceling the task.    You cannot delete an FSx for Lustre file system if there are data  repository tasks for the file system in the PENDING or EXECUTING states. Please retry when the data repository task is finished (with a status of CANCELED, SUCCEEDED, or FAILED).  You can use the DescribeDataRepositoryTask action to monitor the task status. Contact the FSx team if you need to delete your file system immediately. 
+        /// The lifecycle status of the data repository task, as follows:    PENDING - Amazon FSx has not started the task.    EXECUTING - Amazon FSx is processing the task.    FAILED -  Amazon FSx was not able to complete the task. For example, there may be files the task failed to process.  The DataRepositoryTaskFailureDetails property provides more information about task failures.    SUCCEEDED - FSx completed the task successfully.    CANCELED - Amazon FSx canceled the task and it did not complete.    CANCELING - FSx is in process of canceling the task.    You cannot delete an FSx for Lustre file system if there are data  repository tasks for the file system in the PENDING or EXECUTING states. Please retry when the data repository task is finished (with a status of CANCELED, SUCCEEDED, or FAILED).  You can use the DescribeDataRepositoryTask action to monitor the task status. Contact the FSx team if you need to delete your file system immediately.
         public let lifecycle: DataRepositoryTaskLifecycle
         /// An array of paths on the Amazon FSx for Lustre file system that specify the data for the data repository task to process.  For example, in an EXPORT_TO_REPOSITORY task, the paths specify which data to export to the linked data repository. (Default) If Paths is not specified, Amazon FSx uses the file system root directory.
         public let paths: [String]?
@@ -1087,7 +1061,6 @@ extension FSx {
     }
 
     public struct DataRepositoryTaskFailureDetails: AWSDecodableShape {
-
         public let message: String?
 
         public init(message: String? = nil) {
@@ -1100,8 +1073,7 @@ extension FSx {
     }
 
     public struct DataRepositoryTaskFilter: AWSEncodableShape {
-
-        /// Name of the task property to use in filtering the tasks returned in the response.   Use file-system-id to retrieve data repository tasks for specific file systems.   Use task-lifecycle to retrieve data repository tasks with one or more specific lifecycle states,  as follows: CANCELED, EXECUTING, FAILED, PENDING, and SUCCEEDED.  
+        /// Name of the task property to use in filtering the tasks returned in the response.   Use file-system-id to retrieve data repository tasks for specific file systems.   Use task-lifecycle to retrieve data repository tasks with one or more specific lifecycle states,  as follows: CANCELED, EXECUTING, FAILED, PENDING, and SUCCEEDED.
         public let name: DataRepositoryTaskFilterName?
         /// Use Values to include the specific file system IDs and task  lifecycle states for the filters you are using.
         public let values: [String]?
@@ -1127,7 +1099,6 @@ extension FSx {
     }
 
     public struct DataRepositoryTaskStatus: AWSDecodableShape {
-
         /// A running total of the number of files that the task failed to process.
         public let failedCount: Int64?
         /// The time at which the task status was last updated.
@@ -1153,7 +1124,6 @@ extension FSx {
     }
 
     public struct DeleteBackupRequest: AWSEncodableShape {
-
         /// The ID of the backup you want to delete.
         public let backupId: String
         /// A string of up to 64 ASCII characters that Amazon FSx uses to ensure idempotent deletion. This is automatically filled on your behalf when using the AWS CLI or SDK.
@@ -1180,7 +1150,6 @@ extension FSx {
     }
 
     public struct DeleteBackupResponse: AWSDecodableShape {
-
         /// The ID of the backup deleted.
         public let backupId: String?
         /// The lifecycle of the backup. Should be DELETED.
@@ -1198,7 +1167,6 @@ extension FSx {
     }
 
     public struct DeleteFileSystemLustreConfiguration: AWSEncodableShape {
-
         /// Use if SkipFinalBackup is set to false,  and you want to apply an array of tags to the final backup. If you have set the file system property CopyTagsToBackups to true, and  you specify one or more FinalBackupTags when deleting a file system, Amazon FSx will not copy any existing file system tags to the backup.
         public let finalBackupTags: [Tag]?
         /// Set SkipFinalBackup to false if you want to take a final backup of the file  system you are deleting. By default, Amazon FSx will not take a final backup on your behalf when the DeleteFileSystem operation is invoked. (Default = true)
@@ -1224,7 +1192,6 @@ extension FSx {
     }
 
     public struct DeleteFileSystemLustreResponse: AWSDecodableShape {
-
         /// The ID of the final backup for this file system.
         public let finalBackupId: String?
         /// The set of tags applied to the final backup.
@@ -1242,7 +1209,6 @@ extension FSx {
     }
 
     public struct DeleteFileSystemRequest: AWSEncodableShape {
-
         /// A string of up to 64 ASCII characters that Amazon FSx uses to ensure idempotent deletion. This is automatically filled on your behalf when using the AWS CLI or SDK.
         public let clientRequestToken: String?
         /// The ID of the file system you want to delete.
@@ -1277,7 +1243,6 @@ extension FSx {
     }
 
     public struct DeleteFileSystemResponse: AWSDecodableShape {
-
         /// The ID of the file system being deleted.
         public let fileSystemId: String?
         /// The file system lifecycle for the deletion request. Should be DELETING.
@@ -1301,7 +1266,6 @@ extension FSx {
     }
 
     public struct DeleteFileSystemWindowsConfiguration: AWSEncodableShape {
-
         /// A set of tags for your final backup.
         public let finalBackupTags: [Tag]?
         /// By default, Amazon FSx for Windows takes a final backup on your behalf when the DeleteFileSystem operation is invoked. Doing this helps protect you from data loss, and we highly recommend taking the final backup. If you want to skip this backup, use this flag to do so.
@@ -1327,7 +1291,6 @@ extension FSx {
     }
 
     public struct DeleteFileSystemWindowsResponse: AWSDecodableShape {
-
         /// The ID of the final backup for this file system.
         public let finalBackupId: String?
         /// The set of tags applied to the final backup.
@@ -1345,7 +1308,6 @@ extension FSx {
     }
 
     public struct DescribeBackupsRequest: AWSEncodableShape {
-
         /// IDs of the backups you want to retrieve (String). This overrides any filters. If any IDs are not found, BackupNotFound will be thrown.
         public let backupIds: [String]?
         /// Filters structure. Supported names are file-system-id and backup-type.
@@ -1373,7 +1335,7 @@ extension FSx {
                 try $0.validate(name: "\(name).filters[]")
             }
             try self.validate(self.filters, name: "filters", parent: name, max: 10)
-            try self.validate(self.maxResults, name: "maxResults", parent: name, max: 2147483647)
+            try self.validate(self.maxResults, name: "maxResults", parent: name, max: 2_147_483_647)
             try self.validate(self.maxResults, name: "maxResults", parent: name, min: 1)
             try self.validate(self.nextToken, name: "nextToken", parent: name, max: 255)
             try self.validate(self.nextToken, name: "nextToken", parent: name, min: 1)
@@ -1389,10 +1351,9 @@ extension FSx {
     }
 
     public struct DescribeBackupsResponse: AWSDecodableShape {
-
         /// An array of backups.
         public let backups: [Backup]?
-        /// This is present if there are more backups than returned in the response (String). You can use the NextToken value in the later request to fetch the backups. 
+        /// This is present if there are more backups than returned in the response (String). You can use the NextToken value in the later request to fetch the backups.
         public let nextToken: String?
 
         public init(backups: [Backup]? = nil, nextToken: String? = nil) {
@@ -1407,7 +1368,6 @@ extension FSx {
     }
 
     public struct DescribeDataRepositoryTasksRequest: AWSEncodableShape {
-
         /// (Optional) You can use filters to narrow the DescribeDataRepositoryTasks response to  include just tasks for specific file systems, or tasks in a specific lifecycle state.
         public let filters: [DataRepositoryTaskFilter]?
         public let maxResults: Int?
@@ -1427,7 +1387,7 @@ extension FSx {
                 try $0.validate(name: "\(name).filters[]")
             }
             try self.validate(self.filters, name: "filters", parent: name, max: 3)
-            try self.validate(self.maxResults, name: "maxResults", parent: name, max: 2147483647)
+            try self.validate(self.maxResults, name: "maxResults", parent: name, max: 2_147_483_647)
             try self.validate(self.maxResults, name: "maxResults", parent: name, min: 1)
             try self.validate(self.nextToken, name: "nextToken", parent: name, max: 255)
             try self.validate(self.nextToken, name: "nextToken", parent: name, min: 1)
@@ -1449,7 +1409,6 @@ extension FSx {
     }
 
     public struct DescribeDataRepositoryTasksResponse: AWSDecodableShape {
-
         /// The collection of data repository task descriptions returned.
         public let dataRepositoryTasks: [DataRepositoryTask]?
         public let nextToken: String?
@@ -1466,7 +1425,6 @@ extension FSx {
     }
 
     public struct DescribeFileSystemAliasesRequest: AWSEncodableShape {
-
         public let clientRequestToken: String?
         /// The ID of the file system to return the associated DNS aliases for (String).
         public let fileSystemId: String
@@ -1489,7 +1447,7 @@ extension FSx {
             try self.validate(self.fileSystemId, name: "fileSystemId", parent: name, max: 21)
             try self.validate(self.fileSystemId, name: "fileSystemId", parent: name, min: 11)
             try self.validate(self.fileSystemId, name: "fileSystemId", parent: name, pattern: "^(fs-[0-9a-f]{8,})$")
-            try self.validate(self.maxResults, name: "maxResults", parent: name, max: 2147483647)
+            try self.validate(self.maxResults, name: "maxResults", parent: name, max: 2_147_483_647)
             try self.validate(self.maxResults, name: "maxResults", parent: name, min: 1)
             try self.validate(self.nextToken, name: "nextToken", parent: name, max: 255)
             try self.validate(self.nextToken, name: "nextToken", parent: name, min: 1)
@@ -1505,10 +1463,9 @@ extension FSx {
     }
 
     public struct DescribeFileSystemAliasesResponse: AWSDecodableShape {
-
         /// An array of one or more DNS aliases currently associated with the specified file system.
         public let aliases: [Alias]?
-        /// Present if there are more DNS aliases than returned in the response (String). You can use the NextToken value in a later request to fetch additional descriptions. 
+        /// Present if there are more DNS aliases than returned in the response (String). You can use the NextToken value in a later request to fetch additional descriptions.
         public let nextToken: String?
 
         public init(aliases: [Alias]? = nil, nextToken: String? = nil) {
@@ -1523,7 +1480,6 @@ extension FSx {
     }
 
     public struct DescribeFileSystemsRequest: AWSEncodableShape {
-
         /// IDs of the file systems whose descriptions you want to retrieve (String).
         public let fileSystemIds: [String]?
         /// Maximum number of file systems to return in the response (integer). This parameter value must be greater than 0. The number of items that Amazon FSx returns is the minimum of the MaxResults parameter specified in the request and the service's internal maximum number of items per page.
@@ -1544,7 +1500,7 @@ extension FSx {
                 try validate($0, name: "fileSystemIds[]", parent: name, pattern: "^(fs-[0-9a-f]{8,})$")
             }
             try self.validate(self.fileSystemIds, name: "fileSystemIds", parent: name, max: 50)
-            try self.validate(self.maxResults, name: "maxResults", parent: name, max: 2147483647)
+            try self.validate(self.maxResults, name: "maxResults", parent: name, max: 2_147_483_647)
             try self.validate(self.maxResults, name: "maxResults", parent: name, min: 1)
             try self.validate(self.nextToken, name: "nextToken", parent: name, max: 255)
             try self.validate(self.nextToken, name: "nextToken", parent: name, min: 1)
@@ -1559,10 +1515,9 @@ extension FSx {
     }
 
     public struct DescribeFileSystemsResponse: AWSDecodableShape {
-
         /// An array of file system descriptions.
         public let fileSystems: [FileSystem]?
-        /// Present if there are more file systems than returned in the response (String). You can use the NextToken value in the later request to fetch the descriptions. 
+        /// Present if there are more file systems than returned in the response (String). You can use the NextToken value in the later request to fetch the descriptions.
         public let nextToken: String?
 
         public init(fileSystems: [FileSystem]? = nil, nextToken: String? = nil) {
@@ -1577,7 +1532,6 @@ extension FSx {
     }
 
     public struct DisassociateFileSystemAliasesRequest: AWSEncodableShape {
-
         /// An array of one or more DNS alias names to disassociate, or remove, from the file system.
         public let aliases: [String]
         public let clientRequestToken: String?
@@ -1613,7 +1567,6 @@ extension FSx {
     }
 
     public struct DisassociateFileSystemAliasesResponse: AWSDecodableShape {
-
         /// An array of one or more DNS aliases that Amazon FSx is attempting to disassociate from the file system.
         public let aliases: [Alias]?
 
@@ -1627,8 +1580,7 @@ extension FSx {
     }
 
     public struct FileSystem: AWSDecodableShape {
-
-        /// A list of administrative actions for the file system that are in process or waiting to be processed.  Administrative actions describe changes to the Windows file system that you have initiated using the UpdateFileSystem action. 
+        /// A list of administrative actions for the file system that are in process or waiting to be processed.  Administrative actions describe changes to the Windows file system that you have initiated using the UpdateFileSystem action.
         public let administrativeActions: [AdministrativeAction]?
         /// The time that the file system was created, in seconds (since 1970-01-01T00:00:00Z), also known as Unix time.
         public let creationTime: Date?
@@ -1641,10 +1593,10 @@ extension FSx {
         public let fileSystemType: FileSystemType?
         /// The ID of the AWS Key Management Service (AWS KMS) key used to encrypt the file system's data for Amazon FSx for Windows File Server file systems and persistent Amazon FSx for Lustre file systems at rest. In either case, if not specified, the Amazon FSx managed key is used. The scratch Amazon FSx for Lustre file systems are always encrypted at rest using Amazon FSx managed keys. For more information, see Encrypt in the AWS Key Management Service API Reference.
         public let kmsKeyId: String?
-        /// The lifecycle status of the file system, following are the possible values and what they mean:     AVAILABLE - The file system is in a healthy state, and is reachable and available for use.    CREATING - Amazon FSx is creating the new file system.    DELETING - Amazon FSx is deleting an existing file system.    FAILED - An existing file system has experienced an unrecoverable failure.  When creating a new file system, Amazon FSx was unable to create the file system.    MISCONFIGURED indicates that the file system is in a failed but recoverable state.    UPDATING indicates that the file system is undergoing a customer initiated update.  
+        /// The lifecycle status of the file system, following are the possible values and what they mean:     AVAILABLE - The file system is in a healthy state, and is reachable and available for use.    CREATING - Amazon FSx is creating the new file system.    DELETING - Amazon FSx is deleting an existing file system.    FAILED - An existing file system has experienced an unrecoverable failure.  When creating a new file system, Amazon FSx was unable to create the file system.    MISCONFIGURED indicates that the file system is in a failed but recoverable state.    UPDATING indicates that the file system is undergoing a customer initiated update.
         public let lifecycle: FileSystemLifecycle?
         public let lustreConfiguration: LustreFileSystemConfiguration?
-        /// The IDs of the elastic network interface from which a specific file system is accessible. The elastic network interface is automatically created in the same VPC that the Amazon FSx file system was created in. For more information, see Elastic Network Interfaces in the Amazon EC2 User Guide. 
+        /// The IDs of the elastic network interface from which a specific file system is accessible. The elastic network interface is automatically created in the same VPC that the Amazon FSx file system was created in. For more information, see Elastic Network Interfaces in the Amazon EC2 User Guide.
         ///  For an Amazon FSx for Windows File Server file system, you can have one network interface ID. For an Amazon FSx for Lustre file system, you can have more than one.
         public let networkInterfaceIds: [String]?
         /// The AWS account that created the file system. If the file system was created by an AWS Identity and Access Management (IAM) user, the AWS account to which the IAM user belongs is the owner.
@@ -1653,7 +1605,7 @@ extension FSx {
         public let resourceARN: String?
         /// The storage capacity of the file system in gibibytes (GiB).
         public let storageCapacity: Int?
-        /// The storage type of the file system.  Valid values are SSD and HDD. If set to SSD, the file system uses solid state drive storage.  If set to HDD, the file system uses hard disk drive storage. 
+        /// The storage type of the file system.  Valid values are SSD and HDD. If set to SSD, the file system uses solid state drive storage.  If set to HDD, the file system uses hard disk drive storage.
         public let storageType: StorageType?
         /// Specifies the IDs of the subnets that the file system is accessible from. For Windows MULTI_AZ_1  file system deployment type, there are two subnet IDs, one for the preferred file server  and one for the standby file server. The preferred file server subnet identified in the   PreferredSubnetID property. All other file systems have only one subnet ID. For Lustre file systems, and Single-AZ Windows file systems, this is the ID of  the subnet that contains the endpoint for the file system. For MULTI_AZ_1 Windows file systems, the endpoint for the file system is available in the PreferredSubnetID.
         public let subnetIds: [String]?
@@ -1708,7 +1660,6 @@ extension FSx {
     }
 
     public struct FileSystemFailureDetails: AWSDecodableShape {
-
         /// A message describing any failures that occurred during file system creation.
         public let message: String?
 
@@ -1722,7 +1673,6 @@ extension FSx {
     }
 
     public struct Filter: AWSEncodableShape {
-
         /// The name for this filter.
         public let name: FilterName?
         /// The values of the filter. These are all the values for any of the applied filters.
@@ -1749,7 +1699,6 @@ extension FSx {
     }
 
     public struct ListTagsForResourceRequest: AWSEncodableShape {
-
         /// Maximum number of tags to return in the response (integer). This parameter value must be greater than 0. The number of items that Amazon FSx returns is the minimum of the MaxResults parameter specified in the request and the service's internal maximum number of items per page.
         public let maxResults: Int?
         /// Opaque pagination token returned from a previous ListTagsForResource operation (String). If a token present, the action continues the list from where the returning call left off.
@@ -1764,7 +1713,7 @@ extension FSx {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.maxResults, name: "maxResults", parent: name, max: 2147483647)
+            try self.validate(self.maxResults, name: "maxResults", parent: name, max: 2_147_483_647)
             try self.validate(self.maxResults, name: "maxResults", parent: name, min: 1)
             try self.validate(self.nextToken, name: "nextToken", parent: name, max: 255)
             try self.validate(self.nextToken, name: "nextToken", parent: name, min: 1)
@@ -1782,8 +1731,7 @@ extension FSx {
     }
 
     public struct ListTagsForResourceResponse: AWSDecodableShape {
-
-        /// This is present if there are more tags than returned in the response (String). You can use the NextToken value in the later request to fetch the tags. 
+        /// This is present if there are more tags than returned in the response (String). You can use the NextToken value in the later request to fetch the tags.
         public let nextToken: String?
         /// A list of tags on the resource.
         public let tags: [Tag]?
@@ -1800,7 +1748,6 @@ extension FSx {
     }
 
     public struct LustreFileSystemConfiguration: AWSDecodableShape {
-
         public let automaticBackupRetentionDays: Int?
         /// A boolean flag indicating whether tags on the file system should be copied to backups. If it's set to true, all tags on the file system are copied to all automatic backups and any user-initiated backups where the user doesn't specify any tags. If this value is true, and you specify one or more tags, only the specified tags are copied to backups. If you specify one or more tags when  creating a user-initiated backup, no tags are copied from the file system,  regardless of this value. (Default = false)
         public let copyTagsToBackups: Bool?
@@ -1812,9 +1759,9 @@ extension FSx {
         public let deploymentType: LustreDeploymentType?
         /// The type of drive cache used by PERSISTENT_1 file systems that are provisioned with HDD storage devices. This parameter is required when storage type is HDD. Set to READ, improve the performance for frequently accessed files and allows 20% of the total storage capacity of the file system to be cached.   This parameter is required when StorageType is set to HDD.
         public let driveCacheType: DriveCacheType?
-        /// You use the MountName value when mounting the file system. For the SCRATCH_1 deployment type, this value is always "fsx".  For SCRATCH_2 and PERSISTENT_1 deployment types, this  value is a string that is unique within an AWS Region.   
+        /// You use the MountName value when mounting the file system. For the SCRATCH_1 deployment type, this value is always "fsx".  For SCRATCH_2 and PERSISTENT_1 deployment types, this  value is a string that is unique within an AWS Region.
         public let mountName: String?
-        ///  Per unit storage throughput represents the megabytes per second of read or write throughput per 1 tebibyte of storage provisioned. File system throughput capacity is equal to Storage capacity (TiB) * PerUnitStorageThroughput (MB/s/TiB). This option is only valid for PERSISTENT_1 deployment types.  Valid values for SSD storage: 50, 100, 200. Valid values for HDD storage: 12, 40. 
+        ///  Per unit storage throughput represents the megabytes per second of read or write throughput per 1 tebibyte of storage provisioned. File system throughput capacity is equal to Storage capacity (TiB) * PerUnitStorageThroughput (MB/s/TiB). This option is only valid for PERSISTENT_1 deployment types.  Valid values for SSD storage: 50, 100, 200. Valid values for HDD storage: 12, 40.
         public let perUnitStorageThroughput: Int?
         /// The preferred start time to perform weekly maintenance, formatted d:HH:MM in the UTC time zone. d is the weekday number, from 1 through 7, beginning with Monday and ending with Sunday.
         public let weeklyMaintenanceStartTime: String?
@@ -1847,7 +1794,6 @@ extension FSx {
     }
 
     public struct SelfManagedActiveDirectoryAttributes: AWSDecodableShape {
-
         /// A list of up to two IP addresses of DNS servers or domain controllers in the self-managed AD directory.
         public let dnsIps: [String]?
         /// The fully qualified domain name of the self-managed AD directory.
@@ -1877,14 +1823,13 @@ extension FSx {
     }
 
     public struct SelfManagedActiveDirectoryConfiguration: AWSEncodableShape {
-
-        /// A list of up to two IP addresses of DNS servers or domain controllers in the self-managed AD directory. 
+        /// A list of up to two IP addresses of DNS servers or domain controllers in the self-managed AD directory.
         public let dnsIps: [String]
         /// The fully qualified domain name of the self-managed AD directory, such as corp.example.com.
         public let domainName: String
         /// (Optional) The name of the domain group whose members are granted administrative privileges for the file system. Administrative privileges include taking ownership of files and folders, setting audit controls (audit ACLs) on files and folders, and              administering the file system remotely by using the FSx Remote PowerShell. The group that you specify must already exist in your domain. If you don't provide one, your AD domain's Domain Admins group is used.
         public let fileSystemAdministratorsGroup: String?
-        /// (Optional) The fully qualified distinguished name of the organizational unit within your self-managed AD directory that the Windows File Server instance will join. Amazon FSx only accepts OU as the direct parent of the file system. An example is OU=FSx,DC=yourdomain,DC=corp,DC=com. To learn more, see RFC 2253. If none is provided, the FSx file system is created in the default location of your self-managed AD directory.   Only Organizational Unit (OU) objects can be the direct parent of the file system that you're creating. 
+        /// (Optional) The fully qualified distinguished name of the organizational unit within your self-managed AD directory that the Windows File Server instance will join. Amazon FSx only accepts OU as the direct parent of the file system. An example is OU=FSx,DC=yourdomain,DC=corp,DC=com. To learn more, see RFC 2253. If none is provided, the FSx file system is created in the default location of your self-managed AD directory.   Only Organizational Unit (OU) objects can be the direct parent of the file system that you're creating.
         public let organizationalUnitDistinguishedName: String?
         /// The password for the service account on your self-managed AD domain that Amazon FSx will use to join to your AD domain.
         public let password: String
@@ -1936,7 +1881,6 @@ extension FSx {
     }
 
     public struct SelfManagedActiveDirectoryConfigurationUpdates: AWSEncodableShape {
-
         /// A list of up to two IP addresses of DNS servers or domain controllers in the self-managed AD directory.
         public let dnsIps: [String]?
         /// The password for the service account on your self-managed AD domain that Amazon FSx will use to join to your AD domain.
@@ -1974,7 +1918,6 @@ extension FSx {
     }
 
     public struct Tag: AWSEncodableShape & AWSDecodableShape {
-
         /// A value that specifies the TagKey, the name of the tag. Tag keys must be unique for the resource to which they are attached.
         public let key: String
         /// A value that specifies the TagValue, the value assigned to the corresponding tag key. Tag values can be null and don't have to be unique in a tag set. For example, you can have a key-value pair in a tag set of finances : April and also of payroll : April.
@@ -2000,7 +1943,6 @@ extension FSx {
     }
 
     public struct TagResourceRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the Amazon FSx resource that you want to tag.
         public let resourceARN: String
         /// A list of tags for the resource. If a tag with a given key already exists, the value is replaced by the one specified in this parameter.
@@ -2029,15 +1971,10 @@ extension FSx {
     }
 
     public struct TagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UntagResourceRequest: AWSEncodableShape {
-
         /// The ARN of the Amazon FSx resource to untag.
         public let resourceARN: String
         /// A list of keys of tags on the resource to untag. In case the tag key doesn't exist, the call will still succeed to be idempotent.
@@ -2068,15 +2005,10 @@ extension FSx {
     }
 
     public struct UntagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateFileSystemLustreConfiguration: AWSEncodableShape {
-
         ///  (Optional) When you create your file system, your existing S3 objects appear as file and directory listings.  Use this property to choose how Amazon FSx keeps your file and directory listing up to date  as you add or modify objects in your linked S3 bucket. AutoImportPolicy can have the following values:    NONE - (Default) AutoImport is off. Amazon FSx only updates  file and directory listings from the linked S3 bucket  when the file system is created. FSx does not update the file and directory  listing for any new or changed objects after choosing this option.    NEW - AutoImport is on. Amazon FSx automatically imports directory listings of any new objects added to the linked S3 bucket that  do not currently exist in the FSx file system.     NEW_CHANGED - AutoImport is on. Amazon FSx automatically imports  file and directory listings of any new objects added to the S3 bucket and any  existing objects that are changed in the S3 bucket after you choose this option.     For more information, see Automatically import updates from your S3 bucket.
         public let autoImportPolicy: AutoImportPolicyType?
         public let automaticBackupRetentionDays: Int?
@@ -2115,7 +2047,6 @@ extension FSx {
     }
 
     public struct UpdateFileSystemRequest: AWSEncodableShape {
-
         /// A string of up to 64 ASCII characters that Amazon FSx uses to ensure idempotent updates. This string is automatically filled on your behalf when you use the AWS Command Line Interface (AWS CLI) or an AWS SDK.
         public let clientRequestToken: String?
         /// Identifies the file system that you are updating.
@@ -2142,7 +2073,7 @@ extension FSx {
             try self.validate(self.fileSystemId, name: "fileSystemId", parent: name, min: 11)
             try self.validate(self.fileSystemId, name: "fileSystemId", parent: name, pattern: "^(fs-[0-9a-f]{8,})$")
             try self.lustreConfiguration?.validate(name: "\(name).lustreConfiguration")
-            try self.validate(self.storageCapacity, name: "storageCapacity", parent: name, max: 2147483647)
+            try self.validate(self.storageCapacity, name: "storageCapacity", parent: name, max: 2_147_483_647)
             try self.validate(self.storageCapacity, name: "storageCapacity", parent: name, min: 0)
             try self.windowsConfiguration?.validate(name: "\(name).windowsConfiguration")
         }
@@ -2157,7 +2088,6 @@ extension FSx {
     }
 
     public struct UpdateFileSystemResponse: AWSDecodableShape {
-
         /// A description of the file system that was updated.
         public let fileSystem: FileSystem?
 
@@ -2171,12 +2101,11 @@ extension FSx {
     }
 
     public struct UpdateFileSystemWindowsConfiguration: AWSEncodableShape {
-
         /// The configuration that Amazon FSx for Windows File Server uses to audit and log user accesses of files, folders, and file shares on the Amazon FSx for Windows File Server file system..
         public let auditLogConfiguration: WindowsAuditLogCreateConfiguration?
         /// The number of days to retain automatic daily backups. Setting this to zero (0) disables automatic daily backups. You can retain automatic daily backups for a maximum of 90 days. For more information, see Working with Automatic Daily Backups.
         public let automaticBackupRetentionDays: Int?
-        /// The preferred time to start the daily automatic backup, in the UTC time zone, for example, 02:00 
+        /// The preferred time to start the daily automatic backup, in the UTC time zone, for example, 02:00
         public let dailyAutomaticBackupStartTime: String?
         /// The configuration Amazon FSx uses to join the Windows File Server instance to the self-managed Microsoft AD directory. You cannot make a self-managed Microsoft AD update request if there is an existing self-managed Microsoft AD update request in progress.
         public let selfManagedActiveDirectoryConfiguration: SelfManagedActiveDirectoryConfigurationUpdates?
@@ -2220,12 +2149,11 @@ extension FSx {
     }
 
     public struct WindowsAuditLogConfiguration: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) for the destination of the audit logs. The destination can be any Amazon CloudWatch Logs log group ARN or Amazon Kinesis Data Firehose delivery stream ARN. The name of the Amazon CloudWatch Logs log group must begin with the /aws/fsx prefix. The name of the Amazon Kinesis Data Firehouse delivery stream must begin with the aws-fsx prefix. The destination ARN (either CloudWatch Logs log group or Kinesis Data Firehose delivery stream) must be in the same AWS partition, AWS region, and AWS account as your Amazon FSx file system.
         public let auditLogDestination: String?
-        /// Sets which attempt type is logged by Amazon FSx for file and folder accesses.    SUCCESS_ONLY - only successful attempts to access files or folders are logged.    FAILURE_ONLY - only failed attempts to access files or folders are logged.    SUCCESS_AND_FAILURE - both successful attempts and failed attempts to access files or folders are logged.    DISABLED - access auditing of files and folders is turned off.  
+        /// Sets which attempt type is logged by Amazon FSx for file and folder accesses.    SUCCESS_ONLY - only successful attempts to access files or folders are logged.    FAILURE_ONLY - only failed attempts to access files or folders are logged.    SUCCESS_AND_FAILURE - both successful attempts and failed attempts to access files or folders are logged.    DISABLED - access auditing of files and folders is turned off.
         public let fileAccessAuditLogLevel: WindowsAccessAuditLogLevel
-        /// Sets which attempt type is logged by Amazon FSx for file share accesses.    SUCCESS_ONLY - only successful attempts to access file shares are logged.    FAILURE_ONLY - only failed attempts to access file shares are logged.    SUCCESS_AND_FAILURE - both successful attempts and failed attempts to access file shares are logged.    DISABLED - access auditing of file shares is turned off.  
+        /// Sets which attempt type is logged by Amazon FSx for file share accesses.    SUCCESS_ONLY - only successful attempts to access file shares are logged.    FAILURE_ONLY - only failed attempts to access file shares are logged.    SUCCESS_AND_FAILURE - both successful attempts and failed attempts to access file shares are logged.    DISABLED - access auditing of file shares is turned off.
         public let fileShareAccessAuditLogLevel: WindowsAccessAuditLogLevel
 
         public init(auditLogDestination: String? = nil, fileAccessAuditLogLevel: WindowsAccessAuditLogLevel, fileShareAccessAuditLogLevel: WindowsAccessAuditLogLevel) {
@@ -2242,12 +2170,11 @@ extension FSx {
     }
 
     public struct WindowsAuditLogCreateConfiguration: AWSEncodableShape {
-
-        /// The Amazon Resource Name (ARN) that specifies the destination of the audit logs. The destination can be any Amazon CloudWatch Logs log group ARN or Amazon Kinesis Data Firehose delivery stream ARN, with the following requirements:   The destination ARN that you provide (either CloudWatch Logs log group or Kinesis Data Firehose delivery stream) must be in the same AWS partition, AWS region, and AWS account as your Amazon FSx file system.   The name of the Amazon CloudWatch Logs log group must begin with the /aws/fsx prefix. The name of the Amazon Kinesis Data Firehouse delivery stream must begin with the aws-fsx prefix.   If you do not provide a destination in AuditLogDestination, Amazon FSx will create and use a log stream in the CloudWatch Logs /aws/fsx/windows log group.   If AuditLogDestination is provided and the resource does not exist, the request will fail with a BadRequest error.   If FileAccessAuditLogLevel and FileShareAccessAuditLogLevel are both set to DISABLED, you cannot specify a destination in AuditLogDestination.  
+        /// The Amazon Resource Name (ARN) that specifies the destination of the audit logs. The destination can be any Amazon CloudWatch Logs log group ARN or Amazon Kinesis Data Firehose delivery stream ARN, with the following requirements:   The destination ARN that you provide (either CloudWatch Logs log group or Kinesis Data Firehose delivery stream) must be in the same AWS partition, AWS region, and AWS account as your Amazon FSx file system.   The name of the Amazon CloudWatch Logs log group must begin with the /aws/fsx prefix. The name of the Amazon Kinesis Data Firehouse delivery stream must begin with the aws-fsx prefix.   If you do not provide a destination in AuditLogDestination, Amazon FSx will create and use a log stream in the CloudWatch Logs /aws/fsx/windows log group.   If AuditLogDestination is provided and the resource does not exist, the request will fail with a BadRequest error.   If FileAccessAuditLogLevel and FileShareAccessAuditLogLevel are both set to DISABLED, you cannot specify a destination in AuditLogDestination.
         public let auditLogDestination: String?
-        /// Sets which attempt type is logged by Amazon FSx for file and folder accesses.    SUCCESS_ONLY - only successful attempts to access files or folders are logged.    FAILURE_ONLY - only failed attempts to access files or folders are logged.    SUCCESS_AND_FAILURE - both successful attempts and failed attempts to access files or folders are logged.    DISABLED - access auditing of files and folders is turned off.  
+        /// Sets which attempt type is logged by Amazon FSx for file and folder accesses.    SUCCESS_ONLY - only successful attempts to access files or folders are logged.    FAILURE_ONLY - only failed attempts to access files or folders are logged.    SUCCESS_AND_FAILURE - both successful attempts and failed attempts to access files or folders are logged.    DISABLED - access auditing of files and folders is turned off.
         public let fileAccessAuditLogLevel: WindowsAccessAuditLogLevel
-        /// Sets which attempt type is logged by Amazon FSx for file share accesses.    SUCCESS_ONLY - only successful attempts to access file shares are logged.    FAILURE_ONLY - only failed attempts to access file shares are logged.    SUCCESS_AND_FAILURE - both successful attempts and failed attempts to access file shares are logged.    DISABLED - access auditing of file shares is turned off.  
+        /// Sets which attempt type is logged by Amazon FSx for file share accesses.    SUCCESS_ONLY - only successful attempts to access file shares are logged.    FAILURE_ONLY - only failed attempts to access file shares are logged.    SUCCESS_AND_FAILURE - both successful attempts and failed attempts to access file shares are logged.    DISABLED - access auditing of file shares is turned off.
         public let fileShareAccessAuditLogLevel: WindowsAccessAuditLogLevel
 
         public init(auditLogDestination: String? = nil, fileAccessAuditLogLevel: WindowsAccessAuditLogLevel, fileShareAccessAuditLogLevel: WindowsAccessAuditLogLevel) {
@@ -2270,7 +2197,6 @@ extension FSx {
     }
 
     public struct WindowsFileSystemConfiguration: AWSDecodableShape {
-
         /// The ID for an existing AWS Managed Microsoft Active Directory instance that the file system is joined to.
         public let activeDirectoryId: String?
         public let aliases: [Alias]?

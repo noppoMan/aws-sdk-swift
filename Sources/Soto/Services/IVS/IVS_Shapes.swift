@@ -56,7 +56,6 @@ extension Ivs {
     // MARK: Shapes
 
     public struct BatchError: AWSDecodableShape {
-
         /// Channel ARN.
         public let arn: String?
         /// Error code.
@@ -71,14 +70,13 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case code = "code"
-            case message = "message"
+            case arn
+            case code
+            case message
         }
     }
 
     public struct BatchGetChannelRequest: AWSEncodableShape {
-
         /// Array of ARNs, one per channel.
         public let arns: [String]
 
@@ -97,12 +95,11 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arns = "arns"
+            case arns
         }
     }
 
     public struct BatchGetChannelResponse: AWSDecodableShape {
-
         public let channels: [Channel]?
         /// Each error object is related to a specific ARN in the request.
         public let errors: [BatchError]?
@@ -113,13 +110,12 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case channels = "channels"
-            case errors = "errors"
+            case channels
+            case errors
         }
     }
 
     public struct BatchGetStreamKeyRequest: AWSEncodableShape {
-
         /// Array of ARNs, one per channel.
         public let arns: [String]
 
@@ -138,12 +134,11 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arns = "arns"
+            case arns
         }
     }
 
     public struct BatchGetStreamKeyResponse: AWSDecodableShape {
-
         public let errors: [BatchError]?
         public let streamKeys: [StreamKey]?
 
@@ -153,13 +148,12 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case errors = "errors"
-            case streamKeys = "streamKeys"
+            case errors
+            case streamKeys
         }
     }
 
     public struct Channel: AWSDecodableShape {
-
         /// Channel ARN.
         public let arn: String?
         /// Whether the channel is private (enabled for playback authorization). Default: false.
@@ -176,7 +170,7 @@ extension Ivs {
         public let recordingConfigurationArn: String?
         /// Array of 1-50 maps, each of the form string:string (key:value).
         public let tags: [String: String]?
-        /// Channel type, which determines the allowable resolution and bitrate. If you exceed the allowable resolution or bitrate, the stream probably will disconnect immediately. Default: STANDARD. Valid values:    STANDARD: Multiple qualities are generated from the original input, to automatically give viewers the best experience for their devices and network conditions. Vertical resolution can be up to 1080 and bitrate can be up to 8.5 Mbps.    BASIC: Amazon IVS delivers the original input to viewers. The viewer’s video-quality choice is limited to the original input. Vertical resolution can be up to 480 and bitrate can be up to 1.5 Mbps.  
+        /// Channel type, which determines the allowable resolution and bitrate. If you exceed the allowable resolution or bitrate, the stream probably will disconnect immediately. Default: STANDARD. Valid values:    STANDARD: Multiple qualities are generated from the original input, to automatically give viewers the best experience for their devices and network conditions. Vertical resolution can be up to 1080 and bitrate can be up to 8.5 Mbps.    BASIC: Amazon IVS delivers the original input to viewers. The viewer’s video-quality choice is limited to the original input. Vertical resolution can be up to 480 and bitrate can be up to 1.5 Mbps.
         public let type: ChannelType?
 
         public init(arn: String? = nil, authorized: Bool? = nil, ingestEndpoint: String? = nil, latencyMode: ChannelLatencyMode? = nil, name: String? = nil, playbackUrl: String? = nil, recordingConfigurationArn: String? = nil, tags: [String: String]? = nil, type: ChannelType? = nil) {
@@ -192,20 +186,19 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case authorized = "authorized"
-            case ingestEndpoint = "ingestEndpoint"
-            case latencyMode = "latencyMode"
-            case name = "name"
-            case playbackUrl = "playbackUrl"
-            case recordingConfigurationArn = "recordingConfigurationArn"
-            case tags = "tags"
-            case type = "type"
+            case arn
+            case authorized
+            case ingestEndpoint
+            case latencyMode
+            case name
+            case playbackUrl
+            case recordingConfigurationArn
+            case tags
+            case type
         }
     }
 
     public struct ChannelSummary: AWSDecodableShape {
-
         /// Channel ARN.
         public let arn: String?
         /// Whether the channel is private (enabled for playback authorization). Default: false.
@@ -229,17 +222,16 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case authorized = "authorized"
-            case latencyMode = "latencyMode"
-            case name = "name"
-            case recordingConfigurationArn = "recordingConfigurationArn"
-            case tags = "tags"
+            case arn
+            case authorized
+            case latencyMode
+            case name
+            case recordingConfigurationArn
+            case tags
         }
     }
 
     public struct CreateChannelRequest: AWSEncodableShape {
-
         /// Whether the channel is private (enabled for playback authorization). Default: false.
         public let authorized: Bool?
         /// Channel latency mode. Use NORMAL to broadcast and deliver live video up to Full HD. Use LOW for near-real-time interaction with viewers. (Note: In the Amazon IVS console, LOW and NORMAL correspond to Ultra-low and Standard, respectively.) Default: LOW.
@@ -250,7 +242,7 @@ extension Ivs {
         public let recordingConfigurationArn: String?
         /// Array of 1-50 maps, each of the form string:string (key:value).
         public let tags: [String: String]?
-        /// Channel type, which determines the allowable resolution and bitrate. If you exceed the allowable resolution or bitrate, the stream probably will disconnect immediately. Default: STANDARD. Valid values:    STANDARD: Multiple qualities are generated from the original input, to automatically give viewers the best experience for their devices and network conditions. Vertical resolution can be up to 1080 and bitrate can be up to 8.5 Mbps.    BASIC: Amazon IVS delivers the original input to viewers. The viewer’s video-quality choice is limited to the original input. Vertical resolution can be up to 480 and bitrate can be up to 1.5 Mbps.  
+        /// Channel type, which determines the allowable resolution and bitrate. If you exceed the allowable resolution or bitrate, the stream probably will disconnect immediately. Default: STANDARD. Valid values:    STANDARD: Multiple qualities are generated from the original input, to automatically give viewers the best experience for their devices and network conditions. Vertical resolution can be up to 1080 and bitrate can be up to 8.5 Mbps.    BASIC: Amazon IVS delivers the original input to viewers. The viewer’s video-quality choice is limited to the original input. Vertical resolution can be up to 480 and bitrate can be up to 1.5 Mbps.
         public let type: ChannelType?
 
         public init(authorized: Bool? = nil, latencyMode: ChannelLatencyMode? = nil, name: String? = nil, recordingConfigurationArn: String? = nil, tags: [String: String]? = nil, type: ChannelType? = nil) {
@@ -276,17 +268,16 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case authorized = "authorized"
-            case latencyMode = "latencyMode"
-            case name = "name"
-            case recordingConfigurationArn = "recordingConfigurationArn"
-            case tags = "tags"
-            case type = "type"
+            case authorized
+            case latencyMode
+            case name
+            case recordingConfigurationArn
+            case tags
+            case type
         }
     }
 
     public struct CreateChannelResponse: AWSDecodableShape {
-
         public let channel: Channel?
         public let streamKey: StreamKey?
 
@@ -296,13 +287,12 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case channel = "channel"
-            case streamKey = "streamKey"
+            case channel
+            case streamKey
         }
     }
 
     public struct CreateRecordingConfigurationRequest: AWSEncodableShape {
-
         /// A complex type that contains a destination configuration for where recorded video will be stored.
         public let destinationConfiguration: DestinationConfiguration
         /// An arbitrary string (a nickname) that helps the customer identify that resource. The value does not need to be unique.
@@ -329,14 +319,13 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case destinationConfiguration = "destinationConfiguration"
-            case name = "name"
-            case tags = "tags"
+            case destinationConfiguration
+            case name
+            case tags
         }
     }
 
     public struct CreateRecordingConfigurationResponse: AWSDecodableShape {
-
         public let recordingConfiguration: RecordingConfiguration?
 
         public init(recordingConfiguration: RecordingConfiguration? = nil) {
@@ -344,12 +333,11 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case recordingConfiguration = "recordingConfiguration"
+            case recordingConfiguration
         }
     }
 
     public struct CreateStreamKeyRequest: AWSEncodableShape {
-
         /// ARN of the channel for which to create the stream key.
         public let channelArn: String
         /// Array of 1-50 maps, each of the form string:string (key:value).
@@ -373,13 +361,12 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case channelArn = "channelArn"
-            case tags = "tags"
+            case channelArn
+            case tags
         }
     }
 
     public struct CreateStreamKeyResponse: AWSDecodableShape {
-
         /// Stream key used to authenticate an RTMPS stream for ingestion.
         public let streamKey: StreamKey?
 
@@ -388,12 +375,11 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case streamKey = "streamKey"
+            case streamKey
         }
     }
 
     public struct DeleteChannelRequest: AWSEncodableShape {
-
         /// ARN of the channel to be deleted.
         public let arn: String
 
@@ -408,12 +394,11 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
+            case arn
         }
     }
 
     public struct DeletePlaybackKeyPairRequest: AWSEncodableShape {
-
         /// ARN of the key pair to be deleted.
         public let arn: String
 
@@ -428,20 +413,15 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
+            case arn
         }
     }
 
     public struct DeletePlaybackKeyPairResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteRecordingConfigurationRequest: AWSEncodableShape {
-
         /// ARN of the recording configuration to be deleted.
         public let arn: String
 
@@ -455,12 +435,11 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
+            case arn
         }
     }
 
     public struct DeleteStreamKeyRequest: AWSEncodableShape {
-
         /// ARN of the stream key to be deleted.
         public let arn: String
 
@@ -475,12 +454,11 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
+            case arn
         }
     }
 
     public struct DestinationConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// An S3 destination configuration where recorded videos will be stored.
         public let s3: S3DestinationConfiguration?
 
@@ -493,12 +471,11 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case s3 = "s3"
+            case s3
         }
     }
 
     public struct GetChannelRequest: AWSEncodableShape {
-
         /// ARN of the channel for which the configuration is to be retrieved.
         public let arn: String
 
@@ -513,12 +490,11 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
+            case arn
         }
     }
 
     public struct GetChannelResponse: AWSDecodableShape {
-
         public let channel: Channel?
 
         public init(channel: Channel? = nil) {
@@ -526,12 +502,11 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case channel = "channel"
+            case channel
         }
     }
 
     public struct GetPlaybackKeyPairRequest: AWSEncodableShape {
-
         /// ARN of the key pair to be returned.
         public let arn: String
 
@@ -546,12 +521,11 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
+            case arn
         }
     }
 
     public struct GetPlaybackKeyPairResponse: AWSDecodableShape {
-
         public let keyPair: PlaybackKeyPair?
 
         public init(keyPair: PlaybackKeyPair? = nil) {
@@ -559,12 +533,11 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case keyPair = "keyPair"
+            case keyPair
         }
     }
 
     public struct GetRecordingConfigurationRequest: AWSEncodableShape {
-
         /// ARN of the recording configuration to be retrieved.
         public let arn: String
 
@@ -578,12 +551,11 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
+            case arn
         }
     }
 
     public struct GetRecordingConfigurationResponse: AWSDecodableShape {
-
         public let recordingConfiguration: RecordingConfiguration?
 
         public init(recordingConfiguration: RecordingConfiguration? = nil) {
@@ -591,12 +563,11 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case recordingConfiguration = "recordingConfiguration"
+            case recordingConfiguration
         }
     }
 
     public struct GetStreamKeyRequest: AWSEncodableShape {
-
         /// ARN for the stream key to be retrieved.
         public let arn: String
 
@@ -611,12 +582,11 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
+            case arn
         }
     }
 
     public struct GetStreamKeyResponse: AWSDecodableShape {
-
         public let streamKey: StreamKey?
 
         public init(streamKey: StreamKey? = nil) {
@@ -624,12 +594,11 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case streamKey = "streamKey"
+            case streamKey
         }
     }
 
     public struct GetStreamRequest: AWSEncodableShape {
-
         /// Channel ARN for stream to be accessed.
         public let channelArn: String
 
@@ -644,12 +613,11 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case channelArn = "channelArn"
+            case channelArn
         }
     }
 
     public struct GetStreamResponse: AWSDecodableShape {
-
         public let stream: Stream?
 
         public init(stream: Stream? = nil) {
@@ -657,12 +625,11 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case stream = "stream"
+            case stream
         }
     }
 
     public struct ImportPlaybackKeyPairRequest: AWSEncodableShape {
-
         /// An arbitrary string (a nickname) assigned to a playback key pair that helps the customer identify that resource. The value does not need to be unique.
         public let name: String?
         /// The public portion of a customer-generated key pair.
@@ -688,14 +655,13 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case name = "name"
-            case publicKeyMaterial = "publicKeyMaterial"
-            case tags = "tags"
+            case name
+            case publicKeyMaterial
+            case tags
         }
     }
 
     public struct ImportPlaybackKeyPairResponse: AWSDecodableShape {
-
         public let keyPair: PlaybackKeyPair?
 
         public init(keyPair: PlaybackKeyPair? = nil) {
@@ -703,12 +669,11 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case keyPair = "keyPair"
+            case keyPair
         }
     }
 
     public struct ListChannelsRequest: AWSEncodableShape {
-
         /// Filters the channel list to match the specified name.
         public let filterByName: String?
         /// Filters the channel list to match the specified recording-configuration ARN.
@@ -736,15 +701,14 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case filterByName = "filterByName"
-            case filterByRecordingConfigurationArn = "filterByRecordingConfigurationArn"
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
+            case filterByName
+            case filterByRecordingConfigurationArn
+            case maxResults
+            case nextToken
         }
     }
 
     public struct ListChannelsResponse: AWSDecodableShape {
-
         /// List of the matching channels.
         public let channels: [ChannelSummary]
         /// If there are more channels than maxResults, use nextToken in the request to get the next set.
@@ -756,13 +720,12 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case channels = "channels"
-            case nextToken = "nextToken"
+            case channels
+            case nextToken
         }
     }
 
     public struct ListPlaybackKeyPairsRequest: AWSEncodableShape {
-
         /// The first key pair to retrieve. This is used for pagination; see the nextToken response field. Default: 50.
         public let maxResults: Int?
         /// Maximum number of key pairs to return.
@@ -780,13 +743,12 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
+            case maxResults
+            case nextToken
         }
     }
 
     public struct ListPlaybackKeyPairsResponse: AWSDecodableShape {
-
         /// List of key pairs.
         public let keyPairs: [PlaybackKeyPairSummary]
         /// If there are more key pairs than maxResults, use nextToken in the request to get the next set.
@@ -798,14 +760,13 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case keyPairs = "keyPairs"
-            case nextToken = "nextToken"
+            case keyPairs
+            case nextToken
         }
     }
 
     public struct ListRecordingConfigurationsRequest: AWSEncodableShape {
-
-        /// Maximum number of recording configurations to return. Default: 50. 
+        /// Maximum number of recording configurations to return. Default: 50.
         public let maxResults: Int?
         /// The first recording configuration to retrieve. This is used for pagination; see the nextToken response field.
         public let nextToken: String?
@@ -822,13 +783,12 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
+            case maxResults
+            case nextToken
         }
     }
 
     public struct ListRecordingConfigurationsResponse: AWSDecodableShape {
-
         /// If there are more recording configurations than maxResults, use nextToken in the request to get the next set.
         public let nextToken: String?
         /// List of the matching recording configurations.
@@ -840,13 +800,12 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case recordingConfigurations = "recordingConfigurations"
+            case nextToken
+            case recordingConfigurations
         }
     }
 
     public struct ListStreamKeysRequest: AWSEncodableShape {
-
         /// Channel ARN used to filter the list.
         public let channelArn: String
         /// Maximum number of streamKeys to return. Default: 50.
@@ -870,14 +829,13 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case channelArn = "channelArn"
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
+            case channelArn
+            case maxResults
+            case nextToken
         }
     }
 
     public struct ListStreamKeysResponse: AWSDecodableShape {
-
         /// If there are more stream keys than maxResults, use nextToken in the request to get the next set.
         public let nextToken: String?
         /// List of stream keys.
@@ -889,13 +847,12 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case streamKeys = "streamKeys"
+            case nextToken
+            case streamKeys
         }
     }
 
     public struct ListStreamsRequest: AWSEncodableShape {
-
         /// Maximum number of streams to return. Default: 50.
         public let maxResults: Int?
         /// The first stream to retrieve. This is used for pagination; see the nextToken response field.
@@ -913,13 +870,12 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
+            case maxResults
+            case nextToken
         }
     }
 
     public struct ListStreamsResponse: AWSDecodableShape {
-
         /// If there are more streams than maxResults, use nextToken in the request to get the next set.
         public let nextToken: String?
         /// List of streams.
@@ -931,8 +887,8 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case streams = "streams"
+            case nextToken
+            case streams
         }
     }
 
@@ -963,13 +919,12 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
+            case maxResults
+            case nextToken
         }
     }
 
     public struct ListTagsForResourceResponse: AWSDecodableShape {
-
         /// If there are more tags than maxResults, use nextToken in the request to get the next set.
         public let nextToken: String?
         public let tags: [String: String]
@@ -980,13 +935,12 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case tags = "tags"
+            case nextToken
+            case tags
         }
     }
 
     public struct PlaybackKeyPair: AWSDecodableShape {
-
         /// Key-pair ARN.
         public let arn: String?
         /// Key-pair identifier.
@@ -1004,15 +958,14 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case fingerprint = "fingerprint"
-            case name = "name"
-            case tags = "tags"
+            case arn
+            case fingerprint
+            case name
+            case tags
         }
     }
 
     public struct PlaybackKeyPairSummary: AWSDecodableShape {
-
         /// Key-pair ARN.
         public let arn: String?
         /// An arbitrary string (a nickname) assigned to a playback key pair that helps the customer identify that resource. The value does not need to be unique.
@@ -1027,14 +980,13 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case name = "name"
-            case tags = "tags"
+            case arn
+            case name
+            case tags
         }
     }
 
     public struct PutMetadataRequest: AWSEncodableShape {
-
         /// ARN of the channel into which metadata is inserted. This channel must have an active stream.
         public let channelArn: String
         /// Metadata to insert into the stream. Maximum: 1 KB per request.
@@ -1053,13 +1005,12 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case channelArn = "channelArn"
-            case metadata = "metadata"
+            case channelArn
+            case metadata
         }
     }
 
     public struct RecordingConfiguration: AWSDecodableShape {
-
         /// Recording-configuration ARN.
         public let arn: String
         /// A complex type that contains information about where recorded video will be stored.
@@ -1080,16 +1031,15 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case destinationConfiguration = "destinationConfiguration"
-            case name = "name"
-            case state = "state"
-            case tags = "tags"
+            case arn
+            case destinationConfiguration
+            case name
+            case state
+            case tags
         }
     }
 
     public struct RecordingConfigurationSummary: AWSDecodableShape {
-
         /// Recording-configuration ARN.
         public let arn: String
         /// A complex type that contains information about where recorded video will be stored.
@@ -1110,16 +1060,15 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case destinationConfiguration = "destinationConfiguration"
-            case name = "name"
-            case state = "state"
-            case tags = "tags"
+            case arn
+            case destinationConfiguration
+            case name
+            case state
+            case tags
         }
     }
 
     public struct S3DestinationConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// Location (S3 bucket name) where recorded videos will be stored.
         public let bucketName: String
 
@@ -1134,12 +1083,11 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case bucketName = "bucketName"
+            case bucketName
         }
     }
 
     public struct StopStreamRequest: AWSEncodableShape {
-
         /// ARN of the channel for which the stream is to be stopped.
         public let channelArn: String
 
@@ -1154,20 +1102,15 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case channelArn = "channelArn"
+            case channelArn
         }
     }
 
     public struct StopStreamResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct Stream: AWSDecodableShape {
-
         /// Channel ARN for the stream.
         public let channelArn: String?
         /// The stream’s health.
@@ -1192,17 +1135,16 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case channelArn = "channelArn"
-            case health = "health"
-            case playbackUrl = "playbackUrl"
-            case startTime = "startTime"
-            case state = "state"
-            case viewerCount = "viewerCount"
+            case channelArn
+            case health
+            case playbackUrl
+            case startTime
+            case state
+            case viewerCount
         }
     }
 
     public struct StreamKey: AWSDecodableShape {
-
         /// Stream-key ARN.
         public let arn: String?
         /// Channel ARN for the stream.
@@ -1220,15 +1162,14 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case channelArn = "channelArn"
-            case tags = "tags"
-            case value = "value"
+            case arn
+            case channelArn
+            case tags
+            case value
         }
     }
 
     public struct StreamKeySummary: AWSDecodableShape {
-
         /// Stream-key ARN.
         public let arn: String?
         /// Channel ARN for the stream.
@@ -1243,14 +1184,13 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case channelArn = "channelArn"
-            case tags = "tags"
+            case arn
+            case channelArn
+            case tags
         }
     }
 
     public struct StreamSummary: AWSDecodableShape {
-
         /// Channel ARN for the stream.
         public let channelArn: String?
         /// The stream’s health.
@@ -1272,11 +1212,11 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case channelArn = "channelArn"
-            case health = "health"
-            case startTime = "startTime"
-            case state = "state"
-            case viewerCount = "viewerCount"
+            case channelArn
+            case health
+            case startTime
+            case state
+            case viewerCount
         }
     }
 
@@ -1308,21 +1248,17 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tags = "tags"
+            case tags
         }
     }
 
     public struct TagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UntagResourceRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "resourceArn")), 
+            AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "resourceArn")),
             AWSMemberEncoding(label: "tagKeys", location: .querystring(locationName: "tagKeys"))
         ]
 
@@ -1351,15 +1287,10 @@ extension Ivs {
     }
 
     public struct UntagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateChannelRequest: AWSEncodableShape {
-
         /// ARN of the channel to be updated.
         public let arn: String
         /// Whether the channel is private (enabled for playback authorization).
@@ -1370,7 +1301,7 @@ extension Ivs {
         public let name: String?
         /// Recording-configuration ARN. If this is set to an empty string, recording is disabled. A value other than an empty string indicates that recording is enabled
         public let recordingConfigurationArn: String?
-        /// Channel type, which determines the allowable resolution and bitrate. If you exceed the allowable resolution or bitrate, the stream probably will disconnect immediately. Valid values:    STANDARD: Multiple qualities are generated from the original input, to automatically give viewers the best experience for their devices and network conditions. Vertical resolution can be up to 1080 and bitrate can be up to 8.5 Mbps.    BASIC: Amazon IVS delivers the original input to viewers. The viewer’s video-quality choice is limited to the original input. Vertical resolution can be up to 480 and bitrate can be up to 1.5 Mbps.  
+        /// Channel type, which determines the allowable resolution and bitrate. If you exceed the allowable resolution or bitrate, the stream probably will disconnect immediately. Valid values:    STANDARD: Multiple qualities are generated from the original input, to automatically give viewers the best experience for their devices and network conditions. Vertical resolution can be up to 1080 and bitrate can be up to 8.5 Mbps.    BASIC: Amazon IVS delivers the original input to viewers. The viewer’s video-quality choice is limited to the original input. Vertical resolution can be up to 480 and bitrate can be up to 1.5 Mbps.
         public let type: ChannelType?
 
         public init(arn: String, authorized: Bool? = nil, latencyMode: ChannelLatencyMode? = nil, name: String? = nil, recordingConfigurationArn: String? = nil, type: ChannelType? = nil) {
@@ -1393,17 +1324,16 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case authorized = "authorized"
-            case latencyMode = "latencyMode"
-            case name = "name"
-            case recordingConfigurationArn = "recordingConfigurationArn"
-            case type = "type"
+            case arn
+            case authorized
+            case latencyMode
+            case name
+            case recordingConfigurationArn
+            case type
         }
     }
 
     public struct UpdateChannelResponse: AWSDecodableShape {
-
         public let channel: Channel?
 
         public init(channel: Channel? = nil) {
@@ -1411,7 +1341,7 @@ extension Ivs {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case channel = "channel"
+            case channel
         }
     }
 }

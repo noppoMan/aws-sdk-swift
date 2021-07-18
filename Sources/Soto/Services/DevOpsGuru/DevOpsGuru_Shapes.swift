@@ -40,9 +40,9 @@ extension DevOpsGuru {
         case minimum = "Minimum"
         case samplecount = "SampleCount"
         case sum = "Sum"
-        case p50 = "p50"
-        case p90 = "p90"
-        case p99 = "p99"
+        case p50
+        case p90
+        case p99
         public var description: String { return self.rawValue }
     }
 
@@ -166,8 +166,7 @@ extension DevOpsGuru {
     // MARK: Shapes
 
     public struct AddNotificationChannelRequest: AWSEncodableShape {
-
-        ///  A NotificationChannelConfig object that specifies what type of 		notification channel to add. The one  	supported notification channel is Amazon Simple Notification Service (Amazon SNS). 
+        ///  A NotificationChannelConfig object that specifies what type of 		notification channel to add. The one  	supported notification channel is Amazon Simple Notification Service (Amazon SNS).
         public let config: NotificationChannelConfig
 
         public init(config: NotificationChannelConfig) {
@@ -184,8 +183,7 @@ extension DevOpsGuru {
     }
 
     public struct AddNotificationChannelResponse: AWSDecodableShape {
-
-        ///  		The ID of the added notification channel. 	
+        ///  		The ID of the added notification channel.
         public let id: String
 
         public init(id: String) {
@@ -198,12 +196,11 @@ extension DevOpsGuru {
     }
 
     public struct AnomalyReportedTimeRange: AWSDecodableShape {
-
         /// 			The time when an anomaly is closed.
-        /// 		
+        ///
         public let closeTime: Date?
-        /// 			The time when an anomaly is opened. 
-        /// 		
+        /// 			The time when an anomaly is opened.
+        ///
         public let openTime: Date
 
         public init(closeTime: Date? = nil, openTime: Date) {
@@ -218,9 +215,8 @@ extension DevOpsGuru {
     }
 
     public struct AnomalySourceDetails: AWSDecodableShape {
-
         ///  An array of CloudWatchMetricsDetail object that contains information
-        /// 			about the analyzed metrics that displayed anomalous behavior. 
+        /// 			about the analyzed metrics that displayed anomalous behavior.
         public let cloudWatchMetrics: [CloudWatchMetricsDetail]?
 
         public init(cloudWatchMetrics: [CloudWatchMetricsDetail]? = nil) {
@@ -233,11 +229,10 @@ extension DevOpsGuru {
     }
 
     public struct AnomalyTimeRange: AWSDecodableShape {
-
-        ///  The time when the anomalous behavior ended. 
+        ///  The time when the anomalous behavior ended.
         public let endTime: Date?
         /// 			The time when the anomalous behavior started.
-        /// 		
+        ///
         public let startTime: Date
 
         public init(endTime: Date? = nil, startTime: Date) {
@@ -252,9 +247,8 @@ extension DevOpsGuru {
     }
 
     public struct CloudFormationCollection: AWSEncodableShape & AWSDecodableShape {
-
         /// 			An array of CloudFormation stack names.
-        /// 		
+        ///
         public let stackNames: [String]?
 
         public init(stackNames: [String]? = nil) {
@@ -275,9 +269,8 @@ extension DevOpsGuru {
     }
 
     public struct CloudFormationCollectionFilter: AWSDecodableShape {
-
         /// 			An array of CloudFormation stack names.
-        /// 		
+        ///
         public let stackNames: [String]?
 
         public init(stackNames: [String]? = nil) {
@@ -290,7 +283,6 @@ extension DevOpsGuru {
     }
 
     public struct CloudFormationCostEstimationResourceCollectionFilter: AWSEncodableShape & AWSDecodableShape {
-
         /// An array of CloudFormation stack names. Its size is fixed at 1 item.
         public let stackNames: [String]?
 
@@ -314,10 +306,9 @@ extension DevOpsGuru {
     }
 
     public struct CloudFormationHealth: AWSDecodableShape {
-
-        ///  		Information about the health of the AWS resources in your account that are specified by an AWS CloudFormation stack, including  		the number of open proactive, open reactive insights, and the Mean Time to Recover (MTTR) of closed insights. 	
+        ///  		Information about the health of the AWS resources in your account that are specified by an AWS CloudFormation stack, including  		the number of open proactive, open reactive insights, and the Mean Time to Recover (MTTR) of closed insights.
         public let insight: InsightHealth?
-        ///  		The name of the CloudFormation stack. 	
+        ///  		The name of the CloudFormation stack.
         public let stackName: String?
 
         public init(insight: InsightHealth? = nil, stackName: String? = nil) {
@@ -332,27 +323,26 @@ extension DevOpsGuru {
     }
 
     public struct CloudWatchMetricsDetail: AWSDecodableShape {
-
-        /// 			An array of CloudWatch dimensions associated with 
-        /// 		
+        /// 			An array of CloudWatch dimensions associated with
+        ///
         public let dimensions: [CloudWatchMetricsDimension]?
         /// 			The name of the CloudWatch metric.
-        /// 		
+        ///
         public let metricName: String?
         /// 			The namespace of the CloudWatch metric. A namespace is a container for CloudWatch metrics.
-        /// 		
+        ///
         public let namespace: String?
         /// 			The length of time associated with the CloudWatch metric in number of seconds.
-        /// 		
+        ///
         public let period: Int?
-        /// 			The type of statistic associated with the CloudWatch metric. For more information, see 
-        /// 			Statistics in the 
+        /// 			The type of statistic associated with the CloudWatch metric. For more information, see
+        /// 			Statistics in the
         /// 			Amazon CloudWatch User Guide.
-        /// 		
+        ///
         public let stat: CloudWatchMetricsStat?
-        /// 			The unit of measure used for the CloudWatch metric. For example, Bytes, Seconds, 
+        /// 			The unit of measure used for the CloudWatch metric. For example, Bytes, Seconds,
         /// 			Count, and Percent.
-        /// 		
+        ///
         public let unit: String?
 
         public init(dimensions: [CloudWatchMetricsDimension]? = nil, metricName: String? = nil, namespace: String? = nil, period: Int? = nil, stat: CloudWatchMetricsStat? = nil, unit: String? = nil) {
@@ -375,12 +365,11 @@ extension DevOpsGuru {
     }
 
     public struct CloudWatchMetricsDimension: AWSDecodableShape {
-
         /// 			The name of the CloudWatch dimension.
-        /// 		
+        ///
         public let name: String?
         /// 			The value of the CloudWatch dimension.
-        /// 		
+        ///
         public let value: String?
 
         public init(name: String? = nil, value: String? = nil) {
@@ -395,8 +384,7 @@ extension DevOpsGuru {
     }
 
     public struct CostEstimationResourceCollectionFilter: AWSEncodableShape & AWSDecodableShape {
-
-        /// An object that specifies the CloudFormation stack that defines the AWS resources 
+        /// An object that specifies the CloudFormation stack that defines the AWS resources
         /// 			used to create a monthly estimate for DevOps Guru.
         public let cloudFormation: CloudFormationCostEstimationResourceCollectionFilter?
 
@@ -414,7 +402,6 @@ extension DevOpsGuru {
     }
 
     public struct CostEstimationTimeRange: AWSDecodableShape {
-
         /// The end time of the cost estimation.
         public let endTime: Date?
         /// The start time of the cost estimation.
@@ -432,22 +419,17 @@ extension DevOpsGuru {
     }
 
     public struct DescribeAccountHealthRequest: AWSEncodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DescribeAccountHealthResponse: AWSDecodableShape {
-
-        ///  		An integer that specifies the number of metrics that have been analyzed in your AWS account. 	
+        ///  		An integer that specifies the number of metrics that have been analyzed in your AWS account.
         public let metricsAnalyzed: Int
-        ///  		An integer that specifies the number of open proactive insights in your AWS account. 	
+        ///  		An integer that specifies the number of open proactive insights in your AWS account.
         public let openProactiveInsights: Int
-        ///  		An integer that specifies the number of open reactive insights in your AWS account.  	
+        ///  		An integer that specifies the number of open reactive insights in your AWS account.
         public let openReactiveInsights: Int
-        /// The number of Amazon DevOps Guru resource analysis hours billed to the current AWS account in the last hour. 		
+        /// The number of Amazon DevOps Guru resource analysis hours billed to the current AWS account in the last hour.
         public let resourceHours: Int64
 
         public init(metricsAnalyzed: Int, openProactiveInsights: Int, openReactiveInsights: Int, resourceHours: Int64) {
@@ -466,10 +448,9 @@ extension DevOpsGuru {
     }
 
     public struct DescribeAccountOverviewRequest: AWSEncodableShape {
-
-        ///  		The start of the time range passed in. The start time granularity is at the  		day level. The floor of the start time is used. Returned information occurred after this day.  	
+        ///  		The start of the time range passed in. The start time granularity is at the  		day level. The floor of the start time is used. Returned information occurred after this day.
         public let fromTime: Date
-        ///  		The end of the time range passed in. The start time granularity is at the  		day level. The floor of the start time is used. Returned information occurred before this day. If this is not specified, then the current day is used. 	
+        ///  		The end of the time range passed in. The start time granularity is at the  		day level. The floor of the start time is used. Returned information occurred before this day. If this is not specified, then the current day is used.
         public let toTime: Date?
 
         public init(fromTime: Date, toTime: Date? = nil) {
@@ -484,12 +465,11 @@ extension DevOpsGuru {
     }
 
     public struct DescribeAccountOverviewResponse: AWSDecodableShape {
-
-        ///  		The Mean Time to Recover (MTTR) for all closed insights that were created during the  		time range passed in. 	
+        ///  		The Mean Time to Recover (MTTR) for all closed insights that were created during the  		time range passed in.
         public let meanTimeToRecoverInMilliseconds: Int64
-        ///  		An integer that specifies the number of open proactive insights in your AWS account that were created during the  		time range passed in. 	
+        ///  		An integer that specifies the number of open proactive insights in your AWS account that were created during the  		time range passed in.
         public let proactiveInsights: Int
-        ///  		An integer that specifies the number of open reactive insights in your AWS account that were created during the  		time range passed in. 	
+        ///  		An integer that specifies the number of open reactive insights in your AWS account that were created during the  		time range passed in.
         public let reactiveInsights: Int
 
         public init(meanTimeToRecoverInMilliseconds: Int64, proactiveInsights: Int, reactiveInsights: Int) {
@@ -510,7 +490,7 @@ extension DevOpsGuru {
             AWSMemberEncoding(label: "id", location: .uri(locationName: "Id"))
         ]
 
-        ///  		The ID of the anomaly. 	
+        ///  		The ID of the anomaly.
         public let id: String
 
         public init(id: String) {
@@ -527,12 +507,11 @@ extension DevOpsGuru {
     }
 
     public struct DescribeAnomalyResponse: AWSDecodableShape {
-
         /// 			A ReactiveAnomaly object that represents the requested anomaly.
-        /// 		
+        ///
         public let proactiveAnomaly: ProactiveAnomaly?
         /// 			A ProactiveAnomaly object that represents the requested anomaly.
-        /// 		
+        ///
         public let reactiveAnomaly: ReactiveAnomaly?
 
         public init(proactiveAnomaly: ProactiveAnomaly? = nil, reactiveAnomaly: ReactiveAnomaly? = nil) {
@@ -547,9 +526,8 @@ extension DevOpsGuru {
     }
 
     public struct DescribeFeedbackRequest: AWSEncodableShape {
-
         /// 			The ID of the insight for which the feedback was provided.
-        /// 		
+        ///
         public let insightId: String?
 
         public init(insightId: String? = nil) {
@@ -568,7 +546,6 @@ extension DevOpsGuru {
     }
 
     public struct DescribeFeedbackResponse: AWSDecodableShape {
-
         public let insightFeedback: InsightFeedback?
 
         public init(insightFeedback: InsightFeedback? = nil) {
@@ -585,7 +562,7 @@ extension DevOpsGuru {
             AWSMemberEncoding(label: "id", location: .uri(locationName: "Id"))
         ]
 
-        ///  		The ID of the insight. 	
+        ///  		The ID of the insight.
         public let id: String
 
         public init(id: String) {
@@ -602,12 +579,11 @@ extension DevOpsGuru {
     }
 
     public struct DescribeInsightResponse: AWSDecodableShape {
-
         /// 			A ProactiveInsight object that represents the requested insight.
-        /// 		
+        ///
         public let proactiveInsight: ProactiveInsight?
         /// 			A ReactiveInsight object that represents the requested insight.
-        /// 		
+        ///
         public let reactiveInsight: ReactiveInsight?
 
         public init(proactiveInsight: ProactiveInsight? = nil, reactiveInsight: ReactiveInsight? = nil) {
@@ -623,13 +599,13 @@ extension DevOpsGuru {
 
     public struct DescribeResourceCollectionHealthRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "NextToken")), 
+            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "NextToken")),
             AWSMemberEncoding(label: "resourceCollectionType", location: .uri(locationName: "ResourceCollectionType"))
         ]
 
         /// The pagination token to use to retrieve  the next page of results for this operation. If this value is null, it retrieves the first page.
         public let nextToken: String?
-        ///  		An AWS resource collection type. This type specifies how analyzed AWS resources are defined. The one type of AWS resource collection supported is AWS CloudFormation stacks. DevOps Guru can be configured to analyze  	only the AWS resources that are defined in the stacks. You can specify up to 500 AWS CloudFormation stacks.        	
+        ///  		An AWS resource collection type. This type specifies how analyzed AWS resources are defined. The one type of AWS resource collection supported is AWS CloudFormation stacks. DevOps Guru can be configured to analyze  	only the AWS resources that are defined in the stacks. You can specify up to 500 AWS CloudFormation stacks.
         public let resourceCollectionType: ResourceCollectionType
 
         public init(nextToken: String? = nil, resourceCollectionType: ResourceCollectionType) {
@@ -647,12 +623,11 @@ extension DevOpsGuru {
     }
 
     public struct DescribeResourceCollectionHealthResponse: AWSDecodableShape {
-
-        ///  		The returned CloudFormationHealthOverview object that contains an InsightHealthOverview object with  		the requested system health information. 	
+        ///  		The returned CloudFormationHealthOverview object that contains an InsightHealthOverview object with  		the requested system health information.
         public let cloudFormation: [CloudFormationHealth]
         /// The pagination token to use to retrieve  the next page of results for this operation. If there are no more pages, this value is null.
         public let nextToken: String?
-        /// An array of ServiceHealth objects that describes the health of the AWS services 
+        /// An array of ServiceHealth objects that describes the health of the AWS services
         /// 		associated with the resources in the collection.
         public let service: [ServiceHealth]?
 
@@ -670,15 +645,10 @@ extension DevOpsGuru {
     }
 
     public struct DescribeServiceIntegrationRequest: AWSEncodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DescribeServiceIntegrationResponse: AWSDecodableShape {
-
         public let serviceIntegration: ServiceIntegrationConfig?
 
         public init(serviceIntegration: ServiceIntegrationConfig? = nil) {
@@ -691,10 +661,9 @@ extension DevOpsGuru {
     }
 
     public struct EndTimeRange: AWSEncodableShape {
-
-        ///  	The earliest end time in the time range. 
+        ///  	The earliest end time in the time range.
         public let fromTime: Date?
-        ///  	The latest end time in the time range. 
+        ///  	The latest end time in the time range.
         public let toTime: Date?
 
         public init(fromTime: Date? = nil, toTime: Date? = nil) {
@@ -709,27 +678,26 @@ extension DevOpsGuru {
     }
 
     public struct Event: AWSDecodableShape {
-
         /// 			The source, AWS_CLOUD_TRAIL or AWS_CODE_DEPLOY, where DevOps Guru analysis found the event.
-        /// 		
+        ///
         public let dataSource: EventDataSource?
         /// 			The class of the event. The class specifies what the event is related to, such as an infrastructure change, a deployment, or a schema change.
-        /// 		
+        ///
         public let eventClass: EventClass?
         /// 			The AWS source that emitted the event.
-        /// 		
+        ///
         public let eventSource: String?
         /// 			The ID of the event.
-        /// 		
+        ///
         public let id: String?
         /// 			The name of the event.
-        /// 		
+        ///
         public let name: String?
         public let resourceCollection: ResourceCollection?
         /// 			An EventResource object that contains information about the resource that emitted the event.
-        /// 		
+        ///
         public let resources: [EventResource]?
-        ///  A Timestamp that specifies the time the event occurred. 
+        ///  A Timestamp that specifies the time the event occurred.
         public let time: Date?
 
         public init(dataSource: EventDataSource? = nil, eventClass: EventClass? = nil, eventSource: String? = nil, id: String? = nil, name: String? = nil, resourceCollection: ResourceCollection? = nil, resources: [EventResource]? = nil, time: Date? = nil) {
@@ -756,15 +724,14 @@ extension DevOpsGuru {
     }
 
     public struct EventResource: AWSDecodableShape {
-
         /// 			The Amazon Resource Name (ARN) of the resource that emitted an event.
-        /// 		
+        ///
         public let arn: String?
         /// 			The name of the resource that emitted an event.
-        /// 		
+        ///
         public let name: String?
         /// 			The type of resource that emitted an event.
-        /// 		
+        ///
         public let type: String?
 
         public init(arn: String? = nil, name: String? = nil, type: String? = nil) {
@@ -781,12 +748,11 @@ extension DevOpsGuru {
     }
 
     public struct EventTimeRange: AWSEncodableShape {
-
         /// 			The time when the event started.
-        /// 		
+        ///
         public let fromTime: Date
         /// 			The time when the event ended.
-        /// 		
+        ///
         public let toTime: Date
 
         public init(fromTime: Date, toTime: Date) {
@@ -822,21 +788,20 @@ extension DevOpsGuru {
     }
 
     public struct GetCostEstimationResponse: AWSDecodableShape {
-
-        /// An array of ResourceCost objects that each contains details 
+        /// An array of ResourceCost objects that each contains details
         /// 			about the monthly cost estimate to analyze one of your AWS resources.
         public let costs: [ServiceResourceCost]?
         /// The pagination token to use to retrieve  the next page of results for this operation. If there are no more pages, this value is null.
         public let nextToken: String?
         /// The collection of the AWS resources used to create your monthly DevOps Guru cost estimate.
         public let resourceCollection: CostEstimationResourceCollectionFilter?
-        /// The status of creating this cost estimate. If it's still in progress, the status 
+        /// The status of creating this cost estimate. If it's still in progress, the status
         /// 			ONGOING is returned. If it is finished, the status COMPLETED is returned.
         public let status: CostEstimationStatus?
         /// The start and end time of the cost estimation.
         public let timeRange: CostEstimationTimeRange?
-        /// The estimated monthly cost to analyze the AWS resources. 
-        /// 			This value is the sum of the estimated costs to analyze each resource in the Costs 
+        /// The estimated monthly cost to analyze the AWS resources.
+        /// 			This value is the sum of the estimated costs to analyze each resource in the Costs
         /// 			object in this response.
         public let totalCost: Double?
 
@@ -861,13 +826,13 @@ extension DevOpsGuru {
 
     public struct GetResourceCollectionRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "NextToken")), 
+            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "NextToken")),
             AWSMemberEncoding(label: "resourceCollectionType", location: .uri(locationName: "ResourceCollectionType"))
         ]
 
         /// The pagination token to use to retrieve  the next page of results for this operation. If this value is null, it retrieves the first page.
         public let nextToken: String?
-        ///  		The type of AWS resource collections to return. The one valid value is CLOUD_FORMATION for  		AWS CloudFormation stacks. 	
+        ///  		The type of AWS resource collections to return. The one valid value is CLOUD_FORMATION for  		AWS CloudFormation stacks.
         public let resourceCollectionType: ResourceCollectionType
 
         public init(nextToken: String? = nil, resourceCollectionType: ResourceCollectionType) {
@@ -885,10 +850,9 @@ extension DevOpsGuru {
     }
 
     public struct GetResourceCollectionResponse: AWSDecodableShape {
-
         /// The pagination token to use to retrieve  the next page of results for this operation. If there are no more pages, this value is null.
         public let nextToken: String?
-        ///  		The requested list of AWS resource collections. The one type of AWS resource collection supported is AWS CloudFormation stacks. DevOps Guru can be configured to analyze  	only the AWS resources that are defined in the stacks. You can specify up to 500 AWS CloudFormation stacks. 	
+        ///  		The requested list of AWS resource collections. The one type of AWS resource collection supported is AWS CloudFormation stacks. DevOps Guru can be configured to analyze  	only the AWS resources that are defined in the stacks. You can specify up to 500 AWS CloudFormation stacks.
         public let resourceCollection: ResourceCollectionFilter?
 
         public init(nextToken: String? = nil, resourceCollection: ResourceCollectionFilter? = nil) {
@@ -903,10 +867,9 @@ extension DevOpsGuru {
     }
 
     public struct InsightFeedback: AWSEncodableShape & AWSDecodableShape {
-
-        ///  	The feedback provided by the customer. 
+        ///  	The feedback provided by the customer.
         public let feedback: InsightFeedbackOption?
-        ///  	The insight feedback ID. 
+        ///  	The insight feedback ID.
         public let id: String?
 
         public init(feedback: InsightFeedbackOption? = nil, id: String? = nil) {
@@ -927,12 +890,11 @@ extension DevOpsGuru {
     }
 
     public struct InsightHealth: AWSDecodableShape {
-
-        ///  	The Meant Time to Recover (MTTR) for the insight.	 
+        ///  	The Meant Time to Recover (MTTR) for the insight.
         public let meanTimeToRecoverInMilliseconds: Int64?
-        ///  	The number of open proactive insights. 
+        ///  	The number of open proactive insights.
         public let openProactiveInsights: Int?
-        ///  	The number of open reactive insights. 
+        ///  	The number of open reactive insights.
         public let openReactiveInsights: Int?
 
         public init(meanTimeToRecoverInMilliseconds: Int64? = nil, openProactiveInsights: Int? = nil, openReactiveInsights: Int? = nil) {
@@ -949,12 +911,11 @@ extension DevOpsGuru {
     }
 
     public struct InsightTimeRange: AWSDecodableShape {
-
         /// 			The time when the behavior described in an insight ended.
-        /// 		
+        ///
         public let endTime: Date?
         /// 			The time when the behavior described in an insight started.
-        /// 		
+        ///
         public let startTime: Date
 
         public init(endTime: Date? = nil, startTime: Date) {
@@ -974,14 +935,14 @@ extension DevOpsGuru {
         ]
 
         /// 			The ID of the insight. The returned anomalies belong to this insight.
-        /// 		
+        ///
         public let insightId: String
         /// The maximum number of results to return with a single call.
         /// 	To retrieve the remaining results, make another call with the returned nextToken value.
         public let maxResults: Int?
         /// The pagination token to use to retrieve  the next page of results for this operation. If this value is null, it retrieves the first page.
         public let nextToken: String?
-        ///  		A time range used to specify when the requested anomalies started. All returned anomalies started  		during this time range. 	
+        ///  		A time range used to specify when the requested anomalies started. All returned anomalies started  		during this time range.
         public let startTimeRange: StartTimeRange?
 
         public init(insightId: String, maxResults: Int? = nil, nextToken: String? = nil, startTimeRange: StartTimeRange? = nil) {
@@ -1010,14 +971,13 @@ extension DevOpsGuru {
     }
 
     public struct ListAnomaliesForInsightResponse: AWSDecodableShape {
-
         /// The pagination token to use to retrieve  the next page of results for this operation. If there are no more pages, this value is null.
         public let nextToken: String?
         /// 			An array of ProactiveAnomalySummary objects that represent the requested anomalies
-        /// 		
+        ///
         public let proactiveAnomalies: [ProactiveAnomalySummary]?
         /// 			An array of ReactiveAnomalySummary objects that represent the requested anomalies
-        /// 		
+        ///
         public let reactiveAnomalies: [ReactiveAnomalySummary]?
 
         public init(nextToken: String? = nil, proactiveAnomalies: [ProactiveAnomalySummary]? = nil, reactiveAnomalies: [ReactiveAnomalySummary]? = nil) {
@@ -1034,20 +994,19 @@ extension DevOpsGuru {
     }
 
     public struct ListEventsFilters: AWSEncodableShape {
-
         /// 			The source, AWS_CLOUD_TRAIL or AWS_CODE_DEPLOY, of the events you want returned.
-        /// 		
+        ///
         public let dataSource: EventDataSource?
-        /// 			The class of the events you want to filter for, such as an infrastructure change, a deployment, or a schema change.      	
-        /// 		
+        /// 			The class of the events you want to filter for, such as an infrastructure change, a deployment, or a schema change.
+        ///
         public let eventClass: EventClass?
         /// 			The AWS source that emitted the events you want to filter for.
-        /// 		
+        ///
         public let eventSource: String?
-        ///  A time range during which you want the filtered events to have occurred. 
+        ///  A time range during which you want the filtered events to have occurred.
         public let eventTimeRange: EventTimeRange?
         /// 			An ID of an insight that is related to the events you want to filter for.
-        /// 		
+        ///
         public let insightId: String?
         public let resourceCollection: ResourceCollection?
 
@@ -1081,8 +1040,7 @@ extension DevOpsGuru {
     }
 
     public struct ListEventsRequest: AWSEncodableShape {
-
-        ///  		A ListEventsFilters object used to specify which events to return. 	
+        ///  		A ListEventsFilters object used to specify which events to return.
         public let filters: ListEventsFilters
         /// The maximum number of results to return with a single call.
         /// 	To retrieve the remaining results, make another call with the returned nextToken value.
@@ -1113,8 +1071,7 @@ extension DevOpsGuru {
     }
 
     public struct ListEventsResponse: AWSDecodableShape {
-
-        ///  		A list of the requested events. 	
+        ///  		A list of the requested events.
         public let events: [Event]
         /// The pagination token to use to retrieve  the next page of results for this operation. If there are no more pages, this value is null.
         public let nextToken: String?
@@ -1131,10 +1088,9 @@ extension DevOpsGuru {
     }
 
     public struct ListInsightsAnyStatusFilter: AWSEncodableShape {
-
-        ///  		A time range used to specify when the behavior of the filtered insights started. 	
+        ///  		A time range used to specify when the behavior of the filtered insights started.
         public let startTimeRange: StartTimeRange
-        ///  		Use to filter for either REACTIVE or PROACTIVE insights. 	
+        ///  		Use to filter for either REACTIVE or PROACTIVE insights.
         public let type: InsightType
 
         public init(startTimeRange: StartTimeRange, type: InsightType) {
@@ -1149,10 +1105,9 @@ extension DevOpsGuru {
     }
 
     public struct ListInsightsClosedStatusFilter: AWSEncodableShape {
-
-        ///  		A time range used to specify when the behavior of the filtered insights ended. 	
+        ///  		A time range used to specify when the behavior of the filtered insights ended.
         public let endTimeRange: EndTimeRange
-        ///  	Use to filter for either REACTIVE or PROACTIVE insights. 
+        ///  	Use to filter for either REACTIVE or PROACTIVE insights.
         public let type: InsightType
 
         public init(endTimeRange: EndTimeRange, type: InsightType) {
@@ -1167,8 +1122,7 @@ extension DevOpsGuru {
     }
 
     public struct ListInsightsOngoingStatusFilter: AWSEncodableShape {
-
-        ///  		Use to filter for either REACTIVE or PROACTIVE insights. 	
+        ///  		Use to filter for either REACTIVE or PROACTIVE insights.
         public let type: InsightType
 
         public init(type: InsightType) {
@@ -1181,13 +1135,12 @@ extension DevOpsGuru {
     }
 
     public struct ListInsightsRequest: AWSEncodableShape {
-
         /// The maximum number of results to return with a single call.
         /// 	To retrieve the remaining results, make another call with the returned nextToken value.
         public let maxResults: Int?
         /// The pagination token to use to retrieve  the next page of results for this operation. If this value is null, it retrieves the first page.
         public let nextToken: String?
-        ///  	A filter used to filter the returned insights by their status. You can specify one status filter. 
+        ///  	A filter used to filter the returned insights by their status. You can specify one status filter.
         public let statusFilter: ListInsightsStatusFilter
 
         public init(maxResults: Int? = nil, nextToken: String? = nil, statusFilter: ListInsightsStatusFilter) {
@@ -1212,14 +1165,13 @@ extension DevOpsGuru {
     }
 
     public struct ListInsightsResponse: AWSDecodableShape {
-
         /// The pagination token to use to retrieve  the next page of results for this operation. If there are no more pages, this value is null.
         public let nextToken: String?
         /// 			The returned list of proactive insights.
-        /// 		
+        ///
         public let proactiveInsights: [ProactiveInsightSummary]?
-        /// 			The returned list of reactive insights.	
-        /// 		
+        /// 			The returned list of reactive insights.
+        ///
         public let reactiveInsights: [ReactiveInsightSummary]?
 
         public init(nextToken: String? = nil, proactiveInsights: [ProactiveInsightSummary]? = nil, reactiveInsights: [ReactiveInsightSummary]? = nil) {
@@ -1236,12 +1188,11 @@ extension DevOpsGuru {
     }
 
     public struct ListInsightsStatusFilter: AWSEncodableShape {
-
-        ///  		A ListInsightsAnyStatusFilter that specifies insights of any status  		that are either REACTIVE or PROACTIVE. 	
+        ///  		A ListInsightsAnyStatusFilter that specifies insights of any status  		that are either REACTIVE or PROACTIVE.
         public let any: ListInsightsAnyStatusFilter?
-        ///  		A ListInsightsClosedStatusFilter that specifies closed insights that are  		either REACTIVE or PROACTIVE. 	
+        ///  		A ListInsightsClosedStatusFilter that specifies closed insights that are  		either REACTIVE or PROACTIVE.
         public let closed: ListInsightsClosedStatusFilter?
-        ///  	A ListInsightsAnyStatusFilter that specifies ongoing insights  	that are either REACTIVE or PROACTIVE. 
+        ///  	A ListInsightsAnyStatusFilter that specifies ongoing insights  	that are either REACTIVE or PROACTIVE.
         public let ongoing: ListInsightsOngoingStatusFilter?
 
         public init(any: ListInsightsAnyStatusFilter? = nil, closed: ListInsightsClosedStatusFilter? = nil, ongoing: ListInsightsOngoingStatusFilter? = nil) {
@@ -1258,7 +1209,6 @@ extension DevOpsGuru {
     }
 
     public struct ListNotificationChannelsRequest: AWSEncodableShape {
-
         /// The pagination token to use to retrieve  the next page of results for this operation. If this value is null, it retrieves the first page.
         public let nextToken: String?
 
@@ -1278,8 +1228,7 @@ extension DevOpsGuru {
     }
 
     public struct ListNotificationChannelsResponse: AWSDecodableShape {
-
-        ///  		An array that contains the requested notification channels. 	
+        ///  		An array that contains the requested notification channels.
         public let channels: [NotificationChannel]?
         /// The pagination token to use to retrieve  the next page of results for this operation. If there are no more pages, this value is null.
         public let nextToken: String?
@@ -1296,9 +1245,8 @@ extension DevOpsGuru {
     }
 
     public struct ListRecommendationsRequest: AWSEncodableShape {
-
         /// 			The ID of the requested insight.
-        /// 		
+        ///
         public let insightId: String
         /// A locale that specifies the language to use for recommendations.
         public let locale: Locale?
@@ -1328,10 +1276,9 @@ extension DevOpsGuru {
     }
 
     public struct ListRecommendationsResponse: AWSDecodableShape {
-
         /// The pagination token to use to retrieve  the next page of results for this operation. If there are no more pages, this value is null.
         public let nextToken: String?
-        ///  		An array of the requested recommendations. 	
+        ///  		An array of the requested recommendations.
         public let recommendations: [Recommendation]?
 
         public init(nextToken: String? = nil, recommendations: [Recommendation]? = nil) {
@@ -1346,12 +1293,11 @@ extension DevOpsGuru {
     }
 
     public struct NotificationChannel: AWSDecodableShape {
-
         /// 			A NotificationChannelConfig object that contains information about configured notification channels.
-        /// 		
+        ///
         public let config: NotificationChannelConfig?
         /// 			The ID of a notification channel.
-        /// 		
+        ///
         public let id: String?
 
         public init(config: NotificationChannelConfig? = nil, id: String? = nil) {
@@ -1366,16 +1312,15 @@ extension DevOpsGuru {
     }
 
     public struct NotificationChannelConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// 			Information about a notification channel configured in DevOps Guru to send notifications when insights are created.
-        /// 		
-        /// 		
-        /// 		       If you use an Amazon SNS topic in another account, you must attach a policy to it that grants DevOps Guru permission 
-        /// 				to it notifications. DevOps Guru adds the required policy on your behalf to send notifications using Amazon SNS in your account. 
-        /// 				For more information, see Permissions 
+        ///
+        ///
+        /// 		       If you use an Amazon SNS topic in another account, you must attach a policy to it that grants DevOps Guru permission
+        /// 				to it notifications. DevOps Guru adds the required policy on your behalf to send notifications using Amazon SNS in your account.
+        /// 				For more information, see Permissions
         /// 				for cross account Amazon SNS topics.
-        /// 				     If you use an Amazon SNS topic that is encrypted by an AWS Key Management Service customer-managed key (CMK), then you must add permissions 
-        /// 				to the CMK. For more information, see Permissions for 
+        /// 				     If you use an Amazon SNS topic that is encrypted by an AWS Key Management Service customer-managed key (CMK), then you must add permissions
+        /// 				to the CMK. For more information, see Permissions for
         /// 				AWS KMS–encrypted Amazon SNS topics.
         public let sns: SnsChannelConfig
 
@@ -1393,9 +1338,8 @@ extension DevOpsGuru {
     }
 
     public struct OpsCenterIntegration: AWSDecodableShape {
-
         /// 			Specifies if DevOps Guru is enabled to create an AWS Systems Manager OpsItem for each created insight.
-        /// 		
+        ///
         public let optInStatus: OptInStatus?
 
         public init(optInStatus: OptInStatus? = nil) {
@@ -1408,9 +1352,8 @@ extension DevOpsGuru {
     }
 
     public struct OpsCenterIntegrationConfig: AWSEncodableShape {
-
         /// 			Specifies if DevOps Guru is enabled to create an AWS Systems Manager OpsItem for each created insight.
-        /// 		
+        ///
         public let optInStatus: OptInStatus?
 
         public init(optInStatus: OptInStatus? = nil) {
@@ -1423,12 +1366,11 @@ extension DevOpsGuru {
     }
 
     public struct PredictionTimeRange: AWSDecodableShape {
-
         /// 			The time when the behavior in a proactive insight is expected to end.
-        /// 		
+        ///
         public let endTime: Date?
         /// 			The time range during which a metric limit is expected to be exceeded. This applies to proactive insights only.
-        /// 		
+        ///
         public let startTime: Date
 
         public init(endTime: Date? = nil, startTime: Date) {
@@ -1443,34 +1385,33 @@ extension DevOpsGuru {
     }
 
     public struct ProactiveAnomaly: AWSDecodableShape {
-
         /// 			A AnomalyReportedTimeRange object that specifies the time range between when the anomaly is opened and the time when it is closed.
-        /// 		
+        ///
         public let anomalyReportedTimeRange: AnomalyReportedTimeRange?
         public let anomalyTimeRange: AnomalyTimeRange?
         /// 			The ID of the insight that contains this anomaly. An insight is composed of related anomalies.
-        /// 		
+        ///
         public let associatedInsightId: String?
         /// 			The ID of a proactive anomaly.
-        /// 		
+        ///
         public let id: String?
         /// 			A threshold that was exceeded by behavior in analyzed resources. Exceeding this
         /// 			threshold is related to the anomalous behavior that generated this anomaly.
-        /// 		
+        ///
         public let limit: Double?
         public let predictionTimeRange: PredictionTimeRange?
         public let resourceCollection: ResourceCollection?
         /// 			The severity of a proactive anomaly.
-        /// 		
+        ///
         public let severity: AnomalySeverity?
-        /// 			Details about the source of the analyzed operational data that triggered the anomaly. The one supported source is Amazon CloudWatch metrics. 
-        /// 		
+        /// 			Details about the source of the analyzed operational data that triggered the anomaly. The one supported source is Amazon CloudWatch metrics.
+        ///
         public let sourceDetails: AnomalySourceDetails?
         /// 			The status of a proactive anomaly.
-        /// 		
+        ///
         public let status: AnomalyStatus?
         /// 			The time of the anomaly's most recent update.
-        /// 		
+        ///
         public let updateTime: Date?
 
         public init(anomalyReportedTimeRange: AnomalyReportedTimeRange? = nil, anomalyTimeRange: AnomalyTimeRange? = nil, associatedInsightId: String? = nil, id: String? = nil, limit: Double? = nil, predictionTimeRange: PredictionTimeRange? = nil, resourceCollection: ResourceCollection? = nil, severity: AnomalySeverity? = nil, sourceDetails: AnomalySourceDetails? = nil, status: AnomalyStatus? = nil, updateTime: Date? = nil) {
@@ -1503,31 +1444,30 @@ extension DevOpsGuru {
     }
 
     public struct ProactiveAnomalySummary: AWSDecodableShape {
-
         /// 			A AnomalyReportedTimeRange object that specifies the time range between when the anomaly is opened and the time when it is closed.
-        /// 		
+        ///
         public let anomalyReportedTimeRange: AnomalyReportedTimeRange?
         public let anomalyTimeRange: AnomalyTimeRange?
         /// 			The ID of the insight that contains this anomaly. An insight is composed of related anomalies.
-        /// 		
+        ///
         public let associatedInsightId: String?
         /// The ID of the anomaly.
         public let id: String?
         /// 			A threshold that was exceeded by behavior in analyzed resources. Exceeding this
         /// 			threshold is related to the anomalous behavior that generated this anomaly.
-        /// 		
+        ///
         public let limit: Double?
         public let predictionTimeRange: PredictionTimeRange?
         public let resourceCollection: ResourceCollection?
         /// The severity of the anomaly.
         public let severity: AnomalySeverity?
-        /// 			Details about the source of the analyzed operational data that triggered the anomaly. The one supported source is Amazon CloudWatch metrics. 
-        /// 		
+        /// 			Details about the source of the analyzed operational data that triggered the anomaly. The one supported source is Amazon CloudWatch metrics.
+        ///
         public let sourceDetails: AnomalySourceDetails?
         /// The status of the anomaly.
         public let status: AnomalyStatus?
         /// 			The time of the anomaly's most recent update.
-        /// 		
+        ///
         public let updateTime: Date?
 
         public init(anomalyReportedTimeRange: AnomalyReportedTimeRange? = nil, anomalyTimeRange: AnomalyTimeRange? = nil, associatedInsightId: String? = nil, id: String? = nil, limit: Double? = nil, predictionTimeRange: PredictionTimeRange? = nil, resourceCollection: ResourceCollection? = nil, severity: AnomalySeverity? = nil, sourceDetails: AnomalySourceDetails? = nil, status: AnomalyStatus? = nil, updateTime: Date? = nil) {
@@ -1560,21 +1500,20 @@ extension DevOpsGuru {
     }
 
     public struct ProactiveInsight: AWSDecodableShape {
-
-        /// The ID of the proactive insight. 
+        /// The ID of the proactive insight.
         public let id: String?
         public let insightTimeRange: InsightTimeRange?
-        /// The name of the proactive insight. 
+        /// The name of the proactive insight.
         public let name: String?
         public let predictionTimeRange: PredictionTimeRange?
         public let resourceCollection: ResourceCollection?
-        /// The severity of the proactive insight. 
+        /// The severity of the proactive insight.
         public let severity: InsightSeverity?
-        /// 			The ID of the AWS System Manager OpsItem created for this insight. You must enable 
+        /// 			The ID of the AWS System Manager OpsItem created for this insight. You must enable
         /// 			the creation of OpstItems insights before they are created for each insight.
-        /// 		
+        ///
         public let ssmOpsItemId: String?
-        /// The status of the proactive insight. 
+        /// The status of the proactive insight.
         public let status: InsightStatus?
 
         public init(id: String? = nil, insightTimeRange: InsightTimeRange? = nil, name: String? = nil, predictionTimeRange: PredictionTimeRange? = nil, resourceCollection: ResourceCollection? = nil, severity: InsightSeverity? = nil, ssmOpsItemId: String? = nil, status: InsightStatus? = nil) {
@@ -1601,19 +1540,18 @@ extension DevOpsGuru {
     }
 
     public struct ProactiveInsightSummary: AWSDecodableShape {
-
-        /// The ID of the proactive insight. 
+        /// The ID of the proactive insight.
         public let id: String?
         public let insightTimeRange: InsightTimeRange?
-        /// The name of the proactive insight. 
+        /// The name of the proactive insight.
         public let name: String?
         public let predictionTimeRange: PredictionTimeRange?
         public let resourceCollection: ResourceCollection?
         /// A collection of the names of AWS services.
         public let serviceCollection: ServiceCollection?
-        /// The severity of the proactive insight. 
+        /// The severity of the proactive insight.
         public let severity: InsightSeverity?
-        /// The status of the proactive insight. 
+        /// The status of the proactive insight.
         public let status: InsightStatus?
 
         public init(id: String? = nil, insightTimeRange: InsightTimeRange? = nil, name: String? = nil, predictionTimeRange: PredictionTimeRange? = nil, resourceCollection: ResourceCollection? = nil, serviceCollection: ServiceCollection? = nil, severity: InsightSeverity? = nil, status: InsightStatus? = nil) {
@@ -1640,8 +1578,7 @@ extension DevOpsGuru {
     }
 
     public struct PutFeedbackRequest: AWSEncodableShape {
-
-        ///  		The feedback from customers is about the recommendations in this insight. 	
+        ///  		The feedback from customers is about the recommendations in this insight.
         public let insightFeedback: InsightFeedback?
 
         public init(insightFeedback: InsightFeedback? = nil) {
@@ -1658,32 +1595,27 @@ extension DevOpsGuru {
     }
 
     public struct PutFeedbackResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct ReactiveAnomaly: AWSDecodableShape {
-
         /// 			A AnomalyReportedTimeRange object that specifies the time range between when the anomaly is opened and the time when it is closed.
-        /// 		
+        ///
         public let anomalyReportedTimeRange: AnomalyReportedTimeRange?
         public let anomalyTimeRange: AnomalyTimeRange?
         /// 			The ID of the insight that contains this anomaly. An insight is composed of related anomalies.
-        /// 		
+        ///
         public let associatedInsightId: String?
-        /// The ID of the reactive anomaly. 
+        /// The ID of the reactive anomaly.
         public let id: String?
         public let resourceCollection: ResourceCollection?
-        /// The severity of the anomaly. 
+        /// The severity of the anomaly.
         public let severity: AnomalySeverity?
-        /// 			Details about the source of the analyzed operational data that triggered the anomaly. The one supported source is Amazon CloudWatch metrics. 
-        /// 		
+        /// 			Details about the source of the analyzed operational data that triggered the anomaly. The one supported source is Amazon CloudWatch metrics.
+        ///
         public let sourceDetails: AnomalySourceDetails?
         /// 			The status of the anomaly.
-        /// 		
+        ///
         public let status: AnomalyStatus?
 
         public init(anomalyReportedTimeRange: AnomalyReportedTimeRange? = nil, anomalyTimeRange: AnomalyTimeRange? = nil, associatedInsightId: String? = nil, id: String? = nil, resourceCollection: ResourceCollection? = nil, severity: AnomalySeverity? = nil, sourceDetails: AnomalySourceDetails? = nil, status: AnomalyStatus? = nil) {
@@ -1710,26 +1642,25 @@ extension DevOpsGuru {
     }
 
     public struct ReactiveAnomalySummary: AWSDecodableShape {
-
         /// 			A AnomalyReportedTimeRange object that specifies the time range between when the anomaly is opened and the time when it is closed.
-        /// 		
+        ///
         public let anomalyReportedTimeRange: AnomalyReportedTimeRange?
         public let anomalyTimeRange: AnomalyTimeRange?
         /// 			The ID of the insight that contains this anomaly. An insight is composed of related anomalies.
-        /// 		
+        ///
         public let associatedInsightId: String?
         /// 			The ID of the reactive anomaly.
-        /// 		
+        ///
         public let id: String?
         public let resourceCollection: ResourceCollection?
-        /// 			The severity of the reactive anomaly.			
-        /// 		
+        /// 			The severity of the reactive anomaly.
+        ///
         public let severity: AnomalySeverity?
-        /// 			Details about the source of the analyzed operational data that triggered the anomaly. The one supported source is Amazon CloudWatch metrics. 
-        /// 		
+        /// 			Details about the source of the analyzed operational data that triggered the anomaly. The one supported source is Amazon CloudWatch metrics.
+        ///
         public let sourceDetails: AnomalySourceDetails?
         /// 			The status of the reactive anomaly.
-        /// 		
+        ///
         public let status: AnomalyStatus?
 
         public init(anomalyReportedTimeRange: AnomalyReportedTimeRange? = nil, anomalyTimeRange: AnomalyTimeRange? = nil, associatedInsightId: String? = nil, id: String? = nil, resourceCollection: ResourceCollection? = nil, severity: AnomalySeverity? = nil, sourceDetails: AnomalySourceDetails? = nil, status: AnomalyStatus? = nil) {
@@ -1756,24 +1687,23 @@ extension DevOpsGuru {
     }
 
     public struct ReactiveInsight: AWSDecodableShape {
-
         /// 			The ID of a reactive insight.
-        /// 		
+        ///
         public let id: String?
         public let insightTimeRange: InsightTimeRange?
         /// 			The name of a reactive insight.
-        /// 		
+        ///
         public let name: String?
         public let resourceCollection: ResourceCollection?
         /// 			The severity of a reactive insight.
-        /// 		
+        ///
         public let severity: InsightSeverity?
-        /// 			The ID of the AWS System Manager OpsItem created for this insight. You must enable 
+        /// 			The ID of the AWS System Manager OpsItem created for this insight. You must enable
         /// 			the creation of OpstItems insights before they are created for each insight.
-        /// 		
+        ///
         public let ssmOpsItemId: String?
         /// 			The status of a reactive insight.
-        /// 		
+        ///
         public let status: InsightStatus?
 
         public init(id: String? = nil, insightTimeRange: InsightTimeRange? = nil, name: String? = nil, resourceCollection: ResourceCollection? = nil, severity: InsightSeverity? = nil, ssmOpsItemId: String? = nil, status: InsightStatus? = nil) {
@@ -1798,22 +1728,21 @@ extension DevOpsGuru {
     }
 
     public struct ReactiveInsightSummary: AWSDecodableShape {
-
         /// 			The ID of a reactive summary.
-        /// 		
+        ///
         public let id: String?
         public let insightTimeRange: InsightTimeRange?
         /// 			The name of a reactive insight.
-        /// 		
+        ///
         public let name: String?
         public let resourceCollection: ResourceCollection?
         /// A collection of the names of AWS services.
         public let serviceCollection: ServiceCollection?
         /// 			The severity of a reactive insight.
-        /// 		
+        ///
         public let severity: InsightSeverity?
         /// 			The status of a reactive insight.
-        /// 		
+        ///
         public let status: InsightStatus?
 
         public init(id: String? = nil, insightTimeRange: InsightTimeRange? = nil, name: String? = nil, resourceCollection: ResourceCollection? = nil, serviceCollection: ServiceCollection? = nil, severity: InsightSeverity? = nil, status: InsightStatus? = nil) {
@@ -1838,24 +1767,23 @@ extension DevOpsGuru {
     }
 
     public struct Recommendation: AWSDecodableShape {
-
         /// 			A description of the problem.
-        /// 		
+        ///
         public let description: String?
         /// 			A hyperlink to information to help you address the problem.
-        /// 		
+        ///
         public let link: String?
         /// 			The name of the recommendation.
-        /// 		
+        ///
         public let name: String?
         /// 			The reason DevOps Guru flagged the anomalous behavior as a problem.
-        /// 		
+        ///
         public let reason: String?
         /// 			Anomalies that are related to the problem. Use these Anomalies to learn more about what's happening and to help address the issue.
-        /// 		
+        ///
         public let relatedAnomalies: [RecommendationRelatedAnomaly]?
         /// 			Events that are related to the problem. Use these events to learn more about what's happening and to help address the issue.
-        /// 		
+        ///
         public let relatedEvents: [RecommendationRelatedEvent]?
 
         public init(description: String? = nil, link: String? = nil, name: String? = nil, reason: String? = nil, relatedAnomalies: [RecommendationRelatedAnomaly]? = nil, relatedEvents: [RecommendationRelatedEvent]? = nil) {
@@ -1878,13 +1806,12 @@ extension DevOpsGuru {
     }
 
     public struct RecommendationRelatedAnomaly: AWSDecodableShape {
-
-        /// 			An array of objects that represent resources in which DevOps Guru detected anomalous behavior. Each object contains the name 
+        /// 			An array of objects that represent resources in which DevOps Guru detected anomalous behavior. Each object contains the name
         /// 			and type of the resource.
-        /// 		
+        ///
         public let resources: [RecommendationRelatedAnomalyResource]?
         /// 			Information about where the anomalous behavior related the recommendation was found. For example, details in Amazon CloudWatch metrics.
-        /// 		
+        ///
         public let sourceDetails: [RecommendationRelatedAnomalySourceDetail]?
 
         public init(resources: [RecommendationRelatedAnomalyResource]? = nil, sourceDetails: [RecommendationRelatedAnomalySourceDetail]? = nil) {
@@ -1899,12 +1826,11 @@ extension DevOpsGuru {
     }
 
     public struct RecommendationRelatedAnomalyResource: AWSDecodableShape {
-
         /// 			The name of the resource.
-        /// 		
+        ///
         public let name: String?
         /// 			The type of the resource.
-        /// 		
+        ///
         public let type: String?
 
         public init(name: String? = nil, type: String? = nil) {
@@ -1919,9 +1845,8 @@ extension DevOpsGuru {
     }
 
     public struct RecommendationRelatedAnomalySourceDetail: AWSDecodableShape {
-
         ///  An array of CloudWatchMetricsDetail objects that contains information
-        /// 			about the analyzed metrics that displayed anomalous behavior. 
+        /// 			about the analyzed metrics that displayed anomalous behavior.
         public let cloudWatchMetrics: [RecommendationRelatedCloudWatchMetricsSourceDetail]?
 
         public init(cloudWatchMetrics: [RecommendationRelatedCloudWatchMetricsSourceDetail]? = nil) {
@@ -1934,7 +1859,6 @@ extension DevOpsGuru {
     }
 
     public struct RecommendationRelatedCloudWatchMetricsSourceDetail: AWSDecodableShape {
-
         /// The name of the CloudWatch metric.
         public let metricName: String?
         /// The namespace of the CloudWatch metric. A namespace is a container for CloudWatch metrics.
@@ -1952,14 +1876,13 @@ extension DevOpsGuru {
     }
 
     public struct RecommendationRelatedEvent: AWSDecodableShape {
-
-        /// 			The name of the event. This corresponds to the Name field in an 
+        /// 			The name of the event. This corresponds to the Name field in an
         /// 			Event object.
-        /// 		
+        ///
         public let name: String?
-        /// 			A ResourceCollection object that contains arrays of the names of AWS 
+        /// 			A ResourceCollection object that contains arrays of the names of AWS
         /// 			CloudFormation stacks. You can specify up to 500 AWS CloudFormation stacks.
-        /// 		
+        ///
         public let resources: [RecommendationRelatedEventResource]?
 
         public init(name: String? = nil, resources: [RecommendationRelatedEventResource]? = nil) {
@@ -1974,14 +1897,13 @@ extension DevOpsGuru {
     }
 
     public struct RecommendationRelatedEventResource: AWSDecodableShape {
-
-        /// 			The name of the resource that emitted the event. This corresponds to the Name field in an 
+        /// 			The name of the resource that emitted the event. This corresponds to the Name field in an
         /// 			EventResource object.
-        /// 		
+        ///
         public let name: String?
-        /// 			The type of the resource that emitted the event. This corresponds to the Type field in an 
+        /// 			The type of the resource that emitted the event. This corresponds to the Type field in an
         /// 			EventResource object.
-        /// 		
+        ///
         public let type: String?
 
         public init(name: String? = nil, type: String? = nil) {
@@ -2000,7 +1922,7 @@ extension DevOpsGuru {
             AWSMemberEncoding(label: "id", location: .uri(locationName: "Id"))
         ]
 
-        ///  		The ID of the notification channel to be removed. 	
+        ///  		The ID of the notification channel to be removed.
         public let id: String
 
         public init(id: String) {
@@ -2017,16 +1939,11 @@ extension DevOpsGuru {
     }
 
     public struct RemoveNotificationChannelResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct ResourceCollection: AWSEncodableShape & AWSDecodableShape {
-
-        ///  An array of the names of AWS CloudFormation stacks. The stacks define AWS resources 		that DevOps Guru analyzes. You can specify up to 500 AWS CloudFormation stacks. 	
+        ///  An array of the names of AWS CloudFormation stacks. The stacks define AWS resources 		that DevOps Guru analyzes. You can specify up to 500 AWS CloudFormation stacks.
         public let cloudFormation: CloudFormationCollection?
 
         public init(cloudFormation: CloudFormationCollection? = nil) {
@@ -2043,11 +1960,10 @@ extension DevOpsGuru {
     }
 
     public struct ResourceCollectionFilter: AWSDecodableShape {
-
-        /// 			Information about AWS CloudFormation stacks. You can use up to 500 stacks to specify which AWS resources in your account to analyze. 
-        /// 			For more information, see Stacks 
+        /// 			Information about AWS CloudFormation stacks. You can use up to 500 stacks to specify which AWS resources in your account to analyze.
+        /// 			For more information, see Stacks
         /// 			in the AWS CloudFormation User Guide.
-        /// 		
+        ///
         public let cloudFormation: CloudFormationCollectionFilter?
 
         public init(cloudFormation: CloudFormationCollectionFilter? = nil) {
@@ -2060,13 +1976,12 @@ extension DevOpsGuru {
     }
 
     public struct SearchInsightsFilters: AWSEncodableShape {
-
         public let resourceCollection: ResourceCollection?
         /// A collection of the names of AWS services.
         public let serviceCollection: ServiceCollection?
-        ///  		An array of severity values used to search for insights. 	
+        ///  		An array of severity values used to search for insights.
         public let severities: [InsightSeverity]?
-        ///  		An array of status values used to search for insights. 	
+        ///  		An array of status values used to search for insights.
         public let statuses: [InsightStatus]?
 
         public init(resourceCollection: ResourceCollection? = nil, serviceCollection: ServiceCollection? = nil, severities: [InsightSeverity]? = nil, statuses: [InsightStatus]? = nil) {
@@ -2091,17 +2006,16 @@ extension DevOpsGuru {
     }
 
     public struct SearchInsightsRequest: AWSEncodableShape {
-
-        ///  		A SearchInsightsFilters object that is used to set the severity and status filters on your insight search. 	
+        ///  		A SearchInsightsFilters object that is used to set the severity and status filters on your insight search.
         public let filters: SearchInsightsFilters?
         /// The maximum number of results to return with a single call.
         /// 	To retrieve the remaining results, make another call with the returned nextToken value.
         public let maxResults: Int?
         /// The pagination token to use to retrieve  the next page of results for this operation. If this value is null, it retrieves the first page.
         public let nextToken: String?
-        ///  		The start of the time range passed in. Returned insights occurred after this time. 	
+        ///  		The start of the time range passed in. Returned insights occurred after this time.
         public let startTimeRange: StartTimeRange
-        ///  		The type of insights you are searching for (REACTIVE or PROACTIVE). 	
+        ///  		The type of insights you are searching for (REACTIVE or PROACTIVE).
         public let type: InsightType
 
         public init(filters: SearchInsightsFilters? = nil, maxResults: Int? = nil, nextToken: String? = nil, startTimeRange: StartTimeRange, type: InsightType) {
@@ -2131,14 +2045,13 @@ extension DevOpsGuru {
     }
 
     public struct SearchInsightsResponse: AWSDecodableShape {
-
         /// The pagination token to use to retrieve  the next page of results for this operation. If there are no more pages, this value is null.
         public let nextToken: String?
         /// 			The returned proactive insights.
-        /// 		
+        ///
         public let proactiveInsights: [ProactiveInsightSummary]?
         /// 			The returned reactive insights.
-        /// 		
+        ///
         public let reactiveInsights: [ReactiveInsightSummary]?
 
         public init(nextToken: String? = nil, proactiveInsights: [ProactiveInsightSummary]? = nil, reactiveInsights: [ReactiveInsightSummary]? = nil) {
@@ -2155,7 +2068,6 @@ extension DevOpsGuru {
     }
 
     public struct ServiceCollection: AWSEncodableShape & AWSDecodableShape {
-
         /// An array of strings that each specifies the name of an AWS service.
         public let serviceNames: [ServiceName]?
 
@@ -2169,8 +2081,7 @@ extension DevOpsGuru {
     }
 
     public struct ServiceHealth: AWSDecodableShape {
-
-        /// Represents the health of an AWS service. This is a ServiceInsightHealth that 
+        /// Represents the health of an AWS service. This is a ServiceInsightHealth that
         /// 		contains the number of open proactive and reactive insights for this service.
         public let insight: ServiceInsightHealth?
         /// The name of the AWS service.
@@ -2188,7 +2099,6 @@ extension DevOpsGuru {
     }
 
     public struct ServiceInsightHealth: AWSDecodableShape {
-
         /// The number of open proactive insights in the AWS service
         public let openProactiveInsights: Int?
         /// The number of open reactive insights in the AWS service
@@ -2206,9 +2116,8 @@ extension DevOpsGuru {
     }
 
     public struct ServiceIntegrationConfig: AWSDecodableShape {
-
-        /// 			Information about whether DevOps Guru is configured to create an OpsItem in AWS Systems Manager OpsCenter for each created insight. 
-        /// 		
+        /// 			Information about whether DevOps Guru is configured to create an OpsItem in AWS Systems Manager OpsCenter for each created insight.
+        ///
         public let opsCenter: OpsCenterIntegration?
 
         public init(opsCenter: OpsCenterIntegration? = nil) {
@@ -2221,24 +2130,23 @@ extension DevOpsGuru {
     }
 
     public struct ServiceResourceCost: AWSDecodableShape {
-
         /// The total estimated monthly cost to analyze the active resources for this resource.
         public let cost: Double?
         /// The number of active resources analyzed for this service to create a monthly cost
         /// 			estimate.
         public let count: Int?
-        /// The state of the resource. The resource is ACTIVE if it produces metrics, 
-        /// 			events, or logs within an hour, otherwise it is INACTIVE. You pay for 
-        /// 			the number of active AWS resource hours analyzed for each resource. Inactive resources are 
+        /// The state of the resource. The resource is ACTIVE if it produces metrics,
+        /// 			events, or logs within an hour, otherwise it is INACTIVE. You pay for
+        /// 			the number of active AWS resource hours analyzed for each resource. Inactive resources are
         /// 			not charged.
-        /// 		
+        ///
         public let state: CostEstimationServiceResourceState?
         /// The type of the AWS resource.
         public let type: String?
-        /// The price per hour to analyze the resources in the service. 
-        /// 			For more information, 
-        /// 			see Estimate your 
-        /// 			Amazon DevOps Guru costs and 
+        /// The price per hour to analyze the resources in the service.
+        /// 			For more information,
+        /// 			see Estimate your
+        /// 			Amazon DevOps Guru costs and
         /// 			Amazon DevOps Guru pricing.
         public let unitCost: Double?
 
@@ -2260,8 +2168,7 @@ extension DevOpsGuru {
     }
 
     public struct SnsChannelConfig: AWSEncodableShape & AWSDecodableShape {
-
-        ///  The Amazon Resource Name (ARN) of an Amazon Simple Notification Service topic. 
+        ///  The Amazon Resource Name (ARN) of an Amazon Simple Notification Service topic.
         public let topicArn: String?
 
         public init(topicArn: String? = nil) {
@@ -2280,7 +2187,6 @@ extension DevOpsGuru {
     }
 
     public struct StartCostEstimationRequest: AWSEncodableShape {
-
         /// The idempotency token used to identify each cost estimate request.
         public let clientToken: String?
         /// The collection of AWS resources used to create a monthly DevOps Guru cost estimate.
@@ -2305,20 +2211,15 @@ extension DevOpsGuru {
     }
 
     public struct StartCostEstimationResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct StartTimeRange: AWSEncodableShape {
-
         /// 			The start time of the time range.
-        /// 		
+        ///
         public let fromTime: Date?
         /// 			The end time of the time range.
-        /// 		
+        ///
         public let toTime: Date?
 
         public init(fromTime: Date? = nil, toTime: Date? = nil) {
@@ -2333,9 +2234,8 @@ extension DevOpsGuru {
     }
 
     public struct UpdateCloudFormationCollectionFilter: AWSEncodableShape {
-
         /// 			An array of the names of the AWS CloudFormation stacks to update. You can specify up to 500 AWS CloudFormation stacks.
-        /// 		
+        ///
         public let stackNames: [String]?
 
         public init(stackNames: [String]? = nil) {
@@ -2357,9 +2257,8 @@ extension DevOpsGuru {
     }
 
     public struct UpdateResourceCollectionFilter: AWSEncodableShape {
-
         /// 			An collection of AWS CloudFormation stacks. You can specify up to 500 AWS CloudFormation stacks.
-        /// 		
+        ///
         public let cloudFormation: UpdateCloudFormationCollectionFilter?
 
         public init(cloudFormation: UpdateCloudFormationCollectionFilter? = nil) {
@@ -2376,9 +2275,8 @@ extension DevOpsGuru {
     }
 
     public struct UpdateResourceCollectionRequest: AWSEncodableShape {
-
-        /// 			Specifies if the resource collection in the request is added or deleted to the resource collection. 
-        /// 		
+        /// 			Specifies if the resource collection in the request is added or deleted to the resource collection.
+        ///
         public let action: UpdateResourceCollectionAction
         public let resourceCollection: UpdateResourceCollectionFilter
 
@@ -2398,15 +2296,10 @@ extension DevOpsGuru {
     }
 
     public struct UpdateResourceCollectionResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateServiceIntegrationConfig: AWSEncodableShape {
-
         public let opsCenter: OpsCenterIntegrationConfig?
 
         public init(opsCenter: OpsCenterIntegrationConfig? = nil) {
@@ -2419,10 +2312,9 @@ extension DevOpsGuru {
     }
 
     public struct UpdateServiceIntegrationRequest: AWSEncodableShape {
-
-        /// 			An IntegratedServiceConfig object used to specify the integrated service you want to update, and whether you 
+        /// 			An IntegratedServiceConfig object used to specify the integrated service you want to update, and whether you
         /// 			want to update it to enabled or disabled.
-        /// 		
+        ///
         public let serviceIntegration: UpdateServiceIntegrationConfig
 
         public init(serviceIntegration: UpdateServiceIntegrationConfig) {
@@ -2435,10 +2327,6 @@ extension DevOpsGuru {
     }
 
     public struct UpdateServiceIntegrationResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 }

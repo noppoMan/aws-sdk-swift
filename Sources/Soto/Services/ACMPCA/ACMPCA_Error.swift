@@ -87,7 +87,7 @@ public struct ACMPCAErrorType: AWSErrorType {
     public static var limitExceededException: Self { .init(.limitExceededException) }
     /// The current action was prevented because it would lock the caller out from performing
     /// 			subsequent actions. Verify that the specified parameters would not result in the caller
-    /// 			being denied access to the resource. 
+    /// 			being denied access to the resource.
     public static var lockoutPreventedException: Self { .init(.lockoutPreventedException) }
     /// The certificate signing request is invalid.
     public static var malformedCSRException: Self { .init(.malformedCSRException) }

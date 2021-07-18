@@ -64,7 +64,6 @@ extension CloudHSMV2 {
     // MARK: Shapes
 
     public struct Backup: AWSDecodableShape {
-
         /// The identifier (ID) of the backup.
         public let backupId: String
         /// The state of the backup.
@@ -118,7 +117,6 @@ extension CloudHSMV2 {
     }
 
     public struct BackupRetentionPolicy: AWSEncodableShape & AWSDecodableShape {
-
         /// The type of backup retention policy. For the DAYS type, the value is  the number of days to retain backups.
         public let type: BackupRetentionType?
         /// Use a value between 7 - 379.
@@ -142,7 +140,6 @@ extension CloudHSMV2 {
     }
 
     public struct Certificates: AWSDecodableShape {
-
         /// The HSM hardware certificate issued (signed) by AWS CloudHSM.
         public let awsHardwareCertificate: String?
         /// The cluster certificate issued (signed) by the issuing certificate authority (CA) of the cluster's owner.
@@ -172,7 +169,6 @@ extension CloudHSMV2 {
     }
 
     public struct Cluster: AWSDecodableShape {
-
         /// The cluster's backup policy.
         public let backupPolicy: BackupPolicy?
         /// A policy that defines how the service retains backups.
@@ -242,8 +238,7 @@ extension CloudHSMV2 {
     }
 
     public struct CopyBackupToRegionRequest: AWSEncodableShape {
-
-        /// The ID of the backup that will be copied to the destination region. 
+        /// The ID of the backup that will be copied to the destination region.
         public let backupId: String
         /// The AWS region that will contain your copied CloudHSM cluster backup.
         public let destinationRegion: String
@@ -274,7 +269,6 @@ extension CloudHSMV2 {
     }
 
     public struct CopyBackupToRegionResponse: AWSDecodableShape {
-
         /// Information on the backup that will be copied to the destination region, including CreateTimestamp, SourceBackup, SourceCluster, and Source Region. CreateTimestamp of the destination backup will be the same as that of the source backup. You will need to use the sourceBackupID returned in this operation to use the DescribeBackups operation on the backup that will be copied to the destination region.
         public let destinationBackup: DestinationBackup?
 
@@ -288,14 +282,13 @@ extension CloudHSMV2 {
     }
 
     public struct CreateClusterRequest: AWSEncodableShape {
-
         /// A policy that defines how the service retains backups.
         public let backupRetentionPolicy: BackupRetentionPolicy?
         /// The type of HSM to use in the cluster. Currently the only allowed value is hsm1.medium.
         public let hsmType: String
         /// The identifier (ID) of the cluster backup to restore. Use this value to restore the cluster from a backup instead of creating a new cluster. To find the backup ID, use DescribeBackups.
         public let sourceBackupId: String?
-        /// The identifiers (IDs) of the subnets where you are creating the cluster. You must specify at least one subnet. If you specify multiple subnets, they must meet the following criteria:   All subnets must be in the same virtual private cloud (VPC).   You can specify only one subnet per Availability Zone.  
+        /// The identifiers (IDs) of the subnets where you are creating the cluster. You must specify at least one subnet. If you specify multiple subnets, they must meet the following criteria:   All subnets must be in the same virtual private cloud (VPC).   You can specify only one subnet per Availability Zone.
         public let subnetIds: [String]
         /// Tags to apply to the CloudHSM cluster during creation.
         public let tagList: [Tag]?
@@ -334,7 +327,6 @@ extension CloudHSMV2 {
     }
 
     public struct CreateClusterResponse: AWSDecodableShape {
-
         /// Information about the cluster that was created.
         public let cluster: Cluster?
 
@@ -348,7 +340,6 @@ extension CloudHSMV2 {
     }
 
     public struct CreateHsmRequest: AWSEncodableShape {
-
         /// The Availability Zone where you are creating the HSM. To find the cluster's Availability Zones, use DescribeClusters.
         public let availabilityZone: String
         /// The identifier (ID) of the HSM's cluster. To find the cluster ID, use DescribeClusters.
@@ -376,7 +367,6 @@ extension CloudHSMV2 {
     }
 
     public struct CreateHsmResponse: AWSDecodableShape {
-
         /// Information about the HSM that was created.
         public let hsm: Hsm?
 
@@ -390,7 +380,6 @@ extension CloudHSMV2 {
     }
 
     public struct DeleteBackupRequest: AWSEncodableShape {
-
         /// The ID of the backup to be deleted. To find the ID of a backup, use the DescribeBackups operation.
         public let backupId: String
 
@@ -408,7 +397,6 @@ extension CloudHSMV2 {
     }
 
     public struct DeleteBackupResponse: AWSDecodableShape {
-
         /// Information on the Backup object deleted.
         public let backup: Backup?
 
@@ -422,7 +410,6 @@ extension CloudHSMV2 {
     }
 
     public struct DeleteClusterRequest: AWSEncodableShape {
-
         /// The identifier (ID) of the cluster that you are deleting. To find the cluster ID, use DescribeClusters.
         public let clusterId: String
 
@@ -440,7 +427,6 @@ extension CloudHSMV2 {
     }
 
     public struct DeleteClusterResponse: AWSDecodableShape {
-
         /// Information about the cluster that was deleted.
         public let cluster: Cluster?
 
@@ -454,7 +440,6 @@ extension CloudHSMV2 {
     }
 
     public struct DeleteHsmRequest: AWSEncodableShape {
-
         /// The identifier (ID) of the cluster that contains the HSM that you are deleting.
         public let clusterId: String
         /// The identifier (ID) of the elastic network interface (ENI) of the HSM that you are deleting.
@@ -487,7 +472,6 @@ extension CloudHSMV2 {
     }
 
     public struct DeleteHsmResponse: AWSDecodableShape {
-
         /// The identifier (ID) of the HSM that was deleted.
         public let hsmId: String?
 
@@ -501,7 +485,6 @@ extension CloudHSMV2 {
     }
 
     public struct DescribeBackupsRequest: AWSEncodableShape {
-
         /// One or more filters to limit the items returned in the response. Use the backupIds filter to return only the specified backups. Specify backups by their backup identifier (ID). Use the sourceBackupIds filter to return only the backups created from a source backup. The sourceBackupID of a source backup is returned by the CopyBackupToRegion operation. Use the clusterIds filter to return only the backups for the specified clusters. Specify clusters by their cluster identifier (ID). Use the states filter to return only backups that match the specified state. Use the neverExpires filter to return backups filtered by the value in the neverExpires parameter. True returns all backups exempt from the backup retention policy. False returns all backups with a backup retention policy defined at the cluster.
         public let filters: [String: [String]]?
         /// The maximum number of backups to return in the response. When there are more backups than the number you specify, the response contains a NextToken value.
@@ -537,7 +520,6 @@ extension CloudHSMV2 {
     }
 
     public struct DescribeBackupsResponse: AWSDecodableShape {
-
         /// A list of backups.
         public let backups: [Backup]?
         /// An opaque string that indicates that the response contains only a subset of backups. Use this value in a subsequent DescribeBackups request to get more backups.
@@ -555,7 +537,6 @@ extension CloudHSMV2 {
     }
 
     public struct DescribeClustersRequest: AWSEncodableShape {
-
         /// One or more filters to limit the items returned in the response. Use the clusterIds filter to return only the specified clusters. Specify clusters by their cluster identifier (ID). Use the vpcIds filter to return only the clusters in the specified virtual private clouds (VPCs). Specify VPCs by their VPC identifier (ID). Use the states filter to return only clusters that match the specified state.
         public let filters: [String: [String]]?
         /// The maximum number of clusters to return in the response. When there are more clusters than the number you specify, the response contains a NextToken value.
@@ -587,7 +568,6 @@ extension CloudHSMV2 {
     }
 
     public struct DescribeClustersResponse: AWSDecodableShape {
-
         /// A list of clusters.
         public let clusters: [Cluster]?
         /// An opaque string that indicates that the response contains only a subset of clusters. Use this value in a subsequent DescribeClusters request to get more clusters.
@@ -605,7 +585,6 @@ extension CloudHSMV2 {
     }
 
     public struct DestinationBackup: AWSDecodableShape {
-
         /// The date and time when both the source backup was created.
         public let createTimestamp: Date?
         /// The identifier (ID) of the source backup from which the new backup was copied.
@@ -631,7 +610,6 @@ extension CloudHSMV2 {
     }
 
     public struct Hsm: AWSDecodableShape {
-
         /// The Availability Zone that contains the HSM.
         public let availabilityZone: String?
         /// The identifier (ID) of the cluster that contains the HSM.
@@ -673,7 +651,6 @@ extension CloudHSMV2 {
     }
 
     public struct InitializeClusterRequest: AWSEncodableShape {
-
         /// The identifier (ID) of the cluster that you are claiming. To find the cluster ID, use DescribeClusters.
         public let clusterId: String
         /// The cluster certificate issued (signed) by your issuing certificate authority (CA). The certificate must be in PEM format and can contain a maximum of 5000 characters.
@@ -703,7 +680,6 @@ extension CloudHSMV2 {
     }
 
     public struct InitializeClusterResponse: AWSDecodableShape {
-
         /// The cluster's state.
         public let state: ClusterState?
         /// A description of the cluster's state.
@@ -721,7 +697,6 @@ extension CloudHSMV2 {
     }
 
     public struct ListTagsRequest: AWSEncodableShape {
-
         /// The maximum number of tags to return in the response. When there are more tags than the number you specify, the response contains a NextToken value.
         public let maxResults: Int?
         /// The NextToken value that you received in the previous response. Use this value to get more tags.
@@ -751,7 +726,6 @@ extension CloudHSMV2 {
     }
 
     public struct ListTagsResponse: AWSDecodableShape {
-
         /// An opaque string that indicates that the response contains only a subset of tags. Use this value in a subsequent ListTags request to get more tags.
         public let nextToken: String?
         /// A list of tags.
@@ -769,7 +743,6 @@ extension CloudHSMV2 {
     }
 
     public struct ModifyBackupAttributesRequest: AWSEncodableShape {
-
         /// The identifier (ID) of the backup to modify. To find the ID of a backup, use the DescribeBackups operation.
         public let backupId: String
         /// Specifies whether the service should exempt a backup from the retention policy for the cluster. True exempts  a backup from the retention policy. False means the service applies the backup retention policy defined at the cluster.
@@ -791,7 +764,6 @@ extension CloudHSMV2 {
     }
 
     public struct ModifyBackupAttributesResponse: AWSDecodableShape {
-
         public let backup: Backup?
 
         public init(backup: Backup? = nil) {
@@ -804,7 +776,6 @@ extension CloudHSMV2 {
     }
 
     public struct ModifyClusterRequest: AWSEncodableShape {
-
         /// A policy that defines how the service retains backups.
         public let backupRetentionPolicy: BackupRetentionPolicy
         /// The identifier (ID) of the cluster that you want to modify. To find the cluster ID, use DescribeClusters.
@@ -827,7 +798,6 @@ extension CloudHSMV2 {
     }
 
     public struct ModifyClusterResponse: AWSDecodableShape {
-
         public let cluster: Cluster?
 
         public init(cluster: Cluster? = nil) {
@@ -840,7 +810,6 @@ extension CloudHSMV2 {
     }
 
     public struct RestoreBackupRequest: AWSEncodableShape {
-
         /// The ID of the backup to be restored. To find the ID of a backup, use the DescribeBackups operation.
         public let backupId: String
 
@@ -858,7 +827,6 @@ extension CloudHSMV2 {
     }
 
     public struct RestoreBackupResponse: AWSDecodableShape {
-
         /// Information on the Backup object created.
         public let backup: Backup?
 
@@ -872,7 +840,6 @@ extension CloudHSMV2 {
     }
 
     public struct Tag: AWSEncodableShape & AWSDecodableShape {
-
         /// The key of the tag.
         public let key: String
         /// The value of the tag.
@@ -898,7 +865,6 @@ extension CloudHSMV2 {
     }
 
     public struct TagResourceRequest: AWSEncodableShape {
-
         /// The cluster identifier (ID) for the cluster that you are tagging. To find the cluster ID, use DescribeClusters.
         public let resourceId: String
         /// A list of one or more tags.
@@ -925,15 +891,10 @@ extension CloudHSMV2 {
     }
 
     public struct TagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UntagResourceRequest: AWSEncodableShape {
-
         /// The cluster identifier (ID) for the cluster whose tags you are removing. To find the cluster ID, use DescribeClusters.
         public let resourceId: String
         /// A list of one or more tag keys for the tags that you are removing. Specify only the tag keys, not the tag values.
@@ -962,10 +923,6 @@ extension CloudHSMV2 {
     }
 
     public struct UntagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 }

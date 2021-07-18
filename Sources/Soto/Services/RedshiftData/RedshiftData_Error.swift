@@ -49,11 +49,11 @@ public struct RedshiftDataErrorType: AWSErrorType {
     public static var activeStatementsExceededException: Self { .init(.activeStatementsExceededException) }
     /// The SQL statement encountered an environmental error while running.
     public static var executeStatementException: Self { .init(.executeStatementException) }
-    /// The Amazon Redshift Data API operation failed due to invalid input. 
+    /// The Amazon Redshift Data API operation failed due to invalid input.
     public static var internalServerException: Self { .init(.internalServerException) }
-    /// The Amazon Redshift Data API operation failed due to a missing resource. 
+    /// The Amazon Redshift Data API operation failed due to a missing resource.
     public static var resourceNotFoundException: Self { .init(.resourceNotFoundException) }
-    /// The Amazon Redshift Data API operation failed due to invalid input. 
+    /// The Amazon Redshift Data API operation failed due to invalid input.
     public static var validationException: Self { .init(.validationException) }
 }
 

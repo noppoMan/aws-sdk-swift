@@ -79,7 +79,7 @@ public struct Inspector: AWSService {
         return self.client.execute(operation: "CreateAssessmentTemplate", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Starts the generation of an exclusions preview for the specified assessment template. The exclusions preview lists the potential exclusions (ExclusionPreview) that Inspector can detect before it runs the assessment. 
+    /// Starts the generation of an exclusions preview for the specified assessment template. The exclusions preview lists the potential exclusions (ExclusionPreview) that Inspector can detect before it runs the assessment.
     public func createExclusionsPreview(_ input: CreateExclusionsPreviewRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<CreateExclusionsPreviewResponse> {
         return self.client.execute(operation: "CreateExclusionsPreview", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -144,7 +144,7 @@ public struct Inspector: AWSService {
         return self.client.execute(operation: "DescribeRulesPackages", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Produces an assessment report that includes detailed and comprehensive results of a specified assessment run. 
+    /// Produces an assessment report that includes detailed and comprehensive results of a specified assessment run.
     public func getAssessmentReport(_ input: GetAssessmentReportRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<GetAssessmentReportResponse> {
         return self.client.execute(operation: "GetAssessmentReport", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }

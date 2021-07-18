@@ -291,7 +291,7 @@ public struct CodeCommitErrorType: AWSErrorType {
     public static var commitIdsLimitExceededException: Self { .init(.commitIdsLimitExceededException) }
     /// A list of commit IDs is required, but was either not specified or the list was empty.
     public static var commitIdsListRequiredException: Self { .init(.commitIdsListRequiredException) }
-    /// The commit message is too long. Provide a shorter string. 
+    /// The commit message is too long. Provide a shorter string.
     public static var commitMessageLengthExceededException: Self { .init(.commitMessageLengthExceededException) }
     /// A commit was not specified.
     public static var commitRequiredException: Self { .init(.commitRequiredException) }
@@ -347,7 +347,7 @@ public struct CodeCommitErrorType: AWSErrorType {
     public static var invalidApprovalRuleTemplateDescriptionException: Self { .init(.invalidApprovalRuleTemplateDescriptionException) }
     /// The name of the approval rule template is not valid. Template names must be between 1 and 100 valid characters in length. For more information about limits in AWS CodeCommit, see AWS CodeCommit User Guide.
     public static var invalidApprovalRuleTemplateNameException: Self { .init(.invalidApprovalRuleTemplateNameException) }
-    /// The state for the approval is not valid. Valid values include APPROVE and REVOKE. 
+    /// The state for the approval is not valid. Valid values include APPROVE and REVOKE.
     public static var invalidApprovalStateException: Self { .init(.invalidApprovalStateException) }
     /// The Amazon Resource Name (ARN) is not valid. Make sure that you have provided the full ARN for the author of the pull request, and then try again.
     public static var invalidAuthorArnException: Self { .init(.invalidAuthorArnException) }
@@ -375,13 +375,13 @@ public struct CodeCommitErrorType: AWSErrorType {
     public static var invalidDeletionParameterException: Self { .init(.invalidDeletionParameterException) }
     /// The pull request description is not valid. Descriptions cannot be more than 1,000 characters.
     public static var invalidDescriptionException: Self { .init(.invalidDescriptionException) }
-    /// The destination commit specifier is not valid. You must provide a valid branch name, tag, or full commit ID. 
+    /// The destination commit specifier is not valid. You must provide a valid branch name, tag, or full commit ID.
     public static var invalidDestinationCommitSpecifierException: Self { .init(.invalidDestinationCommitSpecifierException) }
     /// The specified email address either contains one or more characters that are not allowed, or it exceeds the maximum number of characters allowed for an email address.
     public static var invalidEmailException: Self { .init(.invalidEmailException) }
     /// The location of the file is not valid. Make sure that you include the file name and extension.
     public static var invalidFileLocationException: Self { .init(.invalidFileLocationException) }
-    /// The specified file mode permission is not valid. For a list of valid file mode permissions, see PutFile. 
+    /// The specified file mode permission is not valid. For a list of valid file mode permissions, see PutFile.
     public static var invalidFileModeException: Self { .init(.invalidFileModeException) }
     /// The position is not valid. Make sure that the line number exists in the version of the file you want to comment on.
     public static var invalidFilePositionException: Self { .init(.invalidFilePositionException) }
@@ -401,7 +401,7 @@ public struct CodeCommitErrorType: AWSErrorType {
     public static var invalidParentCommitIdException: Self { .init(.invalidParentCommitIdException) }
     /// The specified path is not valid.
     public static var invalidPathException: Self { .init(.invalidPathException) }
-    /// The pull request event type is not valid. 
+    /// The pull request event type is not valid.
     public static var invalidPullRequestEventTypeException: Self { .init(.invalidPullRequestEventTypeException) }
     /// The pull request ID is not valid. Make sure that you have provided the full ID and that the pull request is in the specified repository, and then try again.
     public static var invalidPullRequestIdException: Self { .init(.invalidPullRequestIdException) }
@@ -417,14 +417,14 @@ public struct CodeCommitErrorType: AWSErrorType {
     public static var invalidReferenceNameException: Self { .init(.invalidReferenceNameException) }
     /// Either the enum is not in a valid format, or the specified file version enum is not valid in respect to the current file version.
     public static var invalidRelativeFileVersionEnumException: Self { .init(.invalidRelativeFileVersionEnumException) }
-    /// Automerge was specified for resolving the conflict, but the replacement type is not valid or content is missing. 
+    /// Automerge was specified for resolving the conflict, but the replacement type is not valid or content is missing.
     public static var invalidReplacementContentException: Self { .init(.invalidReplacementContentException) }
     /// Automerge was specified for resolving the conflict, but the specified replacement type is not valid.
     public static var invalidReplacementTypeException: Self { .init(.invalidReplacementTypeException) }
     /// The specified repository description is not valid.
     public static var invalidRepositoryDescriptionException: Self { .init(.invalidRepositoryDescriptionException) }
     /// A specified repository name is not valid.
-    ///   This exception occurs only when a specified repository name is not valid. Other exceptions occur when a required repository parameter is missing, or when a specified repository does not exist. 
+    ///   This exception occurs only when a specified repository name is not valid. Other exceptions occur when a required repository parameter is missing, or when a specified repository does not exist.
     public static var invalidRepositoryNameException: Self { .init(.invalidRepositoryNameException) }
     /// One or more branch names specified for the trigger is not valid.
     public static var invalidRepositoryTriggerBranchNameException: Self { .init(.invalidRepositoryTriggerBranchNameException) }
@@ -490,11 +490,11 @@ public struct CodeCommitErrorType: AWSErrorType {
     public static var multipleConflictResolutionEntriesException: Self { .init(.multipleConflictResolutionEntriesException) }
     /// You cannot include more than one repository in a pull request. Make sure you have specified only one repository name in your request, and then try again.
     public static var multipleRepositoriesInPullRequestException: Self { .init(.multipleRepositoriesInPullRequestException) }
-    /// The user name is not valid because it has exceeded the character limit for author names. 
+    /// The user name is not valid because it has exceeded the character limit for author names.
     public static var nameLengthExceededException: Self { .init(.nameLengthExceededException) }
     /// The commit cannot be created because no changes will be made to the repository as a result of this commit. A commit must contain at least one change.
     public static var noChangeException: Self { .init(.noChangeException) }
-    /// The maximum number of approval rule templates has been exceeded for this AWS Region. 
+    /// The maximum number of approval rule templates has been exceeded for this AWS Region.
     public static var numberOfRuleTemplatesExceededException: Self { .init(.numberOfRuleTemplatesExceededException) }
     /// The approval rule cannot be added. The pull request has the maximum number of approval rules associated with it.
     public static var numberOfRulesExceededException: Self { .init(.numberOfRulesExceededException) }
@@ -528,13 +528,13 @@ public struct CodeCommitErrorType: AWSErrorType {
     public static var putFileEntryConflictException: Self { .init(.putFileEntryConflictException) }
     /// The number of reactions has been exceeded. Reactions are limited to one reaction per user for each individual comment ID.
     public static var reactionLimitExceededException: Self { .init(.reactionLimitExceededException) }
-    /// A reaction value is required. 
+    /// A reaction value is required.
     public static var reactionValueRequiredException: Self { .init(.reactionValueRequiredException) }
     /// The specified reference does not exist. You must provide a full commit ID.
     public static var referenceDoesNotExistException: Self { .init(.referenceDoesNotExistException) }
     /// A reference name is required, but none was provided.
     public static var referenceNameRequiredException: Self { .init(.referenceNameRequiredException) }
-    /// The specified reference is not a supported type. 
+    /// The specified reference is not a supported type.
     public static var referenceTypeNotSupportedException: Self { .init(.referenceTypeNotSupportedException) }
     /// USE_NEW_CONTENT was specified, but no replacement content has been provided.
     public static var replacementContentRequiredException: Self { .init(.replacementContentRequiredException) }

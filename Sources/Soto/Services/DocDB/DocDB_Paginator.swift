@@ -73,7 +73,7 @@ extension DocDB {
         )
     }
 
-    ///  Returns a list of DBClusterParameterGroup descriptions. If a DBClusterParameterGroupName parameter is specified, the list contains only the description of the specified cluster parameter group. 
+    ///  Returns a list of DBClusterParameterGroup descriptions. If a DBClusterParameterGroupName parameter is specified, the list contains only the description of the specified cluster parameter group.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.
@@ -550,7 +550,7 @@ extension DocDB {
         )
     }
 
-    ///  Returns information about Amazon DocumentDB global  clusters. This API supports pagination.  This action only applies to Amazon DocumentDB clusters. 
+    ///  Returns information about Amazon DocumentDB global  clusters. This API supports pagination.  This action only applies to Amazon DocumentDB clusters.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.

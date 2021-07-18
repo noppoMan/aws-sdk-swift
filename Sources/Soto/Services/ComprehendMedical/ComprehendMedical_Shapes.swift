@@ -126,7 +126,7 @@ extension ComprehendMedical {
     }
 
     public enum LanguageCode: String, CustomStringConvertible, Codable {
-        case en = "en"
+        case en
         public var description: String { return self.rawValue }
     }
 
@@ -182,26 +182,25 @@ extension ComprehendMedical {
     // MARK: Shapes
 
     public struct Attribute: AWSDecodableShape {
-
-        ///  The 0-based character offset in the input text that shows where the attribute begins. The offset returns the UTF-8 code point in the string. 
+        ///  The 0-based character offset in the input text that shows where the attribute begins. The offset returns the UTF-8 code point in the string.
         public let beginOffset: Int?
-        ///  The category of attribute. 
+        ///  The category of attribute.
         public let category: EntityType?
         ///  The 0-based character offset in the input text that shows where the attribute ends. The offset returns the UTF-8 code point in the string.
         public let endOffset: Int?
-        ///  The numeric identifier for this attribute. This is a monotonically increasing id unique within this response rather than a global unique identifier. 
+        ///  The numeric identifier for this attribute. This is a monotonically increasing id unique within this response rather than a global unique identifier.
         public let id: Int?
-        ///  The level of confidence that Amazon Comprehend Medical has that this attribute is correctly related to this entity. 
+        ///  The level of confidence that Amazon Comprehend Medical has that this attribute is correctly related to this entity.
         public let relationshipScore: Float?
-        /// The type of relationship between the entity and attribute. Type for the relationship is OVERLAP, indicating that the entity occurred at the same time as the Date_Expression. 
+        /// The type of relationship between the entity and attribute. Type for the relationship is OVERLAP, indicating that the entity occurred at the same time as the Date_Expression.
         public let relationshipType: RelationshipType?
-        ///  The level of confidence that Amazon Comprehend Medical has that the segment of text is correctly recognized as an attribute. 
+        ///  The level of confidence that Amazon Comprehend Medical has that the segment of text is correctly recognized as an attribute.
         public let score: Float?
         ///  The segment of input text extracted as this attribute.
         public let text: String?
-        ///  Contextual information for this attribute. 
+        ///  Contextual information for this attribute.
         public let traits: [Trait]?
-        ///  The type of attribute. 
+        ///  The type of attribute.
         public let type: EntitySubType?
 
         public init(beginOffset: Int? = nil, category: EntityType? = nil, endOffset: Int? = nil, id: Int? = nil, relationshipScore: Float? = nil, relationshipType: RelationshipType? = nil, score: Float? = nil, text: String? = nil, traits: [Trait]? = nil, type: EntitySubType? = nil) {
@@ -232,7 +231,6 @@ extension ComprehendMedical {
     }
 
     public struct ComprehendMedicalAsyncJobFilter: AWSEncodableShape {
-
         /// Filters on the name of the job.
         public let jobName: String?
         /// Filters the list of jobs based on job status. Returns only jobs with the specified status.
@@ -264,7 +262,6 @@ extension ComprehendMedical {
     }
 
     public struct ComprehendMedicalAsyncJobProperties: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) that gives Amazon Comprehend Medical read access to your input data.
         public let dataAccessRoleArn: String?
         /// The time that the detection job completed.
@@ -279,7 +276,7 @@ extension ComprehendMedical {
         public let jobName: String?
         /// The current status of the detection job. If the status is FAILED, the Message field shows the reason for the failure.
         public let jobStatus: JobStatus?
-        /// The AWS Key Management Service key, if any, used to encrypt the output files. 
+        /// The AWS Key Management Service key, if any, used to encrypt the output files.
         public let kMSKey: String?
         /// The language code of the input documents.
         public let languageCode: LanguageCode?
@@ -330,7 +327,6 @@ extension ComprehendMedical {
     }
 
     public struct DescribeEntitiesDetectionV2JobRequest: AWSEncodableShape {
-
         /// The identifier that Amazon Comprehend Medical generated for the job. The StartEntitiesDetectionV2Job operation returns this identifier in its response.
         public let jobId: String
 
@@ -350,7 +346,6 @@ extension ComprehendMedical {
     }
 
     public struct DescribeEntitiesDetectionV2JobResponse: AWSDecodableShape {
-
         /// An object that contains the properties associated with a detection job.
         public let comprehendMedicalAsyncJobProperties: ComprehendMedicalAsyncJobProperties?
 
@@ -364,7 +359,6 @@ extension ComprehendMedical {
     }
 
     public struct DescribeICD10CMInferenceJobRequest: AWSEncodableShape {
-
         /// The identifier that Amazon Comprehend Medical generated for the job. The StartICD10CMInferenceJob operation returns this identifier in its response.
         public let jobId: String
 
@@ -384,7 +378,6 @@ extension ComprehendMedical {
     }
 
     public struct DescribeICD10CMInferenceJobResponse: AWSDecodableShape {
-
         /// An object that contains the properties associated with a detection job.
         public let comprehendMedicalAsyncJobProperties: ComprehendMedicalAsyncJobProperties?
 
@@ -398,7 +391,6 @@ extension ComprehendMedical {
     }
 
     public struct DescribePHIDetectionJobRequest: AWSEncodableShape {
-
         /// The identifier that Amazon Comprehend Medical generated for the job. The StartPHIDetectionJob operation returns this identifier in its response.
         public let jobId: String
 
@@ -418,7 +410,6 @@ extension ComprehendMedical {
     }
 
     public struct DescribePHIDetectionJobResponse: AWSDecodableShape {
-
         /// An object that contains the properties associated with a detection job.
         public let comprehendMedicalAsyncJobProperties: ComprehendMedicalAsyncJobProperties?
 
@@ -432,7 +423,6 @@ extension ComprehendMedical {
     }
 
     public struct DescribeRxNormInferenceJobRequest: AWSEncodableShape {
-
         /// The identifier that Amazon Comprehend Medical generated for the job. The StartRxNormInferenceJob operation returns this identifier in its response.
         public let jobId: String
 
@@ -452,7 +442,6 @@ extension ComprehendMedical {
     }
 
     public struct DescribeRxNormInferenceJobResponse: AWSDecodableShape {
-
         /// An object that contains the properties associated with a detection job.
         public let comprehendMedicalAsyncJobProperties: ComprehendMedicalAsyncJobProperties?
 
@@ -466,7 +455,6 @@ extension ComprehendMedical {
     }
 
     public struct DetectEntitiesRequest: AWSEncodableShape {
-
         ///  A UTF-8 text string containing the clinical content being examined for entities. Each string must contain fewer than 20,000 bytes of characters.
         public let text: String
 
@@ -485,7 +473,6 @@ extension ComprehendMedical {
     }
 
     public struct DetectEntitiesResponse: AWSDecodableShape {
-
         ///  The collection of medical entities extracted from the input text and their associated information. For each entity, the response provides the entity text, the entity category, where the entity text begins and ends, and the level of confidence that Amazon Comprehend Medical has in the detection and analysis. Attributes and traits of the entity are also returned.
         public let entities: [Entity]
         /// The version of the model used to analyze the documents. The version number looks like X.X.X. You can use this information to track the model used for a particular batch of documents.
@@ -511,7 +498,6 @@ extension ComprehendMedical {
     }
 
     public struct DetectEntitiesV2Request: AWSEncodableShape {
-
         /// A UTF-8 string containing the clinical content being examined for entities. Each string must contain fewer than 20,000 bytes of characters.
         public let text: String
 
@@ -530,7 +516,6 @@ extension ComprehendMedical {
     }
 
     public struct DetectEntitiesV2Response: AWSDecodableShape {
-
         /// The collection of medical entities extracted from the input text and their associated information. For each entity, the response provides the entity text, the entity category, where the entity text begins and ends, and the level of confidence in the detection and analysis. Attributes and traits of the entity are also returned.
         public let entities: [Entity]
         /// The version of the model used to analyze the documents. The version number looks like X.X.X. You can use this information to track the model used for a particular batch of documents.
@@ -556,7 +541,6 @@ extension ComprehendMedical {
     }
 
     public struct DetectPHIRequest: AWSEncodableShape {
-
         ///  A UTF-8 text string containing the clinical content being examined for PHI entities. Each string must contain fewer than 20,000 bytes of characters.
         public let text: String
 
@@ -575,12 +559,11 @@ extension ComprehendMedical {
     }
 
     public struct DetectPHIResponse: AWSDecodableShape {
-
-        ///  The collection of PHI entities extracted from the input text and their associated information. For each entity, the response provides the entity text, the entity category, where the entity text begins and ends, and the level of confidence that Amazon Comprehend Medical has in its detection. 
+        ///  The collection of PHI entities extracted from the input text and their associated information. For each entity, the response provides the entity text, the entity category, where the entity text begins and ends, and the level of confidence that Amazon Comprehend Medical has in its detection.
         public let entities: [Entity]
         /// The version of the model used to analyze the documents. The version number looks like X.X.X. You can use this information to track the model used for a particular batch of documents.
         public let modelVersion: String
-        ///  If the result of the previous request to DetectPHI was truncated, include the PaginationToken to fetch the next page of PHI entities. 
+        ///  If the result of the previous request to DetectPHI was truncated, include the PaginationToken to fetch the next page of PHI entities.
         public let paginationToken: String?
 
         public init(entities: [Entity], modelVersion: String, paginationToken: String? = nil) {
@@ -597,16 +580,15 @@ extension ComprehendMedical {
     }
 
     public struct Entity: AWSDecodableShape {
-
         ///  The extracted attributes that relate to this entity.
         public let attributes: [Attribute]?
-        ///  The 0-based character offset in the input text that shows where the entity begins. The offset returns the UTF-8 code point in the string. 
+        ///  The 0-based character offset in the input text that shows where the entity begins. The offset returns the UTF-8 code point in the string.
         public let beginOffset: Int?
         ///  The category of the entity.
         public let category: EntityType?
-        ///  The 0-based character offset in the input text that shows where the entity ends. The offset returns the UTF-8 code point in the string. 
+        ///  The 0-based character offset in the input text that shows where the entity ends. The offset returns the UTF-8 code point in the string.
         public let endOffset: Int?
-        ///  The numeric identifier for the entity. This is a monotonically increasing id unique within this response rather than a global unique identifier. 
+        ///  The numeric identifier for the entity. This is a monotonically increasing id unique within this response rather than a global unique identifier.
         public let id: Int?
         /// The level of confidence that Amazon Comprehend Medical has in the accuracy of the detection.
         public let score: Float?
@@ -643,7 +625,6 @@ extension ComprehendMedical {
     }
 
     public struct ICD10CMAttribute: AWSDecodableShape {
-
         /// The 0-based character offset in the input text that shows where the attribute begins. The offset returns the UTF-8 code point in the string.
         public let beginOffset: Int?
         /// The category of attribute. Can be either of DX_NAME or TIME_EXPRESSION.
@@ -662,7 +643,7 @@ extension ComprehendMedical {
         public let text: String?
         /// The contextual information for the attribute. The traits recognized by InferICD10CM are DIAGNOSIS, SIGN, SYMPTOM, and NEGATION.
         public let traits: [ICD10CMTrait]?
-        /// The type of attribute. InferICD10CM detects entities of the type DX_NAME. 
+        /// The type of attribute. InferICD10CM detects entities of the type DX_NAME.
         public let type: ICD10CMAttributeType?
 
         public init(beginOffset: Int? = nil, category: ICD10CMEntityType? = nil, endOffset: Int? = nil, id: Int? = nil, relationshipScore: Float? = nil, relationshipType: ICD10CMRelationshipType? = nil, score: Float? = nil, text: String? = nil, traits: [ICD10CMTrait]? = nil, type: ICD10CMAttributeType? = nil) {
@@ -693,7 +674,6 @@ extension ComprehendMedical {
     }
 
     public struct ICD10CMConcept: AWSDecodableShape {
-
         /// The ICD-10-CM code that identifies the concept found in the knowledge base from the Centers for Disease Control.
         public let code: String?
         /// The long description of the ICD-10-CM code in the ontology.
@@ -715,12 +695,11 @@ extension ComprehendMedical {
     }
 
     public struct ICD10CMEntity: AWSDecodableShape {
-
         /// The detected attributes that relate to the entity. An extracted segment of the text that is an attribute of an entity, or otherwise related to an entity, such as the nature of a medical condition.
         public let attributes: [ICD10CMAttribute]?
         /// The 0-based character offset in the input text that shows where the entity begins. The offset returns the UTF-8 code point in the string.
         public let beginOffset: Int?
-        ///  The category of the entity. InferICD10CM detects entities in the MEDICAL_CONDITION category. 
+        ///  The category of the entity. InferICD10CM detects entities in the MEDICAL_CONDITION category.
         public let category: ICD10CMEntityCategory?
         /// The 0-based character offset in the input text that shows where the entity ends. The offset returns the UTF-8 code point in the string.
         public let endOffset: Int?
@@ -732,7 +711,7 @@ extension ComprehendMedical {
         public let score: Float?
         /// The segment of input text that is matched to the detected entity.
         public let text: String?
-        /// Provides Contextual information for the entity. The traits recognized by InferICD10CM are DIAGNOSIS, SIGN, SYMPTOM, and NEGATION. 
+        /// Provides Contextual information for the entity. The traits recognized by InferICD10CM are DIAGNOSIS, SIGN, SYMPTOM, and NEGATION.
         public let traits: [ICD10CMTrait]?
         /// Describes the specific type of entity with category of entities. InferICD10CM detects entities of the type DX_NAME and TIME_EXPRESSION.
         public let type: ICD10CMEntityType?
@@ -765,7 +744,6 @@ extension ComprehendMedical {
     }
 
     public struct ICD10CMTrait: AWSDecodableShape {
-
         /// Provides a name or contextual description about the trait.
         public let name: ICD10CMTraitName?
         /// The level of confidence that Amazon Comprehend Medical has that the segment of text is correctly recognized as a trait.
@@ -783,7 +761,6 @@ extension ComprehendMedical {
     }
 
     public struct InferICD10CMRequest: AWSEncodableShape {
-
         /// The input text used for analysis. The input for InferICD10CM is a string from 1 to 10000 characters.
         public let text: String
 
@@ -802,12 +779,11 @@ extension ComprehendMedical {
     }
 
     public struct InferICD10CMResponse: AWSDecodableShape {
-
         /// The medical conditions detected in the text linked to ICD-10-CM concepts. If the action is successful, the service sends back an HTTP 200 response, as well as the entities detected.
         public let entities: [ICD10CMEntity]
         /// The version of the model used to analyze the documents, in the format n.n.n You can use this information to track the model used for a particular batch of documents.
         public let modelVersion: String?
-        /// If the result of the previous request to InferICD10CM was truncated, include the PaginationToken to fetch the next page of medical condition entities. 
+        /// If the result of the previous request to InferICD10CM was truncated, include the PaginationToken to fetch the next page of medical condition entities.
         public let paginationToken: String?
 
         public init(entities: [ICD10CMEntity], modelVersion: String? = nil, paginationToken: String? = nil) {
@@ -824,7 +800,6 @@ extension ComprehendMedical {
     }
 
     public struct InferRxNormRequest: AWSEncodableShape {
-
         /// The input text used for analysis. The input for InferRxNorm is a string from 1 to 10000 characters.
         public let text: String
 
@@ -843,7 +818,6 @@ extension ComprehendMedical {
     }
 
     public struct InferRxNormResponse: AWSDecodableShape {
-
         /// The medication entities detected in the text linked to RxNorm concepts. If the action is successful, the service sends back an HTTP 200 response, as well as the entities detected.
         public let entities: [RxNormEntity]
         /// The version of the model used to analyze the documents, in the format n.n.n You can use this information to track the model used for a particular batch of documents.
@@ -865,7 +839,6 @@ extension ComprehendMedical {
     }
 
     public struct InputDataConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// The URI of the S3 bucket that contains the input data. The bucket must be in the same region as the API endpoint that you are calling. Each file in the document collection must be less than 40 KB. You can store a maximum of 30 GB in the bucket.
         public let s3Bucket: String
         /// The path to the input data files in the S3 bucket.
@@ -891,7 +864,6 @@ extension ComprehendMedical {
     }
 
     public struct ListEntitiesDetectionV2JobsRequest: AWSEncodableShape {
-
         /// Filters the jobs that are returned. You can filter jobs based on their names, status, or the date and time that they were submitted. You can only set one filter at a time.
         public let filter: ComprehendMedicalAsyncJobFilter?
         /// The maximum number of results to return in each page. The default is 100.
@@ -920,7 +892,6 @@ extension ComprehendMedical {
     }
 
     public struct ListEntitiesDetectionV2JobsResponse: AWSDecodableShape {
-
         /// A list containing the properties of each job returned.
         public let comprehendMedicalAsyncJobPropertiesList: [ComprehendMedicalAsyncJobProperties]?
         /// Identifies the next page of results to return.
@@ -938,7 +909,6 @@ extension ComprehendMedical {
     }
 
     public struct ListICD10CMInferenceJobsRequest: AWSEncodableShape {
-
         /// Filters the jobs that are returned. You can filter jobs based on their names, status, or the date and time that they were submitted. You can only set one filter at a time.
         public let filter: ComprehendMedicalAsyncJobFilter?
         /// The maximum number of results to return in each page. The default is 100.
@@ -967,7 +937,6 @@ extension ComprehendMedical {
     }
 
     public struct ListICD10CMInferenceJobsResponse: AWSDecodableShape {
-
         /// A list containing the properties of each job that is returned.
         public let comprehendMedicalAsyncJobPropertiesList: [ComprehendMedicalAsyncJobProperties]?
         /// Identifies the next page of results to return.
@@ -985,7 +954,6 @@ extension ComprehendMedical {
     }
 
     public struct ListPHIDetectionJobsRequest: AWSEncodableShape {
-
         /// Filters the jobs that are returned. You can filter jobs based on their names, status, or the date and time that they were submitted. You can only set one filter at a time.
         public let filter: ComprehendMedicalAsyncJobFilter?
         /// The maximum number of results to return in each page. The default is 100.
@@ -1014,7 +982,6 @@ extension ComprehendMedical {
     }
 
     public struct ListPHIDetectionJobsResponse: AWSDecodableShape {
-
         /// A list containing the properties of each job returned.
         public let comprehendMedicalAsyncJobPropertiesList: [ComprehendMedicalAsyncJobProperties]?
         /// Identifies the next page of results to return.
@@ -1032,7 +999,6 @@ extension ComprehendMedical {
     }
 
     public struct ListRxNormInferenceJobsRequest: AWSEncodableShape {
-
         /// Filters the jobs that are returned. You can filter jobs based on their names, status, or the date and time that they were submitted. You can only set one filter at a time.
         public let filter: ComprehendMedicalAsyncJobFilter?
         /// Identifies the next page of results to return.
@@ -1061,7 +1027,6 @@ extension ComprehendMedical {
     }
 
     public struct ListRxNormInferenceJobsResponse: AWSDecodableShape {
-
         /// The maximum number of results to return in each page. The default is 100.
         public let comprehendMedicalAsyncJobPropertiesList: [ComprehendMedicalAsyncJobProperties]?
         /// Identifies the next page of results to return.
@@ -1079,7 +1044,6 @@ extension ComprehendMedical {
     }
 
     public struct OutputDataConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// When you use the OutputDataConfig object with asynchronous operations, you specify the Amazon S3 location where you want to write the output data. The URI must be in the same region as the API endpoint that you are calling. The location is used as the prefix for the actual location of the output.
         public let s3Bucket: String
         /// The path to the output data files in the S3 bucket. Amazon Comprehend Medical creates an output directory using the job ID so that the output from one job does not overwrite the output of another.
@@ -1105,7 +1069,6 @@ extension ComprehendMedical {
     }
 
     public struct RxNormAttribute: AWSDecodableShape {
-
         /// The 0-based character offset in the input text that shows where the attribute begins. The offset returns the UTF-8 code point in the string.
         public let beginOffset: Int?
         /// The 0-based character offset in the input text that shows where the attribute ends. The offset returns the UTF-8 code point in the string.
@@ -1147,7 +1110,6 @@ extension ComprehendMedical {
     }
 
     public struct RxNormConcept: AWSDecodableShape {
-
         /// RxNorm concept ID, also known as the RxCUI.
         public let code: String?
         /// The description of the RxNorm concept.
@@ -1169,7 +1131,6 @@ extension ComprehendMedical {
     }
 
     public struct RxNormEntity: AWSDecodableShape {
-
         /// The extracted attributes that relate to the entity. The attributes recognized by InferRxNorm are DOSAGE, DURATION, FORM, FREQUENCY, RATE, ROUTE_OR_MODE, and STRENGTH.
         public let attributes: [RxNormAttribute]?
         /// The 0-based character offset in the input text that shows where the entity begins. The offset returns the UTF-8 code point in the string.
@@ -1219,7 +1180,6 @@ extension ComprehendMedical {
     }
 
     public struct RxNormTrait: AWSDecodableShape {
-
         /// Provides a name or contextual description about the trait.
         public let name: RxNormTraitName?
         /// The level of confidence that Amazon Comprehend Medical has in the accuracy of the detected trait.
@@ -1237,7 +1197,6 @@ extension ComprehendMedical {
     }
 
     public struct StartEntitiesDetectionV2JobRequest: AWSEncodableShape {
-
         /// A unique identifier for the request. If you don't set the client request token, Amazon Comprehend Medical generates one.
         public let clientRequestToken: String?
         /// The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that grants Amazon Comprehend Medical read access to your input data. For more information, see  Role-Based Permissions Required for Asynchronous Operations.
@@ -1292,7 +1251,6 @@ extension ComprehendMedical {
     }
 
     public struct StartEntitiesDetectionV2JobResponse: AWSDecodableShape {
-
         /// The identifier generated for the job. To get the status of a job, use this identifier with the DescribeEntitiesDetectionV2Job operation.
         public let jobId: String?
 
@@ -1306,7 +1264,6 @@ extension ComprehendMedical {
     }
 
     public struct StartICD10CMInferenceJobRequest: AWSEncodableShape {
-
         /// A unique identifier for the request. If you don't set the client request token, Amazon Comprehend Medical generates one.
         public let clientRequestToken: String?
         /// The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that grants Amazon Comprehend Medical read access to your input data. For more information, see  Role-Based Permissions Required for Asynchronous Operations.
@@ -1361,7 +1318,6 @@ extension ComprehendMedical {
     }
 
     public struct StartICD10CMInferenceJobResponse: AWSDecodableShape {
-
         /// The identifier generated for the job. To get the status of a job, use this identifier with the StartICD10CMInferenceJob operation.
         public let jobId: String?
 
@@ -1375,7 +1331,6 @@ extension ComprehendMedical {
     }
 
     public struct StartPHIDetectionJobRequest: AWSEncodableShape {
-
         /// A unique identifier for the request. If you don't set the client request token, Amazon Comprehend Medical generates one.
         public let clientRequestToken: String?
         /// The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that grants Amazon Comprehend Medical read access to your input data. For more information, see  Role-Based Permissions Required for Asynchronous Operations.
@@ -1430,7 +1385,6 @@ extension ComprehendMedical {
     }
 
     public struct StartPHIDetectionJobResponse: AWSDecodableShape {
-
         /// The identifier generated for the job. To get the status of a job, use this identifier with the DescribePHIDetectionJob operation.
         public let jobId: String?
 
@@ -1444,7 +1398,6 @@ extension ComprehendMedical {
     }
 
     public struct StartRxNormInferenceJobRequest: AWSEncodableShape {
-
         /// A unique identifier for the request. If you don't set the client request token, Amazon Comprehend Medical generates one.
         public let clientRequestToken: String?
         /// The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that grants Amazon Comprehend Medical read access to your input data. For more information, see  Role-Based Permissions Required for Asynchronous Operations.
@@ -1499,7 +1452,6 @@ extension ComprehendMedical {
     }
 
     public struct StartRxNormInferenceJobResponse: AWSDecodableShape {
-
         /// The identifier of the job.
         public let jobId: String?
 
@@ -1513,7 +1465,6 @@ extension ComprehendMedical {
     }
 
     public struct StopEntitiesDetectionV2JobRequest: AWSEncodableShape {
-
         /// The identifier of the medical entities job to stop.
         public let jobId: String
 
@@ -1533,7 +1484,6 @@ extension ComprehendMedical {
     }
 
     public struct StopEntitiesDetectionV2JobResponse: AWSDecodableShape {
-
         /// The identifier of the medical entities detection job that was stopped.
         public let jobId: String?
 
@@ -1547,7 +1497,6 @@ extension ComprehendMedical {
     }
 
     public struct StopICD10CMInferenceJobRequest: AWSEncodableShape {
-
         /// The identifier of the job.
         public let jobId: String
 
@@ -1567,7 +1516,6 @@ extension ComprehendMedical {
     }
 
     public struct StopICD10CMInferenceJobResponse: AWSDecodableShape {
-
         /// The identifier generated for the job. To get the status of job, use this identifier with the DescribeICD10CMInferenceJob operation.
         public let jobId: String?
 
@@ -1581,7 +1529,6 @@ extension ComprehendMedical {
     }
 
     public struct StopPHIDetectionJobRequest: AWSEncodableShape {
-
         /// The identifier of the PHI detection job to stop.
         public let jobId: String
 
@@ -1601,7 +1548,6 @@ extension ComprehendMedical {
     }
 
     public struct StopPHIDetectionJobResponse: AWSDecodableShape {
-
         /// The identifier of the PHI detection job that was stopped.
         public let jobId: String?
 
@@ -1615,7 +1561,6 @@ extension ComprehendMedical {
     }
 
     public struct StopRxNormInferenceJobRequest: AWSEncodableShape {
-
         /// The identifier of the job.
         public let jobId: String
 
@@ -1635,7 +1580,6 @@ extension ComprehendMedical {
     }
 
     public struct StopRxNormInferenceJobResponse: AWSDecodableShape {
-
         /// The identifier generated for the job. To get the status of job, use this identifier with the DescribeRxNormInferenceJob operation.
         public let jobId: String?
 
@@ -1649,8 +1593,7 @@ extension ComprehendMedical {
     }
 
     public struct Trait: AWSDecodableShape {
-
-        ///  Provides a name or contextual description about the trait. 
+        ///  Provides a name or contextual description about the trait.
         public let name: AttributeName?
         ///  The level of confidence that Amazon Comprehend Medical has in the accuracy of this trait.
         public let score: Float?
@@ -1667,10 +1610,9 @@ extension ComprehendMedical {
     }
 
     public struct UnmappedAttribute: AWSDecodableShape {
-
-        ///  The specific attribute that has been extracted but not mapped to an entity. 
+        ///  The specific attribute that has been extracted but not mapped to an entity.
         public let attribute: Attribute?
-        ///  The type of the attribute, could be one of the following values: "MEDICATION", "MEDICAL_CONDITION", "ANATOMY", "TEST_AND_TREATMENT_PROCEDURE" or "PROTECTED_HEALTH_INFORMATION". 
+        ///  The type of the attribute, could be one of the following values: "MEDICATION", "MEDICAL_CONDITION", "ANATOMY", "TEST_AND_TREATMENT_PROCEDURE" or "PROTECTED_HEALTH_INFORMATION".
         public let type: EntityType?
 
         public init(attribute: Attribute? = nil, type: EntityType? = nil) {

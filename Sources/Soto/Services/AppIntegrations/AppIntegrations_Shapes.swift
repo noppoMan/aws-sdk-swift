@@ -24,7 +24,6 @@ extension AppIntegrations {
     // MARK: Shapes
 
     public struct CreateEventIntegrationRequest: AWSEncodableShape {
-
         /// A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
         public let clientToken: String?
         /// The description of the event integration.
@@ -82,8 +81,7 @@ extension AppIntegrations {
     }
 
     public struct CreateEventIntegrationResponse: AWSDecodableShape {
-
-        /// The Amazon Resource Name (ARN) of the event integration. 
+        /// The Amazon Resource Name (ARN) of the event integration.
         public let eventIntegrationArn: String?
 
         public init(eventIntegrationArn: String? = nil) {
@@ -117,15 +115,10 @@ extension AppIntegrations {
     }
 
     public struct DeleteEventIntegrationResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct EventFilter: AWSEncodableShape & AWSDecodableShape {
-
         /// The source of the events.
         public let source: String
 
@@ -145,7 +138,6 @@ extension AppIntegrations {
     }
 
     public struct EventIntegration: AWSDecodableShape {
-
         /// The event integration description.
         public let description: String?
         /// The Amazon Eventbridge bus for the event integration.
@@ -179,7 +171,6 @@ extension AppIntegrations {
     }
 
     public struct EventIntegrationAssociation: AWSDecodableShape {
-
         /// The metadata associated with the client.
         public let clientAssociationMetadata: [String: String]?
         /// The identifier for the client that is associated with the event integration.
@@ -217,7 +208,7 @@ extension AppIntegrations {
             AWSMemberEncoding(label: "name", location: .uri(locationName: "Name"))
         ]
 
-        /// The name of the event integration. 
+        /// The name of the event integration.
         public let name: String
 
         public init(name: String) {
@@ -234,7 +225,6 @@ extension AppIntegrations {
     }
 
     public struct GetEventIntegrationResponse: AWSDecodableShape {
-
         /// The description of the event integration.
         public let description: String?
         /// The Eventbridge bus.
@@ -243,7 +233,7 @@ extension AppIntegrations {
         public let eventFilter: EventFilter?
         /// The Amazon Resource Name (ARN) for the event integration.
         public let eventIntegrationArn: String?
-        /// The name of the event integration. 
+        /// The name of the event integration.
         public let name: String?
         /// One or more tags.
         public let tags: [String: String]?
@@ -269,16 +259,16 @@ extension AppIntegrations {
 
     public struct ListEventIntegrationAssociationsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "eventIntegrationName", location: .uri(locationName: "EventIntegrationName")), 
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "eventIntegrationName", location: .uri(locationName: "EventIntegrationName")),
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
-        /// The name of the event integration. 
+        /// The name of the event integration.
         public let eventIntegrationName: String
         /// The maximum number of results to return per page.
         public let maxResults: Int?
-        /// The token for the next set of results. Use the value returned in the previous 
+        /// The token for the next set of results. Use the value returned in the previous
         /// response in the next request to retrieve the next set of results.
         public let nextToken: String?
 
@@ -303,7 +293,6 @@ extension AppIntegrations {
     }
 
     public struct ListEventIntegrationAssociationsResponse: AWSDecodableShape {
-
         /// The event integration associations.
         public let eventIntegrationAssociations: [EventIntegrationAssociation]?
         /// If there are additional results, this is the token for the next set of results.
@@ -322,13 +311,13 @@ extension AppIntegrations {
 
     public struct ListEventIntegrationsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
         /// The maximum number of results to return per page.
         public let maxResults: Int?
-        /// The token for the next set of results. Use the value returned in the previous 
+        /// The token for the next set of results. Use the value returned in the previous
         /// response in the next request to retrieve the next set of results.
         public let nextToken: String?
 
@@ -349,7 +338,6 @@ extension AppIntegrations {
     }
 
     public struct ListEventIntegrationsResponse: AWSDecodableShape {
-
         /// The event integrations.
         public let eventIntegrations: [EventIntegration]?
         /// If there are additional results, this is the token for the next set of results.
@@ -371,7 +359,7 @@ extension AppIntegrations {
             AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "resourceArn"))
         ]
 
-        /// The Amazon Resource Name (ARN) of the resource. 
+        /// The Amazon Resource Name (ARN) of the resource.
         public let resourceArn: String
 
         public init(resourceArn: String) {
@@ -388,7 +376,6 @@ extension AppIntegrations {
     }
 
     public struct ListTagsForResourceResponse: AWSDecodableShape {
-
         /// Information about the tags.
         public let tags: [String: String]?
 
@@ -397,7 +384,7 @@ extension AppIntegrations {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tags = "tags"
+            case tags
         }
     }
 
@@ -408,7 +395,7 @@ extension AppIntegrations {
 
         /// The Amazon Resource Name (ARN) of the resource.
         public let resourceArn: String
-        /// One or more tags. 
+        /// One or more tags.
         public let tags: [String: String]
 
         public init(resourceArn: String, tags: [String: String]) {
@@ -431,21 +418,17 @@ extension AppIntegrations {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tags = "tags"
+            case tags
         }
     }
 
     public struct TagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UntagResourceRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "resourceArn")), 
+            AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "resourceArn")),
             AWSMemberEncoding(label: "tagKeys", location: .querystring(locationName: "tagKeys"))
         ]
 
@@ -476,11 +459,7 @@ extension AppIntegrations {
     }
 
     public struct UntagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateEventIntegrationRequest: AWSEncodableShape {
@@ -513,10 +492,6 @@ extension AppIntegrations {
     }
 
     public struct UpdateEventIntegrationResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 }

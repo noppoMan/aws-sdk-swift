@@ -109,13 +109,13 @@ public struct FSxErrorType: AWSErrorType {
     public static var invalidSourceKmsKey: Self { .init(.invalidSourceKmsKey) }
     /// A file system configuration is required for this operation.
     public static var missingFileSystemConfiguration: Self { .init(.missingFileSystemConfiguration) }
-    /// The resource specified for the tagging operation is not a resource type owned by Amazon FSx. Use the API of the relevant service to perform the operation. 
+    /// The resource specified for the tagging operation is not a resource type owned by Amazon FSx. Use the API of the relevant service to perform the operation.
     public static var notServiceResourceError: Self { .init(.notServiceResourceError) }
-    /// The resource specified does not support tagging. 
+    /// The resource specified does not support tagging.
     public static var resourceDoesNotSupportTagging: Self { .init(.resourceDoesNotSupportTagging) }
     /// The resource specified by the Amazon Resource Name (ARN) can't be found.
     public static var resourceNotFound: Self { .init(.resourceNotFound) }
-    /// An error indicating that a particular service limit was exceeded. You can increase some service limits by contacting AWS Support. 
+    /// An error indicating that a particular service limit was exceeded. You can increase some service limits by contacting AWS Support.
     public static var serviceLimitExceeded: Self { .init(.serviceLimitExceeded) }
     /// The request was rejected because the lifecycle status of the  source backup is not AVAILABLE.
     public static var sourceBackupUnavailable: Self { .init(.sourceBackupUnavailable) }

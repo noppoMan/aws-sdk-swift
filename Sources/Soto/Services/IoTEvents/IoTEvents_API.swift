@@ -103,7 +103,7 @@ public struct IoTEvents: AWSService {
         return self.client.execute(operation: "DescribeDetectorModel", path: "/detector-models/{detectorModelName}", httpMethod: .GET, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Retrieves runtime information about a detector model analysis.  After AWS IoT Events starts analyzing your detector model, you have up to 24 hours to retrieve the analysis results. 
+    /// Retrieves runtime information about a detector model analysis.  After AWS IoT Events starts analyzing your detector model, you have up to 24 hours to retrieve the analysis results.
     public func describeDetectorModelAnalysis(_ input: DescribeDetectorModelAnalysisRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<DescribeDetectorModelAnalysisResponse> {
         return self.client.execute(operation: "DescribeDetectorModelAnalysis", path: "/analysis/detector-models/{analysisId}", httpMethod: .GET, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -118,7 +118,7 @@ public struct IoTEvents: AWSService {
         return self.client.execute(operation: "DescribeLoggingOptions", path: "/logging", httpMethod: .GET, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Retrieves one or more analysis results of the detector model.  After AWS IoT Events starts analyzing your detector model, you have up to 24 hours to retrieve the analysis results. 
+    /// Retrieves one or more analysis results of the detector model.  After AWS IoT Events starts analyzing your detector model, you have up to 24 hours to retrieve the analysis results.
     public func getDetectorModelAnalysisResults(_ input: GetDetectorModelAnalysisResultsRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<GetDetectorModelAnalysisResultsResponse> {
         return self.client.execute(operation: "GetDetectorModelAnalysisResults", path: "/analysis/detector-models/{analysisId}/results", httpMethod: .GET, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -143,7 +143,7 @@ public struct IoTEvents: AWSService {
         return self.client.execute(operation: "ListDetectorModels", path: "/detector-models", httpMethod: .GET, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    ///  Lists one or more input routings.  
+    ///  Lists one or more input routings.
     public func listInputRoutings(_ input: ListInputRoutingsRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<ListInputRoutingsResponse> {
         return self.client.execute(operation: "ListInputRoutings", path: "/input-routings", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }

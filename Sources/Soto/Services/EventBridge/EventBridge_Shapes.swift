@@ -99,9 +99,9 @@ extension EventBridge {
     }
 
     public enum PlacementStrategyType: String, CustomStringConvertible, Codable {
-        case binpack = "binpack"
-        case random = "random"
-        case spread = "spread"
+        case binpack
+        case random
+        case spread
         public var description: String { return self.rawValue }
     }
 
@@ -129,7 +129,6 @@ extension EventBridge {
     // MARK: Shapes
 
     public struct ActivateEventSourceRequest: AWSEncodableShape {
-
         /// The name of the partner event source to activate.
         public let name: String
 
@@ -149,7 +148,6 @@ extension EventBridge {
     }
 
     public struct ApiDestination: AWSDecodableShape {
-
         /// The ARN of the API destination.
         public let apiDestinationArn: String?
         /// The state of the API destination.
@@ -195,7 +193,6 @@ extension EventBridge {
     }
 
     public struct Archive: AWSDecodableShape {
-
         /// The name of the archive.
         public let archiveName: String?
         /// The time stamp for the time that the archive was created.
@@ -237,7 +234,6 @@ extension EventBridge {
     }
 
     public struct AwsVpcConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// Specifies whether the task's elastic network interface receives a public IP address. You can specify ENABLED only when LaunchType in EcsParameters is set to FARGATE.
         public let assignPublicIp: AssignPublicIp?
         /// Specifies the security groups associated with the task. These security groups must all be in the same VPC. You can specify as many as five security groups. If you do not specify a security group, the default security group for the VPC is used.
@@ -259,7 +255,6 @@ extension EventBridge {
     }
 
     public struct BatchArrayProperties: AWSEncodableShape & AWSDecodableShape {
-
         /// The size of the array, if this is an array batch job. Valid values are integers between 2 and 10,000.
         public let size: Int?
 
@@ -273,7 +268,6 @@ extension EventBridge {
     }
 
     public struct BatchParameters: AWSEncodableShape & AWSDecodableShape {
-
         /// The array properties for the submitted job, such as the size of the array. The array size can be between 2 and 10,000. If you specify array properties for a job, it becomes an array job. This parameter is used only if the target is an AWS Batch job.
         public let arrayProperties: BatchArrayProperties?
         /// The ARN or name of the job definition to use if the event target is an AWS Batch job. This job definition must already exist.
@@ -299,7 +293,6 @@ extension EventBridge {
     }
 
     public struct BatchRetryStrategy: AWSEncodableShape & AWSDecodableShape {
-
         /// The number of times to attempt to retry, if the job fails. Valid values are 1–10.
         public let attempts: Int?
 
@@ -313,7 +306,6 @@ extension EventBridge {
     }
 
     public struct CancelReplayRequest: AWSEncodableShape {
-
         /// The name of the replay to cancel.
         public let replayName: String
 
@@ -333,7 +325,6 @@ extension EventBridge {
     }
 
     public struct CancelReplayResponse: AWSDecodableShape {
-
         /// The ARN of the replay to cancel.
         public let replayArn: String?
         /// The current state of the replay.
@@ -355,8 +346,7 @@ extension EventBridge {
     }
 
     public struct CapacityProviderStrategyItem: AWSEncodableShape & AWSDecodableShape {
-
-        /// The base value designates how many tasks, at a minimum, to run on the specified capacity provider. Only one capacity provider in a capacity provider strategy can have a base defined. If no value is specified, the default value of 0 is used. 
+        /// The base value designates how many tasks, at a minimum, to run on the specified capacity provider. Only one capacity provider in a capacity provider strategy can have a base defined. If no value is specified, the default value of 0 is used.
         public let base: Int?
         /// The short name of the capacity provider.
         public let capacityProvider: String
@@ -370,7 +360,7 @@ extension EventBridge {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.base, name: "base", parent: name, max: 100000)
+            try self.validate(self.base, name: "base", parent: name, max: 100_000)
             try self.validate(self.base, name: "base", parent: name, min: 0)
             try self.validate(self.capacityProvider, name: "capacityProvider", parent: name, max: 255)
             try self.validate(self.capacityProvider, name: "capacityProvider", parent: name, min: 1)
@@ -379,14 +369,13 @@ extension EventBridge {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case base = "base"
-            case capacityProvider = "capacityProvider"
-            case weight = "weight"
+            case base
+            case capacityProvider
+            case weight
         }
     }
 
     public struct Condition: AWSEncodableShape {
-
         /// Specifies the key for the condition. Currently the only supported key is aws:PrincipalOrgID.
         public let key: String
         /// Specifies the type of condition. Currently the only supported value is StringEquals.
@@ -408,7 +397,6 @@ extension EventBridge {
     }
 
     public struct Connection: AWSDecodableShape {
-
         /// The authorization type specified for the connection.
         public let authorizationType: ConnectionAuthorizationType?
         /// The ARN of the connection.
@@ -450,7 +438,6 @@ extension EventBridge {
     }
 
     public struct ConnectionApiKeyAuthResponseParameters: AWSDecodableShape {
-
         /// The name of the header to use for the APIKeyValue used for authorization.
         public let apiKeyName: String?
 
@@ -464,7 +451,6 @@ extension EventBridge {
     }
 
     public struct ConnectionAuthResponseParameters: AWSDecodableShape {
-
         /// The API Key parameters to use for authorization.
         public let apiKeyAuthParameters: ConnectionApiKeyAuthResponseParameters?
         /// The authorization parameters for Basic authorization.
@@ -490,7 +476,6 @@ extension EventBridge {
     }
 
     public struct ConnectionBasicAuthResponseParameters: AWSDecodableShape {
-
         /// The user name to use for Basic authorization.
         public let username: String?
 
@@ -504,7 +489,6 @@ extension EventBridge {
     }
 
     public struct ConnectionBodyParameter: AWSEncodableShape & AWSDecodableShape {
-
         /// Specified whether the value is secret.
         public let isValueSecret: Bool?
         /// The key for the parameter.
@@ -526,7 +510,6 @@ extension EventBridge {
     }
 
     public struct ConnectionHeaderParameter: AWSEncodableShape & AWSDecodableShape {
-
         /// Specified whether the value is a secret.
         public let isValueSecret: Bool?
         /// The key for the parameter.
@@ -555,7 +538,6 @@ extension EventBridge {
     }
 
     public struct ConnectionHttpParameters: AWSEncodableShape & AWSDecodableShape {
-
         /// Contains additional body string parameters for the connection.
         public let bodyParameters: [ConnectionBodyParameter]?
         /// Contains additional header parameters for the connection.
@@ -589,7 +571,6 @@ extension EventBridge {
     }
 
     public struct ConnectionOAuthClientResponseParameters: AWSDecodableShape {
-
         /// The client ID associated with the response to the connection request.
         public let clientID: String?
 
@@ -603,7 +584,6 @@ extension EventBridge {
     }
 
     public struct ConnectionOAuthResponseParameters: AWSDecodableShape {
-
         /// The URL to the HTTP endpoint that authorized the request.
         public let authorizationEndpoint: String?
         /// A ConnectionOAuthClientResponseParameters object that contains details about the client parameters returned when OAuth is specified as the authorization type.
@@ -629,7 +609,6 @@ extension EventBridge {
     }
 
     public struct ConnectionQueryStringParameter: AWSEncodableShape & AWSDecodableShape {
-
         /// Specifies whether the value is secret.
         public let isValueSecret: Bool?
         /// The key for a query string parameter.
@@ -658,7 +637,6 @@ extension EventBridge {
     }
 
     public struct CreateApiDestinationRequest: AWSEncodableShape {
-
         /// The ARN of the connection to use for the API destination. The destination endpoint must support the authorization type specified for the connection.
         public let connectionArn: String
         /// A description for the API destination to create.
@@ -707,7 +685,6 @@ extension EventBridge {
     }
 
     public struct CreateApiDestinationResponse: AWSDecodableShape {
-
         /// The ARN of the API destination that was created by the request.
         public let apiDestinationArn: String?
         /// The state of the API destination that was created by the request.
@@ -733,7 +710,6 @@ extension EventBridge {
     }
 
     public struct CreateArchiveRequest: AWSEncodableShape {
-
         /// The name for the archive to create.
         public let archiveName: String
         /// A description for the archive.
@@ -774,7 +750,6 @@ extension EventBridge {
     }
 
     public struct CreateArchiveResponse: AWSDecodableShape {
-
         /// The ARN of the archive that was created.
         public let archiveArn: String?
         /// The time at which the archive was created.
@@ -800,7 +775,6 @@ extension EventBridge {
     }
 
     public struct CreateConnectionApiKeyAuthRequestParameters: AWSEncodableShape {
-
         /// The name of the API key to use for authorization.
         public let apiKeyName: String
         /// The value for the API key to use for authorization.
@@ -827,7 +801,6 @@ extension EventBridge {
     }
 
     public struct CreateConnectionAuthRequestParameters: AWSEncodableShape {
-
         /// A CreateConnectionApiKeyAuthRequestParameters object that contains the API key authorization parameters to use for the connection.
         public let apiKeyAuthParameters: CreateConnectionApiKeyAuthRequestParameters?
         /// A CreateConnectionBasicAuthRequestParameters object that contains the Basic authorization parameters to use for the connection.
@@ -860,7 +833,6 @@ extension EventBridge {
     }
 
     public struct CreateConnectionBasicAuthRequestParameters: AWSEncodableShape {
-
         /// The password associated with the user name to use for Basic authorization.
         public let password: String
         /// The user name to use for Basic authorization.
@@ -887,7 +859,6 @@ extension EventBridge {
     }
 
     public struct CreateConnectionOAuthClientRequestParameters: AWSEncodableShape {
-
         /// The client ID to use for OAuth authorization for the connection.
         public let clientID: String
         /// The client secret associated with the client ID to use for OAuth authorization for the connection.
@@ -914,7 +885,6 @@ extension EventBridge {
     }
 
     public struct CreateConnectionOAuthRequestParameters: AWSEncodableShape {
-
         /// The URL to the authorization endpoint when OAuth is specified as the authorization type.
         public let authorizationEndpoint: String
         /// A CreateConnectionOAuthClientRequestParameters object that contains the client parameters for OAuth authorization.
@@ -948,10 +918,9 @@ extension EventBridge {
     }
 
     public struct CreateConnectionRequest: AWSEncodableShape {
-
         /// The type of authorization to use for the connection.
         public let authorizationType: ConnectionAuthorizationType
-        /// A CreateConnectionAuthRequestParameters object that contains the authorization parameters to use to authorize with the endpoint. 
+        /// A CreateConnectionAuthRequestParameters object that contains the authorization parameters to use to authorize with the endpoint.
         public let authParameters: CreateConnectionAuthRequestParameters
         /// A description for the connection to create.
         public let description: String?
@@ -983,7 +952,6 @@ extension EventBridge {
     }
 
     public struct CreateConnectionResponse: AWSDecodableShape {
-
         /// The ARN of the connection that was created by the request.
         public let connectionArn: String?
         /// The state of the connection that was created by the request.
@@ -1009,7 +977,6 @@ extension EventBridge {
     }
 
     public struct CreateEventBusRequest: AWSEncodableShape {
-
         /// If you are creating a partner event bus, this specifies the partner event source that the new event bus will be matched with.
         public let eventSourceName: String?
         /// The name of the new event bus.  Event bus names cannot contain the / character. You can't use the name default for a custom event bus, as this name is already used for your account's default event bus. If this is a partner event bus, the name must exactly match the name of the partner event source that this event bus is matched to.
@@ -1043,7 +1010,6 @@ extension EventBridge {
     }
 
     public struct CreateEventBusResponse: AWSDecodableShape {
-
         /// The ARN of the new event bus.
         public let eventBusArn: String?
 
@@ -1057,7 +1023,6 @@ extension EventBridge {
     }
 
     public struct CreatePartnerEventSourceRequest: AWSEncodableShape {
-
         /// The AWS account ID that is permitted to create a matching partner event bus for this partner event source.
         public let account: String
         /// The name of the partner event source. This name must be unique and must be in the format  partner_name/event_namespace/event_name . The AWS account that wants to use this partner event source must create a partner event bus with a name that matches the name of the partner event source.
@@ -1084,7 +1049,6 @@ extension EventBridge {
     }
 
     public struct CreatePartnerEventSourceResponse: AWSDecodableShape {
-
         /// The ARN of the partner event source.
         public let eventSourceArn: String?
 
@@ -1098,7 +1062,6 @@ extension EventBridge {
     }
 
     public struct DeactivateEventSourceRequest: AWSEncodableShape {
-
         /// The name of the partner event source to deactivate.
         public let name: String
 
@@ -1118,7 +1081,6 @@ extension EventBridge {
     }
 
     public struct DeadLetterConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// The ARN of the SQS queue specified as the target for the dead-letter queue.
         public let arn: String?
 
@@ -1137,7 +1099,6 @@ extension EventBridge {
     }
 
     public struct DeauthorizeConnectionRequest: AWSEncodableShape {
-
         /// The name of the connection to remove authorization from.
         public let name: String
 
@@ -1157,7 +1118,6 @@ extension EventBridge {
     }
 
     public struct DeauthorizeConnectionResponse: AWSDecodableShape {
-
         /// The ARN of the connection that authorization was removed from.
         public let connectionArn: String?
         /// The state of the connection.
@@ -1187,7 +1147,6 @@ extension EventBridge {
     }
 
     public struct DeleteApiDestinationRequest: AWSEncodableShape {
-
         /// The name of the destination to delete.
         public let name: String
 
@@ -1207,15 +1166,10 @@ extension EventBridge {
     }
 
     public struct DeleteApiDestinationResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteArchiveRequest: AWSEncodableShape {
-
         /// The name of the archive to delete.
         public let archiveName: String
 
@@ -1235,15 +1189,10 @@ extension EventBridge {
     }
 
     public struct DeleteArchiveResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteConnectionRequest: AWSEncodableShape {
-
         /// The name of the connection to delete.
         public let name: String
 
@@ -1263,7 +1212,6 @@ extension EventBridge {
     }
 
     public struct DeleteConnectionResponse: AWSDecodableShape {
-
         /// The ARN of the connection that was deleted.
         public let connectionArn: String?
         /// The state of the connection before it was deleted.
@@ -1293,7 +1241,6 @@ extension EventBridge {
     }
 
     public struct DeleteEventBusRequest: AWSEncodableShape {
-
         /// The name of the event bus to delete.
         public let name: String
 
@@ -1313,7 +1260,6 @@ extension EventBridge {
     }
 
     public struct DeletePartnerEventSourceRequest: AWSEncodableShape {
-
         /// The AWS account ID of the AWS customer that the event source was created for.
         public let account: String
         /// The name of the event source to delete.
@@ -1340,7 +1286,6 @@ extension EventBridge {
     }
 
     public struct DeleteRuleRequest: AWSEncodableShape {
-
         /// The name or ARN of the event bus associated with the rule. If you omit this, the default event bus is used.
         public let eventBusName: String?
         /// If this is a managed rule, created by an AWS service on your behalf, you must specify Force as True to delete the rule. This parameter is ignored for rules that are not managed rules. You can check whether a rule is a managed rule by using DescribeRule or ListRules and checking the ManagedBy field of the response.
@@ -1371,7 +1316,6 @@ extension EventBridge {
     }
 
     public struct DescribeApiDestinationRequest: AWSEncodableShape {
-
         /// The name of the API destination to retrieve.
         public let name: String
 
@@ -1391,7 +1335,6 @@ extension EventBridge {
     }
 
     public struct DescribeApiDestinationResponse: AWSDecodableShape {
-
         /// The ARN of the API destination retrieved.
         public let apiDestinationArn: String?
         /// The state of the API destination retrieved.
@@ -1441,7 +1384,6 @@ extension EventBridge {
     }
 
     public struct DescribeArchiveRequest: AWSEncodableShape {
-
         /// The name of the archive to retrieve.
         public let archiveName: String
 
@@ -1461,7 +1403,6 @@ extension EventBridge {
     }
 
     public struct DescribeArchiveResponse: AWSDecodableShape {
-
         /// The ARN of the archive.
         public let archiveArn: String?
         /// The name of the archive.
@@ -1515,7 +1456,6 @@ extension EventBridge {
     }
 
     public struct DescribeConnectionRequest: AWSEncodableShape {
-
         /// The name of the connection to retrieve.
         public let name: String
 
@@ -1535,7 +1475,6 @@ extension EventBridge {
     }
 
     public struct DescribeConnectionResponse: AWSDecodableShape {
-
         /// The type of authorization specified for the connection.
         public let authorizationType: ConnectionAuthorizationType?
         /// The parameters to use for authorization for the connection.
@@ -1589,7 +1528,6 @@ extension EventBridge {
     }
 
     public struct DescribeEventBusRequest: AWSEncodableShape {
-
         /// The name or ARN of the event bus to show details for. If you omit this, the default event bus is displayed.
         public let name: String?
 
@@ -1609,7 +1547,6 @@ extension EventBridge {
     }
 
     public struct DescribeEventBusResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the account permitted to write events to the current account.
         public let arn: String?
         /// The name of the event bus. Currently, this is always default.
@@ -1631,7 +1568,6 @@ extension EventBridge {
     }
 
     public struct DescribeEventSourceRequest: AWSEncodableShape {
-
         /// The name of the partner event source to display the details of.
         public let name: String
 
@@ -1651,7 +1587,6 @@ extension EventBridge {
     }
 
     public struct DescribeEventSourceResponse: AWSDecodableShape {
-
         /// The ARN of the partner event source.
         public let arn: String?
         /// The name of the SaaS partner that created the event source.
@@ -1685,7 +1620,6 @@ extension EventBridge {
     }
 
     public struct DescribePartnerEventSourceRequest: AWSEncodableShape {
-
         /// The name of the event source to display.
         public let name: String
 
@@ -1705,7 +1639,6 @@ extension EventBridge {
     }
 
     public struct DescribePartnerEventSourceResponse: AWSDecodableShape {
-
         /// The ARN of the event source.
         public let arn: String?
         /// The name of the event source.
@@ -1723,7 +1656,6 @@ extension EventBridge {
     }
 
     public struct DescribeReplayRequest: AWSEncodableShape {
-
         /// The name of the replay to retrieve.
         public let replayName: String
 
@@ -1743,7 +1675,6 @@ extension EventBridge {
     }
 
     public struct DescribeReplayResponse: AWSDecodableShape {
-
         /// The description of the replay.
         public let description: String?
         /// A ReplayDestination object that contains details about the replay.
@@ -1801,7 +1732,6 @@ extension EventBridge {
     }
 
     public struct DescribeRuleRequest: AWSEncodableShape {
-
         /// The name or ARN of the event bus associated with the rule. If you omit this, the default event bus is used.
         public let eventBusName: String?
         /// The name of the rule.
@@ -1828,7 +1758,6 @@ extension EventBridge {
     }
 
     public struct DescribeRuleResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the rule.
         public let arn: String?
         /// The account ID of the user that created the rule. If you use PutRule to put a rule on an event bus in another account, the other account is the owner of the rule, and the rule ARN includes the account ID for that account. However, the value for CreatedBy is the account ID as the account that created the rule in the other account.
@@ -1878,7 +1807,6 @@ extension EventBridge {
     }
 
     public struct DisableRuleRequest: AWSEncodableShape {
-
         /// The name or ARN of the event bus associated with the rule. If you omit this, the default event bus is used.
         public let eventBusName: String?
         /// The name of the rule.
@@ -1905,10 +1833,9 @@ extension EventBridge {
     }
 
     public struct EcsParameters: AWSEncodableShape & AWSDecodableShape {
-
-        /// The capacity provider strategy to use for the task. If a capacityProviderStrategy is specified, the launchType parameter must be omitted. If no capacityProviderStrategy or launchType is specified, the defaultCapacityProviderStrategy for the cluster is used. 
+        /// The capacity provider strategy to use for the task. If a capacityProviderStrategy is specified, the launchType parameter must be omitted. If no capacityProviderStrategy or launchType is specified, the defaultCapacityProviderStrategy for the cluster is used.
         public let capacityProviderStrategy: [CapacityProviderStrategyItem]?
-        /// Specifies whether to enable Amazon ECS managed tags for the task. For more information, see Tagging Your Amazon ECS Resources in the Amazon Elastic Container Service Developer Guide. 
+        /// Specifies whether to enable Amazon ECS managed tags for the task. For more information, see Tagging Your Amazon ECS Resources in the Amazon Elastic Container Service Developer Guide.
         public let enableECSManagedTags: Bool?
         /// Whether or not to enable the execute command functionality for the containers in this task. If true, this enables execute command functionality on all containers in the task.
         public let enableExecuteCommand: Bool?
@@ -1920,11 +1847,11 @@ extension EventBridge {
         public let networkConfiguration: NetworkConfiguration?
         /// An array of placement constraint objects to use for the task. You can specify up to 10 constraints per task (including constraints in the task definition and those specified at runtime).
         public let placementConstraints: [PlacementConstraint]?
-        /// The placement strategy objects to use for the task. You can specify a maximum of five strategy rules per task. 
+        /// The placement strategy objects to use for the task. You can specify a maximum of five strategy rules per task.
         public let placementStrategy: [PlacementStrategy]?
         /// Specifies the platform version for the task. Specify only the numeric portion of the platform version, such as 1.1.0. This structure is used only if LaunchType is FARGATE. For more information about valid platform versions, see AWS Fargate Platform Versions in the Amazon Elastic Container Service Developer Guide.
         public let platformVersion: String?
-        /// Specifies whether to propagate the tags from the task definition to the task. If no value is specified, the tags are not propagated. Tags can only be propagated to the task during task creation. To add tags to a task after task creation, use the TagResource API action. 
+        /// Specifies whether to propagate the tags from the task definition to the task. If no value is specified, the tags are not propagated. Tags can only be propagated to the task during task creation. To add tags to a task after task creation, use the TagResource API action.
         public let propagateTags: PropagateTags?
         /// The reference ID to use for the task.
         public let referenceId: String?
@@ -1932,7 +1859,7 @@ extension EventBridge {
         public let tags: [Tag]?
         /// The number of tasks to create based on TaskDefinition. The default is 1.
         public let taskCount: Int?
-        /// The ARN of the task definition to use if the event target is an Amazon ECS task. 
+        /// The ARN of the task definition to use if the event target is an Amazon ECS task.
         public let taskDefinitionArn: String
 
         public init(capacityProviderStrategy: [CapacityProviderStrategyItem]? = nil, enableECSManagedTags: Bool? = nil, enableExecuteCommand: Bool? = nil, group: String? = nil, launchType: LaunchType? = nil, networkConfiguration: NetworkConfiguration? = nil, placementConstraints: [PlacementConstraint]? = nil, placementStrategy: [PlacementStrategy]? = nil, platformVersion: String? = nil, propagateTags: PropagateTags? = nil, referenceId: String? = nil, tags: [Tag]? = nil, taskCount: Int? = nil, taskDefinitionArn: String) {
@@ -1993,7 +1920,6 @@ extension EventBridge {
     }
 
     public struct EnableRuleRequest: AWSEncodableShape {
-
         /// The name or ARN of the event bus associated with the rule. If you omit this, the default event bus is used.
         public let eventBusName: String?
         /// The name of the rule.
@@ -2020,7 +1946,6 @@ extension EventBridge {
     }
 
     public struct EventBus: AWSDecodableShape {
-
         /// The ARN of the event bus.
         public let arn: String?
         /// The name of the event bus.
@@ -2042,7 +1967,6 @@ extension EventBridge {
     }
 
     public struct EventSource: AWSDecodableShape {
-
         /// The ARN of the event source.
         public let arn: String?
         /// The name of the partner that created the event source.
@@ -2076,7 +2000,6 @@ extension EventBridge {
     }
 
     public struct HttpParameters: AWSEncodableShape & AWSDecodableShape {
-
         /// The headers that need to be sent as part of request invoking the API Gateway REST API or EventBridge ApiDestination.
         public let headerParameters: [String: String]?
         /// The path parameter values to be used to populate API Gateway REST API or EventBridge ApiDestination path wildcards ("*").
@@ -2116,11 +2039,10 @@ extension EventBridge {
     }
 
     public struct InputTransformer: AWSEncodableShape & AWSDecodableShape {
-
-        /// Map of JSON paths to be extracted from the event. You can then insert these in the template in InputTemplate to produce the output you want to be sent to the target.  InputPathsMap is an array key-value pairs, where each value is a valid JSON path. You can have as many as 100 key-value pairs. You must use JSON dot notation, not bracket notation. The keys cannot start with "AWS." 
+        /// Map of JSON paths to be extracted from the event. You can then insert these in the template in InputTemplate to produce the output you want to be sent to the target.  InputPathsMap is an array key-value pairs, where each value is a valid JSON path. You can have as many as 100 key-value pairs. You must use JSON dot notation, not bracket notation. The keys cannot start with "AWS."
         public let inputPathsMap: [String: String]?
         /// Input template where you specify placeholders that will be filled with the values of the keys from InputPathsMap to customize the data sent to the target. Enclose each InputPathsMaps value in brackets: value> The InputTemplate must be valid JSON.
-        ///  If InputTemplate is a JSON object (surrounded by curly braces), the following restrictions apply:   The placeholder cannot be used as an object key.   The following example shows the syntax for using InputPathsMap and InputTemplate.  "InputTransformer":   {   "InputPathsMap": {"instance": "$.detail.instance","status": "$.detail.status"},   "InputTemplate": " is in state "   }  To have the InputTemplate include quote marks within a JSON string, escape each quote marks with a slash, as in the following example:  "InputTransformer":   {   "InputPathsMap": {"instance": "$.detail.instance","status": "$.detail.status"},   "InputTemplate": " is in state \"\""   }  The InputTemplate can also be valid JSON with varibles in quotes or out, as in the following example:  "InputTransformer":   {   "InputPathsMap": {"instance": "$.detail.instance","status": "$.detail.status"},   "InputTemplate": '{"myInstance": ,"myStatus": " is in state \"\""}'   } 
+        ///  If InputTemplate is a JSON object (surrounded by curly braces), the following restrictions apply:   The placeholder cannot be used as an object key.   The following example shows the syntax for using InputPathsMap and InputTemplate.  "InputTransformer":   {   "InputPathsMap": {"instance": "$.detail.instance","status": "$.detail.status"},   "InputTemplate": " is in state "   }  To have the InputTemplate include quote marks within a JSON string, escape each quote marks with a slash, as in the following example:  "InputTransformer":   {   "InputPathsMap": {"instance": "$.detail.instance","status": "$.detail.status"},   "InputTemplate": " is in state \"\""   }  The InputTemplate can also be valid JSON with varibles in quotes or out, as in the following example:  "InputTransformer":   {   "InputPathsMap": {"instance": "$.detail.instance","status": "$.detail.status"},   "InputTemplate": '{"myInstance": ,"myStatus": " is in state \"\""}'   }
         public let inputTemplate: String
 
         public init(inputPathsMap: [String: String]? = nil, inputTemplate: String) {
@@ -2147,7 +2069,6 @@ extension EventBridge {
     }
 
     public struct KinesisParameters: AWSEncodableShape & AWSDecodableShape {
-
         /// The JSON path to be extracted from the event and used as the partition key. For more information, see Amazon Kinesis Streams Key Concepts in the Amazon Kinesis Streams Developer Guide.
         public let partitionKeyPath: String
 
@@ -2165,7 +2086,6 @@ extension EventBridge {
     }
 
     public struct ListApiDestinationsRequest: AWSEncodableShape {
-
         /// The ARN of the connection specified for the API destination.
         public let connectionArn: String?
         /// The maximum number of API destinations to include in the response.
@@ -2204,7 +2124,6 @@ extension EventBridge {
     }
 
     public struct ListApiDestinationsResponse: AWSDecodableShape {
-
         /// An array of ApiDestination objects that include information about an API destination.
         public let apiDestinations: [ApiDestination]?
         /// A token you can use in a subsequent request to retrieve the next set of results.
@@ -2222,7 +2141,6 @@ extension EventBridge {
     }
 
     public struct ListArchivesRequest: AWSEncodableShape {
-
         /// The ARN of the event source associated with the archive.
         public let eventSourceArn: String?
         /// The maximum number of results to return.
@@ -2264,7 +2182,6 @@ extension EventBridge {
     }
 
     public struct ListArchivesResponse: AWSDecodableShape {
-
         /// An array of Archive objects that include details about an archive.
         public let archives: [Archive]?
         /// The token returned by a previous call to retrieve the next set of results.
@@ -2282,7 +2199,6 @@ extension EventBridge {
     }
 
     public struct ListConnectionsRequest: AWSEncodableShape {
-
         /// The state of the connection.
         public let connectionState: ConnectionState?
         /// The maximum number of connections to return.
@@ -2318,7 +2234,6 @@ extension EventBridge {
     }
 
     public struct ListConnectionsResponse: AWSDecodableShape {
-
         /// An array of connections objects that include details about the connections.
         public let connections: [Connection]?
         /// A token you can use in a subsequent request to retrieve the next set of results.
@@ -2336,7 +2251,6 @@ extension EventBridge {
     }
 
     public struct ListEventBusesRequest: AWSEncodableShape {
-
         /// Specifying this limits the number of results returned by this operation. The operation also returns a NextToken which you can use in a subsequent operation to retrieve the next set of results.
         public let limit: Int?
         /// Specifying this limits the results to only those event buses with names that start with the specified prefix.
@@ -2368,7 +2282,6 @@ extension EventBridge {
     }
 
     public struct ListEventBusesResponse: AWSDecodableShape {
-
         /// This list of event buses.
         public let eventBuses: [EventBus]?
         /// A token you can use in a subsequent operation to retrieve the next set of results.
@@ -2386,7 +2299,6 @@ extension EventBridge {
     }
 
     public struct ListEventSourcesRequest: AWSEncodableShape {
-
         /// Specifying this limits the number of results returned by this operation. The operation also returns a NextToken which you can use in a subsequent operation to retrieve the next set of results.
         public let limit: Int?
         /// Specifying this limits the results to only those partner event sources with names that start with the specified prefix.
@@ -2418,7 +2330,6 @@ extension EventBridge {
     }
 
     public struct ListEventSourcesResponse: AWSDecodableShape {
-
         /// The list of event sources.
         public let eventSources: [EventSource]?
         /// A token you can use in a subsequent operation to retrieve the next set of results.
@@ -2436,7 +2347,6 @@ extension EventBridge {
     }
 
     public struct ListPartnerEventSourceAccountsRequest: AWSEncodableShape {
-
         /// The name of the partner event source to display account information about.
         public let eventSourceName: String
         /// Specifying this limits the number of results returned by this operation. The operation also returns a NextToken which you can use in a subsequent operation to retrieve the next set of results.
@@ -2468,7 +2378,6 @@ extension EventBridge {
     }
 
     public struct ListPartnerEventSourceAccountsResponse: AWSDecodableShape {
-
         /// A token you can use in a subsequent operation to retrieve the next set of results.
         public let nextToken: String?
         /// The list of partner event sources returned by the operation.
@@ -2486,7 +2395,6 @@ extension EventBridge {
     }
 
     public struct ListPartnerEventSourcesRequest: AWSEncodableShape {
-
         /// pecifying this limits the number of results returned by this operation. The operation also returns a NextToken which you can use in a subsequent operation to retrieve the next set of results.
         public let limit: Int?
         /// If you specify this, the results are limited to only those partner event sources that start with the string you specify.
@@ -2518,7 +2426,6 @@ extension EventBridge {
     }
 
     public struct ListPartnerEventSourcesResponse: AWSDecodableShape {
-
         /// A token you can use in a subsequent operation to retrieve the next set of results.
         public let nextToken: String?
         /// The list of partner event sources returned by the operation.
@@ -2536,7 +2443,6 @@ extension EventBridge {
     }
 
     public struct ListReplaysRequest: AWSEncodableShape {
-
         /// The ARN of the event source associated with the replay.
         public let eventSourceArn: String?
         /// The maximum number of replays to retrieve.
@@ -2578,7 +2484,6 @@ extension EventBridge {
     }
 
     public struct ListReplaysResponse: AWSDecodableShape {
-
         /// The token returned by a previous call to retrieve the next set of results.
         public let nextToken: String?
         /// An array of Replay objects that contain information about the replay.
@@ -2596,7 +2501,6 @@ extension EventBridge {
     }
 
     public struct ListRuleNamesByTargetRequest: AWSEncodableShape {
-
         /// The name or ARN of the event bus to list rules for. If you omit this, the default event bus is used.
         public let eventBusName: String?
         /// The maximum number of results to return.
@@ -2634,7 +2538,6 @@ extension EventBridge {
     }
 
     public struct ListRuleNamesByTargetResponse: AWSDecodableShape {
-
         /// Indicates whether there are additional results to retrieve. If there are no more results, the value is null.
         public let nextToken: String?
         /// The names of the rules that can invoke the given target.
@@ -2652,7 +2555,6 @@ extension EventBridge {
     }
 
     public struct ListRulesRequest: AWSEncodableShape {
-
         /// The name or ARN of the event bus to list the rules for. If you omit this, the default event bus is used.
         public let eventBusName: String?
         /// The maximum number of results to return.
@@ -2691,7 +2593,6 @@ extension EventBridge {
     }
 
     public struct ListRulesResponse: AWSDecodableShape {
-
         /// Indicates whether there are additional results to retrieve. If there are no more results, the value is null.
         public let nextToken: String?
         /// The rules that match the specified criteria.
@@ -2709,7 +2610,6 @@ extension EventBridge {
     }
 
     public struct ListTagsForResourceRequest: AWSEncodableShape {
-
         /// The ARN of the EventBridge resource for which you want to view tags.
         public let resourceARN: String
 
@@ -2728,7 +2628,6 @@ extension EventBridge {
     }
 
     public struct ListTagsForResourceResponse: AWSDecodableShape {
-
         /// The list of tag keys and values associated with the resource you specified
         public let tags: [Tag]?
 
@@ -2742,7 +2641,6 @@ extension EventBridge {
     }
 
     public struct ListTargetsByRuleRequest: AWSEncodableShape {
-
         /// The name or ARN of the event bus associated with the rule. If you omit this, the default event bus is used.
         public let eventBusName: String?
         /// The maximum number of results to return.
@@ -2781,7 +2679,6 @@ extension EventBridge {
     }
 
     public struct ListTargetsByRuleResponse: AWSDecodableShape {
-
         /// Indicates whether there are additional results to retrieve. If there are no more results, the value is null.
         public let nextToken: String?
         /// The targets assigned to the rule.
@@ -2799,7 +2696,6 @@ extension EventBridge {
     }
 
     public struct NetworkConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// Use this structure to specify the VPC subnets and security groups for the task, and whether a public IP address is to be used. This structure is relevant only for ECS tasks that use the awsvpc network mode.
         public let awsvpcConfiguration: AwsVpcConfiguration?
 
@@ -2808,12 +2704,11 @@ extension EventBridge {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case awsvpcConfiguration = "awsvpcConfiguration"
+            case awsvpcConfiguration
         }
     }
 
     public struct PartnerEventSource: AWSDecodableShape {
-
         /// The ARN of the partner event source.
         public let arn: String?
         /// The name of the partner event source.
@@ -2831,7 +2726,6 @@ extension EventBridge {
     }
 
     public struct PartnerEventSourceAccount: AWSDecodableShape {
-
         /// The AWS account ID that the partner event source was offered to.
         public let account: String?
         /// The date and time the event source was created.
@@ -2857,10 +2751,9 @@ extension EventBridge {
     }
 
     public struct PlacementConstraint: AWSEncodableShape & AWSDecodableShape {
-
-        /// A cluster query language expression to apply to the constraint. You cannot specify an expression if the constraint type is distinctInstance. To learn more, see Cluster Query Language in the Amazon Elastic Container Service Developer Guide. 
+        /// A cluster query language expression to apply to the constraint. You cannot specify an expression if the constraint type is distinctInstance. To learn more, see Cluster Query Language in the Amazon Elastic Container Service Developer Guide.
         public let expression: String?
-        /// The type of constraint. Use distinctInstance to ensure that each task in a particular group is running on a different container instance. Use memberOf to restrict the selection to a group of valid candidates. 
+        /// The type of constraint. Use distinctInstance to ensure that each task in a particular group is running on a different container instance. Use memberOf to restrict the selection to a group of valid candidates.
         public let type: PlacementConstraintType?
 
         public init(expression: String? = nil, type: PlacementConstraintType? = nil) {
@@ -2873,16 +2766,15 @@ extension EventBridge {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case expression = "expression"
-            case type = "type"
+            case expression
+            case type
         }
     }
 
     public struct PlacementStrategy: AWSEncodableShape & AWSDecodableShape {
-
-        /// The field to apply the placement strategy against. For the spread placement strategy, valid values are instanceId (or host, which has the same effect), or any platform or custom attribute that is applied to a container instance, such as attribute:ecs.availability-zone. For the binpack placement strategy, valid values are cpu and memory. For the random placement strategy, this field is not used. 
+        /// The field to apply the placement strategy against. For the spread placement strategy, valid values are instanceId (or host, which has the same effect), or any platform or custom attribute that is applied to a container instance, such as attribute:ecs.availability-zone. For the binpack placement strategy, valid values are cpu and memory. For the random placement strategy, this field is not used.
         public let field: String?
-        /// The type of placement strategy. The random placement strategy randomly places tasks on available candidates. The spread placement strategy spreads placement across available candidates evenly based on the field parameter. The binpack strategy places tasks on available candidates that have the least available amount of the resource that is specified with the field parameter. For example, if you binpack on memory, a task is placed on the instance with the least amount of remaining memory (but still enough to run the task). 
+        /// The type of placement strategy. The random placement strategy randomly places tasks on available candidates. The spread placement strategy spreads placement across available candidates evenly based on the field parameter. The binpack strategy places tasks on available candidates that have the least available amount of the resource that is specified with the field parameter. For example, if you binpack on memory, a task is placed on the instance with the least amount of remaining memory (but still enough to run the task).
         public let type: PlacementStrategyType?
 
         public init(field: String? = nil, type: PlacementStrategyType? = nil) {
@@ -2895,13 +2787,12 @@ extension EventBridge {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case field = "field"
-            case type = "type"
+            case field
+            case type
         }
     }
 
     public struct PutEventsRequest: AWSEncodableShape {
-
         /// The entry that defines an event in your system. You can specify several parameters for the entry such as the source and type of the event, resources associated with the event, and so on.
         public let entries: [PutEventsRequestEntry]
 
@@ -2923,7 +2814,6 @@ extension EventBridge {
     }
 
     public struct PutEventsRequestEntry: AWSEncodableShape {
-
         /// A valid JSON string. There is no other schema imposed. The JSON string may contain fields and nested subobjects.
         public let detail: String?
         /// Free-form string used to decide what fields to expect in the event detail.
@@ -2969,7 +2859,6 @@ extension EventBridge {
     }
 
     public struct PutEventsResponse: AWSDecodableShape {
-
         /// The successfully and unsuccessfully ingested events results. If the ingestion was successful, the entry has the event ID in it. Otherwise, you can use the error code and error message to identify the problem with the entry.
         public let entries: [PutEventsResultEntry]?
         /// The number of failed entries.
@@ -2987,7 +2876,6 @@ extension EventBridge {
     }
 
     public struct PutEventsResultEntry: AWSDecodableShape {
-
         /// The error code that indicates why the event submission failed.
         public let errorCode: String?
         /// The error message that explains why the event submission failed.
@@ -3009,7 +2897,6 @@ extension EventBridge {
     }
 
     public struct PutPartnerEventsRequest: AWSEncodableShape {
-
         /// The list of events to write to the event bus.
         public let entries: [PutPartnerEventsRequestEntry]
 
@@ -3031,7 +2918,6 @@ extension EventBridge {
     }
 
     public struct PutPartnerEventsRequestEntry: AWSEncodableShape {
-
         /// A valid JSON string. There is no other schema imposed. The JSON string may contain fields and nested subobjects.
         public let detail: String?
         /// A free-form string used to decide what fields to expect in the event detail.
@@ -3067,7 +2953,6 @@ extension EventBridge {
     }
 
     public struct PutPartnerEventsResponse: AWSDecodableShape {
-
         /// The list of events from this operation that were successfully written to the partner event bus.
         public let entries: [PutPartnerEventsResultEntry]?
         /// The number of events from this operation that could not be written to the partner event bus.
@@ -3085,7 +2970,6 @@ extension EventBridge {
     }
 
     public struct PutPartnerEventsResultEntry: AWSDecodableShape {
-
         /// The error code that indicates why the event submission failed.
         public let errorCode: String?
         /// The error message that explains why the event submission failed.
@@ -3107,7 +2991,6 @@ extension EventBridge {
     }
 
     public struct PutPermissionRequest: AWSEncodableShape {
-
         /// The action that you are enabling the other account to perform. Currently, this must be events:PutEvents.
         public let action: String?
         /// This parameter enables you to limit the permission to accounts that fulfill a certain condition, such as being a member of a certain AWS organization. For more information about AWS Organizations, see What Is AWS Organizations in the AWS Organizations User Guide. If you specify Condition with an AWS organization ID, and specify "*" as the value for Principal, you grant permission to all the accounts in the named organization.
@@ -3158,7 +3041,6 @@ extension EventBridge {
     }
 
     public struct PutRuleRequest: AWSEncodableShape {
-
         /// A description of the rule.
         public let description: String?
         /// The name or ARN of the event bus to associate with this rule. If you omit this, the default event bus is used.
@@ -3216,7 +3098,6 @@ extension EventBridge {
     }
 
     public struct PutRuleResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the rule.
         public let ruleArn: String?
 
@@ -3230,7 +3111,6 @@ extension EventBridge {
     }
 
     public struct PutTargetsRequest: AWSEncodableShape {
-
         /// The name or ARN of the event bus associated with the rule. If you omit this, the default event bus is used.
         public let eventBusName: String?
         /// The name of the rule.
@@ -3266,7 +3146,6 @@ extension EventBridge {
     }
 
     public struct PutTargetsResponse: AWSDecodableShape {
-
         /// The failed target entries.
         public let failedEntries: [PutTargetsResultEntry]?
         /// The number of failed entries.
@@ -3284,7 +3163,6 @@ extension EventBridge {
     }
 
     public struct PutTargetsResultEntry: AWSDecodableShape {
-
         /// The error code that indicates why the target addition failed. If the value is ConcurrentModificationException, too many requests were made at the same time.
         public let errorCode: String?
         /// The error message that explains why the target addition failed.
@@ -3306,7 +3184,6 @@ extension EventBridge {
     }
 
     public struct RedshiftDataParameters: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the database. Required when authenticating using temporary credentials.
         public let database: String
         /// The database user name. Required when authenticating using temporary credentials.
@@ -3337,7 +3214,7 @@ extension EventBridge {
             try self.validate(self.secretManagerArn, name: "secretManagerArn", parent: name, max: 1600)
             try self.validate(self.secretManagerArn, name: "secretManagerArn", parent: name, min: 1)
             try self.validate(self.secretManagerArn, name: "secretManagerArn", parent: name, pattern: "^(^arn:aws([a-z]|\\-)*:secretsmanager:[a-z0-9-.]+:.*)|(\\$(\\.[\\w_-]+(\\[(\\d+|\\*)\\])*)*)$")
-            try self.validate(self.sql, name: "sql", parent: name, max: 100000)
+            try self.validate(self.sql, name: "sql", parent: name, max: 100_000)
             try self.validate(self.sql, name: "sql", parent: name, min: 1)
             try self.validate(self.statementName, name: "statementName", parent: name, max: 500)
             try self.validate(self.statementName, name: "statementName", parent: name, min: 1)
@@ -3354,7 +3231,6 @@ extension EventBridge {
     }
 
     public struct RemovePermissionRequest: AWSEncodableShape {
-
         /// The name of the event bus to revoke permissions for. If you omit this, the default event bus is used.
         public let eventBusName: String?
         /// Specifies whether to remove all permissions.
@@ -3385,7 +3261,6 @@ extension EventBridge {
     }
 
     public struct RemoveTargetsRequest: AWSEncodableShape {
-
         /// The name or ARN of the event bus associated with the rule. If you omit this, the default event bus is used.
         public let eventBusName: String?
         /// If this is a managed rule, created by an AWS service on your behalf, you must specify Force as True to remove targets. This parameter is ignored for rules that are not managed rules. You can check whether a rule is a managed rule by using DescribeRule or ListRules and checking the ManagedBy field of the response.
@@ -3427,7 +3302,6 @@ extension EventBridge {
     }
 
     public struct RemoveTargetsResponse: AWSDecodableShape {
-
         /// The failed target entries.
         public let failedEntries: [RemoveTargetsResultEntry]?
         /// The number of failed entries.
@@ -3445,7 +3319,6 @@ extension EventBridge {
     }
 
     public struct RemoveTargetsResultEntry: AWSDecodableShape {
-
         /// The error code that indicates why the target removal failed. If the value is ConcurrentModificationException, too many requests were made at the same time.
         public let errorCode: String?
         /// The error message that explains why the target removal failed.
@@ -3467,7 +3340,6 @@ extension EventBridge {
     }
 
     public struct Replay: AWSDecodableShape {
-
         /// A time stamp for the time to start replaying events. Any event with a creation time prior to the EventEndTime specified is replayed.
         public let eventEndTime: Date?
         /// A time stamp for the time that the last event was replayed.
@@ -3513,7 +3385,6 @@ extension EventBridge {
     }
 
     public struct ReplayDestination: AWSEncodableShape & AWSDecodableShape {
-
         /// The ARN of the event bus to replay event to. You can replay events only to the event bus specified to create the archive.
         public let arn: String
         /// A list of ARNs for rules to replay events to.
@@ -3540,7 +3411,6 @@ extension EventBridge {
     }
 
     public struct RetryPolicy: AWSEncodableShape & AWSDecodableShape {
-
         /// The maximum amount of time, in seconds, to continue to make retry attempts.
         public let maximumEventAgeInSeconds: Int?
         /// The maximum number of retry attempts to make before the request fails. Retry attempts continue until either the maximum number of attempts is made or until the duration of the MaximumEventAgeInSeconds is met.
@@ -3565,7 +3435,6 @@ extension EventBridge {
     }
 
     public struct Rule: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the rule.
         public let arn: String?
         /// The description of the rule.
@@ -3611,7 +3480,6 @@ extension EventBridge {
     }
 
     public struct RunCommandParameters: AWSEncodableShape & AWSDecodableShape {
-
         /// Currently, we support including only one RunCommandTarget block, which specifies either an array of InstanceIds or a tag.
         public let runCommandTargets: [RunCommandTarget]
 
@@ -3633,7 +3501,6 @@ extension EventBridge {
     }
 
     public struct RunCommandTarget: AWSEncodableShape & AWSDecodableShape {
-
         /// Can be either tag: tag-key or InstanceIds.
         public let key: String
         /// If Key is tag: tag-key, Values is a list of tag values. If Key is InstanceIds, Values is a list of Amazon EC2 instance IDs.
@@ -3663,7 +3530,6 @@ extension EventBridge {
     }
 
     public struct SageMakerPipelineParameter: AWSEncodableShape & AWSDecodableShape {
-
         /// Name of parameter to start execution of a SageMaker Model Building Pipeline.
         public let name: String
         /// Value of parameter to start execution of a SageMaker Model Building Pipeline.
@@ -3688,7 +3554,6 @@ extension EventBridge {
     }
 
     public struct SageMakerPipelineParameters: AWSEncodableShape & AWSDecodableShape {
-
         /// List of Parameter names and values for SageMaker Model Building Pipeline execution.
         public let pipelineParameterList: [SageMakerPipelineParameter]?
 
@@ -3709,7 +3574,6 @@ extension EventBridge {
     }
 
     public struct SqsParameters: AWSEncodableShape & AWSDecodableShape {
-
         /// The FIFO message group ID to use as the target.
         public let messageGroupId: String?
 
@@ -3723,7 +3587,6 @@ extension EventBridge {
     }
 
     public struct StartReplayRequest: AWSEncodableShape {
-
         /// A description for the replay to start.
         public let description: String?
         /// A ReplayDestination object that includes details about the destination for the replay.
@@ -3768,7 +3631,6 @@ extension EventBridge {
     }
 
     public struct StartReplayResponse: AWSDecodableShape {
-
         /// The ARN of the replay.
         public let replayArn: String?
         /// The time at which the replay started.
@@ -3794,7 +3656,6 @@ extension EventBridge {
     }
 
     public struct Tag: AWSEncodableShape & AWSDecodableShape {
-
         /// A string you can use to assign a value. The combination of tag keys and values can help you organize and categorize your resources.
         public let key: String
         /// The value for the specified tag key.
@@ -3818,7 +3679,6 @@ extension EventBridge {
     }
 
     public struct TagResourceRequest: AWSEncodableShape {
-
         /// The ARN of the EventBridge resource that you're adding tags to.
         public let resourceARN: String
         /// The list of key-value pairs to associate with the resource.
@@ -3844,15 +3704,10 @@ extension EventBridge {
     }
 
     public struct TagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct Target: AWSEncodableShape & AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the target.
         public let arn: String
         /// If the event target is an AWS Batch job, this contains the job definition, job name, and other parameters. For more information, see Jobs in the AWS Batch User Guide.
@@ -3947,8 +3802,7 @@ extension EventBridge {
     }
 
     public struct TestEventPatternRequest: AWSEncodableShape {
-
-        /// The event, in JSON format, to test against the event pattern. The JSON must follow the format specified in AWS Events, and the following fields are mandatory:    id     account     source     time     region     resources     detail-type   
+        /// The event, in JSON format, to test against the event pattern. The JSON must follow the format specified in AWS Events, and the following fields are mandatory:    id     account     source     time     region     resources     detail-type
         public let event: String
         /// The event pattern. For more information, see Events and Event Patterns in the Amazon EventBridge User Guide.
         public let eventPattern: String
@@ -3965,7 +3819,6 @@ extension EventBridge {
     }
 
     public struct TestEventPatternResponse: AWSDecodableShape {
-
         /// Indicates whether the event matches the event pattern.
         public let result: Bool?
 
@@ -3979,7 +3832,6 @@ extension EventBridge {
     }
 
     public struct UntagResourceRequest: AWSEncodableShape {
-
         /// The ARN of the EventBridge resource from which you are removing tags.
         public let resourceARN: String
         /// The list of tag keys to remove from the resource.
@@ -4006,15 +3858,10 @@ extension EventBridge {
     }
 
     public struct UntagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateApiDestinationRequest: AWSEncodableShape {
-
         /// The ARN of the connection to use for the API destination.
         public let connectionArn: String?
         /// The name of the API destination to update.
@@ -4063,7 +3910,6 @@ extension EventBridge {
     }
 
     public struct UpdateApiDestinationResponse: AWSDecodableShape {
-
         /// The ARN of the API destination that was updated.
         public let apiDestinationArn: String?
         /// The state of the API destination that was updated.
@@ -4089,7 +3935,6 @@ extension EventBridge {
     }
 
     public struct UpdateArchiveRequest: AWSEncodableShape {
-
         /// The name of the archive to update.
         public let archiveName: String
         /// The description for the archive.
@@ -4124,7 +3969,6 @@ extension EventBridge {
     }
 
     public struct UpdateArchiveResponse: AWSDecodableShape {
-
         /// The ARN of the archive.
         public let archiveArn: String?
         /// The time at which the archive was updated.
@@ -4150,7 +3994,6 @@ extension EventBridge {
     }
 
     public struct UpdateConnectionApiKeyAuthRequestParameters: AWSEncodableShape {
-
         /// The name of the API key to use for authorization.
         public let apiKeyName: String?
         /// The value associated with teh API key to use for authorization.
@@ -4177,7 +4020,6 @@ extension EventBridge {
     }
 
     public struct UpdateConnectionAuthRequestParameters: AWSEncodableShape {
-
         /// A UpdateConnectionApiKeyAuthRequestParameters object that contains the authorization parameters for API key authorization.
         public let apiKeyAuthParameters: UpdateConnectionApiKeyAuthRequestParameters?
         /// A UpdateConnectionBasicAuthRequestParameters object that contains the authorization parameters for Basic authorization.
@@ -4210,7 +4052,6 @@ extension EventBridge {
     }
 
     public struct UpdateConnectionBasicAuthRequestParameters: AWSEncodableShape {
-
         /// The password associated with the user name to use for Basic authorization.
         public let password: String?
         /// The user name to use for Basic authorization.
@@ -4237,7 +4078,6 @@ extension EventBridge {
     }
 
     public struct UpdateConnectionOAuthClientRequestParameters: AWSEncodableShape {
-
         /// The client ID to use for OAuth authorization.
         public let clientID: String?
         /// The client secret assciated with the client ID to use for OAuth authorization.
@@ -4264,7 +4104,6 @@ extension EventBridge {
     }
 
     public struct UpdateConnectionOAuthRequestParameters: AWSEncodableShape {
-
         /// The URL to the authorization endpoint when OAuth is specified as the authorization type.
         public let authorizationEndpoint: String?
         /// A UpdateConnectionOAuthClientRequestParameters object that contains the client parameters to use for the connection when OAuth is specified as the authorization type.
@@ -4298,7 +4137,6 @@ extension EventBridge {
     }
 
     public struct UpdateConnectionRequest: AWSEncodableShape {
-
         /// The type of authorization to use for the connection.
         public let authorizationType: ConnectionAuthorizationType?
         /// The authorization parameters to use for the connection.
@@ -4333,7 +4171,6 @@ extension EventBridge {
     }
 
     public struct UpdateConnectionResponse: AWSDecodableShape {
-
         /// The ARN of the connection that was updated.
         public let connectionArn: String?
         /// The state of the connection that was updated.

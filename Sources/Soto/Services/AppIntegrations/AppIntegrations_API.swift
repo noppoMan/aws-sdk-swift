@@ -78,7 +78,7 @@ public struct AppIntegrations: AWSService {
         return self.client.execute(operation: "GetEventIntegration", path: "/eventIntegrations/{Name}", httpMethod: .GET, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// The Amazon AppIntegrations APIs are in preview release and are subject to change.  Returns a paginated list of event integration associations in the account. 
+    /// The Amazon AppIntegrations APIs are in preview release and are subject to change.  Returns a paginated list of event integration associations in the account.
     public func listEventIntegrationAssociations(_ input: ListEventIntegrationAssociationsRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<ListEventIntegrationAssociationsResponse> {
         return self.client.execute(operation: "ListEventIntegrationAssociations", path: "/eventIntegrations/{EventIntegrationName}/associations", httpMethod: .GET, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }

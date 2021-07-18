@@ -42,7 +42,6 @@ extension Mobile {
     // MARK: Shapes
 
     public struct BundleDetails: AWSDecodableShape {
-
         public let availablePlatforms: [Platform]?
         public let bundleId: String?
         public let description: String?
@@ -60,12 +59,12 @@ extension Mobile {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case availablePlatforms = "availablePlatforms"
-            case bundleId = "bundleId"
-            case description = "description"
-            case iconUrl = "iconUrl"
-            case title = "title"
-            case version = "version"
+            case availablePlatforms
+            case bundleId
+            case description
+            case iconUrl
+            case title
+            case version
         }
     }
 
@@ -74,18 +73,18 @@ extension Mobile {
         public static let _payloadPath: String = "contents"
         public static let _payloadOptions: AWSShapePayloadOptions = [.raw]
         public static var _encoding = [
-            AWSMemberEncoding(label: "name", location: .querystring(locationName: "name")), 
-            AWSMemberEncoding(label: "region", location: .querystring(locationName: "region")), 
+            AWSMemberEncoding(label: "name", location: .querystring(locationName: "name")),
+            AWSMemberEncoding(label: "region", location: .querystring(locationName: "region")),
             AWSMemberEncoding(label: "snapshotId", location: .querystring(locationName: "snapshotId"))
         ]
 
-        ///  ZIP or YAML file which contains configuration settings to be used when creating the project. This may be the contents of the file downloaded from the URL provided in an export project operation. 
+        ///  ZIP or YAML file which contains configuration settings to be used when creating the project. This may be the contents of the file downloaded from the URL provided in an export project operation.
         public let contents: AWSPayload?
-        ///  Name of the project. 
+        ///  Name of the project.
         public let name: String?
-        ///  Default region where project resources should be created. 
+        ///  Default region where project resources should be created.
         public let region: String?
-        ///  Unique identifier for an exported snapshot of project configuration. This snapshot identifier is included in the share URL when a project is exported. 
+        ///  Unique identifier for an exported snapshot of project configuration. This snapshot identifier is included in the share URL when a project is exported.
         public let snapshotId: String?
 
         public init(contents: AWSPayload? = nil, name: String? = nil, region: String? = nil, snapshotId: String? = nil) {
@@ -99,8 +98,7 @@ extension Mobile {
     }
 
     public struct CreateProjectResult: AWSDecodableShape {
-
-        ///  Detailed information about the created AWS Mobile Hub project. 
+        ///  Detailed information about the created AWS Mobile Hub project.
         public let details: ProjectDetails?
 
         public init(details: ProjectDetails? = nil) {
@@ -108,7 +106,7 @@ extension Mobile {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case details = "details"
+            case details
         }
     }
 
@@ -117,7 +115,7 @@ extension Mobile {
             AWSMemberEncoding(label: "projectId", location: .uri(locationName: "projectId"))
         ]
 
-        ///  Unique project identifier. 
+        ///  Unique project identifier.
         public let projectId: String
 
         public init(projectId: String) {
@@ -128,10 +126,9 @@ extension Mobile {
     }
 
     public struct DeleteProjectResult: AWSDecodableShape {
-
-        ///  Resources which were deleted. 
+        ///  Resources which were deleted.
         public let deletedResources: [Resource]?
-        ///  Resources which were not deleted, due to a risk of losing potentially important data or files. 
+        ///  Resources which were not deleted, due to a risk of losing potentially important data or files.
         public let orphanedResources: [Resource]?
 
         public init(deletedResources: [Resource]? = nil, orphanedResources: [Resource]? = nil) {
@@ -140,8 +137,8 @@ extension Mobile {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case deletedResources = "deletedResources"
-            case orphanedResources = "orphanedResources"
+            case deletedResources
+            case orphanedResources
         }
     }
 
@@ -150,7 +147,7 @@ extension Mobile {
             AWSMemberEncoding(label: "bundleId", location: .uri(locationName: "bundleId"))
         ]
 
-        ///  Unique bundle identifier. 
+        ///  Unique bundle identifier.
         public let bundleId: String
 
         public init(bundleId: String) {
@@ -161,8 +158,7 @@ extension Mobile {
     }
 
     public struct DescribeBundleResult: AWSDecodableShape {
-
-        ///  The details of the bundle. 
+        ///  The details of the bundle.
         public let details: BundleDetails?
 
         public init(details: BundleDetails? = nil) {
@@ -170,19 +166,19 @@ extension Mobile {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case details = "details"
+            case details
         }
     }
 
     public struct DescribeProjectRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "projectId", location: .querystring(locationName: "projectId")), 
+            AWSMemberEncoding(label: "projectId", location: .querystring(locationName: "projectId")),
             AWSMemberEncoding(label: "syncFromResources", location: .querystring(locationName: "syncFromResources"))
         ]
 
-        ///  Unique project identifier. 
+        ///  Unique project identifier.
         public let projectId: String
-        ///  If set to true, causes AWS Mobile Hub to synchronize information from other services, e.g., update state of AWS CloudFormation stacks in the AWS Mobile Hub project. 
+        ///  If set to true, causes AWS Mobile Hub to synchronize information from other services, e.g., update state of AWS CloudFormation stacks in the AWS Mobile Hub project.
         public let syncFromResources: Bool?
 
         public init(projectId: String, syncFromResources: Bool? = nil) {
@@ -194,7 +190,6 @@ extension Mobile {
     }
 
     public struct DescribeProjectResult: AWSDecodableShape {
-
         public let details: ProjectDetails?
 
         public init(details: ProjectDetails? = nil) {
@@ -202,22 +197,22 @@ extension Mobile {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case details = "details"
+            case details
         }
     }
 
     public struct ExportBundleRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "bundleId", location: .uri(locationName: "bundleId")), 
-            AWSMemberEncoding(label: "platform", location: .querystring(locationName: "platform")), 
+            AWSMemberEncoding(label: "bundleId", location: .uri(locationName: "bundleId")),
+            AWSMemberEncoding(label: "platform", location: .querystring(locationName: "platform")),
             AWSMemberEncoding(label: "projectId", location: .querystring(locationName: "projectId"))
         ]
 
-        ///  Unique bundle identifier. 
+        ///  Unique bundle identifier.
         public let bundleId: String
-        ///  Developer desktop or target application platform. 
+        ///  Developer desktop or target application platform.
         public let platform: Platform?
-        ///  Unique project identifier. 
+        ///  Unique project identifier.
         public let projectId: String?
 
         public init(bundleId: String, platform: Platform? = nil, projectId: String? = nil) {
@@ -230,8 +225,7 @@ extension Mobile {
     }
 
     public struct ExportBundleResult: AWSDecodableShape {
-
-        ///  URL which contains the custom-generated SDK and tool packages used to integrate the client mobile app or web app with the AWS resources created by the AWS Mobile Hub project. 
+        ///  URL which contains the custom-generated SDK and tool packages used to integrate the client mobile app or web app with the AWS resources created by the AWS Mobile Hub project.
         public let downloadUrl: String?
 
         public init(downloadUrl: String? = nil) {
@@ -239,7 +233,7 @@ extension Mobile {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case downloadUrl = "downloadUrl"
+            case downloadUrl
         }
     }
 
@@ -248,7 +242,7 @@ extension Mobile {
             AWSMemberEncoding(label: "projectId", location: .uri(locationName: "projectId"))
         ]
 
-        ///  Unique project identifier. 
+        ///  Unique project identifier.
         public let projectId: String
 
         public init(projectId: String) {
@@ -259,12 +253,11 @@ extension Mobile {
     }
 
     public struct ExportProjectResult: AWSDecodableShape {
-
-        ///  URL which can be used to download the exported project configuation file(s). 
+        ///  URL which can be used to download the exported project configuation file(s).
         public let downloadUrl: String?
-        ///  URL which can be shared to allow other AWS users to create their own project in AWS Mobile Hub with the same configuration as the specified project. This URL pertains to a snapshot in time of the project configuration that is created when this API is called. If you want to share additional changes to your project configuration, then you will need to create and share a new snapshot by calling this method again. 
+        ///  URL which can be shared to allow other AWS users to create their own project in AWS Mobile Hub with the same configuration as the specified project. This URL pertains to a snapshot in time of the project configuration that is created when this API is called. If you want to share additional changes to your project configuration, then you will need to create and share a new snapshot by calling this method again.
         public let shareUrl: String?
-        ///  Unique identifier for the exported snapshot of the project configuration. This snapshot identifier is included in the share URL. 
+        ///  Unique identifier for the exported snapshot of the project configuration. This snapshot identifier is included in the share URL.
         public let snapshotId: String?
 
         public init(downloadUrl: String? = nil, shareUrl: String? = nil, snapshotId: String? = nil) {
@@ -274,21 +267,21 @@ extension Mobile {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case downloadUrl = "downloadUrl"
-            case shareUrl = "shareUrl"
-            case snapshotId = "snapshotId"
+            case downloadUrl
+            case shareUrl
+            case snapshotId
         }
     }
 
     public struct ListBundlesRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
-        ///  Maximum number of records to list in a single response. 
+        ///  Maximum number of records to list in a single response.
         public let maxResults: Int?
-        ///  Pagination token. Set to null to start listing bundles from start. If non-null pagination token is returned in a result, then pass its value in here in another request to list more bundles. 
+        ///  Pagination token. Set to null to start listing bundles from start. If non-null pagination token is returned in a result, then pass its value in here in another request to list more bundles.
         public let nextToken: String?
 
         public init(maxResults: Int? = nil, nextToken: String? = nil) {
@@ -300,10 +293,9 @@ extension Mobile {
     }
 
     public struct ListBundlesResult: AWSDecodableShape {
-
-        ///  A list of bundles. 
+        ///  A list of bundles.
         public let bundleList: [BundleDetails]?
-        ///  Pagination token. If non-null pagination token is returned in a result, then pass its value in another request to fetch more entries. 
+        ///  Pagination token. If non-null pagination token is returned in a result, then pass its value in another request to fetch more entries.
         public let nextToken: String?
 
         public init(bundleList: [BundleDetails]? = nil, nextToken: String? = nil) {
@@ -312,20 +304,20 @@ extension Mobile {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case bundleList = "bundleList"
-            case nextToken = "nextToken"
+            case bundleList
+            case nextToken
         }
     }
 
     public struct ListProjectsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
-        ///  Maximum number of records to list in a single response. 
+        ///  Maximum number of records to list in a single response.
         public let maxResults: Int?
-        ///  Pagination token. Set to null to start listing projects from start. If non-null pagination token is returned in a result, then pass its value in here in another request to list more projects. 
+        ///  Pagination token. Set to null to start listing projects from start. If non-null pagination token is returned in a result, then pass its value in here in another request to list more projects.
         public let nextToken: String?
 
         public init(maxResults: Int? = nil, nextToken: String? = nil) {
@@ -337,7 +329,6 @@ extension Mobile {
     }
 
     public struct ListProjectsResult: AWSDecodableShape {
-
         public let nextToken: String?
         public let projects: [ProjectSummary]?
 
@@ -347,18 +338,17 @@ extension Mobile {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case projects = "projects"
+            case nextToken
+            case projects
         }
     }
 
     public struct ProjectDetails: AWSDecodableShape {
-
-        ///  Website URL for this project in the AWS Mobile Hub console. 
+        ///  Website URL for this project in the AWS Mobile Hub console.
         public let consoleUrl: String?
-        ///  Date the project was created. 
+        ///  Date the project was created.
         public let createdDate: Date?
-        ///  Date of the last modification of the project. 
+        ///  Date of the last modification of the project.
         public let lastUpdatedDate: Date?
         public let name: String?
         public let projectId: String?
@@ -378,22 +368,21 @@ extension Mobile {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case consoleUrl = "consoleUrl"
-            case createdDate = "createdDate"
-            case lastUpdatedDate = "lastUpdatedDate"
-            case name = "name"
-            case projectId = "projectId"
-            case region = "region"
-            case resources = "resources"
-            case state = "state"
+            case consoleUrl
+            case createdDate
+            case lastUpdatedDate
+            case name
+            case projectId
+            case region
+            case resources
+            case state
         }
     }
 
     public struct ProjectSummary: AWSDecodableShape {
-
-        ///  Name of the project. 
+        ///  Name of the project.
         public let name: String?
-        ///  Unique project identifier. 
+        ///  Unique project identifier.
         public let projectId: String?
 
         public init(name: String? = nil, projectId: String? = nil) {
@@ -402,13 +391,12 @@ extension Mobile {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case name = "name"
-            case projectId = "projectId"
+            case name
+            case projectId
         }
     }
 
     public struct Resource: AWSDecodableShape {
-
         public let arn: String?
         public let attributes: [String: String]?
         public let feature: String?
@@ -424,11 +412,11 @@ extension Mobile {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case attributes = "attributes"
-            case feature = "feature"
-            case name = "name"
-            case type = "type"
+            case arn
+            case attributes
+            case feature
+            case name
+            case type
         }
     }
 
@@ -440,9 +428,9 @@ extension Mobile {
             AWSMemberEncoding(label: "projectId", location: .querystring(locationName: "projectId"))
         ]
 
-        ///  ZIP or YAML file which contains project configuration to be updated. This should be the contents of the file downloaded from the URL provided in an export project operation. 
+        ///  ZIP or YAML file which contains project configuration to be updated. This should be the contents of the file downloaded from the URL provided in an export project operation.
         public let contents: AWSPayload?
-        ///  Unique project identifier. 
+        ///  Unique project identifier.
         public let projectId: String
 
         public init(contents: AWSPayload? = nil, projectId: String) {
@@ -454,8 +442,7 @@ extension Mobile {
     }
 
     public struct UpdateProjectResult: AWSDecodableShape {
-
-        ///  Detailed information about the updated AWS Mobile Hub project. 
+        ///  Detailed information about the updated AWS Mobile Hub project.
         public let details: ProjectDetails?
 
         public init(details: ProjectDetails? = nil) {
@@ -463,7 +450,7 @@ extension Mobile {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case details = "details"
+            case details
         }
     }
 }

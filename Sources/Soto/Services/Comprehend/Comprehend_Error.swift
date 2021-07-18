@@ -58,7 +58,7 @@ public struct ComprehendErrorType: AWSErrorType {
 
     /// The number of documents in the request exceeds the limit of 25. Try your request again with fewer documents.
     public static var batchSizeLimitExceededException: Self { .init(.batchSizeLimitExceededException) }
-    /// Concurrent modification of the tags associated with an Amazon Comprehend resource is not supported. 
+    /// Concurrent modification of the tags associated with an Amazon Comprehend resource is not supported.
     public static var concurrentModificationException: Self { .init(.concurrentModificationException) }
     /// An internal server error occurred. Retry your request.
     public static var internalServerException: Self { .init(.internalServerException) }
@@ -84,9 +84,9 @@ public struct ComprehendErrorType: AWSErrorType {
     public static var tooManyRequestsException: Self { .init(.tooManyRequestsException) }
     /// The request contains more tag keys than can be associated with a resource (50 tag keys per resource).
     public static var tooManyTagKeysException: Self { .init(.tooManyTagKeysException) }
-    /// The request contains more tags than can be associated with a resource (50 tags per resource). The maximum number of tags includes both existing tags and those included in your current request. 
+    /// The request contains more tags than can be associated with a resource (50 tags per resource). The maximum number of tags includes both existing tags and those included in your current request.
     public static var tooManyTagsException: Self { .init(.tooManyTagsException) }
-    /// Amazon Comprehend can't process the language of the input text. For custom entity recognition APIs, only English, Spanish, French, Italian, German, or Portuguese are accepted. For a list of supported languages, see supported-languages. 
+    /// Amazon Comprehend can't process the language of the input text. For custom entity recognition APIs, only English, Spanish, French, Italian, German, or Portuguese are accepted. For a list of supported languages, see supported-languages.
     public static var unsupportedLanguageException: Self { .init(.unsupportedLanguageException) }
 }
 

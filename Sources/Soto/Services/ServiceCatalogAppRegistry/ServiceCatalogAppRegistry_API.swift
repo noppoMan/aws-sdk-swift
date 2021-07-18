@@ -159,7 +159,7 @@ public struct ServiceCatalogAppRegistry: AWSService {
         return self.client.execute(operation: "UpdateApplication", path: "/applications/{application}", httpMethod: .PATCH, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Updates an existing attribute group with new details. 
+    /// Updates an existing attribute group with new details.
     public func updateAttributeGroup(_ input: UpdateAttributeGroupRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<UpdateAttributeGroupResponse> {
         return self.client.execute(operation: "UpdateAttributeGroup", path: "/attribute-groups/{attributeGroup}", httpMethod: .PATCH, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }

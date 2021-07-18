@@ -126,7 +126,7 @@ extension Chime {
         )
     }
 
-    ///  List all 
+    ///  List all
     ///  AppInstanceUsers
     ///  created under a single AppInstance.
     ///
@@ -234,7 +234,7 @@ extension Chime {
         )
     }
 
-    ///  Lists the attendees for the specified Amazon Chime SDK meeting. For more information about the Amazon Chime SDK, see 
+    ///  Lists the attendees for the specified Amazon Chime SDK meeting. For more information about the Amazon Chime SDK, see
     ///  Using the Amazon Chime SDK
     ///  in the Amazon Chime Developer Guide.
     ///
@@ -343,8 +343,8 @@ extension Chime {
     }
 
     ///  Lists all the users banned from a particular channel.
-    ///   
-    ///   The x-amz-chime-bearer request header is mandatory. Use the AppInstanceUserArn of the user that makes  the API call as the value in the header. 
+    ///
+    ///   The x-amz-chime-bearer request header is mandatory. Use the AppInstanceUserArn of the user that makes  the API call as the value in the header.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.
@@ -398,8 +398,8 @@ extension Chime {
     }
 
     ///  Lists all channel memberships in a channel.
-    ///   
-    ///   The x-amz-chime-bearer request header is mandatory. Use the AppInstanceUserArn of the user that makes  the API call as the value in the header. 
+    ///
+    ///   The x-amz-chime-bearer request header is mandatory. Use the AppInstanceUserArn of the user that makes  the API call as the value in the header.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.
@@ -452,8 +452,8 @@ extension Chime {
         )
     }
 
-    ///   Lists all channels that a particular AppInstanceUser is a part of. Only an AppInstanceAdmin can call the API with a user ARN that is not their own. 
-    ///    The x-amz-chime-bearer request header is mandatory. Use the AppInstanceUserArn of the user that makes  the API call as the value in the header. 
+    ///   Lists all channels that a particular AppInstanceUser is a part of. Only an AppInstanceAdmin can call the API with a user ARN that is not their own.
+    ///    The x-amz-chime-bearer request header is mandatory. Use the AppInstanceUserArn of the user that makes  the API call as the value in the header.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.
@@ -506,7 +506,7 @@ extension Chime {
         )
     }
 
-    ///  List all the messages in a channel. Returns a paginated list of ChannelMessages. By default, sorted by creation timestamp in descending order.  Redacted messages appear in the results as empty, since they are only redacted, not deleted. Deleted messages do not appear in the results. This action always returns the latest version of an edited message. Also, the x-amz-chime-bearer request header is mandatory. Use the AppInstanceUserArn of the user that makes the API call as the  value in the header. 
+    ///  List all the messages in a channel. Returns a paginated list of ChannelMessages. By default, sorted by creation timestamp in descending order.  Redacted messages appear in the results as empty, since they are only redacted, not deleted. Deleted messages do not appear in the results. This action always returns the latest version of an edited message. Also, the x-amz-chime-bearer request header is mandatory. Use the AppInstanceUserArn of the user that makes the API call as the  value in the header.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.
@@ -560,8 +560,8 @@ extension Chime {
     }
 
     ///  Lists all the moderators for a channel.
-    ///   
-    ///   The x-amz-chime-bearer request header is mandatory. Use the AppInstanceUserArn of the user that makes  the API call as the value in the header. 
+    ///
+    ///   The x-amz-chime-bearer request header is mandatory. Use the AppInstanceUserArn of the user that makes  the API call as the value in the header.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.
@@ -615,8 +615,8 @@ extension Chime {
     }
 
     ///  Lists all Channels created under a single Chime App as a paginated list. You can specify filters to narrow results.
-    ///    Functionality & restrictions    Use privacy = PUBLIC to retrieve all public channels in the account.   Only an AppInstanceAdmin can set privacy = PRIVATE to list the private channels in an account.  
-    ///    The x-amz-chime-bearer request header is mandatory. Use the AppInstanceUserArn of the user that makes  the API call as the value in the header. 
+    ///    Functionality & restrictions    Use privacy = PUBLIC to retrieve all public channels in the account.   Only an AppInstanceAdmin can set privacy = PRIVATE to list the private channels in an account.
+    ///    The x-amz-chime-bearer request header is mandatory. Use the AppInstanceUserArn of the user that makes  the API call as the value in the header.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.
@@ -670,7 +670,7 @@ extension Chime {
     }
 
     ///  A list of the channels moderated by an AppInstanceUser.
-    ///    The x-amz-chime-bearer request header is mandatory. Use the AppInstanceUserArn of the user that makes  the API call as the value in the header. 
+    ///    The x-amz-chime-bearer request header is mandatory. Use the AppInstanceUserArn of the user that makes  the API call as the value in the header.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.
@@ -776,7 +776,7 @@ extension Chime {
         )
     }
 
-    ///  Lists up to 100 active Amazon Chime SDK meetings. For more information about the Amazon Chime SDK, see 
+    ///  Lists up to 100 active Amazon Chime SDK meetings. For more information about the Amazon Chime SDK, see
     ///  Using the Amazon Chime SDK
     ///  in the Amazon Chime Developer Guide.
     ///

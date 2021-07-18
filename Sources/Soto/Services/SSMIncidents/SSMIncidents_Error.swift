@@ -53,7 +53,7 @@ public struct SSMIncidentsErrorType: AWSErrorType {
     public static var conflictException: Self { .init(.conflictException) }
     /// The request processing has failed because of an unknown error, exception or failure.
     public static var internalServerException: Self { .init(.internalServerException) }
-    /// Request references a resource which does not exist. 
+    /// Request references a resource which does not exist.
     public static var resourceNotFoundException: Self { .init(.resourceNotFoundException) }
     /// Request would cause a service quota to be exceeded.
     public static var serviceQuotaExceededException: Self { .init(.serviceQuotaExceededException) }

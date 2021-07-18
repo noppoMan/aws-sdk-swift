@@ -105,7 +105,7 @@ public struct Transcribe: AWSService {
         return self.client.execute(operation: "DeleteTranscriptionJob", path: "/transcriptionjobs/{TranscriptionJobName}", httpMethod: .DELETE, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Deletes a vocabulary from Amazon Transcribe. 
+    /// Deletes a vocabulary from Amazon Transcribe.
     @discardableResult public func deleteVocabulary(_ input: DeleteVocabularyRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<Void> {
         return self.client.execute(operation: "DeleteVocabulary", path: "/vocabularies/{VocabularyName}", httpMethod: .DELETE, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -115,7 +115,7 @@ public struct Transcribe: AWSService {
         return self.client.execute(operation: "DeleteVocabularyFilter", path: "/vocabularyFilters/{VocabularyFilterName}", httpMethod: .DELETE, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Gets information about a single custom language model. Use this information to see details about the language model in your AWS account. You can also see whether the base language model used to create your custom language model has been updated. If Amazon Transcribe has updated the base model, you can create a new custom language model using the updated base model. If the language model wasn't created, you can use this operation to understand why Amazon Transcribe couldn't create it. 
+    /// Gets information about a single custom language model. Use this information to see details about the language model in your AWS account. You can also see whether the base language model used to create your custom language model has been updated. If Amazon Transcribe has updated the base model, you can create a new custom language model using the updated base model. If the language model wasn't created, you can use this operation to understand why Amazon Transcribe couldn't create it.
     public func describeLanguageModel(_ input: DescribeLanguageModelRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<DescribeLanguageModelResponse> {
         return self.client.execute(operation: "DescribeLanguageModel", path: "/languagemodels/{ModelName}", httpMethod: .GET, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -135,7 +135,7 @@ public struct Transcribe: AWSService {
         return self.client.execute(operation: "GetTranscriptionJob", path: "/transcriptionjobs/{TranscriptionJobName}", httpMethod: .GET, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Gets information about a vocabulary. 
+    /// Gets information about a vocabulary.
     public func getVocabulary(_ input: GetVocabularyRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<GetVocabularyResponse> {
         return self.client.execute(operation: "GetVocabulary", path: "/vocabularies/{VocabularyName}", httpMethod: .GET, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -190,7 +190,7 @@ public struct Transcribe: AWSService {
         return self.client.execute(operation: "UpdateMedicalVocabulary", path: "/medicalvocabularies/{VocabularyName}", httpMethod: .PATCH, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Updates an existing vocabulary with new values. The UpdateVocabulary operation overwrites all of the existing information with the values that you provide in the request. 
+    /// Updates an existing vocabulary with new values. The UpdateVocabulary operation overwrites all of the existing information with the values that you provide in the request.
     public func updateVocabulary(_ input: UpdateVocabularyRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<UpdateVocabularyResponse> {
         return self.client.execute(operation: "UpdateVocabulary", path: "/vocabularies/{VocabularyName}", httpMethod: .PATCH, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }

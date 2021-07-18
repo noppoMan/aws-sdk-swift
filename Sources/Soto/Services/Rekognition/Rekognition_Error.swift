@@ -64,11 +64,11 @@ public struct RekognitionErrorType: AWSErrorType {
     public static var humanLoopQuotaExceededException: Self { .init(.humanLoopQuotaExceededException) }
     /// A ClientRequestToken input parameter was reused with an operation, but at least one of the other input parameters is different from the previous call to the operation.
     public static var idempotentParameterMismatchException: Self { .init(.idempotentParameterMismatchException) }
-    /// The input image size exceeds the allowed limit. If you are calling DetectProtectiveEquipment, the image size or resolution exceeds the allowed limit. For more information, see  Limits in Amazon Rekognition in the Amazon Rekognition Developer Guide. 
+    /// The input image size exceeds the allowed limit. If you are calling DetectProtectiveEquipment, the image size or resolution exceeds the allowed limit. For more information, see  Limits in Amazon Rekognition in the Amazon Rekognition Developer Guide.
     public static var imageTooLargeException: Self { .init(.imageTooLargeException) }
     /// Amazon Rekognition experienced a service issue. Try your call again.
     public static var internalServerError: Self { .init(.internalServerError) }
-    /// The provided image format is not supported. 
+    /// The provided image format is not supported.
     public static var invalidImageFormatException: Self { .init(.invalidImageFormatException) }
     /// Pagination token in the request is not valid.
     public static var invalidPaginationTokenException: Self { .init(.invalidPaginationTokenException) }
@@ -76,7 +76,7 @@ public struct RekognitionErrorType: AWSErrorType {
     public static var invalidParameterException: Self { .init(.invalidParameterException) }
     /// Amazon Rekognition is unable to access the S3 object specified in the request.
     public static var invalidS3ObjectException: Self { .init(.invalidS3ObjectException) }
-    /// An Amazon Rekognition service limit was exceeded. For example, if you start too many Amazon Rekognition Video jobs concurrently, calls to start operations  (StartLabelDetection, for example) will raise a LimitExceededException exception (HTTP status code: 400) until the number of concurrently running jobs is below the Amazon Rekognition service limit.  
+    /// An Amazon Rekognition service limit was exceeded. For example, if you start too many Amazon Rekognition Video jobs concurrently, calls to start operations  (StartLabelDetection, for example) will raise a LimitExceededException exception (HTTP status code: 400) until the number of concurrently running jobs is below the Amazon Rekognition service limit.
     public static var limitExceededException: Self { .init(.limitExceededException) }
     /// The number of requests exceeded your throughput limit. If you want to increase this limit, contact Amazon Rekognition.
     public static var provisionedThroughputExceededException: Self { .init(.provisionedThroughputExceededException) }
@@ -86,13 +86,13 @@ public struct RekognitionErrorType: AWSErrorType {
     public static var resourceInUseException: Self { .init(.resourceInUseException) }
     /// The resource specified in the request cannot be found.
     public static var resourceNotFoundException: Self { .init(.resourceNotFoundException) }
-    /// The requested resource isn't ready. For example,   this exception occurs when you call DetectCustomLabels with a model version that isn't deployed. 
+    /// The requested resource isn't ready. For example,   this exception occurs when you call DetectCustomLabels with a model version that isn't deployed.
     public static var resourceNotReadyException: Self { .init(.resourceNotReadyException) }
-    ///    The size of the collection exceeds the allowed limit. For more information, see  Limits in Amazon Rekognition in the Amazon Rekognition Developer Guide. 
+    ///    The size of the collection exceeds the allowed limit. For more information, see  Limits in Amazon Rekognition in the Amazon Rekognition Developer Guide.
     public static var serviceQuotaExceededException: Self { .init(.serviceQuotaExceededException) }
     /// Amazon Rekognition is temporarily unable to process the request. Try your call again.
     public static var throttlingException: Self { .init(.throttlingException) }
-    /// The file size or duration of the supplied media is too large. The maximum file size is 10GB. The maximum duration is 6 hours. 
+    /// The file size or duration of the supplied media is too large. The maximum file size is 10GB. The maximum duration is 6 hours.
     public static var videoTooLargeException: Self { .init(.videoTooLargeException) }
 }
 

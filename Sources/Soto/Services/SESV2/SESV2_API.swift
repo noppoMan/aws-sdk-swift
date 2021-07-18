@@ -64,7 +64,7 @@ public struct SESv2: AWSService {
 
     // MARK: API Calls
 
-    /// Create a configuration set. Configuration sets are groups of rules that you can apply to the emails that you send. You apply a configuration set to an email by specifying the name of the configuration set when you call the Amazon SES API v2. When you apply a configuration set to an email, all of the rules in that configuration set are applied to the email. 
+    /// Create a configuration set. Configuration sets are groups of rules that you can apply to the emails that you send. You apply a configuration set to an email by specifying the name of the configuration set when you call the Amazon SES API v2. When you apply a configuration set to an email, all of the rules in that configuration set are applied to the email.
     public func createConfigurationSet(_ input: CreateConfigurationSetRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<CreateConfigurationSetResponse> {
         return self.client.execute(operation: "CreateConfigurationSet", path: "/v2/email/configuration-sets", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -369,7 +369,7 @@ public struct SESv2: AWSService {
     }
 
     /// Move a dedicated IP address to an existing dedicated IP pool.  The dedicated IP address that you specify must already exist, and must be associated with your AWS account.   The dedicated IP pool you specify must already exist. You can create a new pool by using the CreateDedicatedIpPool operation.
-    ///  
+    ///
     public func putDedicatedIpInPool(_ input: PutDedicatedIpInPoolRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<PutDedicatedIpInPoolResponse> {
         return self.client.execute(operation: "PutDedicatedIpInPool", path: "/v2/email/dedicated-ips/{Ip}/pool", httpMethod: .PUT, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -393,7 +393,7 @@ public struct SESv2: AWSService {
         return self.client.execute(operation: "PutEmailIdentityDkimAttributes", path: "/v2/email/identities/{EmailIdentity}/dkim", httpMethod: .PUT, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Used to configure or change the DKIM authentication settings for an email domain identity. You can use this operation to do any of the following:   Update the signing attributes for an identity that uses Bring Your Own DKIM (BYODKIM).   Change from using no DKIM authentication to using Easy DKIM.   Change from using no DKIM authentication to using BYODKIM.   Change from using Easy DKIM to using BYODKIM.   Change from using BYODKIM to using Easy DKIM.  
+    /// Used to configure or change the DKIM authentication settings for an email domain identity. You can use this operation to do any of the following:   Update the signing attributes for an identity that uses Bring Your Own DKIM (BYODKIM).   Change from using no DKIM authentication to using Easy DKIM.   Change from using no DKIM authentication to using BYODKIM.   Change from using Easy DKIM to using BYODKIM.   Change from using BYODKIM to using Easy DKIM.
     public func putEmailIdentityDkimSigningAttributes(_ input: PutEmailIdentityDkimSigningAttributesRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<PutEmailIdentityDkimSigningAttributesResponse> {
         return self.client.execute(operation: "PutEmailIdentityDkimSigningAttributes", path: "/v1/email/identities/{EmailIdentity}/dkim/signing", httpMethod: .PUT, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -423,7 +423,7 @@ public struct SESv2: AWSService {
         return self.client.execute(operation: "SendCustomVerificationEmail", path: "/v2/email/outbound-custom-verification-emails", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Sends an email message. You can use the Amazon SES API v2 to send two types of messages:    Simple – A standard email message. When you create this type of message, you specify the sender, the recipient, and the message body, and Amazon SES assembles the message for you.    Raw – A raw, MIME-formatted email message. When you send this type of email, you have to specify all of the message headers, as well as the message body. You can use this message type to send messages that contain attachments. The message that you specify has to be a valid MIME message.    Templated – A message that contains personalization tags. When you send this type of email, Amazon SES API v2 automatically replaces the tags with values that you specify.  
+    /// Sends an email message. You can use the Amazon SES API v2 to send two types of messages:    Simple – A standard email message. When you create this type of message, you specify the sender, the recipient, and the message body, and Amazon SES assembles the message for you.    Raw – A raw, MIME-formatted email message. When you send this type of email, you have to specify all of the message headers, as well as the message body. You can use this message type to send messages that contain attachments. The message that you specify has to be a valid MIME message.    Templated – A message that contains personalization tags. When you send this type of email, Amazon SES API v2 automatically replaces the tags with values that you specify.
     public func sendEmail(_ input: SendEmailRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<SendEmailResponse> {
         return self.client.execute(operation: "SendEmail", path: "/v2/email/outbound-emails", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }

@@ -90,7 +90,7 @@ public struct ECS: AWSService {
     /// Creates a new Amazon ECS cluster. By default, your account receives a default
     /// 			cluster when you launch your first container instance. However, you can create your own
     /// 			cluster with a unique name with the CreateCluster action.
-    /// 		       
+    ///
     /// 			         When you call the CreateCluster API operation, Amazon ECS attempts to
     /// 				create the Amazon ECS service-linked role for your account so that required resources in
     /// 				other AWS services can be managed on your behalf. However, if the IAM user that
@@ -98,7 +98,7 @@ public struct ECS: AWSService {
     /// 				not created. For more information, see Using
     /// 					Service-Linked Roles for Amazon ECS in the
     /// 					Amazon Elastic Container Service Developer Guide.
-    /// 		       
+    ///
     public func createCluster(_ input: CreateClusterRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<CreateClusterResponse> {
         return self.client.execute(operation: "CreateCluster", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -118,14 +118,14 @@ public struct ECS: AWSService {
     /// 				RUNNING state and the container instance that they're hosted on is
     /// 			reported as healthy by the load balancer.
     /// 		       There are two service scheduler strategies available:
-    /// 		        
+    ///
     /// 				            REPLICA - The replica scheduling strategy places and
     /// 					maintains the desired number of tasks across your cluster. By default, the
     /// 					service scheduler spreads tasks across Availability Zones. You can use task
     /// 					placement strategies and constraints to customize task placement decisions. For
     /// 					more information, see Service Scheduler Concepts in the
     /// 						Amazon Elastic Container Service Developer Guide.
-    /// 			          
+    ///
     /// 				            DAEMON - The daemon scheduling strategy deploys exactly one
     /// 					task on each active container instance that meets all of the task placement
     /// 					constraints that you specify in your cluster. The service scheduler also
@@ -134,7 +134,7 @@ public struct ECS: AWSService {
     /// 					need to specify a desired number of tasks, a task placement strategy, or use
     /// 					Service Auto Scaling policies. For more information, see Service Scheduler Concepts in the
     /// 						Amazon Elastic Container Service Developer Guide.
-    /// 			          
+    ///
     /// 		       You can optionally specify a deployment configuration for your service. The deployment
     /// 			is triggered by changing properties, such as the task definition or the desired count of
     /// 			a service, with an UpdateService operation. The default value for a
@@ -177,27 +177,27 @@ public struct ECS: AWSService {
     /// 			required parameter is the service name. You control your services using the CreateTaskSet operation. For more information, see Amazon ECS Deployment Types in the Amazon Elastic Container Service Developer Guide.
     /// 		       When the service scheduler launches new tasks, it determines task placement in your
     /// 			cluster using the following logic:
-    /// 		        
+    ///
     /// 				           Determine which of the container instances in your cluster can support your
     /// 					service's task definition (for example, they have the required CPU, memory,
     /// 					ports, and container instance attributes).
-    /// 			          
+    ///
     /// 				           By default, the service scheduler attempts to balance tasks across
     /// 					Availability Zones in this manner (although you can choose a different placement
     /// 					strategy) with the placementStrategy parameter):
-    /// 				            
+    ///
     /// 						               Sort the valid container instances, giving priority to instances that
     /// 							have the fewest number of running tasks for this service in their
     /// 							respective Availability Zone. For example, if zone A has one running
     /// 							service task and zones B and C each have zero, valid container instances
     /// 							in either zone B or C are considered optimal for placement.
-    /// 					              
+    ///
     /// 						               Place the new service task on a valid container instance in an optimal
     /// 							Availability Zone (based on the previous steps), favoring container
     /// 							instances with the fewest number of running tasks for this
     /// 							service.
-    /// 					              
-    /// 			          
+    ///
+    ///
     public func createService(_ input: CreateServiceRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<CreateServiceResponse> {
         return self.client.execute(operation: "CreateService", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -222,12 +222,12 @@ public struct ECS: AWSService {
     }
 
     /// Deletes the specified capacity provider.
-    /// 		       
+    ///
     /// 			         The FARGATE and FARGATE_SPOT capacity providers are
     /// 				reserved and cannot be deleted. You can disassociate them from a cluster using
     /// 				either the PutClusterCapacityProviders API or by deleting the
     /// 				cluster.
-    /// 		       
+    ///
     /// 		       Prior to a capacity provider being deleted, the capacity provider must be removed from
     /// 			the capacity provider strategy from all services. The UpdateService
     /// 			API can be used to remove a capacity provider from a service's capacity provider
@@ -255,7 +255,7 @@ public struct ECS: AWSService {
     /// 			running tasks in it and the desired task count is zero. If the service is actively
     /// 			maintaining tasks, you cannot delete it, and you must update the service to a desired
     /// 			task count of zero. For more information, see UpdateService.
-    /// 		       
+    ///
     /// 			         When you delete a service, if there are still running tasks that require cleanup,
     /// 				the service status moves from ACTIVE to DRAINING, and the
     /// 				service is no longer visible in the console or in the ListServices
@@ -266,12 +266,12 @@ public struct ECS: AWSService {
     /// 					INACTIVE services may be cleaned up and purged from Amazon ECS record
     /// 				keeping, and DescribeServices calls on those services return a
     /// 					ServiceNotFoundException error.
-    /// 		       
-    /// 		       
+    ///
+    ///
     /// 			         If you attempt to create a new service with the same name as an existing service
     /// 				in either ACTIVE or DRAINING status, you receive an
     /// 				error.
-    /// 		       
+    ///
     public func deleteService(_ input: DeleteServiceRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<DeleteServiceResponse> {
         return self.client.execute(operation: "DeleteService", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -290,11 +290,11 @@ public struct ECS: AWSService {
     /// 		       Deregistering a container instance removes the instance from a cluster, but it does
     /// 			not terminate the EC2 instance. If you are finished using the instance, be sure to
     /// 			terminate it in the Amazon EC2 console to stop billing.
-    /// 		       
+    ///
     /// 			         If you terminate a running container instance, Amazon ECS automatically deregisters the
     /// 				instance from your cluster (stopped container instances or instances with
     /// 				disconnected agents are not automatically deregistered when terminated).
-    /// 		       
+    ///
     public func deregisterContainerInstance(_ input: DeregisterContainerInstanceRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<DeregisterContainerInstanceResponse> {
         return self.client.execute(operation: "DeregisterContainerInstance", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -309,12 +309,12 @@ public struct ECS: AWSService {
     /// 				INACTIVE task definition. However, there may be up to a 10-minute
     /// 			window following deregistration where these restrictions have not yet taken
     /// 			effect.
-    /// 		       
+    ///
     /// 			         At this time, INACTIVE task definitions remain discoverable in your
     /// 				account indefinitely. However, this behavior is subject to change in the future, so
     /// 				you should not rely on INACTIVE task definitions persisting beyond the
     /// 				lifecycle of any associated tasks and services.
-    /// 		       
+    ///
     public func deregisterTaskDefinition(_ input: DeregisterTaskDefinitionRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<DeregisterTaskDefinitionResponse> {
         return self.client.execute(operation: "DeregisterTaskDefinition", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -344,10 +344,10 @@ public struct ECS: AWSService {
     /// 				revision to find information about a specific task definition, or you
     /// 			can simply specify the family to find the latest ACTIVE revision in that
     /// 			family.
-    /// 		       
+    ///
     /// 			         You can only describe INACTIVE task definitions while an active task
     /// 				or service references them.
-    /// 		       
+    ///
     public func describeTaskDefinition(_ input: DescribeTaskDefinitionRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<DescribeTaskDefinitionResponse> {
         return self.client.execute(operation: "DescribeTaskDefinition", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -387,7 +387,7 @@ public struct ECS: AWSService {
     /// 			of results to a single attribute name to only return results that have that name. You
     /// 			can also filter the results by attribute name and value, for example, to see which
     /// 			container instances in a cluster are running a Linux AMI
-    /// 			(ecs.os-type=linux). 
+    /// 			(ecs.os-type=linux).
     public func listAttributes(_ input: ListAttributesRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<ListAttributesResponse> {
         return self.client.execute(operation: "ListAttributes", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -547,19 +547,19 @@ public struct ECS: AWSService {
     /// 			you run. Keep this in mind when you carry out an API command that immediately follows a
     /// 			previous API command.
     /// 		       To manage eventual consistency, you can do the following:
-    /// 		        
+    ///
     /// 				           Confirm the state of the resource before you run a command to modify it. Run
     /// 					the DescribeTasks command using an exponential backoff algorithm to ensure that
     /// 					you allow enough time for the previous command to propagate through the system.
     /// 					To do this, run the DescribeTasks command repeatedly, starting with a couple of
     /// 					seconds of wait time and increasing gradually up to five minutes of wait
     /// 					time.
-    /// 			          
+    ///
     /// 				           Add wait time between subsequent commands, even if the DescribeTasks command
     /// 					returns an accurate response. Apply an exponential backoff algorithm starting
     /// 					with a couple of seconds of wait time, and increase gradually up to about five
     /// 					minutes of wait time.
-    /// 			          
+    ///
     public func runTask(_ input: RunTaskRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<RunTaskResponse> {
         return self.client.execute(operation: "RunTask", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -580,12 +580,12 @@ public struct ECS: AWSService {
     /// 				SIGKILL value is sent and the containers are forcibly stopped. If the
     /// 			container handles the SIGTERM value gracefully and exits within 30 seconds
     /// 			from receiving it, no SIGKILL value is sent.
-    /// 		       
+    ///
     /// 			         The default 30-second timeout can be configured on the Amazon ECS container agent with
     /// 				the ECS_CONTAINER_STOP_TIMEOUT variable. For more information, see
     /// 					Amazon ECS Container Agent Configuration in the
     /// 					Amazon Elastic Container Service Developer Guide.
-    /// 		       
+    ///
     public func stopTask(_ input: StopTaskRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<StopTaskResponse> {
         return self.client.execute(operation: "StopTask", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -640,14 +640,14 @@ public struct ECS: AWSService {
     /// 			Amazon ECS container agent does not interrupt running tasks or services on the container
     /// 			instance. The process for updating the agent differs depending on whether your container
     /// 			instance was launched with the Amazon ECS-optimized AMI or another operating system.
-    /// 		       
+    ///
     /// 			         The UpdateContainerAgent API isn't supported for container instances
     /// 				using the Amazon ECS-optimized Amazon Linux 2 (arm64) AMI. To update the container agent,
     /// 				you can update the ecs-init package which will update the agent. For
     /// 				more information, see Updating the
     /// 					Amazon ECS container agent in the
     /// 				Amazon Elastic Container Service Developer Guide.
-    /// 		       
+    ///
     /// 		       The UpdateContainerAgent API requires an Amazon ECS-optimized AMI or Amazon
     /// 			Linux AMI with the ecs-init service installed and running. For help
     /// 			updating the Amazon ECS container agent on other operating systems, see Manually updating the Amazon ECS container agent in the
@@ -661,11 +661,11 @@ public struct ECS: AWSService {
     /// 			status of a container instance to DRAINING to manually remove an instance
     /// 			from a cluster, for example to perform system updates, update the Docker daemon, or
     /// 			scale down the cluster size.
-    /// 		       
+    ///
     /// 			         A container instance cannot be changed to DRAINING until it has
     /// 				reached an ACTIVE status. If the instance is in any other status, an
     /// 				error will be received.
-    /// 		       
+    ///
     /// 		       When you set a container instance to DRAINING, Amazon ECS prevents new tasks
     /// 			from being scheduled for placement on the container instance and replacement service
     /// 			tasks are started on other container instances in the cluster if the resources are
@@ -675,7 +675,7 @@ public struct ECS: AWSService {
     /// 			stopped and replaced according to the service's deployment configuration parameters,
     /// 				minimumHealthyPercent and maximumPercent. You can change
     /// 			the deployment configuration of your service using UpdateService.
-    /// 		        
+    ///
     /// 				           If minimumHealthyPercent is below 100%, the scheduler can ignore
     /// 						desiredCount temporarily during task replacement. For example,
     /// 						desiredCount is four tasks, a minimum of 50% allows the
@@ -686,7 +686,7 @@ public struct ECS: AWSService {
     /// 					state. Tasks for services that use a load balancer are considered healthy if
     /// 					they are in the RUNNING state and the container instance they are
     /// 					hosted on is reported as healthy by the load balancer.
-    /// 			          
+    ///
     /// 				           The maximumPercent parameter represents an upper limit on the
     /// 					number of running tasks during task replacement, which enables you to define the
     /// 					replacement batch size. For example, if desiredCount is four tasks,
@@ -694,7 +694,7 @@ public struct ECS: AWSService {
     /// 					drained, provided that the cluster resources required to do this are available.
     /// 					If the maximum is 100%, then replacement tasks can't start until the draining
     /// 					tasks have stopped.
-    /// 			          
+    ///
     /// 		       Any PENDING or RUNNING tasks that do not belong to a service
     /// 			are not affected. You must wait for them to finish or stop them manually.
     /// 		       A container instance has completed draining when it has no more RUNNING
@@ -710,7 +710,7 @@ public struct ECS: AWSService {
     /// 				in preview and is a Beta Service as defined by and subject to the Beta Service
     /// 				Participation Service Terms located at https://aws.amazon.com/service-terms ("Beta Terms"). These Beta Terms
     /// 				apply to your participation in this preview.
-    /// 		       
+    ///
     /// 		       Modifies the parameters of a service.
     /// 		       For services using the rolling update (ECS) deployment controller, the
     /// 			desired count, deployment configuration, network configuration, task placement
@@ -732,19 +732,19 @@ public struct ECS: AWSService {
     /// 			definition with that image and deploy it to your service. The service scheduler uses the
     /// 			minimum healthy percent and maximum percent parameters (in the service's deployment
     /// 			configuration) to determine the deployment strategy.
-    /// 		       
+    ///
     /// 			         If your updated Docker image uses the same tag as what is in the existing task
     /// 				definition for your service (for example, my_image:latest), you do not
     /// 				need to create a new revision of your task definition. You can update the service
     /// 				using the forceNewDeployment option. The new tasks launched by the
     /// 				deployment pull the current image/tag combination from your repository when they
     /// 				start.
-    /// 		       
+    ///
     /// 		       You can also update the deployment configuration of a service. When a deployment is
     /// 			triggered by updating the task definition of a service, the service scheduler uses the
     /// 			deployment configuration parameters, minimumHealthyPercent and
     /// 				maximumPercent, to determine the deployment strategy.
-    /// 		        
+    ///
     /// 				           If minimumHealthyPercent is below 100%, the scheduler can ignore
     /// 						desiredCount temporarily during a deployment. For example, if
     /// 						desiredCount is four tasks, a minimum of 50% allows the
@@ -754,13 +754,13 @@ public struct ECS: AWSService {
     /// 					considered healthy if they are in the RUNNING state and the
     /// 					container instance they are hosted on is reported as healthy by the load
     /// 					balancer.
-    /// 			          
+    ///
     /// 				           The maximumPercent parameter represents an upper limit on the
     /// 					number of running tasks during a deployment, which enables you to define the
     /// 					deployment batch size. For example, if desiredCount is four tasks,
     /// 					a maximum of 200% starts four new tasks before stopping the four older tasks
     /// 					(provided that the cluster resources required to do this are available).
-    /// 			          
+    ///
     /// 		       When UpdateService stops a task during a deployment, the equivalent
     /// 			of docker stop is issued to the containers running in the task. This
     /// 			results in a SIGTERM and a 30-second timeout, after which
@@ -769,39 +769,39 @@ public struct ECS: AWSService {
     /// 			receiving it, no SIGKILL is sent.
     /// 		       When the service scheduler launches new tasks, it determines task placement in your
     /// 			cluster with the following logic:
-    /// 		        
+    ///
     /// 				           Determine which of the container instances in your cluster can support your
     /// 					service's task definition (for example, they have the required CPU, memory,
     /// 					ports, and container instance attributes).
-    /// 			          
+    ///
     /// 				           By default, the service scheduler attempts to balance tasks across
     /// 					Availability Zones in this manner (although you can choose a different placement
     /// 					strategy):
-    /// 				            
+    ///
     /// 						               Sort the valid container instances by the fewest number of running
     /// 							tasks for this service in the same Availability Zone as the instance.
     /// 							For example, if zone A has one running service task and zones B and C
     /// 							each have zero, valid container instances in either zone B or C are
     /// 							considered optimal for placement.
-    /// 					              
+    ///
     /// 						               Place the new service task on a valid container instance in an optimal
     /// 							Availability Zone (based on the previous steps), favoring container
     /// 							instances with the fewest number of running tasks for this
     /// 							service.
-    /// 					              
-    /// 			          
+    ///
+    ///
     /// 		       When the service scheduler stops running tasks, it attempts to maintain balance across
-    /// 			the Availability Zones in your cluster using the following logic: 
-    /// 		        
+    /// 			the Availability Zones in your cluster using the following logic:
+    ///
     /// 				           Sort the container instances by the largest number of running tasks for this
     /// 					service in the same Availability Zone as the instance. For example, if zone A
     /// 					has one running service task and zones B and C each have two, container
     /// 					instances in either zone B or C are considered optimal for termination.
-    /// 			          
+    ///
     /// 				           Stop the task on a container instance in an optimal Availability Zone (based
     /// 					on the previous steps), favoring container instances with the largest number of
     /// 					running tasks for this service.
-    /// 			          
+    ///
     public func updateService(_ input: UpdateServiceRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<UpdateServiceResponse> {
         return self.client.execute(operation: "UpdateService", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }

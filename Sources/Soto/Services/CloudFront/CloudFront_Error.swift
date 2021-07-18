@@ -175,15 +175,15 @@ public struct CloudFrontErrorType: AWSErrorType {
     public static var cachePolicyInUse: Self { .init(.cachePolicyInUse) }
     /// You can't change the value of a public key.
     public static var cannotChangeImmutablePublicKeyFields: Self { .init(.cannotChangeImmutablePublicKeyFields) }
-    /// If the CallerReference is a value you already sent in a previous request to create an identity but the content 
-    /// 			of the CloudFrontOriginAccessIdentityConfig is different from the original request, CloudFront returns a 
-    /// 			CloudFrontOriginAccessIdentityAlreadyExists error. 
+    /// If the CallerReference is a value you already sent in a previous request to create an identity but the content
+    /// 			of the CloudFrontOriginAccessIdentityConfig is different from the original request, CloudFront returns a
+    /// 			CloudFrontOriginAccessIdentityAlreadyExists error.
     public static var cloudFrontOriginAccessIdentityAlreadyExists: Self { .init(.cloudFrontOriginAccessIdentityAlreadyExists) }
     /// The Origin Access Identity specified is already in use.
     public static var cloudFrontOriginAccessIdentityInUse: Self { .init(.cloudFrontOriginAccessIdentityInUse) }
     /// The caller reference you attempted to create the distribution with is associated with another distribution.
     public static var distributionAlreadyExists: Self { .init(.distributionAlreadyExists) }
-    /// The specified CloudFront distribution is not disabled. You must disable 
+    /// The specified CloudFront distribution is not disabled. You must disable
     /// 			the distribution before you can delete it.
     public static var distributionNotDisabled: Self { .init(.distributionNotDisabled) }
     /// The specified configuration for field-level encryption already exists.
@@ -220,7 +220,7 @@ public struct CloudFrontErrorType: AWSErrorType {
     public static var invalidDefaultRootObject: Self { .init(.invalidDefaultRootObject) }
     /// An invalid error code was specified.
     public static var invalidErrorCode: Self { .init(.invalidErrorCode) }
-    /// Your request contains forward cookies option which doesn't match with the expectation for the whitelisted 
+    /// Your request contains forward cookies option which doesn't match with the expectation for the whitelisted
     /// 			list of cookie names. Either list of cookie names has been specified when not allowed or list of cookie names is missing when expected.
     public static var invalidForwardCookies: Self { .init(.invalidForwardCookies) }
     /// A CloudFront function association is invalid.
@@ -245,14 +245,14 @@ public struct CloudFrontErrorType: AWSErrorType {
     public static var invalidOriginKeepaliveTimeout: Self { .init(.invalidOriginKeepaliveTimeout) }
     /// The read timeout specified for the origin is not valid.
     public static var invalidOriginReadTimeout: Self { .init(.invalidOriginReadTimeout) }
-    /// You cannot specify SSLv3 as the minimum protocol version if you only want to support only clients that support 
+    /// You cannot specify SSLv3 as the minimum protocol version if you only want to support only clients that support
     /// 			Server Name Indication (SNI).
     public static var invalidProtocolSettings: Self { .init(.invalidProtocolSettings) }
     /// The query string parameters specified are not valid.
     public static var invalidQueryStringParameters: Self { .init(.invalidQueryStringParameters) }
     /// The relative path is too big, is not URL-encoded, or does not begin with a slash (/).
     public static var invalidRelativePath: Self { .init(.invalidRelativePath) }
-    /// This operation requires the HTTPS protocol. Ensure that you specify the HTTPS protocol in your request, or omit the 
+    /// This operation requires the HTTPS protocol. Ensure that you specify the HTTPS protocol in your request, or omit the
     /// 			RequiredProtocols element from your distribution configuration.
     public static var invalidRequiredProtocol: Self { .init(.invalidRequiredProtocol) }
     /// A response code is not valid.
@@ -288,7 +288,7 @@ public struct CloudFrontErrorType: AWSErrorType {
     public static var noSuchFunctionExists: Self { .init(.noSuchFunctionExists) }
     /// The specified invalidation does not exist.
     public static var noSuchInvalidation: Self { .init(.noSuchInvalidation) }
-    /// No origin exists with the specified Origin Id. 
+    /// No origin exists with the specified Origin Id.
     public static var noSuchOrigin: Self { .init(.noSuchOrigin) }
     /// The origin request policy does not exist.
     public static var noSuchOriginRequestPolicy: Self { .init(.noSuchOriginRequestPolicy) }
@@ -312,7 +312,7 @@ public struct CloudFrontErrorType: AWSErrorType {
     public static var preconditionFailed: Self { .init(.preconditionFailed) }
     /// The specified public key already exists.
     public static var publicKeyAlreadyExists: Self { .init(.publicKeyAlreadyExists) }
-    /// The specified public key is in use. 
+    /// The specified public key is in use.
     public static var publicKeyInUse: Self { .init(.publicKeyInUse) }
     /// No profile specified for the field-level encryption query argument.
     public static var queryArgProfileEmpty: Self { .init(.queryArgProfileEmpty) }
@@ -327,10 +327,10 @@ public struct CloudFrontErrorType: AWSErrorType {
     public static var realtimeLogConfigOwnerMismatch: Self { .init(.realtimeLogConfigOwnerMismatch) }
     /// Cannot delete this resource because it is in use.
     public static var resourceInUse: Self { .init(.resourceInUse) }
-    /// The caller reference you attempted to create the streaming distribution with 
+    /// The caller reference you attempted to create the streaming distribution with
     /// 			is associated with another distribution
     public static var streamingDistributionAlreadyExists: Self { .init(.streamingDistributionAlreadyExists) }
-    /// The specified CloudFront distribution is not disabled. You must disable 
+    /// The specified CloudFront distribution is not disabled. You must disable
     /// 			the distribution before you can delete it.
     public static var streamingDistributionNotDisabled: Self { .init(.streamingDistributionNotDisabled) }
     /// The CloudFront function failed.
@@ -377,7 +377,7 @@ public struct CloudFrontErrorType: AWSErrorType {
     /// 			function. For more information, see Quotas (formerly known as limits) in the
     /// 			Amazon CloudFront Developer Guide.
     public static var tooManyDistributionsWithFunctionAssociations: Self { .init(.tooManyDistributionsWithFunctionAssociations) }
-    /// Processing your request would cause the maximum number of distributions with Lambda@Edge function associations per owner 
+    /// Processing your request would cause the maximum number of distributions with Lambda@Edge function associations per owner
     /// 			to be exceeded.
     public static var tooManyDistributionsWithLambdaAssociations: Self { .init(.tooManyDistributionsWithLambdaAssociations) }
     /// The maximum number of distributions have been associated with the specified Lambda@Edge

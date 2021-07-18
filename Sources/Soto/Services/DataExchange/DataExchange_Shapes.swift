@@ -83,7 +83,6 @@ extension DataExchange {
     // MARK: Shapes
 
     public struct AssetDestinationEntry: AWSEncodableShape & AWSDecodableShape {
-
         /// The unique identifier for the asset.
         public let assetId: String
         /// The S3 bucket that is the destination for the asset.
@@ -105,7 +104,6 @@ extension DataExchange {
     }
 
     public struct AssetDetails: AWSDecodableShape {
-
         public let s3SnapshotAsset: S3SnapshotAsset?
 
         public init(s3SnapshotAsset: S3SnapshotAsset? = nil) {
@@ -118,7 +116,6 @@ extension DataExchange {
     }
 
     public struct AssetEntry: AWSDecodableShape {
-
         /// The ARN for the asset.
         public let arn: String
         /// Information about the asset, including its size.
@@ -170,7 +167,6 @@ extension DataExchange {
     }
 
     public struct AssetSourceEntry: AWSEncodableShape & AWSDecodableShape {
-
         /// The S3 bucket that's part of the source of the asset.
         public let bucket: String
         /// The name of the object in Amazon S3 for the asset.
@@ -203,7 +199,6 @@ extension DataExchange {
     }
 
     public struct CreateDataSetRequest: AWSEncodableShape {
-
         /// The type of file your data is stored in. Currently, the supported asset type is S3_SNAPSHOT.
         public let assetType: AssetType
         /// A description for the data set. This value can be up to 16,348 characters long.
@@ -229,7 +224,6 @@ extension DataExchange {
     }
 
     public struct CreateDataSetResponse: AWSDecodableShape {
-
         /// The ARN for the data set.
         public let arn: String?
         /// The type of file your data is stored in. Currently, the supported asset type is S3_SNAPSHOT.
@@ -285,7 +279,6 @@ extension DataExchange {
     }
 
     public struct CreateJobRequest: AWSEncodableShape {
-
         /// The details for the CreateJob request.
         public let details: RequestDetails
         /// The type of job to be created.
@@ -307,7 +300,6 @@ extension DataExchange {
     }
 
     public struct CreateJobResponse: AWSDecodableShape {
-
         /// The ARN for the job.
         public let arn: String?
         /// The date and time that the job was created, in ISO 8601 format.
@@ -379,7 +371,6 @@ extension DataExchange {
     }
 
     public struct CreateRevisionResponse: AWSDecodableShape {
-
         /// The ARN for the revision
         public let arn: String?
         /// An optional comment about the revision.
@@ -427,7 +418,6 @@ extension DataExchange {
     }
 
     public struct DataSetEntry: AWSDecodableShape {
-
         /// The ARN for the data set.
         public let arn: String
         /// The type of file your data is stored in. Currently, the supported asset type is S3_SNAPSHOT.
@@ -480,8 +470,8 @@ extension DataExchange {
 
     public struct DeleteAssetRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "assetId", location: .uri(locationName: "AssetId")), 
-            AWSMemberEncoding(label: "dataSetId", location: .uri(locationName: "DataSetId")), 
+            AWSMemberEncoding(label: "assetId", location: .uri(locationName: "AssetId")),
+            AWSMemberEncoding(label: "dataSetId", location: .uri(locationName: "DataSetId")),
             AWSMemberEncoding(label: "revisionId", location: .uri(locationName: "RevisionId"))
         ]
 
@@ -518,7 +508,7 @@ extension DataExchange {
 
     public struct DeleteRevisionRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "dataSetId", location: .uri(locationName: "DataSetId")), 
+            AWSMemberEncoding(label: "dataSetId", location: .uri(locationName: "DataSetId")),
             AWSMemberEncoding(label: "revisionId", location: .uri(locationName: "RevisionId"))
         ]
 
@@ -536,7 +526,6 @@ extension DataExchange {
     }
 
     public struct Details: AWSDecodableShape {
-
         public let importAssetFromSignedUrlJobErrorDetails: ImportAssetFromSignedUrlJobErrorDetails?
         public let importAssetsFromS3JobErrorDetails: [AssetSourceEntry]?
 
@@ -552,7 +541,6 @@ extension DataExchange {
     }
 
     public struct ExportAssetToSignedUrlRequestDetails: AWSEncodableShape {
-
         /// The unique identifier for the asset that is exported to a signed URL.
         public let assetId: String
         /// The unique identifier for the data set associated with this export job.
@@ -574,7 +562,6 @@ extension DataExchange {
     }
 
     public struct ExportAssetToSignedUrlResponseDetails: AWSDecodableShape {
-
         /// The unique identifier for the asset associated with this export job.
         public let assetId: String
         /// The unique identifier for the data set associated with this export job.
@@ -605,7 +592,6 @@ extension DataExchange {
     }
 
     public struct ExportAssetsToS3RequestDetails: AWSEncodableShape {
-
         /// The destination for the asset.
         public let assetDestinations: [AssetDestinationEntry]
         /// The unique identifier for the data set associated with this export job.
@@ -631,7 +617,6 @@ extension DataExchange {
     }
 
     public struct ExportAssetsToS3ResponseDetails: AWSDecodableShape {
-
         /// The destination in Amazon S3 where the asset is exported.
         public let assetDestinations: [AssetDestinationEntry]
         /// The unique identifier for the data set associated with this export job.
@@ -657,7 +642,6 @@ extension DataExchange {
     }
 
     public struct ExportRevisionsToS3RequestDetails: AWSEncodableShape {
-
         /// The unique identifier for the data set associated with this export job.
         public let dataSetId: String
         /// Encryption configuration for the export job.
@@ -679,7 +663,6 @@ extension DataExchange {
     }
 
     public struct ExportRevisionsToS3ResponseDetails: AWSDecodableShape {
-
         /// The unique identifier for the data set associated with this export job.
         public let dataSetId: String
         /// Encryption configuration of the export job.
@@ -701,7 +684,6 @@ extension DataExchange {
     }
 
     public struct ExportServerSideEncryption: AWSEncodableShape & AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the the AWS KMS key you want to use to encrypt the Amazon S3 objects. This parameter is required if you choose aws:kms as an encryption type.
         public let kmsKeyArn: String?
         /// The type of server side encryption used for encrypting the objects in Amazon S3.
@@ -720,8 +702,8 @@ extension DataExchange {
 
     public struct GetAssetRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "assetId", location: .uri(locationName: "AssetId")), 
-            AWSMemberEncoding(label: "dataSetId", location: .uri(locationName: "DataSetId")), 
+            AWSMemberEncoding(label: "assetId", location: .uri(locationName: "AssetId")),
+            AWSMemberEncoding(label: "dataSetId", location: .uri(locationName: "DataSetId")),
             AWSMemberEncoding(label: "revisionId", location: .uri(locationName: "RevisionId"))
         ]
 
@@ -742,7 +724,6 @@ extension DataExchange {
     }
 
     public struct GetAssetResponse: AWSDecodableShape {
-
         /// The ARN for the asset.
         public let arn: String?
         /// Information about the asset, including its size.
@@ -809,7 +790,6 @@ extension DataExchange {
     }
 
     public struct GetDataSetResponse: AWSDecodableShape {
-
         /// The ARN for the data set.
         public let arn: String?
         /// The type of file your data is stored in. Currently, the supported asset type is S3_SNAPSHOT.
@@ -880,7 +860,6 @@ extension DataExchange {
     }
 
     public struct GetJobResponse: AWSDecodableShape {
-
         /// The ARN for the job.
         public let arn: String?
         /// The date and time that the job was created, in ISO 8601 format.
@@ -925,7 +904,7 @@ extension DataExchange {
 
     public struct GetRevisionRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "dataSetId", location: .uri(locationName: "DataSetId")), 
+            AWSMemberEncoding(label: "dataSetId", location: .uri(locationName: "DataSetId")),
             AWSMemberEncoding(label: "revisionId", location: .uri(locationName: "RevisionId"))
         ]
 
@@ -943,7 +922,6 @@ extension DataExchange {
     }
 
     public struct GetRevisionResponse: AWSDecodableShape {
-
         /// The ARN for the revision
         public let arn: String?
         /// An optional comment about the revision.
@@ -991,7 +969,6 @@ extension DataExchange {
     }
 
     public struct ImportAssetFromSignedUrlJobErrorDetails: AWSDecodableShape {
-
         public let assetName: String
 
         public init(assetName: String) {
@@ -1004,7 +981,6 @@ extension DataExchange {
     }
 
     public struct ImportAssetFromSignedUrlRequestDetails: AWSEncodableShape {
-
         /// The name of the asset. When importing from Amazon S3, the S3 object key is used as the asset name.
         public let assetName: String
         /// The unique identifier for the data set associated with this import job.
@@ -1036,7 +1012,6 @@ extension DataExchange {
     }
 
     public struct ImportAssetFromSignedUrlResponseDetails: AWSDecodableShape {
-
         /// The name for the asset associated with this import response.
         public let assetName: String
         /// The unique identifier for the data set associated with this import job.
@@ -1071,7 +1046,6 @@ extension DataExchange {
     }
 
     public struct ImportAssetsFromS3RequestDetails: AWSEncodableShape {
-
         /// Is a list of S3 bucket and object key pairs.
         public let assetSources: [AssetSourceEntry]
         /// The unique identifier for the data set associated with this import job.
@@ -1093,7 +1067,6 @@ extension DataExchange {
     }
 
     public struct ImportAssetsFromS3ResponseDetails: AWSDecodableShape {
-
         /// Is a list of Amazon S3 bucket and object key pairs.
         public let assetSources: [AssetSourceEntry]
         /// The unique identifier for the data set associated with this import job.
@@ -1115,7 +1088,6 @@ extension DataExchange {
     }
 
     public struct JobEntry: AWSDecodableShape {
-
         /// The ARN for the job.
         public let arn: String
         /// The date and time that the job was created, in ISO 8601 format.
@@ -1159,7 +1131,6 @@ extension DataExchange {
     }
 
     public struct JobError: AWSDecodableShape {
-
         /// The code for the job error.
         public let code: Code
         public let details: Details?
@@ -1197,8 +1168,8 @@ extension DataExchange {
 
     public struct ListDataSetRevisionsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "dataSetId", location: .uri(locationName: "DataSetId")), 
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "dataSetId", location: .uri(locationName: "DataSetId")),
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
@@ -1224,7 +1195,6 @@ extension DataExchange {
     }
 
     public struct ListDataSetRevisionsResponse: AWSDecodableShape {
-
         /// The token value retrieved from a previous call to access the next page of results.
         public let nextToken: String?
         /// The asset objects listed by the request.
@@ -1243,8 +1213,8 @@ extension DataExchange {
 
     public struct ListDataSetsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
-            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
+            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")),
             AWSMemberEncoding(label: "origin", location: .querystring(locationName: "origin"))
         ]
 
@@ -1270,7 +1240,6 @@ extension DataExchange {
     }
 
     public struct ListDataSetsResponse: AWSDecodableShape {
-
         /// The data set objects listed by the request.
         public let dataSets: [DataSetEntry]?
         /// The token value retrieved from a previous call to access the next page of results.
@@ -1289,9 +1258,9 @@ extension DataExchange {
 
     public struct ListJobsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "dataSetId", location: .querystring(locationName: "dataSetId")), 
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
-            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")), 
+            AWSMemberEncoding(label: "dataSetId", location: .querystring(locationName: "dataSetId")),
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
+            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")),
             AWSMemberEncoding(label: "revisionId", location: .querystring(locationName: "revisionId"))
         ]
 
@@ -1320,7 +1289,6 @@ extension DataExchange {
     }
 
     public struct ListJobsResponse: AWSDecodableShape {
-
         /// The jobs listed by the request.
         public let jobs: [JobEntry]?
         /// The token value retrieved from a previous call to access the next page of results.
@@ -1339,9 +1307,9 @@ extension DataExchange {
 
     public struct ListRevisionAssetsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "dataSetId", location: .uri(locationName: "DataSetId")), 
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
-            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")), 
+            AWSMemberEncoding(label: "dataSetId", location: .uri(locationName: "DataSetId")),
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
+            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")),
             AWSMemberEncoding(label: "revisionId", location: .uri(locationName: "RevisionId"))
         ]
 
@@ -1370,7 +1338,6 @@ extension DataExchange {
     }
 
     public struct ListRevisionAssetsResponse: AWSDecodableShape {
-
         /// The asset objects listed by the request.
         public let assets: [AssetEntry]?
         /// The token value retrieved from a previous call to access the next page of results.
@@ -1403,7 +1370,6 @@ extension DataExchange {
     }
 
     public struct ListTagsForResourceResponse: AWSDecodableShape {
-
         /// A label that consists of a customer-defined key and an optional value.
         public let tags: [String: String]?
 
@@ -1412,12 +1378,11 @@ extension DataExchange {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tags = "tags"
+            case tags
         }
     }
 
     public struct OriginDetails: AWSDecodableShape {
-
         public let productId: String
 
         public init(productId: String) {
@@ -1430,7 +1395,6 @@ extension DataExchange {
     }
 
     public struct RequestDetails: AWSEncodableShape {
-
         /// Details about the export to Amazon S3 request.
         public let exportAssetsToS3: ExportAssetsToS3RequestDetails?
         /// Details about the export to signed URL request.
@@ -1464,7 +1428,6 @@ extension DataExchange {
     }
 
     public struct ResponseDetails: AWSDecodableShape {
-
         /// Details for the export to Amazon S3 response.
         public let exportAssetsToS3: ExportAssetsToS3ResponseDetails?
         /// Details for the export to signed URL response.
@@ -1494,7 +1457,6 @@ extension DataExchange {
     }
 
     public struct RevisionDestinationEntry: AWSEncodableShape & AWSDecodableShape {
-
         /// The S3 bucket that is the destination for the assets in the revision.
         public let bucket: String
         /// A string representing the pattern for generated names of the individual assets in the revision. For more information about key patterns, see Key patterns when exporting revisions.
@@ -1516,7 +1478,6 @@ extension DataExchange {
     }
 
     public struct RevisionEntry: AWSDecodableShape {
-
         /// The ARN for the revision.
         public let arn: String
         /// An optional comment about the revision.
@@ -1560,7 +1521,6 @@ extension DataExchange {
     }
 
     public struct S3SnapshotAsset: AWSDecodableShape {
-
         /// The size of the S3 object that is the object.
         public let size: Double
 
@@ -1589,11 +1549,7 @@ extension DataExchange {
     }
 
     public struct StartJobResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct TagResourceRequest: AWSEncodableShape {
@@ -1612,13 +1568,13 @@ extension DataExchange {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tags = "tags"
+            case tags
         }
     }
 
     public struct UntagResourceRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "ResourceArn")), 
+            AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "ResourceArn")),
             AWSMemberEncoding(label: "tagKeys", location: .querystring(locationName: "tagKeys"))
         ]
 
@@ -1637,8 +1593,8 @@ extension DataExchange {
 
     public struct UpdateAssetRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "assetId", location: .uri(locationName: "AssetId")), 
-            AWSMemberEncoding(label: "dataSetId", location: .uri(locationName: "DataSetId")), 
+            AWSMemberEncoding(label: "assetId", location: .uri(locationName: "AssetId")),
+            AWSMemberEncoding(label: "dataSetId", location: .uri(locationName: "DataSetId")),
             AWSMemberEncoding(label: "revisionId", location: .uri(locationName: "RevisionId"))
         ]
 
@@ -1664,7 +1620,6 @@ extension DataExchange {
     }
 
     public struct UpdateAssetResponse: AWSDecodableShape {
-
         /// The ARN for the asset.
         public let arn: String?
         /// Information about the asset, including its size.
@@ -1740,7 +1695,6 @@ extension DataExchange {
     }
 
     public struct UpdateDataSetResponse: AWSDecodableShape {
-
         /// The ARN for the data set.
         public let arn: String?
         /// The type of file your data is stored in. Currently, the supported asset type is S3_SNAPSHOT.
@@ -1793,7 +1747,7 @@ extension DataExchange {
 
     public struct UpdateRevisionRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "dataSetId", location: .uri(locationName: "DataSetId")), 
+            AWSMemberEncoding(label: "dataSetId", location: .uri(locationName: "DataSetId")),
             AWSMemberEncoding(label: "revisionId", location: .uri(locationName: "RevisionId"))
         ]
 
@@ -1824,7 +1778,6 @@ extension DataExchange {
     }
 
     public struct UpdateRevisionResponse: AWSDecodableShape {
-
         /// The ARN for the revision.
         public let arn: String?
         /// An optional comment about the revision.

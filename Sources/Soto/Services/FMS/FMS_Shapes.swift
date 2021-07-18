@@ -121,7 +121,6 @@ extension FMS {
     // MARK: Shapes
 
     public struct ActionTarget: AWSDecodableShape {
-
         /// A description of the remediation action target.
         public let description: String?
         /// The ID of the remediation target.
@@ -139,7 +138,6 @@ extension FMS {
     }
 
     public struct App: AWSEncodableShape & AWSDecodableShape {
-
         /// The application's name.
         public let appName: String
         /// The application's port number, for example 80.
@@ -172,7 +170,6 @@ extension FMS {
     }
 
     public struct AppsListData: AWSEncodableShape & AWSDecodableShape {
-
         /// An array of applications in the Firewall Manager applications list.
         public let appsList: [App]
         /// The time that the Firewall Manager applications list was created.
@@ -183,7 +180,7 @@ extension FMS {
         public let listId: String?
         /// The name of the Firewall Manager applications list.
         public let listName: String
-        /// A unique identifier for each update to the list. When you update  the list, the update token must match the token of the current version of the application list.  You can retrieve the update token by getting the list. 
+        /// A unique identifier for each update to the list. When you update  the list, the update token must match the token of the current version of the application list.  You can retrieve the update token by getting the list.
         public let listUpdateToken: String?
         /// A map of previous version numbers to their corresponding App object arrays.
         public let previousAppsList: [String: [App]]?
@@ -230,7 +227,6 @@ extension FMS {
     }
 
     public struct AppsListDataSummary: AWSDecodableShape {
-
         /// An array of App objects in the Firewall Manager applications list.
         public let appsList: [App]?
         /// The Amazon Resource Name (ARN) of the applications list.
@@ -256,8 +252,7 @@ extension FMS {
     }
 
     public struct AssociateAdminAccountRequest: AWSEncodableShape {
-
-        /// The Amazon Web Services account ID to associate with Firewall Manager as the Firewall Manager administrator account. This must be an Organizations member account. For more information about Organizations, see  Managing the Amazon Web Services Accounts in Your Organization.  
+        /// The Amazon Web Services account ID to associate with Firewall Manager as the Firewall Manager administrator account. This must be an Organizations member account. For more information about Organizations, see  Managing the Amazon Web Services Accounts in Your Organization.
         public let adminAccount: String
 
         public init(adminAccount: String) {
@@ -276,7 +271,6 @@ extension FMS {
     }
 
     public struct AwsEc2InstanceViolation: AWSDecodableShape {
-
         /// Violation detail for network interfaces associated with the EC2 instance.
         public let awsEc2NetworkInterfaceViolations: [AwsEc2NetworkInterfaceViolation]?
         /// The resource ID of the EC2 instance.
@@ -294,7 +288,6 @@ extension FMS {
     }
 
     public struct AwsEc2NetworkInterfaceViolation: AWSDecodableShape {
-
         /// List of security groups that violate the rules specified in the primary security group of the Firewall Manager policy.
         public let violatingSecurityGroups: [String]?
         /// The resource ID of the network interface.
@@ -312,7 +305,6 @@ extension FMS {
     }
 
     public struct AwsVPCSecurityGroupViolation: AWSDecodableShape {
-
         /// List of rules specified in the security group of the Firewall Manager policy that partially match the ViolationTarget rule.
         public let partialMatches: [PartialMatch]?
         /// Remediation options for the rule specified in the ViolationTarget.
@@ -338,7 +330,6 @@ extension FMS {
     }
 
     public struct ComplianceViolator: AWSDecodableShape {
-
         /// The resource ID.
         public let resourceId: String?
         /// The resource type. This is in the format shown in the Amazon Web Services Resource Types Reference. For example: AWS::ElasticLoadBalancingV2::LoadBalancer,  AWS::CloudFront::Distribution, or AWS::NetworkFirewall::FirewallPolicy.
@@ -360,7 +351,6 @@ extension FMS {
     }
 
     public struct DeleteAppsListRequest: AWSEncodableShape {
-
         /// The ID of the applications list that you want to delete. You can retrieve this ID from  PutAppsList, ListAppsLists, and GetAppsList.
         public let listId: String
 
@@ -380,16 +370,11 @@ extension FMS {
     }
 
     public struct DeleteNotificationChannelRequest: AWSEncodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeletePolicyRequest: AWSEncodableShape {
-
-        /// If True, the request performs cleanup according to the policy type.  For WAF and Shield Advanced policies, the cleanup does the following:   Deletes rule groups created by Firewall Manager   Removes web ACLs from in-scope resources   Deletes web ACLs that contain no rules or rule groups   For security group policies, the cleanup does the following for each security group in the policy:   Disassociates the security group from in-scope resources    Deletes the security group if it was created through Firewall Manager and if it's no longer associated with any resources through another policy   After the cleanup, in-scope resources are no longer protected by web ACLs in this policy. Protection of out-of-scope resources remains unchanged. Scope is determined by tags that you create and accounts that you associate with the policy. When creating the policy, if you specify that only resources in specific accounts or with specific tags are in scope of the policy, those accounts and resources are handled by the policy. All others are out of scope. If you don't specify tags or accounts, all resources are in scope. 
+        /// If True, the request performs cleanup according to the policy type.  For WAF and Shield Advanced policies, the cleanup does the following:   Deletes rule groups created by Firewall Manager   Removes web ACLs from in-scope resources   Deletes web ACLs that contain no rules or rule groups   For security group policies, the cleanup does the following for each security group in the policy:   Disassociates the security group from in-scope resources    Deletes the security group if it was created through Firewall Manager and if it's no longer associated with any resources through another policy   After the cleanup, in-scope resources are no longer protected by web ACLs in this policy. Protection of out-of-scope resources remains unchanged. Scope is determined by tags that you create and accounts that you associate with the policy. When creating the policy, if you specify that only resources in specific accounts or with specific tags are in scope of the policy, those accounts and resources are handled by the policy. All others are out of scope. If you don't specify tags or accounts, all resources are in scope.
         public let deleteAllPolicyResources: Bool?
         /// The ID of the policy that you want to delete. You can retrieve this ID from  PutPolicy and ListPolicies.
         public let policyId: String
@@ -412,7 +397,6 @@ extension FMS {
     }
 
     public struct DeleteProtocolsListRequest: AWSEncodableShape {
-
         /// The ID of the protocols list that you want to delete. You can retrieve this ID from  PutProtocolsList, ListProtocolsLists, and GetProtocolsLost.
         public let listId: String
 
@@ -432,16 +416,11 @@ extension FMS {
     }
 
     public struct DisassociateAdminAccountRequest: AWSEncodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DnsDuplicateRuleGroupViolation: AWSDecodableShape {
-
-        /// Information about the VPC ID. 
+        /// Information about the VPC ID.
         public let violationTarget: String?
         /// A description of the violation that specifies the rule group and VPC.
         public let violationTargetDescription: String?
@@ -458,10 +437,9 @@ extension FMS {
     }
 
     public struct DnsRuleGroupLimitExceededViolation: AWSDecodableShape {
-
-        /// The number of rule groups currently associated with the VPC.  
+        /// The number of rule groups currently associated with the VPC.
         public let numberOfRuleGroupsAlreadyAssociated: Int?
-        /// Information about the VPC ID. 
+        /// Information about the VPC ID.
         public let violationTarget: String?
         /// A description of the violation that specifies the rule group and VPC.
         public let violationTargetDescription: String?
@@ -480,14 +458,13 @@ extension FMS {
     }
 
     public struct DnsRuleGroupPriorityConflictViolation: AWSDecodableShape {
-
-        /// The ID of the Firewall Manager DNS Firewall policy that was already applied to the VPC.  This policy contains the rule group that's already associated with the VPC. 
+        /// The ID of the Firewall Manager DNS Firewall policy that was already applied to the VPC.  This policy contains the rule group that's already associated with the VPC.
         public let conflictingPolicyId: String?
         /// The priority setting of the two conflicting rule groups.
         public let conflictingPriority: Int?
-        /// The priorities of rule groups that are already associated with the VPC. To retry your operation,  choose priority settings that aren't in this list for the rule groups in your new DNS Firewall policy. 
+        /// The priorities of rule groups that are already associated with the VPC. To retry your operation,  choose priority settings that aren't in this list for the rule groups in your new DNS Firewall policy.
         public let unavailablePriorities: [Int]?
-        /// Information about the VPC ID. 
+        /// Information about the VPC ID.
         public let violationTarget: String?
         /// A description of the violation that specifies the VPC and the rule group that's already associated with it.
         public let violationTargetDescription: String?
@@ -510,7 +487,6 @@ extension FMS {
     }
 
     public struct EC2AssociateRouteTableAction: AWSDecodableShape {
-
         /// A description of the EC2 route table that is associated with the remediation action.
         public let description: String?
         /// The ID of the gateway to be used with the EC2 route table that is associated with the remediation action.
@@ -536,7 +512,6 @@ extension FMS {
     }
 
     public struct EC2CopyRouteTableAction: AWSDecodableShape {
-
         /// A description of the copied EC2 route table that is associated with the remediation action.
         public let description: String?
         /// The ID of the copied EC2 route table that is associated with the remediation action.
@@ -558,7 +533,6 @@ extension FMS {
     }
 
     public struct EC2CreateRouteAction: AWSDecodableShape {
-
         /// A description of CreateRoute action in Amazon EC2.
         public let description: String?
         /// Information about the IPv4 CIDR address block used for the destination match.
@@ -596,7 +570,6 @@ extension FMS {
     }
 
     public struct EC2CreateRouteTableAction: AWSDecodableShape {
-
         /// A description of the CreateRouteTable action.
         public let description: String?
         /// Information about the ID of a VPC.
@@ -614,7 +587,6 @@ extension FMS {
     }
 
     public struct EC2DeleteRouteAction: AWSDecodableShape {
-
         /// A description of the DeleteRoute action.
         public let description: String?
         /// Information about the IPv4 CIDR range for the route. The value you specify must match the CIDR for the route exactly.
@@ -644,7 +616,6 @@ extension FMS {
     }
 
     public struct EC2ReplaceRouteAction: AWSDecodableShape {
-
         /// A description of the ReplaceRoute action in Amazon EC2.
         public let description: String?
         /// Information about the IPv4 CIDR address block used for the destination match. The value that you provide must match the CIDR of an existing route in the table.
@@ -678,7 +649,6 @@ extension FMS {
     }
 
     public struct EC2ReplaceRouteTableAssociationAction: AWSDecodableShape {
-
         /// Information about the association ID.
         public let associationId: ActionTarget
         /// A description of the ReplaceRouteTableAssociation action in Amazon EC2.
@@ -700,7 +670,6 @@ extension FMS {
     }
 
     public struct EvaluationResult: AWSDecodableShape {
-
         /// Describes an Amazon Web Services account's compliance with the Firewall Manager policy.
         public let complianceStatus: PolicyComplianceStatusType?
         /// Indicates that over 100 resources are noncompliant with the Firewall Manager policy.
@@ -722,7 +691,6 @@ extension FMS {
     }
 
     public struct ExpectedRoute: AWSDecodableShape {
-
         /// Information about the allowed targets.
         public let allowedTargets: [String]?
         /// Information about the contributing subnets.
@@ -756,15 +724,10 @@ extension FMS {
     }
 
     public struct GetAdminAccountRequest: AWSEncodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct GetAdminAccountResponse: AWSDecodableShape {
-
         /// The Amazon Web Services account that is set as the Firewall Manager administrator.
         public let adminAccount: String?
         /// The status of the Amazon Web Services account that you set as the Firewall Manager administrator.
@@ -782,7 +745,6 @@ extension FMS {
     }
 
     public struct GetAppsListRequest: AWSEncodableShape {
-
         /// Specifies whether the list to retrieve is a default list owned by Firewall Manager.
         public let defaultList: Bool?
         /// The ID of the Firewall Manager applications list that you want the details for.
@@ -806,7 +768,6 @@ extension FMS {
     }
 
     public struct GetAppsListResponse: AWSDecodableShape {
-
         /// Information about the specified Firewall Manager applications list.
         public let appsList: AppsListData?
         /// The Amazon Resource Name (ARN) of the applications list.
@@ -824,7 +785,6 @@ extension FMS {
     }
 
     public struct GetComplianceDetailRequest: AWSEncodableShape {
-
         /// The Amazon Web Services account that owns the resources that you want to get the details for.
         public let memberAccount: String
         /// The ID of the policy that you want to get the details for. PolicyId is returned by PutPolicy and by ListPolicies.
@@ -851,7 +811,6 @@ extension FMS {
     }
 
     public struct GetComplianceDetailResponse: AWSDecodableShape {
-
         /// Information about the resources and the policy that you specified in the GetComplianceDetail request.
         public let policyComplianceDetail: PolicyComplianceDetail?
 
@@ -865,18 +824,13 @@ extension FMS {
     }
 
     public struct GetNotificationChannelRequest: AWSEncodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct GetNotificationChannelResponse: AWSDecodableShape {
-
         /// The IAM role that is used by Firewall Manager to record activity to SNS.
         public let snsRoleName: String?
-        /// The SNS topic that records Firewall Manager activity. 
+        /// The SNS topic that records Firewall Manager activity.
         public let snsTopicArn: String?
 
         public init(snsRoleName: String? = nil, snsTopicArn: String? = nil) {
@@ -891,7 +845,6 @@ extension FMS {
     }
 
     public struct GetPolicyRequest: AWSEncodableShape {
-
         /// The ID of the Firewall Manager policy that you want the details for.
         public let policyId: String
 
@@ -911,7 +864,6 @@ extension FMS {
     }
 
     public struct GetPolicyResponse: AWSDecodableShape {
-
         /// Information about the specified Firewall Manager policy.
         public let policy: Policy?
         /// The Amazon Resource Name (ARN) of the specified policy.
@@ -929,7 +881,6 @@ extension FMS {
     }
 
     public struct GetProtectionStatusRequest: AWSEncodableShape {
-
         /// The end of the time period to query for the attacks. This is a timestamp type. The request syntax listing indicates a number type because the default used by Firewall Manager is Unix time in seconds. However, any valid timestamp format is allowed.
         public let endTime: Date?
         /// Specifies the number of objects that you want Firewall Manager to return for this request. If you have more  objects than the number that you specify for MaxResults, the response includes a  NextToken value that you can use to get another batch of objects.
@@ -977,12 +928,11 @@ extension FMS {
     }
 
     public struct GetProtectionStatusResponse: AWSDecodableShape {
-
         /// The ID of the Firewall Manager administrator account for this policy.
         public let adminAccountId: String?
-        /// Details about the attack, including the following:   Attack type   Account ID   ARN of the resource attacked   Start time of the attack   End time of the attack (ongoing attacks will not have an end time)   The details are in JSON format. 
+        /// Details about the attack, including the following:   Attack type   Account ID   ARN of the resource attacked   Start time of the attack   End time of the attack (ongoing attacks will not have an end time)   The details are in JSON format.
         public let data: String?
-        /// If you have more objects than the number that you specified for MaxResults in the request,  the response includes a NextToken value. To list more objects, submit another  GetProtectionStatus request, and specify the NextToken value from the response in the  NextToken value in the next request. Amazon Web Services SDKs provide auto-pagination that identify NextToken in a response and make subsequent request calls automatically on your behalf. However, this feature is not supported by GetProtectionStatus. You must submit subsequent requests with NextToken using your own processes. 
+        /// If you have more objects than the number that you specified for MaxResults in the request,  the response includes a NextToken value. To list more objects, submit another  GetProtectionStatus request, and specify the NextToken value from the response in the  NextToken value in the next request. Amazon Web Services SDKs provide auto-pagination that identify NextToken in a response and make subsequent request calls automatically on your behalf. However, this feature is not supported by GetProtectionStatus. You must submit subsequent requests with NextToken using your own processes.
         public let nextToken: String?
         /// The service type that is protected by the policy. Currently, this is always SHIELD_ADVANCED.
         public let serviceType: SecurityServiceType?
@@ -1003,7 +953,6 @@ extension FMS {
     }
 
     public struct GetProtocolsListRequest: AWSEncodableShape {
-
         /// Specifies whether the list to retrieve is a default list owned by Firewall Manager.
         public let defaultList: Bool?
         /// The ID of the Firewall Manager protocols list that you want the details for.
@@ -1027,7 +976,6 @@ extension FMS {
     }
 
     public struct GetProtocolsListResponse: AWSDecodableShape {
-
         /// Information about the specified Firewall Manager protocols list.
         public let protocolsList: ProtocolsListData?
         /// The Amazon Resource Name (ARN) of the specified protocols list.
@@ -1045,14 +993,13 @@ extension FMS {
     }
 
     public struct GetViolationDetailsRequest: AWSEncodableShape {
-
         /// The Amazon Web Services account ID that you want the details for.
         public let memberAccount: String
         /// The ID of the Firewall Manager policy that you want the details for. This currently only supports security group content audit policies.
         public let policyId: String
         /// The ID of the resource that has violations.
         public let resourceId: String
-        /// The resource type. This is in the format shown in the Amazon Web Services Resource Types Reference. Supported resource types are: AWS::EC2::Instance, AWS::EC2::NetworkInterface,  AWS::EC2::SecurityGroup, AWS::NetworkFirewall::FirewallPolicy, and AWS::EC2::Subnet. 
+        /// The resource type. This is in the format shown in the Amazon Web Services Resource Types Reference. Supported resource types are: AWS::EC2::Instance, AWS::EC2::NetworkInterface,  AWS::EC2::SecurityGroup, AWS::NetworkFirewall::FirewallPolicy, and AWS::EC2::Subnet.
         public let resourceType: String
 
         public init(memberAccount: String, policyId: String, resourceId: String, resourceType: String) {
@@ -1086,7 +1033,6 @@ extension FMS {
     }
 
     public struct GetViolationDetailsResponse: AWSDecodableShape {
-
         /// Violation detail for a resource.
         public let violationDetail: ViolationDetail?
 
@@ -1100,7 +1046,6 @@ extension FMS {
     }
 
     public struct ListAppsListsRequest: AWSEncodableShape {
-
         /// Specifies whether the lists to retrieve are default lists owned by Firewall Manager.
         public let defaultLists: Bool?
         /// The maximum number of objects that you want Firewall Manager to return for this request. If more objects are available, in the response, Firewall Manager provides a NextToken value that you can use in a subsequent call to get the next batch of objects.  If you don't specify this, Firewall Manager returns all available objects.
@@ -1130,7 +1075,6 @@ extension FMS {
     }
 
     public struct ListAppsListsResponse: AWSDecodableShape {
-
         /// An array of AppsListDataSummary objects.
         public let appsLists: [AppsListDataSummary]?
         /// If you specify a value for MaxResults in your list request, and you have more objects than the maximum,  Firewall Manager returns this token in the response. You can use this token in subsequent requests to retrieve the next batch of objects.
@@ -1148,7 +1092,6 @@ extension FMS {
     }
 
     public struct ListComplianceStatusRequest: AWSEncodableShape {
-
         /// Specifies the number of PolicyComplianceStatus objects that you want  Firewall Manager to return for this request. If you have more PolicyComplianceStatus objects than the number that you specify for MaxResults, the response includes a NextToken value that you can use to get another batch of PolicyComplianceStatus objects.
         public let maxResults: Int?
         /// If you specify a value for MaxResults and you have more PolicyComplianceStatus objects than the number that you specify for MaxResults, Firewall Manager returns a NextToken value in the response that allows you to list another group of PolicyComplianceStatus objects. For the second and subsequent ListComplianceStatus requests, specify the value of NextToken from the previous response to get information about another batch of PolicyComplianceStatus objects.
@@ -1181,7 +1124,6 @@ extension FMS {
     }
 
     public struct ListComplianceStatusResponse: AWSDecodableShape {
-
         /// If you have more PolicyComplianceStatus objects than the number that you specified for MaxResults in the request, the response includes a NextToken value. To list more PolicyComplianceStatus objects, submit another ListComplianceStatus request, and specify the NextToken value from the response in the NextToken value in the next request.
         public let nextToken: String?
         /// An array of PolicyComplianceStatus objects.
@@ -1199,7 +1141,6 @@ extension FMS {
     }
 
     public struct ListMemberAccountsRequest: AWSEncodableShape {
-
         /// Specifies the number of member account IDs that you want Firewall Manager to return for this request. If you have more IDs than the number that you specify for MaxResults, the response includes a NextToken value that you can use to get another batch of member account IDs.
         public let maxResults: Int?
         /// If you specify a value for MaxResults and you have more account IDs than the number that you specify for MaxResults, Firewall Manager returns a NextToken value in the response that allows you to list another group of IDs. For the second and subsequent ListMemberAccountsRequest requests, specify the value of NextToken from the previous response to get information about another batch of member account IDs.
@@ -1225,7 +1166,6 @@ extension FMS {
     }
 
     public struct ListMemberAccountsResponse: AWSDecodableShape {
-
         /// An array of account IDs.
         public let memberAccounts: [String]?
         /// If you have more member account IDs than the number that you specified for MaxResults in the request, the response includes a NextToken value. To list more IDs, submit another ListMemberAccounts request, and specify the NextToken value from the response in the NextToken value in the next request.
@@ -1243,7 +1183,6 @@ extension FMS {
     }
 
     public struct ListPoliciesRequest: AWSEncodableShape {
-
         /// Specifies the number of PolicySummary objects that you want Firewall Manager to return for this request. If you have more PolicySummary objects than the number that you specify for MaxResults, the response includes a NextToken value that you can use to get another batch of PolicySummary objects.
         public let maxResults: Int?
         /// If you specify a value for MaxResults and you have more PolicySummary objects than the number that you specify for MaxResults, Firewall Manager returns a NextToken value in the response that allows you to list another group of PolicySummary objects. For the second and subsequent ListPolicies requests, specify the value of NextToken from the previous response to get information about another batch of PolicySummary objects.
@@ -1269,7 +1208,6 @@ extension FMS {
     }
 
     public struct ListPoliciesResponse: AWSDecodableShape {
-
         /// If you have more PolicySummary objects than the number that you specified for MaxResults in the request, the response includes a NextToken value. To list more PolicySummary objects, submit another ListPolicies request, and specify the NextToken value from the response in the NextToken value in the next request.
         public let nextToken: String?
         /// An array of PolicySummary objects.
@@ -1287,7 +1225,6 @@ extension FMS {
     }
 
     public struct ListProtocolsListsRequest: AWSEncodableShape {
-
         /// Specifies whether the lists to retrieve are default lists owned by Firewall Manager.
         public let defaultLists: Bool?
         /// The maximum number of objects that you want Firewall Manager to return for this request. If more objects are available, in the response, Firewall Manager provides a NextToken value that you can use in a subsequent call to get the next batch of objects.  If you don't specify this, Firewall Manager returns all available objects.
@@ -1317,7 +1254,6 @@ extension FMS {
     }
 
     public struct ListProtocolsListsResponse: AWSDecodableShape {
-
         /// If you specify a value for MaxResults in your list request, and you have more objects than the maximum,  Firewall Manager returns this token in the response. You can use this token in subsequent requests to retrieve the next batch of objects.
         public let nextToken: String?
         /// An array of ProtocolsListDataSummary objects.
@@ -1335,8 +1271,7 @@ extension FMS {
     }
 
     public struct ListTagsForResourceRequest: AWSEncodableShape {
-
-        /// The Amazon Resource Name (ARN) of the resource to return tags for. The Firewall Manager resources that support tagging are policies, applications lists, and protocols lists. 
+        /// The Amazon Resource Name (ARN) of the resource to return tags for. The Firewall Manager resources that support tagging are policies, applications lists, and protocols lists.
         public let resourceArn: String
 
         public init(resourceArn: String) {
@@ -1355,7 +1290,6 @@ extension FMS {
     }
 
     public struct ListTagsForResourceResponse: AWSDecodableShape {
-
         /// The tags associated with the resource.
         public let tagList: [Tag]?
 
@@ -1369,7 +1303,6 @@ extension FMS {
     }
 
     public struct NetworkFirewallBlackHoleRouteDetectedViolation: AWSDecodableShape {
-
         /// Information about the route table ID.
         public let routeTableId: String?
         /// Information about the route or routes that are in violation.
@@ -1395,7 +1328,6 @@ extension FMS {
     }
 
     public struct NetworkFirewallInternetTrafficNotInspectedViolation: AWSDecodableShape {
-
         /// The actual firewall subnet routes.
         public let actualFirewallSubnetRoutes: [Route]?
         /// The actual internet gateway routes.
@@ -1465,7 +1397,6 @@ extension FMS {
     }
 
     public struct NetworkFirewallInvalidRouteConfigurationViolation: AWSDecodableShape {
-
         /// The actual firewall endpoint.
         public let actualFirewallEndpoint: String?
         /// The actual subnet ID for the firewall.
@@ -1539,8 +1470,7 @@ extension FMS {
     }
 
     public struct NetworkFirewallMissingExpectedRTViolation: AWSDecodableShape {
-
-        /// The Availability Zone of a violating subnet. 
+        /// The Availability Zone of a violating subnet.
         public let availabilityZone: String?
         /// The resource ID of the current route table that's associated with the subnet, if one is available.
         public let currentRouteTable: String?
@@ -1569,7 +1499,6 @@ extension FMS {
     }
 
     public struct NetworkFirewallMissingExpectedRoutesViolation: AWSDecodableShape {
-
         /// The expected routes.
         public let expectedRoutes: [ExpectedRoute]?
         /// The target of the violation.
@@ -1591,10 +1520,9 @@ extension FMS {
     }
 
     public struct NetworkFirewallMissingFirewallViolation: AWSDecodableShape {
-
-        /// The Availability Zone of a violating subnet. 
+        /// The Availability Zone of a violating subnet.
         public let availabilityZone: String?
-        /// The reason the resource has this violation, if one is available. 
+        /// The reason the resource has this violation, if one is available.
         public let targetViolationReason: String?
         /// The ID of the Network Firewall or VPC resource that's in violation.
         public let violationTarget: String?
@@ -1617,10 +1545,9 @@ extension FMS {
     }
 
     public struct NetworkFirewallMissingSubnetViolation: AWSDecodableShape {
-
-        /// The Availability Zone of a violating subnet. 
+        /// The Availability Zone of a violating subnet.
         public let availabilityZone: String?
-        /// The reason the resource has this violation, if one is available. 
+        /// The reason the resource has this violation, if one is available.
         public let targetViolationReason: String?
         /// The ID of the Network Firewall or VPC resource that's in violation.
         public let violationTarget: String?
@@ -1643,16 +1570,15 @@ extension FMS {
     }
 
     public struct NetworkFirewallPolicyDescription: AWSDecodableShape {
-
-        /// The stateful rule groups that are used in the Network Firewall firewall policy. 
+        /// The stateful rule groups that are used in the Network Firewall firewall policy.
         public let statefulRuleGroups: [StatefulRuleGroup]?
         /// Names of custom actions that are available for use in the stateless default actions settings.
         public let statelessCustomActions: [String]?
-        /// The actions to take on packets that don't match any of the stateless rule groups. 
+        /// The actions to take on packets that don't match any of the stateless rule groups.
         public let statelessDefaultActions: [String]?
-        /// The actions to take on packet fragments that don't match any of the stateless rule groups. 
+        /// The actions to take on packet fragments that don't match any of the stateless rule groups.
         public let statelessFragmentDefaultActions: [String]?
-        /// The stateless rule groups that are used in the Network Firewall firewall policy. 
+        /// The stateless rule groups that are used in the Network Firewall firewall policy.
         public let statelessRuleGroups: [StatelessRuleGroup]?
 
         public init(statefulRuleGroups: [StatefulRuleGroup]? = nil, statelessCustomActions: [String]? = nil, statelessDefaultActions: [String]? = nil, statelessFragmentDefaultActions: [String]? = nil, statelessRuleGroups: [StatelessRuleGroup]? = nil) {
@@ -1673,10 +1599,9 @@ extension FMS {
     }
 
     public struct NetworkFirewallPolicyModifiedViolation: AWSDecodableShape {
-
-        /// The policy that's currently in use in the individual account. 
+        /// The policy that's currently in use in the individual account.
         public let currentPolicyDescription: NetworkFirewallPolicyDescription?
-        /// The policy that should be in use in the individual account in order to be compliant. 
+        /// The policy that should be in use in the individual account in order to be compliant.
         public let expectedPolicyDescription: NetworkFirewallPolicyDescription?
         /// The ID of the Network Firewall or VPC resource that's in violation.
         public let violationTarget: String?
@@ -1695,7 +1620,6 @@ extension FMS {
     }
 
     public struct NetworkFirewallUnexpectedFirewallRoutesViolation: AWSDecodableShape {
-
         /// The endpoint of the firewall.
         public let firewallEndpoint: String?
         /// The subnet ID for the firewall.
@@ -1725,7 +1649,6 @@ extension FMS {
     }
 
     public struct NetworkFirewallUnexpectedGatewayRoutesViolation: AWSDecodableShape {
-
         /// Information about the gateway ID.
         public let gatewayId: String?
         /// Information about the  route table.
@@ -1751,7 +1674,6 @@ extension FMS {
     }
 
     public struct PartialMatch: AWSDecodableShape {
-
         /// The reference rule from the primary security group of the Firewall Manager policy.
         public let reference: String?
         /// The violation reason.
@@ -1769,12 +1691,11 @@ extension FMS {
     }
 
     public struct Policy: AWSEncodableShape & AWSDecodableShape {
-
-        /// Specifies the Amazon Web Services account IDs and Organizations organizational units (OUs) to exclude from the policy.  Specifying an OU is the equivalent of specifying all accounts in the OU and in any of its child OUs, including any child OUs and accounts that are added at a later time. You can specify inclusions or exclusions, but not both. If you specify an IncludeMap, Firewall Manager  applies the policy to all accounts specified by the IncludeMap, and  does not evaluate any ExcludeMap specifications. If you do not specify an IncludeMap, then Firewall Manager  applies the policy to all accounts except for those specified by the ExcludeMap. You can specify account IDs, OUs, or a combination:    Specify account IDs by setting the key to ACCOUNT. For example, the following is a valid map:   {“ACCOUNT” : [“accountID1”, “accountID2”]}.   Specify OUs by setting the key to ORG_UNIT. For example, the following is a valid map:  {“ORG_UNIT” : [“ouid111”, “ouid112”]}.   Specify accounts and OUs together in a single map, separated with a comma. For example, the following is a valid map: {“ACCOUNT” : [“accountID1”, “accountID2”], “ORG_UNIT” : [“ouid111”, “ouid112”]}.  
+        /// Specifies the Amazon Web Services account IDs and Organizations organizational units (OUs) to exclude from the policy.  Specifying an OU is the equivalent of specifying all accounts in the OU and in any of its child OUs, including any child OUs and accounts that are added at a later time. You can specify inclusions or exclusions, but not both. If you specify an IncludeMap, Firewall Manager  applies the policy to all accounts specified by the IncludeMap, and  does not evaluate any ExcludeMap specifications. If you do not specify an IncludeMap, then Firewall Manager  applies the policy to all accounts except for those specified by the ExcludeMap. You can specify account IDs, OUs, or a combination:    Specify account IDs by setting the key to ACCOUNT. For example, the following is a valid map:   {“ACCOUNT” : [“accountID1”, “accountID2”]}.   Specify OUs by setting the key to ORG_UNIT. For example, the following is a valid map:  {“ORG_UNIT” : [“ouid111”, “ouid112”]}.   Specify accounts and OUs together in a single map, separated with a comma. For example, the following is a valid map: {“ACCOUNT” : [“accountID1”, “accountID2”], “ORG_UNIT” : [“ouid111”, “ouid112”]}.
         public let excludeMap: [CustomerPolicyScopeIdType: [String]]?
         /// If set to True, resources with the tags that are specified in the ResourceTag array are not in scope of the policy. If set to False, and the ResourceTag array is not null, only resources with the specified tags are in scope of the policy.
         public let excludeResourceTags: Bool
-        /// Specifies the Amazon Web Services account IDs and Organizations organizational units (OUs) to include in the policy.  Specifying an OU is the equivalent of specifying all accounts in the OU and in any of its child OUs, including any child OUs and accounts that are added at a later time. You can specify inclusions or exclusions, but not both. If you specify an IncludeMap, Firewall Manager  applies the policy to all accounts specified by the IncludeMap, and  does not evaluate any ExcludeMap specifications. If you do not specify an IncludeMap, then Firewall Manager  applies the policy to all accounts except for those specified by the ExcludeMap. You can specify account IDs, OUs, or a combination:    Specify account IDs by setting the key to ACCOUNT. For example, the following is a valid map:   {“ACCOUNT” : [“accountID1”, “accountID2”]}.   Specify OUs by setting the key to ORG_UNIT. For example, the following is a valid map:  {“ORG_UNIT” : [“ouid111”, “ouid112”]}.   Specify accounts and OUs together in a single map, separated with a comma. For example, the following is a valid map: {“ACCOUNT” : [“accountID1”, “accountID2”], “ORG_UNIT” : [“ouid111”, “ouid112”]}.  
+        /// Specifies the Amazon Web Services account IDs and Organizations organizational units (OUs) to include in the policy.  Specifying an OU is the equivalent of specifying all accounts in the OU and in any of its child OUs, including any child OUs and accounts that are added at a later time. You can specify inclusions or exclusions, but not both. If you specify an IncludeMap, Firewall Manager  applies the policy to all accounts specified by the IncludeMap, and  does not evaluate any ExcludeMap specifications. If you do not specify an IncludeMap, then Firewall Manager  applies the policy to all accounts except for those specified by the ExcludeMap. You can specify account IDs, OUs, or a combination:    Specify account IDs by setting the key to ACCOUNT. For example, the following is a valid map:   {“ACCOUNT” : [“accountID1”, “accountID2”]}.   Specify OUs by setting the key to ORG_UNIT. For example, the following is a valid map:  {“ORG_UNIT” : [“ouid111”, “ouid112”]}.   Specify accounts and OUs together in a single map, separated with a comma. For example, the following is a valid map: {“ACCOUNT” : [“accountID1”, “accountID2”], “ORG_UNIT” : [“ouid111”, “ouid112”]}.
         public let includeMap: [CustomerPolicyScopeIdType: [String]]?
         /// The ID of the Firewall Manager policy.
         public let policyId: String?
@@ -1848,7 +1769,6 @@ extension FMS {
     }
 
     public struct PolicyComplianceDetail: AWSDecodableShape {
-
         /// Indicates if over 100 resources are noncompliant with the Firewall Manager policy.
         public let evaluationLimitExceeded: Bool?
         /// A timestamp that indicates when the returned information should be considered out of date.
@@ -1886,7 +1806,6 @@ extension FMS {
     }
 
     public struct PolicyComplianceStatus: AWSDecodableShape {
-
         /// An array of EvaluationResult objects.
         public let evaluationResults: [EvaluationResult]?
         /// Details about problems with dependent services, such as WAF or Config, and the error message received that indicates the problem with the service.
@@ -1924,7 +1843,6 @@ extension FMS {
     }
 
     public struct PolicySummary: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the specified policy.
         public let policyArn: String?
         /// The ID of the specified policy.
@@ -1958,7 +1876,6 @@ extension FMS {
     }
 
     public struct PossibleRemediationAction: AWSDecodableShape {
-
         /// A description of the list of remediation actions.
         public let description: String?
         /// Information about whether an action is taken by default.
@@ -1980,7 +1897,6 @@ extension FMS {
     }
 
     public struct PossibleRemediationActions: AWSDecodableShape {
-
         /// Information about the actions.
         public let actions: [PossibleRemediationAction]?
         /// A description of the possible remediation actions list.
@@ -1998,7 +1914,6 @@ extension FMS {
     }
 
     public struct ProtocolsListData: AWSEncodableShape & AWSDecodableShape {
-
         /// The time that the Firewall Manager protocols list was created.
         public let createTime: Date?
         /// The time that the Firewall Manager protocols list was last updated.
@@ -2007,7 +1922,7 @@ extension FMS {
         public let listId: String?
         /// The name of the Firewall Manager protocols list.
         public let listName: String
-        /// A unique identifier for each update to the list. When you update  the list, the update token must match the token of the current version of the application list.  You can retrieve the update token by getting the list. 
+        /// A unique identifier for each update to the list. When you update  the list, the update token must match the token of the current version of the application list.  You can retrieve the update token by getting the list.
         public let listUpdateToken: String?
         /// A map of previous version numbers to their corresponding protocol arrays.
         public let previousProtocolsList: [String: [String]]?
@@ -2058,7 +1973,6 @@ extension FMS {
     }
 
     public struct ProtocolsListDataSummary: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the specified protocols list.
         public let listArn: String?
         /// The ID of the specified protocols list.
@@ -2084,7 +1998,6 @@ extension FMS {
     }
 
     public struct PutAppsListRequest: AWSEncodableShape {
-
         /// The details of the Firewall Manager applications list to be created.
         public let appsList: AppsListData
         /// The tags associated with the resource.
@@ -2110,7 +2023,6 @@ extension FMS {
     }
 
     public struct PutAppsListResponse: AWSDecodableShape {
-
         /// The details of the Firewall Manager applications list.
         public let appsList: AppsListData?
         /// The Amazon Resource Name (ARN) of the applications list.
@@ -2128,8 +2040,7 @@ extension FMS {
     }
 
     public struct PutNotificationChannelRequest: AWSEncodableShape {
-
-        /// The Amazon Resource Name (ARN) of the IAM role that allows Amazon SNS to record  Firewall Manager activity. 
+        /// The Amazon Resource Name (ARN) of the IAM role that allows Amazon SNS to record  Firewall Manager activity.
         public let snsRoleName: String
         /// The Amazon Resource Name (ARN) of the SNS topic that collects notifications from  Firewall Manager.
         public let snsTopicArn: String
@@ -2155,7 +2066,6 @@ extension FMS {
     }
 
     public struct PutPolicyRequest: AWSEncodableShape {
-
         /// The details of the Firewall Manager policy to be created.
         public let policy: Policy
         /// The tags to add to the Amazon Web Services resource.
@@ -2181,7 +2091,6 @@ extension FMS {
     }
 
     public struct PutPolicyResponse: AWSDecodableShape {
-
         /// The details of the Firewall Manager policy.
         public let policy: Policy?
         /// The Amazon Resource Name (ARN) of the policy.
@@ -2199,7 +2108,6 @@ extension FMS {
     }
 
     public struct PutProtocolsListRequest: AWSEncodableShape {
-
         /// The details of the Firewall Manager protocols list to be created.
         public let protocolsList: ProtocolsListData
         /// The tags associated with the resource.
@@ -2225,7 +2133,6 @@ extension FMS {
     }
 
     public struct PutProtocolsListResponse: AWSDecodableShape {
-
         /// The details of the Firewall Manager protocols list.
         public let protocolsList: ProtocolsListData?
         /// The Amazon Resource Name (ARN) of the protocols list.
@@ -2243,7 +2150,6 @@ extension FMS {
     }
 
     public struct RemediationAction: AWSDecodableShape {
-
         /// A description of a remediation action.
         public let description: String?
         /// Information about the AssociateRouteTable action in the Amazon EC2 API.
@@ -2285,7 +2191,6 @@ extension FMS {
     }
 
     public struct RemediationActionWithOrder: AWSDecodableShape {
-
         /// The order of the remediation actions in the list.
         public let order: Int?
         /// Information about an action you can take to remediate a violation.
@@ -2303,7 +2208,6 @@ extension FMS {
     }
 
     public struct ResourceTag: AWSEncodableShape & AWSDecodableShape {
-
         /// The resource tag key.
         public let key: String
         /// The resource tag value.
@@ -2329,18 +2233,17 @@ extension FMS {
     }
 
     public struct ResourceViolation: AWSDecodableShape {
-
         /// Violation detail for an EC2 instance.
         public let awsEc2InstanceViolation: AwsEc2InstanceViolation?
         /// Violation detail for a network interface.
         public let awsEc2NetworkInterfaceViolation: AwsEc2NetworkInterfaceViolation?
         /// Violation detail for security groups.
         public let awsVPCSecurityGroupViolation: AwsVPCSecurityGroupViolation?
-        /// Violation detail for a DNS Firewall policy that indicates that a rule group that Firewall Manager  tried to associate with a VPC is already associated with the VPC and can't be associated again. 
+        /// Violation detail for a DNS Firewall policy that indicates that a rule group that Firewall Manager  tried to associate with a VPC is already associated with the VPC and can't be associated again.
         public let dnsDuplicateRuleGroupViolation: DnsDuplicateRuleGroupViolation?
-        /// Violation detail for a DNS Firewall policy that indicates that the VPC reached the limit for associated DNS Firewall rule groups. Firewall Manager tried to associate another rule group with the VPC and failed. 
+        /// Violation detail for a DNS Firewall policy that indicates that the VPC reached the limit for associated DNS Firewall rule groups. Firewall Manager tried to associate another rule group with the VPC and failed.
         public let dnsRuleGroupLimitExceededViolation: DnsRuleGroupLimitExceededViolation?
-        /// Violation detail for a DNS Firewall policy that indicates that a rule group that Firewall Manager  tried to associate with a VPC has the same priority as a rule group that's already associated. 
+        /// Violation detail for a DNS Firewall policy that indicates that a rule group that Firewall Manager  tried to associate with a VPC has the same priority as a rule group that's already associated.
         public let dnsRuleGroupPriorityConflictViolation: DnsRuleGroupPriorityConflictViolation?
         public let networkFirewallBlackHoleRouteDetectedViolation: NetworkFirewallBlackHoleRouteDetectedViolation?
         /// Violation detail for the subnet for which internet traffic hasn't been inspected.
@@ -2349,9 +2252,9 @@ extension FMS {
         public let networkFirewallInvalidRouteConfigurationViolation: NetworkFirewallInvalidRouteConfigurationViolation?
         /// Expected routes are missing from Network Firewall.
         public let networkFirewallMissingExpectedRoutesViolation: NetworkFirewallMissingExpectedRoutesViolation?
-        /// Violation detail for an Network Firewall policy that indicates that a subnet  is not associated with the expected Firewall Manager managed route table. 
+        /// Violation detail for an Network Firewall policy that indicates that a subnet  is not associated with the expected Firewall Manager managed route table.
         public let networkFirewallMissingExpectedRTViolation: NetworkFirewallMissingExpectedRTViolation?
-        /// Violation detail for an Network Firewall policy that indicates that a subnet has no Firewall Manager  managed firewall in its VPC. 
+        /// Violation detail for an Network Firewall policy that indicates that a subnet has no Firewall Manager  managed firewall in its VPC.
         public let networkFirewallMissingFirewallViolation: NetworkFirewallMissingFirewallViolation?
         /// Violation detail for an Network Firewall policy that indicates that an Availability Zone is  missing the expected Firewall Manager managed subnet.
         public let networkFirewallMissingSubnetViolation: NetworkFirewallMissingSubnetViolation?
@@ -2406,7 +2309,6 @@ extension FMS {
     }
 
     public struct Route: AWSDecodableShape {
-
         /// The destination of the route.
         public let destination: String?
         /// The type of destination for the route.
@@ -2432,7 +2334,6 @@ extension FMS {
     }
 
     public struct SecurityGroupRemediationAction: AWSDecodableShape {
-
         /// Brief description of the action that will be performed.
         public let description: String?
         /// Indicates if the current action is the default action.
@@ -2458,7 +2359,6 @@ extension FMS {
     }
 
     public struct SecurityGroupRuleDescription: AWSDecodableShape {
-
         /// The start of the port range for the TCP and UDP protocols, or an ICMP/ICMPv6 type number. A value of -1 indicates all ICMP/ICMPv6 types.
         public let fromPort: Int64?
         /// The IPv4 ranges for the security group rule.
@@ -2492,8 +2392,7 @@ extension FMS {
     }
 
     public struct SecurityServicePolicyData: AWSEncodableShape & AWSDecodableShape {
-
-        /// Details about the service that are specific to the service type, in JSON format. For service type SHIELD_ADVANCED, this is an empty string.   Example: DNS_FIREWALL   "{\"type\":\"DNS_FIREWALL\",\"preProcessRuleGroups\":[{\"ruleGroupId\":\"rslvr-frg-1\",\"priority\":10}],\"postProcessRuleGroups\":[{\"ruleGroupId\":\"rslvr-frg-2\",\"priority\":9911}]}"    Example: NETWORK_FIREWALL   "{\"type\":\"NETWORK_FIREWALL\",\"networkFirewallStatelessRuleGroupReferences\":[{\"resourceARN\":\"arn:aws:network-firewall:us-west-1:1234567891011:stateless-rulegroup/rulegroup2\",\"priority\":10}],\"networkFirewallStatelessDefaultActions\":[\"aws:pass\",\"custom1\"],\"networkFirewallStatelessFragmentDefaultActions\":[\"custom2\",\"aws:pass\"],\"networkFirewallStatelessCustomActions\":[{\"actionName\":\"custom1\",\"actionDefinition\":{\"publishMetricAction\":{\"dimensions\":[{\"value\":\"dimension1\"}]}}},{\"actionName\":\"custom2\",\"actionDefinition\":{\"publishMetricAction\":{\"dimensions\":[{\"value\":\"dimension2\"}]}}}],\"networkFirewallStatefulRuleGroupReferences\":[{\"resourceARN\":\"arn:aws:network-firewall:us-west-1:1234567891011:stateful-rulegroup/rulegroup1\"}],\"networkFirewallOrchestrationConfig\":{\"singleFirewallEndpointPerVPC\":true,\"allowedIPV4CidrList\":[\"10.24.34.0/28\"]} }"    Example: WAFV2   "{\"type\":\"WAFV2\",\"preProcessRuleGroups\":[{\"ruleGroupArn\":null,\"overrideAction\":{\"type\":\"NONE\"},\"managedRuleGroupIdentifier\":{\"version\":null,\"vendorName\":\"AWS\",\"managedRuleGroupName\":\"AWSManagedRulesAmazonIpReputationList\"},\"ruleGroupType\":\"ManagedRuleGroup\",\"excludeRules\":[]}],\"postProcessRuleGroups\":[],\"defaultAction\":{\"type\":\"ALLOW\"},\"overrideCustomerWebACLAssociation\":false,\"loggingConfiguration\":{\"logDestinationConfigs\":[\"arn:aws:firehose:us-west-2:12345678912:deliverystream/aws-waf-logs-fms-admin-destination\"],\"redactedFields\":[{\"redactedFieldType\":\"SingleHeader\",\"redactedFieldValue\":\"Cookies\"},{\"redactedFieldType\":\"Method\"}]}}"  In the loggingConfiguration, you can specify one logDestinationConfigs, you can optionally provide up to 20 redactedFields, and the RedactedFieldType must be one of URI, QUERY_STRING, HEADER, or METHOD.   Example: WAF Classic   "{\"type\": \"WAF\", \"ruleGroups\": [{\"id\":\"12345678-1bcd-9012-efga-0987654321ab\", \"overrideAction\" : {\"type\": \"COUNT\"}}], \"defaultAction\": {\"type\": \"BLOCK\"}}"    Example: SECURITY_GROUPS_COMMON   "{\"type\":\"SECURITY_GROUPS_COMMON\",\"revertManualSecurityGroupChanges\":false,\"exclusiveResourceSecurityGroupManagement\":false, \"applyToAllEC2InstanceENIs\":false,\"securityGroups\":[{\"id\":\" sg-000e55995d61a06bd\"}]}"    Example: Shared VPCs. Apply the preceding policy to resources in shared VPCs as well as to those in VPCs that the account owns   "{\"type\":\"SECURITY_GROUPS_COMMON\",\"revertManualSecurityGroupChanges\":false,\"exclusiveResourceSecurityGroupManagement\":false, \"applyToAllEC2InstanceENIs\":false,\"includeSharedVPC\":true,\"securityGroups\":[{\"id\":\" sg-000e55995d61a06bd\"}]}"    Example: SECURITY_GROUPS_CONTENT_AUDIT   "{\"type\":\"SECURITY_GROUPS_CONTENT_AUDIT\",\"securityGroups\":[{\"id\":\"sg-000e55995d61a06bd\"}],\"securityGroupAction\":{\"type\":\"ALLOW\"}}"  The security group action for content audit can be ALLOW or DENY. For ALLOW, all in-scope security group rules must be within the allowed range of the policy's security group rules. For DENY, all in-scope security group rules must not contain a value or a range that matches a rule value or range in the policy security group.   Example: SECURITY_GROUPS_USAGE_AUDIT   "{\"type\":\"SECURITY_GROUPS_USAGE_AUDIT\",\"deleteUnusedSecurityGroups\":true,\"coalesceRedundantSecurityGroups\":true}"   
+        /// Details about the service that are specific to the service type, in JSON format. For service type SHIELD_ADVANCED, this is an empty string.   Example: DNS_FIREWALL   "{\"type\":\"DNS_FIREWALL\",\"preProcessRuleGroups\":[{\"ruleGroupId\":\"rslvr-frg-1\",\"priority\":10}],\"postProcessRuleGroups\":[{\"ruleGroupId\":\"rslvr-frg-2\",\"priority\":9911}]}"    Example: NETWORK_FIREWALL   "{\"type\":\"NETWORK_FIREWALL\",\"networkFirewallStatelessRuleGroupReferences\":[{\"resourceARN\":\"arn:aws:network-firewall:us-west-1:1234567891011:stateless-rulegroup/rulegroup2\",\"priority\":10}],\"networkFirewallStatelessDefaultActions\":[\"aws:pass\",\"custom1\"],\"networkFirewallStatelessFragmentDefaultActions\":[\"custom2\",\"aws:pass\"],\"networkFirewallStatelessCustomActions\":[{\"actionName\":\"custom1\",\"actionDefinition\":{\"publishMetricAction\":{\"dimensions\":[{\"value\":\"dimension1\"}]}}},{\"actionName\":\"custom2\",\"actionDefinition\":{\"publishMetricAction\":{\"dimensions\":[{\"value\":\"dimension2\"}]}}}],\"networkFirewallStatefulRuleGroupReferences\":[{\"resourceARN\":\"arn:aws:network-firewall:us-west-1:1234567891011:stateful-rulegroup/rulegroup1\"}],\"networkFirewallOrchestrationConfig\":{\"singleFirewallEndpointPerVPC\":true,\"allowedIPV4CidrList\":[\"10.24.34.0/28\"]} }"    Example: WAFV2   "{\"type\":\"WAFV2\",\"preProcessRuleGroups\":[{\"ruleGroupArn\":null,\"overrideAction\":{\"type\":\"NONE\"},\"managedRuleGroupIdentifier\":{\"version\":null,\"vendorName\":\"AWS\",\"managedRuleGroupName\":\"AWSManagedRulesAmazonIpReputationList\"},\"ruleGroupType\":\"ManagedRuleGroup\",\"excludeRules\":[]}],\"postProcessRuleGroups\":[],\"defaultAction\":{\"type\":\"ALLOW\"},\"overrideCustomerWebACLAssociation\":false,\"loggingConfiguration\":{\"logDestinationConfigs\":[\"arn:aws:firehose:us-west-2:12345678912:deliverystream/aws-waf-logs-fms-admin-destination\"],\"redactedFields\":[{\"redactedFieldType\":\"SingleHeader\",\"redactedFieldValue\":\"Cookies\"},{\"redactedFieldType\":\"Method\"}]}}"  In the loggingConfiguration, you can specify one logDestinationConfigs, you can optionally provide up to 20 redactedFields, and the RedactedFieldType must be one of URI, QUERY_STRING, HEADER, or METHOD.   Example: WAF Classic   "{\"type\": \"WAF\", \"ruleGroups\": [{\"id\":\"12345678-1bcd-9012-efga-0987654321ab\", \"overrideAction\" : {\"type\": \"COUNT\"}}], \"defaultAction\": {\"type\": \"BLOCK\"}}"    Example: SECURITY_GROUPS_COMMON   "{\"type\":\"SECURITY_GROUPS_COMMON\",\"revertManualSecurityGroupChanges\":false,\"exclusiveResourceSecurityGroupManagement\":false, \"applyToAllEC2InstanceENIs\":false,\"securityGroups\":[{\"id\":\" sg-000e55995d61a06bd\"}]}"    Example: Shared VPCs. Apply the preceding policy to resources in shared VPCs as well as to those in VPCs that the account owns   "{\"type\":\"SECURITY_GROUPS_COMMON\",\"revertManualSecurityGroupChanges\":false,\"exclusiveResourceSecurityGroupManagement\":false, \"applyToAllEC2InstanceENIs\":false,\"includeSharedVPC\":true,\"securityGroups\":[{\"id\":\" sg-000e55995d61a06bd\"}]}"    Example: SECURITY_GROUPS_CONTENT_AUDIT   "{\"type\":\"SECURITY_GROUPS_CONTENT_AUDIT\",\"securityGroups\":[{\"id\":\"sg-000e55995d61a06bd\"}],\"securityGroupAction\":{\"type\":\"ALLOW\"}}"  The security group action for content audit can be ALLOW or DENY. For ALLOW, all in-scope security group rules must be within the allowed range of the policy's security group rules. For DENY, all in-scope security group rules must not contain a value or a range that matches a rule value or range in the policy security group.   Example: SECURITY_GROUPS_USAGE_AUDIT   "{\"type\":\"SECURITY_GROUPS_USAGE_AUDIT\",\"deleteUnusedSecurityGroups\":true,\"coalesceRedundantSecurityGroups\":true}"
         public let managedServiceData: String?
         /// The service that the policy is using to protect the resources. This specifies the type of policy that is created, either an WAF policy, a Shield Advanced policy, or a security group policy. For security group policies, Firewall Manager supports one security group for each common policy and for each content audit policy. This is an adjustable limit that you can increase by contacting Amazon Web Services Support.
         public let type: SecurityServiceType
@@ -2516,7 +2415,6 @@ extension FMS {
     }
 
     public struct StatefulRuleGroup: AWSDecodableShape {
-
         /// The resource ID of the rule group.
         public let resourceId: String?
         /// The name of the rule group.
@@ -2534,8 +2432,7 @@ extension FMS {
     }
 
     public struct StatelessRuleGroup: AWSDecodableShape {
-
-        /// The priority of the rule group. Network Firewall evaluates the stateless rule groups in a firewall policy starting from the lowest priority setting. 
+        /// The priority of the rule group. Network Firewall evaluates the stateless rule groups in a firewall policy starting from the lowest priority setting.
         public let priority: Int?
         /// The resource ID of the rule group.
         public let resourceId: String?
@@ -2556,10 +2453,9 @@ extension FMS {
     }
 
     public struct Tag: AWSEncodableShape & AWSDecodableShape {
-
         /// Part of the key:value pair that defines a tag. You can use a tag key to describe a category of information, such as "customer." Tag keys are case-sensitive.
         public let key: String
-        /// Part of the key:value pair that defines a tag. You can use a tag value to describe a specific value within a category, such as "companyA" or "companyB." Tag values are case-sensitive.  
+        /// Part of the key:value pair that defines a tag. You can use a tag value to describe a specific value within a category, such as "companyA" or "companyB." Tag values are case-sensitive.
         public let value: String
 
         public init(key: String, value: String) {
@@ -2582,8 +2478,7 @@ extension FMS {
     }
 
     public struct TagResourceRequest: AWSEncodableShape {
-
-        /// The Amazon Resource Name (ARN) of the resource to return tags for. The Firewall Manager resources that support tagging are policies, applications lists, and protocols lists. 
+        /// The Amazon Resource Name (ARN) of the resource to return tags for. The Firewall Manager resources that support tagging are policies, applications lists, and protocols lists.
         public let resourceArn: String
         /// The tags to add to the resource.
         public let tagList: [Tag]
@@ -2610,18 +2505,13 @@ extension FMS {
     }
 
     public struct TagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UntagResourceRequest: AWSEncodableShape {
-
-        /// The Amazon Resource Name (ARN) of the resource to return tags for. The Firewall Manager resources that support tagging are policies, applications lists, and protocols lists. 
+        /// The Amazon Resource Name (ARN) of the resource to return tags for. The Firewall Manager resources that support tagging are policies, applications lists, and protocols lists.
         public let resourceArn: String
-        /// The keys of the tags to remove from the resource. 
+        /// The keys of the tags to remove from the resource.
         public let tagKeys: [String]
 
         public init(resourceArn: String, tagKeys: [String]) {
@@ -2648,15 +2538,10 @@ extension FMS {
     }
 
     public struct UntagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct ViolationDetail: AWSDecodableShape {
-
         /// The Amazon Web Services account that the violation details were requested for.
         public let memberAccount: String
         /// The ID of the Firewall Manager policy that the violation details were requested for.

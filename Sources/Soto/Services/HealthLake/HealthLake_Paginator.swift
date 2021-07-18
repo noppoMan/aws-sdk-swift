@@ -73,7 +73,7 @@ extension HealthLake {
         )
     }
 
-    ///   Lists all FHIR export jobs associated with an account and their statuses. 
+    ///   Lists all FHIR export jobs associated with an account and their statuses.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.
@@ -126,7 +126,7 @@ extension HealthLake {
         )
     }
 
-    ///   Lists all FHIR import jobs associated with an account and their statuses. 
+    ///   Lists all FHIR import jobs associated with an account and their statuses.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.

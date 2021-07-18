@@ -22,7 +22,7 @@
 /// AWS IoT Secure Tunneling
 /// 		       AWS IoT Secure Tunnling enables you to create remote connections to devices
 /// 			deployed in the field.
-/// 		
+///
 /// 		       For more information about how AWS IoT Secure Tunneling works, see AWS IoT Secure Tunneling.
 public struct IoTSecureTunneling: AWSService {
     // MARK: Member variables

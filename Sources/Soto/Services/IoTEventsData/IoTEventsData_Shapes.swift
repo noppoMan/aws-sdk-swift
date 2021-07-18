@@ -72,7 +72,6 @@ extension IoTEventsData {
     // MARK: Shapes
 
     public struct AcknowledgeActionConfiguration: AWSDecodableShape {
-
         /// The note that you can leave when you acknowledge the alarm.
         public let note: String?
 
@@ -81,15 +80,14 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case note = "note"
+            case note
         }
     }
 
     public struct AcknowledgeAlarmActionRequest: AWSEncodableShape {
-
         /// The name of the alarm model.
         public let alarmModelName: String
-        /// The value of the key used as a filter to select only the alarms associated with the 
+        /// The value of the key used as a filter to select only the alarms associated with the
         /// key.
         public let keyValue: String?
         /// The note that you can leave when you acknowledge the alarm.
@@ -118,15 +116,14 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case alarmModelName = "alarmModelName"
-            case keyValue = "keyValue"
-            case note = "note"
-            case requestId = "requestId"
+            case alarmModelName
+            case keyValue
+            case note
+            case requestId
         }
     }
 
     public struct Alarm: AWSDecodableShape {
-
         /// The name of the alarm model.
         public let alarmModelName: String?
         /// The version of the alarm model.
@@ -135,7 +132,7 @@ extension IoTEventsData {
         public let alarmState: AlarmState?
         /// The time the alarm was created, in the Unix epoch format.
         public let creationTime: Date?
-        /// The value of the key used as a filter to select only the alarms associated with the 
+        /// The value of the key used as a filter to select only the alarms associated with the
         /// key.
         public let keyValue: String?
         /// The time the alarm was last updated, in the Unix epoch format.
@@ -154,44 +151,43 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case alarmModelName = "alarmModelName"
-            case alarmModelVersion = "alarmModelVersion"
-            case alarmState = "alarmState"
-            case creationTime = "creationTime"
-            case keyValue = "keyValue"
-            case lastUpdateTime = "lastUpdateTime"
-            case severity = "severity"
+            case alarmModelName
+            case alarmModelVersion
+            case alarmState
+            case creationTime
+            case keyValue
+            case lastUpdateTime
+            case severity
         }
     }
 
     public struct AlarmState: AWSDecodableShape {
-
         /// Contains information about the action that you can take to respond to the alarm.
         public let customerAction: CustomerAction?
         /// Information needed to evaluate data.
         public let ruleEvaluation: RuleEvaluation?
-        /// The name of the alarm state. The state name can be one of the following values:  
-        /// 		              DISABLED - When the alarm is in the DISABLED state, 
-        /// 		it isn't ready to evaluate data. To enable the alarm, 
+        /// The name of the alarm state. The state name can be one of the following values:
+        /// 		              DISABLED - When the alarm is in the DISABLED state,
+        /// 		it isn't ready to evaluate data. To enable the alarm,
         /// 		you must change the alarm to the NORMAL state.
-        /// 	            
-        /// 		              NORMAL - When the alarm is in the NORMAL state, 
+        ///
+        /// 		              NORMAL - When the alarm is in the NORMAL state,
         /// 		it's ready to evaluate data.
-        /// 	            
-        /// 		              ACTIVE - If the alarm is in the ACTIVE state, 
+        ///
+        /// 		              ACTIVE - If the alarm is in the ACTIVE state,
         /// 		the alarm is invoked.
-        /// 	            
-        /// 		              ACKNOWLEDGED - When the alarm is in the ACKNOWLEDGED state, 
+        ///
+        /// 		              ACKNOWLEDGED - When the alarm is in the ACKNOWLEDGED state,
         /// 		the alarm was invoked and you acknowledged the alarm.
-        /// 	            
-        /// 		              SNOOZE_DISABLED - When the alarm is in the SNOOZE_DISABLED state, 
-        /// 		the alarm is disabled for a specified period of time. After the snooze time, 
-        /// 		the alarm automatically changes to the NORMAL state. 
-        /// 	            
-        /// 		              LATCHED - When the alarm is in the LATCHED state, 
-        /// 		the alarm was invoked. However, the data that the alarm is currently evaluating is within the specified range. 
+        ///
+        /// 		              SNOOZE_DISABLED - When the alarm is in the SNOOZE_DISABLED state,
+        /// 		the alarm is disabled for a specified period of time. After the snooze time,
+        /// 		the alarm automatically changes to the NORMAL state.
+        ///
+        /// 		              LATCHED - When the alarm is in the LATCHED state,
+        /// 		the alarm was invoked. However, the data that the alarm is currently evaluating is within the specified range.
         /// 		To change the alarm to the NORMAL state, you must acknowledge the alarm.
-        /// 	            
+        ///
         public let stateName: AlarmStateName?
         /// Contains information about alarm state changes.
         public let systemEvent: SystemEvent?
@@ -204,48 +200,47 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case customerAction = "customerAction"
-            case ruleEvaluation = "ruleEvaluation"
-            case stateName = "stateName"
-            case systemEvent = "systemEvent"
+            case customerAction
+            case ruleEvaluation
+            case stateName
+            case systemEvent
         }
     }
 
     public struct AlarmSummary: AWSDecodableShape {
-
         /// The name of the alarm model.
         public let alarmModelName: String?
         /// The version of the alarm model.
         public let alarmModelVersion: String?
         /// The time the alarm was created, in the Unix epoch format.
         public let creationTime: Date?
-        /// The value of the key used as a filter to select only the alarms associated with the 
+        /// The value of the key used as a filter to select only the alarms associated with the
         /// key.
         public let keyValue: String?
         /// The time the alarm was last updated, in the Unix epoch format.
         public let lastUpdateTime: Date?
-        /// The name of the alarm state. The state name can be one of the following values:  
-        /// 		              DISABLED - When the alarm is in the DISABLED state, 
-        /// 		it isn't ready to evaluate data. To enable the alarm, 
+        /// The name of the alarm state. The state name can be one of the following values:
+        /// 		              DISABLED - When the alarm is in the DISABLED state,
+        /// 		it isn't ready to evaluate data. To enable the alarm,
         /// 		you must change the alarm to the NORMAL state.
-        /// 	            
-        /// 		              NORMAL - When the alarm is in the NORMAL state, 
+        ///
+        /// 		              NORMAL - When the alarm is in the NORMAL state,
         /// 		it's ready to evaluate data.
-        /// 	            
-        /// 		              ACTIVE - If the alarm is in the ACTIVE state, 
+        ///
+        /// 		              ACTIVE - If the alarm is in the ACTIVE state,
         /// 		the alarm is invoked.
-        /// 	            
-        /// 		              ACKNOWLEDGED - When the alarm is in the ACKNOWLEDGED state, 
+        ///
+        /// 		              ACKNOWLEDGED - When the alarm is in the ACKNOWLEDGED state,
         /// 		the alarm was invoked and you acknowledged the alarm.
-        /// 	            
-        /// 		              SNOOZE_DISABLED - When the alarm is in the SNOOZE_DISABLED state, 
-        /// 		the alarm is disabled for a specified period of time. After the snooze time, 
-        /// 		the alarm automatically changes to the NORMAL state. 
-        /// 	            
-        /// 		              LATCHED - When the alarm is in the LATCHED state, 
-        /// 		the alarm was invoked. However, the data that the alarm is currently evaluating is within the specified range. 
+        ///
+        /// 		              SNOOZE_DISABLED - When the alarm is in the SNOOZE_DISABLED state,
+        /// 		the alarm is disabled for a specified period of time. After the snooze time,
+        /// 		the alarm automatically changes to the NORMAL state.
+        ///
+        /// 		              LATCHED - When the alarm is in the LATCHED state,
+        /// 		the alarm was invoked. However, the data that the alarm is currently evaluating is within the specified range.
         /// 		To change the alarm to the NORMAL state, you must acknowledge the alarm.
-        /// 	            
+        ///
         public let stateName: AlarmStateName?
 
         public init(alarmModelName: String? = nil, alarmModelVersion: String? = nil, creationTime: Date? = nil, keyValue: String? = nil, lastUpdateTime: Date? = nil, stateName: AlarmStateName? = nil) {
@@ -258,17 +253,16 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case alarmModelName = "alarmModelName"
-            case alarmModelVersion = "alarmModelVersion"
-            case creationTime = "creationTime"
-            case keyValue = "keyValue"
-            case lastUpdateTime = "lastUpdateTime"
-            case stateName = "stateName"
+            case alarmModelName
+            case alarmModelVersion
+            case creationTime
+            case keyValue
+            case lastUpdateTime
+            case stateName
         }
     }
 
     public struct BatchAcknowledgeAlarmRequest: AWSEncodableShape {
-
         /// The list of acknowledge action requests. You can specify up to 10 requests per operation.
         public let acknowledgeActionRequests: [AcknowledgeAlarmActionRequest]
 
@@ -284,13 +278,12 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case acknowledgeActionRequests = "acknowledgeActionRequests"
+            case acknowledgeActionRequests
         }
     }
 
     public struct BatchAcknowledgeAlarmResponse: AWSDecodableShape {
-
-        /// A list of errors associated with the request, or null if there are no errors. 
+        /// A list of errors associated with the request, or null if there are no errors.
         /// Each error entry contains an entry ID that helps you identify the entry that failed.
         public let errorEntries: [BatchAlarmActionErrorEntry]?
 
@@ -299,12 +292,11 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case errorEntries = "errorEntries"
+            case errorEntries
         }
     }
 
     public struct BatchAlarmActionErrorEntry: AWSDecodableShape {
-
         /// The error code.
         public let errorCode: ErrorCode?
         /// A message that describes the error.
@@ -319,14 +311,13 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case errorCode = "errorCode"
-            case errorMessage = "errorMessage"
-            case requestId = "requestId"
+            case errorCode
+            case errorMessage
+            case requestId
         }
     }
 
     public struct BatchDisableAlarmRequest: AWSEncodableShape {
-
         /// The list of disable action requests. You can specify up to 10 requests per operation.
         public let disableActionRequests: [DisableAlarmActionRequest]
 
@@ -342,13 +333,12 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case disableActionRequests = "disableActionRequests"
+            case disableActionRequests
         }
     }
 
     public struct BatchDisableAlarmResponse: AWSDecodableShape {
-
-        /// A list of errors associated with the request, or null if there are no errors. 
+        /// A list of errors associated with the request, or null if there are no errors.
         /// Each error entry contains an entry ID that helps you identify the entry that failed.
         public let errorEntries: [BatchAlarmActionErrorEntry]?
 
@@ -357,12 +347,11 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case errorEntries = "errorEntries"
+            case errorEntries
         }
     }
 
     public struct BatchEnableAlarmRequest: AWSEncodableShape {
-
         /// The list of enable action requests. You can specify up to 10 requests per operation.
         public let enableActionRequests: [EnableAlarmActionRequest]
 
@@ -378,13 +367,12 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case enableActionRequests = "enableActionRequests"
+            case enableActionRequests
         }
     }
 
     public struct BatchEnableAlarmResponse: AWSDecodableShape {
-
-        /// A list of errors associated with the request, or null if there are no errors. 
+        /// A list of errors associated with the request, or null if there are no errors.
         /// Each error entry contains an entry ID that helps you identify the entry that failed.
         public let errorEntries: [BatchAlarmActionErrorEntry]?
 
@@ -393,12 +381,11 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case errorEntries = "errorEntries"
+            case errorEntries
         }
     }
 
     public struct BatchPutMessageErrorEntry: AWSDecodableShape {
-
         /// The error code.
         public let errorCode: ErrorCode?
         /// A message that describes the error.
@@ -413,15 +400,14 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case errorCode = "errorCode"
-            case errorMessage = "errorMessage"
-            case messageId = "messageId"
+            case errorCode
+            case errorMessage
+            case messageId
         }
     }
 
     public struct BatchPutMessageRequest: AWSEncodableShape {
-
-        /// The list of messages to send. Each message has the following format: '{ "messageId": "string", "inputName": "string", "payload": "string"}' 
+        /// The list of messages to send. Each message has the following format: '{ "messageId": "string", "inputName": "string", "payload": "string"}'
         public let messages: [Message]
 
         public init(messages: [Message]) {
@@ -436,12 +422,11 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case messages = "messages"
+            case messages
         }
     }
 
     public struct BatchPutMessageResponse: AWSDecodableShape {
-
         /// A list of any errors encountered when sending the messages.
         public let batchPutMessageErrorEntries: [BatchPutMessageErrorEntry]?
 
@@ -455,7 +440,6 @@ extension IoTEventsData {
     }
 
     public struct BatchResetAlarmRequest: AWSEncodableShape {
-
         /// The list of reset action requests. You can specify up to 10 requests per operation.
         public let resetActionRequests: [ResetAlarmActionRequest]
 
@@ -471,13 +455,12 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case resetActionRequests = "resetActionRequests"
+            case resetActionRequests
         }
     }
 
     public struct BatchResetAlarmResponse: AWSDecodableShape {
-
-        /// A list of errors associated with the request, or null if there are no errors. 
+        /// A list of errors associated with the request, or null if there are no errors.
         /// Each error entry contains an entry ID that helps you identify the entry that failed.
         public let errorEntries: [BatchAlarmActionErrorEntry]?
 
@@ -486,12 +469,11 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case errorEntries = "errorEntries"
+            case errorEntries
         }
     }
 
     public struct BatchSnoozeAlarmRequest: AWSEncodableShape {
-
         /// The list of snooze action requests. You can specify up to 10 requests per operation.
         public let snoozeActionRequests: [SnoozeAlarmActionRequest]
 
@@ -507,13 +489,12 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case snoozeActionRequests = "snoozeActionRequests"
+            case snoozeActionRequests
         }
     }
 
     public struct BatchSnoozeAlarmResponse: AWSDecodableShape {
-
-        /// A list of errors associated with the request, or null if there are no errors. 
+        /// A list of errors associated with the request, or null if there are no errors.
         /// Each error entry contains an entry ID that helps you identify the entry that failed.
         public let errorEntries: [BatchAlarmActionErrorEntry]?
 
@@ -522,12 +503,11 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case errorEntries = "errorEntries"
+            case errorEntries
         }
     }
 
     public struct BatchUpdateDetectorErrorEntry: AWSDecodableShape {
-
         /// The error code.
         public let errorCode: ErrorCode?
         /// A message that describes the error.
@@ -542,14 +522,13 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case errorCode = "errorCode"
-            case errorMessage = "errorMessage"
-            case messageId = "messageId"
+            case errorCode
+            case errorMessage
+            case messageId
         }
     }
 
     public struct BatchUpdateDetectorRequest: AWSEncodableShape {
-
         /// The list of detectors (instances) to update, along with the values to update.
         public let detectors: [UpdateDetectorRequest]
 
@@ -565,12 +544,11 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case detectors = "detectors"
+            case detectors
         }
     }
 
     public struct BatchUpdateDetectorResponse: AWSDecodableShape {
-
         /// A list of those detector updates that resulted in errors. (If an error is listed here, the specific update did not occur.)
         public let batchUpdateDetectorErrorEntries: [BatchUpdateDetectorErrorEntry]?
 
@@ -579,23 +557,22 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case batchUpdateDetectorErrorEntries = "batchUpdateDetectorErrorEntries"
+            case batchUpdateDetectorErrorEntries
         }
     }
 
     public struct CustomerAction: AWSDecodableShape {
-
         /// Contains the configuration information of an acknowledge action.
         public let acknowledgeActionConfiguration: AcknowledgeActionConfiguration?
-        /// The name of the action. The action name can be one of the following values:  
+        /// The name of the action. The action name can be one of the following values:
         /// 			             SNOOZE - When you snooze the alarm, the alarm state changes to SNOOZE_DISABLED.
-        /// 		           
+        ///
         /// 			             ENABLE - When you enable the alarm, the alarm state changes to NORMAL.
-        /// 		           
+        ///
         /// 			             DISABLE - When you disable the alarm, the alarm state changes to DISABLED.
-        /// 		           
+        ///
         /// 			             ACKNOWLEDGE - When you acknowledge the alarm, the alarm state changes to ACKNOWLEDGED.
-        /// 		           
+        ///
         /// 			             RESET - When you reset the alarm, the alarm state changes to NORMAL.
         /// 		            For more information, see the AlarmState API.
         public let actionName: CustomerActionName?
@@ -618,24 +595,24 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case acknowledgeActionConfiguration = "acknowledgeActionConfiguration"
-            case actionName = "actionName"
-            case disableActionConfiguration = "disableActionConfiguration"
-            case enableActionConfiguration = "enableActionConfiguration"
-            case resetActionConfiguration = "resetActionConfiguration"
-            case snoozeActionConfiguration = "snoozeActionConfiguration"
+            case acknowledgeActionConfiguration
+            case actionName
+            case disableActionConfiguration
+            case enableActionConfiguration
+            case resetActionConfiguration
+            case snoozeActionConfiguration
         }
     }
 
     public struct DescribeAlarmRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "alarmModelName", location: .uri(locationName: "alarmModelName")), 
+            AWSMemberEncoding(label: "alarmModelName", location: .uri(locationName: "alarmModelName")),
             AWSMemberEncoding(label: "keyValue", location: .querystring(locationName: "keyValue"))
         ]
 
         /// The name of the alarm model.
         public let alarmModelName: String
-        /// The value of the key used as a filter to select only the alarms associated with the 
+        /// The value of the key used as a filter to select only the alarms associated with the
         /// key.
         public let keyValue: String?
 
@@ -657,7 +634,6 @@ extension IoTEventsData {
     }
 
     public struct DescribeAlarmResponse: AWSDecodableShape {
-
         /// Contains information about an alarm.
         public let alarm: Alarm?
 
@@ -666,13 +642,13 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case alarm = "alarm"
+            case alarm
         }
     }
 
     public struct DescribeDetectorRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "detectorModelName", location: .uri(locationName: "detectorModelName")), 
+            AWSMemberEncoding(label: "detectorModelName", location: .uri(locationName: "detectorModelName")),
             AWSMemberEncoding(label: "keyValue", location: .querystring(locationName: "keyValue"))
         ]
 
@@ -699,7 +675,6 @@ extension IoTEventsData {
     }
 
     public struct DescribeDetectorResponse: AWSDecodableShape {
-
         /// Information about the detector (instance).
         public let detector: Detector?
 
@@ -708,12 +683,11 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case detector = "detector"
+            case detector
         }
     }
 
     public struct Detector: AWSDecodableShape {
-
         /// The time the detector (instance) was created.
         public let creationTime: Date?
         /// The name of the detector model that created this detector (instance).
@@ -737,17 +711,16 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case creationTime = "creationTime"
-            case detectorModelName = "detectorModelName"
-            case detectorModelVersion = "detectorModelVersion"
-            case keyValue = "keyValue"
-            case lastUpdateTime = "lastUpdateTime"
-            case state = "state"
+            case creationTime
+            case detectorModelName
+            case detectorModelVersion
+            case keyValue
+            case lastUpdateTime
+            case state
         }
     }
 
     public struct DetectorState: AWSDecodableShape {
-
         /// The name of the state.
         public let stateName: String
         /// The current state of the detector's timers.
@@ -762,14 +735,13 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case stateName = "stateName"
-            case timers = "timers"
-            case variables = "variables"
+            case stateName
+            case timers
+            case variables
         }
     }
 
     public struct DetectorStateDefinition: AWSEncodableShape {
-
         /// The name of the new state of the detector (instance).
         public let stateName: String
         /// The new values of the detector's timers. Any timer whose value isn't specified is cleared, and its timeout event won't occur.
@@ -795,14 +767,13 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case stateName = "stateName"
-            case timers = "timers"
-            case variables = "variables"
+            case stateName
+            case timers
+            case variables
         }
     }
 
     public struct DetectorStateSummary: AWSDecodableShape {
-
         /// The name of the state.
         public let stateName: String?
 
@@ -811,12 +782,11 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case stateName = "stateName"
+            case stateName
         }
     }
 
     public struct DetectorSummary: AWSDecodableShape {
-
         /// The time the detector (instance) was created.
         public let creationTime: Date?
         /// The name of the detector model that created this detector (instance).
@@ -840,17 +810,16 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case creationTime = "creationTime"
-            case detectorModelName = "detectorModelName"
-            case detectorModelVersion = "detectorModelVersion"
-            case keyValue = "keyValue"
-            case lastUpdateTime = "lastUpdateTime"
-            case state = "state"
+            case creationTime
+            case detectorModelName
+            case detectorModelVersion
+            case keyValue
+            case lastUpdateTime
+            case state
         }
     }
 
     public struct DisableActionConfiguration: AWSDecodableShape {
-
         /// The note that you can leave when you disable the alarm.
         public let note: String?
 
@@ -859,15 +828,14 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case note = "note"
+            case note
         }
     }
 
     public struct DisableAlarmActionRequest: AWSEncodableShape {
-
         /// The name of the alarm model.
         public let alarmModelName: String
-        /// The value of the key used as a filter to select only the alarms associated with the 
+        /// The value of the key used as a filter to select only the alarms associated with the
         /// key.
         public let keyValue: String?
         /// The note that you can leave when you disable the alarm.
@@ -896,15 +864,14 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case alarmModelName = "alarmModelName"
-            case keyValue = "keyValue"
-            case note = "note"
-            case requestId = "requestId"
+            case alarmModelName
+            case keyValue
+            case note
+            case requestId
         }
     }
 
     public struct EnableActionConfiguration: AWSDecodableShape {
-
         /// The note that you can leave when you enable the alarm.
         public let note: String?
 
@@ -913,15 +880,14 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case note = "note"
+            case note
         }
     }
 
     public struct EnableAlarmActionRequest: AWSEncodableShape {
-
         /// The name of the alarm model.
         public let alarmModelName: String
-        /// The value of the key used as a filter to select only the alarms associated with the 
+        /// The value of the key used as a filter to select only the alarms associated with the
         /// key.
         public let keyValue: String?
         /// The note that you can leave when you enable the alarm.
@@ -950,17 +916,17 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case alarmModelName = "alarmModelName"
-            case keyValue = "keyValue"
-            case note = "note"
-            case requestId = "requestId"
+            case alarmModelName
+            case keyValue
+            case note
+            case requestId
         }
     }
 
     public struct ListAlarmsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "alarmModelName", location: .uri(locationName: "alarmModelName")), 
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "alarmModelName", location: .uri(locationName: "alarmModelName")),
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
@@ -989,10 +955,9 @@ extension IoTEventsData {
     }
 
     public struct ListAlarmsResponse: AWSDecodableShape {
-
         /// A list that summarizes each alarm.
         public let alarmSummaries: [AlarmSummary]?
-        /// The token that you can use to return the next set of results, 
+        /// The token that you can use to return the next set of results,
         /// or null if there are no more results.
         public let nextToken: String?
 
@@ -1002,16 +967,16 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case alarmSummaries = "alarmSummaries"
-            case nextToken = "nextToken"
+            case alarmSummaries
+            case nextToken
         }
     }
 
     public struct ListDetectorsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "detectorModelName", location: .uri(locationName: "detectorModelName")), 
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
-            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")), 
+            AWSMemberEncoding(label: "detectorModelName", location: .uri(locationName: "detectorModelName")),
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
+            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")),
             AWSMemberEncoding(label: "stateName", location: .querystring(locationName: "stateName"))
         ]
 
@@ -1045,10 +1010,9 @@ extension IoTEventsData {
     }
 
     public struct ListDetectorsResponse: AWSDecodableShape {
-
         /// A list of summary information about the detectors (instances).
         public let detectorSummaries: [DetectorSummary]?
-        /// The token that you can use to return the next set of results, 
+        /// The token that you can use to return the next set of results,
         /// or null if there are no more results.
         public let nextToken: String?
 
@@ -1058,13 +1022,12 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case detectorSummaries = "detectorSummaries"
-            case nextToken = "nextToken"
+            case detectorSummaries
+            case nextToken
         }
     }
 
     public struct Message: AWSEncodableShape {
-
         /// The name of the input into which the message payload is transformed.
         public let inputName: String
         /// The ID to assign to the message. Within each batch sent, each "messageId" must be unique.
@@ -1092,15 +1055,14 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case inputName = "inputName"
-            case messageId = "messageId"
-            case payload = "payload"
-            case timestamp = "timestamp"
+            case inputName
+            case messageId
+            case payload
+            case timestamp
         }
     }
 
     public struct ResetActionConfiguration: AWSDecodableShape {
-
         /// The note that you can leave when you reset the alarm.
         public let note: String?
 
@@ -1109,15 +1071,14 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case note = "note"
+            case note
         }
     }
 
     public struct ResetAlarmActionRequest: AWSEncodableShape {
-
         /// The name of the alarm model.
         public let alarmModelName: String
-        /// The value of the key used as a filter to select only the alarms associated with the 
+        /// The value of the key used as a filter to select only the alarms associated with the
         /// key.
         public let keyValue: String?
         /// The note that you can leave when you reset the alarm.
@@ -1146,15 +1107,14 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case alarmModelName = "alarmModelName"
-            case keyValue = "keyValue"
-            case note = "note"
-            case requestId = "requestId"
+            case alarmModelName
+            case keyValue
+            case note
+            case requestId
         }
     }
 
     public struct RuleEvaluation: AWSDecodableShape {
-
         /// Information needed to compare two values with a comparison operator.
         public let simpleRuleEvaluation: SimpleRuleEvaluation?
 
@@ -1163,12 +1123,11 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case simpleRuleEvaluation = "simpleRuleEvaluation"
+            case simpleRuleEvaluation
         }
     }
 
     public struct SimpleRuleEvaluation: AWSDecodableShape {
-
         /// The value of the input property, on the left side of the comparison operator.
         public let inputPropertyValue: String?
         /// The comparison operator.
@@ -1183,14 +1142,13 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case inputPropertyValue = "inputPropertyValue"
-            case `operator` = "operator"
-            case thresholdValue = "thresholdValue"
+            case inputPropertyValue
+            case `operator`
+            case thresholdValue
         }
     }
 
     public struct SnoozeActionConfiguration: AWSDecodableShape {
-
         /// The note that you can leave when you snooze the alarm.
         public let note: String?
         /// The snooze time in seconds. The alarm automatically changes to the NORMAL state after this duration.
@@ -1202,16 +1160,15 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case note = "note"
-            case snoozeDuration = "snoozeDuration"
+            case note
+            case snoozeDuration
         }
     }
 
     public struct SnoozeAlarmActionRequest: AWSEncodableShape {
-
         /// The name of the alarm model.
         public let alarmModelName: String
-        /// The value of the key used as a filter to select only the alarms associated with the 
+        /// The value of the key used as a filter to select only the alarms associated with the
         /// key.
         public let keyValue: String?
         /// The note that you can leave when you snooze the alarm.
@@ -1243,16 +1200,15 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case alarmModelName = "alarmModelName"
-            case keyValue = "keyValue"
-            case note = "note"
-            case requestId = "requestId"
-            case snoozeDuration = "snoozeDuration"
+            case alarmModelName
+            case keyValue
+            case note
+            case requestId
+            case snoozeDuration
         }
     }
 
     public struct StateChangeConfiguration: AWSDecodableShape {
-
         /// The trigger type. If the value is SNOOZE_TIMEOUT, the snooze duration ends and the alarm automatically changes to the NORMAL state.
         public let triggerType: TriggerType?
 
@@ -1261,12 +1217,11 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case triggerType = "triggerType"
+            case triggerType
         }
     }
 
     public struct SystemEvent: AWSDecodableShape {
-
         /// The event type. If the value is STATE_CHANGE, the event contains information about alarm state changes.
         public let eventType: EventType?
         /// Contains the configuration information of alarm state changes.
@@ -1278,13 +1233,12 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case eventType = "eventType"
-            case stateChangeConfiguration = "stateChangeConfiguration"
+            case eventType
+            case stateChangeConfiguration
         }
     }
 
     public struct Timer: AWSDecodableShape {
-
         /// The name of the timer.
         public let name: String
         /// The number of seconds which have elapsed on the timer.
@@ -1296,13 +1250,12 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case name = "name"
-            case timestamp = "timestamp"
+            case name
+            case timestamp
         }
     }
 
     public struct TimerDefinition: AWSEncodableShape {
-
         /// The name of the timer.
         public let name: String
         /// The new setting of the timer (the number of seconds before the timer elapses).
@@ -1319,13 +1272,12 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case name = "name"
-            case seconds = "seconds"
+            case name
+            case seconds
         }
     }
 
     public struct TimestampValue: AWSEncodableShape {
-
         /// The value of the timestamp, in the Unix epoch format.
         public let timeInMillis: Int64?
 
@@ -1334,17 +1286,16 @@ extension IoTEventsData {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.timeInMillis, name: "timeInMillis", parent: name, max: -9223372036854775808)
+            try self.validate(self.timeInMillis, name: "timeInMillis", parent: name, max: -9_223_372_036_854_775_808)
             try self.validate(self.timeInMillis, name: "timeInMillis", parent: name, min: 1)
         }
 
         private enum CodingKeys: String, CodingKey {
-            case timeInMillis = "timeInMillis"
+            case timeInMillis
         }
     }
 
     public struct UpdateDetectorRequest: AWSEncodableShape {
-
         /// The name of the detector model that created the detectors (instances).
         public let detectorModelName: String
         /// The value of the input key attribute (identifying the device or system) that caused the creation of this detector (instance).
@@ -1375,15 +1326,14 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case detectorModelName = "detectorModelName"
-            case keyValue = "keyValue"
-            case messageId = "messageId"
-            case state = "state"
+            case detectorModelName
+            case keyValue
+            case messageId
+            case state
         }
     }
 
     public struct Variable: AWSDecodableShape {
-
         /// The name of the variable.
         public let name: String
         /// The current value of the variable.
@@ -1395,13 +1345,12 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case name = "name"
-            case value = "value"
+            case name
+            case value
         }
     }
 
     public struct VariableDefinition: AWSEncodableShape {
-
         /// The name of the variable.
         public let name: String
         /// The new value of the variable.
@@ -1421,8 +1370,8 @@ extension IoTEventsData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case name = "name"
-            case value = "value"
+            case name
+            case value
         }
     }
 }

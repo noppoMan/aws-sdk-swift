@@ -70,7 +70,7 @@ public struct SSOOIDCErrorType: AWSErrorType {
     public static var invalidRequestException: Self { .init(.invalidRequestException) }
     /// Indicates that the scope provided in the request is invalid.
     public static var invalidScopeException: Self { .init(.invalidScopeException) }
-    /// Indicates that the client is making the request too frequently and is more than the service can handle. 
+    /// Indicates that the client is making the request too frequently and is more than the service can handle.
     public static var slowDownException: Self { .init(.slowDownException) }
     /// Indicates that the client is not currently authorized to make the request. This can happen when a clientId is not issued for a public client.
     public static var unauthorizedClientException: Self { .init(.unauthorizedClientException) }

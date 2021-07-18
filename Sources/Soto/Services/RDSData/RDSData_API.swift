@@ -63,12 +63,12 @@ public struct RDSData: AWSService {
 
     // MARK: API Calls
 
-    /// Runs a batch SQL statement over an array of data. You can run bulk update and insert operations for multiple records using a DML  statement with different parameter sets. Bulk operations can provide a significant  performance improvement over individual insert and update operations.  If a call isn't part of a transaction because it doesn't include the transactionID parameter, changes that result from the call are committed automatically.     
+    /// Runs a batch SQL statement over an array of data. You can run bulk update and insert operations for multiple records using a DML  statement with different parameter sets. Bulk operations can provide a significant  performance improvement over individual insert and update operations.  If a call isn't part of a transaction because it doesn't include the transactionID parameter, changes that result from the call are committed automatically.
     public func batchExecuteStatement(_ input: BatchExecuteStatementRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<BatchExecuteStatementResponse> {
         return self.client.execute(operation: "BatchExecuteStatement", path: "/BatchExecute", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Starts a SQL transaction.   A transaction can run for a maximum of 24 hours. A transaction is terminated and  rolled back automatically after 24 hours. A transaction times out if no calls use its transaction ID in three minutes.  If a transaction times out before it's committed, it's rolled back automatically. DDL statements inside a transaction cause an implicit commit. We recommend  that you run each DDL statement in a separate ExecuteStatement call with  continueAfterTimeout enabled. 
+    /// Starts a SQL transaction.   A transaction can run for a maximum of 24 hours. A transaction is terminated and  rolled back automatically after 24 hours. A transaction times out if no calls use its transaction ID in three minutes.  If a transaction times out before it's committed, it's rolled back automatically. DDL statements inside a transaction cause an implicit commit. We recommend  that you run each DDL statement in a separate ExecuteStatement call with  continueAfterTimeout enabled.
     public func beginTransaction(_ input: BeginTransactionRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<BeginTransactionResponse> {
         return self.client.execute(operation: "BeginTransaction", path: "/BeginTransaction", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -78,8 +78,8 @@ public struct RDSData: AWSService {
         return self.client.execute(operation: "CommitTransaction", path: "/CommitTransaction", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Runs one or more SQL statements.  This operation is deprecated. Use the BatchExecuteStatement or ExecuteStatement operation. 
-    @available(*, deprecated, message:"The ExecuteSql API is deprecated, please use the ExecuteStatement API.")
+    /// Runs one or more SQL statements.  This operation is deprecated. Use the BatchExecuteStatement or ExecuteStatement operation.
+    @available(*, deprecated, message: "The ExecuteSql API is deprecated, please use the ExecuteStatement API.")
     public func executeSql(_ input: ExecuteSqlRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<ExecuteSqlResponse> {
         return self.client.execute(operation: "ExecuteSql", path: "/ExecuteSql", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }

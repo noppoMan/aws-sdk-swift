@@ -158,7 +158,7 @@ public struct QLDB: AWSService {
         return self.client.execute(operation: "UpdateLedger", path: "/ledgers/{Name}", httpMethod: .PATCH, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Updates the permissions mode of a ledger.  Before you switch to the STANDARD permissions mode, you must first create all required IAM policies and table tags to avoid disruption to your users. To learn more, see Migrating to the standard permissions mode in the Amazon QLDB Developer Guide. 
+    /// Updates the permissions mode of a ledger.  Before you switch to the STANDARD permissions mode, you must first create all required IAM policies and table tags to avoid disruption to your users. To learn more, see Migrating to the standard permissions mode in the Amazon QLDB Developer Guide.
     public func updateLedgerPermissionsMode(_ input: UpdateLedgerPermissionsModeRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<UpdateLedgerPermissionsModeResponse> {
         return self.client.execute(operation: "UpdateLedgerPermissionsMode", path: "/ledgers/{Name}/permissions-mode", httpMethod: .PATCH, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }

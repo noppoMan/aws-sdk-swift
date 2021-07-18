@@ -197,7 +197,6 @@ extension Mgn {
     // MARK: Shapes
 
     public struct CPU: AWSDecodableShape {
-
         /// The number of CPU cores on the source server.
         public let cores: Int64?
         /// The source server's CPU model name.
@@ -209,13 +208,12 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case cores = "cores"
-            case modelName = "modelName"
+            case cores
+            case modelName
         }
     }
 
     public struct ChangeServerLifeCycleStateRequest: AWSEncodableShape {
-
         /// The request to change the source server migration lifecycle state.
         public let lifeCycle: ChangeServerLifeCycleStateSourceServerLifecycle
         /// The request to change the source server migration lifecycle state by source server ID.
@@ -233,13 +231,12 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case lifeCycle = "lifeCycle"
-            case sourceServerID = "sourceServerID"
+            case lifeCycle
+            case sourceServerID
         }
     }
 
     public struct ChangeServerLifeCycleStateSourceServerLifecycle: AWSEncodableShape {
-
         /// The request to change the source server migration lifecycle state.
         public let state: ChangeServerLifeCycleStateSourceServerLifecycleState
 
@@ -248,12 +245,11 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case state = "state"
+            case state
         }
     }
 
     public struct CreateReplicationConfigurationTemplateRequest: AWSEncodableShape {
-
         /// Request to associate the default Application Migration Service Security group with the Replication Settings template.
         public let associateDefaultSecurityGroup: Bool
         /// Request to configure bandwidth throttling during Replication Settings template creation.
@@ -320,24 +316,23 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case associateDefaultSecurityGroup = "associateDefaultSecurityGroup"
-            case bandwidthThrottling = "bandwidthThrottling"
-            case createPublicIP = "createPublicIP"
-            case dataPlaneRouting = "dataPlaneRouting"
-            case defaultLargeStagingDiskType = "defaultLargeStagingDiskType"
-            case ebsEncryption = "ebsEncryption"
-            case ebsEncryptionKeyArn = "ebsEncryptionKeyArn"
-            case replicationServerInstanceType = "replicationServerInstanceType"
-            case replicationServersSecurityGroupsIDs = "replicationServersSecurityGroupsIDs"
-            case stagingAreaSubnetId = "stagingAreaSubnetId"
-            case stagingAreaTags = "stagingAreaTags"
-            case tags = "tags"
-            case useDedicatedReplicationServer = "useDedicatedReplicationServer"
+            case associateDefaultSecurityGroup
+            case bandwidthThrottling
+            case createPublicIP
+            case dataPlaneRouting
+            case defaultLargeStagingDiskType
+            case ebsEncryption
+            case ebsEncryptionKeyArn
+            case replicationServerInstanceType
+            case replicationServersSecurityGroupsIDs
+            case stagingAreaSubnetId
+            case stagingAreaTags
+            case tags
+            case useDedicatedReplicationServer
         }
     }
 
     public struct DataReplicationError: AWSDecodableShape {
-
         /// Error in data replication.
         public let error: DataReplicationErrorString?
         /// Error in data replication.
@@ -349,13 +344,12 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case error = "error"
-            case rawError = "rawError"
+            case error
+            case rawError
         }
     }
 
     public struct DataReplicationInfo: AWSDecodableShape {
-
         /// Error in obtaining data replication info.
         public let dataReplicationError: DataReplicationError?
         /// Request to query whether data replication has been initiated.
@@ -379,17 +373,16 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case dataReplicationError = "dataReplicationError"
-            case dataReplicationInitiation = "dataReplicationInitiation"
-            case dataReplicationState = "dataReplicationState"
-            case etaDateTime = "etaDateTime"
-            case lagDuration = "lagDuration"
-            case replicatedDisks = "replicatedDisks"
+            case dataReplicationError
+            case dataReplicationInitiation
+            case dataReplicationState
+            case etaDateTime
+            case lagDuration
+            case replicatedDisks
         }
     }
 
     public struct DataReplicationInfoReplicatedDisk: AWSDecodableShape {
-
         /// Request to query data replication backlog size in bytes.
         public let backloggedStorageBytes: Int64?
         /// Request to query device name.
@@ -410,16 +403,15 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case backloggedStorageBytes = "backloggedStorageBytes"
-            case deviceName = "deviceName"
-            case replicatedStorageBytes = "replicatedStorageBytes"
-            case rescannedStorageBytes = "rescannedStorageBytes"
-            case totalStorageBytes = "totalStorageBytes"
+            case backloggedStorageBytes
+            case deviceName
+            case replicatedStorageBytes
+            case rescannedStorageBytes
+            case totalStorageBytes
         }
     }
 
     public struct DataReplicationInitiation: AWSDecodableShape {
-
         /// Request to query next data initiation date and time.
         public let nextAttemptDateTime: String?
         /// Request to query data initiation start date and time.
@@ -434,14 +426,13 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextAttemptDateTime = "nextAttemptDateTime"
-            case startDateTime = "startDateTime"
-            case steps = "steps"
+            case nextAttemptDateTime
+            case startDateTime
+            case steps
         }
     }
 
     public struct DataReplicationInitiationStep: AWSDecodableShape {
-
         /// Request to query data initiation step name.
         public let name: DataReplicationInitiationStepName?
         /// Request to query data initiation status.
@@ -453,13 +444,12 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case name = "name"
-            case status = "status"
+            case name
+            case status
         }
     }
 
     public struct DeleteJobRequest: AWSEncodableShape {
-
         /// Request to delete Job from service by Job ID.
         public let jobID: String
 
@@ -474,20 +464,15 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case jobID = "jobID"
+            case jobID
         }
     }
 
     public struct DeleteJobResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteReplicationConfigurationTemplateRequest: AWSEncodableShape {
-
         /// Request to delete Replication Configuration Template from service by Replication Configuration Template ID.
         public let replicationConfigurationTemplateID: String
 
@@ -502,20 +487,15 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case replicationConfigurationTemplateID = "replicationConfigurationTemplateID"
+            case replicationConfigurationTemplateID
         }
     }
 
     public struct DeleteReplicationConfigurationTemplateResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteSourceServerRequest: AWSEncodableShape {
-
         /// Request to delete Source Server from service by Server ID.
         public let sourceServerID: String
 
@@ -530,20 +510,15 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case sourceServerID = "sourceServerID"
+            case sourceServerID
         }
     }
 
     public struct DeleteSourceServerResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DescribeJobLogItemsRequest: AWSEncodableShape {
-
         /// Request to describe Job log job ID.
         public let jobID: String
         /// Request to describe Job log item maximum results.
@@ -566,14 +541,13 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case jobID = "jobID"
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
+            case jobID
+            case maxResults
+            case nextToken
         }
     }
 
     public struct DescribeJobLogItemsResponse: AWSDecodableShape {
-
         /// Request to describe Job log response items.
         public let items: [JobLog]?
         /// Request to describe Job log response next token.
@@ -585,13 +559,12 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case items = "items"
-            case nextToken = "nextToken"
+            case items
+            case nextToken
         }
     }
 
     public struct DescribeJobsRequest: AWSEncodableShape {
-
         /// Request to describe Job log filters.
         public let filters: DescribeJobsRequestFilters
         /// Request to describe Job log by max results.
@@ -612,14 +585,13 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case filters = "filters"
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
+            case filters
+            case maxResults
+            case nextToken
         }
     }
 
     public struct DescribeJobsRequestFilters: AWSEncodableShape {
-
         /// Request to describe Job log filters by date.
         public let fromDate: String?
         /// Request to describe Job log filters by job ID.
@@ -649,14 +621,13 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case fromDate = "fromDate"
-            case jobIDs = "jobIDs"
-            case toDate = "toDate"
+            case fromDate
+            case jobIDs
+            case toDate
         }
     }
 
     public struct DescribeJobsResponse: AWSDecodableShape {
-
         /// Request to describe Job log items.
         public let items: [Job]?
         /// Request to describe Job response by next token.
@@ -668,13 +639,12 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case items = "items"
-            case nextToken = "nextToken"
+            case items
+            case nextToken
         }
     }
 
     public struct DescribeReplicationConfigurationTemplatesRequest: AWSEncodableShape {
-
         /// Request to describe Replication Configuration template by max results.
         public let maxResults: Int?
         /// Request to describe Replication Configuration template by next token.
@@ -700,14 +670,13 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
-            case replicationConfigurationTemplateIDs = "replicationConfigurationTemplateIDs"
+            case maxResults
+            case nextToken
+            case replicationConfigurationTemplateIDs
         }
     }
 
     public struct DescribeReplicationConfigurationTemplatesResponse: AWSDecodableShape {
-
         /// Request to describe Replication Configuration template by items.
         public let items: [ReplicationConfigurationTemplate]?
         /// Request to describe Replication Configuration template by next token.
@@ -719,13 +688,12 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case items = "items"
-            case nextToken = "nextToken"
+            case items
+            case nextToken
         }
     }
 
     public struct DescribeSourceServersRequest: AWSEncodableShape {
-
         /// Request to filter Source Servers list.
         public let filters: DescribeSourceServersRequestFilters
         /// Request to filter Source Servers list by maximum results.
@@ -746,14 +714,13 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case filters = "filters"
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
+            case filters
+            case maxResults
+            case nextToken
         }
     }
 
     public struct DescribeSourceServersRequestFilters: AWSEncodableShape {
-
         /// Request to filter Source Servers list by archived.
         public let isArchived: Bool?
         /// Request to filter Source Servers list by Source Server ID.
@@ -774,13 +741,12 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case isArchived = "isArchived"
-            case sourceServerIDs = "sourceServerIDs"
+            case isArchived
+            case sourceServerIDs
         }
     }
 
     public struct DescribeSourceServersResponse: AWSDecodableShape {
-
         /// Request to filter Source Servers list by item.
         public let items: [SourceServer]?
         /// Request to filter Source Servers next token.
@@ -792,13 +758,12 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case items = "items"
-            case nextToken = "nextToken"
+            case items
+            case nextToken
         }
     }
 
     public struct DisconnectFromServiceRequest: AWSEncodableShape {
-
         /// Request to disconnect Source Server from service by Server ID.
         public let sourceServerID: String
 
@@ -813,12 +778,11 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case sourceServerID = "sourceServerID"
+            case sourceServerID
         }
     }
 
     public struct Disk: AWSDecodableShape {
-
         /// The amount of storage on the disk in bytes.
         public let bytes: Int64?
         /// The disk or device name.
@@ -830,13 +794,12 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case bytes = "bytes"
-            case deviceName = "deviceName"
+            case bytes
+            case deviceName
         }
     }
 
     public struct FinalizeCutoverRequest: AWSEncodableShape {
-
         /// Request to finalize Cutover by Soure Server ID.
         public let sourceServerID: String
 
@@ -851,12 +814,11 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case sourceServerID = "sourceServerID"
+            case sourceServerID
         }
     }
 
     public struct GetLaunchConfigurationRequest: AWSEncodableShape {
-
         /// Request to get Launch Configuration information by Source Server ID.
         public let sourceServerID: String
 
@@ -871,12 +833,11 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case sourceServerID = "sourceServerID"
+            case sourceServerID
         }
     }
 
     public struct GetReplicationConfigurationRequest: AWSEncodableShape {
-
         /// Request to get Replication Configuaration by Source Server ID.
         public let sourceServerID: String
 
@@ -891,12 +852,11 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case sourceServerID = "sourceServerID"
+            case sourceServerID
         }
     }
 
     public struct IdentificationHints: AWSDecodableShape {
-
         /// AWS Instance ID identification hint.
         public let awsInstanceID: String?
         /// FQDN address identification hint.
@@ -914,31 +874,22 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case awsInstanceID = "awsInstanceID"
-            case fqdn = "fqdn"
-            case hostname = "hostname"
-            case vmWareUuid = "vmWareUuid"
+            case awsInstanceID
+            case fqdn
+            case hostname
+            case vmWareUuid
         }
     }
 
     public struct InitializeServiceRequest: AWSEncodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct InitializeServiceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct Job: AWSDecodableShape {
-
         /// the ARN of the specific Job.
         public let arn: String?
         /// Job creation time.
@@ -971,20 +922,19 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case creationDateTime = "creationDateTime"
-            case endDateTime = "endDateTime"
-            case initiatedBy = "initiatedBy"
-            case jobID = "jobID"
-            case participatingServers = "participatingServers"
-            case status = "status"
-            case tags = "tags"
-            case type = "type"
+            case arn
+            case creationDateTime
+            case endDateTime
+            case initiatedBy
+            case jobID
+            case participatingServers
+            case status
+            case tags
+            case type
         }
     }
 
     public struct JobLog: AWSDecodableShape {
-
         /// Job log event.
         public let event: JobLogEvent?
         /// Job event data
@@ -999,14 +949,13 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case event = "event"
-            case eventData = "eventData"
-            case logDateTime = "logDateTime"
+            case event
+            case eventData
+            case logDateTime
         }
     }
 
     public struct JobLogEventData: AWSDecodableShape {
-
         /// Job Event conversion Server ID.
         public let conversionServerID: String?
         /// Job error.
@@ -1024,15 +973,14 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case conversionServerID = "conversionServerID"
-            case rawError = "rawError"
-            case sourceServerID = "sourceServerID"
-            case targetInstanceID = "targetInstanceID"
+            case conversionServerID
+            case rawError
+            case sourceServerID
+            case targetInstanceID
         }
     }
 
     public struct LaunchConfiguration: AWSDecodableShape {
-
         /// Copy Private IP during Launch Configuration.
         public let copyPrivateIp: Bool?
         /// Copy Tags during Launch Configuration.
@@ -1062,19 +1010,18 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case copyPrivateIp = "copyPrivateIp"
-            case copyTags = "copyTags"
-            case ec2LaunchTemplateID = "ec2LaunchTemplateID"
-            case launchDisposition = "launchDisposition"
-            case licensing = "licensing"
-            case name = "name"
-            case sourceServerID = "sourceServerID"
-            case targetInstanceTypeRightSizingMethod = "targetInstanceTypeRightSizingMethod"
+            case copyPrivateIp
+            case copyTags
+            case ec2LaunchTemplateID
+            case launchDisposition
+            case licensing
+            case name
+            case sourceServerID
+            case targetInstanceTypeRightSizingMethod
         }
     }
 
     public struct LaunchedInstance: AWSDecodableShape {
-
         /// Configure launced instance EC2 ID.
         public let ec2InstanceID: String?
         /// Configure launced instance first boot.
@@ -1089,14 +1036,13 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case ec2InstanceID = "ec2InstanceID"
-            case firstBoot = "firstBoot"
-            case jobID = "jobID"
+            case ec2InstanceID
+            case firstBoot
+            case jobID
         }
     }
 
     public struct Licensing: AWSEncodableShape & AWSDecodableShape {
-
         /// Configure BYOL OS licensing.
         public let osByol: Bool?
 
@@ -1105,12 +1051,11 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case osByol = "osByol"
+            case osByol
         }
     }
 
     public struct LifeCycle: AWSDecodableShape {
-
         /// Lifecycle added to service data and time.
         public let addedToServiceDateTime: String?
         /// Lifecycle elapsed time and duration.
@@ -1137,18 +1082,17 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case addedToServiceDateTime = "addedToServiceDateTime"
-            case elapsedReplicationDuration = "elapsedReplicationDuration"
-            case firstByteDateTime = "firstByteDateTime"
-            case lastCutover = "lastCutover"
-            case lastSeenByServiceDateTime = "lastSeenByServiceDateTime"
-            case lastTest = "lastTest"
-            case state = "state"
+            case addedToServiceDateTime
+            case elapsedReplicationDuration
+            case firstByteDateTime
+            case lastCutover
+            case lastSeenByServiceDateTime
+            case lastTest
+            case state
         }
     }
 
     public struct LifeCycleLastCutover: AWSDecodableShape {
-
         /// Lifecycle Cutover finalized date and time.
         public let finalized: LifeCycleLastCutoverFinalized?
         /// Lifecycle last Cutover initiated.
@@ -1163,14 +1107,13 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case finalized = "finalized"
-            case initiated = "initiated"
-            case reverted = "reverted"
+            case finalized
+            case initiated
+            case reverted
         }
     }
 
     public struct LifeCycleLastCutoverFinalized: AWSDecodableShape {
-
         /// Lifecycle Cutover finalized date and time.
         public let apiCallDateTime: String?
 
@@ -1179,12 +1122,11 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case apiCallDateTime = "apiCallDateTime"
+            case apiCallDateTime
         }
     }
 
     public struct LifeCycleLastCutoverInitiated: AWSDecodableShape {
-
         public let apiCallDateTime: String?
         /// Lifecycle last Cutover initiated by Job ID.
         public let jobID: String?
@@ -1195,13 +1137,12 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case apiCallDateTime = "apiCallDateTime"
-            case jobID = "jobID"
+            case apiCallDateTime
+            case jobID
         }
     }
 
     public struct LifeCycleLastCutoverReverted: AWSDecodableShape {
-
         /// Lifecycle last Cutover reverted API call date time.
         public let apiCallDateTime: String?
 
@@ -1210,12 +1151,11 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case apiCallDateTime = "apiCallDateTime"
+            case apiCallDateTime
         }
     }
 
     public struct LifeCycleLastTest: AWSDecodableShape {
-
         /// Lifecycle last Test finlized.
         public let finalized: LifeCycleLastTestFinalized?
         /// Lifecycle last Test initiated.
@@ -1230,14 +1170,13 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case finalized = "finalized"
-            case initiated = "initiated"
-            case reverted = "reverted"
+            case finalized
+            case initiated
+            case reverted
         }
     }
 
     public struct LifeCycleLastTestFinalized: AWSDecodableShape {
-
         /// Lifecycle Test failed API call date and time.
         public let apiCallDateTime: String?
 
@@ -1246,12 +1185,11 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case apiCallDateTime = "apiCallDateTime"
+            case apiCallDateTime
         }
     }
 
     public struct LifeCycleLastTestInitiated: AWSDecodableShape {
-
         /// Lifecycle last Test initiated API call date and time.
         public let apiCallDateTime: String?
         /// Lifecycle last Test initiated Job ID.
@@ -1263,13 +1201,12 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case apiCallDateTime = "apiCallDateTime"
-            case jobID = "jobID"
+            case apiCallDateTime
+            case jobID
         }
     }
 
     public struct LifeCycleLastTestReverted: AWSDecodableShape {
-
         /// Lifecycle last Test reverted API call date and time.
         public let apiCallDateTime: String?
 
@@ -1278,7 +1215,7 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case apiCallDateTime = "apiCallDateTime"
+            case apiCallDateTime
         }
     }
 
@@ -1303,7 +1240,6 @@ extension Mgn {
     }
 
     public struct ListTagsForResourceResponse: AWSDecodableShape {
-
         /// List tags for resource response.
         public let tags: [String: String]?
 
@@ -1312,12 +1248,11 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tags = "tags"
+            case tags
         }
     }
 
     public struct MarkAsArchivedRequest: AWSEncodableShape {
-
         /// Mark as archived by Source Server ID.
         public let sourceServerID: String
 
@@ -1332,12 +1267,11 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case sourceServerID = "sourceServerID"
+            case sourceServerID
         }
     }
 
     public struct NetworkInterface: AWSDecodableShape {
-
         /// Network interface IPs.
         public let ips: [String]?
         /// Network interface primary IP.
@@ -1352,14 +1286,13 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case ips = "ips"
-            case isPrimary = "isPrimary"
-            case macAddress = "macAddress"
+            case ips
+            case isPrimary
+            case macAddress
         }
     }
 
     public struct OS: AWSDecodableShape {
-
         /// OS full string.
         public let fullString: String?
 
@@ -1368,12 +1301,11 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case fullString = "fullString"
+            case fullString
         }
     }
 
     public struct ParticipatingServer: AWSDecodableShape {
-
         /// Participating server launch status.
         public let launchStatus: LaunchStatus?
         /// Participating server Source Server ID.
@@ -1385,13 +1317,12 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case launchStatus = "launchStatus"
-            case sourceServerID = "sourceServerID"
+            case launchStatus
+            case sourceServerID
         }
     }
 
     public struct ReplicationConfiguration: AWSDecodableShape {
-
         /// Replication Configuration associate default Application Migration Service Security Group.
         public let associateDefaultSecurityGroup: Bool?
         /// Replication Configuration set bandwidth throttling.
@@ -1442,26 +1373,25 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case associateDefaultSecurityGroup = "associateDefaultSecurityGroup"
-            case bandwidthThrottling = "bandwidthThrottling"
-            case createPublicIP = "createPublicIP"
-            case dataPlaneRouting = "dataPlaneRouting"
-            case defaultLargeStagingDiskType = "defaultLargeStagingDiskType"
-            case ebsEncryption = "ebsEncryption"
-            case ebsEncryptionKeyArn = "ebsEncryptionKeyArn"
-            case name = "name"
-            case replicatedDisks = "replicatedDisks"
-            case replicationServerInstanceType = "replicationServerInstanceType"
-            case replicationServersSecurityGroupsIDs = "replicationServersSecurityGroupsIDs"
-            case sourceServerID = "sourceServerID"
-            case stagingAreaSubnetId = "stagingAreaSubnetId"
-            case stagingAreaTags = "stagingAreaTags"
-            case useDedicatedReplicationServer = "useDedicatedReplicationServer"
+            case associateDefaultSecurityGroup
+            case bandwidthThrottling
+            case createPublicIP
+            case dataPlaneRouting
+            case defaultLargeStagingDiskType
+            case ebsEncryption
+            case ebsEncryptionKeyArn
+            case name
+            case replicatedDisks
+            case replicationServerInstanceType
+            case replicationServersSecurityGroupsIDs
+            case sourceServerID
+            case stagingAreaSubnetId
+            case stagingAreaTags
+            case useDedicatedReplicationServer
         }
     }
 
     public struct ReplicationConfigurationReplicatedDisk: AWSEncodableShape & AWSDecodableShape {
-
         /// Replication Configuration replicated disk device name.
         public let deviceName: String?
         /// Replication Configuration replicated disk IOPs.
@@ -1484,15 +1414,14 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case deviceName = "deviceName"
-            case iops = "iops"
-            case isBootDisk = "isBootDisk"
-            case stagingDiskType = "stagingDiskType"
+            case deviceName
+            case iops
+            case isBootDisk
+            case stagingDiskType
         }
     }
 
     public struct ReplicationConfigurationTemplate: AWSDecodableShape {
-
         /// Replication Configuration template ARN.
         public let arn: String?
         /// Replication Configuration template associate default Application Migration Service Security group.
@@ -1543,26 +1472,25 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case associateDefaultSecurityGroup = "associateDefaultSecurityGroup"
-            case bandwidthThrottling = "bandwidthThrottling"
-            case createPublicIP = "createPublicIP"
-            case dataPlaneRouting = "dataPlaneRouting"
-            case defaultLargeStagingDiskType = "defaultLargeStagingDiskType"
-            case ebsEncryption = "ebsEncryption"
-            case ebsEncryptionKeyArn = "ebsEncryptionKeyArn"
-            case replicationConfigurationTemplateID = "replicationConfigurationTemplateID"
-            case replicationServerInstanceType = "replicationServerInstanceType"
-            case replicationServersSecurityGroupsIDs = "replicationServersSecurityGroupsIDs"
-            case stagingAreaSubnetId = "stagingAreaSubnetId"
-            case stagingAreaTags = "stagingAreaTags"
-            case tags = "tags"
-            case useDedicatedReplicationServer = "useDedicatedReplicationServer"
+            case arn
+            case associateDefaultSecurityGroup
+            case bandwidthThrottling
+            case createPublicIP
+            case dataPlaneRouting
+            case defaultLargeStagingDiskType
+            case ebsEncryption
+            case ebsEncryptionKeyArn
+            case replicationConfigurationTemplateID
+            case replicationServerInstanceType
+            case replicationServersSecurityGroupsIDs
+            case stagingAreaSubnetId
+            case stagingAreaTags
+            case tags
+            case useDedicatedReplicationServer
         }
     }
 
     public struct RetryDataReplicationRequest: AWSEncodableShape {
-
         /// Retry data replication for Source Server ID.
         public let sourceServerID: String
 
@@ -1577,12 +1505,11 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case sourceServerID = "sourceServerID"
+            case sourceServerID
         }
     }
 
     public struct SourceProperties: AWSDecodableShape {
-
         /// Source Server CPUs.
         public let cpus: [CPU]?
         /// Source Server disks.
@@ -1612,19 +1539,18 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case cpus = "cpus"
-            case disks = "disks"
-            case identificationHints = "identificationHints"
-            case lastUpdatedDateTime = "lastUpdatedDateTime"
-            case networkInterfaces = "networkInterfaces"
-            case os = "os"
-            case ramBytes = "ramBytes"
-            case recommendedInstanceType = "recommendedInstanceType"
+            case cpus
+            case disks
+            case identificationHints
+            case lastUpdatedDateTime
+            case networkInterfaces
+            case os
+            case ramBytes
+            case recommendedInstanceType
         }
     }
 
     public struct SourceServer: AWSDecodableShape {
-
         /// Source server ARN.
         public let arn: String?
         /// Source server data replication info.
@@ -1654,19 +1580,18 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case dataReplicationInfo = "dataReplicationInfo"
-            case isArchived = "isArchived"
-            case launchedInstance = "launchedInstance"
-            case lifeCycle = "lifeCycle"
-            case sourceProperties = "sourceProperties"
-            case sourceServerID = "sourceServerID"
-            case tags = "tags"
+            case arn
+            case dataReplicationInfo
+            case isArchived
+            case launchedInstance
+            case lifeCycle
+            case sourceProperties
+            case sourceServerID
+            case tags
         }
     }
 
     public struct StartCutoverRequest: AWSEncodableShape {
-
         /// Start Cutover by Source Server IDs.
         public let sourceServerIDs: [String]
         /// Start Cutover by Tags.
@@ -1692,13 +1617,12 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case sourceServerIDs = "sourceServerIDs"
-            case tags = "tags"
+            case sourceServerIDs
+            case tags
         }
     }
 
     public struct StartCutoverResponse: AWSDecodableShape {
-
         /// Start Cutover Job response.
         public let job: Job?
 
@@ -1707,12 +1631,11 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case job = "job"
+            case job
         }
     }
 
     public struct StartTestRequest: AWSEncodableShape {
-
         /// Start Test for Source Server IDs.
         public let sourceServerIDs: [String]
         /// Start Test by Tags.
@@ -1738,13 +1661,12 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case sourceServerIDs = "sourceServerIDs"
-            case tags = "tags"
+            case sourceServerIDs
+            case tags
         }
     }
 
     public struct StartTestResponse: AWSDecodableShape {
-
         /// Start Test Job response.
         public let job: Job?
 
@@ -1753,7 +1675,7 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case job = "job"
+            case job
         }
     }
 
@@ -1782,12 +1704,11 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tags = "tags"
+            case tags
         }
     }
 
     public struct TerminateTargetInstancesRequest: AWSEncodableShape {
-
         /// Terminate Target instance by Source Server IDs.
         public let sourceServerIDs: [String]
         /// Terminate Target instance by Tags.
@@ -1813,13 +1734,12 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case sourceServerIDs = "sourceServerIDs"
-            case tags = "tags"
+            case sourceServerIDs
+            case tags
         }
     }
 
     public struct TerminateTargetInstancesResponse: AWSDecodableShape {
-
         /// Terminate Target instance Job response.
         public let job: Job?
 
@@ -1828,13 +1748,13 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case job = "job"
+            case job
         }
     }
 
     public struct UntagResourceRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "resourceArn")), 
+            AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "resourceArn")),
             AWSMemberEncoding(label: "tagKeys", location: .querystring(locationName: "tagKeys"))
         ]
 
@@ -1860,7 +1780,6 @@ extension Mgn {
     }
 
     public struct UpdateLaunchConfigurationRequest: AWSEncodableShape {
-
         /// Update Launch configuration copy Private IP request.
         public let copyPrivateIp: Bool?
         /// Update Launch configuration copy Tags request.
@@ -1894,18 +1813,17 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case copyPrivateIp = "copyPrivateIp"
-            case copyTags = "copyTags"
-            case launchDisposition = "launchDisposition"
-            case licensing = "licensing"
-            case name = "name"
-            case sourceServerID = "sourceServerID"
-            case targetInstanceTypeRightSizingMethod = "targetInstanceTypeRightSizingMethod"
+            case copyPrivateIp
+            case copyTags
+            case launchDisposition
+            case licensing
+            case name
+            case sourceServerID
+            case targetInstanceTypeRightSizingMethod
         }
     }
 
     public struct UpdateReplicationConfigurationRequest: AWSEncodableShape {
-
         /// Update replication configuration associate default Application Migration Service Security group request.
         public let associateDefaultSecurityGroup: Bool?
         /// Update replication configuration bandwidth throttling request.
@@ -1982,26 +1900,25 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case associateDefaultSecurityGroup = "associateDefaultSecurityGroup"
-            case bandwidthThrottling = "bandwidthThrottling"
-            case createPublicIP = "createPublicIP"
-            case dataPlaneRouting = "dataPlaneRouting"
-            case defaultLargeStagingDiskType = "defaultLargeStagingDiskType"
-            case ebsEncryption = "ebsEncryption"
-            case ebsEncryptionKeyArn = "ebsEncryptionKeyArn"
-            case name = "name"
-            case replicatedDisks = "replicatedDisks"
-            case replicationServerInstanceType = "replicationServerInstanceType"
-            case replicationServersSecurityGroupsIDs = "replicationServersSecurityGroupsIDs"
-            case sourceServerID = "sourceServerID"
-            case stagingAreaSubnetId = "stagingAreaSubnetId"
-            case stagingAreaTags = "stagingAreaTags"
-            case useDedicatedReplicationServer = "useDedicatedReplicationServer"
+            case associateDefaultSecurityGroup
+            case bandwidthThrottling
+            case createPublicIP
+            case dataPlaneRouting
+            case defaultLargeStagingDiskType
+            case ebsEncryption
+            case ebsEncryptionKeyArn
+            case name
+            case replicatedDisks
+            case replicationServerInstanceType
+            case replicationServersSecurityGroupsIDs
+            case sourceServerID
+            case stagingAreaSubnetId
+            case stagingAreaTags
+            case useDedicatedReplicationServer
         }
     }
 
     public struct UpdateReplicationConfigurationTemplateRequest: AWSEncodableShape {
-
         /// Update replication configuration template ARN request.
         public let arn: String?
         /// Update replication configuration template associate default Application Migration Service Security group request.
@@ -2072,20 +1989,20 @@ extension Mgn {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case associateDefaultSecurityGroup = "associateDefaultSecurityGroup"
-            case bandwidthThrottling = "bandwidthThrottling"
-            case createPublicIP = "createPublicIP"
-            case dataPlaneRouting = "dataPlaneRouting"
-            case defaultLargeStagingDiskType = "defaultLargeStagingDiskType"
-            case ebsEncryption = "ebsEncryption"
-            case ebsEncryptionKeyArn = "ebsEncryptionKeyArn"
-            case replicationConfigurationTemplateID = "replicationConfigurationTemplateID"
-            case replicationServerInstanceType = "replicationServerInstanceType"
-            case replicationServersSecurityGroupsIDs = "replicationServersSecurityGroupsIDs"
-            case stagingAreaSubnetId = "stagingAreaSubnetId"
-            case stagingAreaTags = "stagingAreaTags"
-            case useDedicatedReplicationServer = "useDedicatedReplicationServer"
+            case arn
+            case associateDefaultSecurityGroup
+            case bandwidthThrottling
+            case createPublicIP
+            case dataPlaneRouting
+            case defaultLargeStagingDiskType
+            case ebsEncryption
+            case ebsEncryptionKeyArn
+            case replicationConfigurationTemplateID
+            case replicationServerInstanceType
+            case replicationServersSecurityGroupsIDs
+            case stagingAreaSubnetId
+            case stagingAreaTags
+            case useDedicatedReplicationServer
         }
     }
 }

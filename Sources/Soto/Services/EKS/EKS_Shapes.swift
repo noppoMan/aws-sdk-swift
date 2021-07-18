@@ -96,11 +96,11 @@ extension EKS {
     }
 
     public enum LogType: String, CustomStringConvertible, Codable {
-        case api = "api"
-        case audit = "audit"
-        case authenticator = "authenticator"
+        case api
+        case audit
+        case authenticator
         case controllermanager = "controllerManager"
-        case scheduler = "scheduler"
+        case scheduler
         public var description: String { return self.rawValue }
     }
 
@@ -207,7 +207,6 @@ extension EKS {
     // MARK: Shapes
 
     public struct Addon: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the add-on.
         public let addonArn: String?
         /// The name of the add-on.
@@ -226,7 +225,7 @@ extension EKS {
         public let serviceAccountRoleArn: String?
         /// The status of the add-on.
         public let status: AddonStatus?
-        /// The metadata that you apply to the add-on to assist with categorization and organization. Each tag consists of a key and an optional value, both of which you define. Add-on tags do not propagate to any other resources associated with the cluster. 
+        /// The metadata that you apply to the add-on to assist with categorization and organization. Each tag consists of a key and an optional value, both of which you define. Add-on tags do not propagate to any other resources associated with the cluster.
         public let tags: [String: String]?
 
         public init(addonArn: String? = nil, addonName: String? = nil, addonVersion: String? = nil, clusterName: String? = nil, createdAt: Date? = nil, health: AddonHealth? = nil, modifiedAt: Date? = nil, serviceAccountRoleArn: String? = nil, status: AddonStatus? = nil, tags: [String: String]? = nil) {
@@ -243,21 +242,20 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case addonArn = "addonArn"
-            case addonName = "addonName"
-            case addonVersion = "addonVersion"
-            case clusterName = "clusterName"
-            case createdAt = "createdAt"
-            case health = "health"
-            case modifiedAt = "modifiedAt"
-            case serviceAccountRoleArn = "serviceAccountRoleArn"
-            case status = "status"
-            case tags = "tags"
+            case addonArn
+            case addonName
+            case addonVersion
+            case clusterName
+            case createdAt
+            case health
+            case modifiedAt
+            case serviceAccountRoleArn
+            case status
+            case tags
         }
     }
 
     public struct AddonHealth: AWSDecodableShape {
-
         /// An object that represents the add-on's health issues.
         public let issues: [AddonIssue]?
 
@@ -266,12 +264,11 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case issues = "issues"
+            case issues
         }
     }
 
     public struct AddonInfo: AWSDecodableShape {
-
         /// The name of the add-on.
         public let addonName: String?
         /// An object that represents information about available add-on versions and compatible Kubernetes versions.
@@ -286,14 +283,13 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case addonName = "addonName"
-            case addonVersions = "addonVersions"
-            case type = "type"
+            case addonName
+            case addonVersions
+            case type
         }
     }
 
     public struct AddonIssue: AWSDecodableShape {
-
         /// A code that describes the type of issue.
         public let code: AddonIssueCode?
         /// A message that provides details about the issue and what might cause it.
@@ -308,14 +304,13 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case code = "code"
-            case message = "message"
-            case resourceIds = "resourceIds"
+            case code
+            case message
+            case resourceIds
         }
     }
 
     public struct AddonVersionInfo: AWSDecodableShape {
-
         /// The version of the add-on.
         public let addonVersion: String?
         /// The architectures that the version supports.
@@ -330,9 +325,9 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case addonVersion = "addonVersion"
-            case architecture = "architecture"
-            case compatibilities = "compatibilities"
+            case addonVersion
+            case architecture
+            case compatibilities
         }
     }
 
@@ -359,13 +354,12 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientRequestToken = "clientRequestToken"
-            case encryptionConfig = "encryptionConfig"
+            case clientRequestToken
+            case encryptionConfig
         }
     }
 
     public struct AssociateEncryptionConfigResponse: AWSDecodableShape {
-
         public let update: Update?
 
         public init(update: Update? = nil) {
@@ -373,7 +367,7 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case update = "update"
+            case update
         }
     }
 
@@ -410,14 +404,13 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientRequestToken = "clientRequestToken"
-            case oidc = "oidc"
-            case tags = "tags"
+            case clientRequestToken
+            case oidc
+            case tags
         }
     }
 
     public struct AssociateIdentityProviderConfigResponse: AWSDecodableShape {
-
         /// The tags for the resource.
         public let tags: [String: String]?
         public let update: Update?
@@ -428,13 +421,12 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tags = "tags"
-            case update = "update"
+            case tags
+            case update
         }
     }
 
     public struct AutoScalingGroup: AWSDecodableShape {
-
         /// The name of the Auto Scaling group associated with an Amazon EKS managed node group.
         public let name: String?
 
@@ -443,12 +435,11 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case name = "name"
+            case name
         }
     }
 
     public struct Certificate: AWSDecodableShape {
-
         /// The Base64-encoded certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
         public let data: String?
 
@@ -457,12 +448,11 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case data = "data"
+            case data
         }
     }
 
     public struct Cluster: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the cluster.
         public let arn: String?
         /// The certificate-authority-data for your cluster.
@@ -491,7 +481,7 @@ extension EKS {
         public let roleArn: String?
         /// The current status of the cluster.
         public let status: ClusterStatus?
-        /// The metadata that you apply to the cluster to assist with categorization and organization. Each tag consists of a key and an optional value, both of which you define. Cluster tags do not propagate to any other resources associated with the cluster. 
+        /// The metadata that you apply to the cluster to assist with categorization and organization. Each tag consists of a key and an optional value, both of which you define. Cluster tags do not propagate to any other resources associated with the cluster.
         public let tags: [String: String]?
         /// The Kubernetes server version for the cluster.
         public let version: String?
@@ -516,27 +506,26 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case certificateAuthority = "certificateAuthority"
-            case clientRequestToken = "clientRequestToken"
-            case createdAt = "createdAt"
-            case encryptionConfig = "encryptionConfig"
-            case endpoint = "endpoint"
-            case identity = "identity"
-            case kubernetesNetworkConfig = "kubernetesNetworkConfig"
-            case logging = "logging"
-            case name = "name"
-            case platformVersion = "platformVersion"
-            case resourcesVpcConfig = "resourcesVpcConfig"
-            case roleArn = "roleArn"
-            case status = "status"
-            case tags = "tags"
-            case version = "version"
+            case arn
+            case certificateAuthority
+            case clientRequestToken
+            case createdAt
+            case encryptionConfig
+            case endpoint
+            case identity
+            case kubernetesNetworkConfig
+            case logging
+            case name
+            case platformVersion
+            case resourcesVpcConfig
+            case roleArn
+            case status
+            case tags
+            case version
         }
     }
 
     public struct Compatibility: AWSDecodableShape {
-
         /// The supported Kubernetes version of the cluster.
         public let clusterVersion: String?
         /// The supported default version.
@@ -551,9 +540,9 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clusterVersion = "clusterVersion"
-            case defaultVersion = "defaultVersion"
-            case platformVersions = "platformVersions"
+            case clusterVersion
+            case defaultVersion
+            case platformVersions
         }
     }
 
@@ -572,9 +561,9 @@ extension EKS {
         public let clusterName: String
         /// How to resolve parameter value conflicts when migrating an existing add-on to an Amazon EKS add-on.
         public let resolveConflicts: ResolveConflicts?
-        /// The Amazon Resource Name (ARN) of an existing IAM role to bind to the add-on's service account. The role must be assigned the IAM permissions required by the add-on. If you don't specify an existing IAM role, then the add-on uses the permissions assigned to the node IAM role. For more information, see Amazon EKS node IAM role in the Amazon EKS User Guide.  To specify an existing IAM role, you must have an IAM OpenID Connect (OIDC) provider created for your cluster. For more information, see Enabling IAM roles for service accounts on your cluster in the Amazon EKS User Guide. 
+        /// The Amazon Resource Name (ARN) of an existing IAM role to bind to the add-on's service account. The role must be assigned the IAM permissions required by the add-on. If you don't specify an existing IAM role, then the add-on uses the permissions assigned to the node IAM role. For more information, see Amazon EKS node IAM role in the Amazon EKS User Guide.  To specify an existing IAM role, you must have an IAM OpenID Connect (OIDC) provider created for your cluster. For more information, see Enabling IAM roles for service accounts on your cluster in the Amazon EKS User Guide.
         public let serviceAccountRoleArn: String?
-        /// The metadata to apply to the cluster to assist with categorization and organization. Each tag consists of a key and an optional value, both of which you define. 
+        /// The metadata to apply to the cluster to assist with categorization and organization. Each tag consists of a key and an optional value, both of which you define.
         public let tags: [String: String]?
 
         public init(addonName: String, addonVersion: String? = nil, clientRequestToken: String? = CreateAddonRequest.idempotencyToken(), clusterName: String, resolveConflicts: ResolveConflicts? = nil, serviceAccountRoleArn: String? = nil, tags: [String: String]? = nil) {
@@ -603,17 +592,16 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case addonName = "addonName"
-            case addonVersion = "addonVersion"
-            case clientRequestToken = "clientRequestToken"
-            case resolveConflicts = "resolveConflicts"
-            case serviceAccountRoleArn = "serviceAccountRoleArn"
-            case tags = "tags"
+            case addonName
+            case addonVersion
+            case clientRequestToken
+            case resolveConflicts
+            case serviceAccountRoleArn
+            case tags
         }
     }
 
     public struct CreateAddonResponse: AWSDecodableShape {
-
         public let addon: Addon?
 
         public init(addon: Addon? = nil) {
@@ -621,19 +609,18 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case addon = "addon"
+            case addon
         }
     }
 
     public struct CreateClusterRequest: AWSEncodableShape {
-
         /// Unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
         public let clientRequestToken: String?
         /// The encryption configuration for the cluster.
         public let encryptionConfig: [EncryptionConfig]?
         /// The Kubernetes network configuration for the cluster.
         public let kubernetesNetworkConfig: KubernetesNetworkConfigRequest?
-        /// Enable or disable exporting the Kubernetes control plane logs for your cluster to CloudWatch Logs. By default, cluster control plane logs aren't exported to CloudWatch Logs. For more information, see Amazon EKS Cluster control plane logs in the  Amazon EKS User Guide .  CloudWatch Logs ingestion, archive storage, and data scanning rates apply to exported control plane logs. For more information, see CloudWatch Pricing. 
+        /// Enable or disable exporting the Kubernetes control plane logs for your cluster to CloudWatch Logs. By default, cluster control plane logs aren't exported to CloudWatch Logs. For more information, see Amazon EKS Cluster control plane logs in the  Amazon EKS User Guide .  CloudWatch Logs ingestion, archive storage, and data scanning rates apply to exported control plane logs. For more information, see CloudWatch Pricing.
         public let logging: Logging?
         /// The unique name to give to your cluster.
         public let name: String
@@ -673,20 +660,19 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientRequestToken = "clientRequestToken"
-            case encryptionConfig = "encryptionConfig"
-            case kubernetesNetworkConfig = "kubernetesNetworkConfig"
-            case logging = "logging"
-            case name = "name"
-            case resourcesVpcConfig = "resourcesVpcConfig"
-            case roleArn = "roleArn"
-            case tags = "tags"
-            case version = "version"
+            case clientRequestToken
+            case encryptionConfig
+            case kubernetesNetworkConfig
+            case logging
+            case name
+            case resourcesVpcConfig
+            case roleArn
+            case tags
+            case version
         }
     }
 
     public struct CreateClusterResponse: AWSDecodableShape {
-
         /// The full description of your new cluster.
         public let cluster: Cluster?
 
@@ -695,7 +681,7 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case cluster = "cluster"
+            case cluster
         }
     }
 
@@ -740,17 +726,16 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientRequestToken = "clientRequestToken"
-            case fargateProfileName = "fargateProfileName"
-            case podExecutionRoleArn = "podExecutionRoleArn"
-            case selectors = "selectors"
-            case subnets = "subnets"
-            case tags = "tags"
+            case clientRequestToken
+            case fargateProfileName
+            case podExecutionRoleArn
+            case selectors
+            case subnets
+            case tags
         }
     }
 
     public struct CreateFargateProfileResponse: AWSDecodableShape {
-
         /// The full description of your new Fargate profile.
         public let fargateProfile: FargateProfile?
 
@@ -759,7 +744,7 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case fargateProfile = "fargateProfile"
+            case fargateProfile
         }
     }
 
@@ -848,28 +833,27 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case amiType = "amiType"
-            case capacityType = "capacityType"
-            case clientRequestToken = "clientRequestToken"
-            case diskSize = "diskSize"
-            case instanceTypes = "instanceTypes"
-            case labels = "labels"
-            case launchTemplate = "launchTemplate"
-            case nodegroupName = "nodegroupName"
-            case nodeRole = "nodeRole"
-            case releaseVersion = "releaseVersion"
-            case remoteAccess = "remoteAccess"
-            case scalingConfig = "scalingConfig"
-            case subnets = "subnets"
-            case tags = "tags"
-            case taints = "taints"
-            case updateConfig = "updateConfig"
-            case version = "version"
+            case amiType
+            case capacityType
+            case clientRequestToken
+            case diskSize
+            case instanceTypes
+            case labels
+            case launchTemplate
+            case nodegroupName
+            case nodeRole
+            case releaseVersion
+            case remoteAccess
+            case scalingConfig
+            case subnets
+            case tags
+            case taints
+            case updateConfig
+            case version
         }
     }
 
     public struct CreateNodegroupResponse: AWSDecodableShape {
-
         /// The full description of your new node group.
         public let nodegroup: Nodegroup?
 
@@ -878,13 +862,13 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nodegroup = "nodegroup"
+            case nodegroup
         }
     }
 
     public struct DeleteAddonRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "addonName", location: .uri(locationName: "addonName")), 
+            AWSMemberEncoding(label: "addonName", location: .uri(locationName: "addonName")),
             AWSMemberEncoding(label: "clusterName", location: .uri(locationName: "clusterName"))
         ]
 
@@ -908,7 +892,6 @@ extension EKS {
     }
 
     public struct DeleteAddonResponse: AWSDecodableShape {
-
         public let addon: Addon?
 
         public init(addon: Addon? = nil) {
@@ -916,7 +899,7 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case addon = "addon"
+            case addon
         }
     }
 
@@ -936,7 +919,6 @@ extension EKS {
     }
 
     public struct DeleteClusterResponse: AWSDecodableShape {
-
         /// The full description of the cluster to delete.
         public let cluster: Cluster?
 
@@ -945,13 +927,13 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case cluster = "cluster"
+            case cluster
         }
     }
 
     public struct DeleteFargateProfileRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "clusterName", location: .uri(locationName: "clusterName")), 
+            AWSMemberEncoding(label: "clusterName", location: .uri(locationName: "clusterName")),
             AWSMemberEncoding(label: "fargateProfileName", location: .uri(locationName: "fargateProfileName"))
         ]
 
@@ -969,7 +951,6 @@ extension EKS {
     }
 
     public struct DeleteFargateProfileResponse: AWSDecodableShape {
-
         /// The deleted Fargate profile.
         public let fargateProfile: FargateProfile?
 
@@ -978,13 +959,13 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case fargateProfile = "fargateProfile"
+            case fargateProfile
         }
     }
 
     public struct DeleteNodegroupRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "clusterName", location: .uri(locationName: "clusterName")), 
+            AWSMemberEncoding(label: "clusterName", location: .uri(locationName: "clusterName")),
             AWSMemberEncoding(label: "nodegroupName", location: .uri(locationName: "nodegroupName"))
         ]
 
@@ -1002,7 +983,6 @@ extension EKS {
     }
 
     public struct DeleteNodegroupResponse: AWSDecodableShape {
-
         /// The full description of your deleted node group.
         public let nodegroup: Nodegroup?
 
@@ -1011,13 +991,13 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nodegroup = "nodegroup"
+            case nodegroup
         }
     }
 
     public struct DescribeAddonRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "addonName", location: .uri(locationName: "addonName")), 
+            AWSMemberEncoding(label: "addonName", location: .uri(locationName: "addonName")),
             AWSMemberEncoding(label: "clusterName", location: .uri(locationName: "clusterName"))
         ]
 
@@ -1041,7 +1021,6 @@ extension EKS {
     }
 
     public struct DescribeAddonResponse: AWSDecodableShape {
-
         public let addon: Addon?
 
         public init(addon: Addon? = nil) {
@@ -1049,15 +1028,15 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case addon = "addon"
+            case addon
         }
     }
 
     public struct DescribeAddonVersionsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "addonName", location: .querystring(locationName: "addonName")), 
-            AWSMemberEncoding(label: "kubernetesVersion", location: .querystring(locationName: "kubernetesVersion")), 
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "addonName", location: .querystring(locationName: "addonName")),
+            AWSMemberEncoding(label: "kubernetesVersion", location: .querystring(locationName: "kubernetesVersion")),
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
@@ -1067,7 +1046,7 @@ extension EKS {
         public let kubernetesVersion: String?
         /// The maximum number of results to return.
         public let maxResults: Int?
-        /// The nextToken value returned from a previous paginated DescribeAddonVersionsRequest where maxResults was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the nextToken value.  This token should be treated as an opaque identifier that is used only to retrieve the next items in a list and not for other programmatic purposes. 
+        /// The nextToken value returned from a previous paginated DescribeAddonVersionsRequest where maxResults was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the nextToken value.  This token should be treated as an opaque identifier that is used only to retrieve the next items in a list and not for other programmatic purposes.
         public let nextToken: String?
 
         public init(addonName: String? = nil, kubernetesVersion: String? = nil, maxResults: Int? = nil, nextToken: String? = nil) {
@@ -1086,10 +1065,9 @@ extension EKS {
     }
 
     public struct DescribeAddonVersionsResponse: AWSDecodableShape {
-
         /// The list of available versions with Kubernetes version compatibility.
         public let addons: [AddonInfo]?
-        /// The nextToken value returned from a previous paginated DescribeAddonVersionsResponse where maxResults was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the nextToken value.  This token should be treated as an opaque identifier that is used only to retrieve the next items in a list and not for other programmatic purposes. 
+        /// The nextToken value returned from a previous paginated DescribeAddonVersionsResponse where maxResults was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the nextToken value.  This token should be treated as an opaque identifier that is used only to retrieve the next items in a list and not for other programmatic purposes.
         public let nextToken: String?
 
         public init(addons: [AddonInfo]? = nil, nextToken: String? = nil) {
@@ -1098,8 +1076,8 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case addons = "addons"
-            case nextToken = "nextToken"
+            case addons
+            case nextToken
         }
     }
 
@@ -1119,7 +1097,6 @@ extension EKS {
     }
 
     public struct DescribeClusterResponse: AWSDecodableShape {
-
         /// The full description of your specified cluster.
         public let cluster: Cluster?
 
@@ -1128,13 +1105,13 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case cluster = "cluster"
+            case cluster
         }
     }
 
     public struct DescribeFargateProfileRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "clusterName", location: .uri(locationName: "clusterName")), 
+            AWSMemberEncoding(label: "clusterName", location: .uri(locationName: "clusterName")),
             AWSMemberEncoding(label: "fargateProfileName", location: .uri(locationName: "fargateProfileName"))
         ]
 
@@ -1152,7 +1129,6 @@ extension EKS {
     }
 
     public struct DescribeFargateProfileResponse: AWSDecodableShape {
-
         /// The full description of your Fargate profile.
         public let fargateProfile: FargateProfile?
 
@@ -1161,7 +1137,7 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case fargateProfile = "fargateProfile"
+            case fargateProfile
         }
     }
 
@@ -1181,12 +1157,11 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case identityProviderConfig = "identityProviderConfig"
+            case identityProviderConfig
         }
     }
 
     public struct DescribeIdentityProviderConfigResponse: AWSDecodableShape {
-
         /// The object that represents an OpenID Connect (OIDC) identity provider configuration.
         public let identityProviderConfig: IdentityProviderConfigResponse?
 
@@ -1195,13 +1170,13 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case identityProviderConfig = "identityProviderConfig"
+            case identityProviderConfig
         }
     }
 
     public struct DescribeNodegroupRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "clusterName", location: .uri(locationName: "clusterName")), 
+            AWSMemberEncoding(label: "clusterName", location: .uri(locationName: "clusterName")),
             AWSMemberEncoding(label: "nodegroupName", location: .uri(locationName: "nodegroupName"))
         ]
 
@@ -1219,7 +1194,6 @@ extension EKS {
     }
 
     public struct DescribeNodegroupResponse: AWSDecodableShape {
-
         /// The full description of your node group.
         public let nodegroup: Nodegroup?
 
@@ -1228,15 +1202,15 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nodegroup = "nodegroup"
+            case nodegroup
         }
     }
 
     public struct DescribeUpdateRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "addonName", location: .querystring(locationName: "addonName")), 
-            AWSMemberEncoding(label: "name", location: .uri(locationName: "name")), 
-            AWSMemberEncoding(label: "nodegroupName", location: .querystring(locationName: "nodegroupName")), 
+            AWSMemberEncoding(label: "addonName", location: .querystring(locationName: "addonName")),
+            AWSMemberEncoding(label: "name", location: .uri(locationName: "name")),
+            AWSMemberEncoding(label: "nodegroupName", location: .querystring(locationName: "nodegroupName")),
             AWSMemberEncoding(label: "updateId", location: .uri(locationName: "updateId"))
         ]
 
@@ -1260,7 +1234,6 @@ extension EKS {
     }
 
     public struct DescribeUpdateResponse: AWSDecodableShape {
-
         /// The full description of the specified update.
         public let update: Update?
 
@@ -1269,7 +1242,7 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case update = "update"
+            case update
         }
     }
 
@@ -1292,13 +1265,12 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientRequestToken = "clientRequestToken"
-            case identityProviderConfig = "identityProviderConfig"
+            case clientRequestToken
+            case identityProviderConfig
         }
     }
 
     public struct DisassociateIdentityProviderConfigResponse: AWSDecodableShape {
-
         public let update: Update?
 
         public init(update: Update? = nil) {
@@ -1306,12 +1278,11 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case update = "update"
+            case update
         }
     }
 
     public struct EncryptionConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// Key Management Service (KMS) key. Either the ARN or the alias can be used.
         public let provider: Provider?
         /// Specifies the resources to be encrypted. The only supported value is "secrets".
@@ -1323,14 +1294,13 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case provider = "provider"
-            case resources = "resources"
+            case provider
+            case resources
         }
     }
 
     public struct ErrorDetail: AWSDecodableShape {
-
-        /// A brief description of the error.     SubnetNotFound: We couldn't find one of the subnets associated with the cluster.    SecurityGroupNotFound: We couldn't find one of the security groups associated with the cluster.    EniLimitReached: You have reached the elastic network interface limit for your account.    IpNotAvailable: A subnet associated with the cluster doesn't have any free IP addresses.    AccessDenied: You don't have permissions to perform the specified operation.    OperationNotPermitted: The service role associated with the cluster doesn't have the required access permissions for Amazon EKS.    VpcIdNotFound: We couldn't find the VPC associated with the cluster.  
+        /// A brief description of the error.     SubnetNotFound: We couldn't find one of the subnets associated with the cluster.    SecurityGroupNotFound: We couldn't find one of the security groups associated with the cluster.    EniLimitReached: You have reached the elastic network interface limit for your account.    IpNotAvailable: A subnet associated with the cluster doesn't have any free IP addresses.    AccessDenied: You don't have permissions to perform the specified operation.    OperationNotPermitted: The service role associated with the cluster doesn't have the required access permissions for Amazon EKS.    VpcIdNotFound: We couldn't find the VPC associated with the cluster.
         public let errorCode: ErrorCode?
         /// A more complete description of the error.
         public let errorMessage: String?
@@ -1344,14 +1314,13 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case errorCode = "errorCode"
-            case errorMessage = "errorMessage"
-            case resourceIds = "resourceIds"
+            case errorCode
+            case errorMessage
+            case resourceIds
         }
     }
 
     public struct FargateProfile: AWSDecodableShape {
-
         /// The name of the Amazon EKS cluster that the Fargate profile belongs to.
         public let clusterName: String?
         /// The Unix epoch timestamp in seconds for when the Fargate profile was created.
@@ -1384,20 +1353,19 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clusterName = "clusterName"
-            case createdAt = "createdAt"
-            case fargateProfileArn = "fargateProfileArn"
-            case fargateProfileName = "fargateProfileName"
-            case podExecutionRoleArn = "podExecutionRoleArn"
-            case selectors = "selectors"
-            case status = "status"
-            case subnets = "subnets"
-            case tags = "tags"
+            case clusterName
+            case createdAt
+            case fargateProfileArn
+            case fargateProfileName
+            case podExecutionRoleArn
+            case selectors
+            case status
+            case subnets
+            case tags
         }
     }
 
     public struct FargateProfileSelector: AWSEncodableShape & AWSDecodableShape {
-
         /// The Kubernetes labels that the selector should match. A pod must contain all of the labels that are specified in the selector for it to be considered a match.
         public let labels: [String: String]?
         /// The Kubernetes namespace that the selector should match.
@@ -1409,13 +1377,12 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case labels = "labels"
-            case namespace = "namespace"
+            case labels
+            case namespace
         }
     }
 
     public struct Identity: AWSDecodableShape {
-
         /// An object representing the OpenID Connect identity provider information.
         public let oidc: OIDC?
 
@@ -1424,12 +1391,11 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case oidc = "oidc"
+            case oidc
         }
     }
 
     public struct IdentityProviderConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the identity provider configuration.
         public let name: String
         /// The type of the identity provider configuration.
@@ -1441,13 +1407,12 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case name = "name"
-            case type = "type"
+            case name
+            case type
         }
     }
 
     public struct IdentityProviderConfigResponse: AWSDecodableShape {
-
         /// An object that represents an OpenID Connect (OIDC) identity provider configuration.
         public let oidc: OidcIdentityProviderConfig?
 
@@ -1456,13 +1421,12 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case oidc = "oidc"
+            case oidc
         }
     }
 
     public struct Issue: AWSDecodableShape {
-
-        /// A brief description of the error.    AccessDenied: Amazon EKS or one or more of your managed nodes is failing to authenticate or authorize with your Kubernetes cluster API server.    AsgInstanceLaunchFailures: Your Auto Scaling group is experiencing failures while attempting to launch instances.    AutoScalingGroupNotFound: We couldn't find the Auto Scaling group associated with the managed node group. You may be able to recreate an Auto Scaling group with the same settings to recover.    ClusterUnreachable: Amazon EKS or one or more of your managed nodes is unable to to communicate with your Kubernetes cluster API server. This can happen if there are network disruptions or if API servers are timing out processing requests.     Ec2LaunchTemplateNotFound: We couldn't find the Amazon EC2 launch template for your managed node group. You may be able to recreate a launch template with the same settings to recover.    Ec2LaunchTemplateVersionMismatch: The Amazon EC2 launch template version for your managed node group does not match the version that Amazon EKS created. You may be able to revert to the version that Amazon EKS created to recover.    Ec2SecurityGroupDeletionFailure: We could not delete the remote access security group for your managed node group. Remove any dependencies from the security group.    Ec2SecurityGroupNotFound: We couldn't find the cluster security group for the cluster. You must recreate your cluster.    Ec2SubnetInvalidConfiguration: One or more Amazon EC2 subnets specified for a node group do not automatically assign public IP addresses to instances launched into it. If you want your instances to be assigned a public IP address, then you need to enable the auto-assign public IP address setting for the subnet. See Modifying the public IPv4 addressing attribute for your subnet in the Amazon VPC User Guide.    IamInstanceProfileNotFound: We couldn't find the IAM instance profile for your managed node group. You may be able to recreate an instance profile with the same settings to recover.    IamNodeRoleNotFound: We couldn't find the IAM role for your managed node group. You may be able to recreate an IAM role with the same settings to recover.    InstanceLimitExceeded: Your Amazon Web Services account is unable to launch any more instances of the specified instance type. You may be able to request an Amazon EC2 instance limit increase to recover.    InsufficientFreeAddresses: One or more of the subnets associated with your managed node group does not have enough available IP addresses for new nodes.    InternalFailure: These errors are usually caused by an Amazon EKS server-side issue.    NodeCreationFailure: Your launched instances are unable to register with your Amazon EKS cluster. Common causes of this failure are insufficient node IAM role permissions or lack of outbound internet access for the nodes.   
+        /// A brief description of the error.    AccessDenied: Amazon EKS or one or more of your managed nodes is failing to authenticate or authorize with your Kubernetes cluster API server.    AsgInstanceLaunchFailures: Your Auto Scaling group is experiencing failures while attempting to launch instances.    AutoScalingGroupNotFound: We couldn't find the Auto Scaling group associated with the managed node group. You may be able to recreate an Auto Scaling group with the same settings to recover.    ClusterUnreachable: Amazon EKS or one or more of your managed nodes is unable to to communicate with your Kubernetes cluster API server. This can happen if there are network disruptions or if API servers are timing out processing requests.     Ec2LaunchTemplateNotFound: We couldn't find the Amazon EC2 launch template for your managed node group. You may be able to recreate a launch template with the same settings to recover.    Ec2LaunchTemplateVersionMismatch: The Amazon EC2 launch template version for your managed node group does not match the version that Amazon EKS created. You may be able to revert to the version that Amazon EKS created to recover.    Ec2SecurityGroupDeletionFailure: We could not delete the remote access security group for your managed node group. Remove any dependencies from the security group.    Ec2SecurityGroupNotFound: We couldn't find the cluster security group for the cluster. You must recreate your cluster.    Ec2SubnetInvalidConfiguration: One or more Amazon EC2 subnets specified for a node group do not automatically assign public IP addresses to instances launched into it. If you want your instances to be assigned a public IP address, then you need to enable the auto-assign public IP address setting for the subnet. See Modifying the public IPv4 addressing attribute for your subnet in the Amazon VPC User Guide.    IamInstanceProfileNotFound: We couldn't find the IAM instance profile for your managed node group. You may be able to recreate an instance profile with the same settings to recover.    IamNodeRoleNotFound: We couldn't find the IAM role for your managed node group. You may be able to recreate an IAM role with the same settings to recover.    InstanceLimitExceeded: Your Amazon Web Services account is unable to launch any more instances of the specified instance type. You may be able to request an Amazon EC2 instance limit increase to recover.    InsufficientFreeAddresses: One or more of the subnets associated with your managed node group does not have enough available IP addresses for new nodes.    InternalFailure: These errors are usually caused by an Amazon EKS server-side issue.    NodeCreationFailure: Your launched instances are unable to register with your Amazon EKS cluster. Common causes of this failure are insufficient node IAM role permissions or lack of outbound internet access for the nodes.
         public let code: NodegroupIssueCode?
         /// The error message associated with the issue.
         public let message: String?
@@ -1476,15 +1440,14 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case code = "code"
-            case message = "message"
-            case resourceIds = "resourceIds"
+            case code
+            case message
+            case resourceIds
         }
     }
 
     public struct KubernetesNetworkConfigRequest: AWSEncodableShape {
-
-        /// The CIDR block to assign Kubernetes service IP addresses from. If you don't specify a block, Kubernetes assigns addresses from either the 10.100.0.0/16 or 172.20.0.0/16 CIDR blocks. We recommend that you specify a block that does not overlap with resources in other networks that are peered or connected to your VPC. The block must meet the following requirements:   Within one of the following private IP address blocks: 10.0.0.0/8, 172.16.0.0.0/12, or 192.168.0.0/16.   Doesn't overlap with any CIDR block assigned to the VPC that you selected for VPC.   Between /24 and /12.    You can only specify a custom CIDR block when you create a cluster and can't change this value once the cluster is created. 
+        /// The CIDR block to assign Kubernetes service IP addresses from. If you don't specify a block, Kubernetes assigns addresses from either the 10.100.0.0/16 or 172.20.0.0/16 CIDR blocks. We recommend that you specify a block that does not overlap with resources in other networks that are peered or connected to your VPC. The block must meet the following requirements:   Within one of the following private IP address blocks: 10.0.0.0/8, 172.16.0.0.0/12, or 192.168.0.0/16.   Doesn't overlap with any CIDR block assigned to the VPC that you selected for VPC.   Between /24 and /12.    You can only specify a custom CIDR block when you create a cluster and can't change this value once the cluster is created.
         public let serviceIpv4Cidr: String?
 
         public init(serviceIpv4Cidr: String? = nil) {
@@ -1492,12 +1455,11 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case serviceIpv4Cidr = "serviceIpv4Cidr"
+            case serviceIpv4Cidr
         }
     }
 
     public struct KubernetesNetworkConfigResponse: AWSDecodableShape {
-
         /// The CIDR block that Kubernetes service IP addresses are assigned from. If you didn't specify a CIDR block when you created the cluster, then Kubernetes assigns addresses from either the 10.100.0.0/16 or 172.20.0.0/16 CIDR blocks. If this was specified, then it was specified when the cluster was created and it cannot be changed.
         public let serviceIpv4Cidr: String?
 
@@ -1506,12 +1468,11 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case serviceIpv4Cidr = "serviceIpv4Cidr"
+            case serviceIpv4Cidr
         }
     }
 
     public struct LaunchTemplateSpecification: AWSEncodableShape & AWSDecodableShape {
-
         /// The ID of the launch template.
         public let id: String?
         /// The name of the launch template.
@@ -1526,16 +1487,16 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case id = "id"
-            case name = "name"
-            case version = "version"
+            case id
+            case name
+            case version
         }
     }
 
     public struct ListAddonsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "clusterName", location: .uri(locationName: "clusterName")), 
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "clusterName", location: .uri(locationName: "clusterName")),
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
@@ -1543,7 +1504,7 @@ extension EKS {
         public let clusterName: String
         /// The maximum number of add-on results returned by ListAddonsRequest in paginated output. When you use this parameter, ListAddonsRequest returns only maxResults results in a single page along with a nextToken response element. You can see the remaining results of the initial request by sending another ListAddonsRequest request with the returned nextToken value. This value can be between 1 and 100. If you don't use this parameter, ListAddonsRequest returns up to 100 results and a nextToken value, if applicable.
         public let maxResults: Int?
-        /// The nextToken value returned from a previous paginated ListAddonsRequest where maxResults was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the nextToken value.  This token should be treated as an opaque identifier that is used only to retrieve the next items in a list and not for other programmatic purposes. 
+        /// The nextToken value returned from a previous paginated ListAddonsRequest where maxResults was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the nextToken value.  This token should be treated as an opaque identifier that is used only to retrieve the next items in a list and not for other programmatic purposes.
         public let nextToken: String?
 
         public init(clusterName: String, maxResults: Int? = nil, nextToken: String? = nil) {
@@ -1564,10 +1525,9 @@ extension EKS {
     }
 
     public struct ListAddonsResponse: AWSDecodableShape {
-
         /// A list of available add-ons.
         public let addons: [String]?
-        /// The nextToken value returned from a previous paginated ListAddonsResponse where maxResults was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the nextToken value.  This token should be treated as an opaque identifier that is used only to retrieve the next items in a list and not for other programmatic purposes. 
+        /// The nextToken value returned from a previous paginated ListAddonsResponse where maxResults was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the nextToken value.  This token should be treated as an opaque identifier that is used only to retrieve the next items in a list and not for other programmatic purposes.
         public let nextToken: String?
 
         public init(addons: [String]? = nil, nextToken: String? = nil) {
@@ -1576,20 +1536,20 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case addons = "addons"
-            case nextToken = "nextToken"
+            case addons
+            case nextToken
         }
     }
 
     public struct ListClustersRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
         /// The maximum number of cluster results returned by ListClusters in paginated output. When you use this parameter, ListClusters returns only maxResults results in a single page along with a nextToken response element. You can see the remaining results of the initial request by sending another ListClusters request with the returned nextToken value. This value can be between 1 and 100. If you don't use this parameter, ListClusters returns up to 100 results and a nextToken value if applicable.
         public let maxResults: Int?
-        /// The nextToken value returned from a previous paginated ListClusters request where maxResults was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the nextToken value.  This token should be treated as an opaque identifier that is used only to retrieve the next items in a list and not for other programmatic purposes. 
+        /// The nextToken value returned from a previous paginated ListClusters request where maxResults was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the nextToken value.  This token should be treated as an opaque identifier that is used only to retrieve the next items in a list and not for other programmatic purposes.
         public let nextToken: String?
 
         public init(maxResults: Int? = nil, nextToken: String? = nil) {
@@ -1606,7 +1566,6 @@ extension EKS {
     }
 
     public struct ListClustersResponse: AWSDecodableShape {
-
         /// A list of all of the clusters for your account in the specified Region.
         public let clusters: [String]?
         /// The nextToken value to include in a future ListClusters request. When the results of a ListClusters request exceed maxResults, you can use this value to retrieve the next page of results. This value is null when there are no more results to return.
@@ -1618,15 +1577,15 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clusters = "clusters"
-            case nextToken = "nextToken"
+            case clusters
+            case nextToken
         }
     }
 
     public struct ListFargateProfilesRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "clusterName", location: .uri(locationName: "clusterName")), 
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "clusterName", location: .uri(locationName: "clusterName")),
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
@@ -1652,7 +1611,6 @@ extension EKS {
     }
 
     public struct ListFargateProfilesResponse: AWSDecodableShape {
-
         /// A list of all of the Fargate profiles associated with the specified cluster.
         public let fargateProfileNames: [String]?
         /// The nextToken value to include in a future ListFargateProfiles request. When the results of a ListFargateProfiles request exceed maxResults, you can use this value to retrieve the next page of results. This value is null when there are no more results to return.
@@ -1664,15 +1622,15 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case fargateProfileNames = "fargateProfileNames"
-            case nextToken = "nextToken"
+            case fargateProfileNames
+            case nextToken
         }
     }
 
     public struct ListIdentityProviderConfigsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "clusterName", location: .uri(locationName: "clusterName")), 
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "clusterName", location: .uri(locationName: "clusterName")),
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
@@ -1698,7 +1656,6 @@ extension EKS {
     }
 
     public struct ListIdentityProviderConfigsResponse: AWSDecodableShape {
-
         /// The identity provider configurations for the cluster.
         public let identityProviderConfigs: [IdentityProviderConfig]?
         /// The nextToken value returned from a previous paginated ListIdentityProviderConfigsResponse where maxResults was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the nextToken value.
@@ -1710,15 +1667,15 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case identityProviderConfigs = "identityProviderConfigs"
-            case nextToken = "nextToken"
+            case identityProviderConfigs
+            case nextToken
         }
     }
 
     public struct ListNodegroupsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "clusterName", location: .uri(locationName: "clusterName")), 
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "clusterName", location: .uri(locationName: "clusterName")),
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
@@ -1744,7 +1701,6 @@ extension EKS {
     }
 
     public struct ListNodegroupsResponse: AWSDecodableShape {
-
         /// The nextToken value to include in a future ListNodegroups request. When the results of a ListNodegroups request exceed maxResults, you can use this value to retrieve the next page of results. This value is null when there are no more results to return.
         public let nextToken: String?
         /// A list of all of the node groups associated with the specified cluster.
@@ -1756,8 +1712,8 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case nodegroups = "nodegroups"
+            case nextToken
+            case nodegroups
         }
     }
 
@@ -1777,7 +1733,6 @@ extension EKS {
     }
 
     public struct ListTagsForResourceResponse: AWSDecodableShape {
-
         /// The tags for the resource.
         public let tags: [String: String]?
 
@@ -1786,16 +1741,16 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tags = "tags"
+            case tags
         }
     }
 
     public struct ListUpdatesRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "addonName", location: .querystring(locationName: "addonName")), 
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
-            AWSMemberEncoding(label: "name", location: .uri(locationName: "name")), 
-            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")), 
+            AWSMemberEncoding(label: "addonName", location: .querystring(locationName: "addonName")),
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
+            AWSMemberEncoding(label: "name", location: .uri(locationName: "name")),
+            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")),
             AWSMemberEncoding(label: "nodegroupName", location: .querystring(locationName: "nodegroupName"))
         ]
 
@@ -1827,7 +1782,6 @@ extension EKS {
     }
 
     public struct ListUpdatesResponse: AWSDecodableShape {
-
         /// The nextToken value to include in a future ListUpdates request. When the results of a ListUpdates request exceed maxResults, you can use this value to retrieve the next page of results. This value is null when there are no more results to return.
         public let nextToken: String?
         /// A list of all the updates for the specified cluster and Region.
@@ -1839,13 +1793,12 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case updateIds = "updateIds"
+            case nextToken
+            case updateIds
         }
     }
 
     public struct LogSetup: AWSEncodableShape & AWSDecodableShape {
-
         /// If a log type is enabled, that log type exports its control plane logs to CloudWatch Logs. If a log type isn't enabled, that log type doesn't export its control plane logs. Each individual log type can be enabled or disabled independently.
         public let enabled: Bool?
         /// The available cluster control plane log types.
@@ -1857,13 +1810,12 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case enabled = "enabled"
-            case types = "types"
+            case enabled
+            case types
         }
     }
 
     public struct Logging: AWSEncodableShape & AWSDecodableShape {
-
         /// The cluster control plane logging configuration for your cluster.
         public let clusterLogging: [LogSetup]?
 
@@ -1872,12 +1824,11 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clusterLogging = "clusterLogging"
+            case clusterLogging
         }
     }
 
     public struct Nodegroup: AWSDecodableShape {
-
         /// If the node group was deployed using a launch template with a custom AMI, then this is CUSTOM. For node groups that weren't deployed using a launch template, this is the AMI type that was specified in the node group configuration.
         public let amiType: AMITypes?
         /// The capacity type of your managed node group.
@@ -1892,7 +1843,7 @@ extension EKS {
         public let health: NodegroupHealth?
         /// If the node group wasn't deployed with a launch template, then this is the instance type that is associated with the node group. If the node group was deployed with a launch template, then this is null.
         public let instanceTypes: [String]?
-        /// The Kubernetes labels applied to the nodes in the node group.  Only labels that are applied with the Amazon EKS API are shown here. There may be other Kubernetes labels applied to the nodes in this group. 
+        /// The Kubernetes labels applied to the nodes in the node group.  Only labels that are applied with the Amazon EKS API are shown here. There may be other Kubernetes labels applied to the nodes in this group.
         public let labels: [String: String]?
         /// If a launch template was used to create the node group, then this is the launch template that was used.
         public let launchTemplate: LaunchTemplateSpecification?
@@ -1916,7 +1867,7 @@ extension EKS {
         public let status: NodegroupStatus?
         /// The subnets that were specified for the Auto Scaling group that is associated with your node group.
         public let subnets: [String]?
-        /// The metadata applied to the node group to assist with categorization and organization. Each tag consists of a key and an optional value, both of which you define. Node group tags do not propagate to any other resources associated with the node group, such as the Amazon EC2 instances or subnets. 
+        /// The metadata applied to the node group to assist with categorization and organization. Each tag consists of a key and an optional value, both of which you define. Node group tags do not propagate to any other resources associated with the node group, such as the Amazon EC2 instances or subnets.
         public let tags: [String: String]?
         /// The Kubernetes taints to be applied to the nodes in the node group when they are created. Effect is one of No_Schedule, Prefer_No_Schedule, or No_Execute. Kubernetes taints can be used together with tolerations to control how workloads are scheduled to your nodes.
         public let taints: [Taint]?
@@ -1952,35 +1903,34 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case amiType = "amiType"
-            case capacityType = "capacityType"
-            case clusterName = "clusterName"
-            case createdAt = "createdAt"
-            case diskSize = "diskSize"
-            case health = "health"
-            case instanceTypes = "instanceTypes"
-            case labels = "labels"
-            case launchTemplate = "launchTemplate"
-            case modifiedAt = "modifiedAt"
-            case nodegroupArn = "nodegroupArn"
-            case nodegroupName = "nodegroupName"
-            case nodeRole = "nodeRole"
-            case releaseVersion = "releaseVersion"
-            case remoteAccess = "remoteAccess"
-            case resources = "resources"
-            case scalingConfig = "scalingConfig"
-            case status = "status"
-            case subnets = "subnets"
-            case tags = "tags"
-            case taints = "taints"
-            case updateConfig = "updateConfig"
-            case version = "version"
+            case amiType
+            case capacityType
+            case clusterName
+            case createdAt
+            case diskSize
+            case health
+            case instanceTypes
+            case labels
+            case launchTemplate
+            case modifiedAt
+            case nodegroupArn
+            case nodegroupName
+            case nodeRole
+            case releaseVersion
+            case remoteAccess
+            case resources
+            case scalingConfig
+            case status
+            case subnets
+            case tags
+            case taints
+            case updateConfig
+            case version
         }
     }
 
     public struct NodegroupHealth: AWSDecodableShape {
-
-        /// Any issues that are associated with the node group. 
+        /// Any issues that are associated with the node group.
         public let issues: [Issue]?
 
         public init(issues: [Issue]? = nil) {
@@ -1988,12 +1938,11 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case issues = "issues"
+            case issues
         }
     }
 
     public struct NodegroupResources: AWSDecodableShape {
-
         /// The Auto Scaling groups associated with the node group.
         public let autoScalingGroups: [AutoScalingGroup]?
         /// The remote access security group associated with the node group. This security group controls SSH access to the nodes.
@@ -2005,13 +1954,12 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case autoScalingGroups = "autoScalingGroups"
-            case remoteAccessSecurityGroup = "remoteAccessSecurityGroup"
+            case autoScalingGroups
+            case remoteAccessSecurityGroup
         }
     }
 
     public struct NodegroupScalingConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// The current number of nodes that the managed node group should maintain.
         public let desiredSize: Int?
         /// The maximum number of nodes that the managed node group can scale out to. For information about the maximum number that you can specify, see Amazon EKS service quotas in the Amazon EKS User Guide.
@@ -2032,14 +1980,13 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case desiredSize = "desiredSize"
-            case maxSize = "maxSize"
-            case minSize = "minSize"
+            case desiredSize
+            case maxSize
+            case minSize
         }
     }
 
     public struct NodegroupUpdateConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// The maximum number of nodes unavailable at once during a version update. Nodes will be updated in parallel.  This value or maxUnavailablePercentage is required to have a value.The maximum number is 100.
         public let maxUnavailable: Int?
         /// The maximum percentage of nodes unavailable during a version update. This percentage of nodes will be updated in parallel, up to 100 nodes at once. This value or maxUnavailable is required to have a value.
@@ -2057,13 +2004,12 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxUnavailable = "maxUnavailable"
-            case maxUnavailablePercentage = "maxUnavailablePercentage"
+            case maxUnavailable
+            case maxUnavailablePercentage
         }
     }
 
     public struct OIDC: AWSDecodableShape {
-
         /// The issuer URL for the OIDC identity provider.
         public let issuer: String?
 
@@ -2072,19 +2018,18 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case issuer = "issuer"
+            case issuer
         }
     }
 
     public struct OidcIdentityProviderConfig: AWSDecodableShape {
-
         /// This is also known as audience. The ID of the client application that makes authentication requests to the OIDC identity provider.
         public let clientId: String?
         /// The cluster that the configuration is associated to.
         public let clusterName: String?
         /// The JSON web token (JWT) claim that the provider uses to return your groups.
         public let groupsClaim: String?
-        /// The prefix that is prepended to group claims to prevent clashes with existing names (such as system: groups). For example, the value oidc: creates group names like oidc:engineering and oidc:infra. The prefix can't contain system: 
+        /// The prefix that is prepended to group claims to prevent clashes with existing names (such as system: groups). For example, the value oidc: creates group names like oidc:engineering and oidc:infra. The prefix can't contain system:
         public let groupsPrefix: String?
         /// The ARN of the configuration.
         public let identityProviderConfigArn: String?
@@ -2100,7 +2045,7 @@ extension EKS {
         public let tags: [String: String]?
         /// The JSON Web token (JWT) claim that is used as the username.
         public let usernameClaim: String?
-        /// The prefix that is prepended to username claims to prevent clashes with existing names. The prefix can't contain system: 
+        /// The prefix that is prepended to username claims to prevent clashes with existing names. The prefix can't contain system:
         public let usernamePrefix: String?
 
         public init(clientId: String? = nil, clusterName: String? = nil, groupsClaim: String? = nil, groupsPrefix: String? = nil, identityProviderConfigArn: String? = nil, identityProviderConfigName: String? = nil, issuerUrl: String? = nil, requiredClaims: [String: String]? = nil, status: ConfigStatus? = nil, tags: [String: String]? = nil, usernameClaim: String? = nil, usernamePrefix: String? = nil) {
@@ -2119,23 +2064,22 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientId = "clientId"
-            case clusterName = "clusterName"
-            case groupsClaim = "groupsClaim"
-            case groupsPrefix = "groupsPrefix"
-            case identityProviderConfigArn = "identityProviderConfigArn"
-            case identityProviderConfigName = "identityProviderConfigName"
-            case issuerUrl = "issuerUrl"
-            case requiredClaims = "requiredClaims"
-            case status = "status"
-            case tags = "tags"
-            case usernameClaim = "usernameClaim"
-            case usernamePrefix = "usernamePrefix"
+            case clientId
+            case clusterName
+            case groupsClaim
+            case groupsPrefix
+            case identityProviderConfigArn
+            case identityProviderConfigName
+            case issuerUrl
+            case requiredClaims
+            case status
+            case tags
+            case usernameClaim
+            case usernamePrefix
         }
     }
 
     public struct OidcIdentityProviderConfigRequest: AWSEncodableShape {
-
         /// This is also known as audience. The ID for the client application that makes authentication requests to the OpenID identity provider.
         public let clientId: String
         /// The JWT claim that the provider uses to return your groups.
@@ -2174,19 +2118,18 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientId = "clientId"
-            case groupsClaim = "groupsClaim"
-            case groupsPrefix = "groupsPrefix"
-            case identityProviderConfigName = "identityProviderConfigName"
-            case issuerUrl = "issuerUrl"
-            case requiredClaims = "requiredClaims"
-            case usernameClaim = "usernameClaim"
-            case usernamePrefix = "usernamePrefix"
+            case clientId
+            case groupsClaim
+            case groupsPrefix
+            case identityProviderConfigName
+            case issuerUrl
+            case requiredClaims
+            case usernameClaim
+            case usernamePrefix
         }
     }
 
     public struct Provider: AWSEncodableShape & AWSDecodableShape {
-
         /// Amazon Resource Name (ARN) or alias of the KMS key. The KMS key must be symmetric, created in the same region as the cluster, and if the KMS key was created in a different account, the user must have access to the KMS key. For more information, see Allowing Users in Other Accounts to Use a KMS key in the Key Management Service Developer Guide.
         public let keyArn: String?
 
@@ -2195,12 +2138,11 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case keyArn = "keyArn"
+            case keyArn
         }
     }
 
     public struct RemoteAccessConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// The Amazon EC2 SSH key that provides access for SSH communication with the nodes in the managed node group. For more information, see Amazon EC2 key pairs and Linux instances in the Amazon Elastic Compute Cloud User Guide for Linux Instances.
         public let ec2SshKey: String?
         /// The security groups that are allowed SSH access (port 22) to the nodes. If you specify an Amazon EC2 SSH key but do not specify a source security group when you create a managed node group, then port 22 on the nodes is opened to the internet (0.0.0.0/0). For more information, see Security Groups for Your VPC in the Amazon Virtual Private Cloud User Guide.
@@ -2212,8 +2154,8 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case ec2SshKey = "ec2SshKey"
-            case sourceSecurityGroups = "sourceSecurityGroups"
+            case ec2SshKey
+            case sourceSecurityGroups
         }
     }
 
@@ -2243,20 +2185,15 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tags = "tags"
+            case tags
         }
     }
 
     public struct TagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct Taint: AWSEncodableShape & AWSDecodableShape {
-
         /// The effect of the taint.
         public let effect: TaintEffect?
         /// The key of the taint.
@@ -2277,15 +2214,15 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case effect = "effect"
-            case key = "key"
-            case value = "value"
+            case effect
+            case key
+            case value
         }
     }
 
     public struct UntagResourceRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "resourceArn")), 
+            AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "resourceArn")),
             AWSMemberEncoding(label: "tagKeys", location: .querystring(locationName: "tagKeys"))
         ]
 
@@ -2312,15 +2249,10 @@ extension EKS {
     }
 
     public struct UntagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct Update: AWSDecodableShape {
-
         /// The Unix epoch timestamp in seconds for when the update was created.
         public let createdAt: Date?
         /// Any errors associated with a Failed update.
@@ -2344,18 +2276,18 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case createdAt = "createdAt"
-            case errors = "errors"
-            case id = "id"
-            case params = "params"
-            case status = "status"
-            case type = "type"
+            case createdAt
+            case errors
+            case id
+            case params
+            case status
+            case type
         }
     }
 
     public struct UpdateAddonRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "addonName", location: .uri(locationName: "addonName")), 
+            AWSMemberEncoding(label: "addonName", location: .uri(locationName: "addonName")),
             AWSMemberEncoding(label: "clusterName", location: .uri(locationName: "clusterName"))
         ]
 
@@ -2369,7 +2301,7 @@ extension EKS {
         public let clusterName: String
         /// How to resolve parameter value conflicts when applying the new version of the add-on to the cluster.
         public let resolveConflicts: ResolveConflicts?
-        /// The Amazon Resource Name (ARN) of an existing IAM role to bind to the add-on's service account. The role must be assigned the IAM permissions required by the add-on. If you don't specify an existing IAM role, then the add-on uses the permissions assigned to the node IAM role. For more information, see Amazon EKS node IAM role in the Amazon EKS User Guide.  To specify an existing IAM role, you must have an IAM OpenID Connect (OIDC) provider created for your cluster. For more information, see Enabling IAM roles for service accounts on your cluster in the Amazon EKS User Guide. 
+        /// The Amazon Resource Name (ARN) of an existing IAM role to bind to the add-on's service account. The role must be assigned the IAM permissions required by the add-on. If you don't specify an existing IAM role, then the add-on uses the permissions assigned to the node IAM role. For more information, see Amazon EKS node IAM role in the Amazon EKS User Guide.  To specify an existing IAM role, you must have an IAM OpenID Connect (OIDC) provider created for your cluster. For more information, see Enabling IAM roles for service accounts on your cluster in the Amazon EKS User Guide.
         public let serviceAccountRoleArn: String?
 
         public init(addonName: String, addonVersion: String? = nil, clientRequestToken: String? = UpdateAddonRequest.idempotencyToken(), clusterName: String, resolveConflicts: ResolveConflicts? = nil, serviceAccountRoleArn: String? = nil) {
@@ -2390,15 +2322,14 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case addonVersion = "addonVersion"
-            case clientRequestToken = "clientRequestToken"
-            case resolveConflicts = "resolveConflicts"
-            case serviceAccountRoleArn = "serviceAccountRoleArn"
+            case addonVersion
+            case clientRequestToken
+            case resolveConflicts
+            case serviceAccountRoleArn
         }
     }
 
     public struct UpdateAddonResponse: AWSDecodableShape {
-
         public let update: Update?
 
         public init(update: Update? = nil) {
@@ -2406,7 +2337,7 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case update = "update"
+            case update
         }
     }
 
@@ -2417,7 +2348,7 @@ extension EKS {
 
         /// Unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
         public let clientRequestToken: String?
-        /// Enable or disable exporting the Kubernetes control plane logs for your cluster to CloudWatch Logs. By default, cluster control plane logs aren't exported to CloudWatch Logs. For more information, see Amazon EKS cluster control plane logs in the  Amazon EKS User Guide .  CloudWatch Logs ingestion, archive storage, and data scanning rates apply to exported control plane logs. For more information, see CloudWatch Pricing. 
+        /// Enable or disable exporting the Kubernetes control plane logs for your cluster to CloudWatch Logs. By default, cluster control plane logs aren't exported to CloudWatch Logs. For more information, see Amazon EKS cluster control plane logs in the  Amazon EKS User Guide .  CloudWatch Logs ingestion, archive storage, and data scanning rates apply to exported control plane logs. For more information, see CloudWatch Pricing.
         public let logging: Logging?
         /// The name of the Amazon EKS cluster to update.
         public let name: String
@@ -2431,14 +2362,13 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientRequestToken = "clientRequestToken"
-            case logging = "logging"
-            case resourcesVpcConfig = "resourcesVpcConfig"
+            case clientRequestToken
+            case logging
+            case resourcesVpcConfig
         }
     }
 
     public struct UpdateClusterConfigResponse: AWSDecodableShape {
-
         public let update: Update?
 
         public init(update: Update? = nil) {
@@ -2446,7 +2376,7 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case update = "update"
+            case update
         }
     }
 
@@ -2469,13 +2399,12 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientRequestToken = "clientRequestToken"
-            case version = "version"
+            case clientRequestToken
+            case version
         }
     }
 
     public struct UpdateClusterVersionResponse: AWSDecodableShape {
-
         /// The full description of the specified update
         public let update: Update?
 
@@ -2484,12 +2413,11 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case update = "update"
+            case update
         }
     }
 
     public struct UpdateLabelsPayload: AWSEncodableShape {
-
         /// Kubernetes labels to be added or updated.
         public let addOrUpdateLabels: [String: String]?
         /// Kubernetes labels to be removed.
@@ -2510,14 +2438,14 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case addOrUpdateLabels = "addOrUpdateLabels"
-            case removeLabels = "removeLabels"
+            case addOrUpdateLabels
+            case removeLabels
         }
     }
 
     public struct UpdateNodegroupConfigRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "clusterName", location: .uri(locationName: "clusterName")), 
+            AWSMemberEncoding(label: "clusterName", location: .uri(locationName: "clusterName")),
             AWSMemberEncoding(label: "nodegroupName", location: .uri(locationName: "nodegroupName"))
         ]
 
@@ -2554,16 +2482,15 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientRequestToken = "clientRequestToken"
-            case labels = "labels"
-            case scalingConfig = "scalingConfig"
-            case taints = "taints"
-            case updateConfig = "updateConfig"
+            case clientRequestToken
+            case labels
+            case scalingConfig
+            case taints
+            case updateConfig
         }
     }
 
     public struct UpdateNodegroupConfigResponse: AWSDecodableShape {
-
         public let update: Update?
 
         public init(update: Update? = nil) {
@@ -2571,13 +2498,13 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case update = "update"
+            case update
         }
     }
 
     public struct UpdateNodegroupVersionRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "clusterName", location: .uri(locationName: "clusterName")), 
+            AWSMemberEncoding(label: "clusterName", location: .uri(locationName: "clusterName")),
             AWSMemberEncoding(label: "nodegroupName", location: .uri(locationName: "nodegroupName"))
         ]
 
@@ -2607,16 +2534,15 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientRequestToken = "clientRequestToken"
-            case force = "force"
-            case launchTemplate = "launchTemplate"
-            case releaseVersion = "releaseVersion"
-            case version = "version"
+            case clientRequestToken
+            case force
+            case launchTemplate
+            case releaseVersion
+            case version
         }
     }
 
     public struct UpdateNodegroupVersionResponse: AWSDecodableShape {
-
         public let update: Update?
 
         public init(update: Update? = nil) {
@@ -2624,12 +2550,11 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case update = "update"
+            case update
         }
     }
 
     public struct UpdateParam: AWSDecodableShape {
-
         /// The keys associated with an update request.
         public let type: UpdateParamType?
         /// The value of the keys submitted as part of an update request.
@@ -2641,13 +2566,12 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case type = "type"
-            case value = "value"
+            case type
+            case value
         }
     }
 
     public struct UpdateTaintsPayload: AWSEncodableShape {
-
         /// Kubernetes taints to be added or updated.
         public let addOrUpdateTaints: [Taint]?
         /// Kubernetes taints to be removed.
@@ -2668,13 +2592,12 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case addOrUpdateTaints = "addOrUpdateTaints"
-            case removeTaints = "removeTaints"
+            case addOrUpdateTaints
+            case removeTaints
         }
     }
 
     public struct VpcConfigRequest: AWSEncodableShape {
-
         /// Set this value to true to enable private access for your cluster's Kubernetes API server endpoint. If you enable private access, Kubernetes API requests from within your cluster's VPC use the private VPC endpoint. The default value for this parameter is false, which disables private access for your Kubernetes API server. If you disable private access and you have nodes or Fargate pods in the cluster, then ensure that publicAccessCidrs includes the necessary CIDR blocks for communication with the nodes or Fargate pods. For more information, see Amazon EKS cluster endpoint access control in the  Amazon EKS User Guide .
         public let endpointPrivateAccess: Bool?
         /// Set this value to false to disable public access to your cluster's Kubernetes API server endpoint. If you disable public access, your cluster's Kubernetes API server can only receive requests from within the cluster VPC. The default value for this parameter is true, which enables public access for your Kubernetes API server. For more information, see Amazon EKS cluster endpoint access control in the  Amazon EKS User Guide .
@@ -2695,16 +2618,15 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case endpointPrivateAccess = "endpointPrivateAccess"
-            case endpointPublicAccess = "endpointPublicAccess"
-            case publicAccessCidrs = "publicAccessCidrs"
-            case securityGroupIds = "securityGroupIds"
-            case subnetIds = "subnetIds"
+            case endpointPrivateAccess
+            case endpointPublicAccess
+            case publicAccessCidrs
+            case securityGroupIds
+            case subnetIds
         }
     }
 
     public struct VpcConfigResponse: AWSDecodableShape {
-
         /// The cluster security group that was created by Amazon EKS for the cluster. Managed node groups use this security group for control-plane-to-data-plane communication.
         public let clusterSecurityGroupId: String?
         /// This parameter indicates whether the Amazon EKS private API server endpoint is enabled. If the Amazon EKS private API server endpoint is enabled, Kubernetes API requests that originate from within your cluster's VPC use the private VPC endpoint instead of traversing the internet. If this value is disabled and you have nodes or Fargate pods in the cluster, then ensure that publicAccessCidrs includes the necessary CIDR blocks for communication with the nodes or Fargate pods. For more information, see Amazon EKS cluster endpoint access control in the  Amazon EKS User Guide .
@@ -2731,13 +2653,13 @@ extension EKS {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clusterSecurityGroupId = "clusterSecurityGroupId"
-            case endpointPrivateAccess = "endpointPrivateAccess"
-            case endpointPublicAccess = "endpointPublicAccess"
-            case publicAccessCidrs = "publicAccessCidrs"
-            case securityGroupIds = "securityGroupIds"
-            case subnetIds = "subnetIds"
-            case vpcId = "vpcId"
+            case clusterSecurityGroupId
+            case endpointPrivateAccess
+            case endpointPublicAccess
+            case publicAccessCidrs
+            case securityGroupIds
+            case subnetIds
+            case vpcId
         }
     }
 }

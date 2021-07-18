@@ -24,7 +24,6 @@ extension SageMakerFeatureStoreRuntime {
     // MARK: Shapes
 
     public struct BatchGetRecordError: AWSDecodableShape {
-
         /// The error code of an error that has occured when attempting to retrieve a batch of Records. For more information on errors, see  Errors.
         public let errorCode: String
         /// The error message of an error that has occured when attempting to retrieve a record in the batch.
@@ -50,7 +49,6 @@ extension SageMakerFeatureStoreRuntime {
     }
 
     public struct BatchGetRecordIdentifier: AWSEncodableShape & AWSDecodableShape {
-
         /// A FeatureGroupName containing Records you are retrieving in a batch.
         public let featureGroupName: String
         /// List of names of Features to be retrieved. If not specified, the latest value for all the Features are returned.
@@ -75,7 +73,7 @@ extension SageMakerFeatureStoreRuntime {
             }
             try self.validate(self.featureNames, name: "featureNames", parent: name, min: 1)
             try self.recordIdentifiersValueAsString.forEach {
-                try validate($0, name: "recordIdentifiersValueAsString[]", parent: name, max: 358400)
+                try validate($0, name: "recordIdentifiersValueAsString[]", parent: name, max: 358_400)
                 try validate($0, name: "recordIdentifiersValueAsString[]", parent: name, pattern: ".*")
             }
             try self.validate(self.recordIdentifiersValueAsString, name: "recordIdentifiersValueAsString", parent: name, max: 100)
@@ -90,7 +88,6 @@ extension SageMakerFeatureStoreRuntime {
     }
 
     public struct BatchGetRecordRequest: AWSEncodableShape {
-
         /// A list of FeatureGroup names, with their corresponding RecordIdentifier value, and Feature name that have been requested to be retrieved in batch.
         public let identifiers: [BatchGetRecordIdentifier]
 
@@ -112,7 +109,6 @@ extension SageMakerFeatureStoreRuntime {
     }
 
     public struct BatchGetRecordResponse: AWSDecodableShape {
-
         /// A list of errors that have occured when retrieving a batch of Records.
         public let errors: [BatchGetRecordError]
         /// A list of Records you requested to be retrieved in batch.
@@ -134,7 +130,6 @@ extension SageMakerFeatureStoreRuntime {
     }
 
     public struct BatchGetRecordResultDetail: AWSDecodableShape {
-
         /// The FeatureGroupName containing Records you retrieved in a batch.
         public let featureGroupName: String
         /// The Record retrieved.
@@ -157,16 +152,16 @@ extension SageMakerFeatureStoreRuntime {
 
     public struct DeleteRecordRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "eventTime", location: .querystring(locationName: "EventTime")), 
-            AWSMemberEncoding(label: "featureGroupName", location: .uri(locationName: "FeatureGroupName")), 
+            AWSMemberEncoding(label: "eventTime", location: .querystring(locationName: "EventTime")),
+            AWSMemberEncoding(label: "featureGroupName", location: .uri(locationName: "FeatureGroupName")),
             AWSMemberEncoding(label: "recordIdentifierValueAsString", location: .querystring(locationName: "RecordIdentifierValueAsString"))
         ]
 
         /// Timestamp indicating when the deletion event occurred. EventTime can be used to query data at a certain point in time.
         public let eventTime: String
-        /// The name of the feature group to delete the record from. 
+        /// The name of the feature group to delete the record from.
         public let featureGroupName: String
-        /// The value for the RecordIdentifier that uniquely identifies the record, in string format. 
+        /// The value for the RecordIdentifier that uniquely identifies the record, in string format.
         public let recordIdentifierValueAsString: String
 
         public init(eventTime: String, featureGroupName: String, recordIdentifierValueAsString: String) {
@@ -176,12 +171,12 @@ extension SageMakerFeatureStoreRuntime {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.eventTime, name: "eventTime", parent: name, max: 358400)
+            try self.validate(self.eventTime, name: "eventTime", parent: name, max: 358_400)
             try self.validate(self.eventTime, name: "eventTime", parent: name, pattern: ".*")
             try self.validate(self.featureGroupName, name: "featureGroupName", parent: name, max: 64)
             try self.validate(self.featureGroupName, name: "featureGroupName", parent: name, min: 1)
             try self.validate(self.featureGroupName, name: "featureGroupName", parent: name, pattern: "^[a-zA-Z0-9](-*[a-zA-Z0-9])*$")
-            try self.validate(self.recordIdentifierValueAsString, name: "recordIdentifierValueAsString", parent: name, max: 358400)
+            try self.validate(self.recordIdentifierValueAsString, name: "recordIdentifierValueAsString", parent: name, max: 358_400)
             try self.validate(self.recordIdentifierValueAsString, name: "recordIdentifierValueAsString", parent: name, pattern: ".*")
         }
 
@@ -189,7 +184,6 @@ extension SageMakerFeatureStoreRuntime {
     }
 
     public struct FeatureValue: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of a feature that a feature value corresponds to.
         public let featureName: String
         /// The value associated with a feature, in string format. Note that features types can be String, Integral, or Fractional. This value represents all three types as a string.
@@ -204,7 +198,7 @@ extension SageMakerFeatureStoreRuntime {
             try self.validate(self.featureName, name: "featureName", parent: name, max: 64)
             try self.validate(self.featureName, name: "featureName", parent: name, min: 1)
             try self.validate(self.featureName, name: "featureName", parent: name, pattern: "^[a-zA-Z0-9]([-_]*[a-zA-Z0-9])*$")
-            try self.validate(self.valueAsString, name: "valueAsString", parent: name, max: 358400)
+            try self.validate(self.valueAsString, name: "valueAsString", parent: name, max: 358_400)
             try self.validate(self.valueAsString, name: "valueAsString", parent: name, pattern: ".*")
         }
 
@@ -216,8 +210,8 @@ extension SageMakerFeatureStoreRuntime {
 
     public struct GetRecordRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "featureGroupName", location: .uri(locationName: "FeatureGroupName")), 
-            AWSMemberEncoding(label: "featureNames", location: .querystring(locationName: "FeatureName")), 
+            AWSMemberEncoding(label: "featureGroupName", location: .uri(locationName: "FeatureGroupName")),
+            AWSMemberEncoding(label: "featureNames", location: .querystring(locationName: "FeatureName")),
             AWSMemberEncoding(label: "recordIdentifierValueAsString", location: .querystring(locationName: "RecordIdentifierValueAsString"))
         ]
 
@@ -225,7 +219,7 @@ extension SageMakerFeatureStoreRuntime {
         public let featureGroupName: String
         /// List of names of Features to be retrieved. If not specified, the latest value for all the Features are returned.
         public let featureNames: [String]?
-        /// The value that corresponds to RecordIdentifier type and uniquely identifies the record in the FeatureGroup. 
+        /// The value that corresponds to RecordIdentifier type and uniquely identifies the record in the FeatureGroup.
         public let recordIdentifierValueAsString: String
 
         public init(featureGroupName: String, featureNames: [String]? = nil, recordIdentifierValueAsString: String) {
@@ -244,7 +238,7 @@ extension SageMakerFeatureStoreRuntime {
                 try validate($0, name: "featureNames[]", parent: name, pattern: "^[a-zA-Z0-9]([-_]*[a-zA-Z0-9])*$")
             }
             try self.validate(self.featureNames, name: "featureNames", parent: name, min: 1)
-            try self.validate(self.recordIdentifierValueAsString, name: "recordIdentifierValueAsString", parent: name, max: 358400)
+            try self.validate(self.recordIdentifierValueAsString, name: "recordIdentifierValueAsString", parent: name, max: 358_400)
             try self.validate(self.recordIdentifierValueAsString, name: "recordIdentifierValueAsString", parent: name, pattern: ".*")
         }
 
@@ -252,7 +246,6 @@ extension SageMakerFeatureStoreRuntime {
     }
 
     public struct GetRecordResponse: AWSDecodableShape {
-
         /// The record you requested. A list of FeatureValues.
         public let record: [FeatureValue]?
 
@@ -272,7 +265,7 @@ extension SageMakerFeatureStoreRuntime {
 
         /// The name of the feature group that you want to insert the record into.
         public let featureGroupName: String
-        /// List of FeatureValues to be inserted. This will be a full over-write. If you only want to update few of the feature values, do the following:   Use GetRecord to retrieve the latest record.   Update the record returned from GetRecord.    Use PutRecord to update feature values.  
+        /// List of FeatureValues to be inserted. This will be a full over-write. If you only want to update few of the feature values, do the following:   Use GetRecord to retrieve the latest record.   Update the record returned from GetRecord.    Use PutRecord to update feature values.
         public let record: [FeatureValue]
 
         public init(featureGroupName: String, record: [FeatureValue]) {

@@ -55,7 +55,7 @@ public struct LookoutVisionErrorType: AWSErrorType {
     public static var internalServerException: Self { .init(.internalServerException) }
     /// The resource could not be found.
     public static var resourceNotFoundException: Self { .init(.resourceNotFoundException) }
-    /// A service quota was exceeded the allowed limit. For more information, see Limits in Amazon Lookout for Vision in the Amazon Lookout for Vision Developer Guide. 
+    /// A service quota was exceeded the allowed limit. For more information, see Limits in Amazon Lookout for Vision in the Amazon Lookout for Vision Developer Guide.
     public static var serviceQuotaExceededException: Self { .init(.serviceQuotaExceededException) }
     /// Amazon Lookout for Vision is temporarily unable to process the request. Try your call again.
     public static var throttlingException: Self { .init(.throttlingException) }

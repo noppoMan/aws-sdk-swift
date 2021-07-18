@@ -67,7 +67,7 @@ public struct SignerErrorType: AWSErrorType {
     public static var serviceLimitExceededException: Self { .init(.serviceLimitExceededException) }
     /// The request was denied due to request throttling. Instead of this error, TooManyRequestsException should be used.
     public static var throttlingException: Self { .init(.throttlingException) }
-    /// The allowed number of job-signing requests has been exceeded. 
+    /// The allowed number of job-signing requests has been exceeded.
     /// 		       This error supersedes the error ThrottlingException.
     public static var tooManyRequestsException: Self { .init(.tooManyRequestsException) }
     /// You signing certificate could not be validated.

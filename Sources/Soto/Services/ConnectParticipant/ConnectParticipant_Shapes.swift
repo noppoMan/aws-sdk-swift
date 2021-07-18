@@ -70,7 +70,6 @@ extension ConnectParticipant {
     // MARK: Shapes
 
     public struct AttachmentItem: AWSDecodableShape {
-
         /// A unique identifier for the attachment.
         public let attachmentId: String?
         /// A case-sensitive name of the attachment being uploaded.
@@ -133,15 +132,10 @@ extension ConnectParticipant {
     }
 
     public struct CompleteAttachmentUploadResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct ConnectionCredentials: AWSDecodableShape {
-
         /// The connection token.
         public let connectionToken: String?
         /// The expiration of the token. It's specified in ISO 8601 format: yyyy-MM-ddThh:mm:ss.SSSZ. For example, 2019-11-08T02:41:28.172Z.
@@ -185,7 +179,6 @@ extension ConnectParticipant {
     }
 
     public struct CreateParticipantConnectionResponse: AWSDecodableShape {
-
         /// Creates the participant's connection credentials. The authentication token associated with the participant's connection.
         public let connectionCredentials: ConnectionCredentials?
         /// Creates the participant's websocket connection.
@@ -229,11 +222,7 @@ extension ConnectParticipant {
     }
 
     public struct DisconnectParticipantResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct GetAttachmentRequest: AWSEncodableShape {
@@ -264,7 +253,6 @@ extension ConnectParticipant {
     }
 
     public struct GetAttachmentResponse: AWSDecodableShape {
-
         /// The pre-signed URL using which file would be downloaded from Amazon S3 by the API caller.
         public let url: String?
         /// The expiration time of the URL in ISO timestamp. It's specified in ISO 8601 format: yyyy-MM-ddThh:mm:ss.SSSZ. For example, 2019-11-08T02:41:28.172Z.
@@ -290,11 +278,11 @@ extension ConnectParticipant {
         public let connectionToken: String
         /// The contactId from the current contact chain for which transcript is needed.
         public let contactId: String?
-        /// The maximum number of results to return in the page. Default: 10. 
+        /// The maximum number of results to return in the page. Default: 10.
         public let maxResults: Int?
         /// The pagination token. Use the value returned previously in the next subsequent request to retrieve the next set of results.
         public let nextToken: String?
-        /// The direction from StartPosition from which to retrieve message. Default: BACKWARD when no StartPosition is provided, FORWARD with StartPosition. 
+        /// The direction from StartPosition from which to retrieve message. Default: BACKWARD when no StartPosition is provided, FORWARD with StartPosition.
         public let scanDirection: ScanDirection?
         /// The sort order for the records. Default: DESCENDING.
         public let sortOrder: SortKey?
@@ -334,8 +322,7 @@ extension ConnectParticipant {
     }
 
     public struct GetTranscriptResponse: AWSDecodableShape {
-
-        /// The initial contact ID for the contact. 
+        /// The initial contact ID for the contact.
         public let initialContactId: String?
         /// The pagination token. Use the value returned previously in the next subsequent request to retrieve the next set of results.
         public let nextToken: String?
@@ -356,7 +343,6 @@ extension ConnectParticipant {
     }
 
     public struct Item: AWSDecodableShape {
-
         /// The time when the message or event was sent. It's specified in ISO 8601 format: yyyy-MM-ddThh:mm:ss.SSSZ. For example, 2019-11-08T02:41:28.172Z.
         public let absoluteTime: String?
         /// Provides information about the attachments.
@@ -373,7 +359,7 @@ extension ConnectParticipant {
         public let participantId: String?
         /// The role of the sender. For example, is it a customer, agent, or system.
         public let participantRole: ParticipantRole?
-        /// Type of the item: message or event. 
+        /// Type of the item: message or event.
         public let type: ChatItemType?
 
         public init(absoluteTime: String? = nil, attachments: [AttachmentItem]? = nil, content: String? = nil, contentType: String? = nil, displayName: String? = nil, id: String? = nil, participantId: String? = nil, participantRole: ParticipantRole? = nil, type: ChatItemType? = nil) {
@@ -413,7 +399,7 @@ extension ConnectParticipant {
         /// The content of the event to be sent (for example, message text). This is not yet supported.
         public let content: String?
         /// The content type of the request. Supported types are:
-        ///    application/vnd.amazonaws.connect.event.typing   application/vnd.amazonaws.connect.event.connection.acknowledged  
+        ///    application/vnd.amazonaws.connect.event.typing   application/vnd.amazonaws.connect.event.connection.acknowledged
         public let contentType: String
 
         public init(clientToken: String? = SendEventRequest.idempotencyToken(), connectionToken: String, content: String? = nil, contentType: String) {
@@ -441,7 +427,6 @@ extension ConnectParticipant {
     }
 
     public struct SendEventResponse: AWSDecodableShape {
-
         /// The time when the event was sent. It's specified in ISO 8601 format: yyyy-MM-ddThh:mm:ss.SSSZ. For example, 2019-11-08T02:41:28.172Z.
         public let absoluteTime: String?
         /// The ID of the response.
@@ -497,7 +482,6 @@ extension ConnectParticipant {
     }
 
     public struct SendMessageResponse: AWSDecodableShape {
-
         /// The time when the message was sent. It's specified in ISO 8601 format: yyyy-MM-ddThh:mm:ss.SSSZ. For example, 2019-11-08T02:41:28.172Z.
         public let absoluteTime: String?
         /// The ID of the message.
@@ -559,7 +543,6 @@ extension ConnectParticipant {
     }
 
     public struct StartAttachmentUploadResponse: AWSDecodableShape {
-
         /// A unique identifier for the attachment.
         public let attachmentId: String?
         /// Fields to be used while uploading the attachment.
@@ -577,12 +560,11 @@ extension ConnectParticipant {
     }
 
     public struct StartPosition: AWSEncodableShape {
-
         /// The time in ISO format where to start. It's specified in ISO 8601 format: yyyy-MM-ddThh:mm:ss.SSSZ. For example, 2019-11-08T02:41:28.172Z.
         public let absoluteTime: String?
-        /// The ID of the message or event where to start. 
+        /// The ID of the message or event where to start.
         public let id: String?
-        /// The start position of the most recent message where you want to start. 
+        /// The start position of the most recent message where you want to start.
         public let mostRecent: Int?
 
         public init(absoluteTime: String? = nil, id: String? = nil, mostRecent: Int? = nil) {
@@ -608,7 +590,6 @@ extension ConnectParticipant {
     }
 
     public struct UploadMetadata: AWSDecodableShape {
-
         /// The headers to be provided while uploading the file to the URL.
         public let headersToInclude: [String: String]?
         /// The pre-signed URL using which file would be downloaded from Amazon S3 by the API caller.
@@ -630,7 +611,6 @@ extension ConnectParticipant {
     }
 
     public struct Websocket: AWSDecodableShape {
-
         /// The URL expiration timestamp in ISO date format. It's specified in ISO 8601 format: yyyy-MM-ddThh:mm:ss.SSSZ. For example, 2019-11-08T02:41:28.172Z.
         public let connectionExpiry: String?
         /// The URL of the websocket.

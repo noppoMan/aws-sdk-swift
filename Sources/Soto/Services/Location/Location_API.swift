@@ -63,7 +63,7 @@ public struct Location: AWSService {
 
     // MARK: API Calls
 
-    /// Creates an association between a geofence collection and a tracker resource. This allows the tracker resource to communicate location data to the linked geofence collection.  Currently not supported — Cross-account configurations, such as creating associations between a tracker resource in one account and a geofence collection in another account. 
+    /// Creates an association between a geofence collection and a tracker resource. This allows the tracker resource to communicate location data to the linked geofence collection.  Currently not supported — Cross-account configurations, such as creating associations between a tracker resource in one account and a geofence collection in another account.
     public func associateTrackerConsumer(_ input: AssociateTrackerConsumerRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<AssociateTrackerConsumerResponse> {
         return self.client.execute(operation: "AssociateTrackerConsumer", path: "/tracking/v0/trackers/{TrackerName}/consumers", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -73,12 +73,12 @@ public struct Location: AWSService {
         return self.client.execute(operation: "BatchDeleteDevicePositionHistory", path: "/tracking/v0/trackers/{TrackerName}/delete-positions", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Deletes a batch of geofences from a geofence collection.  This operation deletes the resource permanently. 
+    /// Deletes a batch of geofences from a geofence collection.  This operation deletes the resource permanently.
     public func batchDeleteGeofence(_ input: BatchDeleteGeofenceRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<BatchDeleteGeofenceResponse> {
         return self.client.execute(operation: "BatchDeleteGeofence", path: "/geofencing/v0/collections/{CollectionName}/delete-geofences", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Evaluates device positions against the geofence geometries from a given geofence collection. The evaluation determines if the device has entered or exited a geofenced area, which publishes ENTER or EXIT geofence events to Amazon EventBridge.  The last geofence that a device was observed within, if any, is tracked for 30 days after the most recent device position update 
+    /// Evaluates device positions against the geofence geometries from a given geofence collection. The evaluation determines if the device has entered or exited a geofenced area, which publishes ENTER or EXIT geofence events to Amazon EventBridge.  The last geofence that a device was observed within, if any, is tracked for 30 days after the most recent device position update
     public func batchEvaluateGeofences(_ input: BatchEvaluateGeofencesRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<BatchEvaluateGeofencesResponse> {
         return self.client.execute(operation: "BatchEvaluateGeofences", path: "/geofencing/v0/collections/{CollectionName}/positions", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -93,12 +93,12 @@ public struct Location: AWSService {
         return self.client.execute(operation: "BatchPutGeofence", path: "/geofencing/v0/collections/{CollectionName}/put-geofences", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Uploads position update data for one or more devices to a tracker resource. Amazon Location uses the data when reporting the last known device position and position history.  Only one position update is stored per sample time. Location data is sampled at a fixed rate of one position per 30-second interval and retained for 30 days before it's deleted. 
+    /// Uploads position update data for one or more devices to a tracker resource. Amazon Location uses the data when reporting the last known device position and position history.  Only one position update is stored per sample time. Location data is sampled at a fixed rate of one position per 30-second interval and retained for 30 days before it's deleted.
     public func batchUpdateDevicePosition(_ input: BatchUpdateDevicePositionRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<BatchUpdateDevicePositionResponse> {
         return self.client.execute(operation: "BatchUpdateDevicePosition", path: "/tracking/v0/trackers/{TrackerName}/positions", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    ///  Calculates a route given the following required parameters: DeparturePostiton and DestinationPosition. Requires that you first create aroute calculator resource  By default, a request that doesn't specify a departure time uses the best time of day to travel with the best traffic conditions when calculating the route. Additional options include:    Specifying a departure time using either DepartureTime or DepartureNow. This calculates a route based on predictive traffic data at the given time.   You can't specify both DepartureTime and DepartureNow in a single request. Specifying both parameters returns an error message.     Specifying a travel mode using TravelMode. This lets you specify additional route preference such as CarModeOptions if traveling by Car, or TruckModeOptions if traveling by Truck.    
+    ///  Calculates a route given the following required parameters: DeparturePostiton and DestinationPosition. Requires that you first create aroute calculator resource  By default, a request that doesn't specify a departure time uses the best time of day to travel with the best traffic conditions when calculating the route. Additional options include:    Specifying a departure time using either DepartureTime or DepartureNow. This calculates a route based on predictive traffic data at the given time.   You can't specify both DepartureTime and DepartureNow in a single request. Specifying both parameters returns an error message.     Specifying a travel mode using TravelMode. This lets you specify additional route preference such as CarModeOptions if traveling by Car, or TruckModeOptions if traveling by Truck.
     public func calculateRoute(_ input: CalculateRouteRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<CalculateRouteResponse> {
         return self.client.execute(operation: "CalculateRoute", path: "/routes/v0/calculators/{CalculatorName}/calculate/route", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -128,27 +128,27 @@ public struct Location: AWSService {
         return self.client.execute(operation: "CreateTracker", path: "/tracking/v0/trackers", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Deletes a geofence collection from your AWS account.  This operation deletes the resource permanently. If the geofence collection is the target of a tracker resource, the devices will no longer be monitored. 
+    /// Deletes a geofence collection from your AWS account.  This operation deletes the resource permanently. If the geofence collection is the target of a tracker resource, the devices will no longer be monitored.
     public func deleteGeofenceCollection(_ input: DeleteGeofenceCollectionRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<DeleteGeofenceCollectionResponse> {
         return self.client.execute(operation: "DeleteGeofenceCollection", path: "/geofencing/v0/collections/{CollectionName}", httpMethod: .DELETE, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Deletes a map resource from your AWS account.  This operation deletes the resource permanently. If the map is being used in an application, the map may not render. 
+    /// Deletes a map resource from your AWS account.  This operation deletes the resource permanently. If the map is being used in an application, the map may not render.
     public func deleteMap(_ input: DeleteMapRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<DeleteMapResponse> {
         return self.client.execute(operation: "DeleteMap", path: "/maps/v0/maps/{MapName}", httpMethod: .DELETE, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Deletes a place index resource from your AWS account.  This operation deletes the resource permanently. 
+    /// Deletes a place index resource from your AWS account.  This operation deletes the resource permanently.
     public func deletePlaceIndex(_ input: DeletePlaceIndexRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<DeletePlaceIndexResponse> {
         return self.client.execute(operation: "DeletePlaceIndex", path: "/places/v0/indexes/{IndexName}", httpMethod: .DELETE, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Deletes a route calculator resource from your AWS account.  This operation deletes the resource permanently. 
+    /// Deletes a route calculator resource from your AWS account.  This operation deletes the resource permanently.
     public func deleteRouteCalculator(_ input: DeleteRouteCalculatorRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<DeleteRouteCalculatorResponse> {
         return self.client.execute(operation: "DeleteRouteCalculator", path: "/routes/v0/calculators/{CalculatorName}", httpMethod: .DELETE, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Deletes a tracker resource from your AWS account.  This operation deletes the resource permanently. If the tracker resource is in use, you may encounter an error. Make sure that the target resource isn't a dependency for your applications. 
+    /// Deletes a tracker resource from your AWS account.  This operation deletes the resource permanently. If the tracker resource is in use, you may encounter an error. Make sure that the target resource isn't a dependency for your applications.
     public func deleteTracker(_ input: DeleteTrackerRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<DeleteTrackerResponse> {
         return self.client.execute(operation: "DeleteTracker", path: "/tracking/v0/trackers/{TrackerName}", httpMethod: .DELETE, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -178,17 +178,17 @@ public struct Location: AWSService {
         return self.client.execute(operation: "DescribeTracker", path: "/tracking/v0/trackers/{TrackerName}", httpMethod: .GET, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Removes the association between a tracker resource and a geofence collection.  Once you unlink a tracker resource from a geofence collection, the tracker positions will no longer be automatically evaluated against geofences. 
+    /// Removes the association between a tracker resource and a geofence collection.  Once you unlink a tracker resource from a geofence collection, the tracker positions will no longer be automatically evaluated against geofences.
     public func disassociateTrackerConsumer(_ input: DisassociateTrackerConsumerRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<DisassociateTrackerConsumerResponse> {
         return self.client.execute(operation: "DisassociateTrackerConsumer", path: "/tracking/v0/trackers/{TrackerName}/consumers/{ConsumerArn}", httpMethod: .DELETE, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Retrieves a device's most recent position according to its sample time.  Device positions are deleted after 30 days. 
+    /// Retrieves a device's most recent position according to its sample time.  Device positions are deleted after 30 days.
     public func getDevicePosition(_ input: GetDevicePositionRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<GetDevicePositionResponse> {
         return self.client.execute(operation: "GetDevicePosition", path: "/tracking/v0/trackers/{TrackerName}/devices/{DeviceId}/positions/latest", httpMethod: .GET, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Retrieves the device position history from a tracker resource within a specified range of time.  Device positions are deleted after 30 days. 
+    /// Retrieves the device position history from a tracker resource within a specified range of time.  Device positions are deleted after 30 days.
     public func getDevicePositionHistory(_ input: GetDevicePositionHistoryRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<GetDevicePositionHistoryResponse> {
         return self.client.execute(operation: "GetDevicePositionHistory", path: "/tracking/v0/trackers/{TrackerName}/devices/{DeviceId}/list-positions", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -263,7 +263,7 @@ public struct Location: AWSService {
         return self.client.execute(operation: "ListTrackers", path: "/tracking/v0/list-trackers", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Stores a geofence geometry in a given geofence collection, or updates the geometry of an existing geofence if a geofence ID is included in the request. 
+    /// Stores a geofence geometry in a given geofence collection, or updates the geometry of an existing geofence if a geofence ID is included in the request.
     public func putGeofence(_ input: PutGeofenceRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<PutGeofenceResponse> {
         return self.client.execute(operation: "PutGeofence", path: "/geofencing/v0/collections/{CollectionName}/geofences/{GeofenceId}", httpMethod: .PUT, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -273,7 +273,7 @@ public struct Location: AWSService {
         return self.client.execute(operation: "SearchPlaceIndexForPosition", path: "/places/v0/indexes/{IndexName}/search/position", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Geocodes free-form text, such as an address, name, city, or region to allow you to search for Places or points of interest.  Includes the option to apply additional parameters to narrow your list of results.  You can search for places near a given position using BiasPosition, or filter results within a bounding box using FilterBBox. Providing both parameters simultaneously returns an error. 
+    /// Geocodes free-form text, such as an address, name, city, or region to allow you to search for Places or points of interest.  Includes the option to apply additional parameters to narrow your list of results.  You can search for places near a given position using BiasPosition, or filter results within a bounding box using FilterBBox. Providing both parameters simultaneously returns an error.
     public func searchPlaceIndexForText(_ input: SearchPlaceIndexForTextRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<SearchPlaceIndexForTextResponse> {
         return self.client.execute(operation: "SearchPlaceIndexForText", path: "/places/v0/indexes/{IndexName}/search/text", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -281,7 +281,7 @@ public struct Location: AWSService {
     /// Assigns one or more tags (key-value pairs) to the specified Amazon Location Service resource.
     ///  Tags can help you organize and categorize your resources. You can also use them to scope user permissions, by granting a user permission to access or change only resources with certain tag values.
     ///  Tags don't have any semantic meaning to AWS and are interpreted strictly as strings of characters.
-    ///  You can use the TagResource action with an Amazon Location Service resource that already has tags. If you specify a new tag key for the resource, this tag is appended to the tags already associated with the resource. If you specify a tag key that is already associated with the resource, the new tag value that you specify replaces the previous value for that tag. 
+    ///  You can use the TagResource action with an Amazon Location Service resource that already has tags. If you specify a new tag key for the resource, this tag is appended to the tags already associated with the resource. If you specify a tag key that is already associated with the resource, the new tag value that you specify replaces the previous value for that tag.
     ///  You can associate as many as 50 tags with a resource.
     public func tagResource(_ input: TagResourceRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<TagResourceResponse> {
         return self.client.execute(operation: "TagResource", path: "/tags/{ResourceArn}", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)

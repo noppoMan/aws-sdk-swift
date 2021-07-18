@@ -120,10 +120,9 @@ extension AppRunner {
     // MARK: Shapes
 
     public struct AssociateCustomDomainRequest: AWSEncodableShape {
-
         /// A custom domain endpoint to associate. Specify a root domain (for example, example.com), a subdomain (for example, login.example.com or admin.login.example.com), or a wildcard (for example, *.example.com).
         public let domainName: String
-        /// Set to true to associate the subdomain www.DomainName with the App Runner service in addition to the base domain. Default: true 
+        /// Set to true to associate the subdomain www.DomainName with the App Runner service in addition to the base domain. Default: true
         public let enableWWWSubdomain: Bool?
         /// The Amazon Resource Name (ARN) of the App Runner service that you want to associate a custom domain name with.
         public let serviceArn: String
@@ -150,7 +149,6 @@ extension AppRunner {
     }
 
     public struct AssociateCustomDomainResponse: AWSDecodableShape {
-
         /// A description of the domain name that's being associated.
         public let customDomain: CustomDomain
         /// The App Runner subdomain of the App Runner service. The custom domain name is mapped to this target name.
@@ -172,7 +170,6 @@ extension AppRunner {
     }
 
     public struct AuthenticationConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the IAM role that grants the App Runner service access to a source repository. It's required for ECR image repositories (but not for ECR Public repositories).
         public let accessRoleArn: String?
         /// The Amazon Resource Name (ARN) of the App Runner connection that enables the App Runner service to connect to a source repository. It's required for GitHub code repositories.
@@ -199,7 +196,6 @@ extension AppRunner {
     }
 
     public struct AutoScalingConfiguration: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of this auto scaling configuration.
         public let autoScalingConfigurationArn: String?
         /// The customer-provided auto scaling configuration name. It can be used in multiple revisions of a configuration.
@@ -249,7 +245,6 @@ extension AppRunner {
     }
 
     public struct AutoScalingConfigurationSummary: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of this auto scaling configuration.
         public let autoScalingConfigurationArn: String?
         /// The customer-provided auto scaling configuration name. It can be used in multiple revisions of a configuration.
@@ -271,7 +266,6 @@ extension AppRunner {
     }
 
     public struct CertificateValidationRecord: AWSDecodableShape {
-
         /// The certificate CNAME record name.
         public let name: String?
         /// The current state of the certificate CNAME record validation. It should change to SUCCESS after App Runner completes validation with your DNS.
@@ -297,10 +291,9 @@ extension AppRunner {
     }
 
     public struct CodeConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// The basic configuration for building and running the App Runner service. Use it to quickly launch an App Runner service without providing a apprunner.yaml file in the source code repository (or ignoring the file if it exists).
         public let codeConfigurationValues: CodeConfigurationValues?
-        /// The source of the App Runner configuration. Values are interpreted as follows:    REPOSITORY – App Runner reads configuration values from the apprunner.yaml file in the source code repository and ignores CodeConfigurationValues.    API – App Runner uses configuration values provided in CodeConfigurationValues and ignores the apprunner.yaml file in the source code repository.  
+        /// The source of the App Runner configuration. Values are interpreted as follows:    REPOSITORY – App Runner reads configuration values from the apprunner.yaml file in the source code repository and ignores CodeConfigurationValues.    API – App Runner uses configuration values provided in CodeConfigurationValues and ignores the apprunner.yaml file in the source code repository.
         public let configurationSource: ConfigurationSource
 
         public init(codeConfigurationValues: CodeConfigurationValues? = nil, configurationSource: ConfigurationSource) {
@@ -319,10 +312,9 @@ extension AppRunner {
     }
 
     public struct CodeConfigurationValues: AWSEncodableShape & AWSDecodableShape {
-
         /// The command App Runner runs to build your application.
         public let buildCommand: String?
-        /// The port that your application listens to in the container. Default: 8080 
+        /// The port that your application listens to in the container. Default: 8080
         public let port: String?
         /// A runtime environment type for building and running an App Runner service. It represents a programming language runtime.
         public let runtime: Runtime
@@ -354,7 +346,6 @@ extension AppRunner {
     }
 
     public struct CodeRepository: AWSEncodableShape & AWSDecodableShape {
-
         /// Configuration for building and running the service from a source code repository.
         public let codeConfiguration: CodeConfiguration?
         /// The location of the repository that contains the source code.
@@ -383,7 +374,6 @@ extension AppRunner {
     }
 
     public struct Connection: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of this connection.
         public let connectionArn: String?
         /// The customer-provided connection name.
@@ -413,7 +403,6 @@ extension AppRunner {
     }
 
     public struct ConnectionSummary: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of this connection.
         public let connectionArn: String?
         /// The customer-provided connection name.
@@ -443,14 +432,13 @@ extension AppRunner {
     }
 
     public struct CreateAutoScalingConfigurationRequest: AWSEncodableShape {
-
         /// A name for the auto scaling configuration. When you use it for the first time in an AWS Region, App Runner creates revision number 1 of this name. When you use the same name in subsequent calls, App Runner creates incremental revisions of the configuration.
         public let autoScalingConfigurationName: String
-        /// The maximum number of concurrent requests that you want an instance to process. If the number of concurrent requests exceeds this limit, App Runner scales up your service. Default: 100 
+        /// The maximum number of concurrent requests that you want an instance to process. If the number of concurrent requests exceeds this limit, App Runner scales up your service. Default: 100
         public let maxConcurrency: Int?
-        /// The maximum number of instances that your service scales up to. At most MaxSize instances actively serve traffic for your service. Default: 25 
+        /// The maximum number of instances that your service scales up to. At most MaxSize instances actively serve traffic for your service. Default: 25
         public let maxSize: Int?
-        /// The minimum number of instances that App Runner provisions for your service. The service always has at least MinSize provisioned instances. Some of them actively serve traffic. The rest of them (provisioned and inactive instances) are a cost-effective compute capacity reserve and are ready to be quickly activated. You pay for memory usage of all the provisioned instances. You pay for CPU usage of only the active subset. App Runner temporarily doubles the number of provisioned instances during deployments, to maintain the same capacity for both old and new code. Default: 1 
+        /// The minimum number of instances that App Runner provisions for your service. The service always has at least MinSize provisioned instances. Some of them actively serve traffic. The rest of them (provisioned and inactive instances) are a cost-effective compute capacity reserve and are ready to be quickly activated. You pay for memory usage of all the provisioned instances. You pay for CPU usage of only the active subset. App Runner temporarily doubles the number of provisioned instances during deployments, to maintain the same capacity for both old and new code. Default: 1
         public let minSize: Int?
         /// A list of metadata items that you can associate with your auto scaling configuration resource. A tag is a key-value pair.
         public let tags: [Tag]?
@@ -488,7 +476,6 @@ extension AppRunner {
     }
 
     public struct CreateAutoScalingConfigurationResponse: AWSDecodableShape {
-
         /// A description of the App Runner auto scaling configuration that's created by this request.
         public let autoScalingConfiguration: AutoScalingConfiguration
 
@@ -502,7 +489,6 @@ extension AppRunner {
     }
 
     public struct CreateConnectionRequest: AWSEncodableShape {
-
         /// A name for the new connection. It must be unique across all App Runner connections for the AWS account in the AWS Region.
         public let connectionName: String
         /// The source repository provider.
@@ -533,7 +519,6 @@ extension AppRunner {
     }
 
     public struct CreateConnectionResponse: AWSDecodableShape {
-
         /// A description of the App Runner connection that's created by this request.
         public let connection: Connection
 
@@ -547,7 +532,6 @@ extension AppRunner {
     }
 
     public struct CreateServiceRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of an App Runner automatic scaling configuration resource that you want to associate with your service. If not provided, App Runner associates the latest revision of a default auto scaling configuration.
         public let autoScalingConfigurationArn: String?
         /// An optional custom encryption key that App Runner uses to encrypt the copy of your source repository that it maintains and your service logs. By default, App Runner uses an AWS managed CMK.
@@ -601,7 +585,6 @@ extension AppRunner {
     }
 
     public struct CreateServiceResponse: AWSDecodableShape {
-
         /// The unique ID of the asynchronous operation that this request started. You can use it combined with the ListOperations call to track the operation's progress.
         public let operationId: String
         /// A description of the App Runner service that's created by this request.
@@ -619,7 +602,6 @@ extension AppRunner {
     }
 
     public struct CustomDomain: AWSDecodableShape {
-
         /// A list of certificate CNAME records that's used for this domain name.
         public let certificateValidationRecords: [CertificateValidationRecord]?
         /// An associated custom domain endpoint. It can be a root domain (for example, example.com), a subdomain (for example, login.example.com or admin.login.example.com), or a wildcard (for example, *.example.com).
@@ -645,7 +627,6 @@ extension AppRunner {
     }
 
     public struct DeleteAutoScalingConfigurationRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the App Runner auto scaling configuration that you want to delete. The ARN can be a full auto scaling configuration ARN, or a partial ARN ending with either .../name or .../name/revision . If a revision isn't specified, the latest active revision is deleted.
         public let autoScalingConfigurationArn: String
 
@@ -665,7 +646,6 @@ extension AppRunner {
     }
 
     public struct DeleteAutoScalingConfigurationResponse: AWSDecodableShape {
-
         /// A description of the App Runner auto scaling configuration that this request just deleted.
         public let autoScalingConfiguration: AutoScalingConfiguration
 
@@ -679,7 +659,6 @@ extension AppRunner {
     }
 
     public struct DeleteConnectionRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the App Runner connection that you want to delete.
         public let connectionArn: String
 
@@ -699,7 +678,6 @@ extension AppRunner {
     }
 
     public struct DeleteConnectionResponse: AWSDecodableShape {
-
         /// A description of the App Runner connection that this request just deleted.
         public let connection: Connection?
 
@@ -713,7 +691,6 @@ extension AppRunner {
     }
 
     public struct DeleteServiceRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the App Runner service that you want to delete.
         public let serviceArn: String
 
@@ -733,7 +710,6 @@ extension AppRunner {
     }
 
     public struct DeleteServiceResponse: AWSDecodableShape {
-
         /// The unique ID of the asynchronous operation that this request started. You can use it combined with the ListOperations call to track the operation's progress.
         public let operationId: String
         /// A description of the App Runner service that this request just deleted.
@@ -751,7 +727,6 @@ extension AppRunner {
     }
 
     public struct DescribeAutoScalingConfigurationRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the App Runner auto scaling configuration that you want a description for. The ARN can be a full auto scaling configuration ARN, or a partial ARN ending with either .../name or .../name/revision . If a revision isn't specified, the latest active revision is described.
         public let autoScalingConfigurationArn: String
 
@@ -771,7 +746,6 @@ extension AppRunner {
     }
 
     public struct DescribeAutoScalingConfigurationResponse: AWSDecodableShape {
-
         /// A full description of the App Runner auto scaling configuration that you specified in this request.
         public let autoScalingConfiguration: AutoScalingConfiguration
 
@@ -785,7 +759,6 @@ extension AppRunner {
     }
 
     public struct DescribeCustomDomainsRequest: AWSEncodableShape {
-
         /// The maximum number of results that each response (result page) can include. It's used for a paginated request. If you don't specify MaxResults, the request retrieves all available results in a single response.
         public let maxResults: Int?
         /// A token from a previous result page. It's used for a paginated request. The request retrieves the next result page. All other parameter values must be identical to the ones that are specified in the initial request. If you don't specify NextToken, the request retrieves the first result page.
@@ -817,7 +790,6 @@ extension AppRunner {
     }
 
     public struct DescribeCustomDomainsResponse: AWSDecodableShape {
-
         /// A list of descriptions of custom domain names that are associated with the service. In a paginated request, the request returns up to MaxResults records per call.
         public let customDomains: [CustomDomain]
         /// The App Runner subdomain of the App Runner service. The associated custom domain names are mapped to this target name.
@@ -843,7 +815,6 @@ extension AppRunner {
     }
 
     public struct DescribeServiceRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the App Runner service that you want a description for.
         public let serviceArn: String
 
@@ -863,7 +834,6 @@ extension AppRunner {
     }
 
     public struct DescribeServiceResponse: AWSDecodableShape {
-
         /// A full description of the App Runner service that you specified in this request.
         public let service: Service
 
@@ -877,7 +847,6 @@ extension AppRunner {
     }
 
     public struct DisassociateCustomDomainRequest: AWSEncodableShape {
-
         /// The domain name that you want to disassociate from the App Runner service.
         public let domainName: String
         /// The Amazon Resource Name (ARN) of the App Runner service that you want to disassociate a custom domain name from.
@@ -903,7 +872,6 @@ extension AppRunner {
     }
 
     public struct DisassociateCustomDomainResponse: AWSDecodableShape {
-
         /// A description of the domain name that's being disassociated.
         public let customDomain: CustomDomain
         /// The App Runner subdomain of the App Runner service. The disassociated custom domain name was mapped to this target name.
@@ -925,7 +893,6 @@ extension AppRunner {
     }
 
     public struct EncryptionConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// The ARN of the KMS key that's used for encryption.
         public let kmsKey: String
 
@@ -944,18 +911,17 @@ extension AppRunner {
     }
 
     public struct HealthCheckConfiguration: AWSEncodableShape & AWSDecodableShape {
-
-        /// The number of consecutive checks that must succeed before App Runner decides that the service is healthy. Default: 3 
+        /// The number of consecutive checks that must succeed before App Runner decides that the service is healthy. Default: 3
         public let healthyThreshold: Int?
-        /// The time interval, in seconds, between health checks. Default: 5 
+        /// The time interval, in seconds, between health checks. Default: 5
         public let interval: Int?
-        /// The URL that health check requests are sent to.  Path is only applicable when you set Protocol to HTTP. Default: "/" 
+        /// The URL that health check requests are sent to.  Path is only applicable when you set Protocol to HTTP. Default: "/"
         public let path: String?
-        /// The IP protocol that App Runner uses to perform health checks for your service. If you set Protocol to HTTP, App Runner sends health check requests to the HTTP path specified by Path. Default: TCP 
+        /// The IP protocol that App Runner uses to perform health checks for your service. If you set Protocol to HTTP, App Runner sends health check requests to the HTTP path specified by Path. Default: TCP
         public let `protocol`: HealthCheckProtocol?
-        /// The time, in seconds, to wait for a health check response before deciding it failed. Default: 2 
+        /// The time, in seconds, to wait for a health check response before deciding it failed. Default: 2
         public let timeout: Int?
-        /// The number of consecutive checks that must fail before App Runner decides that the service is unhealthy. Default: 3 
+        /// The number of consecutive checks that must fail before App Runner decides that the service is unhealthy. Default: 3
         public let unhealthyThreshold: Int?
 
         public init(healthyThreshold: Int? = nil, interval: Int? = nil, path: String? = nil, protocol: HealthCheckProtocol? = nil, timeout: Int? = nil, unhealthyThreshold: Int? = nil) {
@@ -991,8 +957,7 @@ extension AppRunner {
     }
 
     public struct ImageConfiguration: AWSEncodableShape & AWSDecodableShape {
-
-        /// The port that your application listens to in the container. Default: 8080 
+        /// The port that your application listens to in the container. Default: 8080
         public let port: String?
         /// Environment variables that are available to your running App Runner service. An array of key-value pairs. Keys with a prefix of AWSAPPRUNNER are reserved for system use and aren't valid.
         public let runtimeEnvironmentVariables: [String: String]?
@@ -1020,7 +985,6 @@ extension AppRunner {
     }
 
     public struct ImageRepository: AWSEncodableShape & AWSDecodableShape {
-
         /// Configuration for running the identified image.
         public let imageConfiguration: ImageConfiguration?
         /// The identifier of an image. For an image in Amazon Elastic Container Registry (Amazon ECR), this is an image name. For the image name format, see Pulling an image in the Amazon ECR User Guide.
@@ -1049,12 +1013,11 @@ extension AppRunner {
     }
 
     public struct InstanceConfiguration: AWSEncodableShape & AWSDecodableShape {
-
-        /// The number of CPU units reserved for each instance of your App Runner service. Default: 1 vCPU 
+        /// The number of CPU units reserved for each instance of your App Runner service. Default: 1 vCPU
         public let cpu: String?
         /// The Amazon Resource Name (ARN) of an IAM role that provides permissions to your App Runner service. These are permissions that your code needs when it calls any AWS APIs.
         public let instanceRoleArn: String?
-        /// The amount of memory, in MB or GB, reserved for each instance of your App Runner service. Default: 2 GB 
+        /// The amount of memory, in MB or GB, reserved for each instance of your App Runner service. Default: 2 GB
         public let memory: String?
 
         public init(cpu: String? = nil, instanceRoleArn: String? = nil, memory: String? = nil) {
@@ -1083,10 +1046,9 @@ extension AppRunner {
     }
 
     public struct ListAutoScalingConfigurationsRequest: AWSEncodableShape {
-
         /// The name of the App Runner auto scaling configuration that you want to list. If specified, App Runner lists revisions that share this name. If not specified, App Runner returns revisions of all configurations.
         public let autoScalingConfigurationName: String?
-        /// Set to true to list only the latest revision for each requested configuration name. Keep as false to list all revisions for each requested configuration name. Default: false 
+        /// Set to true to list only the latest revision for each requested configuration name. Keep as false to list all revisions for each requested configuration name. Default: false
         public let latestOnly: Bool?
         /// The maximum number of results to include in each response (result page). It's used for a paginated request. If you don't specify MaxResults, the request retrieves all available results in a single response.
         public let maxResults: Int?
@@ -1120,7 +1082,6 @@ extension AppRunner {
     }
 
     public struct ListAutoScalingConfigurationsResponse: AWSDecodableShape {
-
         /// A list of summary information records for auto scaling configurations. In a paginated request, the request returns up to MaxResults records for each call.
         public let autoScalingConfigurationSummaryList: [AutoScalingConfigurationSummary]
         /// The token that you can pass in a subsequent request to get the next result page. It's returned in a paginated request.
@@ -1138,7 +1099,6 @@ extension AppRunner {
     }
 
     public struct ListConnectionsRequest: AWSEncodableShape {
-
         /// If specified, only this connection is returned. If not specified, the result isn't filtered by name.
         public let connectionName: String?
         /// The maximum number of results to include in each response (result page). Used for a paginated request. If you don't specify MaxResults, the request retrieves all available results in a single response.
@@ -1171,7 +1131,6 @@ extension AppRunner {
     }
 
     public struct ListConnectionsResponse: AWSDecodableShape {
-
         /// A list of summary information records for connections. In a paginated request, the request returns up to MaxResults records for each call.
         public let connectionSummaryList: [ConnectionSummary]
         /// The token that you can pass in a subsequent request to get the next result page. Returned in a paginated request.
@@ -1189,7 +1148,6 @@ extension AppRunner {
     }
 
     public struct ListOperationsRequest: AWSEncodableShape {
-
         /// The maximum number of results to include in each response (result page). It's used for a paginated request. If you don't specify MaxResults, the request retrieves all available results in a single response.
         public let maxResults: Int?
         /// A token from a previous result page. It's used for a paginated request. The request retrieves the next result page. All other parameter values must be identical to the ones specified in the initial request. If you don't specify NextToken, the request retrieves the first result page.
@@ -1221,7 +1179,6 @@ extension AppRunner {
     }
 
     public struct ListOperationsResponse: AWSDecodableShape {
-
         /// The token that you can pass in a subsequent request to get the next result page. It's returned in a paginated request.
         public let nextToken: String?
         /// A list of operation summary information records. In a paginated request, the request returns up to MaxResults records for each call.
@@ -1239,7 +1196,6 @@ extension AppRunner {
     }
 
     public struct ListServicesRequest: AWSEncodableShape {
-
         /// The maximum number of results to include in each response (result page). It's used for a paginated request. If you don't specify MaxResults, the request retrieves all available results in a single response.
         public let maxResults: Int?
         /// A token from a previous result page. Used for a paginated request. The request retrieves the next result page. All other parameter values must be identical to the ones specified in the initial request. If you don't specify NextToken, the request retrieves the first result page.
@@ -1264,7 +1220,6 @@ extension AppRunner {
     }
 
     public struct ListServicesResponse: AWSDecodableShape {
-
         /// The token that you can pass in a subsequent request to get the next result page. It's returned in a paginated request.
         public let nextToken: String?
         /// A list of service summary information records. In a paginated request, the request returns up to MaxResults records for each call.
@@ -1282,7 +1237,6 @@ extension AppRunner {
     }
 
     public struct ListTagsForResourceRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the resource that a tag list is requested for. It must be the ARN of an App Runner resource.
         public let resourceArn: String
 
@@ -1302,7 +1256,6 @@ extension AppRunner {
     }
 
     public struct ListTagsForResourceResponse: AWSDecodableShape {
-
         /// A list of the tag key-value pairs that are associated with the resource.
         public let tags: [Tag]?
 
@@ -1316,7 +1269,6 @@ extension AppRunner {
     }
 
     public struct OperationSummary: AWSDecodableShape {
-
         /// The time when the operation ended. It's in the Unix time stamp format.
         public let endedAt: Date?
         /// A unique ID of this operation. It's unique in the scope of the App Runner service.
@@ -1354,7 +1306,6 @@ extension AppRunner {
     }
 
     public struct PauseServiceRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the App Runner service that you want to pause.
         public let serviceArn: String
 
@@ -1374,7 +1325,6 @@ extension AppRunner {
     }
 
     public struct PauseServiceResponse: AWSDecodableShape {
-
         /// The unique ID of the asynchronous operation that this request started. You can use it combined with the ListOperations call to track the operation's progress.
         public let operationId: String?
         /// A description of the App Runner service that this request just paused.
@@ -1392,7 +1342,6 @@ extension AppRunner {
     }
 
     public struct ResumeServiceRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the App Runner service that you want to resume.
         public let serviceArn: String
 
@@ -1412,7 +1361,6 @@ extension AppRunner {
     }
 
     public struct ResumeServiceResponse: AWSDecodableShape {
-
         /// The unique ID of the asynchronous operation that this request started. You can use it combined with the ListOperations call to track the operation's progress.
         public let operationId: String?
         /// A description of the App Runner service that this request just resumed.
@@ -1430,7 +1378,6 @@ extension AppRunner {
     }
 
     public struct Service: AWSDecodableShape {
-
         /// Summary information for the App Runner automatic scaling configuration resource that's associated with this service.
         public let autoScalingConfigurationSummary: AutoScalingConfigurationSummary
         /// The time when the App Runner service was created. It's in the Unix time stamp format.
@@ -1453,7 +1400,7 @@ extension AppRunner {
         public let serviceUrl: String
         /// The source deployed to the App Runner service. It can be a code or an image repository.
         public let sourceConfiguration: SourceConfiguration
-        /// The current state of the App Runner service. These particular values mean the following.    CREATE_FAILED – The service failed to create. To troubleshoot this failure, read the failure events and logs, change any parameters that need to be fixed, and retry the call to create the service. The failed service isn't usable, and still counts towards your service quota. When you're done analyzing the failure, delete the service.    DELETE_FAILED – The service failed to delete and can't be successfully recovered. Retry the service deletion call to ensure that all related resources are removed.  
+        /// The current state of the App Runner service. These particular values mean the following.    CREATE_FAILED – The service failed to create. To troubleshoot this failure, read the failure events and logs, change any parameters that need to be fixed, and retry the call to create the service. The failed service isn't usable, and still counts towards your service quota. When you're done analyzing the failure, delete the service.    DELETE_FAILED – The service failed to delete and can't be successfully recovered. Retry the service deletion call to ensure that all related resources are removed.
         public let status: ServiceStatus
         /// The time when the App Runner service was last updated at. It's in the Unix time stamp format.
         public let updatedAt: Date
@@ -1492,7 +1439,6 @@ extension AppRunner {
     }
 
     public struct ServiceSummary: AWSDecodableShape {
-
         /// The time when the App Runner service was created. It's in the Unix time stamp format.
         public let createdAt: Date?
         /// The Amazon Resource Name (ARN) of this service.
@@ -1503,7 +1449,7 @@ extension AppRunner {
         public let serviceName: String?
         /// A subdomain URL that App Runner generated for this service. You can use this URL to access your service web application.
         public let serviceUrl: String?
-        /// The current state of the App Runner service. These particular values mean the following.    CREATE_FAILED – The service failed to create. Read the failure events and logs, change any parameters that need to be fixed, and retry the call to create the service. The failed service isn't usable, and still counts towards your service quota. When you're done analyzing the failure, delete the service.    DELETE_FAILED – The service failed to delete and can't be successfully recovered. Retry the service deletion call to ensure that all related resources are removed.  
+        /// The current state of the App Runner service. These particular values mean the following.    CREATE_FAILED – The service failed to create. Read the failure events and logs, change any parameters that need to be fixed, and retry the call to create the service. The failed service isn't usable, and still counts towards your service quota. When you're done analyzing the failure, delete the service.    DELETE_FAILED – The service failed to delete and can't be successfully recovered. Retry the service deletion call to ensure that all related resources are removed.
         public let status: ServiceStatus?
         /// The time when the App Runner service was last updated. It's in theUnix time stamp format.
         public let updatedAt: Date?
@@ -1530,7 +1476,6 @@ extension AppRunner {
     }
 
     public struct SourceCodeVersion: AWSEncodableShape & AWSDecodableShape {
-
         /// The type of version identifier. For a git-based repository, branches represent versions.
         public let type: SourceCodeVersionType
         /// A source code version. For a git-based repository, a branch name maps to a specific version. App Runner uses the most recent commit to the branch.
@@ -1553,10 +1498,9 @@ extension AppRunner {
     }
 
     public struct SourceConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// Describes the resources that are needed to authenticate access to some source repositories.
         public let authenticationConfiguration: AuthenticationConfiguration?
-        /// If true, continuous integration from the source repository is enabled for the App Runner service. Each repository change (source code commit or new image version) starts a deployment. Default: true 
+        /// If true, continuous integration from the source repository is enabled for the App Runner service. Each repository change (source code commit or new image version) starts a deployment. Default: true
         public let autoDeploymentsEnabled: Bool?
         /// The description of a source code repository. You must provide either this member or ImageRepository (but not both).
         public let codeRepository: CodeRepository?
@@ -1585,7 +1529,6 @@ extension AppRunner {
     }
 
     public struct StartDeploymentRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the App Runner service that you want to manually deploy to.
         public let serviceArn: String
 
@@ -1605,7 +1548,6 @@ extension AppRunner {
     }
 
     public struct StartDeploymentResponse: AWSDecodableShape {
-
         /// The unique ID of the asynchronous operation that this request started. You can use it combined with the ListOperations call to track the operation's progress.
         public let operationId: String
 
@@ -1619,7 +1561,6 @@ extension AppRunner {
     }
 
     public struct Tag: AWSEncodableShape & AWSDecodableShape {
-
         /// The key of the tag.
         public let key: String?
         /// The value of the tag.
@@ -1645,7 +1586,6 @@ extension AppRunner {
     }
 
     public struct TagResourceRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the resource that you want to update tags for. It must be the ARN of an App Runner resource.
         public let resourceArn: String
         /// A list of tag key-value pairs to add or update. If a key is new to the resource, the tag is added with the provided value. If a key is already associated with the resource, the value of the tag is updated.
@@ -1672,15 +1612,10 @@ extension AppRunner {
     }
 
     public struct TagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UntagResourceRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the resource that you want to remove tags from. It must be the ARN of an App Runner resource.
         public let resourceArn: String
         /// A list of tag keys that you want to remove.
@@ -1709,15 +1644,10 @@ extension AppRunner {
     }
 
     public struct UntagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateServiceRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of an App Runner automatic scaling configuration resource that you want to associate with your service.
         public let autoScalingConfigurationArn: String?
         /// The settings for the health check that AWS App Runner performs to monitor the health of your service.
@@ -1759,7 +1689,6 @@ extension AppRunner {
     }
 
     public struct UpdateServiceResponse: AWSDecodableShape {
-
         /// The unique ID of the asynchronous operation that this request started. You can use it combined with the ListOperations call to track the operation's progress.
         public let operationId: String
         /// A description of the App Runner service updated by this request. All configuration values in the returned Service structure reflect configuration changes that are being applied by this request.

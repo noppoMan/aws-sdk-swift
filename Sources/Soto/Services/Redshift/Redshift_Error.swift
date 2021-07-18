@@ -179,15 +179,15 @@ public struct RedshiftErrorType: AWSErrorType {
     public static var authorizationNotFoundFault: Self { .init(.authorizationNotFoundFault) }
     /// The authorization quota for the cluster security group has been reached.
     public static var authorizationQuotaExceededFault: Self { .init(.authorizationQuotaExceededFault) }
-    /// The maximum number for a batch delete of snapshots has been reached. The limit is 100. 
+    /// The maximum number for a batch delete of snapshots has been reached. The limit is 100.
     public static var batchDeleteRequestSizeExceededFault: Self { .init(.batchDeleteRequestSizeExceededFault) }
-    /// The maximum number for snapshot identifiers has been reached. The limit is 100. 
+    /// The maximum number for snapshot identifiers has been reached. The limit is 100.
     public static var batchModifyClusterSnapshotsLimitExceededFault: Self { .init(.batchModifyClusterSnapshotsLimitExceededFault) }
     /// Could not find the specified S3 bucket.
     public static var bucketNotFoundFault: Self { .init(.bucketNotFoundFault) }
     /// The account already has a cluster with the given identifier.
     public static var clusterAlreadyExistsFault: Self { .init(.clusterAlreadyExistsFault) }
-    /// The ClusterIdentifier parameter does not refer to an existing cluster. 
+    /// The ClusterIdentifier parameter does not refer to an existing cluster.
     public static var clusterNotFoundFault: Self { .init(.clusterNotFoundFault) }
     /// Cluster is already on the latest database revision.
     public static var clusterOnLatestRevisionFault: Self { .init(.clusterOnLatestRevisionFault) }
@@ -195,20 +195,20 @@ public struct RedshiftErrorType: AWSErrorType {
     public static var clusterParameterGroupAlreadyExistsFault: Self { .init(.clusterParameterGroupAlreadyExistsFault) }
     /// The parameter group name does not refer to an existing parameter group.
     public static var clusterParameterGroupNotFoundFault: Self { .init(.clusterParameterGroupNotFoundFault) }
-    /// The request would result in the user exceeding the allowed number of cluster parameter groups. 
-    /// For information about increasing your quota, go to Limits in Amazon Redshift 
+    /// The request would result in the user exceeding the allowed number of cluster parameter groups.
+    /// For information about increasing your quota, go to Limits in Amazon Redshift
     /// in the Amazon Redshift Cluster Management Guide.
     public static var clusterParameterGroupQuotaExceededFault: Self { .init(.clusterParameterGroupQuotaExceededFault) }
-    /// The request would exceed the allowed number of cluster instances for this account. 
-    /// For information about increasing your quota, go to Limits in Amazon Redshift 
+    /// The request would exceed the allowed number of cluster instances for this account.
+    /// For information about increasing your quota, go to Limits in Amazon Redshift
     /// in the Amazon Redshift Cluster Management Guide.
     public static var clusterQuotaExceededFault: Self { .init(.clusterQuotaExceededFault) }
     /// A cluster security group with the same name already exists.
     public static var clusterSecurityGroupAlreadyExistsFault: Self { .init(.clusterSecurityGroupAlreadyExistsFault) }
     /// The cluster security group name does not refer to an existing cluster security group.
     public static var clusterSecurityGroupNotFoundFault: Self { .init(.clusterSecurityGroupNotFoundFault) }
-    /// The request would result in the user exceeding the allowed number of cluster security groups. 
-    /// For information about increasing your quota, go to Limits in Amazon Redshift 
+    /// The request would result in the user exceeding the allowed number of cluster security groups.
+    /// For information about increasing your quota, go to Limits in Amazon Redshift
     /// in the Amazon Redshift Cluster Management Guide.
     public static var clusterSecurityGroupQuotaExceededFault: Self { .init(.clusterSecurityGroupQuotaExceededFault) }
     /// The value specified as a snapshot identifier is already used by an existing snapshot.
@@ -217,16 +217,16 @@ public struct RedshiftErrorType: AWSErrorType {
     public static var clusterSnapshotNotFoundFault: Self { .init(.clusterSnapshotNotFoundFault) }
     /// The request would result in the user exceeding the allowed number of cluster snapshots.
     public static var clusterSnapshotQuotaExceededFault: Self { .init(.clusterSnapshotQuotaExceededFault) }
-    /// A ClusterSubnetGroupName is already used by an existing cluster subnet group. 
+    /// A ClusterSubnetGroupName is already used by an existing cluster subnet group.
     public static var clusterSubnetGroupAlreadyExistsFault: Self { .init(.clusterSubnetGroupAlreadyExistsFault) }
     /// The cluster subnet group name does not refer to an existing cluster subnet group.
     public static var clusterSubnetGroupNotFoundFault: Self { .init(.clusterSubnetGroupNotFoundFault) }
-    /// The request would result in user exceeding the allowed number of cluster subnet groups. 
-    /// For information about increasing your quota, go to Limits in Amazon Redshift 
+    /// The request would result in user exceeding the allowed number of cluster subnet groups.
+    /// For information about increasing your quota, go to Limits in Amazon Redshift
     /// in the Amazon Redshift Cluster Management Guide.
     public static var clusterSubnetGroupQuotaExceededFault: Self { .init(.clusterSubnetGroupQuotaExceededFault) }
-    /// The request would result in user exceeding the allowed number of subnets in a cluster subnet groups. 
-    /// For information about increasing your quota, go to Limits in Amazon Redshift 
+    /// The request would result in user exceeding the allowed number of subnets in a cluster subnet groups.
+    /// For information about increasing your quota, go to Limits in Amazon Redshift
     /// in the Amazon Redshift Cluster Management Guide.
     public static var clusterSubnetQuotaExceededFault: Self { .init(.clusterSubnetQuotaExceededFault) }
     /// Cross-region snapshot copy was temporarily disabled. Try your request again.
@@ -249,24 +249,24 @@ public struct RedshiftErrorType: AWSErrorType {
     public static var endpointsPerAuthorizationLimitExceededFault: Self { .init(.endpointsPerAuthorizationLimitExceededFault) }
     /// The number of Redshift-managed VPC endpoints per cluster has exceeded its limit.
     public static var endpointsPerClusterLimitExceededFault: Self { .init(.endpointsPerClusterLimitExceededFault) }
-    /// The request would exceed the allowed number of event subscriptions for this account. 
-    /// For information about increasing your quota, go to Limits in Amazon Redshift 
+    /// The request would exceed the allowed number of event subscriptions for this account.
+    /// For information about increasing your quota, go to Limits in Amazon Redshift
     /// in the Amazon Redshift Cluster Management Guide.
     public static var eventSubscriptionQuotaExceededFault: Self { .init(.eventSubscriptionQuotaExceededFault) }
     /// There is already an existing Amazon Redshift HSM client certificate with the specified identifier.
     public static var hsmClientCertificateAlreadyExistsFault: Self { .init(.hsmClientCertificateAlreadyExistsFault) }
     /// There is no Amazon Redshift HSM client certificate with the specified identifier.
     public static var hsmClientCertificateNotFoundFault: Self { .init(.hsmClientCertificateNotFoundFault) }
-    /// The quota for HSM client certificates has been reached. 
-    /// For information about increasing your quota, go to Limits in Amazon Redshift 
+    /// The quota for HSM client certificates has been reached.
+    /// For information about increasing your quota, go to Limits in Amazon Redshift
     /// in the Amazon Redshift Cluster Management Guide.
     public static var hsmClientCertificateQuotaExceededFault: Self { .init(.hsmClientCertificateQuotaExceededFault) }
     /// There is already an existing Amazon Redshift HSM configuration with the specified identifier.
     public static var hsmConfigurationAlreadyExistsFault: Self { .init(.hsmConfigurationAlreadyExistsFault) }
     /// There is no Amazon Redshift HSM configuration with the specified identifier.
     public static var hsmConfigurationNotFoundFault: Self { .init(.hsmConfigurationNotFoundFault) }
-    /// The quota for HSM configurations has been reached. 
-    /// For information about increasing your quota, go to Limits in Amazon Redshift 
+    /// The quota for HSM configurations has been reached.
+    /// For information about increasing your quota, go to Limits in Amazon Redshift
     /// in the Amazon Redshift Cluster Management Guide.
     public static var hsmConfigurationQuotaExceededFault: Self { .init(.hsmConfigurationQuotaExceededFault) }
     /// You have exceeded the allowed number of table restore requests. Wait for your current table restore requests to complete before making a new request.
@@ -283,13 +283,13 @@ public struct RedshiftErrorType: AWSErrorType {
     public static var invalidAuthorizationStateFault: Self { .init(.invalidAuthorizationStateFault) }
     /// The cluster parameter group action can not be completed because another task is in progress that involves the parameter group. Wait a few moments and try the operation again.
     public static var invalidClusterParameterGroupStateFault: Self { .init(.invalidClusterParameterGroupStateFault) }
-    /// The state of the cluster security group is not available. 
+    /// The state of the cluster security group is not available.
     public static var invalidClusterSecurityGroupStateFault: Self { .init(.invalidClusterSecurityGroupStateFault) }
     /// The cluster snapshot schedule state is not valid.
     public static var invalidClusterSnapshotScheduleStateFault: Self { .init(.invalidClusterSnapshotScheduleStateFault) }
-    /// The specified cluster snapshot is not in the available state, or other accounts are authorized to access the snapshot. 
+    /// The specified cluster snapshot is not in the available state, or other accounts are authorized to access the snapshot.
     public static var invalidClusterSnapshotStateFault: Self { .init(.invalidClusterSnapshotStateFault) }
-    /// The specified cluster is not in the available state. 
+    /// The specified cluster is not in the available state.
     public static var invalidClusterStateFault: Self { .init(.invalidClusterStateFault) }
     /// The cluster subnet group cannot be deleted because it is in use.
     public static var invalidClusterSubnetGroupStateFault: Self { .init(.invalidClusterSubnetGroupStateFault) }
@@ -317,7 +317,7 @@ public struct RedshiftErrorType: AWSErrorType {
     public static var invalidS3KeyPrefixFault: Self { .init(.invalidS3KeyPrefixFault) }
     /// The schedule you submitted isn't valid.
     public static var invalidScheduleFault: Self { .init(.invalidScheduleFault) }
-    /// The scheduled action is not valid. 
+    /// The scheduled action is not valid.
     public static var invalidScheduledActionFault: Self { .init(.invalidScheduledActionFault) }
     /// The snapshot copy grant can't be deleted because it is used by one or more clusters.
     public static var invalidSnapshotCopyGrantStateFault: Self { .init(.invalidSnapshotCopyGrantStateFault) }
@@ -337,8 +337,8 @@ public struct RedshiftErrorType: AWSErrorType {
     public static var limitExceededFault: Self { .init(.limitExceededFault) }
     /// The operation would exceed the number of nodes allowed for a cluster.
     public static var numberOfNodesPerClusterLimitExceededFault: Self { .init(.numberOfNodesPerClusterLimitExceededFault) }
-    /// The operation would exceed the number of nodes allotted to the account. 
-    /// For information about increasing your quota, go to Limits in Amazon Redshift 
+    /// The operation would exceed the number of nodes allotted to the account.
+    /// For information about increasing your quota, go to Limits in Amazon Redshift
     /// in the Amazon Redshift Cluster Management Guide.
     public static var numberOfNodesQuotaExceededFault: Self { .init(.numberOfNodesQuotaExceededFault) }
     /// The name of the partner was not found.
@@ -351,8 +351,8 @@ public struct RedshiftErrorType: AWSErrorType {
     public static var reservedNodeNotFoundFault: Self { .init(.reservedNodeNotFoundFault) }
     /// Specified offering does not exist.
     public static var reservedNodeOfferingNotFoundFault: Self { .init(.reservedNodeOfferingNotFoundFault) }
-    /// Request would exceed the user's compute node quota. 
-    /// For information about increasing your quota, go to Limits in Amazon Redshift 
+    /// Request would exceed the user's compute node quota.
+    /// For information about increasing your quota, go to Limits in Amazon Redshift
     /// in the Amazon Redshift Cluster Management Guide.
     public static var reservedNodeQuotaExceededFault: Self { .init(.reservedNodeQuotaExceededFault) }
     /// A resize operation for the specified cluster is not found.
@@ -367,13 +367,13 @@ public struct RedshiftErrorType: AWSErrorType {
     public static var sNSTopicArnNotFoundFault: Self { .init(.sNSTopicArnNotFoundFault) }
     /// The definition you submitted is not supported.
     public static var scheduleDefinitionTypeUnsupportedFault: Self { .init(.scheduleDefinitionTypeUnsupportedFault) }
-    /// The scheduled action already exists. 
+    /// The scheduled action already exists.
     public static var scheduledActionAlreadyExistsFault: Self { .init(.scheduledActionAlreadyExistsFault) }
-    /// The scheduled action cannot be found. 
+    /// The scheduled action cannot be found.
     public static var scheduledActionNotFoundFault: Self { .init(.scheduledActionNotFoundFault) }
-    /// The quota for scheduled actions exceeded. 
+    /// The quota for scheduled actions exceeded.
     public static var scheduledActionQuotaExceededFault: Self { .init(.scheduledActionQuotaExceededFault) }
-    /// The action type specified for a scheduled action is not supported. 
+    /// The action type specified for a scheduled action is not supported.
     public static var scheduledActionTypeUnsupportedFault: Self { .init(.scheduledActionTypeUnsupportedFault) }
     /// The cluster already has cross-region snapshot copy disabled.
     public static var snapshotCopyAlreadyDisabledFault: Self { .init(.snapshotCopyAlreadyDisabledFault) }
@@ -387,11 +387,11 @@ public struct RedshiftErrorType: AWSErrorType {
     public static var snapshotCopyGrantNotFoundFault: Self { .init(.snapshotCopyGrantNotFoundFault) }
     /// The account has exceeded the maximum number of snapshot copy grants in this region.
     public static var snapshotCopyGrantQuotaExceededFault: Self { .init(.snapshotCopyGrantQuotaExceededFault) }
-    /// The specified snapshot schedule already exists. 
+    /// The specified snapshot schedule already exists.
     public static var snapshotScheduleAlreadyExistsFault: Self { .init(.snapshotScheduleAlreadyExistsFault) }
-    /// We could not find the specified snapshot schedule. 
+    /// We could not find the specified snapshot schedule.
     public static var snapshotScheduleNotFoundFault: Self { .init(.snapshotScheduleNotFoundFault) }
-    /// You have exceeded the quota of snapshot schedules. 
+    /// You have exceeded the quota of snapshot schedules.
     public static var snapshotScheduleQuotaExceededFault: Self { .init(.snapshotScheduleQuotaExceededFault) }
     /// The specified snapshot schedule is already being updated.
     public static var snapshotScheduleUpdateInProgressFault: Self { .init(.snapshotScheduleUpdateInProgressFault) }
@@ -409,7 +409,7 @@ public struct RedshiftErrorType: AWSErrorType {
     public static var subscriptionNotFoundFault: Self { .init(.subscriptionNotFoundFault) }
     /// The value specified for the event severity was not one of the allowed values, or it specified a severity that does not apply to the specified source type. The allowed values are ERROR and INFO.
     public static var subscriptionSeverityNotFoundFault: Self { .init(.subscriptionSeverityNotFoundFault) }
-    /// The number of tables in the cluster exceeds the limit for the requested new cluster node type. 
+    /// The number of tables in the cluster exceeds the limit for the requested new cluster node type.
     public static var tableLimitExceededFault: Self { .init(.tableLimitExceededFault) }
     /// The specified TableRestoreRequestId value was not found.
     public static var tableRestoreNotFoundFault: Self { .init(.tableRestoreNotFoundFault) }
@@ -425,7 +425,7 @@ public struct RedshiftErrorType: AWSErrorType {
     public static var unsupportedOperationFault: Self { .init(.unsupportedOperationFault) }
     /// A request option was specified that is not supported.
     public static var unsupportedOptionFault: Self { .init(.unsupportedOptionFault) }
-    /// The usage limit already exists. 
+    /// The usage limit already exists.
     public static var usageLimitAlreadyExistsFault: Self { .init(.usageLimitAlreadyExistsFault) }
     /// The usage limit identifier can't be found.
     public static var usageLimitNotFoundFault: Self { .init(.usageLimitNotFoundFault) }

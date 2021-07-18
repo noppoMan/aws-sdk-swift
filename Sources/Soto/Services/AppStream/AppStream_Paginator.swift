@@ -20,7 +20,7 @@ import SotoCore
 // MARK: Paginators
 
 extension AppStream {
-    ///  Retrieves a list that describes the permissions for shared AWS account IDs on a private image that you own. 
+    ///  Retrieves a list that describes the permissions for shared AWS account IDs on a private image that you own.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.

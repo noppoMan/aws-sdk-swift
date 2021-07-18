@@ -194,7 +194,6 @@ extension WorkSpaces {
     // MARK: Shapes
 
     public struct AccountModification: AWSDecodableShape {
-
         /// The IP address range, specified as an IPv4 CIDR block, for the management network interface used for the account.
         public let dedicatedTenancyManagementCidrRange: String?
         /// The status of BYOL (whether BYOL is being enabled or disabled).
@@ -228,7 +227,6 @@ extension WorkSpaces {
     }
 
     public struct AssociateConnectionAliasRequest: AWSEncodableShape {
-
         /// The identifier of the connection alias.
         public let aliasId: String
         /// The identifier of the directory to associate the connection alias with.
@@ -253,8 +251,7 @@ extension WorkSpaces {
     }
 
     public struct AssociateConnectionAliasResult: AWSDecodableShape {
-
-        /// The identifier of the connection alias association. You use the connection identifier in the DNS TXT record when  you're configuring your DNS routing policies. 
+        /// The identifier of the connection alias association. You use the connection identifier in the DNS TXT record when  you're configuring your DNS routing policies.
         public let connectionIdentifier: String?
 
         public init(connectionIdentifier: String? = nil) {
@@ -267,7 +264,6 @@ extension WorkSpaces {
     }
 
     public struct AssociateIpGroupsRequest: AWSEncodableShape {
-
         /// The identifier of the directory.
         public let directoryId: String
         /// The identifiers of one or more IP access control groups.
@@ -294,15 +290,10 @@ extension WorkSpaces {
     }
 
     public struct AssociateIpGroupsResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct AuthorizeIpRulesRequest: AWSEncodableShape {
-
         /// The identifier of the group.
         public let groupId: String
         /// The rules to add to the group.
@@ -324,16 +315,11 @@ extension WorkSpaces {
     }
 
     public struct AuthorizeIpRulesResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct ClientProperties: AWSEncodableShape & AWSDecodableShape {
-
-        /// Specifies whether users can cache their credentials on the Amazon WorkSpaces client. When enabled, users can choose to reconnect to their WorkSpaces without re-entering their credentials. 
+        /// Specifies whether users can cache their credentials on the Amazon WorkSpaces client. When enabled, users can choose to reconnect to their WorkSpaces without re-entering their credentials.
         public let reconnectEnabled: ReconnectEnum?
 
         public init(reconnectEnabled: ReconnectEnum? = nil) {
@@ -346,7 +332,6 @@ extension WorkSpaces {
     }
 
     public struct ClientPropertiesResult: AWSDecodableShape {
-
         /// Information about the Amazon WorkSpaces client.
         public let clientProperties: ClientProperties?
         /// The resource identifier, in the form of a directory ID.
@@ -364,7 +349,6 @@ extension WorkSpaces {
     }
 
     public struct ComputeType: AWSEncodableShape & AWSDecodableShape {
-
         /// The compute type.
         public let name: Compute?
 
@@ -378,7 +362,6 @@ extension WorkSpaces {
     }
 
     public struct ConnectionAlias: AWSDecodableShape {
-
         /// The identifier of the connection alias.
         public let aliasId: String?
         /// The association status of the connection alias.
@@ -408,7 +391,6 @@ extension WorkSpaces {
     }
 
     public struct ConnectionAliasAssociation: AWSDecodableShape {
-
         /// The identifier of the AWS account that associated the connection alias with a directory.
         public let associatedAccountId: String?
         /// The association status of the connection alias.
@@ -434,7 +416,6 @@ extension WorkSpaces {
     }
 
     public struct ConnectionAliasPermission: AWSEncodableShape & AWSDecodableShape {
-
         /// Indicates whether the specified AWS account is allowed to associate the connection alias with a directory.
         public let allowAssociation: Bool
         /// The identifier of the AWS account that the connection alias is shared with.
@@ -456,7 +437,6 @@ extension WorkSpaces {
     }
 
     public struct CopyWorkspaceImageRequest: AWSEncodableShape {
-
         /// A description of the image.
         public let description: String?
         /// The name of the image.
@@ -502,7 +482,6 @@ extension WorkSpaces {
     }
 
     public struct CopyWorkspaceImageResult: AWSDecodableShape {
-
         /// The identifier of the image.
         public let imageId: String?
 
@@ -516,8 +495,7 @@ extension WorkSpaces {
     }
 
     public struct CreateConnectionAliasRequest: AWSEncodableShape {
-
-        /// A connection string in the form of a fully qualified domain name (FQDN), such as www.example.com.   After you create a connection string, it is always associated to your AWS account. You cannot recreate the same  connection string with a different account, even if you delete all instances of it from the original account. The  connection string is globally reserved for your account. 
+        /// A connection string in the form of a fully qualified domain name (FQDN), such as www.example.com.   After you create a connection string, it is always associated to your AWS account. You cannot recreate the same  connection string with a different account, even if you delete all instances of it from the original account. The  connection string is globally reserved for your account.
         public let connectionString: String
         /// The tags to associate with the connection alias.
         public let tags: [Tag]?
@@ -543,7 +521,6 @@ extension WorkSpaces {
     }
 
     public struct CreateConnectionAliasResult: AWSDecodableShape {
-
         /// The identifier of the connection alias.
         public let aliasId: String?
 
@@ -557,7 +534,6 @@ extension WorkSpaces {
     }
 
     public struct CreateIpGroupRequest: AWSEncodableShape {
-
         /// The description of the group.
         public let groupDesc: String?
         /// The name of the group.
@@ -589,7 +565,6 @@ extension WorkSpaces {
     }
 
     public struct CreateIpGroupResult: AWSDecodableShape {
-
         /// The identifier of the group.
         public let groupId: String?
 
@@ -603,7 +578,6 @@ extension WorkSpaces {
     }
 
     public struct CreateTagsRequest: AWSEncodableShape {
-
         /// The identifier of the WorkSpaces resource. The supported resource types are WorkSpaces, registered directories, images, custom bundles, IP access control groups, and connection aliases.
         public let resourceId: String
         /// The tags. Each WorkSpaces resource can have a maximum of 50 tags.
@@ -628,15 +602,10 @@ extension WorkSpaces {
     }
 
     public struct CreateTagsResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct CreateWorkspaceBundleRequest: AWSEncodableShape {
-
         /// The description of the bundle.
         public let bundleDescription: String
         /// The name of the bundle.
@@ -645,7 +614,7 @@ extension WorkSpaces {
         /// The identifier of the image that is used to create the bundle.
         public let imageId: String
         public let rootStorage: RootStorage?
-        /// The tags associated with the bundle.   To add tags at the same time when you're creating the bundle, you must create an IAM policy that  grants your IAM user permissions to use workspaces:CreateTags.  
+        /// The tags associated with the bundle.   To add tags at the same time when you're creating the bundle, you must create an IAM policy that  grants your IAM user permissions to use workspaces:CreateTags.
         public let tags: [Tag]?
         public let userStorage: UserStorage
 
@@ -686,7 +655,6 @@ extension WorkSpaces {
     }
 
     public struct CreateWorkspaceBundleResult: AWSDecodableShape {
-
         public let workspaceBundle: WorkspaceBundle?
 
         public init(workspaceBundle: WorkspaceBundle? = nil) {
@@ -699,7 +667,6 @@ extension WorkSpaces {
     }
 
     public struct CreateWorkspacesRequest: AWSEncodableShape {
-
         /// The WorkSpaces to create. You can specify up to 25 WorkSpaces.
         public let workspaces: [WorkspaceRequest]
 
@@ -721,7 +688,6 @@ extension WorkSpaces {
     }
 
     public struct CreateWorkspacesResult: AWSDecodableShape {
-
         /// Information about the WorkSpaces that could not be created.
         public let failedRequests: [FailedCreateWorkspaceRequest]?
         /// Information about the WorkSpaces that were created. Because this operation is asynchronous, the identifier returned is not immediately available for use with other operations. For example, if you call DescribeWorkspaces before the WorkSpace is created, the information returned can be incomplete.
@@ -739,7 +705,6 @@ extension WorkSpaces {
     }
 
     public struct DefaultWorkspaceCreationProperties: AWSDecodableShape {
-
         /// The identifier of the default security group to apply to WorkSpaces when they are created.  For more information, see   Security Groups for Your WorkSpaces.
         public let customSecurityGroupId: String?
         /// The organizational unit (OU) in the directory for the WorkSpace machine accounts.
@@ -773,7 +738,6 @@ extension WorkSpaces {
     }
 
     public struct DeleteConnectionAliasRequest: AWSEncodableShape {
-
         /// The identifier of the connection alias to delete.
         public let aliasId: String
 
@@ -793,15 +757,10 @@ extension WorkSpaces {
     }
 
     public struct DeleteConnectionAliasResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteIpGroupRequest: AWSEncodableShape {
-
         /// The identifier of the IP access control group.
         public let groupId: String
 
@@ -819,15 +778,10 @@ extension WorkSpaces {
     }
 
     public struct DeleteIpGroupResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteTagsRequest: AWSEncodableShape {
-
         /// The identifier of the WorkSpaces resource. The supported resource types are WorkSpaces, registered directories, images, custom bundles, IP access control groups, and connection aliases.
         public let resourceId: String
         /// The tag keys.
@@ -852,15 +806,10 @@ extension WorkSpaces {
     }
 
     public struct DeleteTagsResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteWorkspaceBundleRequest: AWSEncodableShape {
-
         /// The identifier of the bundle.
         public let bundleId: String?
 
@@ -878,15 +827,10 @@ extension WorkSpaces {
     }
 
     public struct DeleteWorkspaceBundleResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteWorkspaceImageRequest: AWSEncodableShape {
-
         /// The identifier of the image.
         public let imageId: String
 
@@ -904,15 +848,10 @@ extension WorkSpaces {
     }
 
     public struct DeleteWorkspaceImageResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeregisterWorkspaceDirectoryRequest: AWSEncodableShape {
-
         /// The identifier of the directory. If any WorkSpaces are registered to this directory, you must  remove them before you deregister the directory, or you will receive an OperationNotSupportedException  error.
         public let directoryId: String
 
@@ -932,15 +871,10 @@ extension WorkSpaces {
     }
 
     public struct DeregisterWorkspaceDirectoryResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DescribeAccountModificationsRequest: AWSEncodableShape {
-
         /// If you received a NextToken from a previous call that was paginated, provide this token to receive the next set of results.
         public let nextToken: String?
 
@@ -959,10 +893,9 @@ extension WorkSpaces {
     }
 
     public struct DescribeAccountModificationsResult: AWSDecodableShape {
-
         /// The list of modifications to the configuration of BYOL.
         public let accountModifications: [AccountModification]?
-        /// The token to use to retrieve the next page of results. This value is null when there  are no more results to return. 
+        /// The token to use to retrieve the next page of results. This value is null when there  are no more results to return.
         public let nextToken: String?
 
         public init(accountModifications: [AccountModification]? = nil, nextToken: String? = nil) {
@@ -977,15 +910,10 @@ extension WorkSpaces {
     }
 
     public struct DescribeAccountRequest: AWSEncodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DescribeAccountResult: AWSDecodableShape {
-
         /// The IP address range, specified as an IPv4 CIDR block, used for the management network interface. The management network interface is connected to a secure Amazon WorkSpaces management network. It is used for interactive streaming of the WorkSpace desktop to Amazon WorkSpaces clients, and to allow Amazon WorkSpaces to manage the WorkSpace.
         public let dedicatedTenancyManagementCidrRange: String?
         /// The status of BYOL (whether BYOL is enabled or disabled).
@@ -1003,7 +931,6 @@ extension WorkSpaces {
     }
 
     public struct DescribeClientPropertiesRequest: AWSEncodableShape {
-
         /// The resource identifier, in the form of directory IDs.
         public let resourceIds: [String]
 
@@ -1025,7 +952,6 @@ extension WorkSpaces {
     }
 
     public struct DescribeClientPropertiesResult: AWSDecodableShape {
-
         /// Information about the specified Amazon WorkSpaces clients.
         public let clientPropertiesList: [ClientPropertiesResult]?
 
@@ -1039,12 +965,11 @@ extension WorkSpaces {
     }
 
     public struct DescribeConnectionAliasPermissionsRequest: AWSEncodableShape {
-
         /// The identifier of the connection alias.
         public let aliasId: String
         /// The maximum number of results to return.
         public let maxResults: Int?
-        /// If you received a NextToken from a previous call that was paginated, provide this token to receive the  next set of results. 
+        /// If you received a NextToken from a previous call that was paginated, provide this token to receive the  next set of results.
         public let nextToken: String?
 
         public init(aliasId: String, maxResults: Int? = nil, nextToken: String? = nil) {
@@ -1071,12 +996,11 @@ extension WorkSpaces {
     }
 
     public struct DescribeConnectionAliasPermissionsResult: AWSDecodableShape {
-
         /// The identifier of the connection alias.
         public let aliasId: String?
         /// The permissions associated with a connection alias.
         public let connectionAliasPermissions: [ConnectionAliasPermission]?
-        /// The token to use to retrieve the next page of results. This value is null when there are no more results to return. 
+        /// The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         public let nextToken: String?
 
         public init(aliasId: String? = nil, connectionAliasPermissions: [ConnectionAliasPermission]? = nil, nextToken: String? = nil) {
@@ -1093,12 +1017,11 @@ extension WorkSpaces {
     }
 
     public struct DescribeConnectionAliasesRequest: AWSEncodableShape {
-
         /// The identifiers of the connection aliases to describe.
         public let aliasIds: [String]?
         /// The maximum number of connection aliases to return.
         public let limit: Int?
-        /// If you received a NextToken from a previous call that was paginated, provide this token to receive the  next set of results. 
+        /// If you received a NextToken from a previous call that was paginated, provide this token to receive the  next set of results.
         public let nextToken: String?
         /// The identifier of the directory associated with the connection alias.
         public let resourceId: String?
@@ -1134,10 +1057,9 @@ extension WorkSpaces {
     }
 
     public struct DescribeConnectionAliasesResult: AWSDecodableShape {
-
         /// Information about the specified connection aliases.
         public let connectionAliases: [ConnectionAlias]?
-        /// The token to use to retrieve the next page of results. This value is null when there are no more results to return. 
+        /// The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         public let nextToken: String?
 
         public init(connectionAliases: [ConnectionAlias]? = nil, nextToken: String? = nil) {
@@ -1152,7 +1074,6 @@ extension WorkSpaces {
     }
 
     public struct DescribeIpGroupsRequest: AWSEncodableShape {
-
         /// The identifiers of one or more IP access control groups.
         public let groupIds: [String]?
         /// The maximum number of items to return.
@@ -1184,8 +1105,7 @@ extension WorkSpaces {
     }
 
     public struct DescribeIpGroupsResult: AWSDecodableShape {
-
-        /// The token to use to retrieve the next page of results. This value is null when there are no more results to return. 
+        /// The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         public let nextToken: String?
         /// Information about the IP access control groups.
         public let result: [WorkspacesIpGroup]?
@@ -1202,7 +1122,6 @@ extension WorkSpaces {
     }
 
     public struct DescribeTagsRequest: AWSEncodableShape {
-
         /// The identifier of the WorkSpaces resource. The supported resource types are WorkSpaces, registered directories, images, custom bundles, IP access control groups, and connection aliases.
         public let resourceId: String
 
@@ -1220,7 +1139,6 @@ extension WorkSpaces {
     }
 
     public struct DescribeTagsResult: AWSDecodableShape {
-
         /// The tags.
         public let tagList: [Tag]?
 
@@ -1234,7 +1152,6 @@ extension WorkSpaces {
     }
 
     public struct DescribeWorkspaceBundlesRequest: AWSEncodableShape {
-
         /// The identifiers of the bundles. You cannot combine this parameter with any other filter.
         public let bundleIds: [String]?
         /// The token for the next set of results. (You received this token from a previous call.)
@@ -1266,7 +1183,6 @@ extension WorkSpaces {
     }
 
     public struct DescribeWorkspaceBundlesResult: AWSDecodableShape {
-
         /// Information about the bundles.
         public let bundles: [WorkspaceBundle]?
         /// The token to use to retrieve the next page of results. This value is null when there are no more  results to return. This token is valid for one day and must be used within that time frame.
@@ -1284,7 +1200,6 @@ extension WorkSpaces {
     }
 
     public struct DescribeWorkspaceDirectoriesRequest: AWSEncodableShape {
-
         /// The identifiers of the directories. If the value is null, all directories are retrieved.
         public let directoryIds: [String]?
         /// The maximum number of directories to return.
@@ -1320,10 +1235,9 @@ extension WorkSpaces {
     }
 
     public struct DescribeWorkspaceDirectoriesResult: AWSDecodableShape {
-
         /// Information about the directories.
         public let directories: [WorkspaceDirectory]?
-        /// The token to use to retrieve the next page of results. This value is null when there are no more results to return. 
+        /// The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         public let nextToken: String?
 
         public init(directories: [WorkspaceDirectory]? = nil, nextToken: String? = nil) {
@@ -1338,7 +1252,6 @@ extension WorkSpaces {
     }
 
     public struct DescribeWorkspaceImagePermissionsRequest: AWSEncodableShape {
-
         /// The identifier of the image.
         public let imageId: String
         /// The maximum number of items to return.
@@ -1368,12 +1281,11 @@ extension WorkSpaces {
     }
 
     public struct DescribeWorkspaceImagePermissionsResult: AWSDecodableShape {
-
         /// The identifier of the image.
         public let imageId: String?
         /// The identifiers of the AWS accounts that the image has been shared with.
         public let imagePermissions: [ImagePermission]?
-        /// The token to use to retrieve the next page of results. This value is null when there are no more results to return. 
+        /// The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         public let nextToken: String?
 
         public init(imageId: String? = nil, imagePermissions: [ImagePermission]? = nil, nextToken: String? = nil) {
@@ -1390,7 +1302,6 @@ extension WorkSpaces {
     }
 
     public struct DescribeWorkspaceImagesRequest: AWSEncodableShape {
-
         /// The identifier of the image.
         public let imageIds: [String]?
         /// The type (owned or shared) of the image.
@@ -1428,10 +1339,9 @@ extension WorkSpaces {
     }
 
     public struct DescribeWorkspaceImagesResult: AWSDecodableShape {
-
         /// Information about the images.
         public let images: [WorkspaceImage]?
-        /// The token to use to retrieve the next page of results. This value is null when there are no more results to return. 
+        /// The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         public let nextToken: String?
 
         public init(images: [WorkspaceImage]? = nil, nextToken: String? = nil) {
@@ -1446,7 +1356,6 @@ extension WorkSpaces {
     }
 
     public struct DescribeWorkspaceSnapshotsRequest: AWSEncodableShape {
-
         /// The identifier of the WorkSpace.
         public let workspaceId: String
 
@@ -1464,7 +1373,6 @@ extension WorkSpaces {
     }
 
     public struct DescribeWorkspaceSnapshotsResult: AWSDecodableShape {
-
         /// Information about the snapshots that can be used to rebuild a WorkSpace. These snapshots include the user volume.
         public let rebuildSnapshots: [Snapshot]?
         /// Information about the snapshots that can be used to restore a WorkSpace. These snapshots include both the root volume and the user volume.
@@ -1482,7 +1390,6 @@ extension WorkSpaces {
     }
 
     public struct DescribeWorkspacesConnectionStatusRequest: AWSEncodableShape {
-
         /// If you received a NextToken from a previous call that was paginated, provide this token to receive the next set of results.
         public let nextToken: String?
         /// The identifiers of the WorkSpaces. You can specify up to 25 WorkSpaces.
@@ -1510,8 +1417,7 @@ extension WorkSpaces {
     }
 
     public struct DescribeWorkspacesConnectionStatusResult: AWSDecodableShape {
-
-        /// The token to use to retrieve the next page of results. This value is null when there are no more results to return. 
+        /// The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         public let nextToken: String?
         /// Information about the connection status of the WorkSpace.
         public let workspacesConnectionStatus: [WorkspaceConnectionStatus]?
@@ -1528,7 +1434,6 @@ extension WorkSpaces {
     }
 
     public struct DescribeWorkspacesRequest: AWSEncodableShape {
-
         /// The identifier of the bundle. All WorkSpaces that are created from this bundle are retrieved. You cannot combine this parameter with any other filter.
         public let bundleId: String?
         /// The identifier of the directory. In addition, you can optionally specify a specific directory user (see UserName). You cannot combine this parameter with any other filter.
@@ -1580,8 +1485,7 @@ extension WorkSpaces {
     }
 
     public struct DescribeWorkspacesResult: AWSDecodableShape {
-
-        /// The token to use to retrieve the next page of results. This value is null when there are no more results to return. 
+        /// The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         public let nextToken: String?
         /// Information about the WorkSpaces. Because CreateWorkspaces is an asynchronous operation, some of the returned information could be incomplete.
         public let workspaces: [Workspace]?
@@ -1598,7 +1502,6 @@ extension WorkSpaces {
     }
 
     public struct DisassociateConnectionAliasRequest: AWSEncodableShape {
-
         /// The identifier of the connection alias to disassociate.
         public let aliasId: String
 
@@ -1618,15 +1521,10 @@ extension WorkSpaces {
     }
 
     public struct DisassociateConnectionAliasResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DisassociateIpGroupsRequest: AWSEncodableShape {
-
         /// The identifier of the directory.
         public let directoryId: String
         /// The identifiers of one or more IP access control groups.
@@ -1653,15 +1551,10 @@ extension WorkSpaces {
     }
 
     public struct DisassociateIpGroupsResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct FailedCreateWorkspaceRequest: AWSDecodableShape {
-
         /// The error code that is returned if the WorkSpace cannot be created.
         public let errorCode: String?
         /// The text of the error message that is returned if the WorkSpace cannot be created.
@@ -1683,7 +1576,6 @@ extension WorkSpaces {
     }
 
     public struct FailedWorkspaceChangeRequest: AWSDecodableShape {
-
         /// The error code that is returned if the WorkSpace cannot be rebooted.
         public let errorCode: String?
         /// The text of the error message that is returned if the WorkSpace cannot be rebooted.
@@ -1705,7 +1597,6 @@ extension WorkSpaces {
     }
 
     public struct ImagePermission: AWSDecodableShape {
-
         /// The identifier of the AWS account that an image has been shared with.
         public let sharedAccountId: String?
 
@@ -1719,8 +1610,7 @@ extension WorkSpaces {
     }
 
     public struct ImportWorkspaceImageRequest: AWSEncodableShape {
-
-        /// If specified, the version of Microsoft Office to subscribe to. Valid only for Windows 10  BYOL images. For more information about subscribing to Office for BYOL images, see   Bring Your Own Windows Desktop Licenses.   Although this parameter is an array, only one item is allowed at this time. 
+        /// If specified, the version of Microsoft Office to subscribe to. Valid only for Windows 10  BYOL images. For more information about subscribing to Office for BYOL images, see   Bring Your Own Windows Desktop Licenses.   Although this parameter is an array, only one item is allowed at this time.
         public let applications: [Application]?
         /// The identifier of the EC2 image.
         public let ec2ImageId: String
@@ -1768,7 +1658,6 @@ extension WorkSpaces {
     }
 
     public struct ImportWorkspaceImageResult: AWSDecodableShape {
-
         /// The identifier of the WorkSpace image.
         public let imageId: String?
 
@@ -1782,7 +1671,6 @@ extension WorkSpaces {
     }
 
     public struct IpRuleItem: AWSEncodableShape & AWSDecodableShape {
-
         /// The IP address range, in CIDR notation.
         public let ipRule: String?
         /// The description.
@@ -1794,13 +1682,12 @@ extension WorkSpaces {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case ipRule = "ipRule"
-            case ruleDesc = "ruleDesc"
+            case ipRule
+            case ruleDesc
         }
     }
 
     public struct ListAvailableManagementCidrRangesRequest: AWSEncodableShape {
-
         /// The IP address range to search. Specify an IP address range that is compatible with your network and in CIDR notation (that is, specify the range as an IPv4 CIDR block).
         public let managementCidrRangeConstraint: String
         /// The maximum number of items to return.
@@ -1830,10 +1717,9 @@ extension WorkSpaces {
     }
 
     public struct ListAvailableManagementCidrRangesResult: AWSDecodableShape {
-
         /// The list of available IP address ranges, specified as IPv4 CIDR blocks.
         public let managementCidrRanges: [String]?
-        /// The token to use to retrieve the next page of results. This value is null when there are no more results to return. 
+        /// The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         public let nextToken: String?
 
         public init(managementCidrRanges: [String]? = nil, nextToken: String? = nil) {
@@ -1848,7 +1734,6 @@ extension WorkSpaces {
     }
 
     public struct MigrateWorkspaceRequest: AWSEncodableShape {
-
         /// The identifier of the target bundle type to migrate the WorkSpace to.
         public let bundleId: String
         /// The identifier of the WorkSpace to migrate from.
@@ -1871,7 +1756,6 @@ extension WorkSpaces {
     }
 
     public struct MigrateWorkspaceResult: AWSDecodableShape {
-
         /// The original identifier of the WorkSpace that is being migrated.
         public let sourceWorkspaceId: String?
         /// The new identifier of the WorkSpace that is being migrated. If the migration does not succeed,  the target WorkSpace ID will not be used, and the WorkSpace will still have the original WorkSpace ID.
@@ -1889,7 +1773,6 @@ extension WorkSpaces {
     }
 
     public struct ModificationState: AWSDecodableShape {
-
         /// The resource.
         public let resource: ModificationResourceEnum?
         /// The modification state.
@@ -1907,7 +1790,6 @@ extension WorkSpaces {
     }
 
     public struct ModifyAccountRequest: AWSEncodableShape {
-
         /// The IP address range, specified as an IPv4 CIDR block, for the management network interface. Specify an IP address range that is compatible with your network and in CIDR notation (that is, specify the range as an IPv4 CIDR block). The CIDR block size must be /16 (for example, 203.0.113.25/16). It must also be specified as available by the ListAvailableManagementCidrRanges operation.
         public let dedicatedTenancyManagementCidrRange: String?
         /// The status of BYOL.
@@ -1929,15 +1811,10 @@ extension WorkSpaces {
     }
 
     public struct ModifyAccountResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct ModifyClientPropertiesRequest: AWSEncodableShape {
-
         /// Information about the Amazon WorkSpaces client.
         public let clientProperties: ClientProperties
         /// The resource identifiers, in the form of directory IDs.
@@ -1959,15 +1836,10 @@ extension WorkSpaces {
     }
 
     public struct ModifyClientPropertiesResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct ModifySelfservicePermissionsRequest: AWSEncodableShape {
-
         /// The identifier of the directory.
         public let resourceId: String
         /// The permissions to enable or disable self-service capabilities.
@@ -1991,15 +1863,10 @@ extension WorkSpaces {
     }
 
     public struct ModifySelfservicePermissionsResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct ModifyWorkspaceAccessPropertiesRequest: AWSEncodableShape {
-
         /// The identifier of the directory.
         public let resourceId: String
         /// The device types and operating systems to enable or disable for access.
@@ -2023,15 +1890,10 @@ extension WorkSpaces {
     }
 
     public struct ModifyWorkspaceAccessPropertiesResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct ModifyWorkspaceCreationPropertiesRequest: AWSEncodableShape {
-
         /// The identifier of the directory.
         public let resourceId: String
         /// The default properties for creating WorkSpaces.
@@ -2056,15 +1918,10 @@ extension WorkSpaces {
     }
 
     public struct ModifyWorkspaceCreationPropertiesResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct ModifyWorkspacePropertiesRequest: AWSEncodableShape {
-
         /// The identifier of the WorkSpace.
         public let workspaceId: String
         /// The properties of the WorkSpace.
@@ -2086,15 +1943,10 @@ extension WorkSpaces {
     }
 
     public struct ModifyWorkspacePropertiesResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct ModifyWorkspaceStateRequest: AWSEncodableShape {
-
         /// The identifier of the WorkSpace.
         public let workspaceId: String
         /// The WorkSpace state.
@@ -2116,15 +1968,10 @@ extension WorkSpaces {
     }
 
     public struct ModifyWorkspaceStateResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct OperatingSystem: AWSDecodableShape {
-
         /// The operating system.
         public let type: OperatingSystemType?
 
@@ -2138,7 +1985,6 @@ extension WorkSpaces {
     }
 
     public struct RebootRequest: AWSEncodableShape {
-
         /// The identifier of the WorkSpace.
         public let workspaceId: String
 
@@ -2156,7 +2002,6 @@ extension WorkSpaces {
     }
 
     public struct RebootWorkspacesRequest: AWSEncodableShape {
-
         /// The WorkSpaces to reboot. You can specify up to 25 WorkSpaces.
         public let rebootWorkspaceRequests: [RebootRequest]
 
@@ -2178,7 +2023,6 @@ extension WorkSpaces {
     }
 
     public struct RebootWorkspacesResult: AWSDecodableShape {
-
         /// Information about the WorkSpaces that could not be rebooted.
         public let failedRequests: [FailedWorkspaceChangeRequest]?
 
@@ -2192,7 +2036,6 @@ extension WorkSpaces {
     }
 
     public struct RebuildRequest: AWSEncodableShape {
-
         /// The identifier of the WorkSpace.
         public let workspaceId: String
 
@@ -2210,7 +2053,6 @@ extension WorkSpaces {
     }
 
     public struct RebuildWorkspacesRequest: AWSEncodableShape {
-
         /// The WorkSpace to rebuild. You can specify a single WorkSpace.
         public let rebuildWorkspaceRequests: [RebuildRequest]
 
@@ -2232,7 +2074,6 @@ extension WorkSpaces {
     }
 
     public struct RebuildWorkspacesResult: AWSDecodableShape {
-
         /// Information about the WorkSpace that could not be rebuilt.
         public let failedRequests: [FailedWorkspaceChangeRequest]?
 
@@ -2246,7 +2087,6 @@ extension WorkSpaces {
     }
 
     public struct RegisterWorkspaceDirectoryRequest: AWSEncodableShape {
-
         /// The identifier of the directory. You cannot register a directory if it does not have a status  of Active. If the directory does not have a status of Active, you will receive an  InvalidResourceStateException error. If you have already registered the maximum number of directories  that you can register with Amazon WorkSpaces, you will receive a ResourceLimitExceededException error.  Deregister directories that you are not using for WorkSpaces, and try again.
         public let directoryId: String
         /// Indicates whether self-service capabilities are enabled or disabled.
@@ -2295,15 +2135,10 @@ extension WorkSpaces {
     }
 
     public struct RegisterWorkspaceDirectoryResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct RestoreWorkspaceRequest: AWSEncodableShape {
-
         /// The identifier of the WorkSpace.
         public let workspaceId: String
 
@@ -2321,15 +2156,10 @@ extension WorkSpaces {
     }
 
     public struct RestoreWorkspaceResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct RevokeIpRulesRequest: AWSEncodableShape {
-
         /// The identifier of the group.
         public let groupId: String
         /// The rules to remove from the group.
@@ -2351,15 +2181,10 @@ extension WorkSpaces {
     }
 
     public struct RevokeIpRulesResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct RootStorage: AWSEncodableShape & AWSDecodableShape {
-
         /// The size of the root volume.
         public let capacity: String?
 
@@ -2377,7 +2202,6 @@ extension WorkSpaces {
     }
 
     public struct SelfservicePermissions: AWSEncodableShape & AWSDecodableShape {
-
         /// Specifies whether users can change the compute type (bundle) for their WorkSpace.
         public let changeComputeType: ReconnectEnum?
         /// Specifies whether users can increase the volume size of the drives on their WorkSpace.
@@ -2407,7 +2231,6 @@ extension WorkSpaces {
     }
 
     public struct Snapshot: AWSDecodableShape {
-
         /// The time when the snapshot was created.
         public let snapshotTime: Date?
 
@@ -2421,7 +2244,6 @@ extension WorkSpaces {
     }
 
     public struct StartRequest: AWSEncodableShape {
-
         /// The identifier of the WorkSpace.
         public let workspaceId: String?
 
@@ -2439,7 +2261,6 @@ extension WorkSpaces {
     }
 
     public struct StartWorkspacesRequest: AWSEncodableShape {
-
         /// The WorkSpaces to start. You can specify up to 25 WorkSpaces.
         public let startWorkspaceRequests: [StartRequest]
 
@@ -2461,7 +2282,6 @@ extension WorkSpaces {
     }
 
     public struct StartWorkspacesResult: AWSDecodableShape {
-
         /// Information about the WorkSpaces that could not be started.
         public let failedRequests: [FailedWorkspaceChangeRequest]?
 
@@ -2475,7 +2295,6 @@ extension WorkSpaces {
     }
 
     public struct StopRequest: AWSEncodableShape {
-
         /// The identifier of the WorkSpace.
         public let workspaceId: String?
 
@@ -2493,7 +2312,6 @@ extension WorkSpaces {
     }
 
     public struct StopWorkspacesRequest: AWSEncodableShape {
-
         /// The WorkSpaces to stop. You can specify up to 25 WorkSpaces.
         public let stopWorkspaceRequests: [StopRequest]
 
@@ -2515,7 +2333,6 @@ extension WorkSpaces {
     }
 
     public struct StopWorkspacesResult: AWSDecodableShape {
-
         /// Information about the WorkSpaces that could not be stopped.
         public let failedRequests: [FailedWorkspaceChangeRequest]?
 
@@ -2529,7 +2346,6 @@ extension WorkSpaces {
     }
 
     public struct Tag: AWSEncodableShape & AWSDecodableShape {
-
         /// The key of the tag.
         public let key: String
         /// The value of the tag.
@@ -2553,7 +2369,6 @@ extension WorkSpaces {
     }
 
     public struct TerminateRequest: AWSEncodableShape {
-
         /// The identifier of the WorkSpace.
         public let workspaceId: String
 
@@ -2571,7 +2386,6 @@ extension WorkSpaces {
     }
 
     public struct TerminateWorkspacesRequest: AWSEncodableShape {
-
         /// The WorkSpaces to terminate. You can specify up to 25 WorkSpaces.
         public let terminateWorkspaceRequests: [TerminateRequest]
 
@@ -2593,7 +2407,6 @@ extension WorkSpaces {
     }
 
     public struct TerminateWorkspacesResult: AWSDecodableShape {
-
         /// Information about the WorkSpaces that could not be terminated.
         public let failedRequests: [FailedWorkspaceChangeRequest]?
 
@@ -2607,7 +2420,6 @@ extension WorkSpaces {
     }
 
     public struct UpdateConnectionAliasPermissionRequest: AWSEncodableShape {
-
         /// The identifier of the connection alias that you want to update permissions for.
         public let aliasId: String
         /// Indicates whether to share or unshare the connection alias with the specified AWS account.
@@ -2632,15 +2444,10 @@ extension WorkSpaces {
     }
 
     public struct UpdateConnectionAliasPermissionResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateRulesOfIpGroupRequest: AWSEncodableShape {
-
         /// The identifier of the group.
         public let groupId: String
         /// One or more rules.
@@ -2662,15 +2469,10 @@ extension WorkSpaces {
     }
 
     public struct UpdateRulesOfIpGroupResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateWorkspaceBundleRequest: AWSEncodableShape {
-
         /// The identifier of the bundle.
         public let bundleId: String?
         /// The identifier of the image.
@@ -2693,20 +2495,15 @@ extension WorkSpaces {
     }
 
     public struct UpdateWorkspaceBundleResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateWorkspaceImagePermissionRequest: AWSEncodableShape {
-
         /// The permission to copy the image. This permission can be revoked only after an image  has been shared.
         public let allowCopyImage: Bool
         /// The identifier of the image.
         public let imageId: String
-        /// The identifier of the AWS account to share or unshare the image with.   Before sharing the image, confirm that you are sharing to the correct AWS account ID. 
+        /// The identifier of the AWS account to share or unshare the image with.   Before sharing the image, confirm that you are sharing to the correct AWS account ID.
         public let sharedAccountId: String
 
         public init(allowCopyImage: Bool, imageId: String, sharedAccountId: String) {
@@ -2728,15 +2525,10 @@ extension WorkSpaces {
     }
 
     public struct UpdateWorkspaceImagePermissionResult: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UserStorage: AWSEncodableShape & AWSDecodableShape {
-
         /// The size of the user volume.
         public let capacity: String?
 
@@ -2754,10 +2546,9 @@ extension WorkSpaces {
     }
 
     public struct Workspace: AWSDecodableShape {
-
         /// The identifier of the bundle used to create the WorkSpace.
         public let bundleId: String?
-        /// The name of the WorkSpace, as seen by the operating system. The format of this name varies.  For more information, see  Launch a WorkSpace. 
+        /// The name of the WorkSpace, as seen by the operating system. The format of this name varies.  For more information, see  Launch a WorkSpace.
         public let computerName: String?
         /// The identifier of the AWS Directory Service directory for the WorkSpace.
         public let directoryId: String?
@@ -2771,7 +2562,7 @@ extension WorkSpaces {
         public let modificationStates: [ModificationState]?
         /// Indicates whether the data stored on the root volume is encrypted.
         public let rootVolumeEncryptionEnabled: Bool?
-        /// The operational state of the WorkSpace.   After a WorkSpace is terminated, the TERMINATED state is returned  only briefly before the WorkSpace directory metadata is cleaned up, so this state is rarely  returned. To confirm that a WorkSpace is terminated, check for the WorkSpace ID by using   DescribeWorkSpaces. If the WorkSpace ID isn't returned, then the WorkSpace has  been successfully terminated. 
+        /// The operational state of the WorkSpace.   After a WorkSpace is terminated, the TERMINATED state is returned  only briefly before the WorkSpace directory metadata is cleaned up, so this state is rarely  returned. To confirm that a WorkSpace is terminated, check for the WorkSpace ID by using   DescribeWorkSpaces. If the WorkSpace ID isn't returned, then the WorkSpace has  been successfully terminated.
         public let state: WorkspaceState?
         /// The identifier of the subnet for the WorkSpace.
         public let subnetId: String?
@@ -2824,7 +2615,6 @@ extension WorkSpaces {
     }
 
     public struct WorkspaceAccessProperties: AWSEncodableShape & AWSDecodableShape {
-
         /// Indicates whether users can use Android devices to access their WorkSpaces.
         public let deviceTypeAndroid: AccessPropertyValue?
         /// Indicates whether users can use Chromebooks to access their WorkSpaces.
@@ -2833,11 +2623,11 @@ extension WorkSpaces {
         public let deviceTypeIos: AccessPropertyValue?
         /// Indicates whether users can use Linux clients to access their WorkSpaces.
         public let deviceTypeLinux: AccessPropertyValue?
-        /// Indicates whether users can use macOS clients to access their WorkSpaces. To restrict WorkSpaces access to trusted devices (also known as managed devices) with valid certificates, specify a value of TRUST. For more information, see Restrict WorkSpaces Access to Trusted Devices. 
+        /// Indicates whether users can use macOS clients to access their WorkSpaces. To restrict WorkSpaces access to trusted devices (also known as managed devices) with valid certificates, specify a value of TRUST. For more information, see Restrict WorkSpaces Access to Trusted Devices.
         public let deviceTypeOsx: AccessPropertyValue?
         /// Indicates whether users can access their WorkSpaces through a web browser.
         public let deviceTypeWeb: AccessPropertyValue?
-        /// Indicates whether users can use Windows clients to access their WorkSpaces. To restrict WorkSpaces access to trusted devices (also known as managed devices) with valid certificates, specify a value of TRUST. For more information, see Restrict WorkSpaces Access to Trusted Devices. 
+        /// Indicates whether users can use Windows clients to access their WorkSpaces. To restrict WorkSpaces access to trusted devices (also known as managed devices) with valid certificates, specify a value of TRUST. For more information, see Restrict WorkSpaces Access to Trusted Devices.
         public let deviceTypeWindows: AccessPropertyValue?
         /// Indicates whether users can use zero client devices to access their WorkSpaces.
         public let deviceTypeZeroClient: AccessPropertyValue?
@@ -2866,7 +2656,6 @@ extension WorkSpaces {
     }
 
     public struct WorkspaceBundle: AWSDecodableShape {
-
         /// The identifier of the bundle.
         public let bundleId: String?
         /// The compute type of the bundle. For more information, see  Amazon WorkSpaces Bundles.
@@ -2916,7 +2705,6 @@ extension WorkSpaces {
     }
 
     public struct WorkspaceConnectionStatus: AWSDecodableShape {
-
         /// The connection state of the WorkSpace. The connection state is unknown if the WorkSpace is stopped.
         public let connectionState: ConnectionState?
         /// The timestamp of the connection status check.
@@ -2942,16 +2730,15 @@ extension WorkSpaces {
     }
 
     public struct WorkspaceCreationProperties: AWSEncodableShape {
-
         /// The identifier of your custom security group.
         public let customSecurityGroupId: String?
-        /// The default organizational unit (OU) for your WorkSpaces directories. This string must be the full Lightweight  Directory Access Protocol (LDAP) distinguished name for the target domain and OU. It must be in the form  "OU=value,DC=value,DC=value",  where value is any string of characters, and the number of domain components (DCs) is  two or more. For example, OU=WorkSpaces_machines,DC=machines,DC=example,DC=com.      To avoid errors, certain characters in the distinguished name must be escaped. For more information,  see  Distinguished Names in the Microsoft documentation.   The API doesn't validate whether the OU exists.   
+        /// The default organizational unit (OU) for your WorkSpaces directories. This string must be the full Lightweight  Directory Access Protocol (LDAP) distinguished name for the target domain and OU. It must be in the form  "OU=value,DC=value,DC=value",  where value is any string of characters, and the number of domain components (DCs) is  two or more. For example, OU=WorkSpaces_machines,DC=machines,DC=example,DC=com.      To avoid errors, certain characters in the distinguished name must be escaped. For more information,  see  Distinguished Names in the Microsoft documentation.   The API doesn't validate whether the OU exists.
         public let defaultOu: String?
         /// Indicates whether internet access is enabled for your WorkSpaces.
         public let enableInternetAccess: Bool?
-        /// Indicates whether maintenance mode is enabled for your WorkSpaces. For more information, see WorkSpace Maintenance. 
+        /// Indicates whether maintenance mode is enabled for your WorkSpaces. For more information, see WorkSpace Maintenance.
         public let enableMaintenanceMode: Bool?
-        /// Indicates whether Amazon WorkDocs is enabled for your WorkSpaces.   If WorkDocs is already enabled for a WorkSpaces directory and you disable it, new WorkSpaces launched in the  directory will not have WorkDocs enabled. However, WorkDocs remains enabled for any existing WorkSpaces, unless  you either disable users' access to WorkDocs or you delete the WorkDocs site. To disable users' access to WorkDocs,  see Disabling Users in the  Amazon WorkDocs Administration Guide. To delete a WorkDocs site, see  Deleting a Site in the  Amazon WorkDocs Administration Guide.  If you enable WorkDocs on a directory that already has existing WorkSpaces, the existing WorkSpaces and any  new WorkSpaces that are launched in the directory will have WorkDocs enabled. 
+        /// Indicates whether Amazon WorkDocs is enabled for your WorkSpaces.   If WorkDocs is already enabled for a WorkSpaces directory and you disable it, new WorkSpaces launched in the  directory will not have WorkDocs enabled. However, WorkDocs remains enabled for any existing WorkSpaces, unless  you either disable users' access to WorkDocs or you delete the WorkDocs site. To disable users' access to WorkDocs,  see Disabling Users in the  Amazon WorkDocs Administration Guide. To delete a WorkDocs site, see  Deleting a Site in the  Amazon WorkDocs Administration Guide.  If you enable WorkDocs on a directory that already has existing WorkSpaces, the existing WorkSpaces and any  new WorkSpaces that are launched in the directory will have WorkDocs enabled.
         public let enableWorkDocs: Bool?
         /// Indicates whether users are local administrators of their WorkSpaces.
         public let userEnabledAsLocalAdministrator: Bool?
@@ -2982,7 +2769,6 @@ extension WorkSpaces {
     }
 
     public struct WorkspaceDirectory: AWSDecodableShape {
-
         /// The directory alias.
         public let alias: String?
         /// The user name for the service account.
@@ -3043,7 +2829,7 @@ extension WorkSpaces {
             case directoryType = "DirectoryType"
             case dnsIpAddresses = "DnsIpAddresses"
             case iamRoleId = "IamRoleId"
-            case ipGroupIds = "ipGroupIds"
+            case ipGroupIds
             case registrationCode = "RegistrationCode"
             case selfservicePermissions = "SelfservicePermissions"
             case state = "State"
@@ -3056,7 +2842,6 @@ extension WorkSpaces {
     }
 
     public struct WorkspaceImage: AWSDecodableShape {
-
         /// The date when the image was created. If the image has been shared, the AWS account  that the image has been shared with sees the original creation date of the image.
         public let created: Date?
         /// The description of the image.
@@ -3069,7 +2854,7 @@ extension WorkSpaces {
         public let imageId: String?
         /// The name of the image.
         public let name: String?
-        /// The operating system that the image is running. 
+        /// The operating system that the image is running.
         public let operatingSystem: OperatingSystem?
         /// The identifier of the AWS account that owns the image.
         public let ownerAccountId: String?
@@ -3106,7 +2891,6 @@ extension WorkSpaces {
     }
 
     public struct WorkspaceProperties: AWSEncodableShape & AWSDecodableShape {
-
         /// The compute type. For more information, see Amazon WorkSpaces Bundles.
         public let computeTypeName: Compute?
         /// The size of the root volume. For important information about how to modify the size of the root and user volumes, see  Modify a WorkSpace.
@@ -3136,7 +2920,6 @@ extension WorkSpaces {
     }
 
     public struct WorkspaceRequest: AWSEncodableShape & AWSDecodableShape {
-
         /// The identifier of the bundle for the WorkSpace. You can use DescribeWorkspaceBundles to list the available bundles.
         public let bundleId: String
         /// The identifier of the AWS Directory Service directory for the WorkSpace. You can use DescribeWorkspaceDirectories to list the available directories.
@@ -3190,7 +2973,6 @@ extension WorkSpaces {
     }
 
     public struct WorkspacesIpGroup: AWSDecodableShape {
-
         /// The description of the group.
         public let groupDesc: String?
         /// The identifier of the group.
@@ -3208,10 +2990,10 @@ extension WorkSpaces {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case groupDesc = "groupDesc"
-            case groupId = "groupId"
-            case groupName = "groupName"
-            case userRules = "userRules"
+            case groupDesc
+            case groupId
+            case groupName
+            case userRules
         }
     }
 }

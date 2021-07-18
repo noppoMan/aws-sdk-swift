@@ -159,7 +159,7 @@ public struct CodeDeployErrorType: AWSErrorType {
     public static var applicationLimitExceededException: Self { .init(.applicationLimitExceededException) }
     /// The minimum number of required application names was not specified.
     public static var applicationNameRequiredException: Self { .init(.applicationNameRequiredException) }
-    ///  The specified ARN is not supported. For example, it might be an ARN for a resource that is not expected. 
+    ///  The specified ARN is not supported. For example, it might be an ARN for a resource that is not expected.
     public static var arnNotSupportedException: Self { .init(.arnNotSupportedException) }
     /// The maximum number of names or IDs allowed for this request (100) was exceeded.
     public static var batchLimitExceededException: Self { .init(.batchLimitExceededException) }
@@ -195,15 +195,15 @@ public struct CodeDeployErrorType: AWSErrorType {
     public static var deploymentLimitExceededException: Self { .init(.deploymentLimitExceededException) }
     /// The specified deployment has not started.
     public static var deploymentNotStartedException: Self { .init(.deploymentNotStartedException) }
-    ///  The provided target ID does not belong to the attempted deployment. 
+    ///  The provided target ID does not belong to the attempted deployment.
     public static var deploymentTargetDoesNotExistException: Self { .init(.deploymentTargetDoesNotExistException) }
-    ///  A deployment target ID was not provided. 
+    ///  A deployment target ID was not provided.
     public static var deploymentTargetIdRequiredException: Self { .init(.deploymentTargetIdRequiredException) }
-    ///  The maximum number of targets that can be associated with an Amazon ECS or AWS Lambda deployment was exceeded. The target list of both types of deployments must have exactly one item. This exception does not apply to EC2/On-premises deployments. 
+    ///  The maximum number of targets that can be associated with an Amazon ECS or AWS Lambda deployment was exceeded. The target list of both types of deployments must have exactly one item. This exception does not apply to EC2/On-premises deployments.
     public static var deploymentTargetListSizeExceededException: Self { .init(.deploymentTargetListSizeExceededException) }
     /// The description is too long.
     public static var descriptionTooLongException: Self { .init(.descriptionTooLongException) }
-    ///  The Amazon ECS service is associated with more than one deployment groups. An Amazon ECS service can be associated with only one deployment group. 
+    ///  The Amazon ECS service is associated with more than one deployment groups. An Amazon ECS service can be associated with only one deployment group.
     public static var eCSServiceMappingLimitExceededException: Self { .init(.eCSServiceMappingLimitExceededException) }
     /// No GitHub account connection exists with the named specified in the call.
     public static var gitHubAccountTokenDoesNotExistException: Self { .init(.gitHubAccountTokenDoesNotExistException) }
@@ -229,11 +229,11 @@ public struct CodeDeployErrorType: AWSErrorType {
     public static var instanceNameRequiredException: Self { .init(.instanceNameRequiredException) }
     /// The specified on-premises instance is not registered.
     public static var instanceNotRegisteredException: Self { .init(.instanceNotRegisteredException) }
-    /// The format of the alarm configuration is invalid. Possible causes include:   The alarm list is null.   The alarm object is null.   The alarm name is empty or null or exceeds the limit of 255 characters.   Two alarms with the same name have been specified.   The alarm configuration is enabled, but the alarm list is empty.  
+    /// The format of the alarm configuration is invalid. Possible causes include:   The alarm list is null.   The alarm object is null.   The alarm name is empty or null or exceeds the limit of 255 characters.   Two alarms with the same name have been specified.   The alarm configuration is enabled, but the alarm list is empty.
     public static var invalidAlarmConfigException: Self { .init(.invalidAlarmConfigException) }
     /// The application name was specified in an invalid format.
     public static var invalidApplicationNameException: Self { .init(.invalidApplicationNameException) }
-    ///  The specified ARN is not in a valid format. 
+    ///  The specified ARN is not in a valid format.
     public static var invalidArnException: Self { .init(.invalidArnException) }
     /// The automatic rollback configuration was specified in an invalid format. For example, automatic rollback is enabled, but an invalid triggering event type or no event types were listed.
     public static var invalidAutoRollbackConfigException: Self { .init(.invalidAutoRollbackConfigException) }
@@ -259,15 +259,15 @@ public struct CodeDeployErrorType: AWSErrorType {
     public static var invalidDeploymentStatusException: Self { .init(.invalidDeploymentStatusException) }
     /// An invalid deployment style was specified. Valid deployment types include "IN_PLACE" and "BLUE_GREEN." Valid deployment options include "WITH_TRAFFIC_CONTROL" and "WITHOUT_TRAFFIC_CONTROL."
     public static var invalidDeploymentStyleException: Self { .init(.invalidDeploymentStyleException) }
-    ///  The target ID provided was not valid. 
+    ///  The target ID provided was not valid.
     public static var invalidDeploymentTargetIdException: Self { .init(.invalidDeploymentTargetIdException) }
-    ///  The wait type is invalid. 
+    ///  The wait type is invalid.
     public static var invalidDeploymentWaitTypeException: Self { .init(.invalidDeploymentWaitTypeException) }
     /// A call was submitted that specified both Ec2TagFilters and Ec2TagSet, but only one of these data types can be used in a single call.
     public static var invalidEC2TagCombinationException: Self { .init(.invalidEC2TagCombinationException) }
     /// The tag was specified in an invalid format.
     public static var invalidEC2TagException: Self { .init(.invalidEC2TagException) }
-    ///  The Amazon ECS service identifier is not valid. 
+    ///  The Amazon ECS service identifier is not valid.
     public static var invalidECSServiceException: Self { .init(.invalidECSServiceException) }
     /// The external ID was specified in an invalid format.
     public static var invalidExternalIdException: Self { .init(.invalidExternalIdException) }
@@ -321,13 +321,13 @@ public struct CodeDeployErrorType: AWSErrorType {
     public static var invalidTagException: Self { .init(.invalidTagException) }
     /// The tag filter was specified in an invalid format.
     public static var invalidTagFilterException: Self { .init(.invalidTagFilterException) }
-    ///  The specified tags are not valid. 
+    ///  The specified tags are not valid.
     public static var invalidTagsToAddException: Self { .init(.invalidTagsToAddException) }
-    ///  The target filter name is invalid. 
+    ///  The target filter name is invalid.
     public static var invalidTargetFilterNameException: Self { .init(.invalidTargetFilterNameException) }
-    ///  A target group pair associated with this deployment is not valid. 
+    ///  A target group pair associated with this deployment is not valid.
     public static var invalidTargetGroupPairException: Self { .init(.invalidTargetGroupPairException) }
-    /// The target instance configuration is invalid. Possible causes include:   Configuration data for target instances was entered for an in-place deployment.   The limit of 10 tags for a tag type was exceeded.   The combined length of the tag names exceeded the limit.    A specified tag is not currently applied to any instances.  
+    /// The target instance configuration is invalid. Possible causes include:   Configuration data for target instances was entered for an in-place deployment.   The limit of 10 tags for a tag type was exceeded.   The combined length of the tag names exceeded the limit.    A specified tag is not currently applied to any instances.
     public static var invalidTargetInstancesException: Self { .init(.invalidTargetInstancesException) }
     /// The specified time range was specified in an invalid format.
     public static var invalidTimeRangeException: Self { .init(.invalidTimeRangeException) }
@@ -345,7 +345,7 @@ public struct CodeDeployErrorType: AWSErrorType {
     public static var multipleIamArnsProvidedException: Self { .init(.multipleIamArnsProvidedException) }
     /// The API used does not support the deployment.
     public static var operationNotSupportedException: Self { .init(.operationNotSupportedException) }
-    ///  The ARN of a resource is required, but was not found. 
+    ///  The ARN of a resource is required, but was not found.
     public static var resourceArnRequiredException: Self { .init(.resourceArnRequiredException) }
     /// The specified resource could not be validated.
     public static var resourceValidationException: Self { .init(.resourceValidationException) }

@@ -94,11 +94,11 @@ extension RDSData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arrayValues = "arrayValues"
-            case booleanValues = "booleanValues"
-            case doubleValues = "doubleValues"
-            case longValues = "longValues"
-            case stringValues = "stringValues"
+            case arrayValues
+            case booleanValues
+            case doubleValues
+            case longValues
+            case stringValues
         }
     }
 
@@ -173,13 +173,13 @@ extension RDSData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arrayValue = "arrayValue"
-            case blobValue = "blobValue"
-            case booleanValue = "booleanValue"
-            case doubleValue = "doubleValue"
-            case isNull = "isNull"
-            case longValue = "longValue"
-            case stringValue = "stringValue"
+            case arrayValue
+            case blobValue
+            case booleanValue
+            case doubleValue
+            case isNull
+            case longValue
+            case stringValue
         }
     }
 
@@ -249,26 +249,25 @@ extension RDSData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arrayValues = "arrayValues"
-            case bigIntValue = "bigIntValue"
-            case bitValue = "bitValue"
-            case blobValue = "blobValue"
-            case doubleValue = "doubleValue"
-            case intValue = "intValue"
-            case isNull = "isNull"
-            case realValue = "realValue"
-            case stringValue = "stringValue"
-            case structValue = "structValue"
+            case arrayValues
+            case bigIntValue
+            case bitValue
+            case blobValue
+            case doubleValue
+            case intValue
+            case isNull
+            case realValue
+            case stringValue
+            case structValue
         }
     }
 
     // MARK: Shapes
 
     public struct BatchExecuteStatementRequest: AWSEncodableShape {
-
         /// The name of the database.
         public let database: String?
-        /// The parameter set for the batch operation. The SQL statement is executed as many times as the number of parameter sets provided.  To execute a SQL statement with no parameters, use one of the following options:   Specify one or more empty parameter sets.   Use the ExecuteStatement operation instead of the BatchExecuteStatement operation.    Array parameters are not supported. 
+        /// The parameter set for the batch operation. The SQL statement is executed as many times as the number of parameter sets provided.  To execute a SQL statement with no parameters, use one of the following options:   Specify one or more empty parameter sets.   Use the ExecuteStatement operation instead of the BatchExecuteStatement operation.    Array parameters are not supported.
         public let parameterSets: [[SqlParameter]]?
         /// The Amazon Resource Name (ARN) of the Aurora Serverless DB cluster.
         public let resourceArn: String
@@ -303,18 +302,17 @@ extension RDSData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case database = "database"
-            case parameterSets = "parameterSets"
-            case resourceArn = "resourceArn"
-            case schema = "schema"
-            case secretArn = "secretArn"
-            case sql = "sql"
-            case transactionId = "transactionId"
+            case database
+            case parameterSets
+            case resourceArn
+            case schema
+            case secretArn
+            case sql
+            case transactionId
         }
     }
 
     public struct BatchExecuteStatementResponse: AWSDecodableShape {
-
         /// The execution results of each batch entry.
         public let updateResults: [UpdateResult]?
 
@@ -323,12 +321,11 @@ extension RDSData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case updateResults = "updateResults"
+            case updateResults
         }
     }
 
     public struct BeginTransactionRequest: AWSEncodableShape {
-
         /// The name of the database.
         public let database: String?
         /// The Amazon Resource Name (ARN) of the Aurora Serverless DB cluster.
@@ -355,15 +352,14 @@ extension RDSData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case database = "database"
-            case resourceArn = "resourceArn"
-            case schema = "schema"
-            case secretArn = "secretArn"
+            case database
+            case resourceArn
+            case schema
+            case secretArn
         }
     }
 
     public struct BeginTransactionResponse: AWSDecodableShape {
-
         /// The transaction ID of the transaction started by the call.
         public let transactionId: String?
 
@@ -372,12 +368,11 @@ extension RDSData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case transactionId = "transactionId"
+            case transactionId
         }
     }
 
     public struct ColumnMetadata: AWSDecodableShape {
-
         /// The type of the column.
         public let arrayBaseColumnType: Int?
         /// A value that indicates whether the column increments automatically.
@@ -425,25 +420,24 @@ extension RDSData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arrayBaseColumnType = "arrayBaseColumnType"
-            case isAutoIncrement = "isAutoIncrement"
-            case isCaseSensitive = "isCaseSensitive"
-            case isCurrency = "isCurrency"
-            case isSigned = "isSigned"
-            case label = "label"
-            case name = "name"
-            case nullable = "nullable"
-            case precision = "precision"
-            case scale = "scale"
-            case schemaName = "schemaName"
-            case tableName = "tableName"
-            case type = "type"
-            case typeName = "typeName"
+            case arrayBaseColumnType
+            case isAutoIncrement
+            case isCaseSensitive
+            case isCurrency
+            case isSigned
+            case label
+            case name
+            case nullable
+            case precision
+            case scale
+            case schemaName
+            case tableName
+            case type
+            case typeName
         }
     }
 
     public struct CommitTransactionRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the Aurora Serverless DB cluster.
         public let resourceArn: String
         /// The name or ARN of the secret that enables access to the DB cluster.
@@ -466,14 +460,13 @@ extension RDSData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case resourceArn = "resourceArn"
-            case secretArn = "secretArn"
-            case transactionId = "transactionId"
+            case resourceArn
+            case secretArn
+            case transactionId
         }
     }
 
     public struct CommitTransactionResponse: AWSDecodableShape {
-
         /// The status of the commit operation.
         public let transactionStatus: String?
 
@@ -482,12 +475,11 @@ extension RDSData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case transactionStatus = "transactionStatus"
+            case transactionStatus
         }
     }
 
     public struct ExecuteSqlRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the secret that enables access to the DB cluster.
         public let awsSecretStoreArn: String
         /// The name of the database.
@@ -496,7 +488,7 @@ extension RDSData {
         public let dbClusterOrInstanceArn: String
         /// The name of the database schema.
         public let schema: String?
-        /// One or more SQL statements to run on the DB cluster. You can separate SQL statements from each other with a semicolon (;). Any valid SQL statement is permitted, including data definition, data manipulation, and commit statements. 
+        /// One or more SQL statements to run on the DB cluster. You can separate SQL statements from each other with a semicolon (;). Any valid SQL statement is permitted, including data definition, data manipulation, and commit statements.
         public let sqlStatements: String
 
         public init(awsSecretStoreArn: String, database: String? = nil, dbClusterOrInstanceArn: String, schema: String? = nil, sqlStatements: String) {
@@ -518,16 +510,15 @@ extension RDSData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case awsSecretStoreArn = "awsSecretStoreArn"
-            case database = "database"
-            case dbClusterOrInstanceArn = "dbClusterOrInstanceArn"
-            case schema = "schema"
-            case sqlStatements = "sqlStatements"
+            case awsSecretStoreArn
+            case database
+            case dbClusterOrInstanceArn
+            case schema
+            case sqlStatements
         }
     }
 
     public struct ExecuteSqlResponse: AWSDecodableShape {
-
         /// The results of the SQL statement or statements.
         public let sqlStatementResults: [SqlStatementResult]?
 
@@ -536,25 +527,24 @@ extension RDSData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case sqlStatementResults = "sqlStatementResults"
+            case sqlStatementResults
         }
     }
 
     public struct ExecuteStatementRequest: AWSEncodableShape {
-
-        /// A value that indicates whether to continue running the statement after  the call times out. By default, the statement stops running when the call  times out.  For DDL statements, we recommend continuing to run the statement after  the call times out. When a DDL statement terminates before it is finished  running, it can result in errors and possibly corrupted data structures. 
+        /// A value that indicates whether to continue running the statement after  the call times out. By default, the statement stops running when the call  times out.  For DDL statements, we recommend continuing to run the statement after  the call times out. When a DDL statement terminates before it is finished  running, it can result in errors and possibly corrupted data structures.
         public let continueAfterTimeout: Bool?
         /// The name of the database.
         public let database: String?
         /// A value that indicates whether to include metadata in the results.
         public let includeResultMetadata: Bool?
-        /// The parameters for the SQL statement.  Array parameters are not supported. 
+        /// The parameters for the SQL statement.  Array parameters are not supported.
         public let parameters: [SqlParameter]?
         /// The Amazon Resource Name (ARN) of the Aurora Serverless DB cluster.
         public let resourceArn: String
         /// Options that control how the result set is returned.
         public let resultSetOptions: ResultSetOptions?
-        /// The name of the database schema.  Currently, the schema parameter isn't supported. 
+        /// The name of the database schema.  Currently, the schema parameter isn't supported.
         public let schema: String?
         /// The name or ARN of the secret that enables access to the DB cluster.
         public let secretArn: String
@@ -588,24 +578,23 @@ extension RDSData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case continueAfterTimeout = "continueAfterTimeout"
-            case database = "database"
-            case includeResultMetadata = "includeResultMetadata"
-            case parameters = "parameters"
-            case resourceArn = "resourceArn"
-            case resultSetOptions = "resultSetOptions"
-            case schema = "schema"
-            case secretArn = "secretArn"
-            case sql = "sql"
-            case transactionId = "transactionId"
+            case continueAfterTimeout
+            case database
+            case includeResultMetadata
+            case parameters
+            case resourceArn
+            case resultSetOptions
+            case schema
+            case secretArn
+            case sql
+            case transactionId
         }
     }
 
     public struct ExecuteStatementResponse: AWSDecodableShape {
-
         /// Metadata for the columns included in the results.
         public let columnMetadata: [ColumnMetadata]?
-        /// Values for fields generated during the request.   The generatedFields data isn't supported by Aurora PostgreSQL. To get the values of generated fields, use the RETURNING clause. For more information, see Returning Data From Modified Rows in the PostgreSQL documentation. 
+        /// Values for fields generated during the request.   The generatedFields data isn't supported by Aurora PostgreSQL. To get the values of generated fields, use the RETURNING clause. For more information, see Returning Data From Modified Rows in the PostgreSQL documentation.
         public let generatedFields: [Field]?
         /// The number of records updated by the request.
         public let numberOfRecordsUpdated: Int64?
@@ -620,15 +609,14 @@ extension RDSData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case columnMetadata = "columnMetadata"
-            case generatedFields = "generatedFields"
-            case numberOfRecordsUpdated = "numberOfRecordsUpdated"
-            case records = "records"
+            case columnMetadata
+            case generatedFields
+            case numberOfRecordsUpdated
+            case records
         }
     }
 
     public struct Record: AWSDecodableShape {
-
         /// The values returned in the record.
         public let values: [Value]?
 
@@ -637,12 +625,11 @@ extension RDSData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case values = "values"
+            case values
         }
     }
 
     public struct ResultFrame: AWSDecodableShape {
-
         /// The records in the result set.
         public let records: [Record]?
         /// The result-set metadata in the result set.
@@ -654,13 +641,12 @@ extension RDSData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case records = "records"
-            case resultSetMetadata = "resultSetMetadata"
+            case records
+            case resultSetMetadata
         }
     }
 
     public struct ResultSetMetadata: AWSDecodableShape {
-
         /// The number of columns in the result set.
         public let columnCount: Int64?
         /// The metadata of the columns in the result set.
@@ -672,14 +658,13 @@ extension RDSData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case columnCount = "columnCount"
-            case columnMetadata = "columnMetadata"
+            case columnCount
+            case columnMetadata
         }
     }
 
     public struct ResultSetOptions: AWSEncodableShape {
-
-        /// A value that indicates how a field of DECIMAL type is represented in the response. The value of STRING, the default, specifies that it is converted to a String value. The value of DOUBLE_OR_LONG specifies that it is converted to a Long value if its scale is 0, or to a Double value otherwise.  Conversion to Double or Long can result in roundoff errors due to precision loss. We recommend converting to String, especially when working with currency values. 
+        /// A value that indicates how a field of DECIMAL type is represented in the response. The value of STRING, the default, specifies that it is converted to a String value. The value of DOUBLE_OR_LONG specifies that it is converted to a Long value if its scale is 0, or to a Double value otherwise.  Conversion to Double or Long can result in roundoff errors due to precision loss. We recommend converting to String, especially when working with currency values.
         public let decimalReturnType: DecimalReturnType?
 
         public init(decimalReturnType: DecimalReturnType? = nil) {
@@ -687,12 +672,11 @@ extension RDSData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case decimalReturnType = "decimalReturnType"
+            case decimalReturnType
         }
     }
 
     public struct RollbackTransactionRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the Aurora Serverless DB cluster.
         public let resourceArn: String
         /// The name or ARN of the secret that enables access to the DB cluster.
@@ -715,14 +699,13 @@ extension RDSData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case resourceArn = "resourceArn"
-            case secretArn = "secretArn"
-            case transactionId = "transactionId"
+            case resourceArn
+            case secretArn
+            case transactionId
         }
     }
 
     public struct RollbackTransactionResponse: AWSDecodableShape {
-
         /// The status of the rollback operation.
         public let transactionStatus: String?
 
@@ -731,15 +714,14 @@ extension RDSData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case transactionStatus = "transactionStatus"
+            case transactionStatus
         }
     }
 
     public struct SqlParameter: AWSEncodableShape {
-
         /// The name of the parameter.
         public let name: String?
-        /// A hint that specifies the correct object type for data type mapping. Possible values are as follows:    DATE - The corresponding String parameter value is sent as an object  of DATE type to the database. The accepted format is YYYY-MM-DD.    DECIMAL - The corresponding String parameter value is sent as an object  of DECIMAL type to the database.    JSON - The corresponding String parameter value is sent as an object of JSON type to the database.    TIME - The corresponding String parameter value is sent as an object  of TIME type to the database. The accepted format is HH:MM:SS[.FFF].    TIMESTAMP - The corresponding String parameter value is sent as an object  of TIMESTAMP type to the database. The accepted format is YYYY-MM-DD HH:MM:SS[.FFF].    UUID - The corresponding String parameter value is sent as an object of UUID type to the database.   
+        /// A hint that specifies the correct object type for data type mapping. Possible values are as follows:    DATE - The corresponding String parameter value is sent as an object  of DATE type to the database. The accepted format is YYYY-MM-DD.    DECIMAL - The corresponding String parameter value is sent as an object  of DECIMAL type to the database.    JSON - The corresponding String parameter value is sent as an object of JSON type to the database.    TIME - The corresponding String parameter value is sent as an object  of TIME type to the database. The accepted format is HH:MM:SS[.FFF].    TIMESTAMP - The corresponding String parameter value is sent as an object  of TIMESTAMP type to the database. The accepted format is YYYY-MM-DD HH:MM:SS[.FFF].    UUID - The corresponding String parameter value is sent as an object of UUID type to the database.
         public let typeHint: TypeHint?
         /// The value of the parameter.
         public let value: Field?
@@ -751,14 +733,13 @@ extension RDSData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case name = "name"
-            case typeHint = "typeHint"
-            case value = "value"
+            case name
+            case typeHint
+            case value
         }
     }
 
     public struct SqlStatementResult: AWSDecodableShape {
-
         /// The number of records updated by a SQL statement.
         public let numberOfRecordsUpdated: Int64?
         /// The result set of the SQL statement.
@@ -770,13 +751,12 @@ extension RDSData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case numberOfRecordsUpdated = "numberOfRecordsUpdated"
-            case resultFrame = "resultFrame"
+            case numberOfRecordsUpdated
+            case resultFrame
         }
     }
 
     public struct StructValue: AWSDecodableShape {
-
         /// The attributes returned in the record.
         public let attributes: [Value]?
 
@@ -785,12 +765,11 @@ extension RDSData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case attributes = "attributes"
+            case attributes
         }
     }
 
     public struct UpdateResult: AWSDecodableShape {
-
         /// Values for fields generated during the request.
         public let generatedFields: [Field]?
 
@@ -799,7 +778,7 @@ extension RDSData {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case generatedFields = "generatedFields"
+            case generatedFields
         }
     }
 }

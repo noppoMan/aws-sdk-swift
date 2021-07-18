@@ -298,7 +298,7 @@ public struct Imagebuilder: AWSService {
         return self.client.execute(operation: "UpdateDistributionConfiguration", path: "/UpdateDistributionConfiguration", httpMethod: .PUT, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    ///  Updates an image pipeline. Image pipelines enable you to automate the creation and distribution of images. 	       UpdateImagePipeline does not support selective updates for the pipeline.  		You must specify all of the required properties in the update request, not just  		the properties that have changed. 
+    ///  Updates an image pipeline. Image pipelines enable you to automate the creation and distribution of images. 	       UpdateImagePipeline does not support selective updates for the pipeline.  		You must specify all of the required properties in the update request, not just  		the properties that have changed.
     public func updateImagePipeline(_ input: UpdateImagePipelineRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<UpdateImagePipelineResponse> {
         return self.client.execute(operation: "UpdateImagePipeline", path: "/UpdateImagePipeline", httpMethod: .PUT, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }

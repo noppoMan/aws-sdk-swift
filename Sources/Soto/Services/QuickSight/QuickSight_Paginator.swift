@@ -710,7 +710,7 @@ extension QuickSight {
         )
     }
 
-    ///  Searches for dashboards that belong to a user. 
+    ///  Searches for dashboards that belong to a user.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.

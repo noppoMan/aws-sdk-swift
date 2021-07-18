@@ -106,8 +106,8 @@ extension Batch {
     }
 
     public enum JobDefinitionType: String, CustomStringConvertible, Codable {
-        case container = "container"
-        case multinode = "multinode"
+        case container
+        case multinode
         public var description: String { return self.rawValue }
     }
 
@@ -123,13 +123,13 @@ extension Batch {
     }
 
     public enum LogDriver: String, CustomStringConvertible, Codable {
-        case awslogs = "awslogs"
-        case fluentd = "fluentd"
-        case gelf = "gelf"
-        case journald = "journald"
+        case awslogs
+        case fluentd
+        case gelf
+        case journald
         case jsonFile = "json-file"
-        case splunk = "splunk"
-        case syslog = "syslog"
+        case splunk
+        case syslog
         public var description: String { return self.rawValue }
     }
 
@@ -155,7 +155,6 @@ extension Batch {
     // MARK: Shapes
 
     public struct ArrayProperties: AWSEncodableShape {
-
         /// The size of the array job.
         public let size: Int?
 
@@ -164,12 +163,11 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case size = "size"
+            case size
         }
     }
 
     public struct ArrayPropertiesDetail: AWSDecodableShape {
-
         /// The job index within the array that's associated with this job. This parameter is returned for array job children.
         public let index: Int?
         /// The size of the array job. This parameter is returned for parent array jobs.
@@ -184,14 +182,13 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case index = "index"
-            case size = "size"
-            case statusSummary = "statusSummary"
+            case index
+            case size
+            case statusSummary
         }
     }
 
     public struct ArrayPropertiesSummary: AWSDecodableShape {
-
         /// The job index within the array that's associated with this job. This parameter is returned for children of array jobs.
         public let index: Int?
         /// The size of the array job. This parameter is returned for parent array jobs.
@@ -203,13 +200,12 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case index = "index"
-            case size = "size"
+            case index
+            case size
         }
     }
 
     public struct AttemptContainerDetail: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the Amazon ECS container instance that hosts the job attempt.
         public let containerInstanceArn: String?
         /// The exit code for the job attempt. A non-zero exit code is considered a failure.
@@ -233,17 +229,16 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case containerInstanceArn = "containerInstanceArn"
-            case exitCode = "exitCode"
-            case logStreamName = "logStreamName"
-            case networkInterfaces = "networkInterfaces"
-            case reason = "reason"
-            case taskArn = "taskArn"
+            case containerInstanceArn
+            case exitCode
+            case logStreamName
+            case networkInterfaces
+            case reason
+            case taskArn
         }
     }
 
     public struct AttemptDetail: AWSDecodableShape {
-
         /// Details about the container in this job attempt.
         public let container: AttemptContainerDetail?
         /// The Unix timestamp (in milliseconds) for when the attempt was started (when the attempt transitioned from the STARTING state to the RUNNING state).
@@ -261,15 +256,14 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case container = "container"
-            case startedAt = "startedAt"
-            case statusReason = "statusReason"
-            case stoppedAt = "stoppedAt"
+            case container
+            case startedAt
+            case statusReason
+            case stoppedAt
         }
     }
 
     public struct CancelJobRequest: AWSEncodableShape {
-
         /// The AWS Batch job ID of the job to cancel.
         public let jobId: String
         /// A message to attach to the job that explains the reason for canceling it. This message is returned by future DescribeJobs operations on the job. This message is also recorded in the AWS Batch activity logs.
@@ -281,21 +275,16 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case jobId = "jobId"
-            case reason = "reason"
+            case jobId
+            case reason
         }
     }
 
     public struct CancelJobResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct ComputeEnvironmentDetail: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the compute environment.
         public let computeEnvironmentArn: String
         /// The name of the compute environment. Up to 128 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed.
@@ -331,21 +320,20 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case computeEnvironmentArn = "computeEnvironmentArn"
-            case computeEnvironmentName = "computeEnvironmentName"
-            case computeResources = "computeResources"
-            case ecsClusterArn = "ecsClusterArn"
-            case serviceRole = "serviceRole"
-            case state = "state"
-            case status = "status"
-            case statusReason = "statusReason"
-            case tags = "tags"
-            case type = "type"
+            case computeEnvironmentArn
+            case computeEnvironmentName
+            case computeResources
+            case ecsClusterArn
+            case serviceRole
+            case state
+            case status
+            case statusReason
+            case tags
+            case type
         }
     }
 
     public struct ComputeEnvironmentOrder: AWSEncodableShape & AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the compute environment.
         public let computeEnvironment: String
         /// The order of the compute environment. Compute environments are tried in ascending order. For example, if two compute environments are associated with a job queue, the compute environment with a lower order integer value is tried for job placement first.
@@ -357,44 +345,43 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case computeEnvironment = "computeEnvironment"
-            case order = "order"
+            case computeEnvironment
+            case order
         }
     }
 
     public struct ComputeResource: AWSEncodableShape & AWSDecodableShape {
-
         /// The allocation strategy to use for the compute resource if not enough instances of the best fitting instance type can be allocated. This might be because of availability of the instance type in the Region or Amazon EC2 service limits. For more information, see Allocation Strategies in the AWS Batch User Guide.  This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified.   BEST_FIT (default)  AWS Batch selects an instance type that best fits the needs of the jobs with a preference for the lowest-cost instance type. If additional instances of the selected instance type aren't available, AWS Batch waits for the additional instances to be available. If there aren't enough instances available, or if the user is hitting Amazon EC2 service limits then additional jobs aren't run until the currently running jobs have completed. This allocation strategy keeps costs lower but can limit scaling. If you are using Spot Fleets with BEST_FIT then the Spot Fleet IAM Role must be specified.  BEST_FIT_PROGRESSIVE  AWS Batch will select additional instance types that are large enough to meet the requirements of the jobs in the queue, with a preference for instance types with a lower cost per unit vCPU. If additional instances of the previously selected instance types aren't available, AWS Batch will select new instance types.  SPOT_CAPACITY_OPTIMIZED  AWS Batch will select one or more instance types that are large enough to meet the requirements of the jobs in the queue, with a preference for instance types that are less likely to be interrupted. This allocation strategy is only available for Spot Instance compute resources.   With both BEST_FIT_PROGRESSIVE and SPOT_CAPACITY_OPTIMIZED strategies, AWS Batch might need to go above maxvCpus to meet your capacity requirements. In this event, AWS Batch never exceeds maxvCpus by more than a single instance.
         public let allocationStrategy: CRAllocationStrategy?
-        /// The maximum percentage that a Spot Instance price can be when compared with the On-Demand price for that instance type before instances are launched. For example, if your maximum percentage is 20%, then the Spot price must be less than 20% of the current On-Demand price for that Amazon EC2 instance. You always pay the lowest (market) price and never more than your maximum percentage. If you leave this field empty, the default value is 100% of the On-Demand price.  This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified. 
+        /// The maximum percentage that a Spot Instance price can be when compared with the On-Demand price for that instance type before instances are launched. For example, if your maximum percentage is 20%, then the Spot price must be less than 20% of the current On-Demand price for that Amazon EC2 instance. You always pay the lowest (market) price and never more than your maximum percentage. If you leave this field empty, the default value is 100% of the On-Demand price.  This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified.
         public let bidPercentage: Int?
-        /// The desired number of Amazon EC2 vCPUS in the compute environment. AWS Batch modifies this value between the minimum and maximum values, based on job queue demand.  This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified. 
+        /// The desired number of Amazon EC2 vCPUS in the compute environment. AWS Batch modifies this value between the minimum and maximum values, based on job queue demand.  This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified.
         public let desiredvCpus: Int?
-        /// Provides information used to select Amazon Machine Images (AMIs) for EC2 instances in the compute environment. If Ec2Configuration isn't specified, the default is ECS_AL1.  This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified. 
+        /// Provides information used to select Amazon Machine Images (AMIs) for EC2 instances in the compute environment. If Ec2Configuration isn't specified, the default is ECS_AL1.  This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified.
         public let ec2Configuration: [Ec2Configuration]?
-        /// The Amazon EC2 key pair that's used for instances launched in the compute environment. You can use this key pair to log in to your instances with SSH.  This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified. 
+        /// The Amazon EC2 key pair that's used for instances launched in the compute environment. You can use this key pair to log in to your instances with SSH.  This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified.
         public let ec2KeyPair: String?
-        /// The Amazon Machine Image (AMI) ID used for instances launched in the compute environment. This parameter is overridden by the imageIdOverride member of the Ec2Configuration structure.  This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified.   The AMI that you choose for a compute environment must match the architecture of the instance types that you intend to use for that compute environment. For example, if your compute environment uses A1 instance types, the compute resource AMI that you choose must support ARM instances. Amazon ECS vends both x86 and ARM versions of the Amazon ECS-optimized Amazon Linux 2 AMI. For more information, see Amazon ECS-optimized Amazon Linux 2 AMI in the Amazon Elastic Container Service Developer Guide. 
+        /// The Amazon Machine Image (AMI) ID used for instances launched in the compute environment. This parameter is overridden by the imageIdOverride member of the Ec2Configuration structure.  This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified.   The AMI that you choose for a compute environment must match the architecture of the instance types that you intend to use for that compute environment. For example, if your compute environment uses A1 instance types, the compute resource AMI that you choose must support ARM instances. Amazon ECS vends both x86 and ARM versions of the Amazon ECS-optimized Amazon Linux 2 AMI. For more information, see Amazon ECS-optimized Amazon Linux 2 AMI in the Amazon Elastic Container Service Developer Guide.
         public let imageId: String?
-        /// The Amazon ECS instance profile applied to Amazon EC2 instances in a compute environment. You can specify the short name or full Amazon Resource Name (ARN) of an instance profile. For example,  ecsInstanceRole or arn:aws:iam:::instance-profile/ecsInstanceRole . For more information, see Amazon ECS Instance Role in the AWS Batch User Guide.  This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified. 
+        /// The Amazon ECS instance profile applied to Amazon EC2 instances in a compute environment. You can specify the short name or full Amazon Resource Name (ARN) of an instance profile. For example,  ecsInstanceRole or arn:aws:iam:::instance-profile/ecsInstanceRole . For more information, see Amazon ECS Instance Role in the AWS Batch User Guide.  This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified.
         public let instanceRole: String?
-        /// The instances types that can be launched. You can specify instance families to launch any instance type within those families (for example, c5 or p3), or you can specify specific sizes within a family (such as c5.8xlarge). You can also choose optimal to select instance types (from the C4, M4, and R4 instance families) that match the demand of your job queues.  This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified.   When you create a compute environment, the instance types that you select for the compute environment must share the same architecture. For example, you can't mix x86 and ARM instances in the same compute environment.   Currently, optimal uses instance types from the C4, M4, and R4 instance families. In Regions that don't have instance types from those instance families, instance types from the C5, M5. and R5 instance families are used. 
+        /// The instances types that can be launched. You can specify instance families to launch any instance type within those families (for example, c5 or p3), or you can specify specific sizes within a family (such as c5.8xlarge). You can also choose optimal to select instance types (from the C4, M4, and R4 instance families) that match the demand of your job queues.  This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified.   When you create a compute environment, the instance types that you select for the compute environment must share the same architecture. For example, you can't mix x86 and ARM instances in the same compute environment.   Currently, optimal uses instance types from the C4, M4, and R4 instance families. In Regions that don't have instance types from those instance families, instance types from the C5, M5. and R5 instance families are used.
         public let instanceTypes: [String]?
-        /// The launch template to use for your compute resources. Any other compute resource parameters that you specify in a CreateComputeEnvironment API operation override the same parameters in the launch template. You must specify either the launch template ID or launch template name in the request, but not both. For more information, see Launch Template Support in the AWS Batch User Guide.  This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified. 
+        /// The launch template to use for your compute resources. Any other compute resource parameters that you specify in a CreateComputeEnvironment API operation override the same parameters in the launch template. You must specify either the launch template ID or launch template name in the request, but not both. For more information, see Launch Template Support in the AWS Batch User Guide.  This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified.
         public let launchTemplate: LaunchTemplateSpecification?
-        /// The maximum number of Amazon EC2 vCPUs that a compute environment can reach.  With both BEST_FIT_PROGRESSIVE and SPOT_CAPACITY_OPTIMIZED allocation strategies, AWS Batch might need to exceed maxvCpus to meet your capacity requirements. In this event, AWS Batch never exceeds maxvCpus by more than a single instance. For example, no more than a single instance from among those specified in your compute environment is allocated. 
+        /// The maximum number of Amazon EC2 vCPUs that a compute environment can reach.  With both BEST_FIT_PROGRESSIVE and SPOT_CAPACITY_OPTIMIZED allocation strategies, AWS Batch might need to exceed maxvCpus to meet your capacity requirements. In this event, AWS Batch never exceeds maxvCpus by more than a single instance. For example, no more than a single instance from among those specified in your compute environment is allocated.
         public let maxvCpus: Int
-        /// The minimum number of Amazon EC2 vCPUs that an environment should maintain (even if the compute environment is DISABLED).  This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified. 
+        /// The minimum number of Amazon EC2 vCPUs that an environment should maintain (even if the compute environment is DISABLED).  This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified.
         public let minvCpus: Int?
-        /// The Amazon EC2 placement group to associate with your compute resources. If you intend to submit multi-node parallel jobs to your compute environment, you should consider creating a cluster placement group and associate it with your compute resources. This keeps your multi-node parallel job on a logical grouping of instances within a single Availability Zone with high network flow potential. For more information, see Placement Groups in the Amazon EC2 User Guide for Linux Instances.  This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified. 
+        /// The Amazon EC2 placement group to associate with your compute resources. If you intend to submit multi-node parallel jobs to your compute environment, you should consider creating a cluster placement group and associate it with your compute resources. This keeps your multi-node parallel job on a logical grouping of instances within a single Availability Zone with high network flow potential. For more information, see Placement Groups in the Amazon EC2 User Guide for Linux Instances.  This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified.
         public let placementGroup: String?
         /// The Amazon EC2 security groups associated with instances launched in the compute environment. One or more security groups must be specified, either in securityGroupIds or using a launch template referenced in launchTemplate. This parameter is required for jobs running on Fargate resources and must contain at least one security group. Fargate doesn't support launch templates. If security groups are specified using both securityGroupIds and launchTemplate, the values in securityGroupIds is used.
         public let securityGroupIds: [String]?
-        /// The Amazon Resource Name (ARN) of the Amazon EC2 Spot Fleet IAM role applied to a SPOT compute environment. This role is required if the allocation strategy set to BEST_FIT or if the allocation strategy isn't specified. For more information, see Amazon EC2 Spot Fleet Role in the AWS Batch User Guide.  This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified.   To tag your Spot Instances on creation, the Spot Fleet IAM role specified here must use the newer AmazonEC2SpotFleetTaggingRole managed policy. The previously recommended AmazonEC2SpotFleetRole managed policy doesn't have the required permissions to tag Spot Instances. For more information, see Spot Instances not tagged on creation in the AWS Batch User Guide. 
+        /// The Amazon Resource Name (ARN) of the Amazon EC2 Spot Fleet IAM role applied to a SPOT compute environment. This role is required if the allocation strategy set to BEST_FIT or if the allocation strategy isn't specified. For more information, see Amazon EC2 Spot Fleet Role in the AWS Batch User Guide.  This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified.   To tag your Spot Instances on creation, the Spot Fleet IAM role specified here must use the newer AmazonEC2SpotFleetTaggingRole managed policy. The previously recommended AmazonEC2SpotFleetRole managed policy doesn't have the required permissions to tag Spot Instances. For more information, see Spot Instances not tagged on creation in the AWS Batch User Guide.
         public let spotIamFleetRole: String?
         /// The VPC subnets into which the compute resources are launched. These subnets must be within the same VPC. Fargate compute resources can contain up to 16 subnets. For more information, see VPCs and Subnets in the Amazon VPC User Guide.
         public let subnets: [String]
-        /// Key-value pair tags to be applied to EC2 resources that are launched in the compute environment. For AWS Batch, these take the form of "String1": "String2", where String1 is the tag key and String2 is the tag value−for example, { "Name": "AWS Batch Instance - C4OnDemand" }. This is helpful for recognizing your AWS Batch instances in the Amazon EC2 console. These tags can't be updated or removed after the compute environment has been created; any changes require creating a new compute environment and removing the old compute environment. These tags aren't seen when using the AWS Batch ListTagsForResource API operation.  This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified. 
+        /// Key-value pair tags to be applied to EC2 resources that are launched in the compute environment. For AWS Batch, these take the form of "String1": "String2", where String1 is the tag key and String2 is the tag value−for example, { "Name": "AWS Batch Instance - C4OnDemand" }. This is helpful for recognizing your AWS Batch instances in the Amazon EC2 console. These tags can't be updated or removed after the compute environment has been created; any changes require creating a new compute environment and removing the old compute environment. These tags aren't seen when using the AWS Batch ListTagsForResource API operation.  This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified.
         public let tags: [String: String]?
         /// The type of compute environment: EC2, SPOT, FARGATE, or FARGATE_SPOT. For more information, see Compute Environments in the AWS Batch User Guide. If you choose SPOT, you must also specify an Amazon EC2 Spot Fleet role with the spotIamFleetRole parameter. For more information, see Amazon EC2 Spot Fleet role in the AWS Batch User Guide.
         public let type: CRType
@@ -426,33 +413,32 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case allocationStrategy = "allocationStrategy"
-            case bidPercentage = "bidPercentage"
-            case desiredvCpus = "desiredvCpus"
-            case ec2Configuration = "ec2Configuration"
-            case ec2KeyPair = "ec2KeyPair"
-            case imageId = "imageId"
-            case instanceRole = "instanceRole"
-            case instanceTypes = "instanceTypes"
-            case launchTemplate = "launchTemplate"
-            case maxvCpus = "maxvCpus"
-            case minvCpus = "minvCpus"
-            case placementGroup = "placementGroup"
-            case securityGroupIds = "securityGroupIds"
-            case spotIamFleetRole = "spotIamFleetRole"
-            case subnets = "subnets"
-            case tags = "tags"
-            case type = "type"
+            case allocationStrategy
+            case bidPercentage
+            case desiredvCpus
+            case ec2Configuration
+            case ec2KeyPair
+            case imageId
+            case instanceRole
+            case instanceTypes
+            case launchTemplate
+            case maxvCpus
+            case minvCpus
+            case placementGroup
+            case securityGroupIds
+            case spotIamFleetRole
+            case subnets
+            case tags
+            case type
         }
     }
 
     public struct ComputeResourceUpdate: AWSEncodableShape {
-
-        /// The desired number of Amazon EC2 vCPUS in the compute environment.  This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified. 
+        /// The desired number of Amazon EC2 vCPUS in the compute environment.  This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified.
         public let desiredvCpus: Int?
-        /// The maximum number of Amazon EC2 vCPUs that an environment can reach.  With both BEST_FIT_PROGRESSIVE and SPOT_CAPACITY_OPTIMIZED allocation strategies, AWS Batch might need to exceed maxvCpus to meet your capacity requirements. In this event, AWS Batch never exceeds maxvCpus by more than a single instance. That is, no more than a single instance from among those specified in your compute environment. 
+        /// The maximum number of Amazon EC2 vCPUs that an environment can reach.  With both BEST_FIT_PROGRESSIVE and SPOT_CAPACITY_OPTIMIZED allocation strategies, AWS Batch might need to exceed maxvCpus to meet your capacity requirements. In this event, AWS Batch never exceeds maxvCpus by more than a single instance. That is, no more than a single instance from among those specified in your compute environment.
         public let maxvCpus: Int?
-        /// The minimum number of Amazon EC2 vCPUs that an environment should maintain.  This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified. 
+        /// The minimum number of Amazon EC2 vCPUs that an environment should maintain.  This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified.
         public let minvCpus: Int?
         /// The Amazon EC2 security groups associated with instances launched in the compute environment. This parameter is required for Fargate compute resources, where it can contain up to 5 security groups. This can't be specified for EC2 compute resources. Providing an empty list is handled as if this parameter wasn't specified and no change is made.
         public let securityGroupIds: [String]?
@@ -468,21 +454,20 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case desiredvCpus = "desiredvCpus"
-            case maxvCpus = "maxvCpus"
-            case minvCpus = "minvCpus"
-            case securityGroupIds = "securityGroupIds"
-            case subnets = "subnets"
+            case desiredvCpus
+            case maxvCpus
+            case minvCpus
+            case securityGroupIds
+            case subnets
         }
     }
 
     public struct ContainerDetail: AWSDecodableShape {
-
         /// The command that's passed to the container.
         public let command: [String]?
         /// The Amazon Resource Name (ARN) of the container instance that the container is running on.
         public let containerInstanceArn: String?
-        /// The environment variables to pass to a container.  Environment variables must not start with AWS_BATCH; this naming convention is reserved for variables that are set by the AWS Batch service. 
+        /// The environment variables to pass to a container.  Environment variables must not start with AWS_BATCH; this naming convention is reserved for variables that are set by the AWS Batch service.
         public let environment: [KeyValuePair]?
         /// The Amazon Resource Name (ARN) of the execution role that AWS Batch can assume. For more information, see AWS Batch execution IAM role in the AWS Batch User Guide.
         public let executionRoleArn: String?
@@ -492,13 +477,13 @@ extension Batch {
         public let fargatePlatformConfiguration: FargatePlatformConfiguration?
         /// The image used to start the container.
         public let image: String?
-        /// The instance type of the underlying host infrastructure of a multi-node parallel job.  This parameter isn't applicable to jobs running on Fargate resources. 
+        /// The instance type of the underlying host infrastructure of a multi-node parallel job.  This parameter isn't applicable to jobs running on Fargate resources.
         public let instanceType: String?
         /// The Amazon Resource Name (ARN) associated with the job upon execution.
         public let jobRoleArn: String?
         /// Linux-specific modifications that are applied to the container, such as details for device mappings.
         public let linuxParameters: LinuxParameters?
-        /// The log configuration specification for the container. This parameter maps to LogConfig in the Create a container section of the Docker Remote API and the --log-driver option to docker run. By default, containers use the same logging driver that the Docker daemon uses. However, the container might use a different logging driver than the Docker daemon by specifying a log driver with this parameter in the container definition. To use a different logging driver for a container, the log system must be configured properly on the container instance. Or, alternatively, it must be configured on a different log server for remote logging options. For more information on the options for different supported log drivers, see Configure logging drivers in the Docker documentation.  AWS Batch currently supports a subset of the logging drivers available to the Docker daemon (shown in the LogConfiguration data type). Additional log drivers might be available in future releases of the Amazon ECS container agent.  This parameter requires version 1.18 of the Docker Remote API or greater on your container instance. To check the Docker Remote API version on your container instance, log into your container instance and run the following command: sudo docker version | grep "Server API version"   The Amazon ECS container agent running on a container instance must register the logging drivers available on that instance with the ECS_AVAILABLE_LOGGING_DRIVERS environment variable before containers placed on that instance can use these log configuration options. For more information, see Amazon ECS Container Agent Configuration in the Amazon Elastic Container Service Developer Guide. 
+        /// The log configuration specification for the container. This parameter maps to LogConfig in the Create a container section of the Docker Remote API and the --log-driver option to docker run. By default, containers use the same logging driver that the Docker daemon uses. However, the container might use a different logging driver than the Docker daemon by specifying a log driver with this parameter in the container definition. To use a different logging driver for a container, the log system must be configured properly on the container instance. Or, alternatively, it must be configured on a different log server for remote logging options. For more information on the options for different supported log drivers, see Configure logging drivers in the Docker documentation.  AWS Batch currently supports a subset of the logging drivers available to the Docker daemon (shown in the LogConfiguration data type). Additional log drivers might be available in future releases of the Amazon ECS container agent.  This parameter requires version 1.18 of the Docker Remote API or greater on your container instance. To check the Docker Remote API version on your container instance, log into your container instance and run the following command: sudo docker version | grep "Server API version"   The Amazon ECS container agent running on a container instance must register the logging drivers available on that instance with the ECS_AVAILABLE_LOGGING_DRIVERS environment variable before containers placed on that instance can use these log configuration options. For more information, see Amazon ECS Container Agent Configuration in the Amazon Elastic Container Service Developer Guide.
         public let logConfiguration: LogConfiguration?
         /// The name of the CloudWatch Logs log stream associated with the container. The log group for AWS Batch jobs is /aws/batch/job. Each container attempt receives a log stream name when they reach the RUNNING status.
         public let logStreamName: String?
@@ -510,7 +495,7 @@ extension Batch {
         public let networkConfiguration: NetworkConfiguration?
         /// The network interfaces associated with the job.
         public let networkInterfaces: [NetworkInterface]?
-        /// When this parameter is true, the container is given elevated permissions on the host container instance (similar to the root user). The default value is false.  This parameter isn't applicable to jobs running on Fargate resources and shouldn't be provided, or specified as false. 
+        /// When this parameter is true, the container is given elevated permissions on the host container instance (similar to the root user). The default value is false.  This parameter isn't applicable to jobs running on Fargate resources and shouldn't be provided, or specified as false.
         public let privileged: Bool?
         /// When this parameter is true, the container is given read-only access to its root file system. This parameter maps to ReadonlyRootfs in the Create a container section of the Docker Remote API and the --read-only option to  docker run .
         public let readonlyRootFilesystem: Bool?
@@ -522,11 +507,11 @@ extension Batch {
         public let secrets: [Secret]?
         /// The Amazon Resource Name (ARN) of the Amazon ECS task that's associated with the container job. Each container attempt receives a task ARN when they reach the STARTING status.
         public let taskArn: String?
-        /// A list of ulimit values to set in the container. This parameter maps to Ulimits in the Create a container section of the Docker Remote API and the --ulimit option to docker run.  This parameter isn't applicable to jobs running on Fargate resources. 
+        /// A list of ulimit values to set in the container. This parameter maps to Ulimits in the Create a container section of the Docker Remote API and the --ulimit option to docker run.  This parameter isn't applicable to jobs running on Fargate resources.
         public let ulimits: [Ulimit]?
         /// The user name to use inside the container. This parameter maps to User in the Create a container section of the Docker Remote API and the --user option to docker run.
         public let user: String?
-        /// The number of vCPUs reserved for the container. For jobs that run on EC2 resources, you can specify the vCPU requirement for the job using resourceRequirements, but you can't specify the vCPU requirements in both the vcpus and resourceRequirement object. This parameter maps to CpuShares in the Create a container section of the Docker Remote API and the --cpu-shares option to docker run. Each vCPU is equivalent to 1,024 CPU shares. You must specify at least one vCPU. This is required but can be specified in several places. It must be specified for each node at least once.  This parameter isn't applicable to jobs that run on Fargate resources. For jobs that run on Fargate resources, you must specify the vCPU requirement for the job using resourceRequirements. 
+        /// The number of vCPUs reserved for the container. For jobs that run on EC2 resources, you can specify the vCPU requirement for the job using resourceRequirements, but you can't specify the vCPU requirements in both the vcpus and resourceRequirement object. This parameter maps to CpuShares in the Create a container section of the Docker Remote API and the --cpu-shares option to docker run. Each vCPU is equivalent to 1,024 CPU shares. You must specify at least one vCPU. This is required but can be specified in several places. It must be specified for each node at least once.  This parameter isn't applicable to jobs that run on Fargate resources. For jobs that run on Fargate resources, you must specify the vCPU requirement for the job using resourceRequirements.
         public let vcpus: Int?
         /// A list of volumes associated with the job.
         public let volumes: [Volume]?
@@ -561,48 +546,47 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case command = "command"
-            case containerInstanceArn = "containerInstanceArn"
-            case environment = "environment"
-            case executionRoleArn = "executionRoleArn"
-            case exitCode = "exitCode"
-            case fargatePlatformConfiguration = "fargatePlatformConfiguration"
-            case image = "image"
-            case instanceType = "instanceType"
-            case jobRoleArn = "jobRoleArn"
-            case linuxParameters = "linuxParameters"
-            case logConfiguration = "logConfiguration"
-            case logStreamName = "logStreamName"
-            case memory = "memory"
-            case mountPoints = "mountPoints"
-            case networkConfiguration = "networkConfiguration"
-            case networkInterfaces = "networkInterfaces"
-            case privileged = "privileged"
-            case readonlyRootFilesystem = "readonlyRootFilesystem"
-            case reason = "reason"
-            case resourceRequirements = "resourceRequirements"
-            case secrets = "secrets"
-            case taskArn = "taskArn"
-            case ulimits = "ulimits"
-            case user = "user"
-            case vcpus = "vcpus"
-            case volumes = "volumes"
+            case command
+            case containerInstanceArn
+            case environment
+            case executionRoleArn
+            case exitCode
+            case fargatePlatformConfiguration
+            case image
+            case instanceType
+            case jobRoleArn
+            case linuxParameters
+            case logConfiguration
+            case logStreamName
+            case memory
+            case mountPoints
+            case networkConfiguration
+            case networkInterfaces
+            case privileged
+            case readonlyRootFilesystem
+            case reason
+            case resourceRequirements
+            case secrets
+            case taskArn
+            case ulimits
+            case user
+            case vcpus
+            case volumes
         }
     }
 
     public struct ContainerOverrides: AWSEncodableShape {
-
         /// The command to send to the container that overrides the default command from the Docker image or the job definition.
         public let command: [String]?
-        /// The environment variables to send to the container. You can add new environment variables, which are added to the container at launch, or you can override the existing environment variables from the Docker image or the job definition.  Environment variables must not start with AWS_BATCH; this naming convention is reserved for variables that are set by the AWS Batch service. 
+        /// The environment variables to send to the container. You can add new environment variables, which are added to the container at launch, or you can override the existing environment variables from the Docker image or the job definition.  Environment variables must not start with AWS_BATCH; this naming convention is reserved for variables that are set by the AWS Batch service.
         public let environment: [KeyValuePair]?
-        /// The instance type to use for a multi-node parallel job.  This parameter isn't applicable to single-node container jobs or for jobs running on Fargate resources and shouldn't be provided. 
+        /// The instance type to use for a multi-node parallel job.  This parameter isn't applicable to single-node container jobs or for jobs running on Fargate resources and shouldn't be provided.
         public let instanceType: String?
         /// This parameter indicates the amount of memory (in MiB) that's reserved for the job. It overrides the memory parameter set in the job definition, but doesn't override any memory requirement specified in the ResourceRequirement structure in the job definition. This parameter is supported for jobs that run on EC2 resources, but isn't supported for jobs that run on Fargate resources. For these resources, use resourceRequirement instead.
         public let memory: Int?
         /// The type and amount of resources to assign to a container. This overrides the settings in the job definition. The supported resources include GPU, MEMORY, and VCPU.
         public let resourceRequirements: [ResourceRequirement]?
-        /// This parameter indicates the number of vCPUs reserved for the container.It overrides the vcpus parameter that's set in the job definition, but doesn't override any vCPU requirement specified in the resourceRequirement structure in the job definition. This parameter is supported for jobs that run on EC2 resources, but isn't supported for jobs that run on Fargate resources. For Fargate resources, you can only use resourceRequirement. For EC2 resources, you can use either this parameter or resourceRequirement but not both.  This parameter maps to CpuShares in the Create a container section of the Docker Remote API and the --cpu-shares option to docker run. Each vCPU is equivalent to 1,024 CPU shares. You must specify at least one vCPU.   This parameter isn't applicable to jobs that run on Fargate resources and shouldn't be provided. For jobs that run on Fargate resources, you must specify the vCPU requirement for the job using resourceRequirements.  
+        /// This parameter indicates the number of vCPUs reserved for the container.It overrides the vcpus parameter that's set in the job definition, but doesn't override any vCPU requirement specified in the resourceRequirement structure in the job definition. This parameter is supported for jobs that run on EC2 resources, but isn't supported for jobs that run on Fargate resources. For Fargate resources, you can only use resourceRequirement. For EC2 resources, you can use either this parameter or resourceRequirement but not both.  This parameter maps to CpuShares in the Create a container section of the Docker Remote API and the --cpu-shares option to docker run. Each vCPU is equivalent to 1,024 CPU shares. You must specify at least one vCPU.   This parameter isn't applicable to jobs that run on Fargate resources and shouldn't be provided. For jobs that run on Fargate resources, you must specify the vCPU requirement for the job using resourceRequirements.
         public let vcpus: Int?
 
         public init(command: [String]? = nil, environment: [KeyValuePair]? = nil, instanceType: String? = nil, memory: Int? = nil, resourceRequirements: [ResourceRequirement]? = nil, vcpus: Int? = nil) {
@@ -615,42 +599,41 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case command = "command"
-            case environment = "environment"
-            case instanceType = "instanceType"
-            case memory = "memory"
-            case resourceRequirements = "resourceRequirements"
-            case vcpus = "vcpus"
+            case command
+            case environment
+            case instanceType
+            case memory
+            case resourceRequirements
+            case vcpus
         }
     }
 
     public struct ContainerProperties: AWSEncodableShape & AWSDecodableShape {
-
         /// The command that's passed to the container. This parameter maps to Cmd in the Create a container section of the Docker Remote API and the COMMAND parameter to docker run. For more information, see https://docs.docker.com/engine/reference/builder/#cmd.
         public let command: [String]?
-        /// The environment variables to pass to a container. This parameter maps to Env in the Create a container section of the Docker Remote API and the --env option to docker run.  We don't recommend using plaintext environment variables for sensitive information, such as credential data.   Environment variables must not start with AWS_BATCH; this naming convention is reserved for variables that are set by the AWS Batch service. 
+        /// The environment variables to pass to a container. This parameter maps to Env in the Create a container section of the Docker Remote API and the --env option to docker run.  We don't recommend using plaintext environment variables for sensitive information, such as credential data.   Environment variables must not start with AWS_BATCH; this naming convention is reserved for variables that are set by the AWS Batch service.
         public let environment: [KeyValuePair]?
         /// The Amazon Resource Name (ARN) of the execution role that AWS Batch can assume. For jobs that run on Fargate resources, you must provide an execution role. For more information, see AWS Batch execution IAM role in the AWS Batch User Guide.
         public let executionRoleArn: String?
         /// The platform configuration for jobs running on Fargate resources. Jobs running on EC2 resources must not specify this parameter.
         public let fargatePlatformConfiguration: FargatePlatformConfiguration?
-        /// The image used to start a container. This string is passed directly to the Docker daemon. Images in the Docker Hub registry are available by default. Other repositories are specified with  repository-url/image:tag . Up to 255 letters (uppercase and lowercase), numbers, hyphens, underscores, colons, periods, forward slashes, and number signs are allowed. This parameter maps to Image in the Create a container section of the Docker Remote API and the IMAGE parameter of docker run.  Docker image architecture must match the processor architecture of the compute resources that they're scheduled on. For example, ARM-based Docker images can only run on ARM-based compute resources.    Images in Amazon ECR repositories use the full registry and repository URI (for example, 012345678910.dkr.ecr..amazonaws.com/).   Images in official repositories on Docker Hub use a single name (for example, ubuntu or mongo).   Images in other repositories on Docker Hub are qualified with an organization name (for example, amazon/amazon-ecs-agent).   Images in other online repositories are qualified further by a domain name (for example, quay.io/assemblyline/ubuntu).  
+        /// The image used to start a container. This string is passed directly to the Docker daemon. Images in the Docker Hub registry are available by default. Other repositories are specified with  repository-url/image:tag . Up to 255 letters (uppercase and lowercase), numbers, hyphens, underscores, colons, periods, forward slashes, and number signs are allowed. This parameter maps to Image in the Create a container section of the Docker Remote API and the IMAGE parameter of docker run.  Docker image architecture must match the processor architecture of the compute resources that they're scheduled on. For example, ARM-based Docker images can only run on ARM-based compute resources.    Images in Amazon ECR repositories use the full registry and repository URI (for example, 012345678910.dkr.ecr..amazonaws.com/).   Images in official repositories on Docker Hub use a single name (for example, ubuntu or mongo).   Images in other repositories on Docker Hub are qualified with an organization name (for example, amazon/amazon-ecs-agent).   Images in other online repositories are qualified further by a domain name (for example, quay.io/assemblyline/ubuntu).
         public let image: String?
-        /// The instance type to use for a multi-node parallel job. All node groups in a multi-node parallel job must use the same instance type.  This parameter isn't applicable to single-node container jobs or for jobs that run on Fargate resources and shouldn't be provided. 
+        /// The instance type to use for a multi-node parallel job. All node groups in a multi-node parallel job must use the same instance type.  This parameter isn't applicable to single-node container jobs or for jobs that run on Fargate resources and shouldn't be provided.
         public let instanceType: String?
         /// The Amazon Resource Name (ARN) of the IAM role that the container can assume for AWS permissions. For more information, see IAM Roles for Tasks in the Amazon Elastic Container Service Developer Guide.
         public let jobRoleArn: String?
         /// Linux-specific modifications that are applied to the container, such as details for device mappings.
         public let linuxParameters: LinuxParameters?
-        /// The log configuration specification for the container. This parameter maps to LogConfig in the Create a container section of the Docker Remote API and the --log-driver option to docker run. By default, containers use the same logging driver that the Docker daemon uses. However the container might use a different logging driver than the Docker daemon by specifying a log driver with this parameter in the container definition. To use a different logging driver for a container, the log system must be configured properly on the container instance (or on a different log server for remote logging options). For more information on the options for different supported log drivers, see Configure logging drivers in the Docker documentation.  AWS Batch currently supports a subset of the logging drivers available to the Docker daemon (shown in the LogConfiguration data type).  This parameter requires version 1.18 of the Docker Remote API or greater on your container instance. To check the Docker Remote API version on your container instance, log into your container instance and run the following command: sudo docker version | grep "Server API version"   The Amazon ECS container agent running on a container instance must register the logging drivers available on that instance with the ECS_AVAILABLE_LOGGING_DRIVERS environment variable before containers placed on that instance can use these log configuration options. For more information, see Amazon ECS Container Agent Configuration in the Amazon Elastic Container Service Developer Guide. 
+        /// The log configuration specification for the container. This parameter maps to LogConfig in the Create a container section of the Docker Remote API and the --log-driver option to docker run. By default, containers use the same logging driver that the Docker daemon uses. However the container might use a different logging driver than the Docker daemon by specifying a log driver with this parameter in the container definition. To use a different logging driver for a container, the log system must be configured properly on the container instance (or on a different log server for remote logging options). For more information on the options for different supported log drivers, see Configure logging drivers in the Docker documentation.  AWS Batch currently supports a subset of the logging drivers available to the Docker daemon (shown in the LogConfiguration data type).  This parameter requires version 1.18 of the Docker Remote API or greater on your container instance. To check the Docker Remote API version on your container instance, log into your container instance and run the following command: sudo docker version | grep "Server API version"   The Amazon ECS container agent running on a container instance must register the logging drivers available on that instance with the ECS_AVAILABLE_LOGGING_DRIVERS environment variable before containers placed on that instance can use these log configuration options. For more information, see Amazon ECS Container Agent Configuration in the Amazon Elastic Container Service Developer Guide.
         public let logConfiguration: LogConfiguration?
-        /// This parameter indicates the memory hard limit (in MiB) for a container. If your container attempts to exceed the specified number, it is terminated. You must specify at least 4 MiB of memory for a job using this parameter. The memory hard limit can be specified in several places. It must be specified for each node at least once. This parameter maps to Memory in the Create a container section of the Docker Remote API and the --memory option to docker run. This parameter is supported on EC2 resources but isn't supported on Fargate resources. For Fargate resources, you should specify the memory requirement using resourceRequirement. You can do this for EC2 resources.  If you're trying to maximize your resource utilization by providing your jobs as much memory as possible for a particular instance type, see Memory Management in the AWS Batch User Guide. 
+        /// This parameter indicates the memory hard limit (in MiB) for a container. If your container attempts to exceed the specified number, it is terminated. You must specify at least 4 MiB of memory for a job using this parameter. The memory hard limit can be specified in several places. It must be specified for each node at least once. This parameter maps to Memory in the Create a container section of the Docker Remote API and the --memory option to docker run. This parameter is supported on EC2 resources but isn't supported on Fargate resources. For Fargate resources, you should specify the memory requirement using resourceRequirement. You can do this for EC2 resources.  If you're trying to maximize your resource utilization by providing your jobs as much memory as possible for a particular instance type, see Memory Management in the AWS Batch User Guide.
         public let memory: Int?
         /// The mount points for data volumes in your container. This parameter maps to Volumes in the Create a container section of the Docker Remote API and the --volume option to docker run.
         public let mountPoints: [MountPoint]?
         /// The network configuration for jobs running on Fargate resources. Jobs running on EC2 resources must not specify this parameter.
         public let networkConfiguration: NetworkConfiguration?
-        /// When this parameter is true, the container is given elevated permissions on the host container instance (similar to the root user). This parameter maps to Privileged in the Create a container section of the Docker Remote API and the --privileged option to docker run. The default value is false.  This parameter isn't applicable to jobs running on Fargate resources and shouldn't be provided, or specified as false. 
+        /// When this parameter is true, the container is given elevated permissions on the host container instance (similar to the root user). This parameter maps to Privileged in the Create a container section of the Docker Remote API and the --privileged option to docker run. The default value is false.  This parameter isn't applicable to jobs running on Fargate resources and shouldn't be provided, or specified as false.
         public let privileged: Bool?
         /// When this parameter is true, the container is given read-only access to its root file system. This parameter maps to ReadonlyRootfs in the Create a container section of the Docker Remote API and the --read-only option to docker run.
         public let readonlyRootFilesystem: Bool?
@@ -658,11 +641,11 @@ extension Batch {
         public let resourceRequirements: [ResourceRequirement]?
         /// The secrets for the container. For more information, see Specifying sensitive data in the AWS Batch User Guide.
         public let secrets: [Secret]?
-        /// A list of ulimits to set in the container. This parameter maps to Ulimits in the Create a container section of the Docker Remote API and the --ulimit option to docker run.  This parameter isn't applicable to jobs running on Fargate resources and shouldn't be provided. 
+        /// A list of ulimits to set in the container. This parameter maps to Ulimits in the Create a container section of the Docker Remote API and the --ulimit option to docker run.  This parameter isn't applicable to jobs running on Fargate resources and shouldn't be provided.
         public let ulimits: [Ulimit]?
         /// The user name to use inside the container. This parameter maps to User in the Create a container section of the Docker Remote API and the --user option to docker run.
         public let user: String?
-        /// The number of vCPUs reserved for the job. Each vCPU is equivalent to 1,024 CPU shares. This parameter maps to CpuShares in the Create a container section of the Docker Remote API and the --cpu-shares option to docker run. The number of vCPUs must be specified but can be be specified in several places. You must specify it at least once for each node. This parameter is supported on EC2 resources but isn't supported for jobs that run on Fargate resources. For these resources, use resourceRequirement instead. You can use this parameter or resourceRequirements structure but not both.  This parameter isn't applicable to jobs running on Fargate resources and shouldn't be provided. For jobs that run on Fargate resources, you must specify the vCPU requirement for the job using resourceRequirements. 
+        /// The number of vCPUs reserved for the job. Each vCPU is equivalent to 1,024 CPU shares. This parameter maps to CpuShares in the Create a container section of the Docker Remote API and the --cpu-shares option to docker run. The number of vCPUs must be specified but can be be specified in several places. You must specify it at least once for each node. This parameter is supported on EC2 resources but isn't supported for jobs that run on Fargate resources. For these resources, use resourceRequirement instead. You can use this parameter or resourceRequirements structure but not both.  This parameter isn't applicable to jobs running on Fargate resources and shouldn't be provided. For jobs that run on Fargate resources, you must specify the vCPU requirement for the job using resourceRequirements.
         public let vcpus: Int?
         /// A list of data volumes used in a job.
         public let volumes: [Volume]?
@@ -691,31 +674,30 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case command = "command"
-            case environment = "environment"
-            case executionRoleArn = "executionRoleArn"
-            case fargatePlatformConfiguration = "fargatePlatformConfiguration"
-            case image = "image"
-            case instanceType = "instanceType"
-            case jobRoleArn = "jobRoleArn"
-            case linuxParameters = "linuxParameters"
-            case logConfiguration = "logConfiguration"
-            case memory = "memory"
-            case mountPoints = "mountPoints"
-            case networkConfiguration = "networkConfiguration"
-            case privileged = "privileged"
-            case readonlyRootFilesystem = "readonlyRootFilesystem"
-            case resourceRequirements = "resourceRequirements"
-            case secrets = "secrets"
-            case ulimits = "ulimits"
-            case user = "user"
-            case vcpus = "vcpus"
-            case volumes = "volumes"
+            case command
+            case environment
+            case executionRoleArn
+            case fargatePlatformConfiguration
+            case image
+            case instanceType
+            case jobRoleArn
+            case linuxParameters
+            case logConfiguration
+            case memory
+            case mountPoints
+            case networkConfiguration
+            case privileged
+            case readonlyRootFilesystem
+            case resourceRequirements
+            case secrets
+            case ulimits
+            case user
+            case vcpus
+            case volumes
         }
     }
 
     public struct ContainerSummary: AWSDecodableShape {
-
         /// The exit code to return upon completion.
         public let exitCode: Int?
         /// A short (255 max characters) human-readable string to provide additional details about a running or stopped container.
@@ -727,18 +709,17 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case exitCode = "exitCode"
-            case reason = "reason"
+            case exitCode
+            case reason
         }
     }
 
     public struct CreateComputeEnvironmentRequest: AWSEncodableShape {
-
         /// The name for your compute environment. Up to 128 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed.
         public let computeEnvironmentName: String
         /// Details about the compute resources managed by the compute environment. This parameter is required for managed compute environments. For more information, see Compute Environments in the AWS Batch User Guide.
         public let computeResources: ComputeResource?
-        /// The full Amazon Resource Name (ARN) of the IAM role that allows AWS Batch to make calls to other AWS services on your behalf. For more information, see AWS Batch service IAM role in the AWS Batch User Guide.  If your account has already created the AWS Batch service-linked role, that role is used by default for your compute environment unless you specify a role here. If the AWS Batch service-linked role does not exist in your account, and no role is specified here, the service will try to create the AWS Batch service-linked role in your account.  If your specified role has a path other than /, then you must specify either the full role ARN (recommended) or prefix the role name with the path. For example, if a role with the name bar has a path of /foo/ then you would specify /foo/bar as the role name. For more information, see Friendly names and paths in the IAM User Guide.  Depending on how you created your AWS Batch service role, its ARN might contain the service-role path prefix. When you only specify the name of the service role, AWS Batch assumes that your ARN doesn't use the service-role path prefix. Because of this, we recommend that you specify the full ARN of your service role when you create compute environments. 
+        /// The full Amazon Resource Name (ARN) of the IAM role that allows AWS Batch to make calls to other AWS services on your behalf. For more information, see AWS Batch service IAM role in the AWS Batch User Guide.  If your account has already created the AWS Batch service-linked role, that role is used by default for your compute environment unless you specify a role here. If the AWS Batch service-linked role does not exist in your account, and no role is specified here, the service will try to create the AWS Batch service-linked role in your account.  If your specified role has a path other than /, then you must specify either the full role ARN (recommended) or prefix the role name with the path. For example, if a role with the name bar has a path of /foo/ then you would specify /foo/bar as the role name. For more information, see Friendly names and paths in the IAM User Guide.  Depending on how you created your AWS Batch service role, its ARN might contain the service-role path prefix. When you only specify the name of the service role, AWS Batch assumes that your ARN doesn't use the service-role path prefix. Because of this, we recommend that you specify the full ARN of your service role when you create compute environments.
         public let serviceRole: String?
         /// The state of the compute environment. If the state is ENABLED, then the compute environment accepts jobs from a queue and can scale out automatically based on queues. If the state is ENABLED, then the AWS Batch scheduler can attempt to place jobs from an associated job queue on the compute resources within the environment. If the compute environment is managed, then it can scale its instances out or in automatically, based on the job queue demand. If the state is DISABLED, then the AWS Batch scheduler doesn't attempt to place jobs within the environment. Jobs in a STARTING or RUNNING state continue to progress normally. Managed compute environments in the DISABLED state don't scale out. However, they scale in to minvCpus value after instances become idle.
         public let state: CEState?
@@ -768,17 +749,16 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case computeEnvironmentName = "computeEnvironmentName"
-            case computeResources = "computeResources"
-            case serviceRole = "serviceRole"
-            case state = "state"
-            case tags = "tags"
-            case type = "type"
+            case computeEnvironmentName
+            case computeResources
+            case serviceRole
+            case state
+            case tags
+            case type
         }
     }
 
     public struct CreateComputeEnvironmentResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the compute environment.
         public let computeEnvironmentArn: String?
         /// The name of the compute environment. Up to 128 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed.
@@ -790,14 +770,13 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case computeEnvironmentArn = "computeEnvironmentArn"
-            case computeEnvironmentName = "computeEnvironmentName"
+            case computeEnvironmentArn
+            case computeEnvironmentName
         }
     }
 
     public struct CreateJobQueueRequest: AWSEncodableShape {
-
-        /// The set of compute environments mapped to a job queue and their order relative to each other. The job scheduler uses this parameter to determine which compute environment should run a specific job. Compute environments must be in the VALID state before you can associate them with a job queue. You can associate up to three compute environments with a job queue. All of the compute environments must be either EC2 (EC2 or SPOT) or Fargate (FARGATE or FARGATE_SPOT); EC2 and Fargate compute environments can't be mixed.  All compute environments that are associated with a job queue must share the same architecture. AWS Batch doesn't support mixing compute environment architecture types in a single job queue. 
+        /// The set of compute environments mapped to a job queue and their order relative to each other. The job scheduler uses this parameter to determine which compute environment should run a specific job. Compute environments must be in the VALID state before you can associate them with a job queue. You can associate up to three compute environments with a job queue. All of the compute environments must be either EC2 (EC2 or SPOT) or Fargate (FARGATE or FARGATE_SPOT); EC2 and Fargate compute environments can't be mixed.  All compute environments that are associated with a job queue must share the same architecture. AWS Batch doesn't support mixing compute environment architecture types in a single job queue.
         public let computeEnvironmentOrder: [ComputeEnvironmentOrder]
         /// The name of the job queue. Up to 128 letters (uppercase and lowercase), numbers, and underscores are allowed.
         public let jobQueueName: String
@@ -827,16 +806,15 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case computeEnvironmentOrder = "computeEnvironmentOrder"
-            case jobQueueName = "jobQueueName"
-            case priority = "priority"
-            case state = "state"
-            case tags = "tags"
+            case computeEnvironmentOrder
+            case jobQueueName
+            case priority
+            case state
+            case tags
         }
     }
 
     public struct CreateJobQueueResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the job queue.
         public let jobQueueArn: String
         /// The name of the job queue.
@@ -848,13 +826,12 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case jobQueueArn = "jobQueueArn"
-            case jobQueueName = "jobQueueName"
+            case jobQueueArn
+            case jobQueueName
         }
     }
 
     public struct DeleteComputeEnvironmentRequest: AWSEncodableShape {
-
         /// The name or Amazon Resource Name (ARN) of the compute environment to delete.
         public let computeEnvironment: String
 
@@ -863,20 +840,15 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case computeEnvironment = "computeEnvironment"
+            case computeEnvironment
         }
     }
 
     public struct DeleteComputeEnvironmentResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteJobQueueRequest: AWSEncodableShape {
-
         /// The short name or full Amazon Resource Name (ARN) of the queue to delete.
         public let jobQueue: String
 
@@ -885,20 +857,15 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case jobQueue = "jobQueue"
+            case jobQueue
         }
     }
 
     public struct DeleteJobQueueResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeregisterJobDefinitionRequest: AWSEncodableShape {
-
         /// The name and revision (name:revision) or full Amazon Resource Name (ARN) of the job definition to deregister.
         public let jobDefinition: String
 
@@ -907,25 +874,20 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case jobDefinition = "jobDefinition"
+            case jobDefinition
         }
     }
 
     public struct DeregisterJobDefinitionResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DescribeComputeEnvironmentsRequest: AWSEncodableShape {
-
         /// A list of up to 100 compute environment names or full Amazon Resource Name (ARN) entries.
         public let computeEnvironments: [String]?
         /// The maximum number of cluster results returned by DescribeComputeEnvironments in paginated output. When this parameter is used, DescribeComputeEnvironments only returns maxResults results in a single page along with a nextToken response element. The remaining results of the initial request can be seen by sending another DescribeComputeEnvironments request with the returned nextToken value. This value can be between 1 and 100. If this parameter isn't used, then DescribeComputeEnvironments returns up to 100 results and a nextToken value if applicable.
         public let maxResults: Int?
-        /// The nextToken value returned from a previous paginated DescribeComputeEnvironments request where maxResults was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the nextToken value. This value is null when there are no more results to return.  This token should be treated as an opaque identifier that's only used to retrieve the next items in a list and not for other programmatic purposes. 
+        /// The nextToken value returned from a previous paginated DescribeComputeEnvironments request where maxResults was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the nextToken value. This value is null when there are no more results to return.  This token should be treated as an opaque identifier that's only used to retrieve the next items in a list and not for other programmatic purposes.
         public let nextToken: String?
 
         public init(computeEnvironments: [String]? = nil, maxResults: Int? = nil, nextToken: String? = nil) {
@@ -935,14 +897,13 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case computeEnvironments = "computeEnvironments"
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
+            case computeEnvironments
+            case maxResults
+            case nextToken
         }
     }
 
     public struct DescribeComputeEnvironmentsResponse: AWSDecodableShape {
-
         /// The list of compute environments.
         public let computeEnvironments: [ComputeEnvironmentDetail]?
         /// The nextToken value to include in a future DescribeComputeEnvironments request. When the results of a DescribeJobDefinitions request exceed maxResults, this value can be used to retrieve the next page of results. This value is null when there are no more results to return.
@@ -954,20 +915,19 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case computeEnvironments = "computeEnvironments"
-            case nextToken = "nextToken"
+            case computeEnvironments
+            case nextToken
         }
     }
 
     public struct DescribeJobDefinitionsRequest: AWSEncodableShape {
-
         /// The name of the job definition to describe.
         public let jobDefinitionName: String?
         /// A list of up to 100 job definition names or full Amazon Resource Name (ARN) entries.
         public let jobDefinitions: [String]?
         /// The maximum number of results returned by DescribeJobDefinitions in paginated output. When this parameter is used, DescribeJobDefinitions only returns maxResults results in a single page and a nextToken response element. The remaining results of the initial request can be seen by sending another DescribeJobDefinitions request with the returned nextToken value. This value can be between 1 and 100. If this parameter isn't used, then DescribeJobDefinitions returns up to 100 results and a nextToken value if applicable.
         public let maxResults: Int?
-        /// The nextToken value returned from a previous paginated DescribeJobDefinitions request where maxResults was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the nextToken value. This value is null when there are no more results to return.  This token should be treated as an opaque identifier that's only used to retrieve the next items in a list and not for other programmatic purposes. 
+        /// The nextToken value returned from a previous paginated DescribeJobDefinitions request where maxResults was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the nextToken value. This value is null when there are no more results to return.  This token should be treated as an opaque identifier that's only used to retrieve the next items in a list and not for other programmatic purposes.
         public let nextToken: String?
         /// The status used to filter job definitions.
         public let status: String?
@@ -981,16 +941,15 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case jobDefinitionName = "jobDefinitionName"
-            case jobDefinitions = "jobDefinitions"
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
-            case status = "status"
+            case jobDefinitionName
+            case jobDefinitions
+            case maxResults
+            case nextToken
+            case status
         }
     }
 
     public struct DescribeJobDefinitionsResponse: AWSDecodableShape {
-
         /// The list of job definitions.
         public let jobDefinitions: [JobDefinition]?
         /// The nextToken value to include in a future DescribeJobDefinitions request. When the results of a DescribeJobDefinitions request exceed maxResults, this value can be used to retrieve the next page of results. This value is null when there are no more results to return.
@@ -1002,18 +961,17 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case jobDefinitions = "jobDefinitions"
-            case nextToken = "nextToken"
+            case jobDefinitions
+            case nextToken
         }
     }
 
     public struct DescribeJobQueuesRequest: AWSEncodableShape {
-
         /// A list of up to 100 queue names or full queue Amazon Resource Name (ARN) entries.
         public let jobQueues: [String]?
         /// The maximum number of results returned by DescribeJobQueues in paginated output. When this parameter is used, DescribeJobQueues only returns maxResults results in a single page and a nextToken response element. The remaining results of the initial request can be seen by sending another DescribeJobQueues request with the returned nextToken value. This value can be between 1 and 100. If this parameter isn't used, then DescribeJobQueues returns up to 100 results and a nextToken value if applicable.
         public let maxResults: Int?
-        /// The nextToken value returned from a previous paginated DescribeJobQueues request where maxResults was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the nextToken value. This value is null when there are no more results to return.  This token should be treated as an opaque identifier that's only used to retrieve the next items in a list and not for other programmatic purposes. 
+        /// The nextToken value returned from a previous paginated DescribeJobQueues request where maxResults was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the nextToken value. This value is null when there are no more results to return.  This token should be treated as an opaque identifier that's only used to retrieve the next items in a list and not for other programmatic purposes.
         public let nextToken: String?
 
         public init(jobQueues: [String]? = nil, maxResults: Int? = nil, nextToken: String? = nil) {
@@ -1023,14 +981,13 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case jobQueues = "jobQueues"
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
+            case jobQueues
+            case maxResults
+            case nextToken
         }
     }
 
     public struct DescribeJobQueuesResponse: AWSDecodableShape {
-
         /// The list of job queues.
         public let jobQueues: [JobQueueDetail]?
         /// The nextToken value to include in a future DescribeJobQueues request. When the results of a DescribeJobQueues request exceed maxResults, this value can be used to retrieve the next page of results. This value is null when there are no more results to return.
@@ -1042,13 +999,12 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case jobQueues = "jobQueues"
-            case nextToken = "nextToken"
+            case jobQueues
+            case nextToken
         }
     }
 
     public struct DescribeJobsRequest: AWSEncodableShape {
-
         /// A list of up to 100 job IDs.
         public let jobs: [String]
 
@@ -1057,12 +1013,11 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case jobs = "jobs"
+            case jobs
         }
     }
 
     public struct DescribeJobsResponse: AWSDecodableShape {
-
         /// The list of jobs.
         public let jobs: [JobDetail]?
 
@@ -1071,12 +1026,11 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case jobs = "jobs"
+            case jobs
         }
     }
 
     public struct Device: AWSEncodableShape & AWSDecodableShape {
-
         /// The path inside the container used to expose the host device. By default, the hostPath value is used.
         public let containerPath: String?
         /// The path for the device on the host container instance.
@@ -1091,14 +1045,13 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case containerPath = "containerPath"
-            case hostPath = "hostPath"
-            case permissions = "permissions"
+            case containerPath
+            case hostPath
+            case permissions
         }
     }
 
     public struct EFSAuthorizationConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// The Amazon EFS access point ID to use. If an access point is specified, the root directory value specified in the EFSVolumeConfiguration must either be omitted or set to / which will enforce the path set on the EFS access point. If an access point is used, transit encryption must be enabled in the EFSVolumeConfiguration. For more information, see Working with Amazon EFS Access Points in the Amazon Elastic File System User Guide.
         public let accessPointId: String?
         /// Whether or not to use the AWS Batch execution IAM role defined in a job definition when mounting the Amazon EFS file system. If enabled, transit encryption must be enabled in the EFSVolumeConfiguration. If this parameter is omitted, the default value of DISABLED is used. For more information, see Using Amazon EFS Access Points in the AWS Batch User Guide. EFS IAM authorization requires that TransitEncryption be ENABLED and that a JobRoleArn is specified.
@@ -1110,18 +1063,17 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accessPointId = "accessPointId"
-            case iam = "iam"
+            case accessPointId
+            case iam
         }
     }
 
     public struct EFSVolumeConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// The authorization configuration details for the Amazon EFS file system.
         public let authorizationConfig: EFSAuthorizationConfig?
         /// The Amazon EFS file system ID to use.
         public let fileSystemId: String
-        /// The directory within the Amazon EFS file system to mount as the root directory inside the host. If this parameter is omitted, the root of the Amazon EFS volume will be used. Specifying / will have the same effect as omitting this parameter.  If an EFS access point is specified in the authorizationConfig, the root directory parameter must either be omitted or set to / which will enforce the path set on the Amazon EFS access point. 
+        /// The directory within the Amazon EFS file system to mount as the root directory inside the host. If this parameter is omitted, the root of the Amazon EFS volume will be used. Specifying / will have the same effect as omitting this parameter.  If an EFS access point is specified in the authorizationConfig, the root directory parameter must either be omitted or set to / which will enforce the path set on the Amazon EFS access point.
         public let rootDirectory: String?
         /// Whether or not to enable encryption for Amazon EFS data in transit between the Amazon ECS host and the Amazon EFS server. Transit encryption must be enabled if Amazon EFS IAM authorization is used. If this parameter is omitted, the default value of DISABLED is used. For more information, see Encrypting data in transit in the Amazon Elastic File System User Guide.
         public let transitEncryption: EFSTransitEncryption?
@@ -1137,19 +1089,18 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case authorizationConfig = "authorizationConfig"
-            case fileSystemId = "fileSystemId"
-            case rootDirectory = "rootDirectory"
-            case transitEncryption = "transitEncryption"
-            case transitEncryptionPort = "transitEncryptionPort"
+            case authorizationConfig
+            case fileSystemId
+            case rootDirectory
+            case transitEncryption
+            case transitEncryptionPort
         }
     }
 
     public struct Ec2Configuration: AWSEncodableShape & AWSDecodableShape {
-
         /// The AMI ID used for instances launched in the compute environment that match the image type. This setting overrides the imageId set in the computeResource object.
         public let imageIdOverride: String?
-        /// The image type to match with the instance type to select an AMI. If the imageIdOverride parameter isn't specified, then a recent Amazon ECS-optimized AMI (ECS_AL1) is used. Starting on March 31, 2021, this default will be changing to ECS_AL2 (Amazon Linux 2).  ECS_AL2   Amazon Linux 2− Default for all AWS Graviton-based instance families (for example, C6g, M6g, R6g, and T4g) and can be used for all non-GPU instance types.  ECS_AL2_NVIDIA   Amazon Linux 2 (GPU)−Default for all GPU instance families (for example P4 and G4) and can be used for all non-AWS Graviton-based instance types.  ECS_AL1   Amazon Linux−Default for all non-GPU, non-AWS Graviton instance families. Amazon Linux is reaching the end-of-life of standard support. For more information, see Amazon Linux AMI.  
+        /// The image type to match with the instance type to select an AMI. If the imageIdOverride parameter isn't specified, then a recent Amazon ECS-optimized AMI (ECS_AL1) is used. Starting on March 31, 2021, this default will be changing to ECS_AL2 (Amazon Linux 2).  ECS_AL2   Amazon Linux 2− Default for all AWS Graviton-based instance families (for example, C6g, M6g, R6g, and T4g) and can be used for all non-GPU instance types.  ECS_AL2_NVIDIA   Amazon Linux 2 (GPU)−Default for all GPU instance families (for example P4 and G4) and can be used for all non-AWS Graviton-based instance types.  ECS_AL1   Amazon Linux−Default for all non-GPU, non-AWS Graviton instance families. Amazon Linux is reaching the end-of-life of standard support. For more information, see Amazon Linux AMI.
         public let imageType: String
 
         public init(imageIdOverride: String? = nil, imageType: String) {
@@ -1165,13 +1116,12 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case imageIdOverride = "imageIdOverride"
-            case imageType = "imageType"
+            case imageIdOverride
+            case imageType
         }
     }
 
     public struct EvaluateOnExit: AWSEncodableShape & AWSDecodableShape {
-
         /// Specifies the action to take if all of the specified conditions (onStatusReason, onReason, and onExitCode) are met. The values aren't case sensitive.
         public let action: RetryAction
         /// Contains a glob pattern to match against the decimal representation of the ExitCode returned for a job. The pattern can be up to 512 characters long, can contain only numbers, and can optionally end with an asterisk (*) so that only the start of the string needs to be an exact match.
@@ -1189,15 +1139,14 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case action = "action"
-            case onExitCode = "onExitCode"
-            case onReason = "onReason"
-            case onStatusReason = "onStatusReason"
+            case action
+            case onExitCode
+            case onReason
+            case onStatusReason
         }
     }
 
     public struct FargatePlatformConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// The AWS Fargate platform version where the jobs are running. A platform version is specified only for jobs running on Fargate resources. If one isn't specified, the LATEST platform version is used by default. This uses a recent, approved version of the AWS Fargate platform for compute resources. For more information, see AWS Fargate platform versions in the Amazon Elastic Container Service Developer Guide.
         public let platformVersion: String?
 
@@ -1206,13 +1155,12 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case platformVersion = "platformVersion"
+            case platformVersion
         }
     }
 
     public struct Host: AWSEncodableShape & AWSDecodableShape {
-
-        /// The path on the host container instance that's presented to the container. If this parameter is empty, then the Docker daemon has assigned a host path for you. If this parameter contains a file location, then the data volume persists at the specified location on the host container instance until you delete it manually. If the source path location doesn't exist on the host container instance, the Docker daemon creates it. If the location does exist, the contents of the source path folder are exported.  This parameter isn't applicable to jobs that run on Fargate resources and shouldn't be provided. 
+        /// The path on the host container instance that's presented to the container. If this parameter is empty, then the Docker daemon has assigned a host path for you. If this parameter contains a file location, then the data volume persists at the specified location on the host container instance until you delete it manually. If the source path location doesn't exist on the host container instance, the Docker daemon creates it. If the location does exist, the contents of the source path folder are exported.  This parameter isn't applicable to jobs that run on Fargate resources and shouldn't be provided.
         public let sourcePath: String?
 
         public init(sourcePath: String? = nil) {
@@ -1220,19 +1168,18 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case sourcePath = "sourcePath"
+            case sourcePath
         }
     }
 
     public struct JobDefinition: AWSDecodableShape {
-
         /// An object with various properties specific to container-based jobs.
         public let containerProperties: ContainerProperties?
         /// The Amazon Resource Name (ARN) for the job definition.
         public let jobDefinitionArn: String
         /// The name of the job definition.
         public let jobDefinitionName: String
-        /// An object with various properties specific to multi-node parallel jobs.  If the job runs on Fargate resources, then you must not specify nodeProperties; use containerProperties instead. 
+        /// An object with various properties specific to multi-node parallel jobs.  If the job runs on Fargate resources, then you must not specify nodeProperties; use containerProperties instead.
         public let nodeProperties: NodeProperties?
         /// Default parameters or parameter substitution placeholders that are set in the job definition. Parameters are specified as a key-value pair mapping. Parameters in a SubmitJob request override any corresponding parameter defaults from the job definition. For more information about specifying parameters, see Job Definition Parameters in the AWS Batch User Guide.
         public let parameters: [String: String]?
@@ -1270,24 +1217,23 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case containerProperties = "containerProperties"
-            case jobDefinitionArn = "jobDefinitionArn"
-            case jobDefinitionName = "jobDefinitionName"
-            case nodeProperties = "nodeProperties"
-            case parameters = "parameters"
-            case platformCapabilities = "platformCapabilities"
-            case propagateTags = "propagateTags"
-            case retryStrategy = "retryStrategy"
-            case revision = "revision"
-            case status = "status"
-            case tags = "tags"
-            case timeout = "timeout"
-            case type = "type"
+            case containerProperties
+            case jobDefinitionArn
+            case jobDefinitionName
+            case nodeProperties
+            case parameters
+            case platformCapabilities
+            case propagateTags
+            case retryStrategy
+            case revision
+            case status
+            case tags
+            case timeout
+            case type
         }
     }
 
     public struct JobDependency: AWSEncodableShape & AWSDecodableShape {
-
         /// The job ID of the AWS Batch job associated with this dependency.
         public let jobId: String?
         /// The type of the job dependency.
@@ -1299,13 +1245,12 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case jobId = "jobId"
-            case type = "type"
+            case jobId
+            case type
         }
     }
 
     public struct JobDetail: AWSDecodableShape {
-
         /// The array properties of the job, if it is an array job.
         public let arrayProperties: ArrayPropertiesDetail?
         /// A list of job attempts associated with this job.
@@ -1328,7 +1273,7 @@ extension Batch {
         public let jobQueue: String
         /// An object representing the details of a node that's associated with a multi-node parallel job.
         public let nodeDetails: NodeDetails?
-        /// An object representing the node properties of a multi-node parallel job.  This isn't applicable to jobs running on Fargate resources. 
+        /// An object representing the node properties of a multi-node parallel job.  This isn't applicable to jobs running on Fargate resources.
         public let nodeProperties: NodeProperties?
         /// Additional parameters passed to the job that replace parameter substitution placeholders or override any corresponding parameter defaults from the job definition.
         public let parameters: [String: String]?
@@ -1340,7 +1285,7 @@ extension Batch {
         public let retryStrategy: RetryStrategy?
         /// The Unix timestamp (in milliseconds) for when the job was started (when the job transitioned from the STARTING state to the RUNNING state). This parameter isn't provided for child jobs of array jobs or multi-node parallel jobs.
         public let startedAt: Int64
-        /// The current status for the job.  If your jobs don't progress to STARTING, see Jobs Stuck in RUNNABLE Status in the troubleshooting section of the AWS Batch User Guide. 
+        /// The current status for the job.  If your jobs don't progress to STARTING, see Jobs Stuck in RUNNABLE Status in the troubleshooting section of the AWS Batch User Guide.
         public let status: JobStatus
         /// A short, human-readable string to provide additional details about the current status of the job.
         public let statusReason: String?
@@ -1377,33 +1322,32 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arrayProperties = "arrayProperties"
-            case attempts = "attempts"
-            case container = "container"
-            case createdAt = "createdAt"
-            case dependsOn = "dependsOn"
-            case jobArn = "jobArn"
-            case jobDefinition = "jobDefinition"
-            case jobId = "jobId"
-            case jobName = "jobName"
-            case jobQueue = "jobQueue"
-            case nodeDetails = "nodeDetails"
-            case nodeProperties = "nodeProperties"
-            case parameters = "parameters"
-            case platformCapabilities = "platformCapabilities"
-            case propagateTags = "propagateTags"
-            case retryStrategy = "retryStrategy"
-            case startedAt = "startedAt"
-            case status = "status"
-            case statusReason = "statusReason"
-            case stoppedAt = "stoppedAt"
-            case tags = "tags"
-            case timeout = "timeout"
+            case arrayProperties
+            case attempts
+            case container
+            case createdAt
+            case dependsOn
+            case jobArn
+            case jobDefinition
+            case jobId
+            case jobName
+            case jobQueue
+            case nodeDetails
+            case nodeProperties
+            case parameters
+            case platformCapabilities
+            case propagateTags
+            case retryStrategy
+            case startedAt
+            case status
+            case statusReason
+            case stoppedAt
+            case tags
+            case timeout
         }
     }
 
     public struct JobQueueDetail: AWSDecodableShape {
-
         /// The compute environments that are attached to the job queue and the order that job placement is preferred. Compute environments are selected for job placement in ascending order.
         public let computeEnvironmentOrder: [ComputeEnvironmentOrder]
         /// The Amazon Resource Name (ARN) of the job queue.
@@ -1433,19 +1377,18 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case computeEnvironmentOrder = "computeEnvironmentOrder"
-            case jobQueueArn = "jobQueueArn"
-            case jobQueueName = "jobQueueName"
-            case priority = "priority"
-            case state = "state"
-            case status = "status"
-            case statusReason = "statusReason"
-            case tags = "tags"
+            case computeEnvironmentOrder
+            case jobQueueArn
+            case jobQueueName
+            case priority
+            case state
+            case status
+            case statusReason
+            case tags
         }
     }
 
     public struct JobSummary: AWSDecodableShape {
-
         /// The array properties of the job, if it is an array job.
         public let arrayProperties: ArrayPropertiesSummary?
         /// An object representing the details of the container that's associated with the job.
@@ -1458,7 +1401,7 @@ extension Batch {
         public let jobId: String
         /// The name of the job.
         public let jobName: String
-        /// The node properties for a single node in a job summary list.  This isn't applicable to jobs running on Fargate resources. 
+        /// The node properties for a single node in a job summary list.  This isn't applicable to jobs running on Fargate resources.
         public let nodeProperties: NodePropertiesSummary?
         /// The Unix timestamp for when the job was started (when the job transitioned from the STARTING state to the RUNNING state).
         public let startedAt: Int64?
@@ -1484,22 +1427,21 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arrayProperties = "arrayProperties"
-            case container = "container"
-            case createdAt = "createdAt"
-            case jobArn = "jobArn"
-            case jobId = "jobId"
-            case jobName = "jobName"
-            case nodeProperties = "nodeProperties"
-            case startedAt = "startedAt"
-            case status = "status"
-            case statusReason = "statusReason"
-            case stoppedAt = "stoppedAt"
+            case arrayProperties
+            case container
+            case createdAt
+            case jobArn
+            case jobId
+            case jobName
+            case nodeProperties
+            case startedAt
+            case status
+            case statusReason
+            case stoppedAt
         }
     }
 
     public struct JobTimeout: AWSEncodableShape & AWSDecodableShape {
-
         /// The time duration in seconds (measured from the job attempt's startedAt timestamp) after which AWS Batch terminates your jobs if they have not finished. The minimum value for the timeout is 60 seconds.
         public let attemptDurationSeconds: Int?
 
@@ -1508,12 +1450,11 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case attemptDurationSeconds = "attemptDurationSeconds"
+            case attemptDurationSeconds
         }
     }
 
     public struct KeyValuePair: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the key-value pair. For environment variables, this is the name of the environment variable.
         public let name: String?
         /// The value of the key-value pair. For environment variables, this is the value of the environment variable.
@@ -1525,13 +1466,12 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case name = "name"
-            case value = "value"
+            case name
+            case value
         }
     }
 
     public struct LaunchTemplateSpecification: AWSEncodableShape & AWSDecodableShape {
-
         /// The ID of the launch template.
         public let launchTemplateId: String?
         /// The name of the launch template.
@@ -1546,25 +1486,24 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case launchTemplateId = "launchTemplateId"
-            case launchTemplateName = "launchTemplateName"
-            case version = "version"
+            case launchTemplateId
+            case launchTemplateName
+            case version
         }
     }
 
     public struct LinuxParameters: AWSEncodableShape & AWSDecodableShape {
-
-        /// Any host devices to expose to the container. This parameter maps to Devices in the Create a container section of the Docker Remote API and the --device option to docker run.  This parameter isn't applicable to jobs running on Fargate resources and shouldn't be provided. 
+        /// Any host devices to expose to the container. This parameter maps to Devices in the Create a container section of the Docker Remote API and the --device option to docker run.  This parameter isn't applicable to jobs running on Fargate resources and shouldn't be provided.
         public let devices: [Device]?
-        /// If true, run an init process inside the container that forwards signals and reaps processes. This parameter maps to the --init option to docker run. This parameter requires version 1.25 of the Docker Remote API or greater on your container instance. To check the Docker Remote API version on your container instance, log into your container instance and run the following command: sudo docker version | grep "Server API version" 
+        /// If true, run an init process inside the container that forwards signals and reaps processes. This parameter maps to the --init option to docker run. This parameter requires version 1.25 of the Docker Remote API or greater on your container instance. To check the Docker Remote API version on your container instance, log into your container instance and run the following command: sudo docker version | grep "Server API version"
         public let initProcessEnabled: Bool?
-        /// The total amount of swap memory (in MiB) a container can use. This parameter is translated to the --memory-swap option to docker run where the value is the sum of the container memory plus the maxSwap value. For more information, see  --memory-swap details in the Docker documentation. If a maxSwap value of 0 is specified, the container doesn't use swap. Accepted values are 0 or any positive integer. If the maxSwap parameter is omitted, the container doesn't use the swap configuration for the container instance it is running on. A maxSwap value must be set for the swappiness parameter to be used.  This parameter isn't applicable to jobs running on Fargate resources and shouldn't be provided. 
+        /// The total amount of swap memory (in MiB) a container can use. This parameter is translated to the --memory-swap option to docker run where the value is the sum of the container memory plus the maxSwap value. For more information, see  --memory-swap details in the Docker documentation. If a maxSwap value of 0 is specified, the container doesn't use swap. Accepted values are 0 or any positive integer. If the maxSwap parameter is omitted, the container doesn't use the swap configuration for the container instance it is running on. A maxSwap value must be set for the swappiness parameter to be used.  This parameter isn't applicable to jobs running on Fargate resources and shouldn't be provided.
         public let maxSwap: Int?
-        /// The value for the size (in MiB) of the /dev/shm volume. This parameter maps to the --shm-size option to docker run.  This parameter isn't applicable to jobs running on Fargate resources and shouldn't be provided. 
+        /// The value for the size (in MiB) of the /dev/shm volume. This parameter maps to the --shm-size option to docker run.  This parameter isn't applicable to jobs running on Fargate resources and shouldn't be provided.
         public let sharedMemorySize: Int?
-        /// This allows you to tune a container's memory swappiness behavior. A swappiness value of 0 causes swapping not to happen unless absolutely necessary. A swappiness value of 100 causes pages to be swapped very aggressively. Accepted values are whole numbers between 0 and 100. If the swappiness parameter isn't specified, a default value of 60 is used. If a value isn't specified for maxSwap then this parameter is ignored. If maxSwap is set to 0, the container doesn't use swap. This parameter maps to the --memory-swappiness option to docker run. Consider the following when you use a per-container swap configuration.   Swap space must be enabled and allocated on the container instance for the containers to use.  The Amazon ECS optimized AMIs don't have swap enabled by default. You must enable swap on the instance to use this feature. For more information, see Instance Store Swap Volumes in the Amazon EC2 User Guide for Linux Instances or How do I allocate memory to work as swap space in an Amazon EC2 instance by using a swap file?     The swap space parameters are only supported for job definitions using EC2 resources.   If the maxSwap and swappiness parameters are omitted from a job definition, each container will have a default swappiness value of 60, and the total swap usage will be limited to two times the memory reservation of the container.    This parameter isn't applicable to jobs running on Fargate resources and shouldn't be provided. 
+        /// This allows you to tune a container's memory swappiness behavior. A swappiness value of 0 causes swapping not to happen unless absolutely necessary. A swappiness value of 100 causes pages to be swapped very aggressively. Accepted values are whole numbers between 0 and 100. If the swappiness parameter isn't specified, a default value of 60 is used. If a value isn't specified for maxSwap then this parameter is ignored. If maxSwap is set to 0, the container doesn't use swap. This parameter maps to the --memory-swappiness option to docker run. Consider the following when you use a per-container swap configuration.   Swap space must be enabled and allocated on the container instance for the containers to use.  The Amazon ECS optimized AMIs don't have swap enabled by default. You must enable swap on the instance to use this feature. For more information, see Instance Store Swap Volumes in the Amazon EC2 User Guide for Linux Instances or How do I allocate memory to work as swap space in an Amazon EC2 instance by using a swap file?     The swap space parameters are only supported for job definitions using EC2 resources.   If the maxSwap and swappiness parameters are omitted from a job definition, each container will have a default swappiness value of 60, and the total swap usage will be limited to two times the memory reservation of the container.    This parameter isn't applicable to jobs running on Fargate resources and shouldn't be provided.
         public let swappiness: Int?
-        /// The container path, mount options, and size (in MiB) of the tmpfs mount. This parameter maps to the --tmpfs option to docker run.  This parameter isn't applicable to jobs running on Fargate resources and shouldn't be provided. 
+        /// The container path, mount options, and size (in MiB) of the tmpfs mount. This parameter maps to the --tmpfs option to docker run.  This parameter isn't applicable to jobs running on Fargate resources and shouldn't be provided.
         public let tmpfs: [Tmpfs]?
 
         public init(devices: [Device]? = nil, initProcessEnabled: Bool? = nil, maxSwap: Int? = nil, sharedMemorySize: Int? = nil, swappiness: Int? = nil, tmpfs: [Tmpfs]? = nil) {
@@ -1577,17 +1516,16 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case devices = "devices"
-            case initProcessEnabled = "initProcessEnabled"
-            case maxSwap = "maxSwap"
-            case sharedMemorySize = "sharedMemorySize"
-            case swappiness = "swappiness"
-            case tmpfs = "tmpfs"
+            case devices
+            case initProcessEnabled
+            case maxSwap
+            case sharedMemorySize
+            case swappiness
+            case tmpfs
         }
     }
 
     public struct ListJobsRequest: AWSEncodableShape {
-
         /// The job ID for an array job. Specifying an array job ID with this parameter lists all child jobs from within the specified array.
         public let arrayJobId: String?
         /// The name or full Amazon Resource Name (ARN) of the job queue used to list jobs.
@@ -1598,7 +1536,7 @@ extension Batch {
         public let maxResults: Int?
         /// The job ID for a multi-node parallel job. Specifying a multi-node parallel job ID with this parameter lists all nodes that are associated with the specified job.
         public let multiNodeJobId: String?
-        /// The nextToken value returned from a previous paginated ListJobs request where maxResults was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the nextToken value. This value is null when there are no more results to return.  This token should be treated as an opaque identifier that's only used to retrieve the next items in a list and not for other programmatic purposes. 
+        /// The nextToken value returned from a previous paginated ListJobs request where maxResults was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the nextToken value. This value is null when there are no more results to return.  This token should be treated as an opaque identifier that's only used to retrieve the next items in a list and not for other programmatic purposes.
         public let nextToken: String?
 
         public init(arrayJobId: String? = nil, jobQueue: String? = nil, jobStatus: JobStatus? = nil, maxResults: Int? = nil, multiNodeJobId: String? = nil, nextToken: String? = nil) {
@@ -1611,17 +1549,16 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arrayJobId = "arrayJobId"
-            case jobQueue = "jobQueue"
-            case jobStatus = "jobStatus"
-            case maxResults = "maxResults"
-            case multiNodeJobId = "multiNodeJobId"
-            case nextToken = "nextToken"
+            case arrayJobId
+            case jobQueue
+            case jobStatus
+            case maxResults
+            case multiNodeJobId
+            case nextToken
         }
     }
 
     public struct ListJobsResponse: AWSDecodableShape {
-
         /// A list of job summaries that match the request.
         public let jobSummaryList: [JobSummary]
         /// The nextToken value to include in a future ListJobs request. When the results of a ListJobs request exceed maxResults, this value can be used to retrieve the next page of results. This value is null when there are no more results to return.
@@ -1633,8 +1570,8 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case jobSummaryList = "jobSummaryList"
-            case nextToken = "nextToken"
+            case jobSummaryList
+            case nextToken
         }
     }
 
@@ -1654,7 +1591,6 @@ extension Batch {
     }
 
     public struct ListTagsForResourceResponse: AWSDecodableShape {
-
         /// The tags for the resource.
         public let tags: [String: String]?
 
@@ -1663,15 +1599,14 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tags = "tags"
+            case tags
         }
     }
 
     public struct LogConfiguration: AWSEncodableShape & AWSDecodableShape {
-
-        /// The log driver to use for the container. The valid values listed for this parameter are log drivers that the Amazon ECS container agent can communicate with by default. The supported log drivers are awslogs, fluentd, gelf, json-file, journald, logentries, syslog, and splunk.  Jobs running on Fargate resources are restricted to the awslogs and splunk log drivers.   awslogs  Specifies the Amazon CloudWatch Logs logging driver. For more information, see Using the awslogs Log Driver in the AWS Batch User Guide and Amazon CloudWatch Logs logging driver in the Docker documentation.  fluentd  Specifies the Fluentd logging driver. For more information, including usage and options, see Fluentd logging driver in the Docker documentation.  gelf  Specifies the Graylog Extended Format (GELF) logging driver. For more information, including usage and options, see Graylog Extended Format logging driver in the Docker documentation.  journald  Specifies the journald logging driver. For more information, including usage and options, see Journald logging driver in the Docker documentation.  json-file  Specifies the JSON file logging driver. For more information, including usage and options, see JSON File logging driver in the Docker documentation.  splunk  Specifies the Splunk logging driver. For more information, including usage and options, see Splunk logging driver in the Docker documentation.  syslog  Specifies the syslog logging driver. For more information, including usage and options, see Syslog logging driver in the Docker documentation.    If you have a custom driver that's not listed earlier that you want to work with the Amazon ECS container agent, you can fork the Amazon ECS container agent project that's available on GitHub and customize it to work with that driver. We encourage you to submit pull requests for changes that you want to have included. However, Amazon Web Services doesn't currently support running modified copies of this software.  This parameter requires version 1.18 of the Docker Remote API or greater on your container instance. To check the Docker Remote API version on your container instance, log into your container instance and run the following command: sudo docker version | grep "Server API version" 
+        /// The log driver to use for the container. The valid values listed for this parameter are log drivers that the Amazon ECS container agent can communicate with by default. The supported log drivers are awslogs, fluentd, gelf, json-file, journald, logentries, syslog, and splunk.  Jobs running on Fargate resources are restricted to the awslogs and splunk log drivers.   awslogs  Specifies the Amazon CloudWatch Logs logging driver. For more information, see Using the awslogs Log Driver in the AWS Batch User Guide and Amazon CloudWatch Logs logging driver in the Docker documentation.  fluentd  Specifies the Fluentd logging driver. For more information, including usage and options, see Fluentd logging driver in the Docker documentation.  gelf  Specifies the Graylog Extended Format (GELF) logging driver. For more information, including usage and options, see Graylog Extended Format logging driver in the Docker documentation.  journald  Specifies the journald logging driver. For more information, including usage and options, see Journald logging driver in the Docker documentation.  json-file  Specifies the JSON file logging driver. For more information, including usage and options, see JSON File logging driver in the Docker documentation.  splunk  Specifies the Splunk logging driver. For more information, including usage and options, see Splunk logging driver in the Docker documentation.  syslog  Specifies the syslog logging driver. For more information, including usage and options, see Syslog logging driver in the Docker documentation.    If you have a custom driver that's not listed earlier that you want to work with the Amazon ECS container agent, you can fork the Amazon ECS container agent project that's available on GitHub and customize it to work with that driver. We encourage you to submit pull requests for changes that you want to have included. However, Amazon Web Services doesn't currently support running modified copies of this software.  This parameter requires version 1.18 of the Docker Remote API or greater on your container instance. To check the Docker Remote API version on your container instance, log into your container instance and run the following command: sudo docker version | grep "Server API version"
         public let logDriver: LogDriver
-        /// The configuration options to send to the log driver. This parameter requires version 1.19 of the Docker Remote API or greater on your container instance. To check the Docker Remote API version on your container instance, log into your container instance and run the following command: sudo docker version | grep "Server API version" 
+        /// The configuration options to send to the log driver. This parameter requires version 1.19 of the Docker Remote API or greater on your container instance. To check the Docker Remote API version on your container instance, log into your container instance and run the following command: sudo docker version | grep "Server API version"
         public let options: [String: String]?
         /// The secrets to pass to the log configuration. For more information, see Specifying Sensitive Data in the AWS Batch User Guide.
         public let secretOptions: [Secret]?
@@ -1683,14 +1618,13 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case logDriver = "logDriver"
-            case options = "options"
-            case secretOptions = "secretOptions"
+            case logDriver
+            case options
+            case secretOptions
         }
     }
 
     public struct MountPoint: AWSEncodableShape & AWSDecodableShape {
-
         /// The path on the container where the host volume is mounted.
         public let containerPath: String?
         /// If this value is true, the container has read-only access to the volume. Otherwise, the container can write to the volume. The default value is false.
@@ -1705,14 +1639,13 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case containerPath = "containerPath"
-            case readOnly = "readOnly"
-            case sourceVolume = "sourceVolume"
+            case containerPath
+            case readOnly
+            case sourceVolume
         }
     }
 
     public struct NetworkConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// Indicates whether the job should have a public IP address. For a job running on Fargate resources in a private subnet to send outbound traffic to the internet (for example, in order to pull container images), the private subnet requires a NAT gateway be attached to route requests to the internet. For more information, see Amazon ECS task networking. The default value is "DISABLED".
         public let assignPublicIp: AssignPublicIp?
 
@@ -1721,12 +1654,11 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case assignPublicIp = "assignPublicIp"
+            case assignPublicIp
         }
     }
 
     public struct NetworkInterface: AWSDecodableShape {
-
         /// The attachment ID for the network interface.
         public let attachmentId: String?
         /// The private IPv6 address for the network interface.
@@ -1741,14 +1673,13 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case attachmentId = "attachmentId"
-            case ipv6Address = "ipv6Address"
-            case privateIpv4Address = "privateIpv4Address"
+            case attachmentId
+            case ipv6Address
+            case privateIpv4Address
         }
     }
 
     public struct NodeDetails: AWSDecodableShape {
-
         /// Specifies whether the current node is the main node for a multi-node parallel job.
         public let isMainNode: Bool?
         /// The node index for the node. Node index numbering begins at zero. This index is also available on the node with the AWS_BATCH_JOB_NODE_INDEX environment variable.
@@ -1760,16 +1691,15 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case isMainNode = "isMainNode"
-            case nodeIndex = "nodeIndex"
+            case isMainNode
+            case nodeIndex
         }
     }
 
     public struct NodeOverrides: AWSEncodableShape {
-
         /// The node property overrides for the job.
         public let nodePropertyOverrides: [NodePropertyOverride]?
-        /// The number of nodes to use with a multi-node parallel job. This value overrides the number of nodes that are specified in the job definition. To use this override:   There must be at least one node range in your job definition that has an open upper boundary (such as : or n:).   The lower boundary of the node range specified in the job definition must be fewer than the number of nodes specified in the override.   The main node index specified in the job definition must be fewer than the number of nodes specified in the override.  
+        /// The number of nodes to use with a multi-node parallel job. This value overrides the number of nodes that are specified in the job definition. To use this override:   There must be at least one node range in your job definition that has an open upper boundary (such as : or n:).   The lower boundary of the node range specified in the job definition must be fewer than the number of nodes specified in the override.   The main node index specified in the job definition must be fewer than the number of nodes specified in the override.
         public let numNodes: Int?
 
         public init(nodePropertyOverrides: [NodePropertyOverride]? = nil, numNodes: Int? = nil) {
@@ -1778,13 +1708,12 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nodePropertyOverrides = "nodePropertyOverrides"
-            case numNodes = "numNodes"
+            case nodePropertyOverrides
+            case numNodes
         }
     }
 
     public struct NodeProperties: AWSEncodableShape & AWSDecodableShape {
-
         /// Specifies the node index for the main node of a multi-node parallel job. This node index value must be fewer than the number of nodes.
         public let mainNode: Int
         /// A list of node ranges and their properties associated with a multi-node parallel job.
@@ -1799,14 +1728,13 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case mainNode = "mainNode"
-            case nodeRangeProperties = "nodeRangeProperties"
-            case numNodes = "numNodes"
+            case mainNode
+            case nodeRangeProperties
+            case numNodes
         }
     }
 
     public struct NodePropertiesSummary: AWSDecodableShape {
-
         /// Specifies whether the current node is the main node for a multi-node parallel job.
         public let isMainNode: Bool?
         /// The node index for the node. Node index numbering begins at zero. This index is also available on the node with the AWS_BATCH_JOB_NODE_INDEX environment variable.
@@ -1821,14 +1749,13 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case isMainNode = "isMainNode"
-            case nodeIndex = "nodeIndex"
-            case numNodes = "numNodes"
+            case isMainNode
+            case nodeIndex
+            case numNodes
         }
     }
 
     public struct NodePropertyOverride: AWSEncodableShape {
-
         /// The overrides that should be sent to a node range.
         public let containerOverrides: ContainerOverrides?
         /// The range of nodes, using node index values, that's used to override. A range of 0:3 indicates nodes with index values of 0 through 3. If the starting range value is omitted (:n), then 0 is used to start the range. If the ending range value is omitted (n:), then the highest possible node index is used to end the range.
@@ -1840,13 +1767,12 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case containerOverrides = "containerOverrides"
-            case targetNodes = "targetNodes"
+            case containerOverrides
+            case targetNodes
         }
     }
 
     public struct NodeRangeProperty: AWSEncodableShape & AWSDecodableShape {
-
         /// The container details for the node range.
         public let container: ContainerProperties?
         /// The range of nodes, using node index values. A range of 0:3 indicates nodes with index values of 0 through 3. If the starting range value is omitted (:n), then 0 is used to start the range. If the ending range value is omitted (n:), then the highest possible node index is used to end the range. Your accumulative node ranges must account for all nodes (0:n). You can nest node ranges, for example 0:10 and 4:5, in which case the 4:5 range properties override the 0:10 properties.
@@ -1858,18 +1784,17 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case container = "container"
-            case targetNodes = "targetNodes"
+            case container
+            case targetNodes
         }
     }
 
     public struct RegisterJobDefinitionRequest: AWSEncodableShape {
-
-        /// An object with various properties specific to single-node container-based jobs. If the job definition's type parameter is container, then you must specify either containerProperties or nodeProperties.  If the job runs on Fargate resources, then you must not specify nodeProperties; use only containerProperties. 
+        /// An object with various properties specific to single-node container-based jobs. If the job definition's type parameter is container, then you must specify either containerProperties or nodeProperties.  If the job runs on Fargate resources, then you must not specify nodeProperties; use only containerProperties.
         public let containerProperties: ContainerProperties?
         /// The name of the job definition to register. Up to 128 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed.
         public let jobDefinitionName: String
-        /// An object with various properties specific to multi-node parallel jobs. If you specify node properties for a job, it becomes a multi-node parallel job. For more information, see Multi-node Parallel Jobs in the AWS Batch User Guide. If the job definition's type parameter is container, then you must specify either containerProperties or nodeProperties.  If the job runs on Fargate resources, then you must not specify nodeProperties; use containerProperties instead. 
+        /// An object with various properties specific to multi-node parallel jobs. If you specify node properties for a job, it becomes a multi-node parallel job. For more information, see Multi-node Parallel Jobs in the AWS Batch User Guide. If the job definition's type parameter is container, then you must specify either containerProperties or nodeProperties.  If the job runs on Fargate resources, then you must not specify nodeProperties; use containerProperties instead.
         public let nodeProperties: NodeProperties?
         /// Default parameter substitution placeholders to set in the job definition. Parameters are specified as a key-value pair mapping. Parameters in a SubmitJob request override any corresponding parameter defaults from the job definition.
         public let parameters: [String: String]?
@@ -1883,7 +1808,7 @@ extension Batch {
         public let tags: [String: String]?
         /// The timeout configuration for jobs that are submitted with this job definition, after which AWS Batch terminates your jobs if they have not finished. If a job is terminated due to a timeout, it isn't retried. The minimum value for the timeout is 60 seconds. Any timeout configuration that's specified during a SubmitJob operation overrides the timeout configuration defined here. For more information, see Job Timeouts in the AWS Batch User Guide.
         public let timeout: JobTimeout?
-        /// The type of job definition. For more information about multi-node parallel jobs, see Creating a multi-node parallel job definition in the AWS Batch User Guide.  If the job is run on Fargate resources, then multinode isn't supported. 
+        /// The type of job definition. For more information about multi-node parallel jobs, see Creating a multi-node parallel job definition in the AWS Batch User Guide.  If the job is run on Fargate resources, then multinode isn't supported.
         public let type: JobDefinitionType
 
         public init(containerProperties: ContainerProperties? = nil, jobDefinitionName: String, nodeProperties: NodeProperties? = nil, parameters: [String: String]? = nil, platformCapabilities: [PlatformCapability]? = nil, propagateTags: Bool? = nil, retryStrategy: RetryStrategy? = nil, tags: [String: String]? = nil, timeout: JobTimeout? = nil, type: JobDefinitionType) {
@@ -1910,21 +1835,20 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case containerProperties = "containerProperties"
-            case jobDefinitionName = "jobDefinitionName"
-            case nodeProperties = "nodeProperties"
-            case parameters = "parameters"
-            case platformCapabilities = "platformCapabilities"
-            case propagateTags = "propagateTags"
-            case retryStrategy = "retryStrategy"
-            case tags = "tags"
-            case timeout = "timeout"
-            case type = "type"
+            case containerProperties
+            case jobDefinitionName
+            case nodeProperties
+            case parameters
+            case platformCapabilities
+            case propagateTags
+            case retryStrategy
+            case tags
+            case timeout
+            case type
         }
     }
 
     public struct RegisterJobDefinitionResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the job definition.
         public let jobDefinitionArn: String
         /// The name of the job definition.
@@ -1939,17 +1863,16 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case jobDefinitionArn = "jobDefinitionArn"
-            case jobDefinitionName = "jobDefinitionName"
-            case revision = "revision"
+            case jobDefinitionArn
+            case jobDefinitionName
+            case revision
         }
     }
 
     public struct ResourceRequirement: AWSEncodableShape & AWSDecodableShape {
-
         /// The type of resource to assign to a container. The supported resources include GPU, MEMORY, and VCPU.
         public let type: ResourceType
-        /// The quantity of the specified resource to reserve for the container. The values vary based on the type specified.  type="GPU"  The number of physical GPUs to reserve for the container. The number of GPUs reserved for all containers in a job shouldn't exceed the number of available GPUs on the compute resource that the job is launched on.  GPUs are not available for jobs running on Fargate resources.   type="MEMORY"  The memory hard limit (in MiB) present to the container. This parameter is supported for jobs running on EC2 resources. If your container attempts to exceed the memory specified, the container is terminated. This parameter maps to Memory in the Create a container section of the Docker Remote API and the --memory option to docker run. You must specify at least 4 MiB of memory for a job. This is required but can be specified in several places for multi-node parallel (MNP) jobs. It must be specified for each node at least once. This parameter maps to Memory in the Create a container section of the Docker Remote API and the --memory option to docker run.  If you're trying to maximize your resource utilization by providing your jobs as much memory as possible for a particular instance type, see Memory Management in the AWS Batch User Guide.  For jobs running on Fargate resources, then value is the hard limit (in MiB), and must match one of the supported values and the VCPU values must be one of the values supported for that memory value.  value = 512   VCPU = 0.25  value = 1024   VCPU = 0.25 or 0.5  value = 2048   VCPU = 0.25, 0.5, or 1  value = 3072   VCPU = 0.5, or 1  value = 4096   VCPU = 0.5, 1, or 2  value = 5120, 6144, or 7168   VCPU = 1 or 2  value = 8192   VCPU = 1, 2, or 4  value = 9216, 10240, 11264, 12288, 13312, 14336, 15360, or 16384   VCPU = 2 or 4  value = 17408, 18432, 19456, 20480, 21504, 22528, 23552, 24576, 25600, 26624, 27648, 28672, 29696, or 30720   VCPU = 4    type="VCPU"  The number of vCPUs reserved for the container. This parameter maps to CpuShares in the Create a container section of the Docker Remote API and the --cpu-shares option to docker run. Each vCPU is equivalent to 1,024 CPU shares. For EC2 resources, you must specify at least one vCPU. This is required but can be specified in several places; it must be specified for each node at least once. For jobs running on Fargate resources, then value must match one of the supported values and the MEMORY values must be one of the values supported for that VCPU value. The supported values are 0.25, 0.5, 1, 2, and 4  value = 0.25   MEMORY = 512, 1024, or 2048  value = 0.5   MEMORY = 1024, 2048, 3072, or 4096  value = 1   MEMORY = 2048, 3072, 4096, 5120, 6144, 7168, or 8192  value = 2   MEMORY = 4096, 5120, 6144, 7168, 8192, 9216, 10240, 11264, 12288, 13312, 14336, 15360, or 16384  value = 4   MEMORY = 8192, 9216, 10240, 11264, 12288, 13312, 14336, 15360, 16384, 17408, 18432, 19456, 20480, 21504, 22528, 23552, 24576, 25600, 26624, 27648, 28672, 29696, or 30720    
+        /// The quantity of the specified resource to reserve for the container. The values vary based on the type specified.  type="GPU"  The number of physical GPUs to reserve for the container. The number of GPUs reserved for all containers in a job shouldn't exceed the number of available GPUs on the compute resource that the job is launched on.  GPUs are not available for jobs running on Fargate resources.   type="MEMORY"  The memory hard limit (in MiB) present to the container. This parameter is supported for jobs running on EC2 resources. If your container attempts to exceed the memory specified, the container is terminated. This parameter maps to Memory in the Create a container section of the Docker Remote API and the --memory option to docker run. You must specify at least 4 MiB of memory for a job. This is required but can be specified in several places for multi-node parallel (MNP) jobs. It must be specified for each node at least once. This parameter maps to Memory in the Create a container section of the Docker Remote API and the --memory option to docker run.  If you're trying to maximize your resource utilization by providing your jobs as much memory as possible for a particular instance type, see Memory Management in the AWS Batch User Guide.  For jobs running on Fargate resources, then value is the hard limit (in MiB), and must match one of the supported values and the VCPU values must be one of the values supported for that memory value.  value = 512   VCPU = 0.25  value = 1024   VCPU = 0.25 or 0.5  value = 2048   VCPU = 0.25, 0.5, or 1  value = 3072   VCPU = 0.5, or 1  value = 4096   VCPU = 0.5, 1, or 2  value = 5120, 6144, or 7168   VCPU = 1 or 2  value = 8192   VCPU = 1, 2, or 4  value = 9216, 10240, 11264, 12288, 13312, 14336, 15360, or 16384   VCPU = 2 or 4  value = 17408, 18432, 19456, 20480, 21504, 22528, 23552, 24576, 25600, 26624, 27648, 28672, 29696, or 30720   VCPU = 4    type="VCPU"  The number of vCPUs reserved for the container. This parameter maps to CpuShares in the Create a container section of the Docker Remote API and the --cpu-shares option to docker run. Each vCPU is equivalent to 1,024 CPU shares. For EC2 resources, you must specify at least one vCPU. This is required but can be specified in several places; it must be specified for each node at least once. For jobs running on Fargate resources, then value must match one of the supported values and the MEMORY values must be one of the values supported for that VCPU value. The supported values are 0.25, 0.5, 1, 2, and 4  value = 0.25   MEMORY = 512, 1024, or 2048  value = 0.5   MEMORY = 1024, 2048, 3072, or 4096  value = 1   MEMORY = 2048, 3072, 4096, 5120, 6144, 7168, or 8192  value = 2   MEMORY = 4096, 5120, 6144, 7168, 8192, 9216, 10240, 11264, 12288, 13312, 14336, 15360, or 16384  value = 4   MEMORY = 8192, 9216, 10240, 11264, 12288, 13312, 14336, 15360, 16384, 17408, 18432, 19456, 20480, 21504, 22528, 23552, 24576, 25600, 26624, 27648, 28672, 29696, or 30720
         public let value: String
 
         public init(type: ResourceType, value: String) {
@@ -1958,13 +1881,12 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case type = "type"
-            case value = "value"
+            case type
+            case value
         }
     }
 
     public struct RetryStrategy: AWSEncodableShape & AWSDecodableShape {
-
         /// The number of times to move a job to the RUNNABLE status. You can specify between 1 and 10 attempts. If the value of attempts is greater than one, the job is retried on failure the same number of attempts as the value.
         public let attempts: Int?
         /// Array of up to 5 objects that specify conditions under which the job should be retried or failed. If this parameter is specified, then the attempts parameter must also be specified.
@@ -1976,16 +1898,15 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case attempts = "attempts"
-            case evaluateOnExit = "evaluateOnExit"
+            case attempts
+            case evaluateOnExit
         }
     }
 
     public struct Secret: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the secret.
         public let name: String
-        /// The secret to expose to the container. The supported values are either the full ARN of the AWS Secrets Manager secret or the full ARN of the parameter in the AWS Systems Manager Parameter Store.  If the AWS Systems Manager Parameter Store parameter exists in the same Region as the job you're launching, then you can use either the full ARN or name of the parameter. If the parameter exists in a different Region, then the full ARN must be specified. 
+        /// The secret to expose to the container. The supported values are either the full ARN of the AWS Secrets Manager secret or the full ARN of the parameter in the AWS Systems Manager Parameter Store.  If the AWS Systems Manager Parameter Store parameter exists in the same Region as the job you're launching, then you can use either the full ARN or name of the parameter. If the parameter exists in a different Region, then the full ARN must be specified.
         public let valueFrom: String
 
         public init(name: String, valueFrom: String) {
@@ -1994,13 +1915,12 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case name = "name"
-            case valueFrom = "valueFrom"
+            case name
+            case valueFrom
         }
     }
 
     public struct SubmitJobRequest: AWSEncodableShape {
-
         /// The array properties for the submitted job, such as the size of the array. The array size can be between 2 and 10,000. If you specify array properties for a job, it becomes an array job. For more information, see Array Jobs in the AWS Batch User Guide.
         public let arrayProperties: ArrayProperties?
         /// A list of container overrides in the JSON format that specify the name of a container in the specified job definition and the overrides it should receive. You can override the default command for a container, which is specified in the job definition or the Docker image, with a command override. You can also override existing environment variables on a container or add new environment variables to it with an environment override.
@@ -2013,7 +1933,7 @@ extension Batch {
         public let jobName: String
         /// The job queue where the job is submitted. You can specify either the name or the Amazon Resource Name (ARN) of the queue.
         public let jobQueue: String
-        /// A list of node overrides in JSON format that specify the node range to target and the container overrides for that node range.  This parameter isn't applicable to jobs running on Fargate resources; use containerOverrides instead. 
+        /// A list of node overrides in JSON format that specify the node range to target and the container overrides for that node range.  This parameter isn't applicable to jobs running on Fargate resources; use containerOverrides instead.
         public let nodeOverrides: NodeOverrides?
         /// Additional parameters passed to the job that replace parameter substitution placeholders that are set in the job definition. Parameters are specified as a key and value pair mapping. Parameters in a SubmitJob request override any corresponding parameter defaults from the job definition.
         public let parameters: [String: String]?
@@ -2052,23 +1972,22 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arrayProperties = "arrayProperties"
-            case containerOverrides = "containerOverrides"
-            case dependsOn = "dependsOn"
-            case jobDefinition = "jobDefinition"
-            case jobName = "jobName"
-            case jobQueue = "jobQueue"
-            case nodeOverrides = "nodeOverrides"
-            case parameters = "parameters"
-            case propagateTags = "propagateTags"
-            case retryStrategy = "retryStrategy"
-            case tags = "tags"
-            case timeout = "timeout"
+            case arrayProperties
+            case containerOverrides
+            case dependsOn
+            case jobDefinition
+            case jobName
+            case jobQueue
+            case nodeOverrides
+            case parameters
+            case propagateTags
+            case retryStrategy
+            case tags
+            case timeout
         }
     }
 
     public struct SubmitJobResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) for the job.
         public let jobArn: String?
         /// The unique identifier for the job.
@@ -2083,9 +2002,9 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case jobArn = "jobArn"
-            case jobId = "jobId"
-            case jobName = "jobName"
+            case jobArn
+            case jobId
+            case jobName
         }
     }
 
@@ -2115,20 +2034,15 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tags = "tags"
+            case tags
         }
     }
 
     public struct TagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct TerminateJobRequest: AWSEncodableShape {
-
         /// The AWS Batch job ID of the job to terminate.
         public let jobId: String
         /// A message to attach to the job that explains the reason for canceling it. This message is returned by future DescribeJobs operations on the job. This message is also recorded in the AWS Batch activity logs.
@@ -2140,21 +2054,16 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case jobId = "jobId"
-            case reason = "reason"
+            case jobId
+            case reason
         }
     }
 
     public struct TerminateJobResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct Tmpfs: AWSEncodableShape & AWSDecodableShape {
-
         /// The absolute file path in the container where the tmpfs volume is mounted.
         public let containerPath: String
         /// The list of tmpfs volume mount options. Valid values: "defaults" | "ro" | "rw" | "suid" | "nosuid" | "dev" | "nodev" | "exec" | "noexec" | "sync" | "async" | "dirsync" | "remount" | "mand" | "nomand" | "atime" | "noatime" | "diratime" | "nodiratime" | "bind" | "rbind" | "unbindable" | "runbindable" | "private" | "rprivate" | "shared" | "rshared" | "slave" | "rslave" | "relatime" | "norelatime" | "strictatime" | "nostrictatime" | "mode" | "uid" | "gid" | "nr_inodes" | "nr_blocks" | "mpol"
@@ -2169,14 +2078,13 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case containerPath = "containerPath"
-            case mountOptions = "mountOptions"
-            case size = "size"
+            case containerPath
+            case mountOptions
+            case size
         }
     }
 
     public struct Ulimit: AWSEncodableShape & AWSDecodableShape {
-
         /// The hard limit for the ulimit type.
         public let hardLimit: Int
         /// The type of the ulimit.
@@ -2191,15 +2099,15 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case hardLimit = "hardLimit"
-            case name = "name"
-            case softLimit = "softLimit"
+            case hardLimit
+            case name
+            case softLimit
         }
     }
 
     public struct UntagResourceRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "resourceArn")), 
+            AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "resourceArn")),
             AWSMemberEncoding(label: "tagKeys", location: .querystring(locationName: "tagKeys"))
         ]
 
@@ -2226,20 +2134,15 @@ extension Batch {
     }
 
     public struct UntagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateComputeEnvironmentRequest: AWSEncodableShape {
-
         /// The name or full Amazon Resource Name (ARN) of the compute environment to update.
         public let computeEnvironment: String
         /// Details of the compute resources managed by the compute environment. Required for a managed compute environment. For more information, see Compute Environments in the AWS Batch User Guide.
         public let computeResources: ComputeResourceUpdate?
-        /// The full Amazon Resource Name (ARN) of the IAM role that allows AWS Batch to make calls to other AWS services on your behalf. For more information, see AWS Batch service IAM role in the AWS Batch User Guide.  If the compute environment has a service-linked role, it cannot be changed to use a regular IAM role. If the compute environment has a regular IAM role, it cannot be changed to use a service-linked role.   If your specified role has a path other than /, then you must either specify the full role ARN (this is recommended) or prefix the role name with the path.  Depending on how you created your AWS Batch service role, its ARN might contain the service-role path prefix. When you only specify the name of the service role, AWS Batch assumes that your ARN doesn't use the service-role path prefix. Because of this, we recommend that you specify the full ARN of your service role when you create compute environments. 
+        /// The full Amazon Resource Name (ARN) of the IAM role that allows AWS Batch to make calls to other AWS services on your behalf. For more information, see AWS Batch service IAM role in the AWS Batch User Guide.  If the compute environment has a service-linked role, it cannot be changed to use a regular IAM role. If the compute environment has a regular IAM role, it cannot be changed to use a service-linked role.   If your specified role has a path other than /, then you must either specify the full role ARN (this is recommended) or prefix the role name with the path.  Depending on how you created your AWS Batch service role, its ARN might contain the service-role path prefix. When you only specify the name of the service role, AWS Batch assumes that your ARN doesn't use the service-role path prefix. Because of this, we recommend that you specify the full ARN of your service role when you create compute environments.
         public let serviceRole: String?
         /// The state of the compute environment. Compute environments in the ENABLED state can accept jobs from a queue and scale in or out automatically based on the workload demand of its associated queues. If the state is ENABLED, then the AWS Batch scheduler can attempt to place jobs from an associated job queue on the compute resources within the environment. If the compute environment is managed, then it can scale its instances out or in automatically, based on the job queue demand. If the state is DISABLED, then the AWS Batch scheduler doesn't attempt to place jobs within the environment. Jobs in a STARTING or RUNNING state continue to progress normally. Managed compute environments in the DISABLED state don't scale out. However, they scale in to minvCpus value after instances become idle.
         public let state: CEState?
@@ -2252,15 +2155,14 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case computeEnvironment = "computeEnvironment"
-            case computeResources = "computeResources"
-            case serviceRole = "serviceRole"
-            case state = "state"
+            case computeEnvironment
+            case computeResources
+            case serviceRole
+            case state
         }
     }
 
     public struct UpdateComputeEnvironmentResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the compute environment.
         public let computeEnvironmentArn: String?
         /// The name of the compute environment. Up to 128 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed.
@@ -2272,14 +2174,13 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case computeEnvironmentArn = "computeEnvironmentArn"
-            case computeEnvironmentName = "computeEnvironmentName"
+            case computeEnvironmentArn
+            case computeEnvironmentName
         }
     }
 
     public struct UpdateJobQueueRequest: AWSEncodableShape {
-
-        /// Details the set of compute environments mapped to a job queue and their order relative to each other. This is one of the parameters used by the job scheduler to determine which compute environment should run a given job. Compute environments must be in the VALID state before you can associate them with a job queue. All of the compute environments must be either EC2 (EC2 or SPOT) or Fargate (FARGATE or FARGATE_SPOT). EC2 and Fargate compute environments can't be mixed.  All compute environments that are associated with a job queue must share the same architecture. AWS Batch doesn't support mixing compute environment architecture types in a single job queue. 
+        /// Details the set of compute environments mapped to a job queue and their order relative to each other. This is one of the parameters used by the job scheduler to determine which compute environment should run a given job. Compute environments must be in the VALID state before you can associate them with a job queue. All of the compute environments must be either EC2 (EC2 or SPOT) or Fargate (FARGATE or FARGATE_SPOT). EC2 and Fargate compute environments can't be mixed.  All compute environments that are associated with a job queue must share the same architecture. AWS Batch doesn't support mixing compute environment architecture types in a single job queue.
         public let computeEnvironmentOrder: [ComputeEnvironmentOrder]?
         /// The name or the Amazon Resource Name (ARN) of the job queue.
         public let jobQueue: String
@@ -2296,15 +2197,14 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case computeEnvironmentOrder = "computeEnvironmentOrder"
-            case jobQueue = "jobQueue"
-            case priority = "priority"
-            case state = "state"
+            case computeEnvironmentOrder
+            case jobQueue
+            case priority
+            case state
         }
     }
 
     public struct UpdateJobQueueResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the job queue.
         public let jobQueueArn: String?
         /// The name of the job queue.
@@ -2316,16 +2216,15 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case jobQueueArn = "jobQueueArn"
-            case jobQueueName = "jobQueueName"
+            case jobQueueArn
+            case jobQueueName
         }
     }
 
     public struct Volume: AWSEncodableShape & AWSDecodableShape {
-
         /// This parameter is specified when you are using an Amazon Elastic File System file system for job storage. Jobs running on Fargate resources must specify a platformVersion of at least 1.4.0.
         public let efsVolumeConfiguration: EFSVolumeConfiguration?
-        /// The contents of the host parameter determine whether your data volume persists on the host container instance and where it is stored. If the host parameter is empty, then the Docker daemon assigns a host path for your data volume. However, the data isn't guaranteed to persist after the containers associated with it stop running.  This parameter isn't applicable to jobs running on Fargate resources and shouldn't be provided. 
+        /// The contents of the host parameter determine whether your data volume persists on the host container instance and where it is stored. If the host parameter is empty, then the Docker daemon assigns a host path for your data volume. However, the data isn't guaranteed to persist after the containers associated with it stop running.  This parameter isn't applicable to jobs running on Fargate resources and shouldn't be provided.
         public let host: Host?
         /// The name of the volume. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed. This name is referenced in the sourceVolume parameter of container definition mountPoints.
         public let name: String?
@@ -2337,9 +2236,9 @@ extension Batch {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case efsVolumeConfiguration = "efsVolumeConfiguration"
-            case host = "host"
-            case name = "name"
+            case efsVolumeConfiguration
+            case host
+            case name
         }
     }
 }

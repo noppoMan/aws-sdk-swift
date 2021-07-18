@@ -168,7 +168,6 @@ extension DataBrew {
     }
 
     public struct BatchDeleteRecipeVersionResponse: AWSDecodableShape {
-
         /// Errors, if any, that occurred while attempting to delete the recipe versions.
         public let errors: [RecipeVersionErrorDetail]?
         /// The name of the recipe that was modified.
@@ -186,7 +185,6 @@ extension DataBrew {
     }
 
     public struct ConditionExpression: AWSEncodableShape & AWSDecodableShape {
-
         /// A specific condition to apply to a recipe action. For more information, see Recipe structure in the Glue DataBrew Developer Guide.
         public let condition: String
         /// A column to apply this condition to.
@@ -217,7 +215,6 @@ extension DataBrew {
     }
 
     public struct CreateDatasetRequest: AWSEncodableShape {
-
         /// The file format of a dataset that is created from an Amazon S3 file or folder.
         public let format: InputFormat?
         public let formatOptions: FormatOptions?
@@ -264,7 +261,6 @@ extension DataBrew {
     }
 
     public struct CreateDatasetResponse: AWSDecodableShape {
-
         /// The name of the dataset that you created.
         public let name: String
 
@@ -278,12 +274,11 @@ extension DataBrew {
     }
 
     public struct CreateProfileJobRequest: AWSEncodableShape {
-
         /// The name of the dataset that this job is to act upon.
         public let datasetName: String
         /// The Amazon Resource Name (ARN) of an encryption key that is used to protect the job.
         public let encryptionKeyArn: String?
-        /// The encryption mode for the job, which can be one of the following:    SSE-KMS - SSE-KMS - Server-side encryption with  KMS-managed keys.    SSE-S3 - Server-side encryption with keys managed by Amazon S3.  
+        /// The encryption mode for the job, which can be one of the following:    SSE-KMS - SSE-KMS - Server-side encryption with  KMS-managed keys.    SSE-S3 - Server-side encryption with keys managed by Amazon S3.
         public let encryptionMode: EncryptionMode?
         /// Sample configuration for profile jobs only. Determines the number of rows on which the profile job will be executed. If a JobSample value is not provided, the default value will be used. The default value is CUSTOM_ROWS for the mode parameter and 20000 for the size parameter.
         public let jobSample: JobSample?
@@ -356,7 +351,6 @@ extension DataBrew {
     }
 
     public struct CreateProfileJobResponse: AWSDecodableShape {
-
         /// The name of the job that was created.
         public let name: String
 
@@ -370,7 +364,6 @@ extension DataBrew {
     }
 
     public struct CreateProjectRequest: AWSEncodableShape {
-
         /// The name of an existing dataset to associate this project with.
         public let datasetName: String
         /// A unique name for the new project. Valid characters are alphanumeric (A-Z, a-z, 0-9), hyphen (-), period (.), and space.
@@ -422,7 +415,6 @@ extension DataBrew {
     }
 
     public struct CreateProjectResponse: AWSDecodableShape {
-
         /// The name of the project that you created.
         public let name: String
 
@@ -436,14 +428,13 @@ extension DataBrew {
     }
 
     public struct CreateRecipeJobRequest: AWSEncodableShape {
-
         /// One or more artifacts that represent the AWS Glue Data Catalog output from running the job.
         public let dataCatalogOutputs: [DataCatalogOutput]?
         /// The name of the dataset that this job processes.
         public let datasetName: String?
         /// The Amazon Resource Name (ARN) of an encryption key that is used to protect the job.
         public let encryptionKeyArn: String?
-        /// The encryption mode for the job, which can be one of the following:    SSE-KMS - Server-side encryption with keys managed by KMS.    SSE-S3 - Server-side encryption with keys managed by Amazon S3.  
+        /// The encryption mode for the job, which can be one of the following:    SSE-KMS - Server-side encryption with keys managed by KMS.    SSE-S3 - Server-side encryption with keys managed by Amazon S3.
         public let encryptionMode: EncryptionMode?
         /// Enables or disables Amazon CloudWatch logging for the job. If logging is enabled, CloudWatch writes one log stream for each job run.
         public let logSubscription: LogSubscription?
@@ -532,7 +523,6 @@ extension DataBrew {
     }
 
     public struct CreateRecipeJobResponse: AWSDecodableShape {
-
         /// The name of the job that you created.
         public let name: String
 
@@ -546,7 +536,6 @@ extension DataBrew {
     }
 
     public struct CreateRecipeRequest: AWSEncodableShape {
-
         /// A description for the recipe.
         public let description: String?
         /// A unique name for the recipe. Valid characters are alphanumeric (A-Z, a-z, 0-9), hyphen (-), period (.), and space.
@@ -588,7 +577,6 @@ extension DataBrew {
     }
 
     public struct CreateRecipeResponse: AWSDecodableShape {
-
         /// The name of the recipe that you created.
         public let name: String
 
@@ -602,7 +590,6 @@ extension DataBrew {
     }
 
     public struct CreateScheduleRequest: AWSEncodableShape {
-
         /// The date or dates and time or times when the jobs are to be run. For more information, see Cron expressions in the Glue DataBrew Developer Guide.
         public let cronExpression: String
         /// The name or names of one or more jobs to be run.
@@ -647,7 +634,6 @@ extension DataBrew {
     }
 
     public struct CreateScheduleResponse: AWSDecodableShape {
-
         /// The name of the schedule that was created.
         public let name: String
 
@@ -661,7 +647,6 @@ extension DataBrew {
     }
 
     public struct CsvOptions: AWSEncodableShape & AWSDecodableShape {
-
         /// A single character that specifies the delimiter being used in the CSV file.
         public let delimiter: String?
         /// A variable that specifies whether the first row in the file is parsed as the header. If this value is false, column names are auto-generated.
@@ -684,7 +669,6 @@ extension DataBrew {
     }
 
     public struct CsvOutputOptions: AWSEncodableShape & AWSDecodableShape {
-
         /// A single character that specifies the delimiter used to create CSV job output.
         public let delimiter: String?
 
@@ -703,7 +687,6 @@ extension DataBrew {
     }
 
     public struct DataCatalogInputDefinition: AWSEncodableShape & AWSDecodableShape {
-
         /// The unique identifier of the Amazon Web Services account that holds the Data Catalog that stores the data.
         public let catalogId: String?
         /// The name of a database in the Data Catalog.
@@ -739,7 +722,6 @@ extension DataBrew {
     }
 
     public struct DataCatalogOutput: AWSEncodableShape & AWSDecodableShape {
-
         /// The unique identifier of the AWS account that holds the Data Catalog that stores the data.
         public let catalogId: String?
         /// The name of a database in the Data Catalog.
@@ -784,7 +766,6 @@ extension DataBrew {
     }
 
     public struct DatabaseInputDefinition: AWSEncodableShape & AWSDecodableShape {
-
         /// The table within the target database.
         public let databaseTableName: String
         /// The Glue Connection that stores the connection information for the target database.
@@ -813,7 +794,6 @@ extension DataBrew {
     }
 
     public struct DatabaseTableOutputOptions: AWSEncodableShape & AWSDecodableShape {
-
         /// A prefix for the name of a table DataBrew will create in the database.
         public let tableName: String
         /// Represents an Amazon S3 location (bucket name and object key) where DataBrew can store  intermediate results.
@@ -837,7 +817,6 @@ extension DataBrew {
     }
 
     public struct Dataset: AWSDecodableShape {
-
         /// The ID of the Amazon Web Services account that owns the dataset.
         public let accountId: String?
         /// The date and time that the dataset was created.
@@ -899,7 +878,6 @@ extension DataBrew {
     }
 
     public struct DatasetParameter: AWSEncodableShape & AWSDecodableShape {
-
         /// Optional boolean value that defines whether the captured value of this parameter  should be used to create a new column in a dataset.
         public let createColumn: Bool?
         /// Additional parameter options such as a format and a timezone. Required for datetime parameters.
@@ -936,7 +914,6 @@ extension DataBrew {
     }
 
     public struct DatetimeOptions: AWSEncodableShape & AWSDecodableShape {
-
         /// Required option, that defines the datetime format used for a date parameter in the  Amazon S3 path. Should use only supported datetime specifiers and separation characters, all  literal a-z or A-Z characters should be escaped with single quotes. E.g. "MM.dd.yyyy-'at'-HH:mm".
         public let format: String
         /// Optional value for a non-US locale code, needed for correct interpretation of some date formats.
@@ -989,7 +966,6 @@ extension DataBrew {
     }
 
     public struct DeleteDatasetResponse: AWSDecodableShape {
-
         /// The name of the dataset that you deleted.
         public let name: String
 
@@ -1023,7 +999,6 @@ extension DataBrew {
     }
 
     public struct DeleteJobResponse: AWSDecodableShape {
-
         /// The name of the job that you deleted.
         public let name: String
 
@@ -1057,7 +1032,6 @@ extension DataBrew {
     }
 
     public struct DeleteProjectResponse: AWSDecodableShape {
-
         /// The name of the project that you deleted.
         public let name: String
 
@@ -1072,7 +1046,7 @@ extension DataBrew {
 
     public struct DeleteRecipeVersionRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "name", location: .uri(locationName: "Name")), 
+            AWSMemberEncoding(label: "name", location: .uri(locationName: "Name")),
             AWSMemberEncoding(label: "recipeVersion", location: .uri(locationName: "RecipeVersion"))
         ]
 
@@ -1097,7 +1071,6 @@ extension DataBrew {
     }
 
     public struct DeleteRecipeVersionResponse: AWSDecodableShape {
-
         /// The name of the recipe that was deleted.
         public let name: String
         /// The version of the recipe that was deleted.
@@ -1135,7 +1108,6 @@ extension DataBrew {
     }
 
     public struct DeleteScheduleResponse: AWSDecodableShape {
-
         /// The name of the schedule that was deleted.
         public let name: String
 
@@ -1169,7 +1141,6 @@ extension DataBrew {
     }
 
     public struct DescribeDatasetResponse: AWSDecodableShape {
-
         /// The date and time that the dataset was created.
         public let createDate: Date?
         /// The identifier (user name) of the user who created the dataset.
@@ -1245,7 +1216,6 @@ extension DataBrew {
     }
 
     public struct DescribeJobResponse: AWSDecodableShape {
-
         /// The date and time that the job was created.
         public let createDate: Date?
         /// The identifier (user name) of the user associated with the creation of the job.
@@ -1256,7 +1226,7 @@ extension DataBrew {
         public let datasetName: String?
         /// The Amazon Resource Name (ARN) of an encryption key that is used to protect the job.
         public let encryptionKeyArn: String?
-        /// The encryption mode for the job, which can be one of the following:    SSE-KMS - Server-side encryption with keys managed by KMS.    SSE-S3 - Server-side encryption with keys managed by Amazon S3.  
+        /// The encryption mode for the job, which can be one of the following:    SSE-KMS - Server-side encryption with keys managed by KMS.    SSE-S3 - Server-side encryption with keys managed by Amazon S3.
         public let encryptionMode: EncryptionMode?
         /// Sample configuration for profile jobs only. Determines the number of rows on which the profile job will be executed.
         public let jobSample: JobSample?
@@ -1285,7 +1255,7 @@ extension DataBrew {
         public let tags: [String: String]?
         /// The job's timeout in minutes. A job that attempts to run longer than this timeout period ends with a status of TIMEOUT.
         public let timeout: Int?
-        /// The job type, which must be one of the following:    PROFILE - The job analyzes the dataset to determine its size, data types, data distribution, and more.    RECIPE - The job applies one or more transformations to a dataset.  
+        /// The job type, which must be one of the following:    PROFILE - The job analyzes the dataset to determine its size, data types, data distribution, and more.    RECIPE - The job applies one or more transformations to a dataset.
         public let type: JobType?
 
         public init(createDate: Date? = nil, createdBy: String? = nil, dataCatalogOutputs: [DataCatalogOutput]? = nil, datasetName: String? = nil, encryptionKeyArn: String? = nil, encryptionMode: EncryptionMode? = nil, jobSample: JobSample? = nil, lastModifiedBy: String? = nil, lastModifiedDate: Date? = nil, logSubscription: LogSubscription? = nil, maxCapacity: Int? = nil, maxRetries: Int? = nil, name: String, outputs: [Output]? = nil, projectName: String? = nil, recipeReference: RecipeReference? = nil, resourceArn: String? = nil, roleArn: String? = nil, tags: [String: String]? = nil, timeout: Int? = nil, type: JobType? = nil) {
@@ -1339,7 +1309,7 @@ extension DataBrew {
 
     public struct DescribeJobRunRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "name", location: .uri(locationName: "Name")), 
+            AWSMemberEncoding(label: "name", location: .uri(locationName: "Name")),
             AWSMemberEncoding(label: "runId", location: .uri(locationName: "RunId"))
         ]
 
@@ -1364,7 +1334,6 @@ extension DataBrew {
     }
 
     public struct DescribeJobRunResponse: AWSDecodableShape {
-
         /// The number of times that DataBrew has attempted to run the job.
         public let attempt: Int?
         /// The date and time when the job completed processing.
@@ -1457,7 +1426,6 @@ extension DataBrew {
     }
 
     public struct DescribeProjectResponse: AWSDecodableShape {
-
         /// The date and time that the project was created.
         public let createDate: Date?
         /// The identifier (user name) of the user who created the project.
@@ -1470,9 +1438,9 @@ extension DataBrew {
         public let lastModifiedDate: Date?
         /// The name of the project.
         public let name: String
-        /// The date and time when the project was opened. 
+        /// The date and time when the project was opened.
         public let openDate: Date?
-        /// The identifier (user name) of the user that opened the project for use. 
+        /// The identifier (user name) of the user that opened the project for use.
         public let openedBy: String?
         /// The recipe associated with this job.
         public let recipeName: String?
@@ -1481,7 +1449,7 @@ extension DataBrew {
         /// The ARN of the Identity and Access Management (IAM) role to be assumed when DataBrew runs the job.
         public let roleArn: String?
         public let sample: Sample?
-        /// Describes the current state of the session:    PROVISIONING - allocating resources for the session.    INITIALIZING - getting the session ready for first use.    ASSIGNED - the session is ready for use.  
+        /// Describes the current state of the session:    PROVISIONING - allocating resources for the session.    INITIALIZING - getting the session ready for first use.    ASSIGNED - the session is ready for use.
         public let sessionStatus: SessionStatus?
         /// Metadata tags associated with this project.
         public let tags: [String: String]?
@@ -1523,7 +1491,7 @@ extension DataBrew {
 
     public struct DescribeRecipeRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "name", location: .uri(locationName: "Name")), 
+            AWSMemberEncoding(label: "name", location: .uri(locationName: "Name")),
             AWSMemberEncoding(label: "recipeVersion", location: .querystring(locationName: "recipeVersion"))
         ]
 
@@ -1548,7 +1516,6 @@ extension DataBrew {
     }
 
     public struct DescribeRecipeResponse: AWSDecodableShape {
-
         /// The date and time that the recipe was created.
         public let createDate: Date?
         /// The identifier (user name) of the user who created the recipe.
@@ -1630,10 +1597,9 @@ extension DataBrew {
     }
 
     public struct DescribeScheduleResponse: AWSDecodableShape {
-
         /// The date and time that the schedule was created.
         public let createDate: Date?
-        /// The identifier (user name) of the user who created the schedule. 
+        /// The identifier (user name) of the user who created the schedule.
         public let createdBy: String?
         /// The date or dates and time or times when the jobs are to be run for the schedule. For more information, see Cron expressions in the Glue DataBrew Developer Guide.
         public let cronExpression: String?
@@ -1676,7 +1642,6 @@ extension DataBrew {
     }
 
     public struct ExcelOptions: AWSEncodableShape & AWSDecodableShape {
-
         /// A variable that specifies whether the first row in the file is parsed as the header. If this value is false, column names are auto-generated.
         public let headerRow: Bool?
         /// One or more sheet numbers in the Excel file that will be included in the dataset.
@@ -1713,7 +1678,6 @@ extension DataBrew {
     }
 
     public struct FilesLimit: AWSEncodableShape & AWSDecodableShape {
-
         /// The number of Amazon S3 files to select.
         public let maxFiles: Int
         /// A criteria to use for Amazon S3 files sorting before their selection. By default uses DESCENDING order,  i.e. most recent files are selected first. Anotherpossible value is ASCENDING.
@@ -1739,7 +1703,6 @@ extension DataBrew {
     }
 
     public struct FilterExpression: AWSEncodableShape & AWSDecodableShape {
-
         /// The expression which includes condition names followed by substitution variables, possibly grouped  and combined with other conditions. For example, "(starts_with :prefix1 or starts_with :prefix2) and  (ends_with :suffix1 or ends_with :suffix2)". Substitution variables should start with ':' symbol.
         public let expression: String
         /// The map of substitution variable names to their values used in this filter expression.
@@ -1769,7 +1732,6 @@ extension DataBrew {
     }
 
     public struct FormatOptions: AWSEncodableShape & AWSDecodableShape {
-
         /// Options that define how CSV input is to be interpreted by DataBrew.
         public let csv: CsvOptions?
         /// Options that define how Excel input is to be interpreted by DataBrew.
@@ -1796,7 +1758,6 @@ extension DataBrew {
     }
 
     public struct Input: AWSEncodableShape & AWSDecodableShape {
-
         /// Connection information for dataset input files stored in a database.
         public let databaseInputDefinition: DatabaseInputDefinition?
         /// The Glue Data Catalog parameters for the data.
@@ -1824,7 +1785,6 @@ extension DataBrew {
     }
 
     public struct Job: AWSDecodableShape {
-
         /// The ID of the Amazon Web Services account that owns the job.
         public let accountId: String?
         /// The date and time that the job was created.
@@ -1835,9 +1795,9 @@ extension DataBrew {
         public let dataCatalogOutputs: [DataCatalogOutput]?
         /// A dataset that the job is to process.
         public let datasetName: String?
-        /// The Amazon Resource Name (ARN) of an encryption key that is used to protect the job output. For more information, see Encrypting data written by DataBrew jobs 
+        /// The Amazon Resource Name (ARN) of an encryption key that is used to protect the job output. For more information, see Encrypting data written by DataBrew jobs
         public let encryptionKeyArn: String?
-        /// The encryption mode for the job, which can be one of the following:    SSE-KMS - Server-side encryption with keys managed by KMS.    SSE-S3 - Server-side encryption with keys managed by Amazon S3.  
+        /// The encryption mode for the job, which can be one of the following:    SSE-KMS - Server-side encryption with keys managed by KMS.    SSE-S3 - Server-side encryption with keys managed by Amazon S3.
         public let encryptionMode: EncryptionMode?
         /// A sample configuration for profile jobs only, which determines the number of rows on which the profile job is run. If a JobSample value isn't provided, the default value is used. The default value is CUSTOM_ROWS for the mode parameter and 20,000 for the size parameter.
         public let jobSample: JobSample?
@@ -1867,7 +1827,7 @@ extension DataBrew {
         public let tags: [String: String]?
         /// The job's timeout in minutes. A job that attempts to run longer than this timeout period ends with a status of TIMEOUT.
         public let timeout: Int?
-        /// The job type of the job, which must be one of the following:    PROFILE - A job to analyze a dataset, to determine its size, data types, data distribution, and more.    RECIPE - A job to apply one or more transformations to a dataset.  
+        /// The job type of the job, which must be one of the following:    PROFILE - A job to analyze a dataset, to determine its size, data types, data distribution, and more.    RECIPE - A job to apply one or more transformations to a dataset.
         public let type: JobType?
 
         public init(accountId: String? = nil, createDate: Date? = nil, createdBy: String? = nil, dataCatalogOutputs: [DataCatalogOutput]? = nil, datasetName: String? = nil, encryptionKeyArn: String? = nil, encryptionMode: EncryptionMode? = nil, jobSample: JobSample? = nil, lastModifiedBy: String? = nil, lastModifiedDate: Date? = nil, logSubscription: LogSubscription? = nil, maxCapacity: Int? = nil, maxRetries: Int? = nil, name: String, outputs: [Output]? = nil, projectName: String? = nil, recipeReference: RecipeReference? = nil, resourceArn: String? = nil, roleArn: String? = nil, tags: [String: String]? = nil, timeout: Int? = nil, type: JobType? = nil) {
@@ -1922,7 +1882,6 @@ extension DataBrew {
     }
 
     public struct JobRun: AWSDecodableShape {
-
         /// The number of times that DataBrew has attempted to run the job.
         public let attempt: Int?
         /// The date and time when the job completed processing.
@@ -1949,9 +1908,9 @@ extension DataBrew {
         public let recipeReference: RecipeReference?
         /// The unique identifier of the job run.
         public let runId: String?
-        /// The Amazon Resource Name (ARN) of the user who initiated the job run. 
+        /// The Amazon Resource Name (ARN) of the user who initiated the job run.
         public let startedBy: String?
-        /// The date and time when the job run began. 
+        /// The date and time when the job run began.
         public let startedOn: Date?
         /// The current state of the job run entity itself.
         public let state: JobRunState?
@@ -1996,8 +1955,7 @@ extension DataBrew {
     }
 
     public struct JobSample: AWSEncodableShape & AWSDecodableShape {
-
-        /// A value that determines whether the profile job is run on the entire dataset or a specified number of rows. This value must be one of the following:   FULL_DATASET - The profile job is run on the entire dataset.   CUSTOM_ROWS - The profile job is run on the number of rows specified in the Size parameter.  
+        /// A value that determines whether the profile job is run on the entire dataset or a specified number of rows. This value must be one of the following:   FULL_DATASET - The profile job is run on the entire dataset.   CUSTOM_ROWS - The profile job is run on the number of rows specified in the Size parameter.
         public let mode: SampleMode?
         /// The Size parameter is only required when the mode is CUSTOM_ROWS. The profile job is run on the specified number of rows. The maximum value for size is Long.MAX_VALUE. Long.MAX_VALUE = 9223372036854775807
         public let size: Int64?
@@ -2014,7 +1972,6 @@ extension DataBrew {
     }
 
     public struct JsonOptions: AWSEncodableShape & AWSDecodableShape {
-
         /// A value that specifies whether JSON input contains embedded new line characters.
         public let multiLine: Bool?
 
@@ -2029,11 +1986,11 @@ extension DataBrew {
 
     public struct ListDatasetsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
-        /// The maximum number of results to return in this request. 
+        /// The maximum number of results to return in this request.
         public let maxResults: Int?
         /// The token returned by a previous call to retrieve the next set of results.
         public let nextToken: String?
@@ -2054,7 +2011,6 @@ extension DataBrew {
     }
 
     public struct ListDatasetsResponse: AWSDecodableShape {
-
         /// A list of datasets that are defined.
         public let datasets: [Dataset]
         /// A token that you can use in a subsequent call to retrieve the next set of results.
@@ -2073,12 +2029,12 @@ extension DataBrew {
 
     public struct ListJobRunsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
-            AWSMemberEncoding(label: "name", location: .uri(locationName: "Name")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
+            AWSMemberEncoding(label: "name", location: .uri(locationName: "Name")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
-        /// The maximum number of results to return in this request. 
+        /// The maximum number of results to return in this request.
         public let maxResults: Int?
         /// The name of the job.
         public let name: String
@@ -2104,7 +2060,6 @@ extension DataBrew {
     }
 
     public struct ListJobRunsResponse: AWSDecodableShape {
-
         /// A list of job runs that have occurred for the specified job.
         public let jobRuns: [JobRun]
         /// A token that you can use in a subsequent call to retrieve the next set of results.
@@ -2123,17 +2078,17 @@ extension DataBrew {
 
     public struct ListJobsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "datasetName", location: .querystring(locationName: "datasetName")), 
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
-            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")), 
+            AWSMemberEncoding(label: "datasetName", location: .querystring(locationName: "datasetName")),
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
+            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")),
             AWSMemberEncoding(label: "projectName", location: .querystring(locationName: "projectName"))
         ]
 
         /// The name of a dataset. Using this parameter indicates to return only those jobs that act on the specified dataset.
         public let datasetName: String?
-        /// The maximum number of results to return in this request. 
+        /// The maximum number of results to return in this request.
         public let maxResults: Int?
-        /// A token generated by DataBrew that specifies where to continue pagination if a previous request was truncated. To get the next set of pages, pass in the NextToken value from the response object of the previous page call. 
+        /// A token generated by DataBrew that specifies where to continue pagination if a previous request was truncated. To get the next set of pages, pass in the NextToken value from the response object of the previous page call.
         public let nextToken: String?
         /// The name of a project. Using this parameter indicates to return only those jobs that are associated with the specified project.
         public let projectName: String?
@@ -2160,7 +2115,6 @@ extension DataBrew {
     }
 
     public struct ListJobsResponse: AWSDecodableShape {
-
         /// A list of jobs that are defined.
         public let jobs: [Job]
         /// A token that you can use in a subsequent call to retrieve the next set of results.
@@ -2179,11 +2133,11 @@ extension DataBrew {
 
     public struct ListProjectsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
-        /// The maximum number of results to return in this request. 
+        /// The maximum number of results to return in this request.
         public let maxResults: Int?
         /// The token returned by a previous call to retrieve the next set of results.
         public let nextToken: String?
@@ -2204,7 +2158,6 @@ extension DataBrew {
     }
 
     public struct ListProjectsResponse: AWSDecodableShape {
-
         /// A token that you can use in a subsequent call to retrieve the next set of results.
         public let nextToken: String?
         /// A list of projects that are defined .
@@ -2223,12 +2176,12 @@ extension DataBrew {
 
     public struct ListRecipeVersionsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
-            AWSMemberEncoding(label: "name", location: .querystring(locationName: "name")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
+            AWSMemberEncoding(label: "name", location: .querystring(locationName: "name")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
-        /// The maximum number of results to return in this request. 
+        /// The maximum number of results to return in this request.
         public let maxResults: Int?
         /// The name of the recipe for which to return version information.
         public let name: String
@@ -2254,7 +2207,6 @@ extension DataBrew {
     }
 
     public struct ListRecipeVersionsResponse: AWSDecodableShape {
-
         /// A token that you can use in a subsequent call to retrieve the next set of results.
         public let nextToken: String?
         /// A list of versions for the specified recipe.
@@ -2273,16 +2225,16 @@ extension DataBrew {
 
     public struct ListRecipesRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
-            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
+            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")),
             AWSMemberEncoding(label: "recipeVersion", location: .querystring(locationName: "recipeVersion"))
         ]
 
-        /// The maximum number of results to return in this request. 
+        /// The maximum number of results to return in this request.
         public let maxResults: Int?
         /// The token returned by a previous call to retrieve the next set of results.
         public let nextToken: String?
-        /// Return only those recipes with a version identifier of LATEST_WORKING or LATEST_PUBLISHED. If RecipeVersion is omitted, ListRecipes returns all of the LATEST_PUBLISHED recipe versions. Valid values: LATEST_WORKING | LATEST_PUBLISHED 
+        /// Return only those recipes with a version identifier of LATEST_WORKING or LATEST_PUBLISHED. If RecipeVersion is omitted, ListRecipes returns all of the LATEST_PUBLISHED recipe versions. Valid values: LATEST_WORKING | LATEST_PUBLISHED
         public let recipeVersion: String?
 
         public init(maxResults: Int? = nil, nextToken: String? = nil, recipeVersion: String? = nil) {
@@ -2304,7 +2256,6 @@ extension DataBrew {
     }
 
     public struct ListRecipesResponse: AWSDecodableShape {
-
         /// A token that you can use in a subsequent call to retrieve the next set of results.
         public let nextToken: String?
         /// A list of recipes that are defined.
@@ -2323,14 +2274,14 @@ extension DataBrew {
 
     public struct ListSchedulesRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "jobName", location: .querystring(locationName: "jobName")), 
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "jobName", location: .querystring(locationName: "jobName")),
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
         /// The name of the job that these schedules apply to.
         public let jobName: String?
-        /// The maximum number of results to return in this request. 
+        /// The maximum number of results to return in this request.
         public let maxResults: Int?
         /// The token returned by a previous call to retrieve the next set of results.
         public let nextToken: String?
@@ -2354,7 +2305,6 @@ extension DataBrew {
     }
 
     public struct ListSchedulesResponse: AWSDecodableShape {
-
         /// A token that you can use in a subsequent call to retrieve the next set of results.
         public let nextToken: String?
         /// A list of schedules that are defined.
@@ -2376,7 +2326,7 @@ extension DataBrew {
             AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "ResourceArn"))
         ]
 
-        /// The Amazon Resource Name (ARN) string that uniquely identifies the DataBrew resource. 
+        /// The Amazon Resource Name (ARN) string that uniquely identifies the DataBrew resource.
         public let resourceArn: String
 
         public init(resourceArn: String) {
@@ -2392,7 +2342,6 @@ extension DataBrew {
     }
 
     public struct ListTagsForResourceResponse: AWSDecodableShape {
-
         /// A list of tags associated with the DataBrew resource.
         public let tags: [String: String]?
 
@@ -2406,7 +2355,6 @@ extension DataBrew {
     }
 
     public struct Output: AWSEncodableShape & AWSDecodableShape {
-
         /// The compression algorithm used to compress the output text of the job.
         public let compressionFormat: CompressionFormat?
         /// The data format of the output of the job.
@@ -2450,7 +2398,6 @@ extension DataBrew {
     }
 
     public struct OutputFormatOptions: AWSEncodableShape & AWSDecodableShape {
-
         /// Represents a set of options that define the structure of comma-separated value (CSV) job output.
         public let csv: CsvOutputOptions?
 
@@ -2468,7 +2415,6 @@ extension DataBrew {
     }
 
     public struct PathOptions: AWSEncodableShape & AWSDecodableShape {
-
         /// If provided, this structure imposes a limit on a number of files that should be selected.
         public let filesLimit: FilesLimit?
         /// If provided, this structure defines a date range for matching Amazon S3 objects based on their  LastModifiedDate attribute in Amazon S3.
@@ -2502,7 +2448,6 @@ extension DataBrew {
     }
 
     public struct Project: AWSDecodableShape {
-
         /// The ID of the Amazon Web Services account that owns the project.
         public let accountId: String?
         /// The date and time that the project was created.
@@ -2594,7 +2539,6 @@ extension DataBrew {
     }
 
     public struct PublishRecipeResponse: AWSDecodableShape {
-
         /// The name of the recipe that you published.
         public let name: String
 
@@ -2608,7 +2552,6 @@ extension DataBrew {
     }
 
     public struct Recipe: AWSDecodableShape {
-
         /// The date and time that the recipe was created.
         public let createDate: Date?
         /// The Amazon Resource Name (ARN) of the user who created the recipe.
@@ -2627,7 +2570,7 @@ extension DataBrew {
         public let publishedBy: String?
         /// The date and time when the recipe was published.
         public let publishedDate: Date?
-        /// The identifier for the version for the recipe. Must be one of the following:   Numeric version (X.Y) - X and Y stand for major and minor version numbers. The maximum length of each is 6 digits, and neither can be negative values. Both X and Y are required, and "0.0" isn't a valid version.    LATEST_WORKING - the most recent valid version being developed in a DataBrew project.    LATEST_PUBLISHED - the most recent published version.  
+        /// The identifier for the version for the recipe. Must be one of the following:   Numeric version (X.Y) - X and Y stand for major and minor version numbers. The maximum length of each is 6 digits, and neither can be negative values. Both X and Y are required, and "0.0" isn't a valid version.    LATEST_WORKING - the most recent valid version being developed in a DataBrew project.    LATEST_PUBLISHED - the most recent published version.
         public let recipeVersion: String?
         /// The Amazon Resource Name (ARN) for the recipe.
         public let resourceArn: String?
@@ -2670,7 +2613,6 @@ extension DataBrew {
     }
 
     public struct RecipeAction: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of a valid DataBrew transformation to be performed on the data.
         public let operation: String
         /// Contextual parameters for the transformation.
@@ -2701,10 +2643,9 @@ extension DataBrew {
     }
 
     public struct RecipeReference: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the recipe.
         public let name: String
-        /// The identifier for the version for the recipe. 
+        /// The identifier for the version for the recipe.
         public let recipeVersion: String?
 
         public init(name: String, recipeVersion: String? = nil) {
@@ -2726,10 +2667,9 @@ extension DataBrew {
     }
 
     public struct RecipeStep: AWSEncodableShape & AWSDecodableShape {
-
         /// The particular action to be performed in the recipe step.
         public let action: RecipeAction
-        /// One or more conditions that must be met for the recipe step to succeed.  All of the conditions in the array must be met. In other words, all of the conditions must be combined using a logical AND operation. 
+        /// One or more conditions that must be met for the recipe step to succeed.  All of the conditions in the array must be met. In other words, all of the conditions must be combined using a logical AND operation.
         public let conditionExpressions: [ConditionExpression]?
 
         public init(action: RecipeAction, conditionExpressions: [ConditionExpression]? = nil) {
@@ -2751,7 +2691,6 @@ extension DataBrew {
     }
 
     public struct RecipeVersionErrorDetail: AWSDecodableShape {
-
         /// The HTTP status code for the error.
         public let errorCode: String?
         /// The text of the error message.
@@ -2773,7 +2712,6 @@ extension DataBrew {
     }
 
     public struct S3Location: AWSEncodableShape & AWSDecodableShape {
-
         /// The Amazon S3 bucket name.
         public let bucket: String
         /// The unique name of the object in the bucket.
@@ -2798,7 +2736,6 @@ extension DataBrew {
     }
 
     public struct S3TableOutputOptions: AWSEncodableShape & AWSDecodableShape {
-
         /// Represents an Amazon S3 location (bucket name and object key) where DataBrew can write output  from a job.
         public let location: S3Location
 
@@ -2816,7 +2753,6 @@ extension DataBrew {
     }
 
     public struct Sample: AWSEncodableShape & AWSDecodableShape {
-
         /// The number of rows in the sample.
         public let size: Int?
         /// The way in which DataBrew obtains rows from a dataset.
@@ -2839,7 +2775,6 @@ extension DataBrew {
     }
 
     public struct Schedule: AWSDecodableShape {
-
         /// The ID of the Amazon Web Services account that owns the schedule.
         public let accountId: String?
         /// The date and time that the schedule was created.
@@ -2934,7 +2869,6 @@ extension DataBrew {
     }
 
     public struct SendProjectSessionActionResponse: AWSDecodableShape {
-
         /// A unique identifier for the action that was performed.
         public let actionId: Int?
         /// The name of the project that was affected by the action.
@@ -2976,7 +2910,6 @@ extension DataBrew {
     }
 
     public struct StartJobRunResponse: AWSDecodableShape {
-
         /// A system-generated identifier for this particular job run.
         public let runId: String
 
@@ -3015,7 +2948,6 @@ extension DataBrew {
     }
 
     public struct StartProjectSessionResponse: AWSDecodableShape {
-
         /// A system-generated identifier for the session.
         public let clientSessionId: String?
         /// The name of the project to be acted upon.
@@ -3034,7 +2966,7 @@ extension DataBrew {
 
     public struct StopJobRunRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "name", location: .uri(locationName: "Name")), 
+            AWSMemberEncoding(label: "name", location: .uri(locationName: "Name")),
             AWSMemberEncoding(label: "runId", location: .uri(locationName: "RunId"))
         ]
 
@@ -3059,7 +2991,6 @@ extension DataBrew {
     }
 
     public struct StopJobRunResponse: AWSDecodableShape {
-
         /// The ID of the job run that you stopped.
         public let runId: String
 
@@ -3105,20 +3036,16 @@ extension DataBrew {
     }
 
     public struct TagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UntagResourceRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "ResourceArn")), 
+            AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "ResourceArn")),
             AWSMemberEncoding(label: "tagKeys", location: .querystring(locationName: "tagKeys"))
         ]
 
-        /// A DataBrew resource from which you want to remove a tag or tags. The value for this parameter is an Amazon Resource Name (ARN). 
+        /// A DataBrew resource from which you want to remove a tag or tags. The value for this parameter is an Amazon Resource Name (ARN).
         public let resourceArn: String
         /// The tag keys (names) of one or more tags to be removed.
         public let tagKeys: [String]
@@ -3143,11 +3070,7 @@ extension DataBrew {
     }
 
     public struct UntagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateDatasetRequest: AWSEncodableShape {
@@ -3189,7 +3112,6 @@ extension DataBrew {
     }
 
     public struct UpdateDatasetResponse: AWSDecodableShape {
-
         /// The name of the dataset that you updated.
         public let name: String
 
@@ -3209,7 +3131,7 @@ extension DataBrew {
 
         /// The Amazon Resource Name (ARN) of an encryption key that is used to protect the job.
         public let encryptionKeyArn: String?
-        /// The encryption mode for the job, which can be one of the following:    SSE-KMS - Server-side encryption with keys managed by KMS.    SSE-S3 - Server-side encryption with keys managed by Amazon S3.  
+        /// The encryption mode for the job, which can be one of the following:    SSE-KMS - Server-side encryption with keys managed by KMS.    SSE-S3 - Server-side encryption with keys managed by Amazon S3.
         public let encryptionMode: EncryptionMode?
         /// Sample configuration for Profile Jobs only. Determines the number of rows on which the Profile job will be executed. If a JobSample value is not provided for profile jobs, the default value will be used. The default value is CUSTOM_ROWS for the mode parameter and 20000 for the size parameter.
         public let jobSample: JobSample?
@@ -3266,7 +3188,6 @@ extension DataBrew {
     }
 
     public struct UpdateProfileJobResponse: AWSDecodableShape {
-
         /// The name of the job that was updated.
         public let name: String
 
@@ -3311,7 +3232,6 @@ extension DataBrew {
     }
 
     public struct UpdateProjectResponse: AWSDecodableShape {
-
         /// The date and time that the project was last modified.
         public let lastModifiedDate: Date?
         /// The name of the project that you updated.
@@ -3337,7 +3257,7 @@ extension DataBrew {
         public let dataCatalogOutputs: [DataCatalogOutput]?
         /// The Amazon Resource Name (ARN) of an encryption key that is used to protect the job.
         public let encryptionKeyArn: String?
-        /// The encryption mode for the job, which can be one of the following:    SSE-KMS - Server-side encryption with keys managed by KMS.    SSE-S3 - Server-side encryption with keys managed by Amazon S3.  
+        /// The encryption mode for the job, which can be one of the following:    SSE-KMS - Server-side encryption with keys managed by KMS.    SSE-S3 - Server-side encryption with keys managed by Amazon S3.
         public let encryptionMode: EncryptionMode?
         /// Enables or disables Amazon CloudWatch logging for the job. If logging is enabled, CloudWatch writes one log stream for each job run.
         public let logSubscription: LogSubscription?
@@ -3347,7 +3267,7 @@ extension DataBrew {
         public let maxRetries: Int?
         /// The name of the job to update.
         public let name: String
-        /// One or more artifacts that represent the output from running the job. 
+        /// One or more artifacts that represent the output from running the job.
         public let outputs: [Output]?
         /// The Amazon Resource Name (ARN) of the Identity and Access Management (IAM) role to be assumed when DataBrew runs the job.
         public let roleArn: String
@@ -3400,7 +3320,6 @@ extension DataBrew {
     }
 
     public struct UpdateRecipeJobResponse: AWSDecodableShape {
-
         /// The name of the job that you updated.
         public let name: String
 
@@ -3447,7 +3366,6 @@ extension DataBrew {
     }
 
     public struct UpdateRecipeResponse: AWSDecodableShape {
-
         /// The name of the recipe that was updated.
         public let name: String
 
@@ -3497,7 +3415,6 @@ extension DataBrew {
     }
 
     public struct UpdateScheduleResponse: AWSDecodableShape {
-
         /// The name of the schedule that was updated.
         public let name: String
 
@@ -3511,7 +3428,6 @@ extension DataBrew {
     }
 
     public struct ViewFrame: AWSEncodableShape {
-
         /// The number of columns to include in the view frame, beginning with the StartColumnIndex value and ignoring any columns in the HiddenColumns list.
         public let columnRange: Int?
         /// A list of columns to hide in the view frame.

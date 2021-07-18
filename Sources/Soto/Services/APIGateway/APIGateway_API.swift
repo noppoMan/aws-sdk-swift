@@ -122,7 +122,7 @@ public struct APIGateway: AWSService {
         return self.client.execute(operation: "CreateStage", path: "/restapis/{restApiId}/stages", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Creates a usage plan with the throttle and quota limits, as well as the associated API stages, specified in the payload. 
+    /// Creates a usage plan with the throttle and quota limits, as well as the associated API stages, specified in the payload.
     public func createUsagePlan(_ input: CreateUsagePlanRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<UsagePlan> {
         return self.client.execute(operation: "CreateUsagePlan", path: "/usageplans", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -528,7 +528,7 @@ public struct APIGateway: AWSService {
         return self.client.execute(operation: "TagResource", path: "/tags/{resourceArn}", httpMethod: .PUT, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Simulate the execution of an Authorizer in your RestApi with headers, parameters, and an incoming request body.  Use Lambda Function as Authorizer Use Cognito User Pool as Authorizer 
+    /// Simulate the execution of an Authorizer in your RestApi with headers, parameters, and an incoming request body.  Use Lambda Function as Authorizer Use Cognito User Pool as Authorizer
     public func testInvokeAuthorizer(_ input: TestInvokeAuthorizerRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<TestInvokeAuthorizerResponse> {
         return self.client.execute(operation: "TestInvokeAuthorizer", path: "/restapis/{restApiId}/authorizers/{authorizerId}", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }

@@ -19,7 +19,7 @@
 
 /// Service object for interacting with AWS Finspacedata service.
 ///
-///  The FinSpace APIs let you take actions inside the FinSpace environment.  
+///  The FinSpace APIs let you take actions inside the FinSpace environment.
 public struct Finspacedata: AWSService {
     // MARK: Member variables
 

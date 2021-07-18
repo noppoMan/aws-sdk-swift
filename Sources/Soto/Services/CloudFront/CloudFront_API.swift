@@ -20,7 +20,7 @@
 /// Service object for interacting with AWS CloudFront service.
 ///
 /// Amazon CloudFront
-/// 		       This is the Amazon CloudFront API Reference. This guide is for developers who need detailed information about 
+/// 		       This is the Amazon CloudFront API Reference. This guide is for developers who need detailed information about
 /// 			CloudFront API actions, data types, and errors. For detailed information about CloudFront features, see the Amazon CloudFront Developer Guide.
 public struct CloudFront: AWSService {
     // MARK: Member variables
@@ -83,14 +83,14 @@ public struct CloudFront: AWSService {
     /// Creates a cache policy.
     /// 		       After you create a cache policy, you can attach it to one or more cache behaviors. When it’s
     /// 			attached to a cache behavior, the cache policy determines the following:
-    /// 		        
+    ///
     /// 				           The values that CloudFront includes in the cache key. These values can
     /// 					include HTTP headers, cookies, and URL query strings. CloudFront uses the cache key to
     /// 					find an object in its cache that it can return to the viewer.
-    /// 			          
+    ///
     /// 				           The default, minimum, and maximum time to live (TTL) values that you want objects to stay
     /// 					in the CloudFront cache.
-    /// 			          
+    ///
     /// 		       The headers, cookies, and query strings that are included in the cache key are automatically
     /// 			included in requests that CloudFront sends to the origin. CloudFront sends a request when it can’t
     /// 			find an object in its cache that matches the request’s cache key. If you want to send
@@ -102,25 +102,25 @@ public struct CloudFront: AWSService {
         return self.client.execute(operation: "CreateCachePolicy", path: "/2020-05-31/cache-policy", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Creates a new origin access identity. If you're using Amazon S3 for your origin, you can 
-    /// 			use an origin access identity to require users to access your content using a CloudFront URL instead 
-    /// 			of the Amazon S3 URL. For more information about how to use origin access identities, see Serving Private Content through CloudFront in the 
+    /// Creates a new origin access identity. If you're using Amazon S3 for your origin, you can
+    /// 			use an origin access identity to require users to access your content using a CloudFront URL instead
+    /// 			of the Amazon S3 URL. For more information about how to use origin access identities, see Serving Private Content through CloudFront in the
     /// 				Amazon CloudFront Developer Guide.
     public func createCloudFrontOriginAccessIdentity(_ input: CreateCloudFrontOriginAccessIdentityRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<CreateCloudFrontOriginAccessIdentityResult> {
         return self.client.execute(operation: "CreateCloudFrontOriginAccessIdentity", path: "/2020-05-31/origin-access-identity/cloudfront", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Creates a new web distribution. You create a CloudFront distribution to tell CloudFront where you 
-    /// 			want content to be delivered from, and the details about how to track and manage content delivery. Send a POST request to the 
+    /// Creates a new web distribution. You create a CloudFront distribution to tell CloudFront where you
+    /// 			want content to be delivered from, and the details about how to track and manage content delivery. Send a POST request to the
     /// 			/CloudFront API version/distribution/distribution ID resource.
     /// 		        When you update a distribution, there are more required fields than when you create a distribution.
-    /// 			When you update your distribution by using 
+    /// 			When you update your distribution by using
     /// 			UpdateDistribution,
     /// 			follow the steps included
     /// 			in the documentation to get the current configuration
     /// 			and then make your updates. This helps to make sure that you include all of the required fields. To view a summary,
-    /// 			see Required 
-    /// 				Fields for Create Distribution and Update Distribution in the Amazon CloudFront Developer Guide. 
+    /// 			see Required
+    /// 				Fields for Create Distribution and Update Distribution in the Amazon CloudFront Developer Guide.
     public func createDistribution(_ input: CreateDistributionRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<CreateDistributionResult> {
         return self.client.execute(operation: "CreateDistribution", path: "/2020-05-31/distribution", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -155,7 +155,7 @@ public struct CloudFront: AWSService {
         return self.client.execute(operation: "CreateFunction", path: "/2020-05-31/function", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Create a new invalidation. 
+    /// Create a new invalidation.
     public func createInvalidation(_ input: CreateInvalidationRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<CreateInvalidationResult> {
         return self.client.execute(operation: "CreateInvalidation", path: "/2020-05-31/distribution/{DistributionId}/invalidation", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -185,17 +185,17 @@ public struct CloudFront: AWSService {
     /// 			When it’s attached to a cache behavior, the origin request policy determines the values
     /// 			that CloudFront includes in requests that it sends to the origin. Each request that CloudFront sends
     /// 			to the origin includes the following:
-    /// 		        
+    ///
     /// 				           The request body and the URL path (without the domain name) from the viewer
     /// 					request.
-    /// 			          
+    ///
     /// 				           The headers that CloudFront automatically includes in every origin request, including
     /// 					Host, User-Agent, and X-Amz-Cf-Id.
-    /// 			          
+    ///
     /// 				           All HTTP headers, cookies, and URL query strings that are specified in the cache policy or
     /// 					the origin request policy. These can include items from the viewer request and,
     /// 					in the case of headers, additional ones that are added by CloudFront.
-    /// 			          
+    ///
     /// 		       CloudFront sends a request when it can’t find a valid object in its cache that matches the
     /// 			request. If you want to send values to the origin and also include them in the cache
     /// 			key, use CachePolicy.
@@ -239,12 +239,12 @@ public struct CloudFront: AWSService {
         return self.client.execute(operation: "DeleteCachePolicy", path: "/2020-05-31/cache-policy/{Id}", httpMethod: .DELETE, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Delete an origin access identity. 
+    /// Delete an origin access identity.
     @discardableResult public func deleteCloudFrontOriginAccessIdentity(_ input: DeleteCloudFrontOriginAccessIdentityRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<Void> {
         return self.client.execute(operation: "DeleteCloudFrontOriginAccessIdentity", path: "/2020-05-31/origin-access-identity/cloudfront/{Id}", httpMethod: .DELETE, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Delete a distribution. 
+    /// Delete a distribution.
     @discardableResult public func deleteDistribution(_ input: DeleteDistributionRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<Void> {
         return self.client.execute(operation: "DeleteDistribution", path: "/2020-05-31/distribution/{Id}", httpMethod: .DELETE, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -313,42 +313,42 @@ public struct CloudFront: AWSService {
         return self.client.execute(operation: "DeleteRealtimeLogConfig", path: "/2020-05-31/delete-realtime-log-config", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Delete a streaming distribution. To delete an RTMP distribution using the CloudFront API, 
-    /// 			perform the following steps. 
-    /// 		        To delete an RTMP distribution using the CloudFront 
-    /// 			API: 
-    /// 		        
-    /// 				           Disable the RTMP distribution. 
-    /// 			          
-    /// 				           Submit a GET Streaming Distribution Config request to get the current 
-    /// 					configuration and the Etag header for the distribution.  
-    /// 			          
-    /// 				           Update the XML document that was returned in the response to your GET 
-    /// 						Streaming Distribution Config request to change the value of Enabled 
-    /// 					to false. 
-    /// 			          
-    /// 				           Submit a PUT Streaming Distribution Config request to update the 
-    /// 					configuration for your distribution. In the request body, include the XML document that 
-    /// 					you updated in Step 3. Then set the value of the HTTP If-Match header to the 
-    /// 					value of the ETag header that CloudFront returned when you submitted the GET 
-    /// 						Streaming Distribution Config request in Step 2. 
-    /// 			          
-    /// 				           Review the response to the PUT Streaming Distribution Config request 
-    /// 					to confirm that the distribution was successfully disabled. 
-    /// 			          
-    /// 				           Submit a GET Streaming Distribution Config request to confirm that 
-    /// 					your changes have propagated. When propagation is complete, the value of 
-    /// 						Status is Deployed. 
-    /// 			          
-    /// 				           Submit a DELETE Streaming Distribution request. Set the value of the 
-    /// 					HTTP If-Match header to the value of the ETag header that CloudFront 
-    /// 					returned when you submitted the GET Streaming Distribution Config request in 
-    /// 					Step 2. 
-    /// 			          
-    /// 				           Review the response to your DELETE Streaming Distribution request to 
-    /// 					confirm that the distribution was successfully deleted. 
-    /// 			          
-    /// 		       For information about deleting a distribution using the CloudFront console, see Deleting a Distribution in the 
+    /// Delete a streaming distribution. To delete an RTMP distribution using the CloudFront API,
+    /// 			perform the following steps.
+    /// 		        To delete an RTMP distribution using the CloudFront
+    /// 			API:
+    ///
+    /// 				           Disable the RTMP distribution.
+    ///
+    /// 				           Submit a GET Streaming Distribution Config request to get the current
+    /// 					configuration and the Etag header for the distribution.
+    ///
+    /// 				           Update the XML document that was returned in the response to your GET
+    /// 						Streaming Distribution Config request to change the value of Enabled
+    /// 					to false.
+    ///
+    /// 				           Submit a PUT Streaming Distribution Config request to update the
+    /// 					configuration for your distribution. In the request body, include the XML document that
+    /// 					you updated in Step 3. Then set the value of the HTTP If-Match header to the
+    /// 					value of the ETag header that CloudFront returned when you submitted the GET
+    /// 						Streaming Distribution Config request in Step 2.
+    ///
+    /// 				           Review the response to the PUT Streaming Distribution Config request
+    /// 					to confirm that the distribution was successfully disabled.
+    ///
+    /// 				           Submit a GET Streaming Distribution Config request to confirm that
+    /// 					your changes have propagated. When propagation is complete, the value of
+    /// 						Status is Deployed.
+    ///
+    /// 				           Submit a DELETE Streaming Distribution request. Set the value of the
+    /// 					HTTP If-Match header to the value of the ETag header that CloudFront
+    /// 					returned when you submitted the GET Streaming Distribution Config request in
+    /// 					Step 2.
+    ///
+    /// 				           Review the response to your DELETE Streaming Distribution request to
+    /// 					confirm that the distribution was successfully deleted.
+    ///
+    /// 		       For information about deleting a distribution using the CloudFront console, see Deleting a Distribution in the
     /// 				Amazon CloudFront Developer Guide.
     @discardableResult public func deleteStreamingDistribution(_ input: DeleteStreamingDistributionRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<Void> {
         return self.client.execute(operation: "DeleteStreamingDistribution", path: "/2020-05-31/streaming-distribution/{Id}", httpMethod: .DELETE, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
@@ -364,11 +364,11 @@ public struct CloudFront: AWSService {
     }
 
     /// Gets a cache policy, including the following metadata:
-    /// 		        
+    ///
     /// 				           The policy’s identifier.
-    /// 			          
+    ///
     /// 				           The date and time when the policy was last modified.
-    /// 			          
+    ///
     /// 		       To get a cache policy, you must provide the policy’s identifier. If the cache policy is
     /// 			attached to a distribution’s cache behavior, you can get the policy’s identifier using
     /// 			ListDistributions or GetDistribution. If the cache policy is
@@ -388,12 +388,12 @@ public struct CloudFront: AWSService {
         return self.client.execute(operation: "GetCachePolicyConfig", path: "/2020-05-31/cache-policy/{Id}/config", httpMethod: .GET, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Get the information about an origin access identity. 
+    /// Get the information about an origin access identity.
     public func getCloudFrontOriginAccessIdentity(_ input: GetCloudFrontOriginAccessIdentityRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<GetCloudFrontOriginAccessIdentityResult> {
         return self.client.execute(operation: "GetCloudFrontOriginAccessIdentity", path: "/2020-05-31/origin-access-identity/cloudfront/{Id}", httpMethod: .GET, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Get the configuration information about an origin access identity. 
+    /// Get the configuration information about an origin access identity.
     public func getCloudFrontOriginAccessIdentityConfig(_ input: GetCloudFrontOriginAccessIdentityConfigRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<GetCloudFrontOriginAccessIdentityConfigResult> {
         return self.client.execute(operation: "GetCloudFrontOriginAccessIdentityConfig", path: "/2020-05-31/origin-access-identity/cloudfront/{Id}/config", httpMethod: .GET, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -403,7 +403,7 @@ public struct CloudFront: AWSService {
         return self.client.execute(operation: "GetDistribution", path: "/2020-05-31/distribution/{Id}", httpMethod: .GET, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Get the configuration information about a distribution. 
+    /// Get the configuration information about a distribution.
     public func getDistributionConfig(_ input: GetDistributionConfigRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<GetDistributionConfigResult> {
         return self.client.execute(operation: "GetDistributionConfig", path: "/2020-05-31/distribution/{Id}/config", httpMethod: .GET, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -436,7 +436,7 @@ public struct CloudFront: AWSService {
         return self.client.execute(operation: "GetFunction", path: "/2020-05-31/function/{Name}", httpMethod: .GET, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Get the information about an invalidation. 
+    /// Get the information about an invalidation.
     public func getInvalidation(_ input: GetInvalidationRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<GetInvalidationResult> {
         return self.client.execute(operation: "GetInvalidation", path: "/2020-05-31/distribution/{DistributionId}/invalidation/{Id}", httpMethod: .GET, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -468,11 +468,11 @@ public struct CloudFront: AWSService {
     }
 
     /// Gets an origin request policy, including the following metadata:
-    /// 		        
+    ///
     /// 				           The policy’s identifier.
-    /// 			          
+    ///
     /// 				           The date and time when the policy was last modified.
-    /// 			          
+    ///
     /// 		       To get an origin request policy, you must provide the policy’s identifier. If the origin
     /// 			request policy is attached to a distribution’s cache behavior, you can get the policy’s
     /// 			identifier using ListDistributions or GetDistribution. If the
@@ -516,7 +516,7 @@ public struct CloudFront: AWSService {
         return self.client.execute(operation: "GetStreamingDistribution", path: "/2020-05-31/streaming-distribution/{Id}", httpMethod: .GET, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Get the configuration information about a streaming distribution. 
+    /// Get the configuration information about a streaming distribution.
     public func getStreamingDistributionConfig(_ input: GetStreamingDistributionConfigRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<GetStreamingDistributionConfigResult> {
         return self.client.execute(operation: "GetStreamingDistributionConfig", path: "/2020-05-31/streaming-distribution/{Id}/config", httpMethod: .GET, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -612,7 +612,7 @@ public struct CloudFront: AWSService {
     /// 			the total number of items in the list exceeds the maximum that you specify, or the
     /// 			default maximum, the response is paginated. To get the next page of items, send a
     /// 			subsequent request that specifies the NextMarker value from the current
-    /// 			response as the Marker value in the subsequent request. 
+    /// 			response as the Marker value in the subsequent request.
     public func listDistributionsByRealtimeLogConfig(_ input: ListDistributionsByRealtimeLogConfigRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<ListDistributionsByRealtimeLogConfigResult> {
         return self.client.execute(operation: "ListDistributionsByRealtimeLogConfig", path: "/2020-05-31/distributionsByRealtimeLogConfig", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -644,7 +644,7 @@ public struct CloudFront: AWSService {
         return self.client.execute(operation: "ListFunctions", path: "/2020-05-31/function", httpMethod: .GET, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Lists invalidation batches. 
+    /// Lists invalidation batches.
     public func listInvalidations(_ input: ListInvalidationsRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<ListInvalidationsResult> {
         return self.client.execute(operation: "ListInvalidations", path: "/2020-05-31/distribution/{DistributionId}/invalidation", httpMethod: .GET, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -681,12 +681,12 @@ public struct CloudFront: AWSService {
     /// 			the total number of items in the list exceeds the maximum that you specify, or the
     /// 			default maximum, the response is paginated. To get the next page of items, send a
     /// 			subsequent request that specifies the NextMarker value from the current
-    /// 			response as the Marker value in the subsequent request. 
+    /// 			response as the Marker value in the subsequent request.
     public func listRealtimeLogConfigs(_ input: ListRealtimeLogConfigsRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<ListRealtimeLogConfigsResult> {
         return self.client.execute(operation: "ListRealtimeLogConfigs", path: "/2020-05-31/realtime-log-config", httpMethod: .GET, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// List streaming distributions. 
+    /// List streaming distributions.
     public func listStreamingDistributions(_ input: ListStreamingDistributionsRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<ListStreamingDistributionsResult> {
         return self.client.execute(operation: "ListStreamingDistributions", path: "/2020-05-31/streaming-distribution", httpMethod: .GET, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -737,75 +737,75 @@ public struct CloudFront: AWSService {
     /// 		       When you update a cache policy configuration, all the fields are updated with the
     /// 			values provided in the request. You cannot update some fields independent of others. To
     /// 			update a cache policy configuration:
-    /// 		        
+    ///
     /// 				           Use GetCachePolicyConfig to get the current configuration.
-    /// 			          
+    ///
     /// 				           Locally modify the fields in the cache policy configuration that you want to
     /// 					update.
-    /// 			          
+    ///
     /// 				           Call UpdateCachePolicy by providing the entire cache policy
     /// 					configuration, including the fields that you modified and those that you
     /// 					didn’t.
-    /// 			          
+    ///
     public func updateCachePolicy(_ input: UpdateCachePolicyRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<UpdateCachePolicyResult> {
         return self.client.execute(operation: "UpdateCachePolicy", path: "/2020-05-31/cache-policy/{Id}", httpMethod: .PUT, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Update an origin access identity. 
+    /// Update an origin access identity.
     public func updateCloudFrontOriginAccessIdentity(_ input: UpdateCloudFrontOriginAccessIdentityRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<UpdateCloudFrontOriginAccessIdentityResult> {
         return self.client.execute(operation: "UpdateCloudFrontOriginAccessIdentity", path: "/2020-05-31/origin-access-identity/cloudfront/{Id}/config", httpMethod: .PUT, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Updates the configuration for a web distribution. 
+    /// Updates the configuration for a web distribution.
     /// 		        When you update a distribution, there are more required fields than when you create a distribution.
     /// 			When you update your distribution by using this API action, follow the steps here to get the current configuration
     /// 			and then make your updates, to make sure that you include all of the required fields. To view a summary,
-    /// 			see Required 
-    /// 				Fields for Create Distribution and Update Distribution in the Amazon CloudFront Developer Guide. 
-    /// 		       The update process includes getting the current distribution configuration, updating the XML document that is 
+    /// 			see Required
+    /// 				Fields for Create Distribution and Update Distribution in the Amazon CloudFront Developer Guide.
+    /// 		       The update process includes getting the current distribution configuration, updating the XML document that is
     /// 			returned to make your changes, and then submitting an UpdateDistribution request to make the updates.
-    /// 		       For information about updating a distribution using the CloudFront console instead, see  
-    /// 			Creating a 
-    /// 				Distribution in the Amazon CloudFront Developer Guide. 
-    /// 		 
-    /// 		        To update a web distribution using the CloudFront API 
-    /// 		         Submit a 
+    /// 		       For information about updating a distribution using the CloudFront console instead, see
+    /// 			Creating a
+    /// 				Distribution in the Amazon CloudFront Developer Guide.
+    ///
+    /// 		        To update a web distribution using the CloudFront API
+    /// 		         Submit a
     /// 				GetDistributionConfig
-    /// 				request to get the current configuration and an Etag header  
-    /// 				for the distribution. 
-    /// 				            If you update the distribution again, you must get a new Etag header. 
-    /// 			           Update the XML document that was returned in the response to your GetDistributionConfig request to include 
-    /// 				your changes.  
-    /// 				           
+    /// 				request to get the current configuration and an Etag header
+    /// 				for the distribution.
+    /// 				            If you update the distribution again, you must get a new Etag header.
+    /// 			           Update the XML document that was returned in the response to your GetDistributionConfig request to include
+    /// 				your changes.
+    ///
     /// 					             When you edit the XML file, be aware of the following:
-    /// 					               You must strip out the ETag parameter that is returned.   Additional fields are required when you update a distribution. There may be fields included in the 
+    /// 					               You must strip out the ETag parameter that is returned.   Additional fields are required when you update a distribution. There may be fields included in the
     /// 							XML file for features that you haven't configured for your distribution. This is expected and required to
-    /// 							successfully update the distribution.   You can't change the value of CallerReference. If you try to change this value, CloudFront returns an  
-    /// 							IllegalUpdate error.    The new configuration replaces the existing configuration; the values that you specify in an 
-    /// 							UpdateDistribution request are not merged into your existing configuration. When you add, delete, or 
-    /// 							replace values in an element that allows multiple values (for example, CNAME), you must specify all of the 
-    /// 							values that you want to appear in the updated distribution. In addition,  
-    /// 							you must update the corresponding Quantity element.   
-    /// 			           Submit an UpdateDistribution request to update the configuration for your distribution: 
-    /// 				             In the request body, include the XML document that you updated in Step 2. The request body must include an  
-    /// 						XML document with a DistributionConfig element.   Set the value of the HTTP If-Match header to the value of the ETag header that CloudFront returned  
-    /// 						when you submitted the GetDistributionConfig request in Step 1.  
-    /// 			           Review the response to the UpdateDistribution request to confirm that the configuration was  
-    /// 				successfully updated.   Optional: Submit a 
+    /// 							successfully update the distribution.   You can't change the value of CallerReference. If you try to change this value, CloudFront returns an
+    /// 							IllegalUpdate error.    The new configuration replaces the existing configuration; the values that you specify in an
+    /// 							UpdateDistribution request are not merged into your existing configuration. When you add, delete, or
+    /// 							replace values in an element that allows multiple values (for example, CNAME), you must specify all of the
+    /// 							values that you want to appear in the updated distribution. In addition,
+    /// 							you must update the corresponding Quantity element.
+    /// 			           Submit an UpdateDistribution request to update the configuration for your distribution:
+    /// 				             In the request body, include the XML document that you updated in Step 2. The request body must include an
+    /// 						XML document with a DistributionConfig element.   Set the value of the HTTP If-Match header to the value of the ETag header that CloudFront returned
+    /// 						when you submitted the GetDistributionConfig request in Step 1.
+    /// 			           Review the response to the UpdateDistribution request to confirm that the configuration was
+    /// 				successfully updated.   Optional: Submit a
     /// 				GetDistribution
-    /// 				request to confirm that your changes have propagated.  
-    /// 				When propagation is complete, the value of Status is Deployed. 
-    /// 			          
+    /// 				request to confirm that your changes have propagated.
+    /// 				When propagation is complete, the value of Status is Deployed.
+    ///
     public func updateDistribution(_ input: UpdateDistributionRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<UpdateDistributionResult> {
         return self.client.execute(operation: "UpdateDistribution", path: "/2020-05-31/distribution/{Id}/config", httpMethod: .PUT, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Update a field-level encryption configuration. 
+    /// Update a field-level encryption configuration.
     public func updateFieldLevelEncryptionConfig(_ input: UpdateFieldLevelEncryptionConfigRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<UpdateFieldLevelEncryptionConfigResult> {
         return self.client.execute(operation: "UpdateFieldLevelEncryptionConfig", path: "/2020-05-31/field-level-encryption/{Id}/config", httpMethod: .PUT, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Update a field-level encryption profile. 
+    /// Update a field-level encryption profile.
     public func updateFieldLevelEncryptionProfile(_ input: UpdateFieldLevelEncryptionProfileRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<UpdateFieldLevelEncryptionProfileResult> {
         return self.client.execute(operation: "UpdateFieldLevelEncryptionProfile", path: "/2020-05-31/field-level-encryption-profile/{Id}/config", httpMethod: .PUT, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -824,16 +824,16 @@ public struct CloudFront: AWSService {
     /// 		       When you update a key group, all the fields are updated with the values provided in
     /// 			the request. You cannot update some fields independent of others. To update a key
     /// 			group:
-    /// 		        
+    ///
     /// 				           Get the current key group with GetKeyGroup or
     /// 					GetKeyGroupConfig.
-    /// 			          
+    ///
     /// 				           Locally modify the fields in the key group that you want to update. For
     /// 					example, add or remove public key IDs.
-    /// 			          
+    ///
     /// 				           Call UpdateKeyGroup with the entire key group object, including
     /// 					the fields that you modified and those that you didn’t.
-    /// 			          
+    ///
     public func updateKeyGroup(_ input: UpdateKeyGroupRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<UpdateKeyGroupResult> {
         return self.client.execute(operation: "UpdateKeyGroup", path: "/2020-05-31/key-group/{Id}", httpMethod: .PUT, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -842,16 +842,16 @@ public struct CloudFront: AWSService {
     /// 		       When you update an origin request policy configuration, all the fields are updated
     /// 			with the values provided in the request. You cannot update some fields independent of
     /// 			others. To update an origin request policy configuration:
-    /// 		        
+    ///
     /// 				           Use GetOriginRequestPolicyConfig to get the current configuration.
-    /// 			          
+    ///
     /// 				           Locally modify the fields in the origin request policy configuration that you
     /// 					want to update.
-    /// 			          
+    ///
     /// 				           Call UpdateOriginRequestPolicy by providing the entire origin
     /// 					request policy configuration, including the fields that you modified and those
     /// 					that you didn’t.
-    /// 			          
+    ///
     public func updateOriginRequestPolicy(_ input: UpdateOriginRequestPolicyRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<UpdateOriginRequestPolicyResult> {
         return self.client.execute(operation: "UpdateOriginRequestPolicy", path: "/2020-05-31/origin-request-policy/{Id}", httpMethod: .PUT, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -865,24 +865,24 @@ public struct CloudFront: AWSService {
     /// 		       When you update a real-time log configuration, all the parameters are updated with the
     /// 			values provided in the request. You cannot update some parameters independent of others.
     /// 			To update a real-time log configuration:
-    /// 		        
+    ///
     /// 				           Call GetRealtimeLogConfig to get the current real-time log
     /// 					configuration.
-    /// 			          
+    ///
     /// 				           Locally modify the parameters in the real-time log configuration that you want
     /// 					to update.
-    /// 			          
+    ///
     /// 				           Call this API (UpdateRealtimeLogConfig) by providing the entire
     /// 					real-time log configuration, including the parameters that you modified and
     /// 					those that you didn’t.
-    /// 			          
+    ///
     /// 		       You cannot update a real-time log configuration’s Name or
     /// 			ARN.
     public func updateRealtimeLogConfig(_ input: UpdateRealtimeLogConfigRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<UpdateRealtimeLogConfigResult> {
         return self.client.execute(operation: "UpdateRealtimeLogConfig", path: "/2020-05-31/realtime-log-config", httpMethod: .PUT, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Update a streaming distribution. 
+    /// Update a streaming distribution.
     public func updateStreamingDistribution(_ input: UpdateStreamingDistributionRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<UpdateStreamingDistributionResult> {
         return self.client.execute(operation: "UpdateStreamingDistribution", path: "/2020-05-31/streaming-distribution/{Id}/config", httpMethod: .PUT, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }

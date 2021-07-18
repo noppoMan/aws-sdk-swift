@@ -46,7 +46,7 @@ extension MarketplaceCatalog {
 
     public struct CancelChangeSetRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "catalog", location: .querystring(locationName: "catalog")), 
+            AWSMemberEncoding(label: "catalog", location: .querystring(locationName: "catalog")),
             AWSMemberEncoding(label: "changeSetId", location: .querystring(locationName: "changeSetId"))
         ]
 
@@ -73,7 +73,6 @@ extension MarketplaceCatalog {
     }
 
     public struct CancelChangeSetResponse: AWSDecodableShape {
-
         /// The ARN associated with the change set referenced in this request.
         public let changeSetArn: String?
         /// The unique identifier for the change set referenced in this request.
@@ -91,7 +90,6 @@ extension MarketplaceCatalog {
     }
 
     public struct Change: AWSEncodableShape {
-
         /// Optional name for the change.
         public let changeName: String?
         /// Change types are single string values that describe your intention for the change. Each change type is unique for each EntityType provided in the change's scope.
@@ -130,7 +128,6 @@ extension MarketplaceCatalog {
     }
 
     public struct ChangeSetSummaryListItem: AWSDecodableShape {
-
         /// The ARN associated with the unique identifier for the change set referenced in this request.
         public let changeSetArn: String?
         /// The unique identifier for a change set.
@@ -172,7 +169,6 @@ extension MarketplaceCatalog {
     }
 
     public struct ChangeSummary: AWSDecodableShape {
-
         /// Optional name for the change.
         public let changeName: String?
         /// The type of the change.
@@ -203,11 +199,11 @@ extension MarketplaceCatalog {
 
     public struct DescribeChangeSetRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "catalog", location: .querystring(locationName: "catalog")), 
+            AWSMemberEncoding(label: "catalog", location: .querystring(locationName: "catalog")),
             AWSMemberEncoding(label: "changeSetId", location: .querystring(locationName: "changeSetId"))
         ]
 
-        /// Required. The catalog related to the request. Fixed value: AWSMarketplace 
+        /// Required. The catalog related to the request. Fixed value: AWSMarketplace
         public let catalog: String
         /// Required. The unique identifier for the StartChangeSet request that you want to describe the details for.
         public let changeSetId: String
@@ -230,7 +226,6 @@ extension MarketplaceCatalog {
     }
 
     public struct DescribeChangeSetResponse: AWSDecodableShape {
-
         /// An array of ChangeSummary objects.
         public let changeSet: [ChangeSummary]?
         /// The ARN associated with the unique identifier for the change set referenced in this request.
@@ -239,13 +234,13 @@ extension MarketplaceCatalog {
         public let changeSetId: String?
         /// The optional name provided in the StartChangeSet request. If you do not provide a name, one is set by default.
         public let changeSetName: String?
-        /// The date and time, in ISO 8601 format (2018-02-27T13:45:22Z), the request transitioned to a terminal state. The change cannot transition to a different state. Null if the request is not in a terminal state. 
+        /// The date and time, in ISO 8601 format (2018-02-27T13:45:22Z), the request transitioned to a terminal state. The change cannot transition to a different state. Null if the request is not in a terminal state.
         public let endTime: String?
         /// Returned if the change set is in FAILED status. Can be either  CLIENT_ERROR, which means that there are issues with the request (see the  ErrorDetailList), or SERVER_FAULT, which means that there is a  problem in the system, and you should retry your request.
         public let failureCode: FailureCode?
         /// Returned if there is a failure on the change set, but that failure is not related to any of the changes in the request.
         public let failureDescription: String?
-        /// The date and time, in ISO 8601 format (2018-02-27T13:45:22Z), the request started. 
+        /// The date and time, in ISO 8601 format (2018-02-27T13:45:22Z), the request started.
         public let startTime: String?
         /// The status of the change request.
         public let status: ChangeStatus?
@@ -277,11 +272,11 @@ extension MarketplaceCatalog {
 
     public struct DescribeEntityRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "catalog", location: .querystring(locationName: "catalog")), 
+            AWSMemberEncoding(label: "catalog", location: .querystring(locationName: "catalog")),
             AWSMemberEncoding(label: "entityId", location: .querystring(locationName: "entityId"))
         ]
 
-        /// Required. The catalog related to the request. Fixed value: AWSMarketplace 
+        /// Required. The catalog related to the request. Fixed value: AWSMarketplace
         public let catalog: String
         /// Required. The unique ID of the entity to describe.
         public let entityId: String
@@ -304,7 +299,6 @@ extension MarketplaceCatalog {
     }
 
     public struct DescribeEntityResponse: AWSDecodableShape {
-
         /// This stringified JSON object includes the details of the entity.
         public let details: String?
         /// The ARN associated to the unique identifier for the change set referenced in this request.
@@ -334,7 +328,6 @@ extension MarketplaceCatalog {
     }
 
     public struct Entity: AWSEncodableShape & AWSDecodableShape {
-
         /// The identifier for the entity.
         public let identifier: String?
         /// The type of entity.
@@ -361,7 +354,6 @@ extension MarketplaceCatalog {
     }
 
     public struct EntitySummary: AWSDecodableShape {
-
         /// The ARN associated with the unique identifier for the entity.
         public let entityArn: String?
         /// The unique identifier for the entity.
@@ -372,7 +364,7 @@ extension MarketplaceCatalog {
         public let lastModifiedDate: String?
         /// The name for the entity. This value is not unique. It is defined by the seller.
         public let name: String?
-        /// The visibility status of the entity to buyers. This value can be Public (everyone can view the entity), Limited (the entity is visible to limited accounts only), or Restricted (the entity was published and then unpublished and only existing buyers can view it). 
+        /// The visibility status of the entity to buyers. This value can be Public (everyone can view the entity), Limited (the entity is visible to limited accounts only), or Restricted (the entity was published and then unpublished and only existing buyers can view it).
         public let visibility: String?
 
         public init(entityArn: String? = nil, entityId: String? = nil, entityType: String? = nil, lastModifiedDate: String? = nil, name: String? = nil, visibility: String? = nil) {
@@ -395,7 +387,6 @@ extension MarketplaceCatalog {
     }
 
     public struct ErrorDetail: AWSDecodableShape {
-
         /// The error code that identifies the type of error.
         public let errorCode: String?
         /// The message for the error.
@@ -413,11 +404,10 @@ extension MarketplaceCatalog {
     }
 
     public struct Filter: AWSEncodableShape {
-
         /// For ListEntities, the supported value for this is an EntityId. For ListChangeSets, the supported values are as follows:
         public let name: String?
         ///  ListEntities - This is a list of unique EntityIds.
-        ///   ListChangeSets - The supported filter names and associated ValueLists is as follows:    ChangeSetName - The supported ValueList is a list of non-unique ChangeSetNames. These are defined when you call the StartChangeSet action.    Status - The supported ValueList is a list of statuses for all change set requests.    EntityId - The supported ValueList is a list of unique EntityIds.    BeforeStartTime - The supported ValueList is a list of all change sets that started before the filter value.    AfterStartTime - The supported ValueList is a list of all change sets that started after the filter value.    BeforeEndTime - The supported ValueList is a list of all change sets that ended before the filter value.    AfterEndTime - The supported ValueList is a list of all change sets that ended after the filter value.  
+        ///   ListChangeSets - The supported filter names and associated ValueLists is as follows:    ChangeSetName - The supported ValueList is a list of non-unique ChangeSetNames. These are defined when you call the StartChangeSet action.    Status - The supported ValueList is a list of statuses for all change set requests.    EntityId - The supported ValueList is a list of unique EntityIds.    BeforeStartTime - The supported ValueList is a list of all change sets that started before the filter value.    AfterStartTime - The supported ValueList is a list of all change sets that started after the filter value.    BeforeEndTime - The supported ValueList is a list of all change sets that ended before the filter value.    AfterEndTime - The supported ValueList is a list of all change sets that ended after the filter value.
         public let valueList: [String]?
 
         public init(name: String? = nil, valueList: [String]? = nil) {
@@ -445,8 +435,7 @@ extension MarketplaceCatalog {
     }
 
     public struct ListChangeSetsRequest: AWSEncodableShape {
-
-        /// The catalog related to the request. Fixed value: AWSMarketplace 
+        /// The catalog related to the request. Fixed value: AWSMarketplace
         public let catalog: String
         /// An array of filter objects.
         public let filterList: [Filter]?
@@ -492,7 +481,6 @@ extension MarketplaceCatalog {
     }
 
     public struct ListChangeSetsResponse: AWSDecodableShape {
-
         ///  Array of ChangeSetSummaryListItem objects.
         public let changeSetSummaryList: [ChangeSetSummaryListItem]?
         /// The value of the next token, if it exists. Null if there are no more results.
@@ -510,8 +498,7 @@ extension MarketplaceCatalog {
     }
 
     public struct ListEntitiesRequest: AWSEncodableShape {
-
-        /// The catalog related to the request. Fixed value: AWSMarketplace 
+        /// The catalog related to the request. Fixed value: AWSMarketplace
         public let catalog: String
         /// The type of entities to retrieve.
         public let entityType: String
@@ -564,7 +551,6 @@ extension MarketplaceCatalog {
     }
 
     public struct ListEntitiesResponse: AWSDecodableShape {
-
         ///  Array of EntitySummary object.
         public let entitySummaryList: [EntitySummary]?
         /// The value of the next token if it exists. Null if there is no more result.
@@ -582,7 +568,6 @@ extension MarketplaceCatalog {
     }
 
     public struct Sort: AWSEncodableShape {
-
         /// For ListEntities, supported attributes include LastModifiedDate (default), Visibility, EntityId, and Name.
         ///  For ListChangeSets, supported attributes include StartTime and EndTime.
         public let sortBy: String?
@@ -607,12 +592,11 @@ extension MarketplaceCatalog {
     }
 
     public struct StartChangeSetRequest: AWSEncodableShape {
-
-        /// The catalog related to the request. Fixed value: AWSMarketplace 
+        /// The catalog related to the request. Fixed value: AWSMarketplace
         public let catalog: String
         /// Array of change object.
         public let changeSet: [Change]
-        /// Optional case sensitive string of up to 100 ASCII characters. The change set name can be used to filter the list of change sets. 
+        /// Optional case sensitive string of up to 100 ASCII characters. The change set name can be used to filter the list of change sets.
         public let changeSetName: String?
         /// A unique token to identify the request to ensure idempotency.
         public let clientRequestToken: String?
@@ -650,7 +634,6 @@ extension MarketplaceCatalog {
     }
 
     public struct StartChangeSetResponse: AWSDecodableShape {
-
         /// The ARN associated to the unique identifier generated for the request.
         public let changeSetArn: String?
         /// Unique identifier generated for the request.

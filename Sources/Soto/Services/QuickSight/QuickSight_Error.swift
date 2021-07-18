@@ -88,7 +88,7 @@ public struct QuickSightErrorType: AWSErrorType {
     /// 			that requires finding a user based on a provided user name, such as
     /// 				DeleteUser, DescribeUser, and so on.
     public static var quickSightUserNotFoundException: Self { .init(.quickSightUserNotFoundException) }
-    /// The resource specified already exists. 
+    /// The resource specified already exists.
     public static var resourceExistsException: Self { .init(.resourceExistsException) }
     /// One or more resources can't be found.
     public static var resourceNotFoundException: Self { .init(.resourceNotFoundException) }
@@ -100,8 +100,8 @@ public struct QuickSightErrorType: AWSErrorType {
     /// Access is throttled.
     public static var throttlingException: Self { .init(.throttlingException) }
     /// This error indicates that you are calling an embedding operation in Amazon QuickSight
-    /// 			without the required pricing plan on your AWS account. Before you can use embedding 
-    /// 			for anonymous users, a QuickSight administrator needs to add capacity pricing to QuickSight. You 
+    /// 			without the required pricing plan on your AWS account. Before you can use embedding
+    /// 			for anonymous users, a QuickSight administrator needs to add capacity pricing to QuickSight. You
     /// 		    can do this on the Manage QuickSight page.  After capacity pricing is added, you can use the  GetDashboardEmbedUrl API operation with the  --identity-type ANONYMOUS option.
     public static var unsupportedPricingPlanException: Self { .init(.unsupportedPricingPlanException) }
     /// This error indicates that you are calling an operation on an Amazon QuickSight

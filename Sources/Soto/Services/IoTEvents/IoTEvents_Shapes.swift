@@ -94,7 +94,6 @@ extension IoTEvents {
     // MARK: Shapes
 
     public struct AcknowledgeFlow: AWSEncodableShape & AWSDecodableShape {
-
         /// The value must be TRUE or FALSE. If TRUE, you receive a notification when the alarm state changes. You must choose to acknowledge the notification before the alarm state can return to NORMAL. If FALSE, you won't receive notifications. The alarm automatically changes to the NORMAL state when the input property value returns to the specified range.
         public let enabled: Bool
 
@@ -103,12 +102,11 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case enabled = "enabled"
+            case enabled
         }
     }
 
     public struct Action: AWSEncodableShape & AWSDecodableShape {
-
         /// Information needed to clear the timer.
         public let clearTimer: ClearTimerAction?
         /// Writes to the DynamoDB table that you created. The default action payload contains all attribute-value pairs that have the information about the detector model instance and the event that triggered the action. You can customize the payload. One column of the DynamoDB table receives all attribute-value pairs in the payload that you specify. For more information, see Actions in AWS IoT Events Developer Guide.
@@ -168,24 +166,23 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clearTimer = "clearTimer"
-            case dynamoDB = "dynamoDB"
-            case dynamoDBv2 = "dynamoDBv2"
-            case firehose = "firehose"
-            case iotEvents = "iotEvents"
-            case iotSiteWise = "iotSiteWise"
-            case iotTopicPublish = "iotTopicPublish"
-            case lambda = "lambda"
-            case resetTimer = "resetTimer"
-            case setTimer = "setTimer"
-            case setVariable = "setVariable"
-            case sns = "sns"
-            case sqs = "sqs"
+            case clearTimer
+            case dynamoDB
+            case dynamoDBv2
+            case firehose
+            case iotEvents
+            case iotSiteWise
+            case iotTopicPublish
+            case lambda
+            case resetTimer
+            case setTimer
+            case setVariable
+            case sns
+            case sqs
         }
     }
 
     public struct AlarmAction: AWSEncodableShape & AWSDecodableShape {
-
         public let dynamoDB: DynamoDBAction?
         public let dynamoDBv2: DynamoDBv2Action?
         public let firehose: FirehoseAction?
@@ -220,23 +217,22 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case dynamoDB = "dynamoDB"
-            case dynamoDBv2 = "dynamoDBv2"
-            case firehose = "firehose"
-            case iotEvents = "iotEvents"
-            case iotSiteWise = "iotSiteWise"
-            case iotTopicPublish = "iotTopicPublish"
-            case lambda = "lambda"
-            case sns = "sns"
-            case sqs = "sqs"
+            case dynamoDB
+            case dynamoDBv2
+            case firehose
+            case iotEvents
+            case iotSiteWise
+            case iotTopicPublish
+            case lambda
+            case sns
+            case sqs
         }
     }
 
     public struct AlarmCapabilities: AWSEncodableShape & AWSDecodableShape {
-
         /// Specifies whether to get notified for alarm state changes.
         public let acknowledgeFlow: AcknowledgeFlow?
-        /// Specifies the default alarm state. 
+        /// Specifies the default alarm state.
         /// The configuration applies to all alarms that were created based on this alarm model.
         public let initializationConfiguration: InitializationConfiguration?
 
@@ -246,13 +242,12 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case acknowledgeFlow = "acknowledgeFlow"
-            case initializationConfiguration = "initializationConfiguration"
+            case acknowledgeFlow
+            case initializationConfiguration
         }
     }
 
     public struct AlarmEventActions: AWSEncodableShape & AWSDecodableShape {
-
         /// Specifies one or more supported actions to receive notifications when the alarm state changes.
         public let alarmActions: [AlarmAction]?
 
@@ -267,12 +262,11 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case alarmActions = "alarmActions"
+            case alarmActions
         }
     }
 
     public struct AlarmModelSummary: AWSDecodableShape {
-
         /// The description of the alarm model.
         public let alarmModelDescription: String?
         /// The name of the alarm model.
@@ -287,14 +281,13 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case alarmModelDescription = "alarmModelDescription"
-            case alarmModelName = "alarmModelName"
-            case creationTime = "creationTime"
+            case alarmModelDescription
+            case alarmModelName
+            case creationTime
         }
     }
 
     public struct AlarmModelVersionSummary: AWSDecodableShape {
-
         /// The ARN of the alarm model. For more information, see Amazon Resource Names (ARNs) in the AWS General Reference.
         public let alarmModelArn: String?
         /// The name of the alarm model.
@@ -307,10 +300,10 @@ extension IoTEvents {
         public let lastUpdateTime: Date?
         /// The ARN of the IAM role that allows the alarm to perform actions and access AWS resources. For more information, see Amazon Resource Names (ARNs) in the AWS General Reference.
         public let roleArn: String?
-        /// The status of the alarm model. The status can be one of the following values:    ACTIVE - The alarm model is active and it's ready to evaluate data.    ACTIVATING - AWS IoT Events is activating your alarm model.  Activating an alarm model can take up to a few minutes.    INACTIVE - The alarm model is inactive, so it isn't ready to evaluate data. 
-        /// 	  Check your alarm model information and update the alarm model.    FAILED - You couldn't create or update the alarm model. Check your alarm model information  and try again.  
+        /// The status of the alarm model. The status can be one of the following values:    ACTIVE - The alarm model is active and it's ready to evaluate data.    ACTIVATING - AWS IoT Events is activating your alarm model.  Activating an alarm model can take up to a few minutes.    INACTIVE - The alarm model is inactive, so it isn't ready to evaluate data.
+        /// 	  Check your alarm model information and update the alarm model.    FAILED - You couldn't create or update the alarm model. Check your alarm model information  and try again.
         public let status: AlarmModelVersionStatus?
-        ///  Contains information about the status of the alarm model version. 
+        ///  Contains information about the status of the alarm model version.
         public let statusMessage: String?
 
         public init(alarmModelArn: String? = nil, alarmModelName: String? = nil, alarmModelVersion: String? = nil, creationTime: Date? = nil, lastUpdateTime: Date? = nil, roleArn: String? = nil, status: AlarmModelVersionStatus? = nil, statusMessage: String? = nil) {
@@ -325,20 +318,19 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case alarmModelArn = "alarmModelArn"
-            case alarmModelName = "alarmModelName"
-            case alarmModelVersion = "alarmModelVersion"
-            case creationTime = "creationTime"
-            case lastUpdateTime = "lastUpdateTime"
-            case roleArn = "roleArn"
-            case status = "status"
-            case statusMessage = "statusMessage"
+            case alarmModelArn
+            case alarmModelName
+            case alarmModelVersion
+            case creationTime
+            case lastUpdateTime
+            case roleArn
+            case status
+            case statusMessage
         }
     }
 
     public struct AlarmNotification: AWSEncodableShape & AWSDecodableShape {
-
-        /// Contains the notification settings of an alarm model. 
+        /// Contains the notification settings of an alarm model.
         /// The settings apply to all alarms that were created based on this alarm model.
         public let notificationActions: [NotificationAction]?
 
@@ -354,12 +346,11 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case notificationActions = "notificationActions"
+            case notificationActions
         }
     }
 
     public struct AlarmRule: AWSEncodableShape & AWSDecodableShape {
-
         /// A rule that compares an input property value to a threshold value with a comparison operator.
         public let simpleRule: SimpleRule?
 
@@ -372,13 +363,12 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case simpleRule = "simpleRule"
+            case simpleRule
         }
     }
 
     public struct AnalysisResult: AWSDecodableShape {
-
-        /// The severity level of the analysis result. Based on the severity level, analysis results fall into three general categories:    INFO - An information result tells you about a significant field in your detector model. This type of result usually doesn't require immediate action.    WARNING - A warning result draws special attention to fields that might cause issues for your detector model.  We recommend that you review warnings and take necessary actions before you use your detector model in production environments. Otherwise, the detector model might not work as expected.    ERROR - An error result notifies you about a problem found in your detector model. You must fix all errors before you can publish your detector model.  
+        /// The severity level of the analysis result. Based on the severity level, analysis results fall into three general categories:    INFO - An information result tells you about a significant field in your detector model. This type of result usually doesn't require immediate action.    WARNING - A warning result draws special attention to fields that might cause issues for your detector model.  We recommend that you review warnings and take necessary actions before you use your detector model in production environments. Otherwise, the detector model might not work as expected.    ERROR - An error result notifies you about a problem found in your detector model. You must fix all errors before you can publish your detector model.
         public let level: AnalysisResultLevel?
         /// Contains one or more locations that you can use to locate the fields in your detector model that the analysis result references.
         public let locations: [AnalysisResultLocation]?
@@ -395,15 +385,14 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case level = "level"
-            case locations = "locations"
-            case message = "message"
-            case type = "type"
+            case level
+            case locations
+            case message
+            case type
         }
     }
 
     public struct AnalysisResultLocation: AWSDecodableShape {
-
         /// A JsonPath expression that identifies the error field in your detector model.
         public let path: String?
 
@@ -412,12 +401,11 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case path = "path"
+            case path
         }
     }
 
     public struct AssetPropertyTimestamp: AWSEncodableShape & AWSDecodableShape {
-
         /// The nanosecond offset converted from timeInSeconds. The valid range is between 0-999999999.
         public let offsetInNanos: String?
         /// The timestamp, in seconds, in the Unix epoch format. The valid range is between 1-31556889864403199.
@@ -429,13 +417,12 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case offsetInNanos = "offsetInNanos"
-            case timeInSeconds = "timeInSeconds"
+            case offsetInNanos
+            case timeInSeconds
         }
     }
 
     public struct AssetPropertyValue: AWSEncodableShape & AWSDecodableShape {
-
         /// The quality of the asset property value. The value must be 'GOOD', 'BAD', or 'UNCERTAIN'.
         public let quality: String?
         /// The timestamp associated with the asset property value. The default is the current event time.
@@ -450,14 +437,13 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case quality = "quality"
-            case timestamp = "timestamp"
-            case value = "value"
+            case quality
+            case timestamp
+            case value
         }
     }
 
     public struct AssetPropertyVariant: AWSEncodableShape & AWSDecodableShape {
-
         /// The asset property value is a Boolean value that must be 'TRUE' or 'FALSE'. You must use an expression, and the evaluated result should be a Boolean value.
         public let booleanValue: String?
         /// The asset property value is a double. You must use an expression, and the evaluated result should be a double.
@@ -475,16 +461,15 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case booleanValue = "booleanValue"
-            case doubleValue = "doubleValue"
-            case integerValue = "integerValue"
-            case stringValue = "stringValue"
+            case booleanValue
+            case doubleValue
+            case integerValue
+            case stringValue
         }
     }
 
     public struct Attribute: AWSEncodableShape & AWSDecodableShape {
-
-        /// An expression that specifies an attribute-value pair in a JSON structure. Use this to specify an attribute from the JSON payload that is made available by the input. Inputs are derived from messages sent to AWS IoT Events (BatchPutMessage). Each such message contains a JSON payload. The attribute (and its paired value) specified here are available for use in the condition expressions used by detectors.  Syntax: .... 
+        /// An expression that specifies an attribute-value pair in a JSON structure. Use this to specify an attribute from the JSON payload that is made available by the input. Inputs are derived from messages sent to AWS IoT Events (BatchPutMessage). Each such message contains a JSON payload. The attribute (and its paired value) specified here are available for use in the condition expressions used by detectors.  Syntax: ....
         public let jsonPath: String
 
         public init(jsonPath: String) {
@@ -498,12 +483,11 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case jsonPath = "jsonPath"
+            case jsonPath
         }
     }
 
     public struct ClearTimerAction: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the timer to clear.
         public let timerName: String
 
@@ -517,12 +501,11 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case timerName = "timerName"
+            case timerName
         }
     }
 
     public struct CreateAlarmModelRequest: AWSEncodableShape {
-
         /// Contains the configuration information of alarm state changes.
         public let alarmCapabilities: AlarmCapabilities?
         /// Contains information about one or more alarm actions.
@@ -535,8 +518,8 @@ extension IoTEvents {
         public let alarmNotification: AlarmNotification?
         /// Defines when your alarm is invoked.
         public let alarmRule: AlarmRule
-        /// An input attribute used as a key to create an alarm. 
-        /// AWS IoT Events routes inputs 
+        /// An input attribute used as a key to create an alarm.
+        /// AWS IoT Events routes inputs
         /// associated with this key to the alarm.
         public let key: String?
         /// The ARN of the IAM role that allows the alarm to perform actions and access AWS resources. For more information, see Amazon Resource Names (ARNs) in the AWS General Reference.
@@ -572,7 +555,7 @@ extension IoTEvents {
             try self.validate(self.key, name: "key", parent: name, pattern: "^((`[\\w\\- ]+`)|([\\w\\-]+))(\\.((`[\\w- ]+`)|([\\w\\-]+)))*$")
             try self.validate(self.roleArn, name: "roleArn", parent: name, max: 2048)
             try self.validate(self.roleArn, name: "roleArn", parent: name, min: 1)
-            try self.validate(self.severity, name: "severity", parent: name, max: 2147483647)
+            try self.validate(self.severity, name: "severity", parent: name, max: 2_147_483_647)
             try self.validate(self.severity, name: "severity", parent: name, min: 0)
             try self.tags?.forEach {
                 try $0.validate(name: "\(name).tags[]")
@@ -580,21 +563,20 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case alarmCapabilities = "alarmCapabilities"
-            case alarmEventActions = "alarmEventActions"
-            case alarmModelDescription = "alarmModelDescription"
-            case alarmModelName = "alarmModelName"
-            case alarmNotification = "alarmNotification"
-            case alarmRule = "alarmRule"
-            case key = "key"
-            case roleArn = "roleArn"
-            case severity = "severity"
-            case tags = "tags"
+            case alarmCapabilities
+            case alarmEventActions
+            case alarmModelDescription
+            case alarmModelName
+            case alarmNotification
+            case alarmRule
+            case key
+            case roleArn
+            case severity
+            case tags
         }
     }
 
     public struct CreateAlarmModelResponse: AWSDecodableShape {
-
         /// The ARN of the alarm model. For more information, see Amazon Resource Names (ARNs) in the AWS General Reference.
         public let alarmModelArn: String?
         /// The version of the alarm model.
@@ -603,8 +585,8 @@ extension IoTEvents {
         public let creationTime: Date?
         /// The time the alarm model was last updated, in the Unix epoch format.
         public let lastUpdateTime: Date?
-        /// The status of the alarm model. The status can be one of the following values:    ACTIVE - The alarm model is active and it's ready to evaluate data.    ACTIVATING - AWS IoT Events is activating your alarm model.  Activating an alarm model can take up to a few minutes.    INACTIVE - The alarm model is inactive, so it isn't ready to evaluate data. 
-        /// 	  Check your alarm model information and update the alarm model.    FAILED - You couldn't create or update the alarm model. Check your alarm model information  and try again.  
+        /// The status of the alarm model. The status can be one of the following values:    ACTIVE - The alarm model is active and it's ready to evaluate data.    ACTIVATING - AWS IoT Events is activating your alarm model.  Activating an alarm model can take up to a few minutes.    INACTIVE - The alarm model is inactive, so it isn't ready to evaluate data.
+        /// 	  Check your alarm model information and update the alarm model.    FAILED - You couldn't create or update the alarm model. Check your alarm model information  and try again.
         public let status: AlarmModelVersionStatus?
 
         public init(alarmModelArn: String? = nil, alarmModelVersion: String? = nil, creationTime: Date? = nil, lastUpdateTime: Date? = nil, status: AlarmModelVersionStatus? = nil) {
@@ -616,23 +598,22 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case alarmModelArn = "alarmModelArn"
-            case alarmModelVersion = "alarmModelVersion"
-            case creationTime = "creationTime"
-            case lastUpdateTime = "lastUpdateTime"
-            case status = "status"
+            case alarmModelArn
+            case alarmModelVersion
+            case creationTime
+            case lastUpdateTime
+            case status
         }
     }
 
     public struct CreateDetectorModelRequest: AWSEncodableShape {
-
         /// Information that defines how the detectors operate.
         public let detectorModelDefinition: DetectorModelDefinition
         /// A brief description of the detector model.
         public let detectorModelDescription: String?
         /// The name of the detector model.
         public let detectorModelName: String
-        /// Information about the order in which events are evaluated and how actions are executed. 
+        /// Information about the order in which events are evaluated and how actions are executed.
         public let evaluationMethod: EvaluationMethod?
         /// The input attribute key used to identify a device or system to create a detector (an instance of the detector model) and then to route each input received to the appropriate detector (instance). This parameter uses a JSON-path expression in the message payload of each input to specify the attribute-value pair that is used to identify the device associated with the input.
         public let key: String?
@@ -668,18 +649,17 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case detectorModelDefinition = "detectorModelDefinition"
-            case detectorModelDescription = "detectorModelDescription"
-            case detectorModelName = "detectorModelName"
-            case evaluationMethod = "evaluationMethod"
-            case key = "key"
-            case roleArn = "roleArn"
-            case tags = "tags"
+            case detectorModelDefinition
+            case detectorModelDescription
+            case detectorModelName
+            case evaluationMethod
+            case key
+            case roleArn
+            case tags
         }
     }
 
     public struct CreateDetectorModelResponse: AWSDecodableShape {
-
         /// Information about how the detector model is configured.
         public let detectorModelConfiguration: DetectorModelConfiguration?
 
@@ -688,12 +668,11 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case detectorModelConfiguration = "detectorModelConfiguration"
+            case detectorModelConfiguration
         }
     }
 
     public struct CreateInputRequest: AWSEncodableShape {
-
         /// The definition of the input.
         public let inputDefinition: InputDefinition
         /// A brief description of the input.
@@ -722,15 +701,14 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case inputDefinition = "inputDefinition"
-            case inputDescription = "inputDescription"
-            case inputName = "inputName"
-            case tags = "tags"
+            case inputDefinition
+            case inputDescription
+            case inputName
+            case tags
         }
     }
 
     public struct CreateInputResponse: AWSDecodableShape {
-
         /// Information about the configuration of the input.
         public let inputConfiguration: InputConfiguration?
 
@@ -739,7 +717,7 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case inputConfiguration = "inputConfiguration"
+            case inputConfiguration
         }
     }
 
@@ -765,11 +743,7 @@ extension IoTEvents {
     }
 
     public struct DeleteAlarmModelResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteDetectorModelRequest: AWSEncodableShape {
@@ -794,11 +768,7 @@ extension IoTEvents {
     }
 
     public struct DeleteDetectorModelResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteInputRequest: AWSEncodableShape {
@@ -823,16 +793,12 @@ extension IoTEvents {
     }
 
     public struct DeleteInputResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DescribeAlarmModelRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "alarmModelName", location: .uri(locationName: "alarmModelName")), 
+            AWSMemberEncoding(label: "alarmModelName", location: .uri(locationName: "alarmModelName")),
             AWSMemberEncoding(label: "alarmModelVersion", location: .querystring(locationName: "version"))
         ]
 
@@ -858,7 +824,6 @@ extension IoTEvents {
     }
 
     public struct DescribeAlarmModelResponse: AWSDecodableShape {
-
         /// Contains the configuration information of alarm state changes.
         public let alarmCapabilities: AlarmCapabilities?
         /// Contains information about one or more alarm actions.
@@ -877,8 +842,8 @@ extension IoTEvents {
         public let alarmRule: AlarmRule?
         /// The time the alarm model was created, in the Unix epoch format.
         public let creationTime: Date?
-        /// An input attribute used as a key to create an alarm. 
-        /// AWS IoT Events routes inputs 
+        /// An input attribute used as a key to create an alarm.
+        /// AWS IoT Events routes inputs
         /// associated with this key to the alarm.
         public let key: String?
         /// The time the alarm model was last updated, in the Unix epoch format.
@@ -887,10 +852,10 @@ extension IoTEvents {
         public let roleArn: String?
         /// A non-negative integer that reflects the severity level of the alarm.
         public let severity: Int?
-        /// The status of the alarm model. The status can be one of the following values:    ACTIVE - The alarm model is active and it's ready to evaluate data.    ACTIVATING - AWS IoT Events is activating your alarm model.  Activating an alarm model can take up to a few minutes.    INACTIVE - The alarm model is inactive, so it isn't ready to evaluate data. 
-        /// 	  Check your alarm model information and update the alarm model.    FAILED - You couldn't create or update the alarm model. Check your alarm model information  and try again.  
+        /// The status of the alarm model. The status can be one of the following values:    ACTIVE - The alarm model is active and it's ready to evaluate data.    ACTIVATING - AWS IoT Events is activating your alarm model.  Activating an alarm model can take up to a few minutes.    INACTIVE - The alarm model is inactive, so it isn't ready to evaluate data.
+        /// 	  Check your alarm model information and update the alarm model.    FAILED - You couldn't create or update the alarm model. Check your alarm model information  and try again.
         public let status: AlarmModelVersionStatus?
-        ///  Contains information about the status of the alarm model. 
+        ///  Contains information about the status of the alarm model.
         public let statusMessage: String?
 
         public init(alarmCapabilities: AlarmCapabilities? = nil, alarmEventActions: AlarmEventActions? = nil, alarmModelArn: String? = nil, alarmModelDescription: String? = nil, alarmModelName: String? = nil, alarmModelVersion: String? = nil, alarmNotification: AlarmNotification? = nil, alarmRule: AlarmRule? = nil, creationTime: Date? = nil, key: String? = nil, lastUpdateTime: Date? = nil, roleArn: String? = nil, severity: Int? = nil, status: AlarmModelVersionStatus? = nil, statusMessage: String? = nil) {
@@ -912,21 +877,21 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case alarmCapabilities = "alarmCapabilities"
-            case alarmEventActions = "alarmEventActions"
-            case alarmModelArn = "alarmModelArn"
-            case alarmModelDescription = "alarmModelDescription"
-            case alarmModelName = "alarmModelName"
-            case alarmModelVersion = "alarmModelVersion"
-            case alarmNotification = "alarmNotification"
-            case alarmRule = "alarmRule"
-            case creationTime = "creationTime"
-            case key = "key"
-            case lastUpdateTime = "lastUpdateTime"
-            case roleArn = "roleArn"
-            case severity = "severity"
-            case status = "status"
-            case statusMessage = "statusMessage"
+            case alarmCapabilities
+            case alarmEventActions
+            case alarmModelArn
+            case alarmModelDescription
+            case alarmModelName
+            case alarmModelVersion
+            case alarmNotification
+            case alarmRule
+            case creationTime
+            case key
+            case lastUpdateTime
+            case roleArn
+            case severity
+            case status
+            case statusMessage
         }
     }
 
@@ -946,8 +911,7 @@ extension IoTEvents {
     }
 
     public struct DescribeDetectorModelAnalysisResponse: AWSDecodableShape {
-
-        /// The status of the analysis activity. The status can be one of the following values:    RUNNING - AWS IoT Events is analyzing your detector model. This process can take several minutes to complete.    COMPLETE - AWS IoT Events finished analyzing your detector model.    FAILED - AWS IoT Events couldn't analyze your detector model. Try again later.  
+        /// The status of the analysis activity. The status can be one of the following values:    RUNNING - AWS IoT Events is analyzing your detector model. This process can take several minutes to complete.    COMPLETE - AWS IoT Events finished analyzing your detector model.    FAILED - AWS IoT Events couldn't analyze your detector model. Try again later.
         public let status: AnalysisStatus?
 
         public init(status: AnalysisStatus? = nil) {
@@ -955,13 +919,13 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case status = "status"
+            case status
         }
     }
 
     public struct DescribeDetectorModelRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "detectorModelName", location: .uri(locationName: "detectorModelName")), 
+            AWSMemberEncoding(label: "detectorModelName", location: .uri(locationName: "detectorModelName")),
             AWSMemberEncoding(label: "detectorModelVersion", location: .querystring(locationName: "version"))
         ]
 
@@ -987,7 +951,6 @@ extension IoTEvents {
     }
 
     public struct DescribeDetectorModelResponse: AWSDecodableShape {
-
         /// Information about the detector model.
         public let detectorModel: DetectorModel?
 
@@ -996,7 +959,7 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case detectorModel = "detectorModel"
+            case detectorModel
         }
     }
 
@@ -1022,7 +985,6 @@ extension IoTEvents {
     }
 
     public struct DescribeInputResponse: AWSDecodableShape {
-
         /// Information about the input.
         public let input: Input?
 
@@ -1031,20 +993,15 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case input = "input"
+            case input
         }
     }
 
     public struct DescribeLoggingOptionsRequest: AWSEncodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DescribeLoggingOptionsResponse: AWSDecodableShape {
-
         /// The current settings of the AWS IoT Events logging options.
         public let loggingOptions: LoggingOptions?
 
@@ -1053,12 +1010,11 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case loggingOptions = "loggingOptions"
+            case loggingOptions
         }
     }
 
     public struct DetectorDebugOption: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the detector model.
         public let detectorModelName: String
         /// The value of the input attribute key used to create the detector (the instance of the detector model).
@@ -1079,13 +1035,12 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case detectorModelName = "detectorModelName"
-            case keyValue = "keyValue"
+            case detectorModelName
+            case keyValue
         }
     }
 
     public struct DetectorModel: AWSDecodableShape {
-
         /// Information about how the detector is configured.
         public let detectorModelConfiguration: DetectorModelConfiguration?
         /// Information that defines how a detector operates.
@@ -1097,13 +1052,12 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case detectorModelConfiguration = "detectorModelConfiguration"
-            case detectorModelDefinition = "detectorModelDefinition"
+            case detectorModelConfiguration
+            case detectorModelDefinition
         }
     }
 
     public struct DetectorModelConfiguration: AWSDecodableShape {
-
         /// The time the detector model was created.
         public let creationTime: Date?
         /// The ARN of the detector model.
@@ -1114,7 +1068,7 @@ extension IoTEvents {
         public let detectorModelName: String?
         /// The version of the detector model.
         public let detectorModelVersion: String?
-        /// Information about the order in which events are evaluated and how actions are executed. 
+        /// Information about the order in which events are evaluated and how actions are executed.
         public let evaluationMethod: EvaluationMethod?
         /// The value used to identify a detector instance. When a device or system sends input, a new detector instance with a unique key value is created. AWS IoT Events can continue to route input to its corresponding detector instance based on this identifying information.  This parameter uses a JSON-path expression to select the attribute-value pair in the message payload that is used for identification. To route the message to the correct detector instance, the device must send a message payload that contains the same attribute-value.
         public let key: String?
@@ -1139,21 +1093,20 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case creationTime = "creationTime"
-            case detectorModelArn = "detectorModelArn"
-            case detectorModelDescription = "detectorModelDescription"
-            case detectorModelName = "detectorModelName"
-            case detectorModelVersion = "detectorModelVersion"
-            case evaluationMethod = "evaluationMethod"
-            case key = "key"
-            case lastUpdateTime = "lastUpdateTime"
-            case roleArn = "roleArn"
-            case status = "status"
+            case creationTime
+            case detectorModelArn
+            case detectorModelDescription
+            case detectorModelName
+            case detectorModelVersion
+            case evaluationMethod
+            case key
+            case lastUpdateTime
+            case roleArn
+            case status
         }
     }
 
     public struct DetectorModelDefinition: AWSEncodableShape & AWSDecodableShape {
-
         /// The state that is entered at the creation of each detector (instance).
         public let initialStateName: String
         /// Information about the states of the detector.
@@ -1174,13 +1127,12 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case initialStateName = "initialStateName"
-            case states = "states"
+            case initialStateName
+            case states
         }
     }
 
     public struct DetectorModelSummary: AWSDecodableShape {
-
         /// The time the detector model was created.
         public let creationTime: Date?
         /// A brief description of the detector model.
@@ -1195,14 +1147,13 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case creationTime = "creationTime"
-            case detectorModelDescription = "detectorModelDescription"
-            case detectorModelName = "detectorModelName"
+            case creationTime
+            case detectorModelDescription
+            case detectorModelName
         }
     }
 
     public struct DetectorModelVersionSummary: AWSDecodableShape {
-
         /// The time the detector model version was created.
         public let creationTime: Date?
         /// The ARN of the detector model version.
@@ -1211,7 +1162,7 @@ extension IoTEvents {
         public let detectorModelName: String?
         /// The ID of the detector model version.
         public let detectorModelVersion: String?
-        /// Information about the order in which events are evaluated and how actions are executed. 
+        /// Information about the order in which events are evaluated and how actions are executed.
         public let evaluationMethod: EvaluationMethod?
         /// The last time the detector model version was updated.
         public let lastUpdateTime: Date?
@@ -1232,19 +1183,18 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case creationTime = "creationTime"
-            case detectorModelArn = "detectorModelArn"
-            case detectorModelName = "detectorModelName"
-            case detectorModelVersion = "detectorModelVersion"
-            case evaluationMethod = "evaluationMethod"
-            case lastUpdateTime = "lastUpdateTime"
-            case roleArn = "roleArn"
-            case status = "status"
+            case creationTime
+            case detectorModelArn
+            case detectorModelName
+            case detectorModelVersion
+            case evaluationMethod
+            case lastUpdateTime
+            case roleArn
+            case status
         }
     }
 
     public struct DynamoDBAction: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the hash key (also called the partition key). The hashKeyField value must match the partition key of the target DynamoDB table.
         public let hashKeyField: String
         /// The data type for the hash key (also called the partition key). You can specify the following values:    'STRING' - The hash key is a string.    'NUMBER' - The hash key is a number.   If you don't specify hashKeyType, the default value is 'STRING'.
@@ -1256,13 +1206,13 @@ extension IoTEvents {
         public let payload: Payload?
         /// The name of the DynamoDB column that receives the action payload. If you don't specify this parameter, the name of the DynamoDB column is payload.
         public let payloadField: String?
-        /// The name of the range key (also called the sort key). The rangeKeyField value must match the sort key of the target DynamoDB table. 
+        /// The name of the range key (also called the sort key). The rangeKeyField value must match the sort key of the target DynamoDB table.
         public let rangeKeyField: String?
         /// The data type for the range key (also called the sort key), You can specify the following values:    'STRING' - The range key is a string.    'NUMBER' - The range key is number.   If you don't specify rangeKeyField, the default value is 'STRING'.
         public let rangeKeyType: String?
         /// The value of the range key (also called the sort key).
         public let rangeKeyValue: String?
-        /// The name of the DynamoDB table. The tableName value must match the table name of the target DynamoDB table. 
+        /// The name of the DynamoDB table. The tableName value must match the table name of the target DynamoDB table.
         public let tableName: String
 
         public init(hashKeyField: String, hashKeyType: String? = nil, hashKeyValue: String, operation: String? = nil, payload: Payload? = nil, payloadField: String? = nil, rangeKeyField: String? = nil, rangeKeyType: String? = nil, rangeKeyValue: String? = nil, tableName: String) {
@@ -1283,21 +1233,20 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case hashKeyField = "hashKeyField"
-            case hashKeyType = "hashKeyType"
-            case hashKeyValue = "hashKeyValue"
-            case operation = "operation"
-            case payload = "payload"
-            case payloadField = "payloadField"
-            case rangeKeyField = "rangeKeyField"
-            case rangeKeyType = "rangeKeyType"
-            case rangeKeyValue = "rangeKeyValue"
-            case tableName = "tableName"
+            case hashKeyField
+            case hashKeyType
+            case hashKeyValue
+            case operation
+            case payload
+            case payloadField
+            case rangeKeyField
+            case rangeKeyType
+            case rangeKeyValue
+            case tableName
         }
     }
 
     public struct DynamoDBv2Action: AWSEncodableShape & AWSDecodableShape {
-
         public let payload: Payload?
         /// The name of the DynamoDB table.
         public let tableName: String
@@ -1312,18 +1261,17 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case payload = "payload"
-            case tableName = "tableName"
+            case payload
+            case tableName
         }
     }
 
     public struct EmailConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// Contains the subject and message of an email.
         public let content: EmailContent?
-        /// The email address that sends emails.  If you use the AWS IoT Events managed AWS Lambda function to manage your emails, you must verify the email address that sends emails in Amazon SES. 
+        /// The email address that sends emails.  If you use the AWS IoT Events managed AWS Lambda function to manage your emails, you must verify the email address that sends emails in Amazon SES.
         public let from: String
-        /// Contains the information of one or more recipients who receive the emails.  You must add the users that receive emails to your AWS SSO store. 
+        /// Contains the information of one or more recipients who receive the emails.  You must add the users that receive emails to your AWS SSO store.
         public let recipients: EmailRecipients
 
         public init(content: EmailContent? = nil, from: String, recipients: EmailRecipients) {
@@ -1337,14 +1285,13 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case content = "content"
-            case from = "from"
-            case recipients = "recipients"
+            case content
+            case from
+            case recipients
         }
     }
 
     public struct EmailContent: AWSEncodableShape & AWSDecodableShape {
-
         /// The message that you want to send. The message can be up to 200 characters.
         public let additionalMessage: String?
         /// The subject of the email.
@@ -1356,13 +1303,12 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case additionalMessage = "additionalMessage"
-            case subject = "subject"
+            case additionalMessage
+            case subject
         }
     }
 
     public struct EmailRecipients: AWSEncodableShape & AWSDecodableShape {
-
         /// Specifies one or more recipients who receive the email.
         public let to: [RecipientDetail]?
 
@@ -1375,12 +1321,11 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case to = "to"
+            case to
         }
     }
 
     public struct Event: AWSEncodableShape & AWSDecodableShape {
-
         /// The actions to be performed.
         public let actions: [Action]?
         /// Optional. The Boolean expression that, when TRUE, causes the actions to be performed. If not present, the actions are performed (=TRUE). If the expression result is not a Boolean value, the actions are not performed (=FALSE).
@@ -1403,14 +1348,13 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case actions = "actions"
-            case condition = "condition"
-            case eventName = "eventName"
+            case actions
+            case condition
+            case eventName
         }
     }
 
     public struct FirehoseAction: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the Kinesis Data Firehose delivery stream where the data is written.
         public let deliveryStreamName: String
         /// You can configure the action payload when you send a message to an Amazon Kinesis Data Firehose delivery stream.
@@ -1430,16 +1374,16 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case deliveryStreamName = "deliveryStreamName"
-            case payload = "payload"
-            case separator = "separator"
+            case deliveryStreamName
+            case payload
+            case separator
         }
     }
 
     public struct GetDetectorModelAnalysisResultsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "analysisId", location: .uri(locationName: "analysisId")), 
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "analysisId", location: .uri(locationName: "analysisId")),
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
@@ -1460,10 +1404,9 @@ extension IoTEvents {
     }
 
     public struct GetDetectorModelAnalysisResultsResponse: AWSDecodableShape {
-
         /// Contains information about one or more analysis results.
         public let analysisResults: [AnalysisResult]?
-        /// The token that you can use to return the next set of results, 
+        /// The token that you can use to return the next set of results,
         /// or null if there are no more results.
         public let nextToken: String?
 
@@ -1473,13 +1416,12 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case analysisResults = "analysisResults"
-            case nextToken = "nextToken"
+            case analysisResults
+            case nextToken
         }
     }
 
     public struct InitializationConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// The value must be TRUE or FALSE. If FALSE, all alarm instances created based on the alarm model are activated. The default value is TRUE.
         public let disabledOnInitialization: Bool
 
@@ -1488,12 +1430,11 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case disabledOnInitialization = "disabledOnInitialization"
+            case disabledOnInitialization
         }
     }
 
     public struct Input: AWSDecodableShape {
-
         /// Information about the configuration of an input.
         public let inputConfiguration: InputConfiguration?
         /// The definition of the input.
@@ -1505,13 +1446,12 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case inputConfiguration = "inputConfiguration"
-            case inputDefinition = "inputDefinition"
+            case inputConfiguration
+            case inputDefinition
         }
     }
 
     public struct InputConfiguration: AWSDecodableShape {
-
         /// The time the input was created.
         public let creationTime: Date
         /// The ARN of the input.
@@ -1535,18 +1475,17 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case creationTime = "creationTime"
-            case inputArn = "inputArn"
-            case inputDescription = "inputDescription"
-            case inputName = "inputName"
-            case lastUpdateTime = "lastUpdateTime"
-            case status = "status"
+            case creationTime
+            case inputArn
+            case inputDescription
+            case inputName
+            case lastUpdateTime
+            case status
         }
     }
 
     public struct InputDefinition: AWSEncodableShape & AWSDecodableShape {
-
-        /// The attributes from the JSON payload that are made available by the input. Inputs are derived from messages sent to the AWS IoT Events system using BatchPutMessage. Each such message contains a JSON payload, and those attributes (and their paired values) specified here are available for use in the condition expressions used by detectors that monitor this input. 
+        /// The attributes from the JSON payload that are made available by the input. Inputs are derived from messages sent to the AWS IoT Events system using BatchPutMessage. Each such message contains a JSON payload, and those attributes (and their paired values) specified here are available for use in the condition expressions used by detectors that monitor this input.
         public let attributes: [Attribute]
 
         public init(attributes: [Attribute]) {
@@ -1562,15 +1501,14 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case attributes = "attributes"
+            case attributes
         }
     }
 
     public struct InputIdentifier: AWSEncodableShape {
-
-        ///  The identifier of the input routed to AWS IoT Events. 
+        ///  The identifier of the input routed to AWS IoT Events.
         public let iotEventsInputIdentifier: IotEventsInputIdentifier?
-        ///  The identifer of the input routed from AWS IoT SiteWise. 
+        ///  The identifer of the input routed from AWS IoT SiteWise.
         public let iotSiteWiseInputIdentifier: IotSiteWiseInputIdentifier?
 
         public init(iotEventsInputIdentifier: IotEventsInputIdentifier? = nil, iotSiteWiseInputIdentifier: IotSiteWiseInputIdentifier? = nil) {
@@ -1583,13 +1521,12 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case iotEventsInputIdentifier = "iotEventsInputIdentifier"
-            case iotSiteWiseInputIdentifier = "iotSiteWiseInputIdentifier"
+            case iotEventsInputIdentifier
+            case iotSiteWiseInputIdentifier
         }
     }
 
     public struct InputSummary: AWSDecodableShape {
-
         /// The time the input was created.
         public let creationTime: Date?
         /// The ARN of the input.
@@ -1613,17 +1550,16 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case creationTime = "creationTime"
-            case inputArn = "inputArn"
-            case inputDescription = "inputDescription"
-            case inputName = "inputName"
-            case lastUpdateTime = "lastUpdateTime"
-            case status = "status"
+            case creationTime
+            case inputArn
+            case inputDescription
+            case inputName
+            case lastUpdateTime
+            case status
         }
     }
 
     public struct IotEventsAction: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the AWS IoT Events input where the data is sent.
         public let inputName: String
         /// You can configure the action payload when you send a message to an AWS IoT Events input.
@@ -1642,14 +1578,13 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case inputName = "inputName"
-            case payload = "payload"
+            case inputName
+            case payload
         }
     }
 
     public struct IotEventsInputIdentifier: AWSEncodableShape {
-
-        ///  The name of the input routed to AWS IoT Events. 
+        ///  The name of the input routed to AWS IoT Events.
         public let inputName: String
 
         public init(inputName: String) {
@@ -1663,12 +1598,11 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case inputName = "inputName"
+            case inputName
         }
     }
 
     public struct IotSiteWiseAction: AWSEncodableShape & AWSDecodableShape {
-
         /// The ID of the asset that has the specified property.
         public let assetId: String?
         /// A unique identifier for this entry. You can use the entry ID to track which data entry causes an error in case of failure. The default is a new unique identifier.
@@ -1677,7 +1611,7 @@ extension IoTEvents {
         public let propertyAlias: String?
         /// The ID of the asset property.
         public let propertyId: String?
-        /// The value to send to the asset property. This value contains timestamp, quality, and value (TQV) information. 
+        /// The value to send to the asset property. This value contains timestamp, quality, and value (TQV) information.
         public let propertyValue: AssetPropertyValue?
 
         public init(assetId: String? = nil, entryId: String? = nil, propertyAlias: String? = nil, propertyId: String? = nil, propertyValue: AssetPropertyValue? = nil) {
@@ -1689,19 +1623,18 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case assetId = "assetId"
-            case entryId = "entryId"
-            case propertyAlias = "propertyAlias"
-            case propertyId = "propertyId"
-            case propertyValue = "propertyValue"
+            case assetId
+            case entryId
+            case propertyAlias
+            case propertyId
+            case propertyValue
         }
     }
 
     public struct IotSiteWiseAssetModelPropertyIdentifier: AWSEncodableShape {
-
-        ///  The ID of the AWS IoT SiteWise asset model.  
+        ///  The ID of the AWS IoT SiteWise asset model.
         public let assetModelId: String
-        ///  The ID of the AWS IoT SiteWise asset property. 
+        ///  The ID of the AWS IoT SiteWise asset property.
         public let propertyId: String
 
         public init(assetModelId: String, propertyId: String) {
@@ -1710,14 +1643,13 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case assetModelId = "assetModelId"
-            case propertyId = "propertyId"
+            case assetModelId
+            case propertyId
         }
     }
 
     public struct IotSiteWiseInputIdentifier: AWSEncodableShape {
-
-        ///  The identifier of the AWS IoT SiteWise asset model property. 
+        ///  The identifier of the AWS IoT SiteWise asset model property.
         public let iotSiteWiseAssetModelPropertyIdentifier: IotSiteWiseAssetModelPropertyIdentifier?
 
         public init(iotSiteWiseAssetModelPropertyIdentifier: IotSiteWiseAssetModelPropertyIdentifier? = nil) {
@@ -1725,12 +1657,11 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case iotSiteWiseAssetModelPropertyIdentifier = "iotSiteWiseAssetModelPropertyIdentifier"
+            case iotSiteWiseAssetModelPropertyIdentifier
         }
     }
 
     public struct IotTopicPublishAction: AWSEncodableShape & AWSDecodableShape {
-
         /// The MQTT topic of the message. You can use a string expression that includes variables ($variable.) and input values ($input..) as the topic string.
         public let mqttTopic: String
         /// You can configure the action payload when you publish a message to an AWS IoT Core topic.
@@ -1748,13 +1679,12 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case mqttTopic = "mqttTopic"
-            case payload = "payload"
+            case mqttTopic
+            case payload
         }
     }
 
     public struct LambdaAction: AWSEncodableShape & AWSDecodableShape {
-
         /// The ARN of the Lambda function that is executed.
         public let functionArn: String
         /// You can configure the action payload when you send a message to a Lambda function.
@@ -1772,15 +1702,15 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case functionArn = "functionArn"
-            case payload = "payload"
+            case functionArn
+            case payload
         }
     }
 
     public struct ListAlarmModelVersionsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "alarmModelName", location: .uri(locationName: "alarmModelName")), 
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "alarmModelName", location: .uri(locationName: "alarmModelName")),
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
@@ -1809,10 +1739,9 @@ extension IoTEvents {
     }
 
     public struct ListAlarmModelVersionsResponse: AWSDecodableShape {
-
         /// A list that summarizes each alarm model version.
         public let alarmModelVersionSummaries: [AlarmModelVersionSummary]?
-        /// The token that you can use to return the next set of results, 
+        /// The token that you can use to return the next set of results,
         /// or null if there are no more results.
         public let nextToken: String?
 
@@ -1822,14 +1751,14 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case alarmModelVersionSummaries = "alarmModelVersionSummaries"
-            case nextToken = "nextToken"
+            case alarmModelVersionSummaries
+            case nextToken
         }
     }
 
     public struct ListAlarmModelsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
@@ -1852,10 +1781,9 @@ extension IoTEvents {
     }
 
     public struct ListAlarmModelsResponse: AWSDecodableShape {
-
         /// A list that summarizes each alarm model.
         public let alarmModelSummaries: [AlarmModelSummary]?
-        /// The token that you can use to return the next set of results, 
+        /// The token that you can use to return the next set of results,
         /// or null if there are no more results.
         public let nextToken: String?
 
@@ -1865,15 +1793,15 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case alarmModelSummaries = "alarmModelSummaries"
-            case nextToken = "nextToken"
+            case alarmModelSummaries
+            case nextToken
         }
     }
 
     public struct ListDetectorModelVersionsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "detectorModelName", location: .uri(locationName: "detectorModelName")), 
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "detectorModelName", location: .uri(locationName: "detectorModelName")),
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
@@ -1902,10 +1830,9 @@ extension IoTEvents {
     }
 
     public struct ListDetectorModelVersionsResponse: AWSDecodableShape {
-
         /// Summary information about the detector model versions.
         public let detectorModelVersionSummaries: [DetectorModelVersionSummary]?
-        /// The token that you can use to return the next set of results, 
+        /// The token that you can use to return the next set of results,
         /// or null if there are no more results.
         public let nextToken: String?
 
@@ -1915,14 +1842,14 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case detectorModelVersionSummaries = "detectorModelVersionSummaries"
-            case nextToken = "nextToken"
+            case detectorModelVersionSummaries
+            case nextToken
         }
     }
 
     public struct ListDetectorModelsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
@@ -1945,10 +1872,9 @@ extension IoTEvents {
     }
 
     public struct ListDetectorModelsResponse: AWSDecodableShape {
-
         /// Summary information about the detector models.
         public let detectorModelSummaries: [DetectorModelSummary]?
-        /// The token that you can use to return the next set of results, 
+        /// The token that you can use to return the next set of results,
         /// or null if there are no more results.
         public let nextToken: String?
 
@@ -1958,18 +1884,17 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case detectorModelSummaries = "detectorModelSummaries"
-            case nextToken = "nextToken"
+            case detectorModelSummaries
+            case nextToken
         }
     }
 
     public struct ListInputRoutingsRequest: AWSEncodableShape {
-
-        ///  The identifer of the routed input. 
+        ///  The identifer of the routed input.
         public let inputIdentifier: InputIdentifier
-        ///  The maximum number of results to be returned per request. 
+        ///  The maximum number of results to be returned per request.
         public let maxResults: Int?
-        ///  The token that you can use to return the next set of results. 
+        ///  The token that you can use to return the next set of results.
         public let nextToken: String?
 
         public init(inputIdentifier: InputIdentifier, maxResults: Int? = nil, nextToken: String? = nil) {
@@ -1985,18 +1910,17 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case inputIdentifier = "inputIdentifier"
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
+            case inputIdentifier
+            case maxResults
+            case nextToken
         }
     }
 
     public struct ListInputRoutingsResponse: AWSDecodableShape {
-
-        ///  The token that you can use to return the next set of results, 
-        /// or null if there are no more results. 
+        ///  The token that you can use to return the next set of results,
+        /// or null if there are no more results.
         public let nextToken: String?
-        ///  Summary information about the routed resources. 
+        ///  Summary information about the routed resources.
         public let routedResources: [RoutedResource]?
 
         public init(nextToken: String? = nil, routedResources: [RoutedResource]? = nil) {
@@ -2005,14 +1929,14 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case routedResources = "routedResources"
+            case nextToken
+            case routedResources
         }
     }
 
     public struct ListInputsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
@@ -2035,10 +1959,9 @@ extension IoTEvents {
     }
 
     public struct ListInputsResponse: AWSDecodableShape {
-
         /// Summary information about the inputs.
         public let inputSummaries: [InputSummary]?
-        /// The token that you can use to return the next set of results, 
+        /// The token that you can use to return the next set of results,
         /// or null if there are no more results.
         public let nextToken: String?
 
@@ -2048,8 +1971,8 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case inputSummaries = "inputSummaries"
-            case nextToken = "nextToken"
+            case inputSummaries
+            case nextToken
         }
     }
 
@@ -2074,7 +1997,6 @@ extension IoTEvents {
     }
 
     public struct ListTagsForResourceResponse: AWSDecodableShape {
-
         /// The list of tags assigned to the resource.
         public let tags: [Tag]?
 
@@ -2083,12 +2005,11 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tags = "tags"
+            case tags
         }
     }
 
     public struct LoggingOptions: AWSEncodableShape & AWSDecodableShape {
-
         /// Information that identifies those detector models and their detectors (instances) for which the logging level is given.
         public let detectorDebugOptions: [DetectorDebugOption]?
         /// If TRUE, logging is enabled for AWS IoT Events.
@@ -2115,16 +2036,15 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case detectorDebugOptions = "detectorDebugOptions"
-            case enabled = "enabled"
-            case level = "level"
-            case roleArn = "roleArn"
+            case detectorDebugOptions
+            case enabled
+            case level
+            case roleArn
         }
     }
 
     public struct NotificationAction: AWSEncodableShape & AWSDecodableShape {
-
-        /// Specifies an AWS Lambda function to manage alarm notifications. 
+        /// Specifies an AWS Lambda function to manage alarm notifications.
         /// You can create one or use the AWS Lambda function provided by AWS IoT Events.
         public let action: NotificationTargetActions
         /// Contains the configuration information of email notifications.
@@ -2151,14 +2071,13 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case action = "action"
-            case emailConfigurations = "emailConfigurations"
-            case smsConfigurations = "smsConfigurations"
+            case action
+            case emailConfigurations
+            case smsConfigurations
         }
     }
 
     public struct NotificationTargetActions: AWSEncodableShape & AWSDecodableShape {
-
         public let lambdaAction: LambdaAction?
 
         public init(lambdaAction: LambdaAction? = nil) {
@@ -2170,12 +2089,11 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case lambdaAction = "lambdaAction"
+            case lambdaAction
         }
     }
 
     public struct OnEnterLifecycle: AWSEncodableShape & AWSDecodableShape {
-
         /// Specifies the actions that are performed when the state is entered and the condition is TRUE.
         public let events: [Event]?
 
@@ -2190,12 +2108,11 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case events = "events"
+            case events
         }
     }
 
     public struct OnExitLifecycle: AWSEncodableShape & AWSDecodableShape {
-
         /// Specifies the actions that are performed when the state is exited and the condition is TRUE.
         public let events: [Event]?
 
@@ -2210,12 +2127,11 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case events = "events"
+            case events
         }
     }
 
     public struct OnInputLifecycle: AWSEncodableShape & AWSDecodableShape {
-
         /// Specifies the actions performed when the condition evaluates to TRUE.
         public let events: [Event]?
         /// Specifies the actions performed, and the next state entered, when a condition evaluates to TRUE.
@@ -2236,13 +2152,12 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case events = "events"
-            case transitionEvents = "transitionEvents"
+            case events
+            case transitionEvents
         }
     }
 
     public struct Payload: AWSEncodableShape & AWSDecodableShape {
-
         /// The content of the payload. You can use a string expression that includes quoted strings (''), variables ($variable.), input values ($input..), string concatenations, and quoted strings that contain ${} as the content. The recommended maximum size of a content expression is 1 KB.
         public let contentExpression: String
         /// The value of the payload type can be either STRING or JSON.
@@ -2258,13 +2173,12 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case contentExpression = "contentExpression"
-            case type = "type"
+            case contentExpression
+            case type
         }
     }
 
     public struct PutLoggingOptionsRequest: AWSEncodableShape {
-
         /// The new values of the AWS IoT Events logging options.
         public let loggingOptions: LoggingOptions
 
@@ -2277,12 +2191,11 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case loggingOptions = "loggingOptions"
+            case loggingOptions
         }
     }
 
     public struct RecipientDetail: AWSEncodableShape & AWSDecodableShape {
-
         /// The AWS Single Sign-On (AWS SSO) authentication information.
         public let ssoIdentity: SSOIdentity?
 
@@ -2291,12 +2204,11 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case ssoIdentity = "ssoIdentity"
+            case ssoIdentity
         }
     }
 
     public struct ResetTimerAction: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the timer to reset.
         public let timerName: String
 
@@ -2310,15 +2222,14 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case timerName = "timerName"
+            case timerName
         }
     }
 
     public struct RoutedResource: AWSDecodableShape {
-
-        ///  The ARN of the routed resource. For more information, see Amazon Resource Names (ARNs) in the AWS General Reference. 
+        ///  The ARN of the routed resource. For more information, see Amazon Resource Names (ARNs) in the AWS General Reference.
         public let arn: String?
-        ///  The name of the routed resource.   
+        ///  The name of the routed resource.
         public let name: String?
 
         public init(arn: String? = nil, name: String? = nil) {
@@ -2327,16 +2238,15 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case name = "name"
+            case arn
+            case name
         }
     }
 
     public struct SMSConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// The message that you want to send. The message can be up to 200 characters.
         public let additionalMessage: String?
-        /// Specifies one or more recipients who receive the message.  You must add the users that receive SMS messages to your AWS SSO store. 
+        /// Specifies one or more recipients who receive the message.  You must add the users that receive SMS messages to your AWS SSO store.
         public let recipients: [RecipientDetail]
         /// The sender ID.
         public let senderId: String?
@@ -2352,14 +2262,13 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case additionalMessage = "additionalMessage"
-            case recipients = "recipients"
-            case senderId = "senderId"
+            case additionalMessage
+            case recipients
+            case senderId
         }
     }
 
     public struct SNSTopicPublishAction: AWSEncodableShape & AWSDecodableShape {
-
         /// You can configure the action payload when you send a message as an Amazon SNS push notification.
         public let payload: Payload?
         /// The ARN of the Amazon SNS target where the message is sent.
@@ -2377,13 +2286,12 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case payload = "payload"
-            case targetArn = "targetArn"
+            case payload
+            case targetArn
         }
     }
 
     public struct SSOIdentity: AWSEncodableShape & AWSDecodableShape {
-
         /// The ID of the AWS SSO identity store.
         public let identityStoreId: String
         /// The user ID.
@@ -2395,16 +2303,15 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case identityStoreId = "identityStoreId"
-            case userId = "userId"
+            case identityStoreId
+            case userId
         }
     }
 
     public struct SetTimerAction: AWSEncodableShape & AWSDecodableShape {
-
-        /// The duration of the timer, in seconds. You can use a string expression that includes numbers, variables ($variable.), and input values ($input..) as the duration. The range of the duration is 1-31622400 seconds. To ensure accuracy, the minimum duration is 60 seconds. The evaluated result of the duration is rounded down to the nearest whole number. 
+        /// The duration of the timer, in seconds. You can use a string expression that includes numbers, variables ($variable.), and input values ($input..) as the duration. The range of the duration is 1-31622400 seconds. To ensure accuracy, the minimum duration is 60 seconds. The evaluated result of the duration is rounded down to the nearest whole number.
         public let durationExpression: String?
-        /// The number of seconds until the timer expires. The minimum value is 60 seconds to ensure accuracy. The maximum value is 31622400 seconds. 
+        /// The number of seconds until the timer expires. The minimum value is 60 seconds to ensure accuracy. The maximum value is 31622400 seconds.
         public let seconds: Int?
         /// The name of the timer.
         public let timerName: String
@@ -2418,21 +2325,20 @@ extension IoTEvents {
         public func validate(name: String) throws {
             try self.validate(self.durationExpression, name: "durationExpression", parent: name, max: 1024)
             try self.validate(self.durationExpression, name: "durationExpression", parent: name, min: 1)
-            try self.validate(self.seconds, name: "seconds", parent: name, max: 31622400)
+            try self.validate(self.seconds, name: "seconds", parent: name, max: 31_622_400)
             try self.validate(self.seconds, name: "seconds", parent: name, min: 1)
             try self.validate(self.timerName, name: "timerName", parent: name, max: 128)
             try self.validate(self.timerName, name: "timerName", parent: name, min: 1)
         }
 
         private enum CodingKeys: String, CodingKey {
-            case durationExpression = "durationExpression"
-            case seconds = "seconds"
-            case timerName = "timerName"
+            case durationExpression
+            case seconds
+            case timerName
         }
     }
 
     public struct SetVariableAction: AWSEncodableShape & AWSDecodableShape {
-
         /// The new value of the variable.
         public let value: String
         /// The name of the variable.
@@ -2452,13 +2358,12 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case value = "value"
-            case variableName = "variableName"
+            case value
+            case variableName
         }
     }
 
     public struct SimpleRule: AWSEncodableShape & AWSDecodableShape {
-
         /// The comparison operator.
         public let comparisonOperator: ComparisonOperator
         /// The value on the left side of the comparison operator. You can specify an AWS IoT Events input attribute as an input property.
@@ -2480,14 +2385,13 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case comparisonOperator = "comparisonOperator"
-            case inputProperty = "inputProperty"
-            case threshold = "threshold"
+            case comparisonOperator
+            case inputProperty
+            case threshold
         }
     }
 
     public struct SqsAction: AWSEncodableShape & AWSDecodableShape {
-
         /// You can configure the action payload when you send a message to an Amazon SQS queue.
         public let payload: Payload?
         /// The URL of the SQS queue where the data is written.
@@ -2506,14 +2410,13 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case payload = "payload"
-            case queueUrl = "queueUrl"
-            case useBase64 = "useBase64"
+            case payload
+            case queueUrl
+            case useBase64
         }
     }
 
     public struct StartDetectorModelAnalysisRequest: AWSEncodableShape {
-
         public let detectorModelDefinition: DetectorModelDefinition
 
         public init(detectorModelDefinition: DetectorModelDefinition) {
@@ -2525,12 +2428,11 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case detectorModelDefinition = "detectorModelDefinition"
+            case detectorModelDefinition
         }
     }
 
     public struct StartDetectorModelAnalysisResponse: AWSDecodableShape {
-
         /// The ID that you can use to retrieve the analysis result.
         public let analysisId: String?
 
@@ -2539,12 +2441,11 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case analysisId = "analysisId"
+            case analysisId
         }
     }
 
     public struct State: AWSEncodableShape & AWSDecodableShape {
-
         /// When entering this state, perform these actions if the condition is TRUE.
         public let onEnter: OnEnterLifecycle?
         /// When exiting this state, perform these actions if the specified condition is TRUE.
@@ -2570,15 +2471,14 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case onEnter = "onEnter"
-            case onExit = "onExit"
-            case onInput = "onInput"
-            case stateName = "stateName"
+            case onEnter
+            case onExit
+            case onInput
+            case stateName
         }
     }
 
     public struct Tag: AWSEncodableShape & AWSDecodableShape {
-
         /// The tag's key.
         public let key: String
         /// The tag's value.
@@ -2596,8 +2496,8 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case key = "key"
-            case value = "value"
+            case key
+            case value
         }
     }
 
@@ -2625,20 +2525,15 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tags = "tags"
+            case tags
         }
     }
 
     public struct TagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct TransitionEvent: AWSEncodableShape & AWSDecodableShape {
-
         /// The actions to be performed.
         public let actions: [Action]?
         /// Required. A Boolean expression that when TRUE causes the actions to be performed and the nextState to be entered.
@@ -2666,16 +2561,16 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case actions = "actions"
-            case condition = "condition"
-            case eventName = "eventName"
-            case nextState = "nextState"
+            case actions
+            case condition
+            case eventName
+            case nextState
         }
     }
 
     public struct UntagResourceRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "resourceArn", location: .querystring(locationName: "resourceArn")), 
+            AWSMemberEncoding(label: "resourceArn", location: .querystring(locationName: "resourceArn")),
             AWSMemberEncoding(label: "tagKeys", location: .querystring(locationName: "tagKeys"))
         ]
 
@@ -2702,11 +2597,7 @@ extension IoTEvents {
     }
 
     public struct UntagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateAlarmModelRequest: AWSEncodableShape {
@@ -2752,23 +2643,22 @@ extension IoTEvents {
             try self.alarmRule.validate(name: "\(name).alarmRule")
             try self.validate(self.roleArn, name: "roleArn", parent: name, max: 2048)
             try self.validate(self.roleArn, name: "roleArn", parent: name, min: 1)
-            try self.validate(self.severity, name: "severity", parent: name, max: 2147483647)
+            try self.validate(self.severity, name: "severity", parent: name, max: 2_147_483_647)
             try self.validate(self.severity, name: "severity", parent: name, min: 0)
         }
 
         private enum CodingKeys: String, CodingKey {
-            case alarmCapabilities = "alarmCapabilities"
-            case alarmEventActions = "alarmEventActions"
-            case alarmModelDescription = "alarmModelDescription"
-            case alarmNotification = "alarmNotification"
-            case alarmRule = "alarmRule"
-            case roleArn = "roleArn"
-            case severity = "severity"
+            case alarmCapabilities
+            case alarmEventActions
+            case alarmModelDescription
+            case alarmNotification
+            case alarmRule
+            case roleArn
+            case severity
         }
     }
 
     public struct UpdateAlarmModelResponse: AWSDecodableShape {
-
         /// The ARN of the alarm model. For more information, see Amazon Resource Names (ARNs) in the AWS General Reference.
         public let alarmModelArn: String?
         /// The version of the alarm model.
@@ -2777,8 +2667,8 @@ extension IoTEvents {
         public let creationTime: Date?
         /// The time the alarm model was last updated, in the Unix epoch format.
         public let lastUpdateTime: Date?
-        /// The status of the alarm model. The status can be one of the following values:    ACTIVE - The alarm model is active and it's ready to evaluate data.    ACTIVATING - AWS IoT Events is activating your alarm model.  Activating an alarm model can take up to a few minutes.    INACTIVE - The alarm model is inactive, so it isn't ready to evaluate data. 
-        /// 	  Check your alarm model information and update the alarm model.    FAILED - You couldn't create or update the alarm model. Check your alarm model information  and try again.  
+        /// The status of the alarm model. The status can be one of the following values:    ACTIVE - The alarm model is active and it's ready to evaluate data.    ACTIVATING - AWS IoT Events is activating your alarm model.  Activating an alarm model can take up to a few minutes.    INACTIVE - The alarm model is inactive, so it isn't ready to evaluate data.
+        /// 	  Check your alarm model information and update the alarm model.    FAILED - You couldn't create or update the alarm model. Check your alarm model information  and try again.
         public let status: AlarmModelVersionStatus?
 
         public init(alarmModelArn: String? = nil, alarmModelVersion: String? = nil, creationTime: Date? = nil, lastUpdateTime: Date? = nil, status: AlarmModelVersionStatus? = nil) {
@@ -2790,11 +2680,11 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case alarmModelArn = "alarmModelArn"
-            case alarmModelVersion = "alarmModelVersion"
-            case creationTime = "creationTime"
-            case lastUpdateTime = "lastUpdateTime"
-            case status = "status"
+            case alarmModelArn
+            case alarmModelVersion
+            case creationTime
+            case lastUpdateTime
+            case status
         }
     }
 
@@ -2809,7 +2699,7 @@ extension IoTEvents {
         public let detectorModelDescription: String?
         /// The name of the detector model that is updated.
         public let detectorModelName: String
-        /// Information about the order in which events are evaluated and how actions are executed. 
+        /// Information about the order in which events are evaluated and how actions are executed.
         public let evaluationMethod: EvaluationMethod?
         /// The ARN of the role that grants permission to AWS IoT Events to perform its operations.
         public let roleArn: String
@@ -2833,15 +2723,14 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case detectorModelDefinition = "detectorModelDefinition"
-            case detectorModelDescription = "detectorModelDescription"
-            case evaluationMethod = "evaluationMethod"
-            case roleArn = "roleArn"
+            case detectorModelDefinition
+            case detectorModelDescription
+            case evaluationMethod
+            case roleArn
         }
     }
 
     public struct UpdateDetectorModelResponse: AWSDecodableShape {
-
         /// Information about how the detector model is configured.
         public let detectorModelConfiguration: DetectorModelConfiguration?
 
@@ -2850,7 +2739,7 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case detectorModelConfiguration = "detectorModelConfiguration"
+            case detectorModelConfiguration
         }
     }
 
@@ -2881,13 +2770,12 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case inputDefinition = "inputDefinition"
-            case inputDescription = "inputDescription"
+            case inputDefinition
+            case inputDescription
         }
     }
 
     public struct UpdateInputResponse: AWSDecodableShape {
-
         /// Information about the configuration of the input.
         public let inputConfiguration: InputConfiguration?
 
@@ -2896,7 +2784,7 @@ extension IoTEvents {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case inputConfiguration = "inputConfiguration"
+            case inputConfiguration
         }
     }
 }

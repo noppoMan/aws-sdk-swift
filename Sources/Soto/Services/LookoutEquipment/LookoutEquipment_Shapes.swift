@@ -84,16 +84,15 @@ extension LookoutEquipment {
     // MARK: Shapes
 
     public struct CreateDatasetRequest: AWSEncodableShape {
-
-        ///  A unique identifier for the request. If you do not set the client request token, Amazon Lookout for Equipment generates one. 
+        ///  A unique identifier for the request. If you do not set the client request token, Amazon Lookout for Equipment generates one.
         public let clientToken: String
-        /// The name of the dataset being created. 
+        /// The name of the dataset being created.
         public let datasetName: String
-        /// A JSON description of the data that is in each time series dataset, including names, column names, and data types. 
+        /// A JSON description of the data that is in each time series dataset, including names, column names, and data types.
         public let datasetSchema: DatasetSchema
-        /// Provides the identifier of the AWS KMS customer master key (CMK) used to encrypt dataset data by Amazon Lookout for Equipment. 
+        /// Provides the identifier of the AWS KMS customer master key (CMK) used to encrypt dataset data by Amazon Lookout for Equipment.
         public let serverSideKmsKeyId: String?
-        /// Any tags associated with the ingested data described in the dataset. 
+        /// Any tags associated with the ingested data described in the dataset.
         public let tags: [Tag]?
 
         public init(clientToken: String = CreateDatasetRequest.idempotencyToken(), datasetName: String, datasetSchema: DatasetSchema, serverSideKmsKeyId: String? = nil, tags: [Tag]? = nil) {
@@ -131,12 +130,11 @@ extension LookoutEquipment {
     }
 
     public struct CreateDatasetResponse: AWSDecodableShape {
-
-        ///  The Amazon Resource Name (ARN) of the dataset being created. 
+        ///  The Amazon Resource Name (ARN) of the dataset being created.
         public let datasetArn: String?
-        /// The name of the dataset being created. 
+        /// The name of the dataset being created.
         public let datasetName: String?
-        /// Indicates the status of the CreateDataset operation. 
+        /// Indicates the status of the CreateDataset operation.
         public let status: DatasetStatus?
 
         public init(datasetArn: String? = nil, datasetName: String? = nil, status: DatasetStatus? = nil) {
@@ -153,26 +151,25 @@ extension LookoutEquipment {
     }
 
     public struct CreateInferenceSchedulerRequest: AWSEncodableShape {
-
-        ///  A unique identifier for the request. If you do not set the client request token, Amazon Lookout for Equipment generates one. 
+        ///  A unique identifier for the request. If you do not set the client request token, Amazon Lookout for Equipment generates one.
         public let clientToken: String
-        ///  A period of time (in minutes) by which inference on the data is delayed after the data starts. For instance, if you select an offset delay time of five minutes, inference will not begin on the data until the first data measurement after the five minute mark. For example, if  five minutes is selected, the inference scheduler will wake up at the configured frequency with the  additional five minute delay time to check the customer S3 bucket. The customer can upload data at  the same frequency and they don't need to stop and restart the scheduler when uploading new data. 
+        ///  A period of time (in minutes) by which inference on the data is delayed after the data starts. For instance, if you select an offset delay time of five minutes, inference will not begin on the data until the first data measurement after the five minute mark. For example, if  five minutes is selected, the inference scheduler will wake up at the configured frequency with the  additional five minute delay time to check the customer S3 bucket. The customer can upload data at  the same frequency and they don't need to stop and restart the scheduler when uploading new data.
         public let dataDelayOffsetInMinutes: Int64?
-        /// Specifies configuration information for the input data for the inference scheduler, including delimiter, format, and dataset location. 
+        /// Specifies configuration information for the input data for the inference scheduler, including delimiter, format, and dataset location.
         public let dataInputConfiguration: InferenceInputConfiguration
-        /// Specifies configuration information for the output results for the inference scheduler, including the S3 location for the output. 
+        /// Specifies configuration information for the output results for the inference scheduler, including the S3 location for the output.
         public let dataOutputConfiguration: InferenceOutputConfiguration
-        ///  How often data is uploaded to the source S3 bucket for the input data. The value chosen is the length of time between data uploads. For instance, if you select 5 minutes, Amazon Lookout for Equipment will upload the real-time data to the source bucket once every 5 minutes. This frequency also determines how often Amazon Lookout for Equipment starts a scheduled inference on your data. In this example, it starts once every 5 minutes. 
+        ///  How often data is uploaded to the source S3 bucket for the input data. The value chosen is the length of time between data uploads. For instance, if you select 5 minutes, Amazon Lookout for Equipment will upload the real-time data to the source bucket once every 5 minutes. This frequency also determines how often Amazon Lookout for Equipment starts a scheduled inference on your data. In this example, it starts once every 5 minutes.
         public let dataUploadFrequency: DataUploadFrequency
-        /// The name of the inference scheduler being created. 
+        /// The name of the inference scheduler being created.
         public let inferenceSchedulerName: String
-        /// The name of the previously trained ML model being used to create the inference scheduler. 
+        /// The name of the previously trained ML model being used to create the inference scheduler.
         public let modelName: String
-        /// The Amazon Resource Name (ARN) of a role with permission to access the data source being used for the inference. 
+        /// The Amazon Resource Name (ARN) of a role with permission to access the data source being used for the inference.
         public let roleArn: String
-        /// Provides the identifier of the AWS KMS customer master key (CMK) used to encrypt inference scheduler data by Amazon Lookout for Equipment. 
+        /// Provides the identifier of the AWS KMS customer master key (CMK) used to encrypt inference scheduler data by Amazon Lookout for Equipment.
         public let serverSideKmsKeyId: String?
-        /// Any tags associated with the inference scheduler. 
+        /// Any tags associated with the inference scheduler.
         public let tags: [Tag]?
 
         public init(clientToken: String = CreateInferenceSchedulerRequest.idempotencyToken(), dataDelayOffsetInMinutes: Int64? = nil, dataInputConfiguration: InferenceInputConfiguration, dataOutputConfiguration: InferenceOutputConfiguration, dataUploadFrequency: DataUploadFrequency, inferenceSchedulerName: String, modelName: String, roleArn: String, serverSideKmsKeyId: String? = nil, tags: [Tag]? = nil) {
@@ -229,12 +226,11 @@ extension LookoutEquipment {
     }
 
     public struct CreateInferenceSchedulerResponse: AWSDecodableShape {
-
-        /// The Amazon Resource Name (ARN) of the inference scheduler being created. 
+        /// The Amazon Resource Name (ARN) of the inference scheduler being created.
         public let inferenceSchedulerArn: String?
-        /// The name of inference scheduler being created. 
+        /// The name of inference scheduler being created.
         public let inferenceSchedulerName: String?
-        /// Indicates the status of the CreateInferenceScheduler operation. 
+        /// Indicates the status of the CreateInferenceScheduler operation.
         public let status: InferenceSchedulerStatus?
 
         public init(inferenceSchedulerArn: String? = nil, inferenceSchedulerName: String? = nil, status: InferenceSchedulerStatus? = nil) {
@@ -251,32 +247,31 @@ extension LookoutEquipment {
     }
 
     public struct CreateModelRequest: AWSEncodableShape {
-
-        /// A unique identifier for the request. If you do not set the client request token, Amazon Lookout for Equipment generates one. 
+        /// A unique identifier for the request. If you do not set the client request token, Amazon Lookout for Equipment generates one.
         public let clientToken: String
-        /// The configuration is the TargetSamplingRate, which is the sampling rate of  the data after post processing by  Amazon Lookout for Equipment. For example, if you provide data that  has been collected at a 1 second level and you want the system to resample  the data at a 1 minute rate before training, the TargetSamplingRate is 1 minute. When providing a value for the TargetSamplingRate, you must  attach the prefix "PT" to the rate you want.  The value for a 1 second rate  is therefore PT1S, the value for a 15 minute rate  is PT15M, and the value for a 1 hour rate  is PT1H 
+        /// The configuration is the TargetSamplingRate, which is the sampling rate of  the data after post processing by  Amazon Lookout for Equipment. For example, if you provide data that  has been collected at a 1 second level and you want the system to resample  the data at a 1 minute rate before training, the TargetSamplingRate is 1 minute. When providing a value for the TargetSamplingRate, you must  attach the prefix "PT" to the rate you want.  The value for a 1 second rate  is therefore PT1S, the value for a 15 minute rate  is PT15M, and the value for a 1 hour rate  is PT1H
         public let dataPreProcessingConfiguration: DataPreProcessingConfiguration?
-        /// The name of the dataset for the ML model being created. 
+        /// The name of the dataset for the ML model being created.
         public let datasetName: String
-        /// The data schema for the ML model being created. 
+        /// The data schema for the ML model being created.
         public let datasetSchema: DatasetSchema?
-        ///  Indicates the time reference in the dataset that should be used to end the subset of evaluation data for the ML model. 
+        ///  Indicates the time reference in the dataset that should be used to end the subset of evaluation data for the ML model.
         public let evaluationDataEndTime: Date?
-        /// Indicates the time reference in the dataset that should be used to begin the subset of evaluation data for the ML model. 
+        /// Indicates the time reference in the dataset that should be used to begin the subset of evaluation data for the ML model.
         public let evaluationDataStartTime: Date?
-        /// The input configuration for the labels being used for the ML model that's being created. 
+        /// The input configuration for the labels being used for the ML model that's being created.
         public let labelsInputConfiguration: LabelsInputConfiguration?
         /// The name for the ML model to be created.
         public let modelName: String
-        ///  The Amazon Resource Name (ARN) of a role with permission to access the data source being used to create the ML model. 
+        ///  The Amazon Resource Name (ARN) of a role with permission to access the data source being used to create the ML model.
         public let roleArn: String?
-        /// Provides the identifier of the AWS KMS customer master key (CMK) used to encrypt model data by Amazon Lookout for Equipment. 
+        /// Provides the identifier of the AWS KMS customer master key (CMK) used to encrypt model data by Amazon Lookout for Equipment.
         public let serverSideKmsKeyId: String?
-        ///  Any tags associated with the ML model being created. 
+        ///  Any tags associated with the ML model being created.
         public let tags: [Tag]?
-        /// Indicates the time reference in the dataset that should be used to end the subset of training data for the ML model. 
+        /// Indicates the time reference in the dataset that should be used to end the subset of training data for the ML model.
         public let trainingDataEndTime: Date?
-        /// Indicates the time reference in the dataset that should be used to begin the subset of training data for the ML model. 
+        /// Indicates the time reference in the dataset that should be used to begin the subset of training data for the ML model.
         public let trainingDataStartTime: Date?
 
         public init(clientToken: String = CreateModelRequest.idempotencyToken(), dataPreProcessingConfiguration: DataPreProcessingConfiguration? = nil, datasetName: String, datasetSchema: DatasetSchema? = nil, evaluationDataEndTime: Date? = nil, evaluationDataStartTime: Date? = nil, labelsInputConfiguration: LabelsInputConfiguration? = nil, modelName: String, roleArn: String? = nil, serverSideKmsKeyId: String? = nil, tags: [Tag]? = nil, trainingDataEndTime: Date? = nil, trainingDataStartTime: Date? = nil) {
@@ -337,10 +332,9 @@ extension LookoutEquipment {
     }
 
     public struct CreateModelResponse: AWSDecodableShape {
-
-        /// The Amazon Resource Name (ARN) of the model being created. 
+        /// The Amazon Resource Name (ARN) of the model being created.
         public let modelArn: String?
-        /// Indicates the status of the CreateModel operation. 
+        /// Indicates the status of the CreateModel operation.
         public let status: ModelStatus?
 
         public init(modelArn: String? = nil, status: ModelStatus? = nil) {
@@ -355,16 +349,15 @@ extension LookoutEquipment {
     }
 
     public struct DataIngestionJobSummary: AWSDecodableShape {
-
-        /// The Amazon Resource Name (ARN) of the dataset used in the data ingestion job. 
+        /// The Amazon Resource Name (ARN) of the dataset used in the data ingestion job.
         public let datasetArn: String?
-        /// The name of the dataset used for the data ingestion job. 
+        /// The name of the dataset used for the data ingestion job.
         public let datasetName: String?
-        ///  Specifies information for the input data for the data inference job, including data S3 location parameters. 
+        ///  Specifies information for the input data for the data inference job, including data S3 location parameters.
         public let ingestionInputConfiguration: IngestionInputConfiguration?
-        /// Indicates the job ID of the data ingestion job. 
+        /// Indicates the job ID of the data ingestion job.
         public let jobId: String?
-        /// Indicates the status of the data ingestion job. 
+        /// Indicates the status of the data ingestion job.
         public let status: IngestionJobStatus?
 
         public init(datasetArn: String? = nil, datasetName: String? = nil, ingestionInputConfiguration: IngestionInputConfiguration? = nil, jobId: String? = nil, status: IngestionJobStatus? = nil) {
@@ -385,8 +378,7 @@ extension LookoutEquipment {
     }
 
     public struct DataPreProcessingConfiguration: AWSEncodableShape & AWSDecodableShape {
-
-        /// The sampling rate of the data after post processing by Amazon Lookout for Equipment.  For example, if you provide data that has been collected at a 1 second level and  you want the system to resample the data at a 1 minute rate before training,  the TargetSamplingRate is 1 minute. When providing a value for the TargetSamplingRate, you must attach  the prefix "PT" to the rate you want.  The value for a 1 second rate is  therefore PT1S, the value for a 15 minute  rate is PT15M, and the value for a 1 hour rate  is PT1H 
+        /// The sampling rate of the data after post processing by Amazon Lookout for Equipment.  For example, if you provide data that has been collected at a 1 second level and  you want the system to resample the data at a 1 minute rate before training,  the TargetSamplingRate is 1 minute. When providing a value for the TargetSamplingRate, you must attach  the prefix "PT" to the rate you want.  The value for a 1 second rate is  therefore PT1S, the value for a 15 minute  rate is PT15M, and the value for a 1 hour rate  is PT1H
         public let targetSamplingRate: TargetSamplingRate?
 
         public init(targetSamplingRate: TargetSamplingRate? = nil) {
@@ -399,8 +391,7 @@ extension LookoutEquipment {
     }
 
     public struct DatasetSchema: AWSEncodableShape {
-
-        ///  
+        ///
         public let inlineDataSchema: String?
 
         public init(inlineDataSchema: String? = nil) {
@@ -408,7 +399,7 @@ extension LookoutEquipment {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.inlineDataSchema, name: "inlineDataSchema", parent: name, max: 1000000)
+            try self.validate(self.inlineDataSchema, name: "inlineDataSchema", parent: name, max: 1_000_000)
             try self.validate(self.inlineDataSchema, name: "inlineDataSchema", parent: name, min: 1)
         }
 
@@ -418,14 +409,13 @@ extension LookoutEquipment {
     }
 
     public struct DatasetSummary: AWSDecodableShape {
-
-        /// The time at which the dataset was created in Amazon Lookout for Equipment. 
+        /// The time at which the dataset was created in Amazon Lookout for Equipment.
         public let createdAt: Date?
-        /// The Amazon Resource Name (ARN) of the specified dataset. 
+        /// The Amazon Resource Name (ARN) of the specified dataset.
         public let datasetArn: String?
-        /// The name of the dataset. 
+        /// The name of the dataset.
         public let datasetName: String?
-        /// Indicates the status of the dataset. 
+        /// Indicates the status of the dataset.
         public let status: DatasetStatus?
 
         public init(createdAt: Date? = nil, datasetArn: String? = nil, datasetName: String? = nil, status: DatasetStatus? = nil) {
@@ -444,8 +434,7 @@ extension LookoutEquipment {
     }
 
     public struct DeleteDatasetRequest: AWSEncodableShape {
-
-        /// The name of the dataset to be deleted. 
+        /// The name of the dataset to be deleted.
         public let datasetName: String
 
         public init(datasetName: String) {
@@ -464,8 +453,7 @@ extension LookoutEquipment {
     }
 
     public struct DeleteInferenceSchedulerRequest: AWSEncodableShape {
-
-        /// The name of the inference scheduler to be deleted. 
+        /// The name of the inference scheduler to be deleted.
         public let inferenceSchedulerName: String
 
         public init(inferenceSchedulerName: String) {
@@ -484,8 +472,7 @@ extension LookoutEquipment {
     }
 
     public struct DeleteModelRequest: AWSEncodableShape {
-
-        /// The name of the ML model to be deleted. 
+        /// The name of the ML model to be deleted.
         public let modelName: String
 
         public init(modelName: String) {
@@ -504,8 +491,7 @@ extension LookoutEquipment {
     }
 
     public struct DescribeDataIngestionJobRequest: AWSEncodableShape {
-
-        /// The job ID of the data ingestion job. 
+        /// The job ID of the data ingestion job.
         public let jobId: String
 
         public init(jobId: String) {
@@ -523,20 +509,19 @@ extension LookoutEquipment {
     }
 
     public struct DescribeDataIngestionJobResponse: AWSDecodableShape {
-
-        /// The time at which the data ingestion job was created. 
+        /// The time at which the data ingestion job was created.
         public let createdAt: Date?
-        /// The Amazon Resource Name (ARN) of the dataset being used in the data ingestion job. 
+        /// The Amazon Resource Name (ARN) of the dataset being used in the data ingestion job.
         public let datasetArn: String?
-        /// Specifies the reason for failure when a data ingestion job has failed. 
+        /// Specifies the reason for failure when a data ingestion job has failed.
         public let failedReason: String?
-        /// Specifies the S3 location configuration for the data input for the data ingestion job. 
+        /// Specifies the S3 location configuration for the data input for the data ingestion job.
         public let ingestionInputConfiguration: IngestionInputConfiguration?
-        /// Indicates the job ID of the data ingestion job. 
+        /// Indicates the job ID of the data ingestion job.
         public let jobId: String?
-        /// The Amazon Resource Name (ARN) of an IAM role with permission to access the data source being ingested. 
+        /// The Amazon Resource Name (ARN) of an IAM role with permission to access the data source being ingested.
         public let roleArn: String?
-        /// Indicates the status of the DataIngestionJob operation. 
+        /// Indicates the status of the DataIngestionJob operation.
         public let status: IngestionJobStatus?
 
         public init(createdAt: Date? = nil, datasetArn: String? = nil, failedReason: String? = nil, ingestionInputConfiguration: IngestionInputConfiguration? = nil, jobId: String? = nil, roleArn: String? = nil, status: IngestionJobStatus? = nil) {
@@ -561,8 +546,7 @@ extension LookoutEquipment {
     }
 
     public struct DescribeDatasetRequest: AWSEncodableShape {
-
-        /// The name of the dataset to be described. 
+        /// The name of the dataset to be described.
         public let datasetName: String
 
         public init(datasetName: String) {
@@ -581,22 +565,21 @@ extension LookoutEquipment {
     }
 
     public struct DescribeDatasetResponse: AWSDecodableShape {
-
-        /// Specifies the time the dataset was created in Amazon Lookout for Equipment. 
+        /// Specifies the time the dataset was created in Amazon Lookout for Equipment.
         public let createdAt: Date?
-        /// The Amazon Resource Name (ARN) of the dataset being described. 
+        /// The Amazon Resource Name (ARN) of the dataset being described.
         public let datasetArn: String?
-        /// The name of the dataset being described. 
+        /// The name of the dataset being described.
         public let datasetName: String?
-        /// Specifies the S3 location configuration for the data input for the data ingestion job. 
+        /// Specifies the S3 location configuration for the data input for the data ingestion job.
         public let ingestionInputConfiguration: IngestionInputConfiguration?
-        /// Specifies the time the dataset was last updated, if it was. 
+        /// Specifies the time the dataset was last updated, if it was.
         public let lastUpdatedAt: Date?
-        /// A JSON description of the data that is in each time series dataset, including names, column names, and data types. 
+        /// A JSON description of the data that is in each time series dataset, including names, column names, and data types.
         public let schema: String?
-        /// Provides the identifier of the AWS KMS customer master key (CMK) used to encrypt dataset data by Amazon Lookout for Equipment. 
+        /// Provides the identifier of the AWS KMS customer master key (CMK) used to encrypt dataset data by Amazon Lookout for Equipment.
         public let serverSideKmsKeyId: String?
-        /// Indicates the status of the dataset. 
+        /// Indicates the status of the dataset.
         public let status: DatasetStatus?
 
         public init(createdAt: Date? = nil, datasetArn: String? = nil, datasetName: String? = nil, ingestionInputConfiguration: IngestionInputConfiguration? = nil, lastUpdatedAt: Date? = nil, schema: String? = nil, serverSideKmsKeyId: String? = nil, status: DatasetStatus? = nil) {
@@ -623,8 +606,7 @@ extension LookoutEquipment {
     }
 
     public struct DescribeInferenceSchedulerRequest: AWSEncodableShape {
-
-        /// The name of the inference scheduler being described. 
+        /// The name of the inference scheduler being described.
         public let inferenceSchedulerName: String
 
         public init(inferenceSchedulerName: String) {
@@ -643,32 +625,31 @@ extension LookoutEquipment {
     }
 
     public struct DescribeInferenceSchedulerResponse: AWSDecodableShape {
-
-        /// Specifies the time at which the inference scheduler was created. 
+        /// Specifies the time at which the inference scheduler was created.
         public let createdAt: Date?
         ///  A period of time (in minutes) by which inference on the data is delayed after the data starts. For instance, if you select an offset delay time of five minutes, inference will not begin on the data until the first data measurement after the five minute mark. For example, if  five minutes is selected, the inference scheduler will wake up at the configured frequency with the  additional five minute delay time to check the customer S3 bucket. The customer can upload data at  the same frequency and they don't need to stop and restart the scheduler when uploading new data.
         public let dataDelayOffsetInMinutes: Int64?
-        ///  Specifies configuration information for the input data for the inference scheduler, including delimiter, format, and dataset location. 
+        ///  Specifies configuration information for the input data for the inference scheduler, including delimiter, format, and dataset location.
         public let dataInputConfiguration: InferenceInputConfiguration?
-        ///  Specifies information for the output results for the inference scheduler,  including the output S3 location. 
+        ///  Specifies information for the output results for the inference scheduler,  including the output S3 location.
         public let dataOutputConfiguration: InferenceOutputConfiguration?
-        /// Specifies how often data is uploaded to the source S3 bucket for the input data. This value is the length of time between data uploads. For instance, if you select 5 minutes, Amazon Lookout for Equipment will upload the real-time data to the source bucket once every 5 minutes. This frequency also determines how often Amazon Lookout for Equipment starts a scheduled inference on your data. In this example, it starts once every 5 minutes. 
+        /// Specifies how often data is uploaded to the source S3 bucket for the input data. This value is the length of time between data uploads. For instance, if you select 5 minutes, Amazon Lookout for Equipment will upload the real-time data to the source bucket once every 5 minutes. This frequency also determines how often Amazon Lookout for Equipment starts a scheduled inference on your data. In this example, it starts once every 5 minutes.
         public let dataUploadFrequency: DataUploadFrequency?
-        /// The Amazon Resource Name (ARN) of the inference scheduler being described. 
+        /// The Amazon Resource Name (ARN) of the inference scheduler being described.
         public let inferenceSchedulerArn: String?
-        /// The name of the inference scheduler being described. 
+        /// The name of the inference scheduler being described.
         public let inferenceSchedulerName: String?
-        /// The Amazon Resource Name (ARN) of the ML model of the inference scheduler being described. 
+        /// The Amazon Resource Name (ARN) of the ML model of the inference scheduler being described.
         public let modelArn: String?
-        /// The name of the ML model of the inference scheduler being described. 
+        /// The name of the ML model of the inference scheduler being described.
         public let modelName: String?
-        ///  The Amazon Resource Name (ARN) of a role with permission to access the data source for the inference scheduler being described. 
+        ///  The Amazon Resource Name (ARN) of a role with permission to access the data source for the inference scheduler being described.
         public let roleArn: String?
-        /// Provides the identifier of the AWS KMS customer master key (CMK) used to encrypt inference scheduler data by Amazon Lookout for Equipment. 
+        /// Provides the identifier of the AWS KMS customer master key (CMK) used to encrypt inference scheduler data by Amazon Lookout for Equipment.
         public let serverSideKmsKeyId: String?
-        /// Indicates the status of the inference scheduler. 
+        /// Indicates the status of the inference scheduler.
         public let status: InferenceSchedulerStatus?
-        /// Specifies the time at which the inference scheduler was last updated, if it was. 
+        /// Specifies the time at which the inference scheduler was last updated, if it was.
         public let updatedAt: Date?
 
         public init(createdAt: Date? = nil, dataDelayOffsetInMinutes: Int64? = nil, dataInputConfiguration: InferenceInputConfiguration? = nil, dataOutputConfiguration: InferenceOutputConfiguration? = nil, dataUploadFrequency: DataUploadFrequency? = nil, inferenceSchedulerArn: String? = nil, inferenceSchedulerName: String? = nil, modelArn: String? = nil, modelName: String? = nil, roleArn: String? = nil, serverSideKmsKeyId: String? = nil, status: InferenceSchedulerStatus? = nil, updatedAt: Date? = nil) {
@@ -705,8 +686,7 @@ extension LookoutEquipment {
     }
 
     public struct DescribeModelRequest: AWSEncodableShape {
-
-        /// The name of the ML model to be described. 
+        /// The name of the ML model to be described.
         public let modelName: String
 
         public init(modelName: String) {
@@ -725,46 +705,45 @@ extension LookoutEquipment {
     }
 
     public struct DescribeModelResponse: AWSDecodableShape {
-
-        /// Indicates the time and date at which the ML model was created. 
+        /// Indicates the time and date at which the ML model was created.
         public let createdAt: Date?
-        /// The configuration is the TargetSamplingRate, which is the sampling rate of  the data after post processing by  Amazon Lookout for Equipment. For example, if you provide data that  has been collected at a 1 second level and you want the system to resample  the data at a 1 minute rate before training, the TargetSamplingRate is 1 minute. When providing a value for the TargetSamplingRate, you must  attach the prefix "PT" to the rate you want.  The value for a 1 second rate  is therefore PT1S, the value for a 15 minute rate  is PT15M, and the value for a 1 hour rate  is PT1H 
+        /// The configuration is the TargetSamplingRate, which is the sampling rate of  the data after post processing by  Amazon Lookout for Equipment. For example, if you provide data that  has been collected at a 1 second level and you want the system to resample  the data at a 1 minute rate before training, the TargetSamplingRate is 1 minute. When providing a value for the TargetSamplingRate, you must  attach the prefix "PT" to the rate you want.  The value for a 1 second rate  is therefore PT1S, the value for a 15 minute rate  is PT15M, and the value for a 1 hour rate  is PT1H
         public let dataPreProcessingConfiguration: DataPreProcessingConfiguration?
-        /// The Amazon Resouce Name (ARN) of the dataset used to create the ML model being described. 
+        /// The Amazon Resouce Name (ARN) of the dataset used to create the ML model being described.
         public let datasetArn: String?
-        /// The name of the dataset being used by the ML being described. 
+        /// The name of the dataset being used by the ML being described.
         public let datasetName: String?
-        ///  Indicates the time reference in the dataset that was used to end the subset of evaluation data for the ML model. 
+        ///  Indicates the time reference in the dataset that was used to end the subset of evaluation data for the ML model.
         public let evaluationDataEndTime: Date?
-        ///  Indicates the time reference in the dataset that was used to begin the subset of evaluation data for the ML model. 
+        ///  Indicates the time reference in the dataset that was used to begin the subset of evaluation data for the ML model.
         public let evaluationDataStartTime: Date?
-        /// If the training of the ML model failed, this indicates the reason for that failure. 
+        /// If the training of the ML model failed, this indicates the reason for that failure.
         public let failedReason: String?
-        /// Specifies configuration information about the labels input, including its S3 location. 
+        /// Specifies configuration information about the labels input, including its S3 location.
         public let labelsInputConfiguration: LabelsInputConfiguration?
-        /// Indicates the last time the ML model was updated. The type of update is not specified. 
+        /// Indicates the last time the ML model was updated. The type of update is not specified.
         public let lastUpdatedTime: Date?
-        /// The Amazon Resource Name (ARN) of the ML model being described. 
+        /// The Amazon Resource Name (ARN) of the ML model being described.
         public let modelArn: String?
-        /// The Model Metrics show an aggregated summary of the model's performance within the evaluation time  range. This is the JSON content of the metrics created when evaluating the model. 
+        /// The Model Metrics show an aggregated summary of the model's performance within the evaluation time  range. This is the JSON content of the metrics created when evaluating the model.
         public let modelMetrics: String?
-        /// The name of the ML model being described. 
+        /// The name of the ML model being described.
         public let modelName: String?
-        ///  The Amazon Resource Name (ARN) of a role with permission to access the data source for the ML model being described. 
+        ///  The Amazon Resource Name (ARN) of a role with permission to access the data source for the ML model being described.
         public let roleArn: String?
-        /// A JSON description of the data that is in each time series dataset, including names, column names, and data types. 
+        /// A JSON description of the data that is in each time series dataset, including names, column names, and data types.
         public let schema: String?
-        /// Provides the identifier of the AWS KMS customer master key (CMK) used to encrypt model data by Amazon Lookout for Equipment. 
+        /// Provides the identifier of the AWS KMS customer master key (CMK) used to encrypt model data by Amazon Lookout for Equipment.
         public let serverSideKmsKeyId: String?
-        /// Specifies the current status of the model being described. Status describes the status of the most recent action of the model. 
+        /// Specifies the current status of the model being described. Status describes the status of the most recent action of the model.
         public let status: ModelStatus?
-        ///  Indicates the time reference in the dataset that was used to end the subset of training data for the ML model. 
+        ///  Indicates the time reference in the dataset that was used to end the subset of training data for the ML model.
         public let trainingDataEndTime: Date?
-        ///  Indicates the time reference in the dataset that was used to begin the subset of training data for the ML model. 
+        ///  Indicates the time reference in the dataset that was used to begin the subset of training data for the ML model.
         public let trainingDataStartTime: Date?
-        /// Indicates the time at which the training of the ML model was completed. 
+        /// Indicates the time at which the training of the ML model was completed.
         public let trainingExecutionEndTime: Date?
-        /// Indicates the time at which the training of the ML model began. 
+        /// Indicates the time at which the training of the ML model began.
         public let trainingExecutionStartTime: Date?
 
         public init(createdAt: Date? = nil, dataPreProcessingConfiguration: DataPreProcessingConfiguration? = nil, datasetArn: String? = nil, datasetName: String? = nil, evaluationDataEndTime: Date? = nil, evaluationDataStartTime: Date? = nil, failedReason: String? = nil, labelsInputConfiguration: LabelsInputConfiguration? = nil, lastUpdatedTime: Date? = nil, modelArn: String? = nil, modelMetrics: String? = nil, modelName: String? = nil, roleArn: String? = nil, schema: String? = nil, serverSideKmsKeyId: String? = nil, status: ModelStatus? = nil, trainingDataEndTime: Date? = nil, trainingDataStartTime: Date? = nil, trainingExecutionEndTime: Date? = nil, trainingExecutionStartTime: Date? = nil) {
@@ -815,30 +794,29 @@ extension LookoutEquipment {
     }
 
     public struct InferenceExecutionSummary: AWSDecodableShape {
-
-        ///  
+        ///
         public let customerResultObject: S3Object?
-        /// Indicates the time reference in the dataset at which the inference execution stopped. 
+        /// Indicates the time reference in the dataset at which the inference execution stopped.
         public let dataEndTime: Date?
-        ///  Specifies configuration information for the input data for the inference scheduler, including delimiter, format, and dataset location. 
+        ///  Specifies configuration information for the input data for the inference scheduler, including delimiter, format, and dataset location.
         public let dataInputConfiguration: InferenceInputConfiguration?
-        ///  Specifies configuration information for the output results from for the inference execution, including the output S3 location. 
+        ///  Specifies configuration information for the output results from for the inference execution, including the output S3 location.
         public let dataOutputConfiguration: InferenceOutputConfiguration?
-        /// Indicates the time reference in the dataset at which the inference execution began. 
+        /// Indicates the time reference in the dataset at which the inference execution began.
         public let dataStartTime: Date?
-        ///  Specifies the reason for failure when an inference execution has failed. 
+        ///  Specifies the reason for failure when an inference execution has failed.
         public let failedReason: String?
-        ///  The Amazon Resource Name (ARN) of the inference scheduler being used for the inference execution. 
+        ///  The Amazon Resource Name (ARN) of the inference scheduler being used for the inference execution.
         public let inferenceSchedulerArn: String?
-        /// The name of the inference scheduler being used for the inference execution. 
+        /// The name of the inference scheduler being used for the inference execution.
         public let inferenceSchedulerName: String?
-        /// The Amazon Resource Name (ARN) of the ML model used for the inference execution. 
+        /// The Amazon Resource Name (ARN) of the ML model used for the inference execution.
         public let modelArn: String?
-        /// The name of the ML model being used for the inference execution. 
+        /// The name of the ML model being used for the inference execution.
         public let modelName: String?
-        /// Indicates the start time at which the inference scheduler began the specific inference execution. 
+        /// Indicates the start time at which the inference scheduler began the specific inference execution.
         public let scheduledStartTime: Date?
-        /// Indicates the status of the inference execution. 
+        /// Indicates the status of the inference execution.
         public let status: InferenceExecutionStatus?
 
         public init(customerResultObject: S3Object? = nil, dataEndTime: Date? = nil, dataInputConfiguration: InferenceInputConfiguration? = nil, dataOutputConfiguration: InferenceOutputConfiguration? = nil, dataStartTime: Date? = nil, failedReason: String? = nil, inferenceSchedulerArn: String? = nil, inferenceSchedulerName: String? = nil, modelArn: String? = nil, modelName: String? = nil, scheduledStartTime: Date? = nil, status: InferenceExecutionStatus? = nil) {
@@ -873,12 +851,11 @@ extension LookoutEquipment {
     }
 
     public struct InferenceInputConfiguration: AWSEncodableShape & AWSDecodableShape {
-
-        /// > Specifies configuration information for the input data for the inference, including timestamp format and delimiter. 
+        /// > Specifies configuration information for the input data for the inference, including timestamp format and delimiter.
         public let inferenceInputNameConfiguration: InferenceInputNameConfiguration?
-        /// Indicates the difference between your time zone and Greenwich Mean Time (GMT). 
+        /// Indicates the difference between your time zone and Greenwich Mean Time (GMT).
         public let inputTimeZoneOffset: String?
-        ///  Specifies configuration information for the input data for the inference, including S3 location of input data.. 
+        ///  Specifies configuration information for the input data for the inference, including S3 location of input data..
         public let s3InputConfiguration: InferenceS3InputConfiguration?
 
         public init(inferenceInputNameConfiguration: InferenceInputNameConfiguration? = nil, inputTimeZoneOffset: String? = nil, s3InputConfiguration: InferenceS3InputConfiguration? = nil) {
@@ -901,10 +878,9 @@ extension LookoutEquipment {
     }
 
     public struct InferenceInputNameConfiguration: AWSEncodableShape & AWSDecodableShape {
-
-        /// Indicates the delimiter character used between items in the data. 
+        /// Indicates the delimiter character used between items in the data.
         public let componentTimestampDelimiter: String?
-        /// The format of the timestamp, whether Epoch time, or standard, with or without hyphens (-). 
+        /// The format of the timestamp, whether Epoch time, or standard, with or without hyphens (-).
         public let timestampFormat: String?
 
         public init(componentTimestampDelimiter: String? = nil, timestampFormat: String? = nil) {
@@ -925,10 +901,9 @@ extension LookoutEquipment {
     }
 
     public struct InferenceOutputConfiguration: AWSEncodableShape & AWSDecodableShape {
-
-        /// The ID number for the AWS KMS key used to encrypt the inference output. 
+        /// The ID number for the AWS KMS key used to encrypt the inference output.
         public let kmsKeyId: String?
-        ///  Specifies configuration information for the output results from for the inference, output S3 location. 
+        ///  Specifies configuration information for the output results from for the inference, output S3 location.
         public let s3OutputConfiguration: InferenceS3OutputConfiguration
 
         public init(kmsKeyId: String? = nil, s3OutputConfiguration: InferenceS3OutputConfiguration) {
@@ -950,10 +925,9 @@ extension LookoutEquipment {
     }
 
     public struct InferenceS3InputConfiguration: AWSEncodableShape & AWSDecodableShape {
-
-        /// The bucket containing the input dataset for the inference. 
+        /// The bucket containing the input dataset for the inference.
         public let bucket: String
-        /// The prefix for the S3 bucket used for the input data for the inference. 
+        /// The prefix for the S3 bucket used for the input data for the inference.
         public let prefix: String?
 
         public init(bucket: String, prefix: String? = nil) {
@@ -976,10 +950,9 @@ extension LookoutEquipment {
     }
 
     public struct InferenceS3OutputConfiguration: AWSEncodableShape & AWSDecodableShape {
-
-        ///  The bucket containing the output results from the inference 
+        ///  The bucket containing the output results from the inference
         public let bucket: String
-        ///  The prefix for the S3 bucket used for the output results from the inference. 
+        ///  The prefix for the S3 bucket used for the output results from the inference.
         public let prefix: String?
 
         public init(bucket: String, prefix: String? = nil) {
@@ -1002,20 +975,19 @@ extension LookoutEquipment {
     }
 
     public struct InferenceSchedulerSummary: AWSDecodableShape {
-
-        /// > A period of time (in minutes) by which inference on the data is delayed after the data starts. For instance, if an offset delay time of five minutes was selected, inference will not begin on the data until the first data measurement after the five minute mark. For example, if  five minutes is selected, the inference scheduler will wake up at the configured frequency with the  additional five minute delay time to check the customer S3 bucket. The customer can upload data at  the same frequency and they don't need to stop and restart the scheduler when uploading new data. 
+        /// > A period of time (in minutes) by which inference on the data is delayed after the data starts. For instance, if an offset delay time of five minutes was selected, inference will not begin on the data until the first data measurement after the five minute mark. For example, if  five minutes is selected, the inference scheduler will wake up at the configured frequency with the  additional five minute delay time to check the customer S3 bucket. The customer can upload data at  the same frequency and they don't need to stop and restart the scheduler when uploading new data.
         public let dataDelayOffsetInMinutes: Int64?
-        /// How often data is uploaded to the source S3 bucket for the input data. This value is the length of time between data uploads. For instance, if you select 5 minutes, Amazon Lookout for Equipment will upload the real-time data to the source bucket once every 5 minutes. This frequency also determines how often Amazon Lookout for Equipment starts a scheduled inference on your data. In this example, it starts once every 5 minutes. 
+        /// How often data is uploaded to the source S3 bucket for the input data. This value is the length of time between data uploads. For instance, if you select 5 minutes, Amazon Lookout for Equipment will upload the real-time data to the source bucket once every 5 minutes. This frequency also determines how often Amazon Lookout for Equipment starts a scheduled inference on your data. In this example, it starts once every 5 minutes.
         public let dataUploadFrequency: DataUploadFrequency?
-        ///  The Amazon Resource Name (ARN) of the inference scheduler. 
+        ///  The Amazon Resource Name (ARN) of the inference scheduler.
         public let inferenceSchedulerArn: String?
-        /// The name of the inference scheduler. 
+        /// The name of the inference scheduler.
         public let inferenceSchedulerName: String?
-        ///  The Amazon Resource Name (ARN) of the ML model used by the inference scheduler. 
+        ///  The Amazon Resource Name (ARN) of the ML model used by the inference scheduler.
         public let modelArn: String?
-        /// The name of the ML model used for the inference scheduler. 
+        /// The name of the ML model used for the inference scheduler.
         public let modelName: String?
-        /// Indicates the status of the inference scheduler. 
+        /// Indicates the status of the inference scheduler.
         public let status: InferenceSchedulerStatus?
 
         public init(dataDelayOffsetInMinutes: Int64? = nil, dataUploadFrequency: DataUploadFrequency? = nil, inferenceSchedulerArn: String? = nil, inferenceSchedulerName: String? = nil, modelArn: String? = nil, modelName: String? = nil, status: InferenceSchedulerStatus? = nil) {
@@ -1040,8 +1012,7 @@ extension LookoutEquipment {
     }
 
     public struct IngestionInputConfiguration: AWSEncodableShape & AWSDecodableShape {
-
-        /// The location information for the S3 bucket used for input data for the data ingestion. 
+        /// The location information for the S3 bucket used for input data for the data ingestion.
         public let s3InputConfiguration: IngestionS3InputConfiguration
 
         public init(s3InputConfiguration: IngestionS3InputConfiguration) {
@@ -1058,10 +1029,9 @@ extension LookoutEquipment {
     }
 
     public struct IngestionS3InputConfiguration: AWSEncodableShape & AWSDecodableShape {
-
-        /// The name of the S3 bucket used for the input data for the data ingestion. 
+        /// The name of the S3 bucket used for the input data for the data ingestion.
         public let bucket: String
-        /// The prefix for the S3 location being used for the input data for the data ingestion. 
+        /// The prefix for the S3 location being used for the input data for the data ingestion.
         public let prefix: String?
 
         public init(bucket: String, prefix: String? = nil) {
@@ -1084,8 +1054,7 @@ extension LookoutEquipment {
     }
 
     public struct LabelsInputConfiguration: AWSEncodableShape & AWSDecodableShape {
-
-        /// Contains location information for the S3 location being used for label data. 
+        /// Contains location information for the S3 location being used for label data.
         public let s3InputConfiguration: LabelsS3InputConfiguration
 
         public init(s3InputConfiguration: LabelsS3InputConfiguration) {
@@ -1102,10 +1071,9 @@ extension LookoutEquipment {
     }
 
     public struct LabelsS3InputConfiguration: AWSEncodableShape & AWSDecodableShape {
-
-        /// The name of the S3 bucket holding the label data. 
+        /// The name of the S3 bucket holding the label data.
         public let bucket: String
-        ///  The prefix for the S3 bucket used for the label data. 
+        ///  The prefix for the S3 bucket used for the label data.
         public let prefix: String?
 
         public init(bucket: String, prefix: String? = nil) {
@@ -1128,14 +1096,13 @@ extension LookoutEquipment {
     }
 
     public struct ListDataIngestionJobsRequest: AWSEncodableShape {
-
-        /// The name of the dataset being used for the data ingestion job. 
+        /// The name of the dataset being used for the data ingestion job.
         public let datasetName: String?
-        ///  Specifies the maximum number of data ingestion jobs to list. 
+        ///  Specifies the maximum number of data ingestion jobs to list.
         public let maxResults: Int?
-        ///  An opaque pagination token indicating where to continue the listing of data ingestion jobs. 
+        ///  An opaque pagination token indicating where to continue the listing of data ingestion jobs.
         public let nextToken: String?
-        /// Indicates the status of the data ingestion job. 
+        /// Indicates the status of the data ingestion job.
         public let status: IngestionJobStatus?
 
         public init(datasetName: String? = nil, maxResults: Int? = nil, nextToken: String? = nil, status: IngestionJobStatus? = nil) {
@@ -1164,10 +1131,9 @@ extension LookoutEquipment {
     }
 
     public struct ListDataIngestionJobsResponse: AWSDecodableShape {
-
-        /// Specifies information about the specific data ingestion job, including dataset name and status. 
+        /// Specifies information about the specific data ingestion job, including dataset name and status.
         public let dataIngestionJobSummaries: [DataIngestionJobSummary]?
-        ///  An opaque pagination token indicating where to continue the listing of data ingestion jobs. 
+        ///  An opaque pagination token indicating where to continue the listing of data ingestion jobs.
         public let nextToken: String?
 
         public init(dataIngestionJobSummaries: [DataIngestionJobSummary]? = nil, nextToken: String? = nil) {
@@ -1182,12 +1148,11 @@ extension LookoutEquipment {
     }
 
     public struct ListDatasetsRequest: AWSEncodableShape {
-
-        /// The beginning of the name of the datasets to be listed. 
+        /// The beginning of the name of the datasets to be listed.
         public let datasetNameBeginsWith: String?
-        ///  Specifies the maximum number of datasets to list. 
+        ///  Specifies the maximum number of datasets to list.
         public let maxResults: Int?
-        ///  An opaque pagination token indicating where to continue the listing of datasets. 
+        ///  An opaque pagination token indicating where to continue the listing of datasets.
         public let nextToken: String?
 
         public init(datasetNameBeginsWith: String? = nil, maxResults: Int? = nil, nextToken: String? = nil) {
@@ -1214,10 +1179,9 @@ extension LookoutEquipment {
     }
 
     public struct ListDatasetsResponse: AWSDecodableShape {
-
-        /// Provides information about the specified dataset, including creation time, dataset ARN, and status. 
+        /// Provides information about the specified dataset, including creation time, dataset ARN, and status.
         public let datasetSummaries: [DatasetSummary]?
-        ///  An opaque pagination token indicating where to continue the listing of datasets. 
+        ///  An opaque pagination token indicating where to continue the listing of datasets.
         public let nextToken: String?
 
         public init(datasetSummaries: [DatasetSummary]? = nil, nextToken: String? = nil) {
@@ -1232,18 +1196,17 @@ extension LookoutEquipment {
     }
 
     public struct ListInferenceExecutionsRequest: AWSEncodableShape {
-
-        /// The time reference in the inferenced dataset before which Amazon Lookout for Equipment stopped the inference execution. 
+        /// The time reference in the inferenced dataset before which Amazon Lookout for Equipment stopped the inference execution.
         public let dataEndTimeBefore: Date?
-        /// The time reference in the inferenced dataset after which Amazon Lookout for Equipment started the inference execution. 
+        /// The time reference in the inferenced dataset after which Amazon Lookout for Equipment started the inference execution.
         public let dataStartTimeAfter: Date?
-        /// The name of the inference scheduler for the inference execution listed. 
+        /// The name of the inference scheduler for the inference execution listed.
         public let inferenceSchedulerName: String
-        /// Specifies the maximum number of inference executions to list. 
+        /// Specifies the maximum number of inference executions to list.
         public let maxResults: Int?
         /// An opaque pagination token indicating where to continue the listing of inference executions.
         public let nextToken: String?
-        /// The status of the inference execution. 
+        /// The status of the inference execution.
         public let status: InferenceExecutionStatus?
 
         public init(dataEndTimeBefore: Date? = nil, dataStartTimeAfter: Date? = nil, inferenceSchedulerName: String, maxResults: Int? = nil, nextToken: String? = nil, status: InferenceExecutionStatus? = nil) {
@@ -1276,10 +1239,9 @@ extension LookoutEquipment {
     }
 
     public struct ListInferenceExecutionsResponse: AWSDecodableShape {
-
-        /// Provides an array of information about the individual inference executions returned from the ListInferenceExecutions operation, including model used, inference scheduler, data configuration, and so on. 
+        /// Provides an array of information about the individual inference executions returned from the ListInferenceExecutions operation, including model used, inference scheduler, data configuration, and so on.
         public let inferenceExecutionSummaries: [InferenceExecutionSummary]?
-        ///  An opaque pagination token indicating where to continue the listing of inference executions. 
+        ///  An opaque pagination token indicating where to continue the listing of inference executions.
         public let nextToken: String?
 
         public init(inferenceExecutionSummaries: [InferenceExecutionSummary]? = nil, nextToken: String? = nil) {
@@ -1294,14 +1256,13 @@ extension LookoutEquipment {
     }
 
     public struct ListInferenceSchedulersRequest: AWSEncodableShape {
-
-        /// The beginning of the name of the inference schedulers to be listed. 
+        /// The beginning of the name of the inference schedulers to be listed.
         public let inferenceSchedulerNameBeginsWith: String?
-        ///  Specifies the maximum number of inference schedulers to list. 
+        ///  Specifies the maximum number of inference schedulers to list.
         public let maxResults: Int?
-        /// The name of the ML model used by the inference scheduler to be listed. 
+        /// The name of the ML model used by the inference scheduler to be listed.
         public let modelName: String?
-        ///  An opaque pagination token indicating where to continue the listing of inference schedulers. 
+        ///  An opaque pagination token indicating where to continue the listing of inference schedulers.
         public let nextToken: String?
 
         public init(inferenceSchedulerNameBeginsWith: String? = nil, maxResults: Int? = nil, modelName: String? = nil, nextToken: String? = nil) {
@@ -1333,10 +1294,9 @@ extension LookoutEquipment {
     }
 
     public struct ListInferenceSchedulersResponse: AWSDecodableShape {
-
-        /// Provides information about the specified inference scheduler, including data upload frequency, model name and ARN, and status. 
+        /// Provides information about the specified inference scheduler, including data upload frequency, model name and ARN, and status.
         public let inferenceSchedulerSummaries: [InferenceSchedulerSummary]?
-        ///  An opaque pagination token indicating where to continue the listing of inference schedulers. 
+        ///  An opaque pagination token indicating where to continue the listing of inference schedulers.
         public let nextToken: String?
 
         public init(inferenceSchedulerSummaries: [InferenceSchedulerSummary]? = nil, nextToken: String? = nil) {
@@ -1351,16 +1311,15 @@ extension LookoutEquipment {
     }
 
     public struct ListModelsRequest: AWSEncodableShape {
-
-        /// The beginning of the name of the dataset of the ML models to be listed. 
+        /// The beginning of the name of the dataset of the ML models to be listed.
         public let datasetNameBeginsWith: String?
-        ///  Specifies the maximum number of ML models to list. 
+        ///  Specifies the maximum number of ML models to list.
         public let maxResults: Int?
-        /// The beginning of the name of the ML models being listed. 
+        /// The beginning of the name of the ML models being listed.
         public let modelNameBeginsWith: String?
-        ///  An opaque pagination token indicating where to continue the listing of ML models. 
+        ///  An opaque pagination token indicating where to continue the listing of ML models.
         public let nextToken: String?
-        /// The status of the ML model. 
+        /// The status of the ML model.
         public let status: ModelStatus?
 
         public init(datasetNameBeginsWith: String? = nil, maxResults: Int? = nil, modelNameBeginsWith: String? = nil, nextToken: String? = nil, status: ModelStatus? = nil) {
@@ -1394,10 +1353,9 @@ extension LookoutEquipment {
     }
 
     public struct ListModelsResponse: AWSDecodableShape {
-
-        /// Provides information on the specified model, including created time, model and dataset ARNs, and status. 
+        /// Provides information on the specified model, including created time, model and dataset ARNs, and status.
         public let modelSummaries: [ModelSummary]?
-        ///  An opaque pagination token indicating where to continue the listing of ML models. 
+        ///  An opaque pagination token indicating where to continue the listing of ML models.
         public let nextToken: String?
 
         public init(modelSummaries: [ModelSummary]? = nil, nextToken: String? = nil) {
@@ -1412,8 +1370,7 @@ extension LookoutEquipment {
     }
 
     public struct ListTagsForResourceRequest: AWSEncodableShape {
-
-        /// The Amazon Resource Name (ARN) of the resource (such as the dataset or model) that is the focus of the ListTagsForResource operation. 
+        /// The Amazon Resource Name (ARN) of the resource (such as the dataset or model) that is the focus of the ListTagsForResource operation.
         public let resourceArn: String
 
         public init(resourceArn: String) {
@@ -1431,8 +1388,7 @@ extension LookoutEquipment {
     }
 
     public struct ListTagsForResourceResponse: AWSDecodableShape {
-
-        ///  Any tags associated with the resource. 
+        ///  Any tags associated with the resource.
         public let tags: [Tag]?
 
         public init(tags: [Tag]? = nil) {
@@ -1445,18 +1401,17 @@ extension LookoutEquipment {
     }
 
     public struct ModelSummary: AWSDecodableShape {
-
-        /// The time at which the specific model was created. 
+        /// The time at which the specific model was created.
         public let createdAt: Date?
-        ///  The Amazon Resource Name (ARN) of the dataset used to create the model. 
+        ///  The Amazon Resource Name (ARN) of the dataset used to create the model.
         public let datasetArn: String?
-        /// The name of the dataset being used for the ML model. 
+        /// The name of the dataset being used for the ML model.
         public let datasetName: String?
-        ///  The Amazon Resource Name (ARN) of the ML model. 
+        ///  The Amazon Resource Name (ARN) of the ML model.
         public let modelArn: String?
-        /// The name of the ML model. 
+        /// The name of the ML model.
         public let modelName: String?
-        /// Indicates the status of the ML model. 
+        /// Indicates the status of the ML model.
         public let status: ModelStatus?
 
         public init(createdAt: Date? = nil, datasetArn: String? = nil, datasetName: String? = nil, modelArn: String? = nil, modelName: String? = nil, status: ModelStatus? = nil) {
@@ -1479,10 +1434,9 @@ extension LookoutEquipment {
     }
 
     public struct S3Object: AWSDecodableShape {
-
-        /// The name of the specific S3 bucket. 
+        /// The name of the specific S3 bucket.
         public let bucket: String
-        /// The AWS Key Management Service (AWS KMS) key being used to encrypt the S3 object. Without this key, data in the bucket is not accessible. 
+        /// The AWS Key Management Service (AWS KMS) key being used to encrypt the S3 object. Without this key, data in the bucket is not accessible.
         public let key: String
 
         public init(bucket: String, key: String) {
@@ -1497,14 +1451,13 @@ extension LookoutEquipment {
     }
 
     public struct StartDataIngestionJobRequest: AWSEncodableShape {
-
-        ///  A unique identifier for the request. If you do not set the client request token, Amazon Lookout for Equipment generates one. 
+        ///  A unique identifier for the request. If you do not set the client request token, Amazon Lookout for Equipment generates one.
         public let clientToken: String
-        /// The name of the dataset being used by the data ingestion job. 
+        /// The name of the dataset being used by the data ingestion job.
         public let datasetName: String
-        ///  Specifies information for the input data for the data ingestion job, including dataset S3 location. 
+        ///  Specifies information for the input data for the data ingestion job, including dataset S3 location.
         public let ingestionInputConfiguration: IngestionInputConfiguration
-        ///  The Amazon Resource Name (ARN) of a role with permission to access the data source for the data ingestion job. 
+        ///  The Amazon Resource Name (ARN) of a role with permission to access the data source for the data ingestion job.
         public let roleArn: String
 
         public init(clientToken: String = StartDataIngestionJobRequest.idempotencyToken(), datasetName: String, ingestionInputConfiguration: IngestionInputConfiguration, roleArn: String) {
@@ -1536,10 +1489,9 @@ extension LookoutEquipment {
     }
 
     public struct StartDataIngestionJobResponse: AWSDecodableShape {
-
-        /// Indicates the job ID of the data ingestion job. 
+        /// Indicates the job ID of the data ingestion job.
         public let jobId: String?
-        /// Indicates the status of the StartDataIngestionJob operation. 
+        /// Indicates the status of the StartDataIngestionJob operation.
         public let status: IngestionJobStatus?
 
         public init(jobId: String? = nil, status: IngestionJobStatus? = nil) {
@@ -1554,8 +1506,7 @@ extension LookoutEquipment {
     }
 
     public struct StartInferenceSchedulerRequest: AWSEncodableShape {
-
-        /// The name of the inference scheduler to be started. 
+        /// The name of the inference scheduler to be started.
         public let inferenceSchedulerName: String
 
         public init(inferenceSchedulerName: String) {
@@ -1574,16 +1525,15 @@ extension LookoutEquipment {
     }
 
     public struct StartInferenceSchedulerResponse: AWSDecodableShape {
-
-        /// The Amazon Resource Name (ARN) of the inference scheduler being started. 
+        /// The Amazon Resource Name (ARN) of the inference scheduler being started.
         public let inferenceSchedulerArn: String?
-        /// The name of the inference scheduler being started. 
+        /// The name of the inference scheduler being started.
         public let inferenceSchedulerName: String?
-        /// The Amazon Resource Name (ARN) of the ML model being used by the inference scheduler. 
+        /// The Amazon Resource Name (ARN) of the ML model being used by the inference scheduler.
         public let modelArn: String?
-        /// The name of the ML model being used by the inference scheduler. 
+        /// The name of the ML model being used by the inference scheduler.
         public let modelName: String?
-        /// Indicates the status of the inference scheduler. 
+        /// Indicates the status of the inference scheduler.
         public let status: InferenceSchedulerStatus?
 
         public init(inferenceSchedulerArn: String? = nil, inferenceSchedulerName: String? = nil, modelArn: String? = nil, modelName: String? = nil, status: InferenceSchedulerStatus? = nil) {
@@ -1604,8 +1554,7 @@ extension LookoutEquipment {
     }
 
     public struct StopInferenceSchedulerRequest: AWSEncodableShape {
-
-        /// The name of the inference scheduler to be stopped. 
+        /// The name of the inference scheduler to be stopped.
         public let inferenceSchedulerName: String
 
         public init(inferenceSchedulerName: String) {
@@ -1624,16 +1573,15 @@ extension LookoutEquipment {
     }
 
     public struct StopInferenceSchedulerResponse: AWSDecodableShape {
-
-        /// The Amazon Resource Name (ARN) of the inference schedule being stopped. 
+        /// The Amazon Resource Name (ARN) of the inference schedule being stopped.
         public let inferenceSchedulerArn: String?
-        /// The name of the inference scheduler being stopped. 
+        /// The name of the inference scheduler being stopped.
         public let inferenceSchedulerName: String?
-        /// The Amazon Resource Name (ARN) of the ML model used by the inference scheduler being stopped. 
+        /// The Amazon Resource Name (ARN) of the ML model used by the inference scheduler being stopped.
         public let modelArn: String?
-        /// The name of the ML model used by the inference scheduler being stopped. 
+        /// The name of the ML model used by the inference scheduler being stopped.
         public let modelName: String?
-        /// Indicates the status of the inference scheduler. 
+        /// Indicates the status of the inference scheduler.
         public let status: InferenceSchedulerStatus?
 
         public init(inferenceSchedulerArn: String? = nil, inferenceSchedulerName: String? = nil, modelArn: String? = nil, modelName: String? = nil, status: InferenceSchedulerStatus? = nil) {
@@ -1654,10 +1602,9 @@ extension LookoutEquipment {
     }
 
     public struct Tag: AWSEncodableShape & AWSDecodableShape {
-
-        /// The key for the specified tag. 
+        /// The key for the specified tag.
         public let key: String
-        /// The value for the specified tag. 
+        /// The value for the specified tag.
         public let value: String
 
         public init(key: String, value: String) {
@@ -1680,10 +1627,9 @@ extension LookoutEquipment {
     }
 
     public struct TagResourceRequest: AWSEncodableShape {
-
-        /// The Amazon Resource Name (ARN) of the specific resource to which the tag should be associated. 
+        /// The Amazon Resource Name (ARN) of the specific resource to which the tag should be associated.
         public let resourceArn: String
-        /// The tag or tags to be associated with a specific resource. Both the tag key and value are specified. 
+        /// The tag or tags to be associated with a specific resource. Both the tag key and value are specified.
         public let tags: [Tag]
 
         public init(resourceArn: String, tags: [Tag]) {
@@ -1707,18 +1653,13 @@ extension LookoutEquipment {
     }
 
     public struct TagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UntagResourceRequest: AWSEncodableShape {
-
-        /// The Amazon Resource Name (ARN) of the resource to which the tag is currently associated. 
+        /// The Amazon Resource Name (ARN) of the resource to which the tag is currently associated.
         public let resourceArn: String
-        /// Specifies the key of the tag to be removed from a specified resource. 
+        /// Specifies the key of the tag to be removed from a specified resource.
         public let tagKeys: [String]
 
         public init(resourceArn: String, tagKeys: [String]) {
@@ -1744,26 +1685,21 @@ extension LookoutEquipment {
     }
 
     public struct UntagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateInferenceSchedulerRequest: AWSEncodableShape {
-
         /// > A period of time (in minutes) by which inference on the data is delayed after the data starts. For instance, if you select an offset delay time of five minutes, inference will not begin on the data until the first data measurement after the five minute mark. For example, if  five minutes is selected, the inference scheduler will wake up at the configured frequency with the  additional five minute delay time to check the customer S3 bucket. The customer can upload data at  the same frequency and they don't need to stop and restart the scheduler when uploading new data.
         public let dataDelayOffsetInMinutes: Int64?
-        ///  Specifies information for the input data for the inference scheduler, including delimiter, format, and dataset location. 
+        ///  Specifies information for the input data for the inference scheduler, including delimiter, format, and dataset location.
         public let dataInputConfiguration: InferenceInputConfiguration?
-        ///  Specifies information for the output results from the inference scheduler, including the output S3 location. 
+        ///  Specifies information for the output results from the inference scheduler, including the output S3 location.
         public let dataOutputConfiguration: InferenceOutputConfiguration?
-        /// How often data is uploaded to the source S3 bucket for the input data. The value chosen is the length of time between data uploads. For instance, if you select 5 minutes, Amazon Lookout for Equipment will upload the real-time data to the source bucket once every 5 minutes. This frequency also determines how often Amazon Lookout for Equipment starts a scheduled inference on your data. In this example, it starts once every 5 minutes. 
+        /// How often data is uploaded to the source S3 bucket for the input data. The value chosen is the length of time between data uploads. For instance, if you select 5 minutes, Amazon Lookout for Equipment will upload the real-time data to the source bucket once every 5 minutes. This frequency also determines how often Amazon Lookout for Equipment starts a scheduled inference on your data. In this example, it starts once every 5 minutes.
         public let dataUploadFrequency: DataUploadFrequency?
-        /// The name of the inference scheduler to be updated. 
+        /// The name of the inference scheduler to be updated.
         public let inferenceSchedulerName: String
-        ///  The Amazon Resource Name (ARN) of a role with permission to access the data source for the inference scheduler. 
+        ///  The Amazon Resource Name (ARN) of a role with permission to access the data source for the inference scheduler.
         public let roleArn: String?
 
         public init(dataDelayOffsetInMinutes: Int64? = nil, dataInputConfiguration: InferenceInputConfiguration? = nil, dataOutputConfiguration: InferenceOutputConfiguration? = nil, dataUploadFrequency: DataUploadFrequency? = nil, inferenceSchedulerName: String, roleArn: String? = nil) {

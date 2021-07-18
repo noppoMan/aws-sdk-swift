@@ -93,7 +93,7 @@ public struct SNSErrorType: AWSErrorType {
     public static var kMSNotFoundException: Self { .init(.kMSNotFoundException) }
     /// The Amazon Web Services access key ID needs a subscription for the service.
     public static var kMSOptInRequired: Self { .init(.kMSOptInRequired) }
-    /// The request was denied due to request throttling. For more information about throttling, see Limits in the Key Management Service Developer Guide. 
+    /// The request was denied due to request throttling. For more information about throttling, see Limits in the Key Management Service Developer Guide.
     public static var kMSThrottlingException: Self { .init(.kMSThrottlingException) }
     /// Indicates that the requested resource does not exist.
     public static var notFoundException: Self { .init(.notFoundException) }

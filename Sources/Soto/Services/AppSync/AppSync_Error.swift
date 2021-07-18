@@ -59,9 +59,9 @@ public struct AppSyncErrorType: AWSErrorType {
     public static var apiKeyValidityOutOfBoundsException: Self { .init(.apiKeyValidityOutOfBoundsException) }
     /// The GraphQL API exceeded a limit. Try your request again.
     public static var apiLimitExceededException: Self { .init(.apiLimitExceededException) }
-    /// The request is not well formed. For example, a value is invalid or a required field is missing. Check the field values, and then try again. 
+    /// The request is not well formed. For example, a value is invalid or a required field is missing. Check the field values, and then try again.
     public static var badRequestException: Self { .init(.badRequestException) }
-    /// Another modification is in progress at this time and it must complete before you can make your change. 
+    /// Another modification is in progress at this time and it must complete before you can make your change.
     public static var concurrentModificationException: Self { .init(.concurrentModificationException) }
     /// The GraphQL schema is not valid.
     public static var graphQLSchemaException: Self { .init(.graphQLSchemaException) }

@@ -49,7 +49,7 @@ public struct AutoScalingErrorType: AWSErrorType {
     /// return error code string
     public var errorCode: String { self.error.rawValue }
 
-    /// The request failed because an active instance refresh for the specified Auto Scaling group was not found. 
+    /// The request failed because an active instance refresh for the specified Auto Scaling group was not found.
     public static var activeInstanceRefreshNotFoundFault: Self { .init(.activeInstanceRefreshNotFoundFault) }
     /// You already have an Auto Scaling group or launch configuration with this name.
     public static var alreadyExistsFault: Self { .init(.alreadyExistsFault) }

@@ -61,11 +61,11 @@ extension LookoutVision {
 
     public struct CreateDatasetRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amzn-Client-Token")), 
+            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amzn-Client-Token")),
             AWSMemberEncoding(label: "projectName", location: .uri(locationName: "ProjectName"))
         ]
 
-        /// ClientToken is an idempotency token that ensures a call to CreateDataset completes only once.  You choose the value to pass. For example, An issue,  such as an network outage, might prevent you from getting a response from CreateDataset. In this case, safely retry your call to CreateDataset by using the same ClientToken parameter value. An error occurs if the other input parameters are not the same as in the first request. Using a different   value for ClientToken is considered a new call to CreateDataset. An idempotency token is active for 8 hours. 
+        /// ClientToken is an idempotency token that ensures a call to CreateDataset completes only once.  You choose the value to pass. For example, An issue,  such as an network outage, might prevent you from getting a response from CreateDataset. In this case, safely retry your call to CreateDataset by using the same ClientToken parameter value. An error occurs if the other input parameters are not the same as in the first request. Using a different   value for ClientToken is considered a new call to CreateDataset. An idempotency token is active for 8 hours.
         public let clientToken: String?
         /// The location of the manifest file that Amazon Lookout for Vision uses to create the dataset. If you don't specify DatasetSource, an empty dataset is created and the operation  synchronously returns. Later, you can add JSON Lines by calling UpdateDatasetEntries.  If you specify a value for DataSource, the manifest at the S3 location is validated and used to create the dataset. The call to CreateDataset is asynchronous and might take a while to complete. To find out the current status, Check the value of Status returned in a call to DescribeDataset.
         public let datasetSource: DatasetSource?
@@ -101,7 +101,6 @@ extension LookoutVision {
     }
 
     public struct CreateDatasetResponse: AWSDecodableShape {
-
         /// Information about the dataset.
         public let datasetMetadata: DatasetMetadata?
 
@@ -116,7 +115,7 @@ extension LookoutVision {
 
     public struct CreateModelRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amzn-Client-Token")), 
+            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amzn-Client-Token")),
             AWSMemberEncoding(label: "projectName", location: .uri(locationName: "ProjectName"))
         ]
 
@@ -171,7 +170,6 @@ extension LookoutVision {
     }
 
     public struct CreateModelResponse: AWSDecodableShape {
-
         /// The response from a call to CreateModel.
         public let modelMetadata: ModelMetadata?
 
@@ -214,7 +212,6 @@ extension LookoutVision {
     }
 
     public struct CreateProjectResponse: AWSDecodableShape {
-
         /// Information about the project.
         public let projectMetadata: ProjectMetadata?
 
@@ -228,7 +225,6 @@ extension LookoutVision {
     }
 
     public struct DatasetDescription: AWSDecodableShape {
-
         /// The Unix timestamp for the time and date that the dataset was created.
         public let creationTimestamp: Date?
         /// The type of the dataset. The value train represents a training dataset or single dataset project. The value test represents a test dataset.
@@ -240,7 +236,7 @@ extension LookoutVision {
         public let projectName: String?
         /// The status of the dataset.
         public let status: DatasetStatus?
-        /// The status message for the dataset. 
+        /// The status message for the dataset.
         public let statusMessage: String?
 
         public init(creationTimestamp: Date? = nil, datasetType: String? = nil, imageStats: DatasetImageStats? = nil, lastUpdatedTimestamp: Date? = nil, projectName: String? = nil, status: DatasetStatus? = nil, statusMessage: String? = nil) {
@@ -265,7 +261,6 @@ extension LookoutVision {
     }
 
     public struct DatasetGroundTruthManifest: AWSEncodableShape {
-
         /// The S3 bucket location for the manifest file.
         public let s3Object: InputS3Object?
 
@@ -283,7 +278,6 @@ extension LookoutVision {
     }
 
     public struct DatasetImageStats: AWSDecodableShape {
-
         /// the total number of images labeled as an anomaly.
         public let anomaly: Int?
         /// The total number of labeled images.
@@ -309,8 +303,7 @@ extension LookoutVision {
     }
 
     public struct DatasetMetadata: AWSDecodableShape {
-
-        /// The Unix timestamp for the date and time that the dataset was created. 
+        /// The Unix timestamp for the date and time that the dataset was created.
         public let creationTimestamp: Date?
         /// The type of the dataset.
         public let datasetType: String?
@@ -335,7 +328,6 @@ extension LookoutVision {
     }
 
     public struct DatasetSource: AWSEncodableShape {
-
         /// Location information for the manifest file.
         public let groundTruthManifest: DatasetGroundTruthManifest?
 
@@ -354,8 +346,8 @@ extension LookoutVision {
 
     public struct DeleteDatasetRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amzn-Client-Token")), 
-            AWSMemberEncoding(label: "datasetType", location: .uri(locationName: "DatasetType")), 
+            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amzn-Client-Token")),
+            AWSMemberEncoding(label: "datasetType", location: .uri(locationName: "DatasetType")),
             AWSMemberEncoding(label: "projectName", location: .uri(locationName: "ProjectName"))
         ]
 
@@ -388,17 +380,13 @@ extension LookoutVision {
     }
 
     public struct DeleteDatasetResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteModelRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amzn-Client-Token")), 
-            AWSMemberEncoding(label: "modelVersion", location: .uri(locationName: "ModelVersion")), 
+            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amzn-Client-Token")),
+            AWSMemberEncoding(label: "modelVersion", location: .uri(locationName: "ModelVersion")),
             AWSMemberEncoding(label: "projectName", location: .uri(locationName: "ProjectName"))
         ]
 
@@ -431,7 +419,6 @@ extension LookoutVision {
     }
 
     public struct DeleteModelResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the model that was deleted.
         public let modelArn: String?
 
@@ -446,7 +433,7 @@ extension LookoutVision {
 
     public struct DeleteProjectRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amzn-Client-Token")), 
+            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amzn-Client-Token")),
             AWSMemberEncoding(label: "projectName", location: .uri(locationName: "ProjectName"))
         ]
 
@@ -473,7 +460,6 @@ extension LookoutVision {
     }
 
     public struct DeleteProjectResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the project that was deleted.
         public let projectArn: String?
 
@@ -488,11 +474,11 @@ extension LookoutVision {
 
     public struct DescribeDatasetRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "datasetType", location: .uri(locationName: "DatasetType")), 
+            AWSMemberEncoding(label: "datasetType", location: .uri(locationName: "DatasetType")),
             AWSMemberEncoding(label: "projectName", location: .uri(locationName: "ProjectName"))
         ]
 
-        /// The type of the dataset to describe. Specify train to describe the  training dataset. Specify test to describe the test dataset. If you have a single dataset project, specify train 
+        /// The type of the dataset to describe. Specify train to describe the  training dataset. Specify test to describe the test dataset. If you have a single dataset project, specify train
         public let datasetType: String
         /// The name of the project that contains the dataset that you want to describe.
         public let projectName: String
@@ -515,8 +501,7 @@ extension LookoutVision {
     }
 
     public struct DescribeDatasetResponse: AWSDecodableShape {
-
-        /// The description of the requested dataset. 
+        /// The description of the requested dataset.
         public let datasetDescription: DatasetDescription?
 
         public init(datasetDescription: DatasetDescription? = nil) {
@@ -530,7 +515,7 @@ extension LookoutVision {
 
     public struct DescribeModelRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "modelVersion", location: .uri(locationName: "ModelVersion")), 
+            AWSMemberEncoding(label: "modelVersion", location: .uri(locationName: "ModelVersion")),
             AWSMemberEncoding(label: "projectName", location: .uri(locationName: "ProjectName"))
         ]
 
@@ -557,7 +542,6 @@ extension LookoutVision {
     }
 
     public struct DescribeModelResponse: AWSDecodableShape {
-
         /// Contains the description of the model.
         public let modelDescription: ModelDescription?
 
@@ -592,7 +576,6 @@ extension LookoutVision {
     }
 
     public struct DescribeProjectResponse: AWSDecodableShape {
-
         /// The description of the project.
         public let projectDescription: ProjectDescription?
 
@@ -610,14 +593,14 @@ extension LookoutVision {
         public static let _payloadPath: String = "body"
         public static let _payloadOptions: AWSShapePayloadOptions = [.raw, .allowStreaming]
         public static var _encoding = [
-            AWSMemberEncoding(label: "contentType", location: .header(locationName: "Content-Type")), 
-            AWSMemberEncoding(label: "modelVersion", location: .uri(locationName: "ModelVersion")), 
+            AWSMemberEncoding(label: "contentType", location: .header(locationName: "Content-Type")),
+            AWSMemberEncoding(label: "modelVersion", location: .uri(locationName: "ModelVersion")),
             AWSMemberEncoding(label: "projectName", location: .uri(locationName: "ProjectName"))
         ]
 
-        /// The unencrypted image bytes that you want to analyze. 
+        /// The unencrypted image bytes that you want to analyze.
         public let body: AWSPayload
-        /// The type of the image passed in Body. Valid values are image/png (PNG format images) and image/jpeg (JPG format images). 
+        /// The type of the image passed in Body. Valid values are image/png (PNG format images) and image/jpeg (JPG format images).
         public let contentType: String
         /// The version of the model that you want to use.
         public let modelVersion: String
@@ -647,7 +630,6 @@ extension LookoutVision {
     }
 
     public struct DetectAnomaliesResponse: AWSDecodableShape {
-
         /// The results of the DetectAnomalies operation.
         public let detectAnomalyResult: DetectAnomalyResult?
 
@@ -661,7 +643,6 @@ extension LookoutVision {
     }
 
     public struct DetectAnomalyResult: AWSDecodableShape {
-
         /// The confidence that Amazon Lookout for Vision has in the accuracy of the prediction.
         public let confidence: Float?
         /// True if the image contains an anomaly, otherwise false.
@@ -683,7 +664,6 @@ extension LookoutVision {
     }
 
     public struct ImageSource: AWSDecodableShape {
-
         /// The type of the image.
         public let type: String?
 
@@ -697,7 +677,6 @@ extension LookoutVision {
     }
 
     public struct InputS3Object: AWSEncodableShape {
-
         /// The Amazon S3 bucket that contains the manifest.
         public let bucket: String
         /// The name and location of the manifest file withiin the bucket.
@@ -732,14 +711,14 @@ extension LookoutVision {
 
     public struct ListDatasetEntriesRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "afterCreationDate", location: .querystring(locationName: "createdAfter")), 
-            AWSMemberEncoding(label: "anomalyClass", location: .querystring(locationName: "anomalyClass")), 
-            AWSMemberEncoding(label: "beforeCreationDate", location: .querystring(locationName: "createdBefore")), 
-            AWSMemberEncoding(label: "datasetType", location: .uri(locationName: "DatasetType")), 
-            AWSMemberEncoding(label: "labeled", location: .querystring(locationName: "labeled")), 
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
-            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")), 
-            AWSMemberEncoding(label: "projectName", location: .uri(locationName: "ProjectName")), 
+            AWSMemberEncoding(label: "afterCreationDate", location: .querystring(locationName: "createdAfter")),
+            AWSMemberEncoding(label: "anomalyClass", location: .querystring(locationName: "anomalyClass")),
+            AWSMemberEncoding(label: "beforeCreationDate", location: .querystring(locationName: "createdBefore")),
+            AWSMemberEncoding(label: "datasetType", location: .uri(locationName: "DatasetType")),
+            AWSMemberEncoding(label: "labeled", location: .querystring(locationName: "labeled")),
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
+            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")),
+            AWSMemberEncoding(label: "projectName", location: .uri(locationName: "ProjectName")),
             AWSMemberEncoding(label: "sourceRefContains", location: .querystring(locationName: "sourceRefContains"))
         ]
 
@@ -797,7 +776,6 @@ extension LookoutVision {
     }
 
     public struct ListDatasetEntriesResponse: AWSDecodableShape {
-
         /// A list of the entries (JSON Lines) within the dataset.
         public let datasetEntries: [String]?
         /// If the response is truncated, Amazon Lookout for Vision returns this token that you can use in the subsequent request to retrieve the next set ofdataset entries.
@@ -816,8 +794,8 @@ extension LookoutVision {
 
     public struct ListModelsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
-            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
+            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")),
             AWSMemberEncoding(label: "projectName", location: .uri(locationName: "ProjectName"))
         ]
 
@@ -848,10 +826,9 @@ extension LookoutVision {
     }
 
     public struct ListModelsResponse: AWSDecodableShape {
-
-        /// A list of model versions in the specified project. 
+        /// A list of model versions in the specified project.
         public let models: [ModelMetadata]?
-        /// If the response is truncated, Amazon Lookout for Vision returns this token that you can use in the subsequent request to retrieve the next set of models. 
+        /// If the response is truncated, Amazon Lookout for Vision returns this token that you can use in the subsequent request to retrieve the next set of models.
         public let nextToken: String?
 
         public init(models: [ModelMetadata]? = nil, nextToken: String? = nil) {
@@ -867,7 +844,7 @@ extension LookoutVision {
 
     public struct ListProjectsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
@@ -892,7 +869,6 @@ extension LookoutVision {
     }
 
     public struct ListProjectsResponse: AWSDecodableShape {
-
         /// If the response is truncated, Amazon Lookout for Vision returns this token that you can use in the subsequent request to retrieve the next set of projects.
         public let nextToken: String?
         /// A list of projects in your AWS account.
@@ -914,7 +890,7 @@ extension LookoutVision {
             AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "ResourceArn"))
         ]
 
-        /// The Amazon Resource Name (ARN) of the model for which you want to list tags. 
+        /// The Amazon Resource Name (ARN) of the model for which you want to list tags.
         public let resourceArn: String
 
         public init(resourceArn: String) {
@@ -930,7 +906,6 @@ extension LookoutVision {
     }
 
     public struct ListTagsForResourceResponse: AWSDecodableShape {
-
         /// A map of tag keys and values attached to the specified model.
         public let tags: [Tag]?
 
@@ -944,12 +919,11 @@ extension LookoutVision {
     }
 
     public struct ModelDescription: AWSDecodableShape {
-
-        /// The unix timestamp for the date and time that the model was created. 
+        /// The unix timestamp for the date and time that the model was created.
         public let creationTimestamp: Date?
         /// The description for the model.
         public let description: String?
-        /// The unix timestamp for the date and time that the evaluation ended. 
+        /// The unix timestamp for the date and time that the evaluation ended.
         public let evaluationEndTimestamp: Date?
         /// The S3 location where Amazon Lookout for Vision saves the manifest file that was used to test the trained model and generate the performance scores.
         public let evaluationManifest: OutputS3Object?
@@ -1002,8 +976,7 @@ extension LookoutVision {
     }
 
     public struct ModelMetadata: AWSDecodableShape {
-
-        /// The unix timestamp for the date and time that the model was created. 
+        /// The unix timestamp for the date and time that the model was created.
         public let creationTimestamp: Date?
         /// The description for the model.
         public let description: String?
@@ -1040,12 +1013,11 @@ extension LookoutVision {
     }
 
     public struct ModelPerformance: AWSDecodableShape {
-
         /// The overall F1 score metric for the trained model.
         public let f1Score: Float?
         /// The overall precision metric value for the trained model.
         public let precision: Float?
-        /// The overall recall metric value for the trained model. 
+        /// The overall recall metric value for the trained model.
         public let recall: Float?
 
         public init(f1Score: Float? = nil, precision: Float? = nil, recall: Float? = nil) {
@@ -1062,7 +1034,6 @@ extension LookoutVision {
     }
 
     public struct OutputConfig: AWSEncodableShape & AWSDecodableShape {
-
         /// The S3 location for the output.
         public let s3Location: S3Location
 
@@ -1080,7 +1051,6 @@ extension LookoutVision {
     }
 
     public struct OutputS3Object: AWSDecodableShape {
-
         /// The bucket that contains the training output.
         public let bucket: String
         /// The location of the training output in the bucket.
@@ -1098,8 +1068,7 @@ extension LookoutVision {
     }
 
     public struct ProjectDescription: AWSDecodableShape {
-
-        /// The unix timestamp for the date and time that the project was created. 
+        /// The unix timestamp for the date and time that the project was created.
         public let creationTimestamp: Date?
         /// A list of datasets in the project.
         public let datasets: [DatasetMetadata]?
@@ -1124,8 +1093,7 @@ extension LookoutVision {
     }
 
     public struct ProjectMetadata: AWSDecodableShape {
-
-        /// The unix timestamp for the date and time that the project was created. 
+        /// The unix timestamp for the date and time that the project was created.
         public let creationTimestamp: Date?
         /// The Amazon Resource Name (ARN) of the project.
         public let projectArn: String?
@@ -1146,7 +1114,6 @@ extension LookoutVision {
     }
 
     public struct S3Location: AWSEncodableShape & AWSDecodableShape {
-
         /// The S3 bucket that contains the training output.
         public let bucket: String
         /// The path of the folder, within the S3 bucket, that contains the training output.
@@ -1173,14 +1140,14 @@ extension LookoutVision {
 
     public struct StartModelRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amzn-Client-Token")), 
-            AWSMemberEncoding(label: "modelVersion", location: .uri(locationName: "ModelVersion")), 
+            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amzn-Client-Token")),
+            AWSMemberEncoding(label: "modelVersion", location: .uri(locationName: "ModelVersion")),
             AWSMemberEncoding(label: "projectName", location: .uri(locationName: "ProjectName"))
         ]
 
-        /// ClientToken is an idempotency token that ensures a call to StartModel completes only once.  You choose the value to pass. For example, An issue,  such as an network outage, might prevent you from getting a response from StartModel. In this case, safely retry your call to StartModel by using the same ClientToken parameter value. An error occurs if the other input parameters are not the same as in the first request. Using a different   value for ClientToken is considered a new call to StartModel. An idempotency token is active for 8 hours. 
+        /// ClientToken is an idempotency token that ensures a call to StartModel completes only once.  You choose the value to pass. For example, An issue,  such as an network outage, might prevent you from getting a response from StartModel. In this case, safely retry your call to StartModel by using the same ClientToken parameter value. An error occurs if the other input parameters are not the same as in the first request. Using a different   value for ClientToken is considered a new call to StartModel. An idempotency token is active for 8 hours.
         public let clientToken: String?
-        /// The minimum number of inference units to use. A single inference unit represents 1 hour of processing and can support up to 5 Transaction Pers Second (TPS). Use a higher number to increase the TPS throughput of your model. You are charged for the number of inference units that you use. 
+        /// The minimum number of inference units to use. A single inference unit represents 1 hour of processing and can support up to 5 Transaction Pers Second (TPS). Use a higher number to increase the TPS throughput of your model. You are charged for the number of inference units that you use.
         public let minInferenceUnits: Int
         /// The version of the model that you want to start.
         public let modelVersion: String
@@ -1213,7 +1180,6 @@ extension LookoutVision {
     }
 
     public struct StartModelResponse: AWSDecodableShape {
-
         /// The current running status of the model.
         public let status: ModelHostingStatus?
 
@@ -1228,12 +1194,12 @@ extension LookoutVision {
 
     public struct StopModelRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amzn-Client-Token")), 
-            AWSMemberEncoding(label: "modelVersion", location: .uri(locationName: "ModelVersion")), 
+            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amzn-Client-Token")),
+            AWSMemberEncoding(label: "modelVersion", location: .uri(locationName: "ModelVersion")),
             AWSMemberEncoding(label: "projectName", location: .uri(locationName: "ProjectName"))
         ]
 
-        /// ClientToken is an idempotency token that ensures a call to StopModel completes only once.  You choose the value to pass. For example, An issue,  such as an network outage, might prevent you from getting a response from StopModel. In this case, safely retry your call to StopModel by using the same ClientToken parameter value. An error occurs if the other input parameters are not the same as in the first request. Using a different   value for ClientToken is considered a new call to StopModel. An idempotency token is active for 8 hours.   
+        /// ClientToken is an idempotency token that ensures a call to StopModel completes only once.  You choose the value to pass. For example, An issue,  such as an network outage, might prevent you from getting a response from StopModel. In this case, safely retry your call to StopModel by using the same ClientToken parameter value. An error occurs if the other input parameters are not the same as in the first request. Using a different   value for ClientToken is considered a new call to StopModel. An idempotency token is active for 8 hours.
         public let clientToken: String?
         /// The version of the model that you want to stop.
         public let modelVersion: String
@@ -1262,7 +1228,6 @@ extension LookoutVision {
     }
 
     public struct StopModelResponse: AWSDecodableShape {
-
         /// The status of the model.
         public let status: ModelHostingStatus?
 
@@ -1276,7 +1241,6 @@ extension LookoutVision {
     }
 
     public struct Tag: AWSEncodableShape & AWSDecodableShape {
-
         /// The key of the tag that is attached to the specified model.
         public let key: String
         /// The value of the tag that is attached to the specified model.
@@ -1331,20 +1295,16 @@ extension LookoutVision {
     }
 
     public struct TagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UntagResourceRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "ResourceArn")), 
+            AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "ResourceArn")),
             AWSMemberEncoding(label: "tagKeys", location: .querystring(locationName: "tagKeys"))
         ]
 
-        /// The Amazon Resource Name (ARN) of the model from which you want to remove tags. 
+        /// The Amazon Resource Name (ARN) of the model from which you want to remove tags.
         public let resourceArn: String
         /// A list of the keys of the tags that you want to remove.
         public let tagKeys: [String]
@@ -1369,23 +1329,19 @@ extension LookoutVision {
     }
 
     public struct UntagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateDatasetEntriesRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amzn-Client-Token")), 
-            AWSMemberEncoding(label: "datasetType", location: .uri(locationName: "DatasetType")), 
+            AWSMemberEncoding(label: "clientToken", location: .header(locationName: "X-Amzn-Client-Token")),
+            AWSMemberEncoding(label: "datasetType", location: .uri(locationName: "DatasetType")),
             AWSMemberEncoding(label: "projectName", location: .uri(locationName: "ProjectName"))
         ]
 
         /// The entries to add to the dataset.
         public let changes: Data
-        /// ClientToken is an idempotency token that ensures a call to UpdateDatasetEntries completes only once.  You choose the value to pass. For example, An issue,  such as an network outage, might prevent you from getting a response from UpdateDatasetEntries. In this case, safely retry your call to UpdateDatasetEntries by using the same ClientToken parameter value. An error occurs if the other input parameters are not the same as in the first request. Using a different   value for ClientToken is considered a new call to UpdateDatasetEntries. An idempotency token is active for 8 hours. 
+        /// ClientToken is an idempotency token that ensures a call to UpdateDatasetEntries completes only once.  You choose the value to pass. For example, An issue,  such as an network outage, might prevent you from getting a response from UpdateDatasetEntries. In this case, safely retry your call to UpdateDatasetEntries by using the same ClientToken parameter value. An error occurs if the other input parameters are not the same as in the first request. Using a different   value for ClientToken is considered a new call to UpdateDatasetEntries. An idempotency token is active for 8 hours.
         public let clientToken: String?
         /// The type of the dataset that you want to update. Specify train to update the training dataset. Specify test to update the test dataset. If you have a single dataset project, specify train.
         public let datasetType: String
@@ -1400,7 +1356,7 @@ extension LookoutVision {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.changes, name: "changes", parent: name, max: 10485760)
+            try self.validate(self.changes, name: "changes", parent: name, max: 10_485_760)
             try self.validate(self.changes, name: "changes", parent: name, min: 1)
             try self.validate(self.clientToken, name: "clientToken", parent: name, max: 64)
             try self.validate(self.clientToken, name: "clientToken", parent: name, min: 1)
@@ -1419,7 +1375,6 @@ extension LookoutVision {
     }
 
     public struct UpdateDatasetEntriesResponse: AWSDecodableShape {
-
         /// The status of the dataset update.
         public let status: DatasetStatus?
 

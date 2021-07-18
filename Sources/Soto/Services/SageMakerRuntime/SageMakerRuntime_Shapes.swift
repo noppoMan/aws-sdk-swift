@@ -28,13 +28,13 @@ extension SageMakerRuntime {
         public static let _payloadPath: String = "body"
         public static let _payloadOptions: AWSShapePayloadOptions = [.raw]
         public static var _encoding = [
-            AWSMemberEncoding(label: "accept", location: .header(locationName: "Accept")), 
-            AWSMemberEncoding(label: "contentType", location: .header(locationName: "Content-Type")), 
-            AWSMemberEncoding(label: "customAttributes", location: .header(locationName: "X-Amzn-SageMaker-Custom-Attributes")), 
-            AWSMemberEncoding(label: "endpointName", location: .uri(locationName: "EndpointName")), 
-            AWSMemberEncoding(label: "inferenceId", location: .header(locationName: "X-Amzn-SageMaker-Inference-Id")), 
-            AWSMemberEncoding(label: "targetContainerHostname", location: .header(locationName: "X-Amzn-SageMaker-Target-Container-Hostname")), 
-            AWSMemberEncoding(label: "targetModel", location: .header(locationName: "X-Amzn-SageMaker-Target-Model")), 
+            AWSMemberEncoding(label: "accept", location: .header(locationName: "Accept")),
+            AWSMemberEncoding(label: "contentType", location: .header(locationName: "Content-Type")),
+            AWSMemberEncoding(label: "customAttributes", location: .header(locationName: "X-Amzn-SageMaker-Custom-Attributes")),
+            AWSMemberEncoding(label: "endpointName", location: .uri(locationName: "EndpointName")),
+            AWSMemberEncoding(label: "inferenceId", location: .header(locationName: "X-Amzn-SageMaker-Inference-Id")),
+            AWSMemberEncoding(label: "targetContainerHostname", location: .header(locationName: "X-Amzn-SageMaker-Target-Container-Hostname")),
+            AWSMemberEncoding(label: "targetModel", location: .header(locationName: "X-Amzn-SageMaker-Target-Model")),
             AWSMemberEncoding(label: "targetVariant", location: .header(locationName: "X-Amzn-SageMaker-Target-Variant"))
         ]
 
@@ -47,7 +47,7 @@ extension SageMakerRuntime {
         /// Provides additional information about a request for an inference submitted to a model hosted at an Amazon SageMaker endpoint. The information is an opaque value that is forwarded verbatim. You could use this value, for example, to provide an ID that you can use to track a request or to provide other metadata that a service endpoint was programmed to process. The value must consist of no more than 1024 visible US-ASCII characters as specified in Section 3.3.6. Field Value Components of the Hypertext Transfer Protocol (HTTP/1.1).  The code in your model is responsible for setting or updating any custom attributes in the response. If your code does not set this value in the response, an empty value is returned. For example, if a custom attribute represents the trace ID, your model can prepend the custom attribute with Trace ID: in your post-processing function.
         ///  This feature is currently supported in the AWS SDKs but not in the Amazon SageMaker Python SDK.
         public let customAttributes: String?
-        /// The name of the endpoint that you specified when you created the endpoint using the CreateEndpoint API. 
+        /// The name of the endpoint that you specified when you created the endpoint using the CreateEndpoint API.
         public let endpointName: String
         /// If you provide a value, it is added to the captured data when you enable data capture on the endpoint. For information about data capture, see Capture Data.
         public let inferenceId: String?
@@ -55,7 +55,7 @@ extension SageMakerRuntime {
         public let targetContainerHostname: String?
         /// The model to request for inference when invoking a multi-model endpoint.
         public let targetModel: String?
-        /// Specify the production variant to send the inference request to when invoking an endpoint that is running two or more variants. Note that this parameter overrides the default behavior for the endpoint, which is to distribute the invocation traffic based on the variant weights. For information about how to use variant targeting to perform a/b testing, see Test models in production 
+        /// Specify the production variant to send the inference request to when invoking an endpoint that is running two or more variants. Note that this parameter overrides the default behavior for the endpoint, which is to distribute the invocation traffic based on the variant weights. For information about how to use variant targeting to perform a/b testing, see Test models in production
         public let targetVariant: String?
 
         public init(accept: String? = nil, body: AWSPayload, contentType: String? = nil, customAttributes: String? = nil, endpointName: String, inferenceId: String? = nil, targetContainerHostname: String? = nil, targetModel: String? = nil, targetVariant: String? = nil) {
@@ -73,7 +73,7 @@ extension SageMakerRuntime {
         public func validate(name: String) throws {
             try self.validate(self.accept, name: "accept", parent: name, max: 1024)
             try self.validate(self.accept, name: "accept", parent: name, pattern: "\\p{ASCII}*")
-            try self.validate(self.body, name: "body", parent: name, max: 6291456)
+            try self.validate(self.body, name: "body", parent: name, max: 6_291_456)
             try self.validate(self.contentType, name: "contentType", parent: name, max: 1024)
             try self.validate(self.contentType, name: "contentType", parent: name, pattern: "\\p{ASCII}*")
             try self.validate(self.customAttributes, name: "customAttributes", parent: name, max: 1024)
@@ -100,9 +100,9 @@ extension SageMakerRuntime {
         public static let _payloadPath: String = "body"
         public static let _payloadOptions: AWSShapePayloadOptions = [.raw]
         public static var _encoding = [
-            AWSMemberEncoding(label: "body", location: .body(locationName: "Body")), 
-            AWSMemberEncoding(label: "contentType", location: .header(locationName: "Content-Type")), 
-            AWSMemberEncoding(label: "customAttributes", location: .header(locationName: "X-Amzn-SageMaker-Custom-Attributes")), 
+            AWSMemberEncoding(label: "body", location: .body(locationName: "Body")),
+            AWSMemberEncoding(label: "contentType", location: .header(locationName: "Content-Type")),
+            AWSMemberEncoding(label: "customAttributes", location: .header(locationName: "X-Amzn-SageMaker-Custom-Attributes")),
             AWSMemberEncoding(label: "invokedProductionVariant", location: .header(locationName: "x-Amzn-Invoked-Production-Variant"))
         ]
 

@@ -55,7 +55,7 @@ public struct ShieldErrorType: AWSErrorType {
 
     /// Exception that indicates the specified AttackId does not exist, or the requester does not have the appropriate permissions to access the AttackId.
     public static var accessDeniedException: Self { .init(.accessDeniedException) }
-    /// In order to grant the necessary access to the DDoS Response Team (DRT), the user submitting the request must have the iam:PassRole permission. This error indicates the user did not have the appropriate permissions. For more information, see Granting a User Permissions to Pass a Role to an AWS Service. 
+    /// In order to grant the necessary access to the DDoS Response Team (DRT), the user submitting the request must have the iam:PassRole permission. This error indicates the user did not have the appropriate permissions. For more information, see Granting a User Permissions to Pass a Role to an AWS Service.
     public static var accessDeniedForDependencyException: Self { .init(.accessDeniedForDependencyException) }
     /// Exception that indicates that a problem occurred with the service infrastructure. You can retry the request.
     public static var internalErrorException: Self { .init(.internalErrorException) }
@@ -63,7 +63,7 @@ public struct ShieldErrorType: AWSErrorType {
     public static var invalidOperationException: Self { .init(.invalidOperationException) }
     /// Exception that indicates that the NextToken specified in the request is invalid. Submit the request using the NextToken value that was returned in the response.
     public static var invalidPaginationTokenException: Self { .init(.invalidPaginationTokenException) }
-    /// Exception that indicates that the parameters passed to the API are invalid. If available, this exception includes details in additional properties. 
+    /// Exception that indicates that the parameters passed to the API are invalid. If available, this exception includes details in additional properties.
     public static var invalidParameterException: Self { .init(.invalidParameterException) }
     /// Exception that indicates that the resource is invalid. You might not have access to the resource, or the resource might not exist.
     public static var invalidResourceException: Self { .init(.invalidResourceException) }
@@ -75,9 +75,9 @@ public struct ShieldErrorType: AWSErrorType {
     public static var noAssociatedRoleException: Self { .init(.noAssociatedRoleException) }
     /// Exception that indicates that the resource state has been modified by another client. Retrieve the resource and then retry your request.
     public static var optimisticLockException: Self { .init(.optimisticLockException) }
-    /// Exception indicating the specified resource already exists. If available, this exception includes details in additional properties. 
+    /// Exception indicating the specified resource already exists. If available, this exception includes details in additional properties.
     public static var resourceAlreadyExistsException: Self { .init(.resourceAlreadyExistsException) }
-    /// Exception indicating the specified resource does not exist. If available, this exception includes details in additional properties. 
+    /// Exception indicating the specified resource does not exist. If available, this exception includes details in additional properties.
     public static var resourceNotFoundException: Self { .init(.resourceNotFoundException) }
 }
 

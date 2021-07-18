@@ -54,7 +54,6 @@ extension ECRPUBLIC {
     // MARK: Shapes
 
     public struct AuthorizationData: AWSDecodableShape {
-
         /// A base64-encoded string that contains authorization data for a public Amazon ECR registry. When the string is decoded, it is presented in the format user:password for public registry authentication using docker login.
         public let authorizationToken: String?
         /// The Unix time in seconds and milliseconds when the authorization token expires. Authorization tokens are valid for 12 hours.
@@ -66,13 +65,12 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case authorizationToken = "authorizationToken"
-            case expiresAt = "expiresAt"
+            case authorizationToken
+            case expiresAt
         }
     }
 
     public struct BatchCheckLayerAvailabilityRequest: AWSEncodableShape {
-
         /// The digests of the image layers to check.
         public let layerDigests: [String]
         /// The AWS account ID associated with the public registry that contains the image layers to check. If you do not specify a registry, the default public registry is assumed.
@@ -100,14 +98,13 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case layerDigests = "layerDigests"
-            case registryId = "registryId"
-            case repositoryName = "repositoryName"
+            case layerDigests
+            case registryId
+            case repositoryName
         }
     }
 
     public struct BatchCheckLayerAvailabilityResponse: AWSDecodableShape {
-
         /// Any failures associated with the call.
         public let failures: [LayerFailure]?
         /// A list of image layer objects corresponding to the image layer references in the request.
@@ -119,13 +116,12 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case failures = "failures"
-            case layers = "layers"
+            case failures
+            case layers
         }
     }
 
     public struct BatchDeleteImageRequest: AWSEncodableShape {
-
         /// A list of image ID references that correspond to images to delete. The format of the imageIds reference is imageTag=tag or imageDigest=digest.
         public let imageIds: [ImageIdentifier]
         /// The AWS account ID associated with the registry that contains the image to delete. If you do not specify a registry, the default public registry is assumed.
@@ -152,14 +148,13 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case imageIds = "imageIds"
-            case registryId = "registryId"
-            case repositoryName = "repositoryName"
+            case imageIds
+            case registryId
+            case repositoryName
         }
     }
 
     public struct BatchDeleteImageResponse: AWSDecodableShape {
-
         /// Any failures associated with the call.
         public let failures: [ImageFailure]?
         /// The image IDs of the deleted images.
@@ -171,13 +166,12 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case failures = "failures"
-            case imageIds = "imageIds"
+            case failures
+            case imageIds
         }
     }
 
     public struct CompleteLayerUploadRequest: AWSEncodableShape {
-
         /// The sha256 digest of the image layer.
         public let layerDigests: [String]
         /// The AWS account ID associated with the registry to which to upload layers. If you do not specify a registry, the default public registry is assumed.
@@ -209,15 +203,14 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case layerDigests = "layerDigests"
-            case registryId = "registryId"
-            case repositoryName = "repositoryName"
-            case uploadId = "uploadId"
+            case layerDigests
+            case registryId
+            case repositoryName
+            case uploadId
         }
     }
 
     public struct CompleteLayerUploadResponse: AWSDecodableShape {
-
         /// The sha256 digest of the image layer.
         public let layerDigest: String?
         /// The public registry ID associated with the request.
@@ -235,15 +228,14 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case layerDigest = "layerDigest"
-            case registryId = "registryId"
-            case repositoryName = "repositoryName"
-            case uploadId = "uploadId"
+            case layerDigest
+            case registryId
+            case repositoryName
+            case uploadId
         }
     }
 
     public struct CreateRepositoryRequest: AWSEncodableShape {
-
         /// The details about the repository that are publicly visible in the Amazon ECR Public Gallery.
         public let catalogData: RepositoryCatalogDataInput?
         /// The name to use for the repository. This appears publicly in the Amazon ECR Public Gallery. The repository name may be specified on its own (such as nginx-web-app) or it can be prepended with a namespace to group the repository into a category (such as project-a/nginx-web-app).
@@ -269,14 +261,13 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case catalogData = "catalogData"
-            case repositoryName = "repositoryName"
-            case tags = "tags"
+            case catalogData
+            case repositoryName
+            case tags
         }
     }
 
     public struct CreateRepositoryResponse: AWSDecodableShape {
-
         public let catalogData: RepositoryCatalogData?
         /// The repository that was created.
         public let repository: Repository?
@@ -287,13 +278,12 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case catalogData = "catalogData"
-            case repository = "repository"
+            case catalogData
+            case repository
         }
     }
 
     public struct DeleteRepositoryPolicyRequest: AWSEncodableShape {
-
         /// The AWS account ID associated with the public registry that contains the repository policy to delete. If you do not specify a registry, the default public registry is assumed.
         public let registryId: String?
         /// The name of the repository that is associated with the repository policy to delete.
@@ -312,13 +302,12 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case registryId = "registryId"
-            case repositoryName = "repositoryName"
+            case registryId
+            case repositoryName
         }
     }
 
     public struct DeleteRepositoryPolicyResponse: AWSDecodableShape {
-
         /// The JSON repository policy that was deleted from the repository.
         public let policyText: String?
         /// The registry ID associated with the request.
@@ -333,14 +322,13 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case policyText = "policyText"
-            case registryId = "registryId"
-            case repositoryName = "repositoryName"
+            case policyText
+            case registryId
+            case repositoryName
         }
     }
 
     public struct DeleteRepositoryRequest: AWSEncodableShape {
-
         ///  If a repository contains images, forces the deletion.
         public let force: Bool?
         /// The AWS account ID associated with the public registry that contains the repository to delete. If you do not specify a registry, the default public registry is assumed.
@@ -362,14 +350,13 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case force = "force"
-            case registryId = "registryId"
-            case repositoryName = "repositoryName"
+            case force
+            case registryId
+            case repositoryName
         }
     }
 
     public struct DeleteRepositoryResponse: AWSDecodableShape {
-
         /// The repository that was deleted.
         public let repository: Repository?
 
@@ -378,12 +365,11 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case repository = "repository"
+            case repository
         }
     }
 
     public struct DescribeImageTagsRequest: AWSEncodableShape {
-
         /// The maximum number of repository results returned by DescribeImageTags in paginated output. When this parameter is used, DescribeImageTags only returns maxResults results in a single page along with a nextToken response element. The remaining results of the initial request can be seen by sending another DescribeImageTags request with the returned nextToken value. This value can be between 1 and 1000. If this parameter is not used, then DescribeImageTags returns up to 100 results and a nextToken value, if applicable. This option cannot be used when you specify images with imageIds.
         public let maxResults: Int?
         /// The nextToken value returned from a previous paginated DescribeImageTags request where maxResults was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the nextToken value. This value is null when there are no more results to return. This option cannot be used when you specify images with imageIds.
@@ -410,15 +396,14 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
-            case registryId = "registryId"
-            case repositoryName = "repositoryName"
+            case maxResults
+            case nextToken
+            case registryId
+            case repositoryName
         }
     }
 
     public struct DescribeImageTagsResponse: AWSDecodableShape {
-
         /// The image tag details for the images in the requested repository.
         public let imageTagDetails: [ImageTagDetail]?
         /// The nextToken value to include in a future DescribeImageTags request. When the results of a DescribeImageTags request exceed maxResults, this value can be used to retrieve the next page of results. This value is null when there are no more results to return.
@@ -430,13 +415,12 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case imageTagDetails = "imageTagDetails"
-            case nextToken = "nextToken"
+            case imageTagDetails
+            case nextToken
         }
     }
 
     public struct DescribeImagesRequest: AWSEncodableShape {
-
         /// The list of image IDs for the requested repository.
         public let imageIds: [ImageIdentifier]?
         /// The maximum number of repository results returned by DescribeImages in paginated output. When this parameter is used, DescribeImages only returns maxResults results in a single page along with a nextToken response element. The remaining results of the initial request can be seen by sending another DescribeImages request with the returned nextToken value. This value can be between 1 and 1000. If this parameter is not used, then DescribeImages returns up to 100 results and a nextToken value, if applicable. This option cannot be used when you specify images with imageIds.
@@ -471,16 +455,15 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case imageIds = "imageIds"
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
-            case registryId = "registryId"
-            case repositoryName = "repositoryName"
+            case imageIds
+            case maxResults
+            case nextToken
+            case registryId
+            case repositoryName
         }
     }
 
     public struct DescribeImagesResponse: AWSDecodableShape {
-
         /// A list of ImageDetail objects that contain data about the image.
         public let imageDetails: [ImageDetail]?
         /// The nextToken value to include in a future DescribeImages request. When the results of a DescribeImages request exceed maxResults, this value can be used to retrieve the next page of results. This value is null when there are no more results to return.
@@ -492,16 +475,15 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case imageDetails = "imageDetails"
-            case nextToken = "nextToken"
+            case imageDetails
+            case nextToken
         }
     }
 
     public struct DescribeRegistriesRequest: AWSEncodableShape {
-
         /// The maximum number of repository results returned by DescribeRegistries in paginated output. When this parameter is used, DescribeRegistries only returns maxResults results in a single page along with a nextToken response element. The remaining results of the initial request can be seen by sending another DescribeRegistries request with the returned nextToken value. This value can be between 1 and 1000. If this parameter is not used, then DescribeRegistries returns up to 100 results and a nextToken value, if applicable.
         public let maxResults: Int?
-        /// The nextToken value returned from a previous paginated DescribeRegistries request where maxResults was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the nextToken value. This value is null when there are no more results to return.   This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes. 
+        /// The nextToken value returned from a previous paginated DescribeRegistries request where maxResults was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the nextToken value. This value is null when there are no more results to return.   This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.
         public let nextToken: String?
 
         public init(maxResults: Int? = nil, nextToken: String? = nil) {
@@ -515,13 +497,12 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
+            case maxResults
+            case nextToken
         }
     }
 
     public struct DescribeRegistriesResponse: AWSDecodableShape {
-
         /// The nextToken value to include in a future DescribeRepositories request. When the results of a DescribeRepositories request exceed maxResults, this value can be used to retrieve the next page of results. This value is null when there are no more results to return.
         public let nextToken: String?
         /// An object containing the details for a public registry.
@@ -533,16 +514,15 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case registries = "registries"
+            case nextToken
+            case registries
         }
     }
 
     public struct DescribeRepositoriesRequest: AWSEncodableShape {
-
         /// The maximum number of repository results returned by DescribeRepositories in paginated output. When this parameter is used, DescribeRepositories only returns maxResults results in a single page along with a nextToken response element. The remaining results of the initial request can be seen by sending another DescribeRepositories request with the returned nextToken value. This value can be between 1 and 1000. If this parameter is not used, then DescribeRepositories returns up to 100 results and a nextToken value, if applicable. This option cannot be used when you specify repositories with repositoryNames.
         public let maxResults: Int?
-        /// The nextToken value returned from a previous paginated DescribeRepositories request where maxResults was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the nextToken value. This value is null when there are no more results to return. This option cannot be used when you specify repositories with repositoryNames.   This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes. 
+        /// The nextToken value returned from a previous paginated DescribeRepositories request where maxResults was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the nextToken value. This value is null when there are no more results to return. This option cannot be used when you specify repositories with repositoryNames.   This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.
         public let nextToken: String?
         /// The AWS account ID associated with the registry that contains the repositories to be described. If you do not specify a registry, the default public registry is assumed.
         public let registryId: String?
@@ -570,15 +550,14 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
-            case registryId = "registryId"
-            case repositoryNames = "repositoryNames"
+            case maxResults
+            case nextToken
+            case registryId
+            case repositoryNames
         }
     }
 
     public struct DescribeRepositoriesResponse: AWSDecodableShape {
-
         /// The nextToken value to include in a future DescribeRepositories request. When the results of a DescribeRepositories request exceed maxResults, this value can be used to retrieve the next page of results. This value is null when there are no more results to return.
         public let nextToken: String?
         /// A list of repository objects corresponding to valid repositories.
@@ -590,21 +569,16 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case repositories = "repositories"
+            case nextToken
+            case repositories
         }
     }
 
     public struct GetAuthorizationTokenRequest: AWSEncodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct GetAuthorizationTokenResponse: AWSDecodableShape {
-
         /// An authorization token data object that corresponds to a public registry.
         public let authorizationData: AuthorizationData?
 
@@ -613,20 +587,15 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case authorizationData = "authorizationData"
+            case authorizationData
         }
     }
 
     public struct GetRegistryCatalogDataRequest: AWSEncodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct GetRegistryCatalogDataResponse: AWSDecodableShape {
-
         /// The catalog metadata for the public registry.
         public let registryCatalogData: RegistryCatalogData
 
@@ -635,12 +604,11 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case registryCatalogData = "registryCatalogData"
+            case registryCatalogData
         }
     }
 
     public struct GetRepositoryCatalogDataRequest: AWSEncodableShape {
-
         /// The AWS account ID associated with the registry that contains the repositories to be described. If you do not specify a registry, the default public registry is assumed.
         public let registryId: String?
         /// The name of the repository to retrieve the catalog metadata for.
@@ -659,13 +627,12 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case registryId = "registryId"
-            case repositoryName = "repositoryName"
+            case registryId
+            case repositoryName
         }
     }
 
     public struct GetRepositoryCatalogDataResponse: AWSDecodableShape {
-
         /// The catalog metadata for the repository.
         public let catalogData: RepositoryCatalogData?
 
@@ -674,12 +641,11 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case catalogData = "catalogData"
+            case catalogData
         }
     }
 
     public struct GetRepositoryPolicyRequest: AWSEncodableShape {
-
         /// The AWS account ID associated with the public registry that contains the repository. If you do not specify a registry, the default public registry is assumed.
         public let registryId: String?
         /// The name of the repository with the policy to retrieve.
@@ -698,13 +664,12 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case registryId = "registryId"
-            case repositoryName = "repositoryName"
+            case registryId
+            case repositoryName
         }
     }
 
     public struct GetRepositoryPolicyResponse: AWSDecodableShape {
-
         /// The repository policy text associated with the repository. The policy text will be in JSON format.
         public let policyText: String?
         /// The registry ID associated with the request.
@@ -719,14 +684,13 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case policyText = "policyText"
-            case registryId = "registryId"
-            case repositoryName = "repositoryName"
+            case policyText
+            case registryId
+            case repositoryName
         }
     }
 
     public struct Image: AWSDecodableShape {
-
         /// An object containing the image tag and image digest associated with an image.
         public let imageId: ImageIdentifier?
         /// The image manifest associated with the image.
@@ -747,25 +711,24 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case imageId = "imageId"
-            case imageManifest = "imageManifest"
-            case imageManifestMediaType = "imageManifestMediaType"
-            case registryId = "registryId"
-            case repositoryName = "repositoryName"
+            case imageId
+            case imageManifest
+            case imageManifestMediaType
+            case registryId
+            case repositoryName
         }
     }
 
     public struct ImageDetail: AWSDecodableShape {
-
         /// The artifact media type of the image.
         public let artifactMediaType: String?
         /// The sha256 digest of the image manifest.
         public let imageDigest: String?
         /// The media type of the image manifest.
         public let imageManifestMediaType: String?
-        /// The date and time, expressed in standard JavaScript date format, at which the current image was pushed to the repository. 
+        /// The date and time, expressed in standard JavaScript date format, at which the current image was pushed to the repository.
         public let imagePushedAt: Date?
-        /// The size, in bytes, of the image in the repository. If the image is a manifest list, this will be the max size of all manifests in the list.  Beginning with Docker version 1.9, the Docker client compresses image layers before pushing them to a V2 Docker registry. The output of the docker images command shows the uncompressed image size, so it may return a larger image size than the image sizes returned by DescribeImages. 
+        /// The size, in bytes, of the image in the repository. If the image is a manifest list, this will be the max size of all manifests in the list.  Beginning with Docker version 1.9, the Docker client compresses image layers before pushing them to a V2 Docker registry. The output of the docker images command shows the uncompressed image size, so it may return a larger image size than the image sizes returned by DescribeImages.
         public let imageSizeInBytes: Int64?
         /// The list of tags associated with this image.
         public let imageTags: [String]?
@@ -786,19 +749,18 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case artifactMediaType = "artifactMediaType"
-            case imageDigest = "imageDigest"
-            case imageManifestMediaType = "imageManifestMediaType"
-            case imagePushedAt = "imagePushedAt"
-            case imageSizeInBytes = "imageSizeInBytes"
-            case imageTags = "imageTags"
-            case registryId = "registryId"
-            case repositoryName = "repositoryName"
+            case artifactMediaType
+            case imageDigest
+            case imageManifestMediaType
+            case imagePushedAt
+            case imageSizeInBytes
+            case imageTags
+            case registryId
+            case repositoryName
         }
     }
 
     public struct ImageFailure: AWSDecodableShape {
-
         /// The code associated with the failure.
         public let failureCode: ImageFailureCode?
         /// The reason for the failure.
@@ -813,14 +775,13 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case failureCode = "failureCode"
-            case failureReason = "failureReason"
-            case imageId = "imageId"
+            case failureCode
+            case failureReason
+            case imageId
         }
     }
 
     public struct ImageIdentifier: AWSEncodableShape & AWSDecodableShape {
-
         /// The sha256 digest of the image manifest.
         public let imageDigest: String?
         /// The tag used for the image.
@@ -837,13 +798,12 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case imageDigest = "imageDigest"
-            case imageTag = "imageTag"
+            case imageDigest
+            case imageTag
         }
     }
 
     public struct ImageTagDetail: AWSDecodableShape {
-
         /// The time stamp indicating when the image tag was created.
         public let createdAt: Date?
         /// An object that describes the details of an image.
@@ -858,14 +818,13 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case createdAt = "createdAt"
-            case imageDetail = "imageDetail"
-            case imageTag = "imageTag"
+            case createdAt
+            case imageDetail
+            case imageTag
         }
     }
 
     public struct InitiateLayerUploadRequest: AWSEncodableShape {
-
         /// The AWS account ID associated with the registry to which you intend to upload layers. If you do not specify a registry, the default public registry is assumed.
         public let registryId: String?
         /// The name of the repository to which you intend to upload layers.
@@ -885,13 +844,12 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case registryId = "registryId"
-            case repositoryName = "repositoryName"
+            case registryId
+            case repositoryName
         }
     }
 
     public struct InitiateLayerUploadResponse: AWSDecodableShape {
-
         /// The size, in bytes, that Amazon ECR expects future layer part uploads to be.
         public let partSize: Int64?
         /// The upload ID for the layer upload. This parameter is passed to further UploadLayerPart and CompleteLayerUpload operations.
@@ -903,13 +861,12 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case partSize = "partSize"
-            case uploadId = "uploadId"
+            case partSize
+            case uploadId
         }
     }
 
     public struct Layer: AWSDecodableShape {
-
         /// The availability status of the image layer.
         public let layerAvailability: LayerAvailability?
         /// The sha256 digest of the image layer.
@@ -927,15 +884,14 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case layerAvailability = "layerAvailability"
-            case layerDigest = "layerDigest"
-            case layerSize = "layerSize"
-            case mediaType = "mediaType"
+            case layerAvailability
+            case layerDigest
+            case layerSize
+            case mediaType
         }
     }
 
     public struct LayerFailure: AWSDecodableShape {
-
         /// The failure code associated with the failure.
         public let failureCode: LayerFailureCode?
         /// The reason for the failure.
@@ -950,14 +906,13 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case failureCode = "failureCode"
-            case failureReason = "failureReason"
-            case layerDigest = "layerDigest"
+            case failureCode
+            case failureReason
+            case layerDigest
         }
     }
 
     public struct ListTagsForResourceRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) that identifies the resource for which to list the tags. Currently, the supported resource is an Amazon ECR Public repository.
         public let resourceArn: String
 
@@ -966,12 +921,11 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case resourceArn = "resourceArn"
+            case resourceArn
         }
     }
 
     public struct ListTagsForResourceResponse: AWSDecodableShape {
-
         /// The tags for the resource.
         public let tags: [Tag]?
 
@@ -980,12 +934,11 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tags = "tags"
+            case tags
         }
     }
 
     public struct PutImageRequest: AWSEncodableShape {
-
         /// The image digest of the image manifest corresponding to the image.
         public let imageDigest: String?
         /// The image manifest corresponding to the image to be uploaded.
@@ -1009,7 +962,7 @@ extension ECRPUBLIC {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.imageManifest, name: "imageManifest", parent: name, max: 4194304)
+            try self.validate(self.imageManifest, name: "imageManifest", parent: name, max: 4_194_304)
             try self.validate(self.imageManifest, name: "imageManifest", parent: name, min: 1)
             try self.validate(self.imageTag, name: "imageTag", parent: name, max: 300)
             try self.validate(self.imageTag, name: "imageTag", parent: name, min: 1)
@@ -1021,17 +974,16 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case imageDigest = "imageDigest"
-            case imageManifest = "imageManifest"
-            case imageManifestMediaType = "imageManifestMediaType"
-            case imageTag = "imageTag"
-            case registryId = "registryId"
-            case repositoryName = "repositoryName"
+            case imageDigest
+            case imageManifest
+            case imageManifestMediaType
+            case imageTag
+            case registryId
+            case repositoryName
         }
     }
 
     public struct PutImageResponse: AWSDecodableShape {
-
         /// Details of the image uploaded.
         public let image: Image?
 
@@ -1040,13 +992,12 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case image = "image"
+            case image
         }
     }
 
     public struct PutRegistryCatalogDataRequest: AWSEncodableShape {
-
-        /// The display name for a public registry. The display name is shown as the repository author in the Amazon ECR Public Gallery.  The registry display name is only publicly visible in the Amazon ECR Public Gallery for verified accounts. 
+        /// The display name for a public registry. The display name is shown as the repository author in the Amazon ECR Public Gallery.  The registry display name is only publicly visible in the Amazon ECR Public Gallery for verified accounts.
         public let displayName: String?
 
         public init(displayName: String? = nil) {
@@ -1058,12 +1009,11 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case displayName = "displayName"
+            case displayName
         }
     }
 
     public struct PutRegistryCatalogDataResponse: AWSDecodableShape {
-
         /// The catalog data for the public registry.
         public let registryCatalogData: RegistryCatalogData
 
@@ -1072,12 +1022,11 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case registryCatalogData = "registryCatalogData"
+            case registryCatalogData
         }
     }
 
     public struct PutRepositoryCatalogDataRequest: AWSEncodableShape {
-
         /// An object containing the catalog data for a repository. This data is publicly visible in the Amazon ECR Public Gallery.
         public let catalogData: RepositoryCatalogDataInput
         /// The AWS account ID associated with the public registry the repository is in. If you do not specify a registry, the default public registry is assumed.
@@ -1100,14 +1049,13 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case catalogData = "catalogData"
-            case registryId = "registryId"
-            case repositoryName = "repositoryName"
+            case catalogData
+            case registryId
+            case repositoryName
         }
     }
 
     public struct PutRepositoryCatalogDataResponse: AWSDecodableShape {
-
         /// The catalog data for the repository.
         public let catalogData: RepositoryCatalogData?
 
@@ -1116,12 +1064,11 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case catalogData = "catalogData"
+            case catalogData
         }
     }
 
     public struct ReferencedImageDetail: AWSDecodableShape {
-
         /// The artifact media type of the image.
         public let artifactMediaType: String?
         /// The sha256 digest of the image manifest.
@@ -1130,7 +1077,7 @@ extension ECRPUBLIC {
         public let imageManifestMediaType: String?
         /// The date and time, expressed in standard JavaScript date format, at which the current image tag was pushed to the repository.
         public let imagePushedAt: Date?
-        /// The size, in bytes, of the image in the repository. If the image is a manifest list, this will be the max size of all manifests in the list.  Beginning with Docker version 1.9, the Docker client compresses image layers before pushing them to a V2 Docker registry. The output of the docker images command shows the uncompressed image size, so it may return a larger image size than the image sizes returned by DescribeImages. 
+        /// The size, in bytes, of the image in the repository. If the image is a manifest list, this will be the max size of all manifests in the list.  Beginning with Docker version 1.9, the Docker client compresses image layers before pushing them to a V2 Docker registry. The output of the docker images command shows the uncompressed image size, so it may return a larger image size than the image sizes returned by DescribeImages.
         public let imageSizeInBytes: Int64?
 
         public init(artifactMediaType: String? = nil, imageDigest: String? = nil, imageManifestMediaType: String? = nil, imagePushedAt: Date? = nil, imageSizeInBytes: Int64? = nil) {
@@ -1142,16 +1089,15 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case artifactMediaType = "artifactMediaType"
-            case imageDigest = "imageDigest"
-            case imageManifestMediaType = "imageManifestMediaType"
-            case imagePushedAt = "imagePushedAt"
-            case imageSizeInBytes = "imageSizeInBytes"
+            case artifactMediaType
+            case imageDigest
+            case imageManifestMediaType
+            case imagePushedAt
+            case imageSizeInBytes
         }
     }
 
     public struct Registry: AWSDecodableShape {
-
         /// An array of objects representing the aliases for a public registry.
         public let aliases: [RegistryAlias]
         /// The Amazon Resource Name (ARN) of the public registry.
@@ -1172,21 +1118,20 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case aliases = "aliases"
-            case registryArn = "registryArn"
-            case registryId = "registryId"
-            case registryUri = "registryUri"
-            case verified = "verified"
+            case aliases
+            case registryArn
+            case registryId
+            case registryUri
+            case verified
         }
     }
 
     public struct RegistryAlias: AWSDecodableShape {
-
         /// Whether or not the registry alias is the default alias for the registry. When the first public repository is created, your public registry is assigned a default registry alias.
         public let defaultRegistryAlias: Bool
         /// The name of the registry alias.
         public let name: String
-        /// Whether or not the registry alias is the primary alias for the registry. If true, the alias is the primary registry alias and is displayed in both the repository URL and the image URI used in the docker pull commands on the Amazon ECR Public Gallery.  A registry alias that is not the primary registry alias can be used in the repository URI in a docker pull command. 
+        /// Whether or not the registry alias is the primary alias for the registry. If true, the alias is the primary registry alias and is displayed in both the repository URL and the image URI used in the docker pull commands on the Amazon ECR Public Gallery.  A registry alias that is not the primary registry alias can be used in the repository URI in a docker pull command.
         public let primaryRegistryAlias: Bool
         /// The status of the registry alias.
         public let status: RegistryAliasStatus
@@ -1199,16 +1144,15 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case defaultRegistryAlias = "defaultRegistryAlias"
-            case name = "name"
-            case primaryRegistryAlias = "primaryRegistryAlias"
-            case status = "status"
+            case defaultRegistryAlias
+            case name
+            case primaryRegistryAlias
+            case status
         }
     }
 
     public struct RegistryCatalogData: AWSDecodableShape {
-
-        /// The display name for a public registry. This appears on the Amazon ECR Public Gallery.  Only accounts that have the verified account badge can have a registry display name. 
+        /// The display name for a public registry. This appears on the Amazon ECR Public Gallery.  Only accounts that have the verified account badge can have a registry display name.
         public let displayName: String?
 
         public init(displayName: String? = nil) {
@@ -1216,12 +1160,11 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case displayName = "displayName"
+            case displayName
         }
     }
 
     public struct Repository: AWSDecodableShape {
-
         /// The date and time, in JavaScript date format, when the repository was created.
         public let createdAt: Date?
         /// The AWS account ID associated with the public registry that contains the repository.
@@ -1242,19 +1185,18 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case createdAt = "createdAt"
-            case registryId = "registryId"
-            case repositoryArn = "repositoryArn"
-            case repositoryName = "repositoryName"
-            case repositoryUri = "repositoryUri"
+            case createdAt
+            case registryId
+            case repositoryArn
+            case repositoryName
+            case repositoryUri
         }
     }
 
     public struct RepositoryCatalogData: AWSDecodableShape {
-
         /// The longform description of the contents of the repository. This text appears in the repository details on the Amazon ECR Public Gallery.
         public let aboutText: String?
-        /// The architecture tags that are associated with the repository.  Only supported operating system tags appear publicly in the Amazon ECR Public Gallery. For more information, see RepositoryCatalogDataInput. 
+        /// The architecture tags that are associated with the repository.  Only supported operating system tags appear publicly in the Amazon ECR Public Gallery. For more information, see RepositoryCatalogDataInput.
         public let architectures: [String]?
         /// The short description of the repository.
         public let description: String?
@@ -1262,7 +1204,7 @@ extension ECRPUBLIC {
         public let logoUrl: String?
         /// Whether or not the repository is certified by AWS Marketplace.
         public let marketplaceCertified: Bool?
-        /// The operating system tags that are associated with the repository.  Only supported operating system tags appear publicly in the Amazon ECR Public Gallery. For more information, see RepositoryCatalogDataInput. 
+        /// The operating system tags that are associated with the repository.  Only supported operating system tags appear publicly in the Amazon ECR Public Gallery. For more information, see RepositoryCatalogDataInput.
         public let operatingSystems: [String]?
         /// The longform usage details of the contents of the repository. The usage text provides context for users of the repository.
         public let usageText: String?
@@ -1278,27 +1220,26 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case aboutText = "aboutText"
-            case architectures = "architectures"
-            case description = "description"
-            case logoUrl = "logoUrl"
-            case marketplaceCertified = "marketplaceCertified"
-            case operatingSystems = "operatingSystems"
-            case usageText = "usageText"
+            case aboutText
+            case architectures
+            case description
+            case logoUrl
+            case marketplaceCertified
+            case operatingSystems
+            case usageText
         }
     }
 
     public struct RepositoryCatalogDataInput: AWSEncodableShape {
-
         /// A detailed description of the contents of the repository. It is publicly visible in the Amazon ECR Public Gallery. The text must be in markdown format.
         public let aboutText: String?
-        /// The system architecture that the images in the repository are compatible with. On the Amazon ECR Public Gallery, the following supported architectures will appear as badges on the repository and are used as search filters.    Linux     Windows     If an unsupported tag is added to your repository catalog data, it will be associated with the repository and can be retrieved using the API but will not be discoverable in the Amazon ECR Public Gallery. 
+        /// The system architecture that the images in the repository are compatible with. On the Amazon ECR Public Gallery, the following supported architectures will appear as badges on the repository and are used as search filters.    Linux     Windows     If an unsupported tag is added to your repository catalog data, it will be associated with the repository and can be retrieved using the API but will not be discoverable in the Amazon ECR Public Gallery.
         public let architectures: [String]?
         /// A short description of the contents of the repository. This text appears in both the image details and also when searching for repositories on the Amazon ECR Public Gallery.
         public let description: String?
-        /// The base64-encoded repository logo payload.  The repository logo is only publicly visible in the Amazon ECR Public Gallery for verified accounts. 
+        /// The base64-encoded repository logo payload.  The repository logo is only publicly visible in the Amazon ECR Public Gallery for verified accounts.
         public let logoImageBlob: Data?
-        /// The operating systems that the images in the repository are compatible with. On the Amazon ECR Public Gallery, the following supported operating systems will appear as badges on the repository and are used as search filters.    ARM     ARM 64     x86     x86-64     If an unsupported tag is added to your repository catalog data, it will be associated with the repository and can be retrieved using the API but will not be discoverable in the Amazon ECR Public Gallery. 
+        /// The operating systems that the images in the repository are compatible with. On the Amazon ECR Public Gallery, the following supported operating systems will appear as badges on the repository and are used as search filters.    ARM     ARM 64     x86     x86-64     If an unsupported tag is added to your repository catalog data, it will be associated with the repository and can be retrieved using the API but will not be discoverable in the Amazon ECR Public Gallery.
         public let operatingSystems: [String]?
         /// Detailed information on how to use the contents of the repository. It is publicly visible in the Amazon ECR Public Gallery. The usage text provides context, support information, and additional usage details for users of the repository. The text must be in markdown format.
         public let usageText: String?
@@ -1320,7 +1261,7 @@ extension ECRPUBLIC {
             }
             try self.validate(self.architectures, name: "architectures", parent: name, max: 50)
             try self.validate(self.description, name: "description", parent: name, max: 1024)
-            try self.validate(self.logoImageBlob, name: "logoImageBlob", parent: name, max: 512000)
+            try self.validate(self.logoImageBlob, name: "logoImageBlob", parent: name, max: 512_000)
             try self.operatingSystems?.forEach {
                 try validate($0, name: "operatingSystems[]", parent: name, max: 50)
                 try validate($0, name: "operatingSystems[]", parent: name, min: 1)
@@ -1330,17 +1271,16 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case aboutText = "aboutText"
-            case architectures = "architectures"
-            case description = "description"
-            case logoImageBlob = "logoImageBlob"
-            case operatingSystems = "operatingSystems"
-            case usageText = "usageText"
+            case aboutText
+            case architectures
+            case description
+            case logoImageBlob
+            case operatingSystems
+            case usageText
         }
     }
 
     public struct SetRepositoryPolicyRequest: AWSEncodableShape {
-
         /// If the policy you are attempting to set on a repository policy would prevent you from setting another policy in the future, you must force the SetRepositoryPolicy operation. This is intended to prevent accidental repository lock outs.
         public let force: Bool?
         /// The JSON repository policy text to apply to the repository. For more information, see Amazon ECR Repository Policies in the Amazon Elastic Container Registry User Guide.
@@ -1366,15 +1306,14 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case force = "force"
-            case policyText = "policyText"
-            case registryId = "registryId"
-            case repositoryName = "repositoryName"
+            case force
+            case policyText
+            case registryId
+            case repositoryName
         }
     }
 
     public struct SetRepositoryPolicyResponse: AWSDecodableShape {
-
         /// The JSON repository policy text applied to the repository.
         public let policyText: String?
         /// The registry ID associated with the request.
@@ -1389,14 +1328,13 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case policyText = "policyText"
-            case registryId = "registryId"
-            case repositoryName = "repositoryName"
+            case policyText
+            case registryId
+            case repositoryName
         }
     }
 
     public struct Tag: AWSEncodableShape & AWSDecodableShape {
-
         /// One part of a key-value pair that make up a tag. A key is a general label that acts like a category for more specific tag values.
         public let key: String?
         /// The optional part of a key-value pair that make up a tag. A value acts as a descriptor within a tag category (key).
@@ -1420,7 +1358,6 @@ extension ECRPUBLIC {
     }
 
     public struct TagResourceRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the resource to which to add tags. Currently, the supported resource is an Amazon ECR Public repository.
         public let resourceArn: String
         /// The tags to add to the resource. A tag is an array of key-value pairs. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.
@@ -1439,21 +1376,16 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case resourceArn = "resourceArn"
-            case tags = "tags"
+            case resourceArn
+            case tags
         }
     }
 
     public struct TagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UntagResourceRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the resource from which to delete tags. Currently, the supported resource is an Amazon ECR Public repository.
         public let resourceArn: String
         /// The keys of the tags to be removed.
@@ -1473,21 +1405,16 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case resourceArn = "resourceArn"
-            case tagKeys = "tagKeys"
+            case resourceArn
+            case tagKeys
         }
     }
 
     public struct UntagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UploadLayerPartRequest: AWSEncodableShape {
-
         /// The base64-encoded layer part payload.
         public let layerPartBlob: Data
         /// The position of the first byte of the layer part witin the overall image layer.
@@ -1511,7 +1438,7 @@ extension ECRPUBLIC {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.layerPartBlob, name: "layerPartBlob", parent: name, max: 20971520)
+            try self.validate(self.layerPartBlob, name: "layerPartBlob", parent: name, max: 20_971_520)
             try self.validate(self.partFirstByte, name: "partFirstByte", parent: name, min: 0)
             try self.validate(self.partLastByte, name: "partLastByte", parent: name, min: 0)
             try self.validate(self.registryId, name: "registryId", parent: name, max: 256)
@@ -1523,17 +1450,16 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case layerPartBlob = "layerPartBlob"
-            case partFirstByte = "partFirstByte"
-            case partLastByte = "partLastByte"
-            case registryId = "registryId"
-            case repositoryName = "repositoryName"
-            case uploadId = "uploadId"
+            case layerPartBlob
+            case partFirstByte
+            case partLastByte
+            case registryId
+            case repositoryName
+            case uploadId
         }
     }
 
     public struct UploadLayerPartResponse: AWSDecodableShape {
-
         /// The integer value of the last byte received in the request.
         public let lastByteReceived: Int64?
         /// The registry ID associated with the request.
@@ -1551,10 +1477,10 @@ extension ECRPUBLIC {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case lastByteReceived = "lastByteReceived"
-            case registryId = "registryId"
-            case repositoryName = "repositoryName"
-            case uploadId = "uploadId"
+            case lastByteReceived
+            case registryId
+            case repositoryName
+            case uploadId
         }
     }
 }

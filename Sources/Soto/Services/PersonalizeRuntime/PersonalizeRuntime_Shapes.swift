@@ -24,7 +24,6 @@ extension PersonalizeRuntime {
     // MARK: Shapes
 
     public struct GetPersonalizedRankingRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the campaign to use for generating the personalized ranking.
         public let campaignArn: String
         /// The contextual metadata to use when getting recommendations. Contextual metadata includes any interaction information that might be relevant when getting a user's recommendations, such as the user's current location or device type.
@@ -71,17 +70,16 @@ extension PersonalizeRuntime {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case campaignArn = "campaignArn"
-            case context = "context"
-            case filterArn = "filterArn"
-            case filterValues = "filterValues"
-            case inputList = "inputList"
-            case userId = "userId"
+            case campaignArn
+            case context
+            case filterArn
+            case filterValues
+            case inputList
+            case userId
         }
     }
 
     public struct GetPersonalizedRankingResponse: AWSDecodableShape {
-
         /// A list of items in order of most likely interest to the user. The maximum is 500.
         public let personalizedRanking: [PredictedItem]?
         /// The ID of the recommendation.
@@ -93,13 +91,12 @@ extension PersonalizeRuntime {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case personalizedRanking = "personalizedRanking"
-            case recommendationId = "recommendationId"
+            case personalizedRanking
+            case recommendationId
         }
     }
 
     public struct GetRecommendationsRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) of the campaign to use for getting recommendations.
         public let campaignArn: String
         /// The contextual metadata to use when getting recommendations. Contextual metadata includes any interaction information that might be relevant when getting a user's recommendations, such as the user's current location or device type.
@@ -148,18 +145,17 @@ extension PersonalizeRuntime {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case campaignArn = "campaignArn"
-            case context = "context"
-            case filterArn = "filterArn"
-            case filterValues = "filterValues"
-            case itemId = "itemId"
-            case numResults = "numResults"
-            case userId = "userId"
+            case campaignArn
+            case context
+            case filterArn
+            case filterValues
+            case itemId
+            case numResults
+            case userId
         }
     }
 
     public struct GetRecommendationsResponse: AWSDecodableShape {
-
         /// A list of recommendations sorted in ascending order by prediction score. There can be a maximum of 500 items in the list.
         public let itemList: [PredictedItem]?
         /// The ID of the recommendation.
@@ -171,13 +167,12 @@ extension PersonalizeRuntime {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case itemList = "itemList"
-            case recommendationId = "recommendationId"
+            case itemList
+            case recommendationId
         }
     }
 
     public struct PredictedItem: AWSDecodableShape {
-
         /// The recommended item ID.
         public let itemId: String?
         /// A numeric representation of the model's certainty that the item will be the next user selection. For more information on scoring logic, see how-scores-work.
@@ -189,8 +184,8 @@ extension PersonalizeRuntime {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case itemId = "itemId"
-            case score = "score"
+            case itemId
+            case score
         }
     }
 }

@@ -162,7 +162,7 @@ public struct RAM: AWSService {
 
     /// Resource shares that were created by attaching a policy to a resource are visible only to
     /// 			the resource share owner, and the resource share cannot be modified in AWS RAM. 	 	    Use this API action to promote the resource share. When you promote the resource share,
-    /// 			it becomes: 	      			        Visible to all principals that it is shared with. 		        			        Modifiable in AWS RAM. 		       
+    /// 			it becomes: 	      			        Visible to all principals that it is shared with. 		        			        Modifiable in AWS RAM.
     public func promoteResourceShareCreatedFromPolicy(_ input: PromoteResourceShareCreatedFromPolicyRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<PromoteResourceShareCreatedFromPolicyResponse> {
         return self.client.execute(operation: "PromoteResourceShareCreatedFromPolicy", path: "/promoteresourcesharecreatedfrompolicy", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }

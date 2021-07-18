@@ -22,7 +22,7 @@ extension CloudTrail {
     // MARK: Enums
 
     public enum EventCategory: String, CustomStringConvertible, Codable {
-        case insight = "insight"
+        case insight
         public var description: String { return self.rawValue }
     }
 
@@ -53,8 +53,7 @@ extension CloudTrail {
     // MARK: Shapes
 
     public struct AddTagsRequest: AWSEncodableShape {
-
-        /// Specifies the ARN of the trail to which one or more tags will be added. The format of a trail ARN is:  arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail 
+        /// Specifies the ARN of the trail to which one or more tags will be added. The format of a trail ARN is:  arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail
         public let resourceId: String
         /// Contains a list of CloudTrail tags, up to a limit of 50
         public let tagsList: [Tag]?
@@ -71,15 +70,10 @@ extension CloudTrail {
     }
 
     public struct AddTagsResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct AdvancedEventSelector: AWSEncodableShape & AWSDecodableShape {
-
         /// Contains all selector statements in an advanced event selector.
         public let fieldSelectors: [AdvancedFieldSelector]
         /// An optional, descriptive name for an advanced event selector, such as "Log data events for only two S3 buckets".
@@ -106,20 +100,19 @@ extension CloudTrail {
     }
 
     public struct AdvancedFieldSelector: AWSEncodableShape & AWSDecodableShape {
-
-        ///  An operator that includes events that match the last few characters of the event record field specified as the value of Field. 
+        ///  An operator that includes events that match the last few characters of the event record field specified as the value of Field.
         public let endsWith: [String]?
-        ///  An operator that includes events that match the exact value of the event record field specified as the value of Field. This is the only valid operator  that you can use with the readOnly, eventCategory, and resources.type fields. 
+        ///  An operator that includes events that match the exact value of the event record field specified as the value of Field. This is the only valid operator  that you can use with the readOnly, eventCategory, and resources.type fields.
         public let equals: [String]?
-        ///  A field in an event record on which to filter events to be logged. Supported fields include readOnly, eventCategory,  eventSource (for management events), eventName, resources.type, and resources.ARN.      readOnly - Optional. Can be set to Equals a value of true or false. A value of false logs both read and write events.     eventSource - For filtering management events only.  This can be set only to NotEquals  kms.amazonaws.com.     eventName - Can use any operator. You can use it to ﬁlter in or ﬁlter out any data event logged to CloudTrail, such as PutBucket. You can have multiple values for this ﬁeld, separated by commas.     eventCategory - This is required. It must be set to Equals, and  the value must be Management or Data.     resources.type - This ﬁeld is required. resources.type can only use the Equals operator, and the value can be one of the following: AWS::S3::Object, AWS::Lambda::Function, AWS::DynamoDB::Table, AWS::S3Outposts::Object, AWS::ManagedBlockchain::Node, or AWS::S3ObjectLambda::AccessPoint. You can have only one resources.type ﬁeld per selector. To log data events on more than one resource type, add another selector.     resources.ARN - You can use any operator with resources.ARN, but if you use Equals or NotEquals, the value must exactly match the ARN of a valid resource of the type you've speciﬁed in the template as the value of resources.type. For example, if resources.type equals AWS::S3::Object, the ARN must be in one of the following formats. To log all data events for all objects in a specific S3 bucket, use the StartsWith operator, and include only the bucket ARN as the matching value. The trailing slash is intentional; do not exclude it.    arn:partition:s3:::bucket_name/     arn:partition:s3:::bucket_name/object_or_file_name/    When resources.type equals AWS::Lambda::Function, and the operator is set to Equals or NotEquals, the ARN must be in the following format:    arn:partition:lambda:region:account_ID:function:function_name    When resources.type equals AWS::DynamoDB::Table, and the operator is set to Equals or NotEquals, the ARN must be in the following format:    arn:partition:dynamodb:region:account_ID:table:table_name    When resources.type equals AWS::S3Outposts::Object, and the operator  is set to Equals or NotEquals, the ARN must be in the following format:    arn:partition:s3-outposts:region:>account_ID:object_path    When resources.type equals AWS::ManagedBlockchain::Node, and the operator is set to Equals or NotEquals, the ARN must be in the following format:    arn:partition:managedblockchain:region:account_ID:nodes/node_ID    When resources.type equals AWS::S3ObjectLambda::AccessPoint, and the operator is set to Equals or NotEquals, the ARN must be in the following format:    arn:partition:s3-object-lambda:region:account_ID:accesspoint/access_point_name     
+        ///  A field in an event record on which to filter events to be logged. Supported fields include readOnly, eventCategory,  eventSource (for management events), eventName, resources.type, and resources.ARN.      readOnly - Optional. Can be set to Equals a value of true or false. A value of false logs both read and write events.     eventSource - For filtering management events only.  This can be set only to NotEquals  kms.amazonaws.com.     eventName - Can use any operator. You can use it to ﬁlter in or ﬁlter out any data event logged to CloudTrail, such as PutBucket. You can have multiple values for this ﬁeld, separated by commas.     eventCategory - This is required. It must be set to Equals, and  the value must be Management or Data.     resources.type - This ﬁeld is required. resources.type can only use the Equals operator, and the value can be one of the following: AWS::S3::Object, AWS::Lambda::Function, AWS::DynamoDB::Table, AWS::S3Outposts::Object, AWS::ManagedBlockchain::Node, or AWS::S3ObjectLambda::AccessPoint. You can have only one resources.type ﬁeld per selector. To log data events on more than one resource type, add another selector.     resources.ARN - You can use any operator with resources.ARN, but if you use Equals or NotEquals, the value must exactly match the ARN of a valid resource of the type you've speciﬁed in the template as the value of resources.type. For example, if resources.type equals AWS::S3::Object, the ARN must be in one of the following formats. To log all data events for all objects in a specific S3 bucket, use the StartsWith operator, and include only the bucket ARN as the matching value. The trailing slash is intentional; do not exclude it.    arn:partition:s3:::bucket_name/     arn:partition:s3:::bucket_name/object_or_file_name/    When resources.type equals AWS::Lambda::Function, and the operator is set to Equals or NotEquals, the ARN must be in the following format:    arn:partition:lambda:region:account_ID:function:function_name    When resources.type equals AWS::DynamoDB::Table, and the operator is set to Equals or NotEquals, the ARN must be in the following format:    arn:partition:dynamodb:region:account_ID:table:table_name    When resources.type equals AWS::S3Outposts::Object, and the operator  is set to Equals or NotEquals, the ARN must be in the following format:    arn:partition:s3-outposts:region:>account_ID:object_path    When resources.type equals AWS::ManagedBlockchain::Node, and the operator is set to Equals or NotEquals, the ARN must be in the following format:    arn:partition:managedblockchain:region:account_ID:nodes/node_ID    When resources.type equals AWS::S3ObjectLambda::AccessPoint, and the operator is set to Equals or NotEquals, the ARN must be in the following format:    arn:partition:s3-object-lambda:region:account_ID:accesspoint/access_point_name
         public let field: String
-        ///  An operator that excludes events that match the last few characters of the event record field specified as the value of Field. 
+        ///  An operator that excludes events that match the last few characters of the event record field specified as the value of Field.
         public let notEndsWith: [String]?
-        ///  An operator that excludes events that match the exact value of the event record field specified as the value of Field. 
+        ///  An operator that excludes events that match the exact value of the event record field specified as the value of Field.
         public let notEquals: [String]?
-        ///  An operator that excludes events that match the first few characters of the event record field specified as the value of Field. 
+        ///  An operator that excludes events that match the first few characters of the event record field specified as the value of Field.
         public let notStartsWith: [String]?
-        ///  An operator that includes events that match the first few characters of the event record field specified as the value of Field. 
+        ///  An operator that includes events that match the first few characters of the event record field specified as the value of Field.
         public let startsWith: [String]?
 
         public init(endsWith: [String]? = nil, equals: [String]? = nil, field: String, notEndsWith: [String]? = nil, notEquals: [String]? = nil, notStartsWith: [String]? = nil, startsWith: [String]? = nil) {
@@ -186,12 +179,11 @@ extension CloudTrail {
     }
 
     public struct CreateTrailRequest: AWSEncodableShape {
-
         /// Specifies a log group name using an Amazon Resource Name (ARN), a unique identifier that represents the log group  to which CloudTrail logs will be delivered. Not required unless you specify CloudWatchLogsRoleArn.
         public let cloudWatchLogsLogGroupArn: String?
         /// Specifies the role for the CloudWatch Logs endpoint to assume to write to a user's log group.
         public let cloudWatchLogsRoleArn: String?
-        /// Specifies whether log file integrity validation is enabled. The default is false.  When you disable log file integrity validation, the chain of digest files is broken after one hour. CloudTrail will not create digest files for log files that were delivered during a period in which log file integrity validation was disabled. For example, if you enable log file integrity validation at noon on January 1, disable it at noon on January 2, and re-enable it at noon on January 10, digest files will not be created for the log files delivered from noon on January 2 to noon on January 10. The same applies whenever you stop CloudTrail logging or delete a trail. 
+        /// Specifies whether log file integrity validation is enabled. The default is false.  When you disable log file integrity validation, the chain of digest files is broken after one hour. CloudTrail will not create digest files for log files that were delivered during a period in which log file integrity validation was disabled. For example, if you enable log file integrity validation at noon on January 1, disable it at noon on January 2, and re-enable it at noon on January 10, digest files will not be created for the log files delivered from noon on January 2 to noon on January 10. The same applies whenever you stop CloudTrail logging or delete a trail.
         public let enableLogFileValidation: Bool?
         /// Specifies whether the trail is publishing events from global services such as IAM to the log files.
         public let includeGlobalServiceEvents: Bool?
@@ -199,9 +191,9 @@ extension CloudTrail {
         public let isMultiRegionTrail: Bool?
         /// Specifies whether the trail is created for all accounts in an organization in AWS Organizations, or only for the current AWS account.  The default is false, and cannot be true unless the call is made on behalf of an AWS account that is the master account for an organization in  AWS Organizations.
         public let isOrganizationTrail: Bool?
-        /// Specifies the KMS key ID to use to encrypt the logs delivered by CloudTrail. The value can be an alias name prefixed by "alias/", a fully specified ARN to an alias, a fully specified ARN to a key, or a globally unique identifier. Examples:   alias/MyAliasName   arn:aws:kms:us-east-2:123456789012:alias/MyAliasName   arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012   12345678-1234-1234-1234-123456789012  
+        /// Specifies the KMS key ID to use to encrypt the logs delivered by CloudTrail. The value can be an alias name prefixed by "alias/", a fully specified ARN to an alias, a fully specified ARN to a key, or a globally unique identifier. Examples:   alias/MyAliasName   arn:aws:kms:us-east-2:123456789012:alias/MyAliasName   arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012   12345678-1234-1234-1234-123456789012
         public let kmsKeyId: String?
-        /// Specifies the name of the trail. The name must meet the following requirements:   Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)   Start with a letter or number, and end with a letter or number   Be between 3 and 128 characters   Have no adjacent periods, underscores or dashes. Names like my-_namespace and my--namespace are invalid.   Not be in IP address format (for example, 192.168.5.4)  
+        /// Specifies the name of the trail. The name must meet the following requirements:   Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)   Start with a letter or number, and end with a letter or number   Be between 3 and 128 characters   Have no adjacent periods, underscores or dashes. Names like my-_namespace and my--namespace are invalid.   Not be in IP address format (for example, 192.168.5.4)
         public let name: String
         /// Specifies the name of the Amazon S3 bucket designated for publishing log files. See Amazon S3 Bucket Naming Requirements.
         public let s3BucketName: String
@@ -243,7 +235,6 @@ extension CloudTrail {
     }
 
     public struct CreateTrailResponse: AWSDecodableShape {
-
         /// Specifies the Amazon Resource Name (ARN) of the log group to which CloudTrail logs will be delivered.
         public let cloudWatchLogsLogGroupArn: String?
         /// Specifies the role for the CloudWatch Logs endpoint to assume to write to a user's log group.
@@ -254,7 +245,7 @@ extension CloudTrail {
         public let isMultiRegionTrail: Bool?
         /// Specifies whether the trail is an organization trail.
         public let isOrganizationTrail: Bool?
-        /// Specifies the KMS key ID that encrypts the logs delivered by CloudTrail. The value is a fully specified ARN to a KMS key in the format:  arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012 
+        /// Specifies the KMS key ID that encrypts the logs delivered by CloudTrail. The value is a fully specified ARN to a KMS key in the format:  arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012
         public let kmsKeyId: String?
         /// Specifies whether log file integrity validation is enabled.
         public let logFileValidationEnabled: Bool?
@@ -264,11 +255,11 @@ extension CloudTrail {
         public let s3BucketName: String?
         /// Specifies the Amazon S3 key prefix that comes after the name of the bucket you have designated for log file delivery. For more information, see Finding Your CloudTrail Log Files.
         public let s3KeyPrefix: String?
-        /// Specifies the ARN of the Amazon SNS topic that CloudTrail uses to send notifications when log files are delivered. The format of a topic ARN is:  arn:aws:sns:us-east-2:123456789012:MyTopic 
+        /// Specifies the ARN of the Amazon SNS topic that CloudTrail uses to send notifications when log files are delivered. The format of a topic ARN is:  arn:aws:sns:us-east-2:123456789012:MyTopic
         public let snsTopicARN: String?
         /// This field is no longer in use. Use SnsTopicARN.
         public let snsTopicName: String?
-        /// Specifies the ARN of the trail that was created. The format of a trail ARN is:  arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail 
+        /// Specifies the ARN of the trail that was created. The format of a trail ARN is:  arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail
         public let trailARN: String?
 
         public init(cloudWatchLogsLogGroupArn: String? = nil, cloudWatchLogsRoleArn: String? = nil, includeGlobalServiceEvents: Bool? = nil, isMultiRegionTrail: Bool? = nil, isOrganizationTrail: Bool? = nil, kmsKeyId: String? = nil, logFileValidationEnabled: Bool? = nil, name: String? = nil, s3BucketName: String? = nil, s3KeyPrefix: String? = nil, snsTopicARN: String? = nil, snsTopicName: String? = nil, trailARN: String? = nil) {
@@ -305,10 +296,9 @@ extension CloudTrail {
     }
 
     public struct DataResource: AWSEncodableShape & AWSDecodableShape {
-
         /// The resource type in which you want to log data events. You can specify AWS::S3::Object, AWS::Lambda::Function, or AWS::DynamoDB::Table resources. The AWS::S3Outposts::Object, AWS::ManagedBlockchain::Node, and AWS::S3ObjectLambda::AccessPoint resource types are not valid in basic event selectors. To log data events on these resource types, use advanced event selectors.
         public let type: String?
-        /// An array of Amazon Resource Name (ARN) strings or partial ARN strings for the specified objects.   To log data events for all objects in all S3 buckets in your AWS account, specify the  prefix as arn:aws:s3:::.   This will also enable logging of data event activity performed by any user or role in your AWS account,  even if that activity is performed on a bucket that belongs to another AWS account.     To log data events for all objects in an S3 bucket, specify the bucket and an empty object prefix such as arn:aws:s3:::bucket-1/. The trail logs data events for all objects in this S3 bucket.   To log data events for specific objects, specify the S3 bucket and object prefix such as arn:aws:s3:::bucket-1/example-images. The trail logs data events for objects in this S3 bucket that match the prefix.   To log data events for all Lambda functions in your AWS account, specify the prefix as arn:aws:lambda.  This will also enable logging of Invoke activity performed by any user or role in your AWS account,  even if that activity is performed on a function that belongs to another AWS account.     To log data events for a specific Lambda function, specify the function ARN.  Lambda function ARNs are exact. For example, if you specify a  function ARN arn:aws:lambda:us-west-2:111111111111:function:helloworld, data events will only be logged for arn:aws:lambda:us-west-2:111111111111:function:helloworld. They will not be logged for arn:aws:lambda:us-west-2:111111111111:function:helloworld2.    To log data events for all DynamoDB tables in your AWS account, specify the prefix as arn:aws:dynamodb.  
+        /// An array of Amazon Resource Name (ARN) strings or partial ARN strings for the specified objects.   To log data events for all objects in all S3 buckets in your AWS account, specify the  prefix as arn:aws:s3:::.   This will also enable logging of data event activity performed by any user or role in your AWS account,  even if that activity is performed on a bucket that belongs to another AWS account.     To log data events for all objects in an S3 bucket, specify the bucket and an empty object prefix such as arn:aws:s3:::bucket-1/. The trail logs data events for all objects in this S3 bucket.   To log data events for specific objects, specify the S3 bucket and object prefix such as arn:aws:s3:::bucket-1/example-images. The trail logs data events for objects in this S3 bucket that match the prefix.   To log data events for all Lambda functions in your AWS account, specify the prefix as arn:aws:lambda.  This will also enable logging of Invoke activity performed by any user or role in your AWS account,  even if that activity is performed on a function that belongs to another AWS account.     To log data events for a specific Lambda function, specify the function ARN.  Lambda function ARNs are exact. For example, if you specify a  function ARN arn:aws:lambda:us-west-2:111111111111:function:helloworld, data events will only be logged for arn:aws:lambda:us-west-2:111111111111:function:helloworld. They will not be logged for arn:aws:lambda:us-west-2:111111111111:function:helloworld2.    To log data events for all DynamoDB tables in your AWS account, specify the prefix as arn:aws:dynamodb.
         public let values: [String]?
 
         public init(type: String? = nil, values: [String]? = nil) {
@@ -323,8 +313,7 @@ extension CloudTrail {
     }
 
     public struct DeleteTrailRequest: AWSEncodableShape {
-
-        /// Specifies the name or the CloudTrail ARN of the trail to be deleted. The format of a trail ARN is: arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail 
+        /// Specifies the name or the CloudTrail ARN of the trail to be deleted. The format of a trail ARN is: arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail
         public let name: String
 
         public init(name: String) {
@@ -337,18 +326,13 @@ extension CloudTrail {
     }
 
     public struct DeleteTrailResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DescribeTrailsRequest: AWSEncodableShape {
-
         /// Specifies whether to include shadow trails in the response. A shadow trail is the replication in a region of a trail that was created in a different region, or in the case of an organization trail, the replication of an organization trail in member accounts. If you do not include shadow trails, organization trails in a member account and region replication trails will not be returned. The default is true.
         public let includeShadowTrails: Bool?
-        /// Specifies a list of trail names, trail ARNs, or both, of the trails to describe. The format of a trail ARN is:  arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail   If an empty list is specified, information for the trail in the current region is returned.   If an empty list is specified and IncludeShadowTrails is false, then information for all trails in the current region is returned.   If an empty list is specified and IncludeShadowTrails is null or true, then information for all trails in the current region and any associated shadow trails in other regions is returned.    If one or more trail names are specified, information is returned only if the names match the names of trails belonging only to the current region. To return information about a trail in another region, you must specify its trail ARN. 
+        /// Specifies a list of trail names, trail ARNs, or both, of the trails to describe. The format of a trail ARN is:  arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail   If an empty list is specified, information for the trail in the current region is returned.   If an empty list is specified and IncludeShadowTrails is false, then information for all trails in the current region is returned.   If an empty list is specified and IncludeShadowTrails is null or true, then information for all trails in the current region and any associated shadow trails in other regions is returned.    If one or more trail names are specified, information is returned only if the names match the names of trails belonging only to the current region. To return information about a trail in another region, you must specify its trail ARN.
         public let trailNameList: [String]?
 
         public init(includeShadowTrails: Bool? = nil, trailNameList: [String]? = nil) {
@@ -357,13 +341,12 @@ extension CloudTrail {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case includeShadowTrails = "includeShadowTrails"
-            case trailNameList = "trailNameList"
+            case includeShadowTrails
+            case trailNameList
         }
     }
 
     public struct DescribeTrailsResponse: AWSDecodableShape {
-
         /// The list of trail objects. Trail objects with string values are only returned if values for the objects exist in a trail's configuration.  For example, SNSTopicName and SNSTopicARN are only returned in results if a trail is configured to send SNS notifications. Similarly,  KMSKeyId only appears in results if a trail's log files are encrypted with AWS KMS-managed keys.
         public let trailList: [Trail]?
 
@@ -372,12 +355,11 @@ extension CloudTrail {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case trailList = "trailList"
+            case trailList
         }
     }
 
     public struct Event: AWSDecodableShape {
-
         /// The AWS access key ID that was used to sign the request. If the request was made  with temporary security credentials, this is the access key ID of the temporary credentials.
         public let accessKeyId: String?
         /// A JSON string that contains a representation of the event returned.
@@ -390,7 +372,7 @@ extension CloudTrail {
         public let eventSource: String?
         /// The date and time of the event returned.
         public let eventTime: Date?
-        /// Information about whether the event is a write event or a read event. 
+        /// Information about whether the event is a write event or a read event.
         public let readOnly: String?
         /// A list of resources referenced by the event returned.
         public let resources: [Resource]?
@@ -423,10 +405,9 @@ extension CloudTrail {
     }
 
     public struct EventSelector: AWSEncodableShape & AWSDecodableShape {
-
         /// CloudTrail supports data event logging for Amazon S3 objects and AWS Lambda functions with basic event selectors. You can specify up to 250 resources for an individual event selector, but the total number of data resources cannot exceed 250 across all event selectors in a trail. This limit does not apply if you configure resource logging for all data events.  For more information, see Data Events and Limits in AWS CloudTrail  in the AWS CloudTrail User Guide.
         public let dataResources: [DataResource]?
-        /// An optional list of service event sources from which you do not want management events to be logged on your trail. In this release, the list can be empty (disables the filter), or it can filter out AWS Key Management Service events by  containing "kms.amazonaws.com". By default, ExcludeManagementEventSources is empty, and AWS KMS events are included in events that are logged to your trail. 
+        /// An optional list of service event sources from which you do not want management events to be logged on your trail. In this release, the list can be empty (disables the filter), or it can filter out AWS Key Management Service events by  containing "kms.amazonaws.com". By default, ExcludeManagementEventSources is empty, and AWS KMS events are included in events that are logged to your trail.
         public let excludeManagementEventSources: [String]?
         /// Specify if you want your event selector to include management events for your trail.  For more information, see Management Events in the AWS CloudTrail User Guide.   By default, the value is true. The first copy of management events is free. You are charged for additional copies of management  events that you are logging on any subsequent trail in the same region. For more information about  CloudTrail pricing, see AWS CloudTrail Pricing.
         public let includeManagementEvents: Bool?
@@ -449,8 +430,7 @@ extension CloudTrail {
     }
 
     public struct GetEventSelectorsRequest: AWSEncodableShape {
-
-        /// Specifies the name of the trail or trail ARN. If you specify a trail name, the string must meet the following requirements:   Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)   Start with a letter or number, and end with a letter or number   Be between 3 and 128 characters   Have no adjacent periods, underscores or dashes. Names like my-_namespace and my--namespace are not valid.   Not be in IP address format (for example, 192.168.5.4)   If you specify a trail ARN, it must be in the format:  arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail 
+        /// Specifies the name of the trail or trail ARN. If you specify a trail name, the string must meet the following requirements:   Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)   Start with a letter or number, and end with a letter or number   Be between 3 and 128 characters   Have no adjacent periods, underscores or dashes. Names like my-_namespace and my--namespace are not valid.   Not be in IP address format (for example, 192.168.5.4)   If you specify a trail ARN, it must be in the format:  arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail
         public let trailName: String
 
         public init(trailName: String) {
@@ -463,8 +443,7 @@ extension CloudTrail {
     }
 
     public struct GetEventSelectorsResponse: AWSDecodableShape {
-
-        ///  The advanced event selectors that are configured for the trail. 
+        ///  The advanced event selectors that are configured for the trail.
         public let advancedEventSelectors: [AdvancedEventSelector]?
         /// The event selectors that are configured for the trail.
         public let eventSelectors: [EventSelector]?
@@ -485,8 +464,7 @@ extension CloudTrail {
     }
 
     public struct GetInsightSelectorsRequest: AWSEncodableShape {
-
-        /// Specifies the name of the trail or trail ARN. If you specify a trail name, the string must meet the following requirements:   Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)   Start with a letter or number, and end with a letter or number   Be between 3 and 128 characters   Have no adjacent periods, underscores or dashes. Names like my-_namespace and my--namespace are not valid.   Not be in IP address format (for example, 192.168.5.4)   If you specify a trail ARN, it must be in the format:  arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail 
+        /// Specifies the name of the trail or trail ARN. If you specify a trail name, the string must meet the following requirements:   Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)   Start with a letter or number, and end with a letter or number   Be between 3 and 128 characters   Have no adjacent periods, underscores or dashes. Names like my-_namespace and my--namespace are not valid.   Not be in IP address format (for example, 192.168.5.4)   If you specify a trail ARN, it must be in the format:  arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail
         public let trailName: String
 
         public init(trailName: String) {
@@ -499,7 +477,6 @@ extension CloudTrail {
     }
 
     public struct GetInsightSelectorsResponse: AWSDecodableShape {
-
         /// A JSON string that contains the insight types you want to log on a trail. In this release, only ApiCallRateInsight is supported as an insight type.
         public let insightSelectors: [InsightSelector]?
         /// The Amazon Resource Name (ARN) of a trail for which you want to get Insights selectors.
@@ -517,7 +494,6 @@ extension CloudTrail {
     }
 
     public struct GetTrailRequest: AWSEncodableShape {
-
         /// The name or the Amazon Resource Name (ARN) of the trail for which you want to retrieve settings information.
         public let name: String
 
@@ -531,7 +507,6 @@ extension CloudTrail {
     }
 
     public struct GetTrailResponse: AWSDecodableShape {
-
         public let trail: Trail?
 
         public init(trail: Trail? = nil) {
@@ -544,8 +519,7 @@ extension CloudTrail {
     }
 
     public struct GetTrailStatusRequest: AWSEncodableShape {
-
-        /// Specifies the name or the CloudTrail ARN of the trail for which you are requesting status. To get the status of a shadow trail (a replication of the trail in another region), you must specify its ARN. The format of a trail ARN is:  arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail 
+        /// Specifies the name or the CloudTrail ARN of the trail for which you are requesting status. To get the status of a shadow trail (a replication of the trail in another region), you must specify its ARN. The format of a trail ARN is:  arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail
         public let name: String
 
         public init(name: String) {
@@ -558,7 +532,6 @@ extension CloudTrail {
     }
 
     public struct GetTrailStatusResponse: AWSDecodableShape {
-
         /// Whether the CloudTrail is currently logging AWS API calls.
         public let isLogging: Bool?
         /// Displays any CloudWatch Logs error that CloudTrail encountered when attempting to deliver logs to CloudWatch Logs.
@@ -569,11 +542,11 @@ extension CloudTrail {
         public let latestDeliveryAttemptSucceeded: String?
         /// This field is no longer in use.
         public let latestDeliveryAttemptTime: String?
-        /// Displays any Amazon S3 error that CloudTrail encountered when attempting to deliver log files to the designated bucket. For more information see the topic Error Responses in the Amazon S3 API Reference.   This error occurs only when there is a problem with the destination S3 bucket and will not occur for timeouts. To resolve the issue, create a new bucket and call UpdateTrail to specify the new bucket, or fix the existing objects so that CloudTrail can again write to the bucket. 
+        /// Displays any Amazon S3 error that CloudTrail encountered when attempting to deliver log files to the designated bucket. For more information see the topic Error Responses in the Amazon S3 API Reference.   This error occurs only when there is a problem with the destination S3 bucket and will not occur for timeouts. To resolve the issue, create a new bucket and call UpdateTrail to specify the new bucket, or fix the existing objects so that CloudTrail can again write to the bucket.
         public let latestDeliveryError: String?
         /// Specifies the date and time that CloudTrail last delivered log files to an account's Amazon S3 bucket.
         public let latestDeliveryTime: Date?
-        /// Displays any Amazon S3 error that CloudTrail encountered when attempting to deliver a digest file to the designated bucket. For more information see the topic Error Responses in the Amazon S3 API Reference.   This error occurs only when there is a problem with the destination S3 bucket and will not occur for timeouts. To resolve the issue, create a new bucket and call UpdateTrail to specify the new bucket, or fix the existing objects so that CloudTrail can again write to the bucket. 
+        /// Displays any Amazon S3 error that CloudTrail encountered when attempting to deliver a digest file to the designated bucket. For more information see the topic Error Responses in the Amazon S3 API Reference.   This error occurs only when there is a problem with the destination S3 bucket and will not occur for timeouts. To resolve the issue, create a new bucket and call UpdateTrail to specify the new bucket, or fix the existing objects so that CloudTrail can again write to the bucket.
         public let latestDigestDeliveryError: String?
         /// Specifies the date and time that CloudTrail last delivered a digest file to an account's Amazon S3 bucket.
         public let latestDigestDeliveryTime: Date?
@@ -581,7 +554,7 @@ extension CloudTrail {
         public let latestNotificationAttemptSucceeded: String?
         /// This field is no longer in use.
         public let latestNotificationAttemptTime: String?
-        /// Displays any Amazon SNS error that CloudTrail encountered when attempting to send a notification. For more information about Amazon SNS errors, see the Amazon SNS Developer Guide. 
+        /// Displays any Amazon SNS error that CloudTrail encountered when attempting to send a notification. For more information about Amazon SNS errors, see the Amazon SNS Developer Guide.
         public let latestNotificationError: String?
         /// Specifies the date and time of the most recent Amazon SNS notification that CloudTrail has written a new log file to an account's Amazon S3 bucket.
         public let latestNotificationTime: Date?
@@ -636,7 +609,6 @@ extension CloudTrail {
     }
 
     public struct InsightSelector: AWSEncodableShape & AWSDecodableShape {
-
         /// The type of insights to log on a trail. In this release, only ApiCallRateInsight is supported as an insight type.
         public let insightType: InsightType?
 
@@ -650,7 +622,6 @@ extension CloudTrail {
     }
 
     public struct ListPublicKeysRequest: AWSEncodableShape {
-
         /// Optionally specifies, in UTC, the end of the time range to look up public keys for CloudTrail digest files. If not specified, the current time is used.
         public let endTime: Date?
         /// Reserved for future use.
@@ -672,10 +643,9 @@ extension CloudTrail {
     }
 
     public struct ListPublicKeysResponse: AWSDecodableShape {
-
         /// Reserved for future use.
         public let nextToken: String?
-        /// Contains an array of PublicKey objects.  The returned public keys may have validity time ranges that overlap. 
+        /// Contains an array of PublicKey objects.  The returned public keys may have validity time ranges that overlap.
         public let publicKeyList: [PublicKey]?
 
         public init(nextToken: String? = nil, publicKeyList: [PublicKey]? = nil) {
@@ -690,10 +660,9 @@ extension CloudTrail {
     }
 
     public struct ListTagsRequest: AWSEncodableShape {
-
         /// Reserved for future use.
         public let nextToken: String?
-        /// Specifies a list of trail ARNs whose tags will be listed. The list has a limit of 20 ARNs. The format of a trail ARN is:  arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail 
+        /// Specifies a list of trail ARNs whose tags will be listed. The list has a limit of 20 ARNs. The format of a trail ARN is:  arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail
         public let resourceIdList: [String]
 
         public init(nextToken: String? = nil, resourceIdList: [String]) {
@@ -708,7 +677,6 @@ extension CloudTrail {
     }
 
     public struct ListTagsResponse: AWSDecodableShape {
-
         /// Reserved for future use.
         public let nextToken: String?
         /// A list of resource tags.
@@ -726,7 +694,6 @@ extension CloudTrail {
     }
 
     public struct ListTrailsRequest: AWSEncodableShape {
-
         /// The token to use to get the next page of results after a previous API call. This token must be passed  in with the same parameters that were specified in the the original call. For example, if the original  call specified an AttributeKey of 'Username' with a value of 'root', the call with NextToken should  include those same parameters.
         public let nextToken: String?
 
@@ -740,7 +707,6 @@ extension CloudTrail {
     }
 
     public struct ListTrailsResponse: AWSDecodableShape {
-
         /// The token to use to get the next page of results after a previous API call. If the token does not appear,  there are no more results to return. The token must be passed in with the same parameters as the previous call.  For example, if the original call specified an AttributeKey of 'Username' with a value of 'root', the call with  NextToken should include those same parameters.
         public let nextToken: String?
         /// Returns the name, ARN, and home region of trails in the current account.
@@ -758,7 +724,6 @@ extension CloudTrail {
     }
 
     public struct LookupAttribute: AWSEncodableShape {
-
         /// Specifies an attribute on which to filter the events returned.
         public let attributeKey: LookupAttributeKey
         /// Specifies a value for the specified AttributeKey.
@@ -776,7 +741,6 @@ extension CloudTrail {
     }
 
     public struct LookupEventsRequest: AWSEncodableShape {
-
         /// Specifies that only events that occur before or at the specified time are returned. If the specified end time is before the specified start time, an error is returned.
         public let endTime: Date?
         /// Specifies the event category. If you do not specify an event category, events of the category are not returned in the response. For example,  if you do not specify insight as the value of EventCategory, no Insights events are returned.
@@ -815,7 +779,6 @@ extension CloudTrail {
     }
 
     public struct LookupEventsResponse: AWSDecodableShape {
-
         /// A list of events returned based on the lookup attributes specified and the CloudTrail event. The events list is sorted by time. The most recent event is listed first.
         public let events: [Event]?
         /// The token to use to get the next page of results after a previous API call. If the token does not appear,  there are no more results to return. The token must be passed in with the same parameters as the previous call.  For example, if the original call specified an AttributeKey of 'Username' with a value of 'root', the call with  NextToken should include those same parameters.
@@ -833,7 +796,6 @@ extension CloudTrail {
     }
 
     public struct PublicKey: AWSDecodableShape {
-
         /// The fingerprint of the public key.
         public let fingerprint: String?
         /// The ending time of validity of the public key.
@@ -859,12 +821,11 @@ extension CloudTrail {
     }
 
     public struct PutEventSelectorsRequest: AWSEncodableShape {
-
-        ///  Specifies the settings for advanced event selectors. You can add advanced event selectors, and conditions for your advanced  event selectors, up to a maximum of 500 values for all conditions and selectors on a trail.  You can use either AdvancedEventSelectors or EventSelectors, but not both. If you apply AdvancedEventSelectors  to a trail, any existing EventSelectors are overwritten. For more information about  advanced event selectors, see  Logging  data events for trails in the AWS CloudTrail User Guide. 
+        ///  Specifies the settings for advanced event selectors. You can add advanced event selectors, and conditions for your advanced  event selectors, up to a maximum of 500 values for all conditions and selectors on a trail.  You can use either AdvancedEventSelectors or EventSelectors, but not both. If you apply AdvancedEventSelectors  to a trail, any existing EventSelectors are overwritten. For more information about  advanced event selectors, see  Logging  data events for trails in the AWS CloudTrail User Guide.
         public let advancedEventSelectors: [AdvancedEventSelector]?
         /// Specifies the settings for your event selectors. You can configure up to five event selectors for a trail.  You can use either EventSelectors or AdvancedEventSelectors in a PutEventSelectors request, but not both.  If you apply EventSelectors to a trail, any existing AdvancedEventSelectors are overwritten.
         public let eventSelectors: [EventSelector]?
-        /// Specifies the name of the trail or trail ARN. If you specify a trail name, the string must meet the following requirements:   Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)   Start with a letter or number, and end with a letter or number   Be between 3 and 128 characters   Have no adjacent periods, underscores or dashes. Names like my-_namespace and my--namespace are invalid.   Not be in IP address format (for example, 192.168.5.4)   If you specify a trail ARN, it must be in the format:  arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail 
+        /// Specifies the name of the trail or trail ARN. If you specify a trail name, the string must meet the following requirements:   Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)   Start with a letter or number, and end with a letter or number   Be between 3 and 128 characters   Have no adjacent periods, underscores or dashes. Names like my-_namespace and my--namespace are invalid.   Not be in IP address format (for example, 192.168.5.4)   If you specify a trail ARN, it must be in the format:  arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail
         public let trailName: String
 
         public init(advancedEventSelectors: [AdvancedEventSelector]? = nil, eventSelectors: [EventSelector]? = nil, trailName: String) {
@@ -887,12 +848,11 @@ extension CloudTrail {
     }
 
     public struct PutEventSelectorsResponse: AWSDecodableShape {
-
         /// Specifies the advanced event selectors configured for your trail.
         public let advancedEventSelectors: [AdvancedEventSelector]?
         /// Specifies the event selectors configured for your trail.
         public let eventSelectors: [EventSelector]?
-        /// Specifies the ARN of the trail that was updated with event selectors. The format of a trail ARN is:  arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail 
+        /// Specifies the ARN of the trail that was updated with event selectors. The format of a trail ARN is:  arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail
         public let trailARN: String?
 
         public init(advancedEventSelectors: [AdvancedEventSelector]? = nil, eventSelectors: [EventSelector]? = nil, trailARN: String? = nil) {
@@ -909,7 +869,6 @@ extension CloudTrail {
     }
 
     public struct PutInsightSelectorsRequest: AWSEncodableShape {
-
         /// A JSON string that contains the insight types you want to log on a trail. In this release, only ApiCallRateInsight is supported as an insight type.
         public let insightSelectors: [InsightSelector]
         /// The name of the CloudTrail trail for which you want to change or add Insights selectors.
@@ -927,7 +886,6 @@ extension CloudTrail {
     }
 
     public struct PutInsightSelectorsResponse: AWSDecodableShape {
-
         /// A JSON string that contains the insight types you want to log on a trail. In this release, only ApiCallRateInsight is supported as an insight type.
         public let insightSelectors: [InsightSelector]?
         /// The Amazon Resource Name (ARN) of a trail for which you want to change or add Insights selectors.
@@ -945,8 +903,7 @@ extension CloudTrail {
     }
 
     public struct RemoveTagsRequest: AWSEncodableShape {
-
-        /// Specifies the ARN of the trail from which tags should be removed. The format of a trail ARN is:  arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail 
+        /// Specifies the ARN of the trail from which tags should be removed. The format of a trail ARN is:  arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail
         public let resourceId: String
         /// Specifies a list of tags to be removed.
         public let tagsList: [Tag]?
@@ -963,15 +920,10 @@ extension CloudTrail {
     }
 
     public struct RemoveTagsResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct Resource: AWSDecodableShape {
-
         /// The name of the resource referenced by the event returned. These are user-created names whose values will depend on the environment. For example, the resource name might be "auto-scaling-test-group" for an Auto Scaling Group or "i-1234567" for an EC2 Instance.
         public let resourceName: String?
         /// The type of a resource referenced by the event returned. When the resource type cannot be determined, null is returned. Some examples of resource types are: Instance for EC2, Trail for CloudTrail, DBInstance for RDS, and AccessKey for IAM. To learn more about how to look up and filter events by the resource types supported for a service, see Filtering CloudTrail Events.
@@ -989,7 +941,6 @@ extension CloudTrail {
     }
 
     public struct ResourceTag: AWSDecodableShape {
-
         /// Specifies the ARN of the resource.
         public let resourceId: String?
         /// A list of tags.
@@ -1007,8 +958,7 @@ extension CloudTrail {
     }
 
     public struct StartLoggingRequest: AWSEncodableShape {
-
-        /// Specifies the name or the CloudTrail ARN of the trail for which CloudTrail logs AWS API calls. The format of a trail ARN is:  arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail 
+        /// Specifies the name or the CloudTrail ARN of the trail for which CloudTrail logs AWS API calls. The format of a trail ARN is:  arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail
         public let name: String
 
         public init(name: String) {
@@ -1021,16 +971,11 @@ extension CloudTrail {
     }
 
     public struct StartLoggingResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct StopLoggingRequest: AWSEncodableShape {
-
-        /// Specifies the name or the CloudTrail ARN of the trail for which CloudTrail will stop logging AWS API calls. The format of a trail ARN is:  arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail 
+        /// Specifies the name or the CloudTrail ARN of the trail for which CloudTrail will stop logging AWS API calls. The format of a trail ARN is:  arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail
         public let name: String
 
         public init(name: String) {
@@ -1043,15 +988,10 @@ extension CloudTrail {
     }
 
     public struct StopLoggingResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct Tag: AWSEncodableShape & AWSDecodableShape {
-
         /// The key in a key-value pair. The key must be must be no longer than 128 Unicode characters. The key must be unique for the resource to which it applies.
         public let key: String
         /// The value in a key-value pair of a tag. The value must be no longer than 256 Unicode characters.
@@ -1069,7 +1009,6 @@ extension CloudTrail {
     }
 
     public struct Trail: AWSDecodableShape {
-
         /// Specifies an Amazon Resource Name (ARN), a unique identifier that represents the log group to which CloudTrail logs will be delivered.
         public let cloudWatchLogsLogGroupArn: String?
         /// Specifies the role for the CloudWatch Logs endpoint to assume to write to a user's log group.
@@ -1086,7 +1025,7 @@ extension CloudTrail {
         public let isMultiRegionTrail: Bool?
         /// Specifies whether the trail is an organization trail.
         public let isOrganizationTrail: Bool?
-        /// Specifies the KMS key ID that encrypts the logs delivered by CloudTrail. The value is a fully specified ARN to a KMS key in the format:  arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012 
+        /// Specifies the KMS key ID that encrypts the logs delivered by CloudTrail. The value is a fully specified ARN to a KMS key in the format:  arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012
         public let kmsKeyId: String?
         /// Specifies whether log file validation is enabled.
         public let logFileValidationEnabled: Bool?
@@ -1096,11 +1035,11 @@ extension CloudTrail {
         public let s3BucketName: String?
         /// Specifies the Amazon S3 key prefix that comes after the name of the bucket you have designated for log file delivery. For more information, see Finding Your CloudTrail Log Files.The maximum length is 200 characters.
         public let s3KeyPrefix: String?
-        /// Specifies the ARN of the Amazon SNS topic that CloudTrail uses to send notifications when log files are delivered. The format of a topic ARN is:   arn:aws:sns:us-east-2:123456789012:MyTopic 
+        /// Specifies the ARN of the Amazon SNS topic that CloudTrail uses to send notifications when log files are delivered. The format of a topic ARN is:   arn:aws:sns:us-east-2:123456789012:MyTopic
         public let snsTopicARN: String?
         /// This field is no longer in use. Use SnsTopicARN.
         public let snsTopicName: String?
-        /// Specifies the ARN of the trail. The format of a trail ARN is:  arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail 
+        /// Specifies the ARN of the trail. The format of a trail ARN is:  arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail
         public let trailARN: String?
 
         public init(cloudWatchLogsLogGroupArn: String? = nil, cloudWatchLogsRoleArn: String? = nil, hasCustomEventSelectors: Bool? = nil, hasInsightSelectors: Bool? = nil, homeRegion: String? = nil, includeGlobalServiceEvents: Bool? = nil, isMultiRegionTrail: Bool? = nil, isOrganizationTrail: Bool? = nil, kmsKeyId: String? = nil, logFileValidationEnabled: Bool? = nil, name: String? = nil, s3BucketName: String? = nil, s3KeyPrefix: String? = nil, snsTopicARN: String? = nil, snsTopicName: String? = nil, trailARN: String? = nil) {
@@ -1143,7 +1082,6 @@ extension CloudTrail {
     }
 
     public struct TrailInfo: AWSDecodableShape {
-
         /// The AWS region in which a trail was created.
         public let homeRegion: String?
         /// The name of a trail.
@@ -1165,12 +1103,11 @@ extension CloudTrail {
     }
 
     public struct UpdateTrailRequest: AWSEncodableShape {
-
         /// Specifies a log group name using an Amazon Resource Name (ARN), a unique identifier that represents the log group to which CloudTrail logs will be delivered. Not required unless you specify CloudWatchLogsRoleArn.
         public let cloudWatchLogsLogGroupArn: String?
         /// Specifies the role for the CloudWatch Logs endpoint to assume to write to a user's log group.
         public let cloudWatchLogsRoleArn: String?
-        /// Specifies whether log file validation is enabled. The default is false.  When you disable log file integrity validation, the chain of digest files is broken after one hour. CloudTrail will not create digest files for log files that were delivered during a period in which log file integrity validation was disabled. For example, if you enable log file integrity validation at noon on January 1, disable it at noon on January 2, and re-enable it at noon on January 10, digest files will not be created for the log files delivered from noon on January 2 to noon on January 10. The same applies whenever you stop CloudTrail logging or delete a trail. 
+        /// Specifies whether log file validation is enabled. The default is false.  When you disable log file integrity validation, the chain of digest files is broken after one hour. CloudTrail will not create digest files for log files that were delivered during a period in which log file integrity validation was disabled. For example, if you enable log file integrity validation at noon on January 1, disable it at noon on January 2, and re-enable it at noon on January 10, digest files will not be created for the log files delivered from noon on January 2 to noon on January 10. The same applies whenever you stop CloudTrail logging or delete a trail.
         public let enableLogFileValidation: Bool?
         /// Specifies whether the trail is publishing events from global services such as IAM to the log files.
         public let includeGlobalServiceEvents: Bool?
@@ -1178,9 +1115,9 @@ extension CloudTrail {
         public let isMultiRegionTrail: Bool?
         /// Specifies whether the trail is applied to all accounts in an organization in AWS Organizations, or only for the current AWS account.  The default is false, and cannot be true unless the call is made on behalf of an AWS account that is the master account for an organization in  AWS Organizations. If the trail is not an organization trail and this is set to true, the trail will be created in all AWS accounts that belong to the organization. If the trail is an organization trail and this is set to false, the trail will remain in the current AWS account but be  deleted from all member accounts in the organization.
         public let isOrganizationTrail: Bool?
-        /// Specifies the KMS key ID to use to encrypt the logs delivered by CloudTrail. The value can be an alias name prefixed by "alias/", a fully specified ARN to an alias, a fully specified ARN to a key, or a globally unique identifier. Examples:   alias/MyAliasName   arn:aws:kms:us-east-2:123456789012:alias/MyAliasName   arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012   12345678-1234-1234-1234-123456789012  
+        /// Specifies the KMS key ID to use to encrypt the logs delivered by CloudTrail. The value can be an alias name prefixed by "alias/", a fully specified ARN to an alias, a fully specified ARN to a key, or a globally unique identifier. Examples:   alias/MyAliasName   arn:aws:kms:us-east-2:123456789012:alias/MyAliasName   arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012   12345678-1234-1234-1234-123456789012
         public let kmsKeyId: String?
-        /// Specifies the name of the trail or trail ARN. If Name is a trail name, the string must meet the following requirements:   Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)   Start with a letter or number, and end with a letter or number   Be between 3 and 128 characters   Have no adjacent periods, underscores or dashes. Names like my-_namespace and my--namespace are invalid.   Not be in IP address format (for example, 192.168.5.4)   If Name is a trail ARN, it must be in the format:  arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail 
+        /// Specifies the name of the trail or trail ARN. If Name is a trail name, the string must meet the following requirements:   Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)   Start with a letter or number, and end with a letter or number   Be between 3 and 128 characters   Have no adjacent periods, underscores or dashes. Names like my-_namespace and my--namespace are invalid.   Not be in IP address format (for example, 192.168.5.4)   If Name is a trail ARN, it must be in the format:  arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail
         public let name: String
         /// Specifies the name of the Amazon S3 bucket designated for publishing log files. See Amazon S3 Bucket Naming Requirements.
         public let s3BucketName: String?
@@ -1219,7 +1156,6 @@ extension CloudTrail {
     }
 
     public struct UpdateTrailResponse: AWSDecodableShape {
-
         /// Specifies the Amazon Resource Name (ARN) of the log group to which CloudTrail logs will be delivered.
         public let cloudWatchLogsLogGroupArn: String?
         /// Specifies the role for the CloudWatch Logs endpoint to assume to write to a user's log group.
@@ -1230,7 +1166,7 @@ extension CloudTrail {
         public let isMultiRegionTrail: Bool?
         /// Specifies whether the trail is an organization trail.
         public let isOrganizationTrail: Bool?
-        /// Specifies the KMS key ID that encrypts the logs delivered by CloudTrail. The value is a fully specified ARN to a KMS key in the format:   arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012 
+        /// Specifies the KMS key ID that encrypts the logs delivered by CloudTrail. The value is a fully specified ARN to a KMS key in the format:   arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012
         public let kmsKeyId: String?
         /// Specifies whether log file integrity validation is enabled.
         public let logFileValidationEnabled: Bool?
@@ -1240,11 +1176,11 @@ extension CloudTrail {
         public let s3BucketName: String?
         /// Specifies the Amazon S3 key prefix that comes after the name of the bucket you have designated for log file delivery. For more information, see Finding Your CloudTrail Log Files.
         public let s3KeyPrefix: String?
-        /// Specifies the ARN of the Amazon SNS topic that CloudTrail uses to send notifications when log files are delivered. The format of a topic ARN is:  arn:aws:sns:us-east-2:123456789012:MyTopic 
+        /// Specifies the ARN of the Amazon SNS topic that CloudTrail uses to send notifications when log files are delivered. The format of a topic ARN is:  arn:aws:sns:us-east-2:123456789012:MyTopic
         public let snsTopicARN: String?
         /// This field is no longer in use. Use SnsTopicARN.
         public let snsTopicName: String?
-        /// Specifies the ARN of the trail that was updated. The format of a trail ARN is:  arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail 
+        /// Specifies the ARN of the trail that was updated. The format of a trail ARN is:  arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail
         public let trailARN: String?
 
         public init(cloudWatchLogsLogGroupArn: String? = nil, cloudWatchLogsRoleArn: String? = nil, includeGlobalServiceEvents: Bool? = nil, isMultiRegionTrail: Bool? = nil, isOrganizationTrail: Bool? = nil, kmsKeyId: String? = nil, logFileValidationEnabled: Bool? = nil, name: String? = nil, s3BucketName: String? = nil, s3KeyPrefix: String? = nil, snsTopicARN: String? = nil, snsTopicName: String? = nil, trailARN: String? = nil) {

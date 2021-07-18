@@ -65,7 +65,7 @@ public struct BudgetsErrorType: AWSErrorType {
     public static var invalidParameterException: Self { .init(.invalidParameterException) }
     /// We can’t locate the resource that you specified.
     public static var notFoundException: Self { .init(.notFoundException) }
-    ///  The request was received and recognized by the server, but the server rejected that particular method for the requested resource. 
+    ///  The request was received and recognized by the server, but the server rejected that particular method for the requested resource.
     public static var resourceLockedException: Self { .init(.resourceLockedException) }
 }
 

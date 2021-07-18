@@ -150,7 +150,6 @@ extension Organizations {
     // MARK: Shapes
 
     public struct AcceptHandshakeRequest: AWSEncodableShape {
-
         /// The unique identifier (ID) of the handshake that you want to accept. The regex pattern for  handshake ID string requires "h-"  followed by from 8 to 32 lowercase letters or digits.
         public let handshakeId: String
 
@@ -169,7 +168,6 @@ extension Organizations {
     }
 
     public struct AcceptHandshakeResponse: AWSDecodableShape {
-
         /// A structure that contains details about the accepted handshake.
         public let handshake: Handshake?
 
@@ -183,7 +181,6 @@ extension Organizations {
     }
 
     public struct Account: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the account. For more information about ARNs in Organizations, see ARN  Formats Supported by Organizations in the AWS Service Authorization Reference.
         public let arn: String?
         /// The email address associated with the AWS account. The regex pattern for this parameter is a string of characters that represents a standard internet email address.
@@ -221,10 +218,9 @@ extension Organizations {
     }
 
     public struct AttachPolicyRequest: AWSEncodableShape {
-
         /// The unique identifier (ID) of the policy that you want to attach to the target. You can get the ID for the policy by calling the ListPolicies operation. The regex pattern for a policy ID string requires "p-" followed  by from 8 to 128 lowercase or uppercase letters, digits, or the underscore character (_).
         public let policyId: String
-        /// The unique identifier (ID) of the root, OU, or account that you want to attach the policy to. You can get the ID by calling the ListRoots, ListOrganizationalUnitsForParent, or ListAccounts operations. The regex pattern for a target ID string requires one of the  following:    Root - A string that begins with "r-" followed by from 4 to 32 lowercase letters or  digits.    Account - A string that consists of exactly 12 digits.    Organizational unit (OU) - A string that begins with "ou-" followed by from 4 to 32  lowercase letters or digits (the ID of the root that the OU is in). This string is followed by a second  "-" dash and from 8 to 32 additional lowercase letters or digits.  
+        /// The unique identifier (ID) of the root, OU, or account that you want to attach the policy to. You can get the ID by calling the ListRoots, ListOrganizationalUnitsForParent, or ListAccounts operations. The regex pattern for a target ID string requires one of the  following:    Root - A string that begins with "r-" followed by from 4 to 32 lowercase letters or  digits.    Account - A string that consists of exactly 12 digits.    Organizational unit (OU) - A string that begins with "ou-" followed by from 4 to 32  lowercase letters or digits (the ID of the root that the OU is in). This string is followed by a second  "-" dash and from 8 to 32 additional lowercase letters or digits.
         public let targetId: String
 
         public init(policyId: String, targetId: String) {
@@ -246,7 +242,6 @@ extension Organizations {
     }
 
     public struct CancelHandshakeRequest: AWSEncodableShape {
-
         /// The unique identifier (ID) of the handshake that you want to cancel. You can get the ID from the ListHandshakesForOrganization operation. The regex pattern for  handshake ID string requires "h-"  followed by from 8 to 32 lowercase letters or digits.
         public let handshakeId: String
 
@@ -265,7 +260,6 @@ extension Organizations {
     }
 
     public struct CancelHandshakeResponse: AWSDecodableShape {
-
         /// A structure that contains details about the handshake that you canceled.
         public let handshake: Handshake?
 
@@ -279,8 +273,7 @@ extension Organizations {
     }
 
     public struct Child: AWSDecodableShape {
-
-        /// The unique identifier (ID) of this child entity. The regex pattern for a child ID string requires one of the  following:    Account - A string that consists of exactly 12 digits.    Organizational unit (OU) - A string that begins with "ou-" followed by from 4 to 32 lowercase letters or digits (the ID of the root that  contains the OU). This string is followed by a second "-" dash and from 8 to 32 additional  lowercase letters or digits.  
+        /// The unique identifier (ID) of this child entity. The regex pattern for a child ID string requires one of the  following:    Account - A string that consists of exactly 12 digits.    Organizational unit (OU) - A string that begins with "ou-" followed by from 4 to 32 lowercase letters or digits (the ID of the root that  contains the OU). This string is followed by a second "-" dash and from 8 to 32 additional  lowercase letters or digits.
         public let id: String?
         /// The type of this child entity.
         public let type: ChildType?
@@ -297,7 +290,6 @@ extension Organizations {
     }
 
     public struct CreateAccountRequest: AWSEncodableShape {
-
         /// The friendly name of the member account.
         public let accountName: String
         /// The email address of the owner to assign to the new member account. This email address must not already be associated with another AWS account. You must use a valid email address to complete account creation. You can't access the root user of the account or remove an account that was created with an invalid email address.
@@ -306,7 +298,7 @@ extension Organizations {
         public let iamUserAccessToBilling: IAMUserAccessToBilling?
         /// (Optional) The name of an IAM role that AWS Organizations automatically preconfigures in the new member account. This role trusts the management account, allowing users in the management account to assume the role, as permitted by the management account administrator. The role has administrator permissions in the new member account. If you don't specify this parameter, the role name defaults to OrganizationAccountAccessRole. For more information about how to use this role to access the member account, see the following links:    Accessing and Administering the Member Accounts in Your Organization in the AWS Organizations User Guide    Steps 2 and 3 in Tutorial: Delegate Access Across AWS Accounts Using IAM Roles in the IAM User Guide    The regex pattern that  is used to validate this parameter. The pattern can include uppercase  letters, lowercase letters, digits with no spaces, and any of the following characters: =,.@-
         public let roleName: String?
-        /// A list of tags that you want to attach to the newly created account. For each tag in the list, you must specify both a tag key and a value. You can set the value to an empty string, but you can't set it to null. For more information about tagging, see Tagging AWS Organizations resources in the AWS Organizations User Guide.  If any one of the tags is invalid or if you exceed the allowed number of tags for an account, then the entire request fails and the account is not created. 
+        /// A list of tags that you want to attach to the newly created account. For each tag in the list, you must specify both a tag key and a value. You can set the value to an empty string, but you can't set it to null. For more information about tagging, see Tagging AWS Organizations resources in the AWS Organizations User Guide.  If any one of the tags is invalid or if you exceed the allowed number of tags for an account, then the entire request fails and the account is not created.
         public let tags: [Tag]?
 
         public init(accountName: String, email: String, iamUserAccessToBilling: IAMUserAccessToBilling? = nil, roleName: String? = nil, tags: [Tag]? = nil) {
@@ -341,7 +333,6 @@ extension Organizations {
     }
 
     public struct CreateAccountResponse: AWSDecodableShape {
-
         /// A structure that contains details about the request to create an account. This response structure might not be fully populated when you first receive it because account creation is an asynchronous process. You can pass the returned CreateAccountStatus ID as a parameter to DescribeCreateAccountStatus to get status about the progress of the request at later times. You can also check the AWS CloudTrail log for the CreateAccountResult event. For more information, see Monitoring the Activity in Your Organization in the AWS Organizations User Guide.
         public let createAccountStatus: CreateAccountStatus?
 
@@ -355,14 +346,13 @@ extension Organizations {
     }
 
     public struct CreateAccountStatus: AWSDecodableShape {
-
         /// If the account was created successfully, the unique identifier (ID) of the new account. The regex pattern for an account ID string requires exactly 12 digits.
         public let accountId: String?
         /// The account name given to the account when it was created.
         public let accountName: String?
         /// The date and time that the account was created and the request completed.
         public let completedTimestamp: Date?
-        /// If the request failed, a description of the reason for the failure.   ACCOUNT_LIMIT_EXCEEDED: The account couldn't be created because you reached the limit on the number of accounts in your organization.   CONCURRENT_ACCOUNT_MODIFICATION: You already submitted a request with the same information.   EMAIL_ALREADY_EXISTS: The account could not be created because another AWS account with that email address already exists.   FAILED_BUSINESS_VALIDATION: The AWS account that owns your organization failed to receive business license validation.   GOVCLOUD_ACCOUNT_ALREADY_EXISTS: The account in the AWS GovCloud (US) Region could not be created because this Region already includes an account with that email address.   IDENTITY_INVALID_BUSINESS_VALIDATION: The AWS account that owns your organization can't complete business license validation because it doesn't have valid identity data.   INVALID_ADDRESS: The account could not be created because the address you provided is not valid.   INVALID_EMAIL: The account could not be created because the email address you provided is not valid.   INTERNAL_FAILURE: The account could not be created because of an internal failure. Try again later. If the problem persists, contact AWS Customer Support.   MISSING_BUSINESS_VALIDATION: The AWS account that owns your organization has not received Business Validation.   MISSING_PAYMENT_INSTRUMENT: You must configure the management account with a valid payment method, such as a credit card.   PENDING_BUSINESS_VALIDATION: The AWS account that owns your organization is still in the process of completing business license validation.   UNKNOWN_BUSINESS_VALIDATION: The AWS account that owns your organization has an unknown issue with business license validation.  
+        /// If the request failed, a description of the reason for the failure.   ACCOUNT_LIMIT_EXCEEDED: The account couldn't be created because you reached the limit on the number of accounts in your organization.   CONCURRENT_ACCOUNT_MODIFICATION: You already submitted a request with the same information.   EMAIL_ALREADY_EXISTS: The account could not be created because another AWS account with that email address already exists.   FAILED_BUSINESS_VALIDATION: The AWS account that owns your organization failed to receive business license validation.   GOVCLOUD_ACCOUNT_ALREADY_EXISTS: The account in the AWS GovCloud (US) Region could not be created because this Region already includes an account with that email address.   IDENTITY_INVALID_BUSINESS_VALIDATION: The AWS account that owns your organization can't complete business license validation because it doesn't have valid identity data.   INVALID_ADDRESS: The account could not be created because the address you provided is not valid.   INVALID_EMAIL: The account could not be created because the email address you provided is not valid.   INTERNAL_FAILURE: The account could not be created because of an internal failure. Try again later. If the problem persists, contact AWS Customer Support.   MISSING_BUSINESS_VALIDATION: The AWS account that owns your organization has not received Business Validation.   MISSING_PAYMENT_INSTRUMENT: You must configure the management account with a valid payment method, such as a credit card.   PENDING_BUSINESS_VALIDATION: The AWS account that owns your organization is still in the process of completing business license validation.   UNKNOWN_BUSINESS_VALIDATION: The AWS account that owns your organization has an unknown issue with business license validation.
         public let failureReason: CreateAccountFailureReason?
         /// If the account was created successfully, the unique identifier (ID) of the new account in the AWS GovCloud (US) Region.
         public let govCloudAccountId: String?
@@ -397,7 +387,6 @@ extension Organizations {
     }
 
     public struct CreateGovCloudAccountRequest: AWSEncodableShape {
-
         /// The friendly name of the member account.
         public let accountName: String
         /// The email address of the owner to assign to the new member account in the commercial Region. This email address must not already be associated with another AWS account. You must use a valid email address to complete account creation. You can't access the root user of the account or remove an account that was created with an invalid email address. Like all request parameters for CreateGovCloudAccount, the request for the email address for the AWS GovCloud (US) account originates from the commercial Region, not from the AWS GovCloud (US) Region.
@@ -406,7 +395,7 @@ extension Organizations {
         public let iamUserAccessToBilling: IAMUserAccessToBilling?
         /// (Optional) The name of an IAM role that AWS Organizations automatically preconfigures in the new member accounts in both the AWS GovCloud (US) Region and in the commercial Region. This role trusts the management account, allowing users in the management account to assume the role, as permitted by the management account administrator. The role has administrator permissions in the new member account. If you don't specify this parameter, the role name defaults to OrganizationAccountAccessRole. For more information about how to use this role to access the member account, see Accessing and Administering the Member Accounts in Your Organization in the AWS Organizations User Guide and steps 2 and 3 in Tutorial: Delegate Access Across AWS Accounts Using IAM Roles in the IAM User Guide.  The regex pattern that  is used to validate this parameter. The pattern can include uppercase  letters, lowercase letters, digits with no spaces, and any of the following characters: =,.@-
         public let roleName: String?
-        /// A list of tags that you want to attach to the newly created account. These tags are attached to the commercial account associated with the GovCloud account, and not to the GovCloud account itself. To add tags to the actual GovCloud account, call the TagResource operation in the GovCloud region after the new GovCloud account exists. For each tag in the list, you must specify both a tag key and a value. You can set the value to an empty string, but you can't set it to null. For more information about tagging, see Tagging AWS Organizations resources in the AWS Organizations User Guide.  If any one of the tags is invalid or if you exceed the allowed number of tags for an account, then the entire request fails and the account is not created. 
+        /// A list of tags that you want to attach to the newly created account. These tags are attached to the commercial account associated with the GovCloud account, and not to the GovCloud account itself. To add tags to the actual GovCloud account, call the TagResource operation in the GovCloud region after the new GovCloud account exists. For each tag in the list, you must specify both a tag key and a value. You can set the value to an empty string, but you can't set it to null. For more information about tagging, see Tagging AWS Organizations resources in the AWS Organizations User Guide.  If any one of the tags is invalid or if you exceed the allowed number of tags for an account, then the entire request fails and the account is not created.
         public let tags: [Tag]?
 
         public init(accountName: String, email: String, iamUserAccessToBilling: IAMUserAccessToBilling? = nil, roleName: String? = nil, tags: [Tag]? = nil) {
@@ -441,7 +430,6 @@ extension Organizations {
     }
 
     public struct CreateGovCloudAccountResponse: AWSDecodableShape {
-
         public let createAccountStatus: CreateAccountStatus?
 
         public init(createAccountStatus: CreateAccountStatus? = nil) {
@@ -454,8 +442,7 @@ extension Organizations {
     }
 
     public struct CreateOrganizationRequest: AWSEncodableShape {
-
-        /// Specifies the feature set supported by the new organization. Each feature set supports different levels of functionality.    CONSOLIDATED_BILLING: All member accounts have their bills consolidated to and paid by the management account. For more information, see Consolidated billing in the AWS Organizations User Guide.  The consolidated billing feature subset isn't available for organizations in the AWS GovCloud (US) Region.    ALL: In addition to all the features supported by the consolidated billing feature set, the management account can also apply any policy type to any member account in the organization. For more information, see All features in the AWS Organizations User Guide.   
+        /// Specifies the feature set supported by the new organization. Each feature set supports different levels of functionality.    CONSOLIDATED_BILLING: All member accounts have their bills consolidated to and paid by the management account. For more information, see Consolidated billing in the AWS Organizations User Guide.  The consolidated billing feature subset isn't available for organizations in the AWS GovCloud (US) Region.    ALL: In addition to all the features supported by the consolidated billing feature set, the management account can also apply any policy type to any member account in the organization. For more information, see All features in the AWS Organizations User Guide.
         public let featureSet: OrganizationFeatureSet?
 
         public init(featureSet: OrganizationFeatureSet? = nil) {
@@ -468,7 +455,6 @@ extension Organizations {
     }
 
     public struct CreateOrganizationResponse: AWSDecodableShape {
-
         /// A structure that contains details about the newly created organization.
         public let organization: Organization?
 
@@ -482,12 +468,11 @@ extension Organizations {
     }
 
     public struct CreateOrganizationalUnitRequest: AWSEncodableShape {
-
         /// The friendly name to assign to the new OU.
         public let name: String
-        /// The unique identifier (ID) of the parent root or OU that you want to create the new OU in. The regex pattern for a parent ID string requires one of the  following:    Root - A string that begins with "r-" followed by from 4 to 32 lowercase letters or  digits.    Organizational unit (OU) - A string that begins with "ou-" followed by from 4 to 32 lowercase letters or digits (the ID of the root that the OU is in). This string is followed by a second  "-" dash and from 8 to 32 additional lowercase letters or digits.  
+        /// The unique identifier (ID) of the parent root or OU that you want to create the new OU in. The regex pattern for a parent ID string requires one of the  following:    Root - A string that begins with "r-" followed by from 4 to 32 lowercase letters or  digits.    Organizational unit (OU) - A string that begins with "ou-" followed by from 4 to 32 lowercase letters or digits (the ID of the root that the OU is in). This string is followed by a second  "-" dash and from 8 to 32 additional lowercase letters or digits.
         public let parentId: String
-        /// A list of tags that you want to attach to the newly created OU. For each tag in the list, you must specify both a tag key and a value. You can set the value to an empty string, but you can't set it to null. For more information about tagging, see Tagging AWS Organizations resources in the AWS Organizations User Guide.  If any one of the tags is invalid or if you exceed the allowed number of tags for an OU, then the entire request fails and the OU is not created. 
+        /// A list of tags that you want to attach to the newly created OU. For each tag in the list, you must specify both a tag key and a value. You can set the value to an empty string, but you can't set it to null. For more information about tagging, see Tagging AWS Organizations resources in the AWS Organizations User Guide.  If any one of the tags is invalid or if you exceed the allowed number of tags for an OU, then the entire request fails and the OU is not created.
         public let tags: [Tag]?
 
         public init(name: String, parentId: String, tags: [Tag]? = nil) {
@@ -515,7 +500,6 @@ extension Organizations {
     }
 
     public struct CreateOrganizationalUnitResponse: AWSDecodableShape {
-
         /// A structure that contains details about the newly created OU.
         public let organizationalUnit: OrganizationalUnit?
 
@@ -529,16 +513,15 @@ extension Organizations {
     }
 
     public struct CreatePolicyRequest: AWSEncodableShape {
-
         /// The policy text content to add to the new policy. The text that you supply must adhere to the rules of the policy type you specify in the Type parameter.
         public let content: String
         /// An optional description to assign to the policy.
         public let description: String
         /// The friendly name to assign to the policy. The regex pattern  that is used to validate this parameter is a string of any of the characters in the ASCII  character range.
         public let name: String
-        /// A list of tags that you want to attach to the newly created policy. For each tag in the list, you must specify both a tag key and a value. You can set the value to an empty string, but you can't set it to null. For more information about tagging, see Tagging AWS Organizations resources in the AWS Organizations User Guide.  If any one of the tags is invalid or if you exceed the allowed number of tags for a policy, then the entire request fails and the policy is not created. 
+        /// A list of tags that you want to attach to the newly created policy. For each tag in the list, you must specify both a tag key and a value. You can set the value to an empty string, but you can't set it to null. For more information about tagging, see Tagging AWS Organizations resources in the AWS Organizations User Guide.  If any one of the tags is invalid or if you exceed the allowed number of tags for a policy, then the entire request fails and the policy is not created.
         public let tags: [Tag]?
-        /// The type of policy to create. You can specify one of the following values:    AISERVICES_OPT_OUT_POLICY     BACKUP_POLICY     SERVICE_CONTROL_POLICY     TAG_POLICY   
+        /// The type of policy to create. You can specify one of the following values:    AISERVICES_OPT_OUT_POLICY     BACKUP_POLICY     SERVICE_CONTROL_POLICY     TAG_POLICY
         public let type: PolicyType
 
         public init(content: String, description: String, name: String, tags: [Tag]? = nil, type: PolicyType) {
@@ -550,7 +533,7 @@ extension Organizations {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.content, name: "content", parent: name, max: 1000000)
+            try self.validate(self.content, name: "content", parent: name, max: 1_000_000)
             try self.validate(self.content, name: "content", parent: name, min: 1)
             try self.validate(self.content, name: "content", parent: name, pattern: "[\\s\\S]*")
             try self.validate(self.description, name: "description", parent: name, max: 512)
@@ -573,7 +556,6 @@ extension Organizations {
     }
 
     public struct CreatePolicyResponse: AWSDecodableShape {
-
         /// A structure that contains details about the newly created policy.
         public let policy: Policy?
 
@@ -587,7 +569,6 @@ extension Organizations {
     }
 
     public struct DeclineHandshakeRequest: AWSEncodableShape {
-
         /// The unique identifier (ID) of the handshake that you want to decline. You can get the ID from the ListHandshakesForAccount operation. The regex pattern for  handshake ID string requires "h-"  followed by from 8 to 32 lowercase letters or digits.
         public let handshakeId: String
 
@@ -606,7 +587,6 @@ extension Organizations {
     }
 
     public struct DeclineHandshakeResponse: AWSDecodableShape {
-
         /// A structure that contains details about the declined handshake. The state is updated to show the value DECLINED.
         public let handshake: Handshake?
 
@@ -620,7 +600,6 @@ extension Organizations {
     }
 
     public struct DelegatedAdministrator: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the delegated administrator's account.
         public let arn: String?
         /// The date when the account was made a delegated administrator.
@@ -662,8 +641,7 @@ extension Organizations {
     }
 
     public struct DelegatedService: AWSDecodableShape {
-
-        /// The date that the account became a delegated administrator for this service. 
+        /// The date that the account became a delegated administrator for this service.
         public let delegationEnabledDate: Date?
         /// The name of an AWS service that can request an operation for the specified service. This is typically in the form of a URL, such as:  servicename.amazonaws.com.
         public let servicePrincipal: String?
@@ -680,7 +658,6 @@ extension Organizations {
     }
 
     public struct DeleteOrganizationalUnitRequest: AWSEncodableShape {
-
         /// The unique identifier (ID) of the organizational unit that you want to delete. You can get the ID from the ListOrganizationalUnitsForParent operation. The regex pattern for an organizational unit ID string requires  "ou-" followed by from 4 to 32 lowercase letters or digits (the ID of the root that contains the  OU). This string is followed by a second "-" dash and from 8 to 32 additional lowercase letters  or digits.
         public let organizationalUnitId: String
 
@@ -699,7 +676,6 @@ extension Organizations {
     }
 
     public struct DeletePolicyRequest: AWSEncodableShape {
-
         /// The unique identifier (ID) of the policy that you want to delete. You can get the ID from the ListPolicies or ListPoliciesForTarget operations. The regex pattern for a policy ID string requires "p-" followed  by from 8 to 128 lowercase or uppercase letters, digits, or the underscore character (_).
         public let policyId: String
 
@@ -718,7 +694,6 @@ extension Organizations {
     }
 
     public struct DeregisterDelegatedAdministratorRequest: AWSEncodableShape {
-
         /// The account ID number of the member account in the organization that you want to deregister as a delegated administrator.
         public let accountId: String
         /// The service principal name of an AWS service for which the account is a delegated administrator. Delegated administrator privileges are revoked for only the specified AWS service from the member account. If the specified service is the only service for which the member account is a delegated administrator, the operation also revokes Organizations read action permissions.
@@ -744,7 +719,6 @@ extension Organizations {
     }
 
     public struct DescribeAccountRequest: AWSEncodableShape {
-
         /// The unique identifier (ID) of the AWS account that you want information about. You can get the ID from the ListAccounts or ListAccountsForParent operations. The regex pattern for an account ID string requires exactly 12 digits.
         public let accountId: String
 
@@ -763,7 +737,6 @@ extension Organizations {
     }
 
     public struct DescribeAccountResponse: AWSDecodableShape {
-
         /// A structure that contains information about the requested account.
         public let account: Account?
 
@@ -777,7 +750,6 @@ extension Organizations {
     }
 
     public struct DescribeCreateAccountStatusRequest: AWSEncodableShape {
-
         /// Specifies the Id value that uniquely identifies the CreateAccount request. You can get the value from the CreateAccountStatus.Id response in an earlier CreateAccount request, or from the ListCreateAccountStatus operation. The regex pattern for a create account request ID string  requires "car-" followed by from 8 to 32 lowercase letters or digits.
         public let createAccountRequestId: String
 
@@ -796,7 +768,6 @@ extension Organizations {
     }
 
     public struct DescribeCreateAccountStatusResponse: AWSDecodableShape {
-
         /// A structure that contains the current status of an account creation request.
         public let createAccountStatus: CreateAccountStatus?
 
@@ -810,8 +781,7 @@ extension Organizations {
     }
 
     public struct DescribeEffectivePolicyRequest: AWSEncodableShape {
-
-        /// The type of policy that you want information about. You can specify one of the following values:    AISERVICES_OPT_OUT_POLICY     BACKUP_POLICY     TAG_POLICY   
+        /// The type of policy that you want information about. You can specify one of the following values:    AISERVICES_OPT_OUT_POLICY     BACKUP_POLICY     TAG_POLICY
         public let policyType: EffectivePolicyType
         /// When you're signed in as the management account, specify the ID of the account that you want details about. Specifying an organization root or organizational unit (OU) as the target is not supported.
         public let targetId: String?
@@ -833,7 +803,6 @@ extension Organizations {
     }
 
     public struct DescribeEffectivePolicyResponse: AWSDecodableShape {
-
         /// The contents of the effective policy.
         public let effectivePolicy: EffectivePolicy?
 
@@ -847,7 +816,6 @@ extension Organizations {
     }
 
     public struct DescribeHandshakeRequest: AWSEncodableShape {
-
         /// The unique identifier (ID) of the handshake that you want information about. You can get the ID from the original call to InviteAccountToOrganization, or from a call to ListHandshakesForAccount or ListHandshakesForOrganization. The regex pattern for  handshake ID string requires "h-"  followed by from 8 to 32 lowercase letters or digits.
         public let handshakeId: String
 
@@ -866,7 +834,6 @@ extension Organizations {
     }
 
     public struct DescribeHandshakeResponse: AWSDecodableShape {
-
         /// A structure that contains information about the specified handshake.
         public let handshake: Handshake?
 
@@ -880,8 +847,7 @@ extension Organizations {
     }
 
     public struct DescribeOrganizationResponse: AWSDecodableShape {
-
-        /// A structure that contains information about the organization.  The AvailablePolicyTypes part of the response is deprecated, and you shouldn't use it in your apps. It doesn't include any policy type supported by Organizations other than SCPs. To determine which policy types are enabled in your organization, use the  ListRoots operation. 
+        /// A structure that contains information about the organization.  The AvailablePolicyTypes part of the response is deprecated, and you shouldn't use it in your apps. It doesn't include any policy type supported by Organizations other than SCPs. To determine which policy types are enabled in your organization, use the  ListRoots operation.
         public let organization: Organization?
 
         public init(organization: Organization? = nil) {
@@ -894,7 +860,6 @@ extension Organizations {
     }
 
     public struct DescribeOrganizationalUnitRequest: AWSEncodableShape {
-
         /// The unique identifier (ID) of the organizational unit that you want details about. You can get the ID from the ListOrganizationalUnitsForParent operation. The regex pattern for an organizational unit ID string requires  "ou-" followed by from 4 to 32 lowercase letters or digits (the ID of the root that contains the  OU). This string is followed by a second "-" dash and from 8 to 32 additional lowercase letters  or digits.
         public let organizationalUnitId: String
 
@@ -913,7 +878,6 @@ extension Organizations {
     }
 
     public struct DescribeOrganizationalUnitResponse: AWSDecodableShape {
-
         /// A structure that contains details about the specified OU.
         public let organizationalUnit: OrganizationalUnit?
 
@@ -927,7 +891,6 @@ extension Organizations {
     }
 
     public struct DescribePolicyRequest: AWSEncodableShape {
-
         /// The unique identifier (ID) of the policy that you want details about. You can get the ID from the ListPolicies or ListPoliciesForTarget operations. The regex pattern for a policy ID string requires "p-" followed  by from 8 to 128 lowercase or uppercase letters, digits, or the underscore character (_).
         public let policyId: String
 
@@ -946,7 +909,6 @@ extension Organizations {
     }
 
     public struct DescribePolicyResponse: AWSDecodableShape {
-
         /// A structure that contains details about the specified policy.
         public let policy: Policy?
 
@@ -960,10 +922,9 @@ extension Organizations {
     }
 
     public struct DetachPolicyRequest: AWSEncodableShape {
-
         /// The unique identifier (ID) of the policy you want to detach. You can get the ID from the ListPolicies or ListPoliciesForTarget operations. The regex pattern for a policy ID string requires "p-" followed  by from 8 to 128 lowercase or uppercase letters, digits, or the underscore character (_).
         public let policyId: String
-        /// The unique identifier (ID) of the root, OU, or account that you want to detach the policy from. You can get the ID from the ListRoots, ListOrganizationalUnitsForParent, or ListAccounts operations. The regex pattern for a target ID string requires one of the  following:    Root - A string that begins with "r-" followed by from 4 to 32 lowercase letters or  digits.    Account - A string that consists of exactly 12 digits.    Organizational unit (OU) - A string that begins with "ou-" followed by from 4 to 32  lowercase letters or digits (the ID of the root that the OU is in). This string is followed by a second  "-" dash and from 8 to 32 additional lowercase letters or digits.  
+        /// The unique identifier (ID) of the root, OU, or account that you want to detach the policy from. You can get the ID from the ListRoots, ListOrganizationalUnitsForParent, or ListAccounts operations. The regex pattern for a target ID string requires one of the  following:    Root - A string that begins with "r-" followed by from 4 to 32 lowercase letters or  digits.    Account - A string that consists of exactly 12 digits.    Organizational unit (OU) - A string that begins with "ou-" followed by from 4 to 32  lowercase letters or digits (the ID of the root that the OU is in). This string is followed by a second  "-" dash and from 8 to 32 additional lowercase letters or digits.
         public let targetId: String
 
         public init(policyId: String, targetId: String) {
@@ -985,7 +946,6 @@ extension Organizations {
     }
 
     public struct DisableAWSServiceAccessRequest: AWSEncodableShape {
-
         /// The service principal name of the AWS service for which you want to disable integration with your organization. This is typically in the form of a URL, such as  service-abbreviation.amazonaws.com.
         public let servicePrincipal: String
 
@@ -1005,8 +965,7 @@ extension Organizations {
     }
 
     public struct DisablePolicyTypeRequest: AWSEncodableShape {
-
-        /// The policy type that you want to disable in this root. You can specify one of the following values:    AISERVICES_OPT_OUT_POLICY     BACKUP_POLICY     SERVICE_CONTROL_POLICY     TAG_POLICY   
+        /// The policy type that you want to disable in this root. You can specify one of the following values:    AISERVICES_OPT_OUT_POLICY     BACKUP_POLICY     SERVICE_CONTROL_POLICY     TAG_POLICY
         public let policyType: PolicyType
         /// The unique identifier (ID) of the root in which you want to disable a policy type. You can get the ID from the ListRoots operation. The regex pattern for a root ID string requires "r-" followed by  from 4 to 32 lowercase letters or digits.
         public let rootId: String
@@ -1028,7 +987,6 @@ extension Organizations {
     }
 
     public struct DisablePolicyTypeResponse: AWSDecodableShape {
-
         /// A structure that shows the root with the updated list of enabled policy types.
         public let root: Root?
 
@@ -1042,14 +1000,13 @@ extension Organizations {
     }
 
     public struct EffectivePolicy: AWSDecodableShape {
-
         /// The time of the last update to this policy.
         public let lastUpdatedTimestamp: Date?
         /// The text content of the policy.
         public let policyContent: String?
         /// The policy type.
         public let policyType: EffectivePolicyType?
-        /// The account ID of the policy target. 
+        /// The account ID of the policy target.
         public let targetId: String?
 
         public init(lastUpdatedTimestamp: Date? = nil, policyContent: String? = nil, policyType: EffectivePolicyType? = nil, targetId: String? = nil) {
@@ -1068,7 +1025,6 @@ extension Organizations {
     }
 
     public struct EnableAWSServiceAccessRequest: AWSEncodableShape {
-
         /// The service principal name of the AWS service for which you want to enable integration with your organization. This is typically in the form of a URL, such as  service-abbreviation.amazonaws.com.
         public let servicePrincipal: String
 
@@ -1088,15 +1044,10 @@ extension Organizations {
     }
 
     public struct EnableAllFeaturesRequest: AWSEncodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct EnableAllFeaturesResponse: AWSDecodableShape {
-
         /// A structure that contains details about the handshake created to support this request to enable all features in the organization.
         public let handshake: Handshake?
 
@@ -1110,8 +1061,7 @@ extension Organizations {
     }
 
     public struct EnablePolicyTypeRequest: AWSEncodableShape {
-
-        /// The policy type that you want to enable. You can specify one of the following values:    AISERVICES_OPT_OUT_POLICY     BACKUP_POLICY     SERVICE_CONTROL_POLICY     TAG_POLICY   
+        /// The policy type that you want to enable. You can specify one of the following values:    AISERVICES_OPT_OUT_POLICY     BACKUP_POLICY     SERVICE_CONTROL_POLICY     TAG_POLICY
         public let policyType: PolicyType
         /// The unique identifier (ID) of the root in which you want to enable a policy type. You can get the ID from the ListRoots operation. The regex pattern for a root ID string requires "r-" followed by  from 4 to 32 lowercase letters or digits.
         public let rootId: String
@@ -1133,7 +1083,6 @@ extension Organizations {
     }
 
     public struct EnablePolicyTypeResponse: AWSDecodableShape {
-
         /// A structure that shows the root with the updated list of enabled policy types.
         public let root: Root?
 
@@ -1147,7 +1096,6 @@ extension Organizations {
     }
 
     public struct EnabledServicePrincipal: AWSDecodableShape {
-
         /// The date that the service principal was enabled for integration with AWS Organizations.
         public let dateEnabled: Date?
         /// The name of the service principal. This is typically in the form of a URL, such as:  servicename.amazonaws.com.
@@ -1165,8 +1113,7 @@ extension Organizations {
     }
 
     public struct Handshake: AWSDecodableShape {
-
-        /// The type of handshake, indicating what action occurs when the recipient accepts the handshake. The following handshake types are supported:    INVITE: This type of handshake represents a request to join an organization. It is always sent from the management account to only non-member accounts.    ENABLE_ALL_FEATURES: This type of handshake represents a request to enable all features in an organization. It is always sent from the management account to only invited member accounts. Created accounts do not receive this because those accounts were created by the organization's management account and approval is inferred.    APPROVE_ALL_FEATURES: This type of handshake is sent from the Organizations service when all member accounts have approved the ENABLE_ALL_FEATURES invitation. It is sent only to the management account and signals the master that it can finalize the process to enable all features.  
+        /// The type of handshake, indicating what action occurs when the recipient accepts the handshake. The following handshake types are supported:    INVITE: This type of handshake represents a request to join an organization. It is always sent from the management account to only non-member accounts.    ENABLE_ALL_FEATURES: This type of handshake represents a request to enable all features in an organization. It is always sent from the management account to only invited member accounts. Created accounts do not receive this because those accounts were created by the organization's management account and approval is inferred.    APPROVE_ALL_FEATURES: This type of handshake is sent from the Organizations service when all member accounts have approved the ENABLE_ALL_FEATURES invitation. It is sent only to the management account and signals the master that it can finalize the process to enable all features.
         public let action: ActionType?
         /// The Amazon Resource Name (ARN) of a handshake. For more information about ARNs in Organizations, see ARN  Formats Supported by Organizations in the AWS Service Authorization Reference.
         public let arn: String?
@@ -1180,7 +1127,7 @@ extension Organizations {
         public let requestedTimestamp: Date?
         /// Additional information that is needed to process the handshake.
         public let resources: [HandshakeResource]?
-        /// The current state of the handshake. Use the state to trace the flow of the handshake through the process from its creation to its acceptance. The meaning of each of the valid values is as follows:    REQUESTED: This handshake was sent to multiple recipients (applicable to only some handshake types) and not all recipients have responded yet. The request stays in this state until all recipients respond.    OPEN: This handshake was sent to multiple recipients (applicable to only some policy types) and all recipients have responded, allowing the originator to complete the handshake action.    CANCELED: This handshake is no longer active because it was canceled by the originating account.    ACCEPTED: This handshake is complete because it has been accepted by the recipient.    DECLINED: This handshake is no longer active because it was declined by the recipient account.    EXPIRED: This handshake is no longer active because the originator did not receive a response of any kind from the recipient before the expiration time (15 days).  
+        /// The current state of the handshake. Use the state to trace the flow of the handshake through the process from its creation to its acceptance. The meaning of each of the valid values is as follows:    REQUESTED: This handshake was sent to multiple recipients (applicable to only some handshake types) and not all recipients have responded yet. The request stays in this state until all recipients respond.    OPEN: This handshake was sent to multiple recipients (applicable to only some policy types) and all recipients have responded, allowing the originator to complete the handshake action.    CANCELED: This handshake is no longer active because it was canceled by the originating account.    ACCEPTED: This handshake is complete because it has been accepted by the recipient.    DECLINED: This handshake is no longer active because it was declined by the recipient account.    EXPIRED: This handshake is no longer active because the originator did not receive a response of any kind from the recipient before the expiration time (15 days).
         public let state: HandshakeState?
 
         public init(action: ActionType? = nil, arn: String? = nil, expirationTimestamp: Date? = nil, id: String? = nil, parties: [HandshakeParty]? = nil, requestedTimestamp: Date? = nil, resources: [HandshakeResource]? = nil, state: HandshakeState? = nil) {
@@ -1207,7 +1154,6 @@ extension Organizations {
     }
 
     public struct HandshakeFilter: AWSEncodableShape {
-
         /// Specifies the type of handshake action. If you specify ActionType, you cannot also specify ParentHandshakeId.
         public let actionType: ActionType?
         /// Specifies the parent handshake. Only used for handshake types that are a child of another type. If you specify ParentHandshakeId, you cannot also specify ActionType. The regex pattern for  handshake ID string requires "h-"  followed by from 8 to 32 lowercase letters or digits.
@@ -1230,7 +1176,6 @@ extension Organizations {
     }
 
     public struct HandshakeParty: AWSEncodableShape & AWSDecodableShape {
-
         /// The unique identifier (ID) for the party. The regex pattern for  handshake ID string requires "h-"  followed by from 8 to 32 lowercase letters or digits.
         public let id: String
         /// The type of party.
@@ -1254,10 +1199,9 @@ extension Organizations {
     }
 
     public class HandshakeResource: AWSDecodableShape {
-
         /// When needed, contains an additional array of HandshakeResource objects.
         public let resources: [HandshakeResource]?
-        /// The type of information being passed, specifying how the value is to be interpreted by the other party:    ACCOUNT - Specifies an AWS account ID number.    ORGANIZATION - Specifies an organization ID number.    EMAIL - Specifies the email address that is associated with the account that receives the handshake.     OWNER_EMAIL - Specifies the email address associated with the management account. Included as information about an organization.     OWNER_NAME - Specifies the name associated with the management account. Included as information about an organization.     NOTES - Additional text provided by the handshake initiator and intended for the recipient to read.  
+        /// The type of information being passed, specifying how the value is to be interpreted by the other party:    ACCOUNT - Specifies an AWS account ID number.    ORGANIZATION - Specifies an organization ID number.    EMAIL - Specifies the email address that is associated with the account that receives the handshake.     OWNER_EMAIL - Specifies the email address associated with the management account. Included as information about an organization.     OWNER_NAME - Specifies the name associated with the management account. Included as information about an organization.     NOTES - Additional text provided by the handshake initiator and intended for the recipient to read.
         public let type: HandshakeResourceType?
         /// The information that is passed to the other party in the handshake. The format of the value string must match the requirements of the specified type.
         public let value: String?
@@ -1276,12 +1220,11 @@ extension Organizations {
     }
 
     public struct InviteAccountToOrganizationRequest: AWSEncodableShape {
-
         /// Additional information that you want to include in the generated email to the recipient account owner.
         public let notes: String?
-        /// A list of tags that you want to attach to the account when it becomes a member of the organization. For each tag in the list, you must specify both a tag key and a value. You can set the value to an empty string, but you can't set it to null. For more information about tagging, see Tagging AWS Organizations resources in the AWS Organizations User Guide.  Any tags in the request are checked for compliance with any applicable tag policies when the request is made. The request is rejected if the tags in the request don't match the requirements of the policy at that time. Tag policy compliance is  not checked again when the invitation is accepted and the tags are actually attached to the account. That means that if the tag policy changes between the invitation and the acceptance, then that tags could potentially be non-compliant.   If any one of the tags is invalid or if you exceed the allowed number of tags for an account, then the entire request fails and invitations are not sent. 
+        /// A list of tags that you want to attach to the account when it becomes a member of the organization. For each tag in the list, you must specify both a tag key and a value. You can set the value to an empty string, but you can't set it to null. For more information about tagging, see Tagging AWS Organizations resources in the AWS Organizations User Guide.  Any tags in the request are checked for compliance with any applicable tag policies when the request is made. The request is rejected if the tags in the request don't match the requirements of the policy at that time. Tag policy compliance is  not checked again when the invitation is accepted and the tags are actually attached to the account. That means that if the tag policy changes between the invitation and the acceptance, then that tags could potentially be non-compliant.   If any one of the tags is invalid or if you exceed the allowed number of tags for an account, then the entire request fails and invitations are not sent.
         public let tags: [Tag]?
-        /// The identifier (ID) of the AWS account that you want to invite to join your organization. This is a JSON object that contains the following elements:  { "Type": "ACCOUNT", "Id": " account id number >" }  If you use the AWS CLI, you can submit this as a single string, similar to the following example:  --target Id=123456789012,Type=ACCOUNT  If you specify "Type": "ACCOUNT", you must provide the AWS account ID number as the Id. If you specify "Type": "EMAIL", you must specify the email address that is associated with the account.  --target Id=diego@example.com,Type=EMAIL 
+        /// The identifier (ID) of the AWS account that you want to invite to join your organization. This is a JSON object that contains the following elements:  { "Type": "ACCOUNT", "Id": " account id number >" }  If you use the AWS CLI, you can submit this as a single string, similar to the following example:  --target Id=123456789012,Type=ACCOUNT  If you specify "Type": "ACCOUNT", you must provide the AWS account ID number as the Id. If you specify "Type": "EMAIL", you must specify the email address that is associated with the account.  --target Id=diego@example.com,Type=EMAIL
         public let target: HandshakeParty
 
         public init(notes: String? = nil, tags: [Tag]? = nil, target: HandshakeParty) {
@@ -1307,7 +1250,6 @@ extension Organizations {
     }
 
     public struct InviteAccountToOrganizationResponse: AWSDecodableShape {
-
         /// A structure that contains details about the handshake that is created to support this invitation request.
         public let handshake: Handshake?
 
@@ -1321,7 +1263,6 @@ extension Organizations {
     }
 
     public struct ListAWSServiceAccessForOrganizationRequest: AWSEncodableShape {
-
         /// The total number of results that you want included on each page of the  response. If you do not include this parameter, it defaults to a value that is specific to the  operation. If additional items exist beyond the maximum you specify, the NextToken  response element is present and has a value (is not null). Include that value as the  NextToken request parameter in the next call to the operation to get the next part  of the results. Note that Organizations might return fewer results than the maximum even when there are  more results available. You should check NextToken after every operation to ensure  that you receive all of the results.
         public let maxResults: Int?
         /// The parameter for receiving additional results if you receive a  NextToken response in a previous request. A NextToken response  indicates that more output is available. Set this parameter to the value of the previous  call's NextToken response to indicate where the output should continue  from.
@@ -1335,7 +1276,7 @@ extension Organizations {
         public func validate(name: String) throws {
             try self.validate(self.maxResults, name: "maxResults", parent: name, max: 20)
             try self.validate(self.maxResults, name: "maxResults", parent: name, min: 1)
-            try self.validate(self.nextToken, name: "nextToken", parent: name, max: 100000)
+            try self.validate(self.nextToken, name: "nextToken", parent: name, max: 100_000)
             try self.validate(self.nextToken, name: "nextToken", parent: name, pattern: "[\\s\\S]*")
         }
 
@@ -1346,7 +1287,6 @@ extension Organizations {
     }
 
     public struct ListAWSServiceAccessForOrganizationResponse: AWSDecodableShape {
-
         /// A list of the service principals for the services that are enabled to integrate with your organization. Each principal is a structure that includes the name and the date that it was enabled for integration with AWS Organizations.
         public let enabledServicePrincipals: [EnabledServicePrincipal]?
         /// If present, indicates that more output is available than is  included in the current response. Use this value in the NextToken request parameter  in a subsequent call to the operation to get the next part of the output. You should repeat this  until the NextToken response element comes back as null.
@@ -1364,7 +1304,6 @@ extension Organizations {
     }
 
     public struct ListAccountsForParentRequest: AWSEncodableShape {
-
         /// The total number of results that you want included on each page of the  response. If you do not include this parameter, it defaults to a value that is specific to the  operation. If additional items exist beyond the maximum you specify, the NextToken  response element is present and has a value (is not null). Include that value as the  NextToken request parameter in the next call to the operation to get the next part  of the results. Note that Organizations might return fewer results than the maximum even when there are  more results available. You should check NextToken after every operation to ensure  that you receive all of the results.
         public let maxResults: Int?
         /// The parameter for receiving additional results if you receive a  NextToken response in a previous request. A NextToken response  indicates that more output is available. Set this parameter to the value of the previous  call's NextToken response to indicate where the output should continue  from.
@@ -1381,7 +1320,7 @@ extension Organizations {
         public func validate(name: String) throws {
             try self.validate(self.maxResults, name: "maxResults", parent: name, max: 20)
             try self.validate(self.maxResults, name: "maxResults", parent: name, min: 1)
-            try self.validate(self.nextToken, name: "nextToken", parent: name, max: 100000)
+            try self.validate(self.nextToken, name: "nextToken", parent: name, max: 100_000)
             try self.validate(self.nextToken, name: "nextToken", parent: name, pattern: "[\\s\\S]*")
             try self.validate(self.parentId, name: "parentId", parent: name, max: 100)
             try self.validate(self.parentId, name: "parentId", parent: name, pattern: "^(r-[0-9a-z]{4,32})|(ou-[0-9a-z]{4,32}-[a-z0-9]{8,32})$")
@@ -1395,7 +1334,6 @@ extension Organizations {
     }
 
     public struct ListAccountsForParentResponse: AWSDecodableShape {
-
         /// A list of the accounts in the specified root or OU.
         public let accounts: [Account]?
         /// If present, indicates that more output is available than is  included in the current response. Use this value in the NextToken request parameter  in a subsequent call to the operation to get the next part of the output. You should repeat this  until the NextToken response element comes back as null.
@@ -1413,7 +1351,6 @@ extension Organizations {
     }
 
     public struct ListAccountsRequest: AWSEncodableShape {
-
         /// The total number of results that you want included on each page of the  response. If you do not include this parameter, it defaults to a value that is specific to the  operation. If additional items exist beyond the maximum you specify, the NextToken  response element is present and has a value (is not null). Include that value as the  NextToken request parameter in the next call to the operation to get the next part  of the results. Note that Organizations might return fewer results than the maximum even when there are  more results available. You should check NextToken after every operation to ensure  that you receive all of the results.
         public let maxResults: Int?
         /// The parameter for receiving additional results if you receive a  NextToken response in a previous request. A NextToken response  indicates that more output is available. Set this parameter to the value of the previous  call's NextToken response to indicate where the output should continue  from.
@@ -1427,7 +1364,7 @@ extension Organizations {
         public func validate(name: String) throws {
             try self.validate(self.maxResults, name: "maxResults", parent: name, max: 20)
             try self.validate(self.maxResults, name: "maxResults", parent: name, min: 1)
-            try self.validate(self.nextToken, name: "nextToken", parent: name, max: 100000)
+            try self.validate(self.nextToken, name: "nextToken", parent: name, max: 100_000)
             try self.validate(self.nextToken, name: "nextToken", parent: name, pattern: "[\\s\\S]*")
         }
 
@@ -1438,7 +1375,6 @@ extension Organizations {
     }
 
     public struct ListAccountsResponse: AWSDecodableShape {
-
         /// A list of objects in the organization.
         public let accounts: [Account]?
         /// If present, indicates that more output is available than is  included in the current response. Use this value in the NextToken request parameter  in a subsequent call to the operation to get the next part of the output. You should repeat this  until the NextToken response element comes back as null.
@@ -1456,14 +1392,13 @@ extension Organizations {
     }
 
     public struct ListChildrenRequest: AWSEncodableShape {
-
         /// Filters the output to include only the specified child type.
         public let childType: ChildType
         /// The total number of results that you want included on each page of the  response. If you do not include this parameter, it defaults to a value that is specific to the  operation. If additional items exist beyond the maximum you specify, the NextToken  response element is present and has a value (is not null). Include that value as the  NextToken request parameter in the next call to the operation to get the next part  of the results. Note that Organizations might return fewer results than the maximum even when there are  more results available. You should check NextToken after every operation to ensure  that you receive all of the results.
         public let maxResults: Int?
         /// The parameter for receiving additional results if you receive a  NextToken response in a previous request. A NextToken response  indicates that more output is available. Set this parameter to the value of the previous  call's NextToken response to indicate where the output should continue  from.
         public let nextToken: String?
-        /// The unique identifier (ID) for the parent root or OU whose children you want to list. The regex pattern for a parent ID string requires one of the  following:    Root - A string that begins with "r-" followed by from 4 to 32 lowercase letters or  digits.    Organizational unit (OU) - A string that begins with "ou-" followed by from 4 to 32 lowercase letters or digits (the ID of the root that the OU is in). This string is followed by a second  "-" dash and from 8 to 32 additional lowercase letters or digits.  
+        /// The unique identifier (ID) for the parent root or OU whose children you want to list. The regex pattern for a parent ID string requires one of the  following:    Root - A string that begins with "r-" followed by from 4 to 32 lowercase letters or  digits.    Organizational unit (OU) - A string that begins with "ou-" followed by from 4 to 32 lowercase letters or digits (the ID of the root that the OU is in). This string is followed by a second  "-" dash and from 8 to 32 additional lowercase letters or digits.
         public let parentId: String
 
         public init(childType: ChildType, maxResults: Int? = nil, nextToken: String? = nil, parentId: String) {
@@ -1476,7 +1411,7 @@ extension Organizations {
         public func validate(name: String) throws {
             try self.validate(self.maxResults, name: "maxResults", parent: name, max: 20)
             try self.validate(self.maxResults, name: "maxResults", parent: name, min: 1)
-            try self.validate(self.nextToken, name: "nextToken", parent: name, max: 100000)
+            try self.validate(self.nextToken, name: "nextToken", parent: name, max: 100_000)
             try self.validate(self.nextToken, name: "nextToken", parent: name, pattern: "[\\s\\S]*")
             try self.validate(self.parentId, name: "parentId", parent: name, max: 100)
             try self.validate(self.parentId, name: "parentId", parent: name, pattern: "^(r-[0-9a-z]{4,32})|(ou-[0-9a-z]{4,32}-[a-z0-9]{8,32})$")
@@ -1491,7 +1426,6 @@ extension Organizations {
     }
 
     public struct ListChildrenResponse: AWSDecodableShape {
-
         /// The list of children of the specified parent container.
         public let children: [Child]?
         /// If present, indicates that more output is available than is  included in the current response. Use this value in the NextToken request parameter  in a subsequent call to the operation to get the next part of the output. You should repeat this  until the NextToken response element comes back as null.
@@ -1509,7 +1443,6 @@ extension Organizations {
     }
 
     public struct ListCreateAccountStatusRequest: AWSEncodableShape {
-
         /// The total number of results that you want included on each page of the  response. If you do not include this parameter, it defaults to a value that is specific to the  operation. If additional items exist beyond the maximum you specify, the NextToken  response element is present and has a value (is not null). Include that value as the  NextToken request parameter in the next call to the operation to get the next part  of the results. Note that Organizations might return fewer results than the maximum even when there are  more results available. You should check NextToken after every operation to ensure  that you receive all of the results.
         public let maxResults: Int?
         /// The parameter for receiving additional results if you receive a  NextToken response in a previous request. A NextToken response  indicates that more output is available. Set this parameter to the value of the previous  call's NextToken response to indicate where the output should continue  from.
@@ -1526,7 +1459,7 @@ extension Organizations {
         public func validate(name: String) throws {
             try self.validate(self.maxResults, name: "maxResults", parent: name, max: 20)
             try self.validate(self.maxResults, name: "maxResults", parent: name, min: 1)
-            try self.validate(self.nextToken, name: "nextToken", parent: name, max: 100000)
+            try self.validate(self.nextToken, name: "nextToken", parent: name, max: 100_000)
             try self.validate(self.nextToken, name: "nextToken", parent: name, pattern: "[\\s\\S]*")
         }
 
@@ -1538,7 +1471,6 @@ extension Organizations {
     }
 
     public struct ListCreateAccountStatusResponse: AWSDecodableShape {
-
         /// A list of objects with details about the requests. Certain elements, such as the accountId number, are present in the output only after the account has been successfully created.
         public let createAccountStatuses: [CreateAccountStatus]?
         /// If present, indicates that more output is available than is  included in the current response. Use this value in the NextToken request parameter  in a subsequent call to the operation to get the next part of the output. You should repeat this  until the NextToken response element comes back as null.
@@ -1556,7 +1488,6 @@ extension Organizations {
     }
 
     public struct ListDelegatedAdministratorsRequest: AWSEncodableShape {
-
         /// The total number of results that you want included on each page of the  response. If you do not include this parameter, it defaults to a value that is specific to the  operation. If additional items exist beyond the maximum you specify, the NextToken  response element is present and has a value (is not null). Include that value as the  NextToken request parameter in the next call to the operation to get the next part  of the results. Note that Organizations might return fewer results than the maximum even when there are  more results available. You should check NextToken after every operation to ensure  that you receive all of the results.
         public let maxResults: Int?
         /// The parameter for receiving additional results if you receive a  NextToken response in a previous request. A NextToken response  indicates that more output is available. Set this parameter to the value of the previous  call's NextToken response to indicate where the output should continue  from.
@@ -1573,7 +1504,7 @@ extension Organizations {
         public func validate(name: String) throws {
             try self.validate(self.maxResults, name: "maxResults", parent: name, max: 20)
             try self.validate(self.maxResults, name: "maxResults", parent: name, min: 1)
-            try self.validate(self.nextToken, name: "nextToken", parent: name, max: 100000)
+            try self.validate(self.nextToken, name: "nextToken", parent: name, max: 100_000)
             try self.validate(self.nextToken, name: "nextToken", parent: name, pattern: "[\\s\\S]*")
             try self.validate(self.servicePrincipal, name: "servicePrincipal", parent: name, max: 128)
             try self.validate(self.servicePrincipal, name: "servicePrincipal", parent: name, min: 1)
@@ -1588,7 +1519,6 @@ extension Organizations {
     }
 
     public struct ListDelegatedAdministratorsResponse: AWSDecodableShape {
-
         /// The list of delegated administrators in your organization.
         public let delegatedAdministrators: [DelegatedAdministrator]?
         /// If present, indicates that more output is available than is  included in the current response. Use this value in the NextToken request parameter  in a subsequent call to the operation to get the next part of the output. You should repeat this  until the NextToken response element comes back as null.
@@ -1606,7 +1536,6 @@ extension Organizations {
     }
 
     public struct ListDelegatedServicesForAccountRequest: AWSEncodableShape {
-
         /// The account ID number of a delegated administrator account in the organization.
         public let accountId: String
         /// The total number of results that you want included on each page of the  response. If you do not include this parameter, it defaults to a value that is specific to the  operation. If additional items exist beyond the maximum you specify, the NextToken  response element is present and has a value (is not null). Include that value as the  NextToken request parameter in the next call to the operation to get the next part  of the results. Note that Organizations might return fewer results than the maximum even when there are  more results available. You should check NextToken after every operation to ensure  that you receive all of the results.
@@ -1625,7 +1554,7 @@ extension Organizations {
             try self.validate(self.accountId, name: "accountId", parent: name, pattern: "^\\d{12}$")
             try self.validate(self.maxResults, name: "maxResults", parent: name, max: 20)
             try self.validate(self.maxResults, name: "maxResults", parent: name, min: 1)
-            try self.validate(self.nextToken, name: "nextToken", parent: name, max: 100000)
+            try self.validate(self.nextToken, name: "nextToken", parent: name, max: 100_000)
             try self.validate(self.nextToken, name: "nextToken", parent: name, pattern: "[\\s\\S]*")
         }
 
@@ -1637,7 +1566,6 @@ extension Organizations {
     }
 
     public struct ListDelegatedServicesForAccountResponse: AWSDecodableShape {
-
         /// The services for which the account is a delegated administrator.
         public let delegatedServices: [DelegatedService]?
         /// If present, indicates that more output is available than is  included in the current response. Use this value in the NextToken request parameter  in a subsequent call to the operation to get the next part of the output. You should repeat this  until the NextToken response element comes back as null.
@@ -1655,7 +1583,6 @@ extension Organizations {
     }
 
     public struct ListHandshakesForAccountRequest: AWSEncodableShape {
-
         /// Filters the handshakes that you want included in the response. The default is all types. Use the ActionType element to limit the output to only a specified type, such as INVITE, ENABLE_ALL_FEATURES, or APPROVE_ALL_FEATURES. Alternatively, for the ENABLE_ALL_FEATURES handshake that generates a separate child handshake for each member account, you can specify ParentHandshakeId to see only the handshakes that were generated by that parent request.
         public let filter: HandshakeFilter?
         /// The total number of results that you want included on each page of the  response. If you do not include this parameter, it defaults to a value that is specific to the  operation. If additional items exist beyond the maximum you specify, the NextToken  response element is present and has a value (is not null). Include that value as the  NextToken request parameter in the next call to the operation to get the next part  of the results. Note that Organizations might return fewer results than the maximum even when there are  more results available. You should check NextToken after every operation to ensure  that you receive all of the results.
@@ -1673,7 +1600,7 @@ extension Organizations {
             try self.filter?.validate(name: "\(name).filter")
             try self.validate(self.maxResults, name: "maxResults", parent: name, max: 20)
             try self.validate(self.maxResults, name: "maxResults", parent: name, min: 1)
-            try self.validate(self.nextToken, name: "nextToken", parent: name, max: 100000)
+            try self.validate(self.nextToken, name: "nextToken", parent: name, max: 100_000)
             try self.validate(self.nextToken, name: "nextToken", parent: name, pattern: "[\\s\\S]*")
         }
 
@@ -1685,7 +1612,6 @@ extension Organizations {
     }
 
     public struct ListHandshakesForAccountResponse: AWSDecodableShape {
-
         /// A list of Handshake objects with details about each of the handshakes that is associated with the specified account.
         public let handshakes: [Handshake]?
         /// If present, indicates that more output is available than is  included in the current response. Use this value in the NextToken request parameter  in a subsequent call to the operation to get the next part of the output. You should repeat this  until the NextToken response element comes back as null.
@@ -1703,7 +1629,6 @@ extension Organizations {
     }
 
     public struct ListHandshakesForOrganizationRequest: AWSEncodableShape {
-
         /// A filter of the handshakes that you want included in the response. The default is all types. Use the ActionType element to limit the output to only a specified type, such as INVITE, ENABLE-ALL-FEATURES, or APPROVE-ALL-FEATURES. Alternatively, for the ENABLE-ALL-FEATURES handshake that generates a separate child handshake for each member account, you can specify the ParentHandshakeId to see only the handshakes that were generated by that parent request.
         public let filter: HandshakeFilter?
         /// The total number of results that you want included on each page of the  response. If you do not include this parameter, it defaults to a value that is specific to the  operation. If additional items exist beyond the maximum you specify, the NextToken  response element is present and has a value (is not null). Include that value as the  NextToken request parameter in the next call to the operation to get the next part  of the results. Note that Organizations might return fewer results than the maximum even when there are  more results available. You should check NextToken after every operation to ensure  that you receive all of the results.
@@ -1721,7 +1646,7 @@ extension Organizations {
             try self.filter?.validate(name: "\(name).filter")
             try self.validate(self.maxResults, name: "maxResults", parent: name, max: 20)
             try self.validate(self.maxResults, name: "maxResults", parent: name, min: 1)
-            try self.validate(self.nextToken, name: "nextToken", parent: name, max: 100000)
+            try self.validate(self.nextToken, name: "nextToken", parent: name, max: 100_000)
             try self.validate(self.nextToken, name: "nextToken", parent: name, pattern: "[\\s\\S]*")
         }
 
@@ -1733,7 +1658,6 @@ extension Organizations {
     }
 
     public struct ListHandshakesForOrganizationResponse: AWSDecodableShape {
-
         /// A list of Handshake objects with details about each of the handshakes that are associated with an organization.
         public let handshakes: [Handshake]?
         /// If present, indicates that more output is available than is  included in the current response. Use this value in the NextToken request parameter  in a subsequent call to the operation to get the next part of the output. You should repeat this  until the NextToken response element comes back as null.
@@ -1751,12 +1675,11 @@ extension Organizations {
     }
 
     public struct ListOrganizationalUnitsForParentRequest: AWSEncodableShape {
-
         /// The total number of results that you want included on each page of the  response. If you do not include this parameter, it defaults to a value that is specific to the  operation. If additional items exist beyond the maximum you specify, the NextToken  response element is present and has a value (is not null). Include that value as the  NextToken request parameter in the next call to the operation to get the next part  of the results. Note that Organizations might return fewer results than the maximum even when there are  more results available. You should check NextToken after every operation to ensure  that you receive all of the results.
         public let maxResults: Int?
         /// The parameter for receiving additional results if you receive a  NextToken response in a previous request. A NextToken response  indicates that more output is available. Set this parameter to the value of the previous  call's NextToken response to indicate where the output should continue  from.
         public let nextToken: String?
-        /// The unique identifier (ID) of the root or OU whose child OUs you want to list. The regex pattern for a parent ID string requires one of the  following:    Root - A string that begins with "r-" followed by from 4 to 32 lowercase letters or  digits.    Organizational unit (OU) - A string that begins with "ou-" followed by from 4 to 32 lowercase letters or digits (the ID of the root that the OU is in). This string is followed by a second  "-" dash and from 8 to 32 additional lowercase letters or digits.  
+        /// The unique identifier (ID) of the root or OU whose child OUs you want to list. The regex pattern for a parent ID string requires one of the  following:    Root - A string that begins with "r-" followed by from 4 to 32 lowercase letters or  digits.    Organizational unit (OU) - A string that begins with "ou-" followed by from 4 to 32 lowercase letters or digits (the ID of the root that the OU is in). This string is followed by a second  "-" dash and from 8 to 32 additional lowercase letters or digits.
         public let parentId: String
 
         public init(maxResults: Int? = nil, nextToken: String? = nil, parentId: String) {
@@ -1768,7 +1691,7 @@ extension Organizations {
         public func validate(name: String) throws {
             try self.validate(self.maxResults, name: "maxResults", parent: name, max: 20)
             try self.validate(self.maxResults, name: "maxResults", parent: name, min: 1)
-            try self.validate(self.nextToken, name: "nextToken", parent: name, max: 100000)
+            try self.validate(self.nextToken, name: "nextToken", parent: name, max: 100_000)
             try self.validate(self.nextToken, name: "nextToken", parent: name, pattern: "[\\s\\S]*")
             try self.validate(self.parentId, name: "parentId", parent: name, max: 100)
             try self.validate(self.parentId, name: "parentId", parent: name, pattern: "^(r-[0-9a-z]{4,32})|(ou-[0-9a-z]{4,32}-[a-z0-9]{8,32})$")
@@ -1782,7 +1705,6 @@ extension Organizations {
     }
 
     public struct ListOrganizationalUnitsForParentResponse: AWSDecodableShape {
-
         /// If present, indicates that more output is available than is  included in the current response. Use this value in the NextToken request parameter  in a subsequent call to the operation to get the next part of the output. You should repeat this  until the NextToken response element comes back as null.
         public let nextToken: String?
         /// A list of the OUs in the specified root or parent OU.
@@ -1800,8 +1722,7 @@ extension Organizations {
     }
 
     public struct ListParentsRequest: AWSEncodableShape {
-
-        /// The unique identifier (ID) of the OU or account whose parent containers you want to list. Don't specify a root. The regex pattern for a child ID string requires one of the  following:    Account - A string that consists of exactly 12 digits.    Organizational unit (OU) - A string that begins with "ou-" followed by from 4 to 32 lowercase letters or digits (the ID of the root that  contains the OU). This string is followed by a second "-" dash and from 8 to 32 additional  lowercase letters or digits.  
+        /// The unique identifier (ID) of the OU or account whose parent containers you want to list. Don't specify a root. The regex pattern for a child ID string requires one of the  following:    Account - A string that consists of exactly 12 digits.    Organizational unit (OU) - A string that begins with "ou-" followed by from 4 to 32 lowercase letters or digits (the ID of the root that  contains the OU). This string is followed by a second "-" dash and from 8 to 32 additional  lowercase letters or digits.
         public let childId: String
         /// The total number of results that you want included on each page of the  response. If you do not include this parameter, it defaults to a value that is specific to the  operation. If additional items exist beyond the maximum you specify, the NextToken  response element is present and has a value (is not null). Include that value as the  NextToken request parameter in the next call to the operation to get the next part  of the results. Note that Organizations might return fewer results than the maximum even when there are  more results available. You should check NextToken after every operation to ensure  that you receive all of the results.
         public let maxResults: Int?
@@ -1819,7 +1740,7 @@ extension Organizations {
             try self.validate(self.childId, name: "childId", parent: name, pattern: "^(\\d{12})|(ou-[0-9a-z]{4,32}-[a-z0-9]{8,32})$")
             try self.validate(self.maxResults, name: "maxResults", parent: name, max: 20)
             try self.validate(self.maxResults, name: "maxResults", parent: name, min: 1)
-            try self.validate(self.nextToken, name: "nextToken", parent: name, max: 100000)
+            try self.validate(self.nextToken, name: "nextToken", parent: name, max: 100_000)
             try self.validate(self.nextToken, name: "nextToken", parent: name, pattern: "[\\s\\S]*")
         }
 
@@ -1831,7 +1752,6 @@ extension Organizations {
     }
 
     public struct ListParentsResponse: AWSDecodableShape {
-
         /// If present, indicates that more output is available than is  included in the current response. Use this value in the NextToken request parameter  in a subsequent call to the operation to get the next part of the output. You should repeat this  until the NextToken response element comes back as null.
         public let nextToken: String?
         /// A list of parents for the specified child account or OU.
@@ -1849,14 +1769,13 @@ extension Organizations {
     }
 
     public struct ListPoliciesForTargetRequest: AWSEncodableShape {
-
-        /// The type of policy that you want to include in the returned list. You must specify one of the following values:    AISERVICES_OPT_OUT_POLICY     BACKUP_POLICY     SERVICE_CONTROL_POLICY     TAG_POLICY   
+        /// The type of policy that you want to include in the returned list. You must specify one of the following values:    AISERVICES_OPT_OUT_POLICY     BACKUP_POLICY     SERVICE_CONTROL_POLICY     TAG_POLICY
         public let filter: PolicyType
         /// The total number of results that you want included on each page of the  response. If you do not include this parameter, it defaults to a value that is specific to the  operation. If additional items exist beyond the maximum you specify, the NextToken  response element is present and has a value (is not null). Include that value as the  NextToken request parameter in the next call to the operation to get the next part  of the results. Note that Organizations might return fewer results than the maximum even when there are  more results available. You should check NextToken after every operation to ensure  that you receive all of the results.
         public let maxResults: Int?
         /// The parameter for receiving additional results if you receive a  NextToken response in a previous request. A NextToken response  indicates that more output is available. Set this parameter to the value of the previous  call's NextToken response to indicate where the output should continue  from.
         public let nextToken: String?
-        /// The unique identifier (ID) of the root, organizational unit, or account whose policies you want to list. The regex pattern for a target ID string requires one of the  following:    Root - A string that begins with "r-" followed by from 4 to 32 lowercase letters or  digits.    Account - A string that consists of exactly 12 digits.    Organizational unit (OU) - A string that begins with "ou-" followed by from 4 to 32  lowercase letters or digits (the ID of the root that the OU is in). This string is followed by a second  "-" dash and from 8 to 32 additional lowercase letters or digits.  
+        /// The unique identifier (ID) of the root, organizational unit, or account whose policies you want to list. The regex pattern for a target ID string requires one of the  following:    Root - A string that begins with "r-" followed by from 4 to 32 lowercase letters or  digits.    Account - A string that consists of exactly 12 digits.    Organizational unit (OU) - A string that begins with "ou-" followed by from 4 to 32  lowercase letters or digits (the ID of the root that the OU is in). This string is followed by a second  "-" dash and from 8 to 32 additional lowercase letters or digits.
         public let targetId: String
 
         public init(filter: PolicyType, maxResults: Int? = nil, nextToken: String? = nil, targetId: String) {
@@ -1869,7 +1788,7 @@ extension Organizations {
         public func validate(name: String) throws {
             try self.validate(self.maxResults, name: "maxResults", parent: name, max: 20)
             try self.validate(self.maxResults, name: "maxResults", parent: name, min: 1)
-            try self.validate(self.nextToken, name: "nextToken", parent: name, max: 100000)
+            try self.validate(self.nextToken, name: "nextToken", parent: name, max: 100_000)
             try self.validate(self.nextToken, name: "nextToken", parent: name, pattern: "[\\s\\S]*")
             try self.validate(self.targetId, name: "targetId", parent: name, max: 100)
             try self.validate(self.targetId, name: "targetId", parent: name, pattern: "^(r-[0-9a-z]{4,32})|(\\d{12})|(ou-[0-9a-z]{4,32}-[a-z0-9]{8,32})$")
@@ -1884,7 +1803,6 @@ extension Organizations {
     }
 
     public struct ListPoliciesForTargetResponse: AWSDecodableShape {
-
         /// If present, indicates that more output is available than is  included in the current response. Use this value in the NextToken request parameter  in a subsequent call to the operation to get the next part of the output. You should repeat this  until the NextToken response element comes back as null.
         public let nextToken: String?
         /// The list of policies that match the criteria in the request.
@@ -1902,8 +1820,7 @@ extension Organizations {
     }
 
     public struct ListPoliciesRequest: AWSEncodableShape {
-
-        /// Specifies the type of policy that you want to include in the response. You must specify one of the following values:    AISERVICES_OPT_OUT_POLICY     BACKUP_POLICY     SERVICE_CONTROL_POLICY     TAG_POLICY   
+        /// Specifies the type of policy that you want to include in the response. You must specify one of the following values:    AISERVICES_OPT_OUT_POLICY     BACKUP_POLICY     SERVICE_CONTROL_POLICY     TAG_POLICY
         public let filter: PolicyType
         /// The total number of results that you want included on each page of the  response. If you do not include this parameter, it defaults to a value that is specific to the  operation. If additional items exist beyond the maximum you specify, the NextToken  response element is present and has a value (is not null). Include that value as the  NextToken request parameter in the next call to the operation to get the next part  of the results. Note that Organizations might return fewer results than the maximum even when there are  more results available. You should check NextToken after every operation to ensure  that you receive all of the results.
         public let maxResults: Int?
@@ -1919,7 +1836,7 @@ extension Organizations {
         public func validate(name: String) throws {
             try self.validate(self.maxResults, name: "maxResults", parent: name, max: 20)
             try self.validate(self.maxResults, name: "maxResults", parent: name, min: 1)
-            try self.validate(self.nextToken, name: "nextToken", parent: name, max: 100000)
+            try self.validate(self.nextToken, name: "nextToken", parent: name, max: 100_000)
             try self.validate(self.nextToken, name: "nextToken", parent: name, pattern: "[\\s\\S]*")
         }
 
@@ -1931,7 +1848,6 @@ extension Organizations {
     }
 
     public struct ListPoliciesResponse: AWSDecodableShape {
-
         /// If present, indicates that more output is available than is  included in the current response. Use this value in the NextToken request parameter  in a subsequent call to the operation to get the next part of the output. You should repeat this  until the NextToken response element comes back as null.
         public let nextToken: String?
         /// A list of policies that match the filter criteria in the request. The output list doesn't include the policy contents. To see the content for a policy, see DescribePolicy.
@@ -1949,7 +1865,6 @@ extension Organizations {
     }
 
     public struct ListRootsRequest: AWSEncodableShape {
-
         /// The total number of results that you want included on each page of the  response. If you do not include this parameter, it defaults to a value that is specific to the  operation. If additional items exist beyond the maximum you specify, the NextToken  response element is present and has a value (is not null). Include that value as the  NextToken request parameter in the next call to the operation to get the next part  of the results. Note that Organizations might return fewer results than the maximum even when there are  more results available. You should check NextToken after every operation to ensure  that you receive all of the results.
         public let maxResults: Int?
         /// The parameter for receiving additional results if you receive a  NextToken response in a previous request. A NextToken response  indicates that more output is available. Set this parameter to the value of the previous  call's NextToken response to indicate where the output should continue  from.
@@ -1963,7 +1878,7 @@ extension Organizations {
         public func validate(name: String) throws {
             try self.validate(self.maxResults, name: "maxResults", parent: name, max: 20)
             try self.validate(self.maxResults, name: "maxResults", parent: name, min: 1)
-            try self.validate(self.nextToken, name: "nextToken", parent: name, max: 100000)
+            try self.validate(self.nextToken, name: "nextToken", parent: name, max: 100_000)
             try self.validate(self.nextToken, name: "nextToken", parent: name, pattern: "[\\s\\S]*")
         }
 
@@ -1974,7 +1889,6 @@ extension Organizations {
     }
 
     public struct ListRootsResponse: AWSDecodableShape {
-
         /// If present, indicates that more output is available than is  included in the current response. Use this value in the NextToken request parameter  in a subsequent call to the operation to get the next part of the output. You should repeat this  until the NextToken response element comes back as null.
         public let nextToken: String?
         /// A list of roots that are defined in an organization.
@@ -1992,10 +1906,9 @@ extension Organizations {
     }
 
     public struct ListTagsForResourceRequest: AWSEncodableShape {
-
         /// The parameter for receiving additional results if you receive a  NextToken response in a previous request. A NextToken response  indicates that more output is available. Set this parameter to the value of the previous  call's NextToken response to indicate where the output should continue  from.
         public let nextToken: String?
-        /// The ID of the resource with the tags to list. You can specify any of the following taggable resources.   AWS account – specify the account ID number.   Organizational unit  – specify the OU ID that begins with ou- and looks similar to: ou-1a2b-34uvwxyz     Root – specify the root ID that begins with r- and looks similar to: r-1a2b     Policy – specify the policy ID that begins with p- andlooks similar to: p-12abcdefg3    
+        /// The ID of the resource with the tags to list. You can specify any of the following taggable resources.   AWS account – specify the account ID number.   Organizational unit  – specify the OU ID that begins with ou- and looks similar to: ou-1a2b-34uvwxyz     Root – specify the root ID that begins with r- and looks similar to: r-1a2b     Policy – specify the policy ID that begins with p- andlooks similar to: p-12abcdefg3
         public let resourceId: String
 
         public init(nextToken: String? = nil, resourceId: String) {
@@ -2004,7 +1917,7 @@ extension Organizations {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.nextToken, name: "nextToken", parent: name, max: 100000)
+            try self.validate(self.nextToken, name: "nextToken", parent: name, max: 100_000)
             try self.validate(self.nextToken, name: "nextToken", parent: name, pattern: "[\\s\\S]*")
             try self.validate(self.resourceId, name: "resourceId", parent: name, max: 130)
             try self.validate(self.resourceId, name: "resourceId", parent: name, pattern: "^(r-[0-9a-z]{4,32})|(\\d{12})|(ou-[0-9a-z]{4,32}-[a-z0-9]{8,32})|(^p-[0-9a-zA-Z_]{8,128})$")
@@ -2017,7 +1930,6 @@ extension Organizations {
     }
 
     public struct ListTagsForResourceResponse: AWSDecodableShape {
-
         /// If present, indicates that more output is available than is  included in the current response. Use this value in the NextToken request parameter  in a subsequent call to the operation to get the next part of the output. You should repeat this  until the NextToken response element comes back as null.
         public let nextToken: String?
         /// The tags that are assigned to the resource.
@@ -2035,7 +1947,6 @@ extension Organizations {
     }
 
     public struct ListTargetsForPolicyRequest: AWSEncodableShape {
-
         /// The total number of results that you want included on each page of the  response. If you do not include this parameter, it defaults to a value that is specific to the  operation. If additional items exist beyond the maximum you specify, the NextToken  response element is present and has a value (is not null). Include that value as the  NextToken request parameter in the next call to the operation to get the next part  of the results. Note that Organizations might return fewer results than the maximum even when there are  more results available. You should check NextToken after every operation to ensure  that you receive all of the results.
         public let maxResults: Int?
         /// The parameter for receiving additional results if you receive a  NextToken response in a previous request. A NextToken response  indicates that more output is available. Set this parameter to the value of the previous  call's NextToken response to indicate where the output should continue  from.
@@ -2052,7 +1963,7 @@ extension Organizations {
         public func validate(name: String) throws {
             try self.validate(self.maxResults, name: "maxResults", parent: name, max: 20)
             try self.validate(self.maxResults, name: "maxResults", parent: name, min: 1)
-            try self.validate(self.nextToken, name: "nextToken", parent: name, max: 100000)
+            try self.validate(self.nextToken, name: "nextToken", parent: name, max: 100_000)
             try self.validate(self.nextToken, name: "nextToken", parent: name, pattern: "[\\s\\S]*")
             try self.validate(self.policyId, name: "policyId", parent: name, max: 130)
             try self.validate(self.policyId, name: "policyId", parent: name, pattern: "^p-[0-9a-zA-Z_]{8,128}$")
@@ -2066,7 +1977,6 @@ extension Organizations {
     }
 
     public struct ListTargetsForPolicyResponse: AWSDecodableShape {
-
         /// If present, indicates that more output is available than is  included in the current response. Use this value in the NextToken request parameter  in a subsequent call to the operation to get the next part of the output. You should repeat this  until the NextToken response element comes back as null.
         public let nextToken: String?
         /// A list of structures, each of which contains details about one of the entities to which the specified policy is attached.
@@ -2084,12 +1994,11 @@ extension Organizations {
     }
 
     public struct MoveAccountRequest: AWSEncodableShape {
-
         /// The unique identifier (ID) of the account that you want to move. The regex pattern for an account ID string requires exactly 12 digits.
         public let accountId: String
-        /// The unique identifier (ID) of the root or organizational unit that you want to move the account to. The regex pattern for a parent ID string requires one of the  following:    Root - A string that begins with "r-" followed by from 4 to 32 lowercase letters or  digits.    Organizational unit (OU) - A string that begins with "ou-" followed by from 4 to 32 lowercase letters or digits (the ID of the root that the OU is in). This string is followed by a second  "-" dash and from 8 to 32 additional lowercase letters or digits.  
+        /// The unique identifier (ID) of the root or organizational unit that you want to move the account to. The regex pattern for a parent ID string requires one of the  following:    Root - A string that begins with "r-" followed by from 4 to 32 lowercase letters or  digits.    Organizational unit (OU) - A string that begins with "ou-" followed by from 4 to 32 lowercase letters or digits (the ID of the root that the OU is in). This string is followed by a second  "-" dash and from 8 to 32 additional lowercase letters or digits.
         public let destinationParentId: String
-        /// The unique identifier (ID) of the root or organizational unit that you want to move the account from. The regex pattern for a parent ID string requires one of the  following:    Root - A string that begins with "r-" followed by from 4 to 32 lowercase letters or  digits.    Organizational unit (OU) - A string that begins with "ou-" followed by from 4 to 32 lowercase letters or digits (the ID of the root that the OU is in). This string is followed by a second  "-" dash and from 8 to 32 additional lowercase letters or digits.  
+        /// The unique identifier (ID) of the root or organizational unit that you want to move the account from. The regex pattern for a parent ID string requires one of the  following:    Root - A string that begins with "r-" followed by from 4 to 32 lowercase letters or  digits.    Organizational unit (OU) - A string that begins with "ou-" followed by from 4 to 32 lowercase letters or digits (the ID of the root that the OU is in). This string is followed by a second  "-" dash and from 8 to 32 additional lowercase letters or digits.
         public let sourceParentId: String
 
         public init(accountId: String, destinationParentId: String, sourceParentId: String) {
@@ -2115,7 +2024,6 @@ extension Organizations {
     }
 
     public struct Organization: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of an organization. For more information about ARNs in Organizations, see ARN  Formats Supported by Organizations in the AWS Service Authorization Reference.
         public let arn: String?
         ///  Do not use. This field is deprecated and doesn't provide complete information about the policies in your organization.  To determine the policies that are enabled and available for use in your organization, use the ListRoots operation instead.
@@ -2153,7 +2061,6 @@ extension Organizations {
     }
 
     public struct OrganizationalUnit: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of this OU. For more information about ARNs in Organizations, see ARN  Formats Supported by Organizations in the AWS Service Authorization Reference.
         public let arn: String?
         /// The unique identifier (ID) associated with this OU. The regex pattern for an organizational unit ID string requires  "ou-" followed by from 4 to 32 lowercase letters or digits (the ID of the root that contains the  OU). This string is followed by a second "-" dash and from 8 to 32 additional lowercase letters  or digits.
@@ -2175,8 +2082,7 @@ extension Organizations {
     }
 
     public struct Parent: AWSDecodableShape {
-
-        /// The unique identifier (ID) of the parent entity. The regex pattern for a parent ID string requires one of the  following:    Root - A string that begins with "r-" followed by from 4 to 32 lowercase letters or  digits.    Organizational unit (OU) - A string that begins with "ou-" followed by from 4 to 32 lowercase letters or digits (the ID of the root that the OU is in). This string is followed by a second  "-" dash and from 8 to 32 additional lowercase letters or digits.  
+        /// The unique identifier (ID) of the parent entity. The regex pattern for a parent ID string requires one of the  following:    Root - A string that begins with "r-" followed by from 4 to 32 lowercase letters or  digits.    Organizational unit (OU) - A string that begins with "ou-" followed by from 4 to 32 lowercase letters or digits (the ID of the root that the OU is in). This string is followed by a second  "-" dash and from 8 to 32 additional lowercase letters or digits.
         public let id: String?
         /// The type of the parent entity.
         public let type: ParentType?
@@ -2193,7 +2099,6 @@ extension Organizations {
     }
 
     public struct Policy: AWSDecodableShape {
-
         /// The text content of the policy.
         public let content: String?
         /// A structure that contains additional details about the policy.
@@ -2211,7 +2116,6 @@ extension Organizations {
     }
 
     public struct PolicySummary: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the policy. For more information about ARNs in Organizations, see ARN  Formats Supported by Organizations in the AWS Service Authorization Reference.
         public let arn: String?
         /// A boolean value that indicates whether the specified policy is an AWS managed policy. If true, then you can attach the policy to roots, OUs, or accounts, but you cannot edit it.
@@ -2245,12 +2149,11 @@ extension Organizations {
     }
 
     public struct PolicyTargetSummary: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the policy target. For more information about ARNs in Organizations, see ARN  Formats Supported by Organizations in the AWS Service Authorization Reference.
         public let arn: String?
         /// The friendly name of the policy target. The regex pattern  that is used to validate this parameter is a string of any of the characters in the ASCII  character range.
         public let name: String?
-        /// The unique identifier (ID) of the policy target. The regex pattern for a target ID string requires one of the  following:    Root - A string that begins with "r-" followed by from 4 to 32 lowercase letters or  digits.    Account - A string that consists of exactly 12 digits.    Organizational unit (OU) - A string that begins with "ou-" followed by from 4 to 32  lowercase letters or digits (the ID of the root that the OU is in). This string is followed by a second  "-" dash and from 8 to 32 additional lowercase letters or digits.  
+        /// The unique identifier (ID) of the policy target. The regex pattern for a target ID string requires one of the  following:    Root - A string that begins with "r-" followed by from 4 to 32 lowercase letters or  digits.    Account - A string that consists of exactly 12 digits.    Organizational unit (OU) - A string that begins with "ou-" followed by from 4 to 32  lowercase letters or digits (the ID of the root that the OU is in). This string is followed by a second  "-" dash and from 8 to 32 additional lowercase letters or digits.
         public let targetId: String?
         /// The type of the policy target.
         public let type: TargetType?
@@ -2271,7 +2174,6 @@ extension Organizations {
     }
 
     public struct PolicyTypeSummary: AWSDecodableShape {
-
         /// The status of the policy type as it relates to the associated root. To attach a policy of the specified type to a root or to an OU or account in that root, it must be available in the organization and enabled for that root.
         public let status: PolicyTypeStatus?
         /// The name of the policy type.
@@ -2289,7 +2191,6 @@ extension Organizations {
     }
 
     public struct RegisterDelegatedAdministratorRequest: AWSEncodableShape {
-
         /// The account ID number of the member account in the organization to register as a delegated administrator.
         public let accountId: String
         /// The service principal of the AWS service for which you want to make the member account a delegated administrator.
@@ -2315,7 +2216,6 @@ extension Organizations {
     }
 
     public struct RemoveAccountFromOrganizationRequest: AWSEncodableShape {
-
         /// The unique identifier (ID) of the member account that you want to remove from the organization. The regex pattern for an account ID string requires exactly 12 digits.
         public let accountId: String
 
@@ -2334,14 +2234,13 @@ extension Organizations {
     }
 
     public struct Root: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the root. For more information about ARNs in Organizations, see ARN  Formats Supported by Organizations in the AWS Service Authorization Reference.
         public let arn: String?
         /// The unique identifier (ID) for the root. The regex pattern for a root ID string requires "r-" followed by  from 4 to 32 lowercase letters or digits.
         public let id: String?
         /// The friendly name of the root. The regex pattern  that is used to validate this parameter is a string of any of the characters in the ASCII  character range.
         public let name: String?
-        /// The types of policies that are currently enabled for the root and therefore can be attached to the root or to its OUs or accounts.  Even if a policy type is shown as available in the organization, you can separately enable and disable them at the root level by using EnablePolicyType and DisablePolicyType. Use DescribeOrganization to see the availability of the policy types in that organization. 
+        /// The types of policies that are currently enabled for the root and therefore can be attached to the root or to its OUs or accounts.  Even if a policy type is shown as available in the organization, you can separately enable and disable them at the root level by using EnablePolicyType and DisablePolicyType. Use DescribeOrganization to see the availability of the policy types in that organization.
         public let policyTypes: [PolicyTypeSummary]?
 
         public init(arn: String? = nil, id: String? = nil, name: String? = nil, policyTypes: [PolicyTypeSummary]? = nil) {
@@ -2360,7 +2259,6 @@ extension Organizations {
     }
 
     public struct Tag: AWSEncodableShape & AWSDecodableShape {
-
         /// The key identifier, or name, of the tag.
         public let key: String
         /// The string value that's associated with the key of the tag. You can set the value of a tag to an empty string, but you can't set the value of a tag to null.
@@ -2386,10 +2284,9 @@ extension Organizations {
     }
 
     public struct TagResourceRequest: AWSEncodableShape {
-
         /// The ID of the resource to add a tag to.
         public let resourceId: String
-        /// A list of tags to add to the specified resource. You can specify any of the following taggable resources.   AWS account – specify the account ID number.   Organizational unit  – specify the OU ID that begins with ou- and looks similar to: ou-1a2b-34uvwxyz     Root – specify the root ID that begins with r- and looks similar to: r-1a2b     Policy – specify the policy ID that begins with p- andlooks similar to: p-12abcdefg3     For each tag in the list, you must specify both a tag key and a value. You can set the value to an empty string, but you can't set it to null.  If any one of the tags is invalid or if you exceed the allowed number of tags for an account user, then the entire request fails and the account is not created. 
+        /// A list of tags to add to the specified resource. You can specify any of the following taggable resources.   AWS account – specify the account ID number.   Organizational unit  – specify the OU ID that begins with ou- and looks similar to: ou-1a2b-34uvwxyz     Root – specify the root ID that begins with r- and looks similar to: r-1a2b     Policy – specify the policy ID that begins with p- andlooks similar to: p-12abcdefg3     For each tag in the list, you must specify both a tag key and a value. You can set the value to an empty string, but you can't set it to null.  If any one of the tags is invalid or if you exceed the allowed number of tags for an account user, then the entire request fails and the account is not created.
         public let tags: [Tag]
 
         public init(resourceId: String, tags: [Tag]) {
@@ -2412,8 +2309,7 @@ extension Organizations {
     }
 
     public struct UntagResourceRequest: AWSEncodableShape {
-
-        /// The ID of the resource to remove a tag from. You can specify any of the following taggable resources.   AWS account – specify the account ID number.   Organizational unit  – specify the OU ID that begins with ou- and looks similar to: ou-1a2b-34uvwxyz     Root – specify the root ID that begins with r- and looks similar to: r-1a2b     Policy – specify the policy ID that begins with p- andlooks similar to: p-12abcdefg3    
+        /// The ID of the resource to remove a tag from. You can specify any of the following taggable resources.   AWS account – specify the account ID number.   Organizational unit  – specify the OU ID that begins with ou- and looks similar to: ou-1a2b-34uvwxyz     Root – specify the root ID that begins with r- and looks similar to: r-1a2b     Policy – specify the policy ID that begins with p- andlooks similar to: p-12abcdefg3
         public let resourceId: String
         /// The list of keys for tags to remove from the specified resource.
         public let tagKeys: [String]
@@ -2440,7 +2336,6 @@ extension Organizations {
     }
 
     public struct UpdateOrganizationalUnitRequest: AWSEncodableShape {
-
         /// The new name that you want to assign to the OU. The regex pattern  that is used to validate this parameter is a string of any of the characters in the ASCII  character range.
         public let name: String?
         /// The unique identifier (ID) of the OU that you want to rename. You can get the ID from the ListOrganizationalUnitsForParent operation. The regex pattern for an organizational unit ID string requires  "ou-" followed by from 4 to 32 lowercase letters or digits (the ID of the root that contains the  OU). This string is followed by a second "-" dash and from 8 to 32 additional lowercase letters  or digits.
@@ -2466,7 +2361,6 @@ extension Organizations {
     }
 
     public struct UpdateOrganizationalUnitResponse: AWSDecodableShape {
-
         /// A structure that contains the details about the specified OU, including its new name.
         public let organizationalUnit: OrganizationalUnit?
 
@@ -2480,8 +2374,7 @@ extension Organizations {
     }
 
     public struct UpdatePolicyRequest: AWSEncodableShape {
-
-        /// If provided, the new content for the policy. The text must be correctly formatted JSON that complies with the syntax for the policy's type. For more information, see Service Control Policy Syntax in the AWS Organizations User Guide. 
+        /// If provided, the new content for the policy. The text must be correctly formatted JSON that complies with the syntax for the policy's type. For more information, see Service Control Policy Syntax in the AWS Organizations User Guide.
         public let content: String?
         /// If provided, the new description for the policy.
         public let description: String?
@@ -2498,7 +2391,7 @@ extension Organizations {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.content, name: "content", parent: name, max: 1000000)
+            try self.validate(self.content, name: "content", parent: name, max: 1_000_000)
             try self.validate(self.content, name: "content", parent: name, min: 1)
             try self.validate(self.content, name: "content", parent: name, pattern: "[\\s\\S]*")
             try self.validate(self.description, name: "description", parent: name, max: 512)
@@ -2519,7 +2412,6 @@ extension Organizations {
     }
 
     public struct UpdatePolicyResponse: AWSDecodableShape {
-
         /// A structure that contains details about the updated policy, showing the requested changes.
         public let policy: Policy?
 

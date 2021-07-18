@@ -100,7 +100,7 @@ public struct LakeFormation: AWSService {
         return self.client.execute(operation: "DescribeResource", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Retrieves the list of the data lake administrators of a Lake Formation-managed data lake. 
+    /// Retrieves the list of the data lake administrators of a Lake Formation-managed data lake.
     public func getDataLakeSettings(_ input: GetDataLakeSettingsRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<GetDataLakeSettingsResponse> {
         return self.client.execute(operation: "GetDataLakeSettings", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -126,7 +126,7 @@ public struct LakeFormation: AWSService {
         return self.client.execute(operation: "GrantPermissions", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Lists tags that the requester has permission to view. 
+    /// Lists tags that the requester has permission to view.
     public func listLFTags(_ input: ListLFTagsRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<ListLFTagsResponse> {
         return self.client.execute(operation: "ListLFTags", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -144,21 +144,21 @@ public struct LakeFormation: AWSService {
     }
 
     /// Sets the list of data lake administrators who have admin privileges on all resources managed by Lake Formation. For more information on admin privileges, see Granting Lake Formation Permissions.
-    /// 	
+    ///
     /// 	        This API replaces the current list of data lake admins with the new list being passed. To add an admin, fetch the current list and add the new admin to that list and pass that list in this API.
     public func putDataLakeSettings(_ input: PutDataLakeSettingsRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<PutDataLakeSettingsResponse> {
         return self.client.execute(operation: "PutDataLakeSettings", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
     /// Registers the resource as managed by the Data Catalog.
-    /// 	
+    ///
     /// 	        To add or update data, Lake Formation needs read/write access to the chosen Amazon S3 path. Choose a role that you know has permission to do this, or choose the AWSServiceRoleForLakeFormationDataAccess service-linked role. When you register the first Amazon S3 path, the service-linked role and a new inline policy are created on your behalf. Lake Formation adds the first path to the inline policy and attaches it to the service-linked role. When you register subsequent paths, Lake Formation adds the path to the existing policy.
     ///  The following request registers a new location and gives AWS Lake Formation permission to use the service-linked role to access that location.
     ///   ResourceArn = arn:aws:s3:::my-bucket
-    /// UseServiceLinkedRole = true 
-    /// 	
+    /// UseServiceLinkedRole = true
+    ///
     /// 	        If UseServiceLinkedRole is not set to true, you must provide or set the RoleArn:
-    /// 	  arn:aws:iam::12345:role/my-data-access-role 
+    /// 	  arn:aws:iam::12345:role/my-data-access-role
     public func registerResource(_ input: RegisterResourceRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<RegisterResourceResponse> {
         return self.client.execute(operation: "RegisterResource", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -183,12 +183,12 @@ public struct LakeFormation: AWSService {
         return self.client.execute(operation: "SearchTablesByLFTags", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Updates the list of possible values for the specified tag key. If the tag does not exist, the operation throws an EntityNotFoundException. The values in the delete key values will be deleted from list of possible values. If any value in the delete key values is attached to a resource, then API errors out with a 400 Exception - "Update not allowed". Untag the attribute before deleting the tag key's value.  
+    /// Updates the list of possible values for the specified tag key. If the tag does not exist, the operation throws an EntityNotFoundException. The values in the delete key values will be deleted from list of possible values. If any value in the delete key values is attached to a resource, then API errors out with a 400 Exception - "Update not allowed". Untag the attribute before deleting the tag key's value.
     public func updateLFTag(_ input: UpdateLFTagRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<UpdateLFTagResponse> {
         return self.client.execute(operation: "UpdateLFTag", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Updates the data access role used for vending access to the given (registered) resource in AWS Lake Formation. 
+    /// Updates the data access role used for vending access to the given (registered) resource in AWS Lake Formation.
     public func updateResource(_ input: UpdateResourceRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<UpdateResourceResponse> {
         return self.client.execute(operation: "UpdateResource", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }

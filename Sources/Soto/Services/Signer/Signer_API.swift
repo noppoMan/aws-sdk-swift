@@ -20,21 +20,21 @@
 /// Service object for interacting with AWS Signer service.
 ///
 /// AWS Signer is a fully managed code signing service to help you ensure the trust and
-/// 			integrity of your code. 
+/// 			integrity of your code.
 /// 		       AWS Signer supports the following applications:
 /// 		       With code signing for AWS Lambda, you can sign AWS Lambda
 /// 			deployment packages. Integrated support is provided for Amazon S3, Amazon CloudWatch,
 /// 			and AWS CloudTrail. In order to sign code, you create a signing profile and then use
-/// 			Signer to sign Lambda zip files in S3. 
-/// 		
+/// 			Signer to sign Lambda zip files in S3.
+///
 /// 		       With code signing for IoT, you can sign code for any IoT device that is
 /// 			supported by AWS. IoT code signing is available for Amazon FreeRTOS and AWS IoT Device Management, and is
 /// 			integrated with AWS Certificate Manager (ACM). In order to sign
 /// 			code, you import a third-party code signing certificate using ACM, and use that to
-/// 			sign updates in Amazon FreeRTOS and AWS IoT Device Management. 
+/// 			sign updates in Amazon FreeRTOS and AWS IoT Device Management.
 /// 		       For more information about AWS Signer, see the AWS Signer Developer Guide.
-/// 		
-/// 		       
+///
+///
 public struct Signer: AWSService {
     // MARK: Member variables
 
@@ -93,7 +93,7 @@ public struct Signer: AWSService {
 
     /// Returns information about a specific code signing job. You specify the job by using
     /// 			the jobId value that is returned by the StartSigningJob
-    /// 			operation. 
+    /// 			operation.
     public func describeSigningJob(_ input: DescribeSigningJobRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<DescribeSigningJobResponse> {
         return self.client.execute(operation: "DescribeSigningJob", path: "/signing-jobs/{jobId}", httpMethod: .GET, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -119,7 +119,7 @@ public struct Signer: AWSService {
     /// 			subsequent calls to ListSigningJobs to fetch the remaining values. You can
     /// 			continue calling ListSigningJobs with your maxResults
     /// 			parameter and with new values that code signing returns in the nextToken
-    /// 			parameter until all of your signing jobs have been returned. 
+    /// 			parameter until all of your signing jobs have been returned.
     public func listSigningJobs(_ input: ListSigningJobsRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<ListSigningJobsResponse> {
         return self.client.execute(operation: "ListSigningJobs", path: "/signing-jobs", httpMethod: .GET, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -153,7 +153,7 @@ public struct Signer: AWSService {
     }
 
     /// Creates a signing profile. A signing profile is a code signing template that can be used to
-    /// 			carry out a pre-defined signing job. For more information, see http://docs.aws.amazon.com/signer/latest/developerguide/gs-profile.html 
+    /// 			carry out a pre-defined signing job. For more information, see http://docs.aws.amazon.com/signer/latest/developerguide/gs-profile.html
     public func putSigningProfile(_ input: PutSigningProfileRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<PutSigningProfileResponse> {
         return self.client.execute(operation: "PutSigningProfile", path: "/signing-profiles/{profileName}", httpMethod: .PUT, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -178,25 +178,25 @@ public struct Signer: AWSService {
 
     /// Initiates a signing job to be performed on the code provided. Signing jobs are
     /// 			viewable by the ListSigningJobs operation for two years after they are
-    /// 			performed. Note the following requirements: 
-    /// 		        
+    /// 			performed. Note the following requirements:
+    ///
     /// 				            You must create an Amazon S3 source bucket. For more information, see Create a Bucket in the
-    /// 						Amazon S3 Getting Started Guide. 
-    /// 			          
+    /// 						Amazon S3 Getting Started Guide.
+    ///
     /// 				           Your S3 source bucket must be version enabled.
-    /// 			          
+    ///
     /// 				           You must create an S3 destination bucket. Code signing uses your S3 destination
     /// 					bucket to write your signed code.
-    /// 			          
+    ///
     /// 				           You specify the name of the source and destination buckets when calling the
     /// 						StartSigningJob operation.
-    /// 			          
+    ///
     /// 				           You must also specify a request token that identifies your request to
     /// 					code signing.
-    /// 			          
+    ///
     /// 		       You can call the DescribeSigningJob and the ListSigningJobs actions after you call
     /// 			StartSigningJob.
-    /// 		       For a Java example that shows how to use this action, see http://docs.aws.amazon.com/acm/latest/userguide/ 
+    /// 		       For a Java example that shows how to use this action, see http://docs.aws.amazon.com/acm/latest/userguide/
     public func startSigningJob(_ input: StartSigningJobRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<StartSigningJobResponse> {
         return self.client.execute(operation: "StartSigningJob", path: "/signing-jobs", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }

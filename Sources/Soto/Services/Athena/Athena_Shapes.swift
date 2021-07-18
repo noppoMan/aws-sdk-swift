@@ -67,7 +67,6 @@ extension Athena {
     // MARK: Shapes
 
     public struct BatchGetNamedQueryInput: AWSEncodableShape {
-
         /// An array of query IDs.
         public let namedQueryIds: [String]
 
@@ -86,7 +85,6 @@ extension Athena {
     }
 
     public struct BatchGetNamedQueryOutput: AWSDecodableShape {
-
         /// Information about the named query IDs submitted.
         public let namedQueries: [NamedQuery]?
         /// Information about provided query IDs.
@@ -104,7 +102,6 @@ extension Athena {
     }
 
     public struct BatchGetQueryExecutionInput: AWSEncodableShape {
-
         /// An array of query execution IDs.
         public let queryExecutionIds: [String]
 
@@ -123,7 +120,6 @@ extension Athena {
     }
 
     public struct BatchGetQueryExecutionOutput: AWSDecodableShape {
-
         /// Information about a query execution.
         public let queryExecutions: [QueryExecution]?
         /// Information about the query executions that failed to run.
@@ -141,7 +137,6 @@ extension Athena {
     }
 
     public struct Column: AWSDecodableShape {
-
         /// Optional information about the column.
         public let comment: String?
         /// The name of the column.
@@ -163,7 +158,6 @@ extension Athena {
     }
 
     public struct ColumnInfo: AWSDecodableShape {
-
         /// Indicates whether values in the column are case-sensitive.
         public let caseSensitive: Bool?
         /// The catalog to which the query results belong.
@@ -213,16 +207,15 @@ extension Athena {
     }
 
     public struct CreateDataCatalogInput: AWSEncodableShape {
-
         /// A description of the data catalog to be created.
         public let description: String?
         /// The name of the data catalog to create. The catalog name must be unique for the AWS account and can use a maximum of 128 alphanumeric, underscore, at sign, or hyphen characters.
         public let name: String
-        /// Specifies the Lambda function or functions to use for creating the data catalog. This is a mapping whose values depend on the catalog type.    For the HIVE data catalog type, use the following syntax. The metadata-function parameter is required. The sdk-version parameter is optional and defaults to the currently supported version.  metadata-function=lambda_arn, sdk-version=version_number     For the LAMBDA data catalog type, use one of the following sets of required parameters, but not both.   If you have one Lambda function that processes metadata and another for reading the actual data, use the following syntax. Both parameters are required.  metadata-function=lambda_arn, record-function=lambda_arn     If you have a composite Lambda function that processes both metadata and data, use the following syntax to specify your Lambda function.  function=lambda_arn      
+        /// Specifies the Lambda function or functions to use for creating the data catalog. This is a mapping whose values depend on the catalog type.    For the HIVE data catalog type, use the following syntax. The metadata-function parameter is required. The sdk-version parameter is optional and defaults to the currently supported version.  metadata-function=lambda_arn, sdk-version=version_number     For the LAMBDA data catalog type, use one of the following sets of required parameters, but not both.   If you have one Lambda function that processes metadata and another for reading the actual data, use the following syntax. Both parameters are required.  metadata-function=lambda_arn, record-function=lambda_arn     If you have a composite Lambda function that processes both metadata and data, use the following syntax to specify your Lambda function.  function=lambda_arn
         public let parameters: [String: String]?
         /// A list of comma separated tags to add to the data catalog that is created.
         public let tags: [Tag]?
-        /// The type of data catalog to create: LAMBDA for a federated catalog or HIVE for an external hive metastore.  Do not use the GLUE type. This refers to the AwsDataCatalog that already exists in your account, of which you can have only one. Specifying the GLUE type will result in an INVALID_INPUT error. 
+        /// The type of data catalog to create: LAMBDA for a federated catalog or HIVE for an external hive metastore.  Do not use the GLUE type. This refers to the AwsDataCatalog that already exists in your account, of which you can have only one. Specifying the GLUE type will result in an INVALID_INPUT error.
         public let type: DataCatalogType
 
         public init(description: String? = nil, name: String, parameters: [String: String]? = nil, tags: [Tag]? = nil, type: DataCatalogType) {
@@ -260,16 +253,11 @@ extension Athena {
     }
 
     public struct CreateDataCatalogOutput: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct CreateNamedQueryInput: AWSEncodableShape {
-
-        /// A unique case-sensitive string used to ensure the request to create the query is idempotent (executes only once). If another CreateNamedQuery request is received, the same response is returned and another query is not created. If a parameter has changed, for example, the QueryString, an error is returned.  This token is listed as not required because AWS SDKs (for example the AWS SDK for Java) auto-generate the token for users. If you are not using the AWS SDK or the AWS CLI, you must provide this token or the action will fail. 
+        /// A unique case-sensitive string used to ensure the request to create the query is idempotent (executes only once). If another CreateNamedQuery request is received, the same response is returned and another query is not created. If a parameter has changed, for example, the QueryString, an error is returned.  This token is listed as not required because AWS SDKs (for example the AWS SDK for Java) auto-generate the token for users. If you are not using the AWS SDK or the AWS CLI, you must provide this token or the action will fail.
         public let clientRequestToken: String?
         /// The database to which the query belongs.
         public let database: String
@@ -300,7 +288,7 @@ extension Athena {
             try self.validate(self.description, name: "description", parent: name, min: 1)
             try self.validate(self.name, name: "name", parent: name, max: 128)
             try self.validate(self.name, name: "name", parent: name, min: 1)
-            try self.validate(self.queryString, name: "queryString", parent: name, max: 262144)
+            try self.validate(self.queryString, name: "queryString", parent: name, max: 262_144)
             try self.validate(self.queryString, name: "queryString", parent: name, min: 1)
             try self.validate(self.workGroup, name: "workGroup", parent: name, pattern: "[a-zA-Z0-9._-]{1,128}")
         }
@@ -316,7 +304,6 @@ extension Athena {
     }
 
     public struct CreateNamedQueryOutput: AWSDecodableShape {
-
         /// The unique ID of the query.
         public let namedQueryId: String?
 
@@ -330,7 +317,6 @@ extension Athena {
     }
 
     public struct CreatePreparedStatementInput: AWSEncodableShape {
-
         /// The description of the prepared statement.
         public let description: String?
         /// The query string for the prepared statement.
@@ -350,7 +336,7 @@ extension Athena {
         public func validate(name: String) throws {
             try self.validate(self.description, name: "description", parent: name, max: 1024)
             try self.validate(self.description, name: "description", parent: name, min: 1)
-            try self.validate(self.queryStatement, name: "queryStatement", parent: name, max: 262144)
+            try self.validate(self.queryStatement, name: "queryStatement", parent: name, max: 262_144)
             try self.validate(self.queryStatement, name: "queryStatement", parent: name, min: 1)
             try self.validate(self.statementName, name: "statementName", parent: name, max: 256)
             try self.validate(self.statementName, name: "statementName", parent: name, min: 1)
@@ -367,15 +353,10 @@ extension Athena {
     }
 
     public struct CreatePreparedStatementOutput: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct CreateWorkGroupInput: AWSEncodableShape {
-
         /// The configuration for the workgroup, which includes the location in Amazon S3 where query results are stored, the encryption configuration, if any, used for encrypting query results, whether the Amazon CloudWatch Metrics are enabled for the workgroup, the limit for the amount of bytes scanned (cutoff) per query, if it is specified, and whether workgroup's settings (specified with EnforceWorkGroupConfiguration) in the WorkGroupConfiguration override client-side settings. See WorkGroupConfiguration$EnforceWorkGroupConfiguration.
         public let configuration: WorkGroupConfiguration?
         /// The workgroup description.
@@ -410,20 +391,15 @@ extension Athena {
     }
 
     public struct CreateWorkGroupOutput: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DataCatalog: AWSDecodableShape {
-
         /// An optional description of the data catalog.
         public let description: String?
         /// The name of the data catalog. The catalog name must be unique for the AWS account and can use a maximum of 128 alphanumeric, underscore, at sign, or hyphen characters.
         public let name: String
-        /// Specifies the Lambda function or functions to use for the data catalog. This is a mapping whose values depend on the catalog type.    For the HIVE data catalog type, use the following syntax. The metadata-function parameter is required. The sdk-version parameter is optional and defaults to the currently supported version.  metadata-function=lambda_arn, sdk-version=version_number     For the LAMBDA data catalog type, use one of the following sets of required parameters, but not both.   If you have one Lambda function that processes metadata and another for reading the actual data, use the following syntax. Both parameters are required.  metadata-function=lambda_arn, record-function=lambda_arn     If you have a composite Lambda function that processes both metadata and data, use the following syntax to specify your Lambda function.  function=lambda_arn      
+        /// Specifies the Lambda function or functions to use for the data catalog. This is a mapping whose values depend on the catalog type.    For the HIVE data catalog type, use the following syntax. The metadata-function parameter is required. The sdk-version parameter is optional and defaults to the currently supported version.  metadata-function=lambda_arn, sdk-version=version_number     For the LAMBDA data catalog type, use one of the following sets of required parameters, but not both.   If you have one Lambda function that processes metadata and another for reading the actual data, use the following syntax. Both parameters are required.  metadata-function=lambda_arn, record-function=lambda_arn     If you have a composite Lambda function that processes both metadata and data, use the following syntax to specify your Lambda function.  function=lambda_arn
         public let parameters: [String: String]?
         /// The type of data catalog: LAMBDA for a federated catalog or HIVE for an external hive metastore. GLUE refers to the AwsDataCatalog that already exists in your account, of which you can have only one.
         public let type: DataCatalogType
@@ -444,7 +420,6 @@ extension Athena {
     }
 
     public struct DataCatalogSummary: AWSDecodableShape {
-
         /// The name of the data catalog.
         public let catalogName: String?
         /// The data catalog type.
@@ -462,7 +437,6 @@ extension Athena {
     }
 
     public struct Database: AWSDecodableShape {
-
         /// An optional description of the database.
         public let description: String?
         /// The name of the database.
@@ -484,7 +458,6 @@ extension Athena {
     }
 
     public struct Datum: AWSDecodableShape {
-
         /// The value of the datum.
         public let varCharValue: String?
 
@@ -498,7 +471,6 @@ extension Athena {
     }
 
     public struct DeleteDataCatalogInput: AWSEncodableShape {
-
         /// The name of the data catalog to delete.
         public let name: String
 
@@ -518,15 +490,10 @@ extension Athena {
     }
 
     public struct DeleteDataCatalogOutput: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteNamedQueryInput: AWSEncodableShape {
-
         /// The unique ID of the query to delete.
         public let namedQueryId: String
 
@@ -540,15 +507,10 @@ extension Athena {
     }
 
     public struct DeleteNamedQueryOutput: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeletePreparedStatementInput: AWSEncodableShape {
-
         /// The name of the prepared statement to delete.
         public let statementName: String
         /// The workgroup to which the statement to be deleted belongs.
@@ -573,15 +535,10 @@ extension Athena {
     }
 
     public struct DeletePreparedStatementOutput: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteWorkGroupInput: AWSEncodableShape {
-
         /// The option to delete the workgroup and its contents even if the workgroup contains any named queries or query executions.
         public let recursiveDeleteOption: Bool?
         /// The unique name of the workgroup to delete.
@@ -603,16 +560,11 @@ extension Athena {
     }
 
     public struct DeleteWorkGroupOutput: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct EncryptionConfiguration: AWSEncodableShape & AWSDecodableShape {
-
-        /// Indicates whether Amazon S3 server-side encryption with Amazon S3-managed keys (SSE-S3), server-side encryption with KMS-managed keys (SSE-KMS), or client-side encryption with KMS-managed keys (CSE-KMS) is used. If a query runs in a workgroup and the workgroup overrides client-side settings, then the workgroup's setting for encryption is used. It specifies whether query results must be encrypted, for all queries that run in this workgroup. 
+        /// Indicates whether Amazon S3 server-side encryption with Amazon S3-managed keys (SSE-S3), server-side encryption with KMS-managed keys (SSE-KMS), or client-side encryption with KMS-managed keys (CSE-KMS) is used. If a query runs in a workgroup and the workgroup overrides client-side settings, then the workgroup's setting for encryption is used. It specifies whether query results must be encrypted, for all queries that run in this workgroup.
         public let encryptionOption: EncryptionOption
         /// For SSE-KMS and CSE-KMS, this is the KMS key ARN or ID.
         public let kmsKey: String?
@@ -629,7 +581,6 @@ extension Athena {
     }
 
     public struct EngineVersion: AWSEncodableShape & AWSDecodableShape {
-
         /// Read only. The engine version on which the query runs. If the user requests a valid engine version other than Auto, the effective engine version is the same as the engine version that the user requested. If the user requests Auto, the effective engine version is chosen by Athena. When a request to update the engine version is made by a CreateWorkGroup or UpdateWorkGroup operation, the  EffectiveEngineVersion field is ignored.
         public let effectiveEngineVersion: String?
         /// The engine version requested by the user. Possible values are determined by the output of ListEngineVersions, including Auto. The default is Auto.
@@ -654,7 +605,6 @@ extension Athena {
     }
 
     public struct GetDataCatalogInput: AWSEncodableShape {
-
         /// The name of the data catalog to return.
         public let name: String
 
@@ -674,7 +624,6 @@ extension Athena {
     }
 
     public struct GetDataCatalogOutput: AWSDecodableShape {
-
         /// The data catalog returned.
         public let dataCatalog: DataCatalog?
 
@@ -688,7 +637,6 @@ extension Athena {
     }
 
     public struct GetDatabaseInput: AWSEncodableShape {
-
         /// The name of the data catalog that contains the database to return.
         public let catalogName: String
         /// The name of the database to return.
@@ -714,7 +662,6 @@ extension Athena {
     }
 
     public struct GetDatabaseOutput: AWSDecodableShape {
-
         /// The database returned.
         public let database: Database?
 
@@ -728,7 +675,6 @@ extension Athena {
     }
 
     public struct GetNamedQueryInput: AWSEncodableShape {
-
         /// The unique ID of the query. Use ListNamedQueries to get query IDs.
         public let namedQueryId: String
 
@@ -742,7 +688,6 @@ extension Athena {
     }
 
     public struct GetNamedQueryOutput: AWSDecodableShape {
-
         /// Information about the query.
         public let namedQuery: NamedQuery?
 
@@ -756,7 +701,6 @@ extension Athena {
     }
 
     public struct GetPreparedStatementInput: AWSEncodableShape {
-
         /// The name of the prepared statement to retrieve.
         public let statementName: String
         /// The workgroup to which the statement to be retrieved belongs.
@@ -781,7 +725,6 @@ extension Athena {
     }
 
     public struct GetPreparedStatementOutput: AWSDecodableShape {
-
         /// The name of the prepared statement that was retrieved.
         public let preparedStatement: PreparedStatement?
 
@@ -795,7 +738,6 @@ extension Athena {
     }
 
     public struct GetQueryExecutionInput: AWSEncodableShape {
-
         /// The unique ID of the query execution.
         public let queryExecutionId: String
 
@@ -809,7 +751,6 @@ extension Athena {
     }
 
     public struct GetQueryExecutionOutput: AWSDecodableShape {
-
         /// Information about the query execution.
         public let queryExecution: QueryExecution?
 
@@ -823,7 +764,6 @@ extension Athena {
     }
 
     public struct GetQueryResultsInput: AWSEncodableShape {
-
         /// The maximum number of results (rows) to return in this request.
         public let maxResults: Int?
         /// A token generated by the Athena service that specifies where to continue pagination if a previous request was truncated. To obtain the next set of pages, pass in the NextToken from the response object of the previous page call.
@@ -852,12 +792,11 @@ extension Athena {
     }
 
     public struct GetQueryResultsOutput: AWSDecodableShape {
-
         /// A token generated by the Athena service that specifies where to continue pagination if a previous request was truncated. To obtain the next set of pages, pass in the NextToken from the response object of the previous page call.
         public let nextToken: String?
         /// The results of the query execution.
         public let resultSet: ResultSet?
-        /// The number of rows inserted with a CREATE TABLE AS SELECT statement. 
+        /// The number of rows inserted with a CREATE TABLE AS SELECT statement.
         public let updateCount: Int64?
 
         public init(nextToken: String? = nil, resultSet: ResultSet? = nil, updateCount: Int64? = nil) {
@@ -874,7 +813,6 @@ extension Athena {
     }
 
     public struct GetTableMetadataInput: AWSEncodableShape {
-
         /// The name of the data catalog that contains the database and table metadata to return.
         public let catalogName: String
         /// The name of the database that contains the table metadata to return.
@@ -906,7 +844,6 @@ extension Athena {
     }
 
     public struct GetTableMetadataOutput: AWSDecodableShape {
-
         /// An object that contains table metadata.
         public let tableMetadata: TableMetadata?
 
@@ -920,7 +857,6 @@ extension Athena {
     }
 
     public struct GetWorkGroupInput: AWSEncodableShape {
-
         /// The name of the workgroup.
         public let workGroup: String
 
@@ -938,7 +874,6 @@ extension Athena {
     }
 
     public struct GetWorkGroupOutput: AWSDecodableShape {
-
         /// Information about the workgroup.
         public let workGroup: WorkGroup?
 
@@ -952,7 +887,6 @@ extension Athena {
     }
 
     public struct ListDataCatalogsInput: AWSEncodableShape {
-
         /// Specifies the maximum number of data catalogs to return.
         public let maxResults: Int?
         /// A token generated by the Athena service that specifies where to continue pagination if a previous request was truncated. To obtain the next set of pages, pass in the NextToken from the response object of the previous page call.
@@ -977,7 +911,6 @@ extension Athena {
     }
 
     public struct ListDataCatalogsOutput: AWSDecodableShape {
-
         /// A summary list of data catalogs.
         public let dataCatalogsSummary: [DataCatalogSummary]?
         /// A token generated by the Athena service that specifies where to continue pagination if a previous request was truncated. To obtain the next set of pages, pass in the NextToken from the response object of the previous page call.
@@ -995,7 +928,6 @@ extension Athena {
     }
 
     public struct ListDatabasesInput: AWSEncodableShape {
-
         /// The name of the data catalog that contains the databases to return.
         public let catalogName: String
         /// Specifies the maximum number of results to return.
@@ -1027,7 +959,6 @@ extension Athena {
     }
 
     public struct ListDatabasesOutput: AWSDecodableShape {
-
         /// A list of databases from a data catalog.
         public let databaseList: [Database]?
         /// A token generated by the Athena service that specifies where to continue pagination if a previous request was truncated. To obtain the next set of pages, pass in the NextToken from the response object of the previous page call.
@@ -1045,7 +976,6 @@ extension Athena {
     }
 
     public struct ListEngineVersionsInput: AWSEncodableShape {
-
         /// The maximum number of engine versions to return in this request.
         public let maxResults: Int?
         /// A token generated by the Athena service that specifies where to continue pagination if a previous request was truncated. To obtain the next set of pages, pass in the NextToken from the response object of the previous page call.
@@ -1070,7 +1000,6 @@ extension Athena {
     }
 
     public struct ListEngineVersionsOutput: AWSDecodableShape {
-
         /// A list of engine versions that are available to choose from.
         public let engineVersions: [EngineVersion]?
         /// A token generated by the Athena service that specifies where to continue pagination if a previous request was truncated. To obtain the next set of pages, pass in the NextToken from the response object of the previous page call.
@@ -1088,7 +1017,6 @@ extension Athena {
     }
 
     public struct ListNamedQueriesInput: AWSEncodableShape {
-
         /// The maximum number of queries to return in this request.
         public let maxResults: Int?
         /// A token generated by the Athena service that specifies where to continue pagination if a previous request was truncated. To obtain the next set of pages, pass in the NextToken from the response object of the previous page call.
@@ -1118,7 +1046,6 @@ extension Athena {
     }
 
     public struct ListNamedQueriesOutput: AWSDecodableShape {
-
         /// The list of unique query IDs.
         public let namedQueryIds: [String]?
         /// A token generated by the Athena service that specifies where to continue pagination if a previous request was truncated. To obtain the next set of pages, pass in the NextToken from the response object of the previous page call.
@@ -1136,7 +1063,6 @@ extension Athena {
     }
 
     public struct ListPreparedStatementsInput: AWSEncodableShape {
-
         /// The maximum number of results to return in this request.
         public let maxResults: Int?
         /// A token generated by the Athena service that specifies where to continue pagination if a previous request was truncated. To obtain the next set of pages, pass in the NextToken from the response object of the previous page call.
@@ -1166,7 +1092,6 @@ extension Athena {
     }
 
     public struct ListPreparedStatementsOutput: AWSDecodableShape {
-
         /// A token generated by the Athena service that specifies where to continue pagination if a previous request was truncated. To obtain the next set of pages, pass in the NextToken from the response object of the previous page call.
         public let nextToken: String?
         /// The list of prepared statements for the workgroup.
@@ -1184,7 +1109,6 @@ extension Athena {
     }
 
     public struct ListQueryExecutionsInput: AWSEncodableShape {
-
         /// The maximum number of query executions to return in this request.
         public let maxResults: Int?
         /// A token generated by the Athena service that specifies where to continue pagination if a previous request was truncated. To obtain the next set of pages, pass in the NextToken from the response object of the previous page call.
@@ -1214,7 +1138,6 @@ extension Athena {
     }
 
     public struct ListQueryExecutionsOutput: AWSDecodableShape {
-
         /// A token to be used by the next request if this request is truncated.
         public let nextToken: String?
         /// The unique IDs of each query execution as an array of strings.
@@ -1232,7 +1155,6 @@ extension Athena {
     }
 
     public struct ListTableMetadataInput: AWSEncodableShape {
-
         /// The name of the data catalog for which table metadata should be returned.
         public let catalogName: String
         /// The name of the database for which table metadata should be returned.
@@ -1275,7 +1197,6 @@ extension Athena {
     }
 
     public struct ListTableMetadataOutput: AWSDecodableShape {
-
         /// A token generated by the Athena service that specifies where to continue pagination if a previous request was truncated. To obtain the next set of pages, pass in the NextToken from the response object of the previous page call.
         public let nextToken: String?
         /// A list of table metadata.
@@ -1293,7 +1214,6 @@ extension Athena {
     }
 
     public struct ListTagsForResourceInput: AWSEncodableShape {
-
         /// The maximum number of results to be returned per request that lists the tags for the resource.
         public let maxResults: Int?
         /// The token for the next set of results, or null if there are no additional results for this request, where the request lists the tags for the resource with the specified ARN.
@@ -1323,7 +1243,6 @@ extension Athena {
     }
 
     public struct ListTagsForResourceOutput: AWSDecodableShape {
-
         /// A token to be used by the next request if this request is truncated.
         public let nextToken: String?
         /// The list of tags associated with the specified resource.
@@ -1341,7 +1260,6 @@ extension Athena {
     }
 
     public struct ListWorkGroupsInput: AWSEncodableShape {
-
         /// The maximum number of workgroups to return in this request.
         public let maxResults: Int?
         /// A token generated by the Athena service that specifies where to continue pagination if a previous request was truncated. To obtain the next set of pages, pass in the NextToken from the response object of the previous page call.
@@ -1366,7 +1284,6 @@ extension Athena {
     }
 
     public struct ListWorkGroupsOutput: AWSDecodableShape {
-
         /// A token generated by the Athena service that specifies where to continue pagination if a previous request was truncated. To obtain the next set of pages, pass in the NextToken from the response object of the previous page call.
         public let nextToken: String?
         /// A list of WorkGroupSummary objects that include the names, descriptions, creation times, and states for each workgroup.
@@ -1384,7 +1301,6 @@ extension Athena {
     }
 
     public struct NamedQuery: AWSDecodableShape {
-
         /// The database to which the query belongs.
         public let database: String
         /// The query description.
@@ -1418,7 +1334,6 @@ extension Athena {
     }
 
     public struct PreparedStatement: AWSDecodableShape {
-
         /// The description of the prepared statement.
         public let description: String?
         /// The last modified time of the prepared statement.
@@ -1448,7 +1363,6 @@ extension Athena {
     }
 
     public struct PreparedStatementSummary: AWSDecodableShape {
-
         /// The last modified time of the prepared statement.
         public let lastModifiedTime: Date?
         /// The name of the prepared statement.
@@ -1466,7 +1380,6 @@ extension Athena {
     }
 
     public struct QueryExecution: AWSDecodableShape {
-
         /// The engine version that executed the query.
         public let engineVersion: EngineVersion?
         /// The SQL query statements which the query execution ran.
@@ -1512,7 +1425,6 @@ extension Athena {
     }
 
     public struct QueryExecutionContext: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the data catalog used in the query execution.
         public let catalog: String?
         /// The name of the database used in the query execution.
@@ -1538,7 +1450,6 @@ extension Athena {
     }
 
     public struct QueryExecutionStatistics: AWSDecodableShape {
-
         /// The location and file name of a data manifest file. The manifest file is saved to the Athena query results location in Amazon S3. The manifest file tracks files that the query wrote to Amazon S3. If the query fails, the manifest file also tracks files that the query intended to write. The manifest is useful for identifying orphaned files resulting from a failed query. For more information, see Working with Query Results, Output Files, and Query History in the Amazon Athena User Guide.
         public let dataManifestLocation: String?
         /// The number of bytes in the data that was queried.
@@ -1576,10 +1487,9 @@ extension Athena {
     }
 
     public struct QueryExecutionStatus: AWSDecodableShape {
-
         /// The date and time that the query completed.
         public let completionDateTime: Date?
-        /// The state of query execution. QUEUED indicates that the query has been submitted to the service, and Athena will execute the query as soon as resources are available. RUNNING indicates that the query is in execution phase. SUCCEEDED indicates that the query completed without errors. FAILED indicates that the query experienced an error and did not complete processing. CANCELLED indicates that a user input interrupted query execution.  Athena automatically retries your queries in cases of certain transient errors. As a result, you may see the query state transition from RUNNING or FAILED to QUEUED.  
+        /// The state of query execution. QUEUED indicates that the query has been submitted to the service, and Athena will execute the query as soon as resources are available. RUNNING indicates that the query is in execution phase. SUCCEEDED indicates that the query completed without errors. FAILED indicates that the query experienced an error and did not complete processing. CANCELLED indicates that a user input interrupted query execution.  Athena automatically retries your queries in cases of certain transient errors. As a result, you may see the query state transition from RUNNING or FAILED to QUEUED.
         public let state: QueryExecutionState?
         /// Further detail about the status of the query.
         public let stateChangeReason: String?
@@ -1602,7 +1512,6 @@ extension Athena {
     }
 
     public struct ResultConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// If query results are encrypted in Amazon S3, indicates the encryption option used (for example, SSE-KMS or CSE-KMS) and key information. This is a client-side setting. If workgroup settings override client-side settings, then the query uses the encryption configuration that is specified for the workgroup, and also uses the location for storing query results specified in the workgroup. See WorkGroupConfiguration$EnforceWorkGroupConfiguration and Workgroup Settings Override Client-Side Settings.
         public let encryptionConfiguration: EncryptionConfiguration?
         /// The location in Amazon S3 where your query results are stored, such as s3://path/to/query/bucket/. To run the query, you must specify the query results location using one of the ways: either for individual queries using either this setting (client-side), or in the workgroup, using WorkGroupConfiguration. If none of them is set, Athena issues an error that no output location is provided. For more information, see Query Results. If workgroup settings override client-side settings, then the query uses the settings specified for the workgroup. See WorkGroupConfiguration$EnforceWorkGroupConfiguration.
@@ -1620,7 +1529,6 @@ extension Athena {
     }
 
     public struct ResultConfigurationUpdates: AWSEncodableShape {
-
         /// The encryption configuration for the query results.
         public let encryptionConfiguration: EncryptionConfiguration?
         /// The location in Amazon S3 where your query results are stored, such as s3://path/to/query/bucket/. For more information, see Query Results If workgroup settings override client-side settings, then the query uses the location for the query results and the encryption configuration that are specified for the workgroup. The "workgroup settings override" is specified in EnforceWorkGroupConfiguration (true/false) in the WorkGroupConfiguration. See WorkGroupConfiguration$EnforceWorkGroupConfiguration.
@@ -1646,7 +1554,6 @@ extension Athena {
     }
 
     public struct ResultSet: AWSDecodableShape {
-
         /// The metadata that describes the column structure and data types of a table of query results.
         public let resultSetMetadata: ResultSetMetadata?
         /// The rows in the table.
@@ -1664,7 +1571,6 @@ extension Athena {
     }
 
     public struct ResultSetMetadata: AWSDecodableShape {
-
         /// Information about the columns returned in a query result metadata.
         public let columnInfo: [ColumnInfo]?
 
@@ -1678,7 +1584,6 @@ extension Athena {
     }
 
     public struct Row: AWSDecodableShape {
-
         /// The data that populates a row in a query result table.
         public let data: [Datum]?
 
@@ -1692,8 +1597,7 @@ extension Athena {
     }
 
     public struct StartQueryExecutionInput: AWSEncodableShape {
-
-        /// A unique case-sensitive string used to ensure the request to create the query is idempotent (executes only once). If another StartQueryExecution request is received, the same response is returned and another query is not created. If a parameter has changed, for example, the QueryString, an error is returned.  This token is listed as not required because AWS SDKs (for example the AWS SDK for Java) auto-generate the token for users. If you are not using the AWS SDK or the AWS CLI, you must provide this token or the action will fail. 
+        /// A unique case-sensitive string used to ensure the request to create the query is idempotent (executes only once). If another StartQueryExecution request is received, the same response is returned and another query is not created. If a parameter has changed, for example, the QueryString, an error is returned.  This token is listed as not required because AWS SDKs (for example the AWS SDK for Java) auto-generate the token for users. If you are not using the AWS SDK or the AWS CLI, you must provide this token or the action will fail.
         public let clientRequestToken: String?
         /// The database within which the query executes.
         public let queryExecutionContext: QueryExecutionContext?
@@ -1716,7 +1620,7 @@ extension Athena {
             try self.validate(self.clientRequestToken, name: "clientRequestToken", parent: name, max: 128)
             try self.validate(self.clientRequestToken, name: "clientRequestToken", parent: name, min: 32)
             try self.queryExecutionContext?.validate(name: "\(name).queryExecutionContext")
-            try self.validate(self.queryString, name: "queryString", parent: name, max: 262144)
+            try self.validate(self.queryString, name: "queryString", parent: name, max: 262_144)
             try self.validate(self.queryString, name: "queryString", parent: name, min: 1)
             try self.validate(self.workGroup, name: "workGroup", parent: name, pattern: "[a-zA-Z0-9._-]{1,128}")
         }
@@ -1731,7 +1635,6 @@ extension Athena {
     }
 
     public struct StartQueryExecutionOutput: AWSDecodableShape {
-
         /// The unique ID of the query that ran as a result of this request.
         public let queryExecutionId: String?
 
@@ -1745,7 +1648,6 @@ extension Athena {
     }
 
     public struct StopQueryExecutionInput: AWSEncodableShape {
-
         /// The unique ID of the query execution to stop.
         public let queryExecutionId: String
 
@@ -1759,15 +1661,10 @@ extension Athena {
     }
 
     public struct StopQueryExecutionOutput: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct TableMetadata: AWSDecodableShape {
-
         /// A list of the columns in the table.
         public let columns: [Column]?
         /// The time that the table was created.
@@ -1805,10 +1702,9 @@ extension Athena {
     }
 
     public struct Tag: AWSEncodableShape & AWSDecodableShape {
-
-        /// A tag key. The tag key length is from 1 to 128 Unicode characters in UTF-8. You can use letters and numbers representable in UTF-8, and the following characters: + - = . _ : / @. Tag keys are case-sensitive and must be unique per resource. 
+        /// A tag key. The tag key length is from 1 to 128 Unicode characters in UTF-8. You can use letters and numbers representable in UTF-8, and the following characters: + - = . _ : / @. Tag keys are case-sensitive and must be unique per resource.
         public let key: String?
-        /// A tag value. The tag value length is from 0 to 256 Unicode characters in UTF-8. You can use letters and numbers representable in UTF-8, and the following characters: + - = . _ : / @. Tag values are case-sensitive. 
+        /// A tag value. The tag value length is from 0 to 256 Unicode characters in UTF-8. You can use letters and numbers representable in UTF-8, and the following characters: + - = . _ : / @. Tag values are case-sensitive.
         public let value: String?
 
         public init(key: String? = nil, value: String? = nil) {
@@ -1829,7 +1725,6 @@ extension Athena {
     }
 
     public struct TagResourceInput: AWSEncodableShape {
-
         /// Specifies the ARN of the Athena resource (workgroup or data catalog) to which tags are to be added.
         public let resourceARN: String
         /// A collection of one or more tags, separated by commas, to be added to an Athena workgroup or data catalog resource.
@@ -1855,15 +1750,10 @@ extension Athena {
     }
 
     public struct TagResourceOutput: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UnprocessedNamedQueryId: AWSDecodableShape {
-
         /// The error code returned when the processing request for the named query failed, if applicable.
         public let errorCode: String?
         /// The error message returned when the processing request for the named query failed, if applicable.
@@ -1885,7 +1775,6 @@ extension Athena {
     }
 
     public struct UnprocessedQueryExecutionId: AWSDecodableShape {
-
         /// The error code returned when the query execution failed to process, if applicable.
         public let errorCode: String?
         /// The error message returned when the query execution failed to process, if applicable.
@@ -1907,7 +1796,6 @@ extension Athena {
     }
 
     public struct UntagResourceInput: AWSEncodableShape {
-
         /// Specifies the ARN of the resource from which tags are to be removed.
         public let resourceARN: String
         /// A comma-separated list of one or more tag keys whose tags are to be removed from the specified resource.
@@ -1934,22 +1822,17 @@ extension Athena {
     }
 
     public struct UntagResourceOutput: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateDataCatalogInput: AWSEncodableShape {
-
         /// New or modified text that describes the data catalog.
         public let description: String?
         /// The name of the data catalog to update. The catalog name must be unique for the AWS account and can use a maximum of 128 alphanumeric, underscore, at sign, or hyphen characters.
         public let name: String
-        /// Specifies the Lambda function or functions to use for updating the data catalog. This is a mapping whose values depend on the catalog type.    For the HIVE data catalog type, use the following syntax. The metadata-function parameter is required. The sdk-version parameter is optional and defaults to the currently supported version.  metadata-function=lambda_arn, sdk-version=version_number     For the LAMBDA data catalog type, use one of the following sets of required parameters, but not both.   If you have one Lambda function that processes metadata and another for reading the actual data, use the following syntax. Both parameters are required.  metadata-function=lambda_arn, record-function=lambda_arn     If you have a composite Lambda function that processes both metadata and data, use the following syntax to specify your Lambda function.  function=lambda_arn      
+        /// Specifies the Lambda function or functions to use for updating the data catalog. This is a mapping whose values depend on the catalog type.    For the HIVE data catalog type, use the following syntax. The metadata-function parameter is required. The sdk-version parameter is optional and defaults to the currently supported version.  metadata-function=lambda_arn, sdk-version=version_number     For the LAMBDA data catalog type, use one of the following sets of required parameters, but not both.   If you have one Lambda function that processes metadata and another for reading the actual data, use the following syntax. Both parameters are required.  metadata-function=lambda_arn, record-function=lambda_arn     If you have a composite Lambda function that processes both metadata and data, use the following syntax to specify your Lambda function.  function=lambda_arn
         public let parameters: [String: String]?
-        /// Specifies the type of data catalog to update. Specify LAMBDA for a federated catalog or HIVE for an external hive metastore.  Do not use the GLUE type. This refers to the AwsDataCatalog that already exists in your account, of which you can have only one. Specifying the GLUE type will result in an INVALID_INPUT error. 
+        /// Specifies the type of data catalog to update. Specify LAMBDA for a federated catalog or HIVE for an external hive metastore.  Do not use the GLUE type. This refers to the AwsDataCatalog that already exists in your account, of which you can have only one. Specifying the GLUE type will result in an INVALID_INPUT error.
         public let type: DataCatalogType
 
         public init(description: String? = nil, name: String, parameters: [String: String]? = nil, type: DataCatalogType) {
@@ -1982,15 +1865,10 @@ extension Athena {
     }
 
     public struct UpdateDataCatalogOutput: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdatePreparedStatementInput: AWSEncodableShape {
-
         /// The description of the prepared statement.
         public let description: String?
         /// The query string for the prepared statement.
@@ -2010,7 +1888,7 @@ extension Athena {
         public func validate(name: String) throws {
             try self.validate(self.description, name: "description", parent: name, max: 1024)
             try self.validate(self.description, name: "description", parent: name, min: 1)
-            try self.validate(self.queryStatement, name: "queryStatement", parent: name, max: 262144)
+            try self.validate(self.queryStatement, name: "queryStatement", parent: name, max: 262_144)
             try self.validate(self.queryStatement, name: "queryStatement", parent: name, min: 1)
             try self.validate(self.statementName, name: "statementName", parent: name, max: 256)
             try self.validate(self.statementName, name: "statementName", parent: name, min: 1)
@@ -2027,15 +1905,10 @@ extension Athena {
     }
 
     public struct UpdatePreparedStatementOutput: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateWorkGroupInput: AWSEncodableShape {
-
         /// The workgroup configuration that will be updated for the given workgroup.
         public let configurationUpdates: WorkGroupConfigurationUpdates?
         /// The workgroup description.
@@ -2067,15 +1940,10 @@ extension Athena {
     }
 
     public struct UpdateWorkGroupOutput: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct WorkGroup: AWSDecodableShape {
-
         /// The configuration of the workgroup, which includes the location in Amazon S3 where query results are stored, the encryption configuration, if any, used for query results; whether the Amazon CloudWatch Metrics are enabled for the workgroup; whether workgroup settings override client-side settings; and the data usage limits for the amount of data scanned per query or per workgroup. The workgroup settings override is specified in EnforceWorkGroupConfiguration (true/false) in the WorkGroupConfiguration. See WorkGroupConfiguration$EnforceWorkGroupConfiguration.
         public let configuration: WorkGroupConfiguration?
         /// The date and time the workgroup was created.
@@ -2105,7 +1973,6 @@ extension Athena {
     }
 
     public struct WorkGroupConfiguration: AWSEncodableShape & AWSDecodableShape {
-
         /// The upper data usage limit (cutoff) for the amount of bytes a single query in a workgroup is allowed to scan.
         public let bytesScannedCutoffPerQuery: Int64?
         /// If set to "true", the settings for the workgroup override client-side settings. If set to "false", client-side settings are used. For more information, see Workgroup Settings Override Client-Side Settings.
@@ -2129,7 +1996,7 @@ extension Athena {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.bytesScannedCutoffPerQuery, name: "bytesScannedCutoffPerQuery", parent: name, min: 10000000)
+            try self.validate(self.bytesScannedCutoffPerQuery, name: "bytesScannedCutoffPerQuery", parent: name, min: 10_000_000)
             try self.engineVersion?.validate(name: "\(name).engineVersion")
         }
 
@@ -2144,7 +2011,6 @@ extension Athena {
     }
 
     public struct WorkGroupConfigurationUpdates: AWSEncodableShape {
-
         /// The upper limit (cutoff) for the amount of bytes a single query in a workgroup is allowed to scan.
         public let bytesScannedCutoffPerQuery: Int64?
         /// If set to "true", the settings for the workgroup override client-side settings. If set to "false" client-side settings are used. For more information, see Workgroup Settings Override Client-Side Settings.
@@ -2153,7 +2019,7 @@ extension Athena {
         public let engineVersion: EngineVersion?
         /// Indicates whether this workgroup enables publishing metrics to Amazon CloudWatch.
         public let publishCloudWatchMetricsEnabled: Bool?
-        /// Indicates that the data usage control limit per query is removed. WorkGroupConfiguration$BytesScannedCutoffPerQuery 
+        /// Indicates that the data usage control limit per query is removed. WorkGroupConfiguration$BytesScannedCutoffPerQuery
         public let removeBytesScannedCutoffPerQuery: Bool?
         /// If set to true, allows members assigned to a workgroup to specify Amazon S3 Requester Pays buckets in queries. If set to false, workgroup members cannot query data from Requester Pays buckets, and queries that retrieve data from Requester Pays buckets cause an error. The default is false. For more information about Requester Pays buckets, see Requester Pays Buckets in the Amazon Simple Storage Service Developer Guide.
         public let requesterPaysEnabled: Bool?
@@ -2171,7 +2037,7 @@ extension Athena {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.bytesScannedCutoffPerQuery, name: "bytesScannedCutoffPerQuery", parent: name, min: 10000000)
+            try self.validate(self.bytesScannedCutoffPerQuery, name: "bytesScannedCutoffPerQuery", parent: name, min: 10_000_000)
             try self.engineVersion?.validate(name: "\(name).engineVersion")
         }
 
@@ -2187,7 +2053,6 @@ extension Athena {
     }
 
     public struct WorkGroupSummary: AWSDecodableShape {
-
         /// The workgroup creation date and time.
         public let creationTime: Date?
         /// The workgroup description.

@@ -392,7 +392,7 @@ extension LexModelBuildingService {
         )
     }
 
-    ///  Returns intent information as follows:    If you specify the nameContains field, returns the $LATEST version of all intents that contain the specified string.   If you don't specify the nameContains field, returns information about the $LATEST version of all intents.    The operation requires permission for the lex:GetIntents action. 
+    ///  Returns intent information as follows:    If you specify the nameContains field, returns the $LATEST version of all intents that contain the specified string.   If you don't specify the nameContains field, returns information about the $LATEST version of all intents.    The operation requires permission for the lex:GetIntents action.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.
@@ -551,7 +551,7 @@ extension LexModelBuildingService {
         )
     }
 
-    ///  Returns slot type information as follows:    If you specify the nameContains field, returns the $LATEST version of all slot types that contain the specified string.   If you don't specify the nameContains field, returns information about the $LATEST version of all slot types.    The operation requires permission for the lex:GetSlotTypes action. 
+    ///  Returns slot type information as follows:    If you specify the nameContains field, returns the $LATEST version of all slot types that contain the specified string.   If you don't specify the nameContains field, returns information about the $LATEST version of all slot types.    The operation requires permission for the lex:GetSlotTypes action.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.

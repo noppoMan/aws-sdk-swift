@@ -44,10 +44,9 @@ extension Finspace {
     // MARK: Shapes
 
     public struct CreateEnvironmentRequest: AWSEncodableShape {
-
         /// The description of the FinSpace environment to be created.
         public let description: String?
-        /// Authentication mode for the environment.    FEDERATED - Users access FinSpace through Single Sign On (SSO) via your Identity provider.    LOCAL - Users access FinSpace via email and password managed within the FinSpace environment.  
+        /// Authentication mode for the environment.    FEDERATED - Users access FinSpace through Single Sign On (SSO) via your Identity provider.    LOCAL - Users access FinSpace via email and password managed within the FinSpace environment.
         public let federationMode: FederationMode?
         /// Configuration information when authentication mode is FEDERATED.
         public let federationParameters: FederationParameters?
@@ -91,17 +90,16 @@ extension Finspace {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case description = "description"
-            case federationMode = "federationMode"
-            case federationParameters = "federationParameters"
-            case kmsKeyId = "kmsKeyId"
-            case name = "name"
-            case tags = "tags"
+            case description
+            case federationMode
+            case federationParameters
+            case kmsKeyId
+            case name
+            case tags
         }
     }
 
     public struct CreateEnvironmentResponse: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the FinSpace environment that you created.
         public let environmentArn: String?
         /// The unique identifier for FinSpace environment that you created.
@@ -116,9 +114,9 @@ extension Finspace {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case environmentArn = "environmentArn"
-            case environmentId = "environmentId"
-            case environmentUrl = "environmentUrl"
+            case environmentArn
+            case environmentId
+            case environmentUrl
         }
     }
 
@@ -144,15 +142,10 @@ extension Finspace {
     }
 
     public struct DeleteEnvironmentResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct Environment: AWSDecodableShape {
-
         /// The ID of the AWS account in which the FinSpace environment is created.
         public let awsAccountId: String?
         /// The AWS account ID of the dedicated service account associated with your FinSpace environment.
@@ -194,23 +187,22 @@ extension Finspace {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case awsAccountId = "awsAccountId"
-            case dedicatedServiceAccountId = "dedicatedServiceAccountId"
-            case description = "description"
-            case environmentArn = "environmentArn"
-            case environmentId = "environmentId"
-            case environmentUrl = "environmentUrl"
-            case federationMode = "federationMode"
-            case federationParameters = "federationParameters"
-            case kmsKeyId = "kmsKeyId"
-            case name = "name"
-            case sageMakerStudioDomainUrl = "sageMakerStudioDomainUrl"
-            case status = "status"
+            case awsAccountId
+            case dedicatedServiceAccountId
+            case description
+            case environmentArn
+            case environmentId
+            case environmentUrl
+            case federationMode
+            case federationParameters
+            case kmsKeyId
+            case name
+            case sageMakerStudioDomainUrl
+            case status
         }
     }
 
     public struct FederationParameters: AWSEncodableShape & AWSDecodableShape {
-
         /// The redirect or sign-in URL that should be entered into the SAML 2.0 compliant identity provider configuration (IdP).
         public let applicationCallBackURL: String?
         /// SAML attribute name and value. The name must always be Email and the value should be set to the attribute definition in which user email is set. For example, name would be Email and value http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress. Please check your SAML 2.0 compliant identity provider (IdP) documentation for details.
@@ -251,7 +243,7 @@ extension Finspace {
             try self.validate(self.federationURN, name: "federationURN", parent: name, max: 255)
             try self.validate(self.federationURN, name: "federationURN", parent: name, min: 1)
             try self.validate(self.federationURN, name: "federationURN", parent: name, pattern: "^[A-Za-z0-9._\\-:\\/#\\+]+$")
-            try self.validate(self.samlMetadataDocument, name: "samlMetadataDocument", parent: name, max: 10000000)
+            try self.validate(self.samlMetadataDocument, name: "samlMetadataDocument", parent: name, max: 10_000_000)
             try self.validate(self.samlMetadataDocument, name: "samlMetadataDocument", parent: name, min: 1000)
             try self.validate(self.samlMetadataDocument, name: "samlMetadataDocument", parent: name, pattern: ".*")
             try self.validate(self.samlMetadataURL, name: "samlMetadataURL", parent: name, max: 1000)
@@ -260,12 +252,12 @@ extension Finspace {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case applicationCallBackURL = "applicationCallBackURL"
-            case attributeMap = "attributeMap"
-            case federationProviderName = "federationProviderName"
-            case federationURN = "federationURN"
-            case samlMetadataDocument = "samlMetadataDocument"
-            case samlMetadataURL = "samlMetadataURL"
+            case applicationCallBackURL
+            case attributeMap
+            case federationProviderName
+            case federationURN
+            case samlMetadataDocument
+            case samlMetadataURL
         }
     }
 
@@ -291,7 +283,6 @@ extension Finspace {
     }
 
     public struct GetEnvironmentResponse: AWSDecodableShape {
-
         /// The name of the FinSpace environment.
         public let environment: Environment?
 
@@ -300,13 +291,13 @@ extension Finspace {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case environment = "environment"
+            case environment
         }
     }
 
     public struct ListEnvironmentsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
@@ -332,7 +323,6 @@ extension Finspace {
     }
 
     public struct ListEnvironmentsResponse: AWSDecodableShape {
-
         /// A list of all of your FinSpace environments.
         public let environments: [Environment]?
         /// A token that you can use in a subsequent call to retrieve the next set of results.
@@ -344,8 +334,8 @@ extension Finspace {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case environments = "environments"
-            case nextToken = "nextToken"
+            case environments
+            case nextToken
         }
     }
 
@@ -371,7 +361,6 @@ extension Finspace {
     }
 
     public struct ListTagsForResourceResponse: AWSDecodableShape {
-
         /// A list of all tags for a resource.
         public let tags: [String: String]?
 
@@ -380,7 +369,7 @@ extension Finspace {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tags = "tags"
+            case tags
         }
     }
 
@@ -416,21 +405,17 @@ extension Finspace {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tags = "tags"
+            case tags
         }
     }
 
     public struct TagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UntagResourceRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "resourceArn")), 
+            AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "resourceArn")),
             AWSMemberEncoding(label: "tagKeys", location: .querystring(locationName: "tagKeys"))
         ]
 
@@ -461,11 +446,7 @@ extension Finspace {
     }
 
     public struct UntagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateEnvironmentRequest: AWSEncodableShape {
@@ -477,7 +458,7 @@ extension Finspace {
         public let description: String?
         /// The identifier of the FinSpace environment.
         public let environmentId: String
-        /// Authentication mode for the environment.    FEDERATED - Users access FinSpace through Single Sign On (SSO) via your Identity provider.    LOCAL - Users access FinSpace via email and password managed within the FinSpace environment.  
+        /// Authentication mode for the environment.    FEDERATED - Users access FinSpace through Single Sign On (SSO) via your Identity provider.    LOCAL - Users access FinSpace via email and password managed within the FinSpace environment.
         public let federationMode: FederationMode?
         public let federationParameters: FederationParameters?
         /// The name of the environment.
@@ -505,15 +486,14 @@ extension Finspace {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case description = "description"
-            case federationMode = "federationMode"
-            case federationParameters = "federationParameters"
-            case name = "name"
+            case description
+            case federationMode
+            case federationParameters
+            case name
         }
     }
 
     public struct UpdateEnvironmentResponse: AWSDecodableShape {
-
         /// Returns the FinSpace environment object.
         public let environment: Environment?
 
@@ -522,7 +502,7 @@ extension Finspace {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case environment = "environment"
+            case environment
         }
     }
 }

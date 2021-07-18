@@ -232,7 +232,7 @@ extension CodeDeploy {
         )
     }
 
-    ///   The newer BatchGetDeploymentTargets should be used instead because it works with all compute types. ListDeploymentInstances throws an exception if it is used with a compute platform other than EC2/On-premises or AWS Lambda.   Lists the instance for a deployment associated with the IAM user or AWS account. 
+    ///   The newer BatchGetDeploymentTargets should be used instead because it works with all compute types. ListDeploymentInstances throws an exception if it is used with a compute platform other than EC2/On-premises or AWS Lambda.   Lists the instance for a deployment associated with the IAM user or AWS account.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.
@@ -244,7 +244,7 @@ extension CodeDeploy {
     ///   - eventLoop: EventLoop to run this process on
     ///   - onPage: closure called with each paginated response. It combines an accumulating result with the contents of response. This combined result is then returned
     ///         along with a boolean indicating if the paginate operation should continue.
-    @available(*, deprecated, message:"This operation is deprecated, use ListDeploymentTargets instead.")
+    @available(*, deprecated, message: "This operation is deprecated, use ListDeploymentTargets instead.")
     public func listDeploymentInstancesPaginator<Result>(
         _ input: ListDeploymentInstancesInput,
         _ initialValue: Result,
@@ -270,7 +270,7 @@ extension CodeDeploy {
     ///   - logger: Logger used flot logging
     ///   - eventLoop: EventLoop to run this process on
     ///   - onPage: closure called with each block of entries. Returns boolean indicating whether we should continue.
-    @available(*, deprecated, message:"This operation is deprecated, use ListDeploymentTargets instead.")
+    @available(*, deprecated, message: "This operation is deprecated, use ListDeploymentTargets instead.")
     public func listDeploymentInstancesPaginator(
         _ input: ListDeploymentInstancesInput,
         logger: Logger = AWSClient.loggingDisabled,

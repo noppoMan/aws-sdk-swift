@@ -74,7 +74,7 @@ public struct WorkMail: AWSService {
         return self.client.execute(operation: "AssociateMemberToGroup", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Cancels a mailbox export job.  If the mailbox export job is near completion, it might not be possible to cancel it. 
+    /// Cancels a mailbox export job.  If the mailbox export job is near completion, it might not be possible to cancel it.
     public func cancelMailboxExportJob(_ input: CancelMailboxExportJobRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<CancelMailboxExportJobResponse> {
         return self.client.execute(operation: "CancelMailboxExportJob", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -99,7 +99,7 @@ public struct WorkMail: AWSService {
         return self.client.execute(operation: "CreateOrganization", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Creates a new Amazon WorkMail resource. 
+    /// Creates a new Amazon WorkMail resource.
     public func createResource(_ input: CreateResourceRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<CreateResourceResponse> {
         return self.client.execute(operation: "CreateResource", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -139,7 +139,7 @@ public struct WorkMail: AWSService {
         return self.client.execute(operation: "DeleteOrganization", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Deletes the specified resource. 
+    /// Deletes the specified resource.
     public func deleteResource(_ input: DeleteResourceRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<DeleteResourceResponse> {
         return self.client.execute(operation: "DeleteResource", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -194,7 +194,7 @@ public struct WorkMail: AWSService {
         return self.client.execute(operation: "DisassociateMemberFromGroup", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Gets the effects of an organization's access control rules as they apply to a specified IPv4 address, access protocol action, or user ID. 
+    /// Gets the effects of an organization's access control rules as they apply to a specified IPv4 address, access protocol action, or user ID.
     public func getAccessControlEffect(_ input: GetAccessControlEffectRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<GetAccessControlEffectResponse> {
         return self.client.execute(operation: "GetAccessControlEffect", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }

@@ -77,7 +77,7 @@ public struct KinesisAnalyticsV2ErrorType: AWSErrorType {
     public static var tooManyTagsException: Self { .init(.tooManyTagsException) }
     /// The data format is not valid. Kinesis Data Analytics cannot detect the schema for the given streaming source.
     public static var unableToDetectSchemaException: Self { .init(.unableToDetectSchemaException) }
-    /// The request was rejected because a specified parameter is not supported or a specified resource is not valid for this  operation. 
+    /// The request was rejected because a specified parameter is not supported or a specified resource is not valid for this  operation.
     public static var unsupportedOperationException: Self { .init(.unsupportedOperationException) }
 }
 

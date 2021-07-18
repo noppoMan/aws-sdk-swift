@@ -261,7 +261,6 @@ extension CustomerProfiles {
     }
 
     public struct AddProfileKeyResponse: AWSDecodableShape {
-
         /// A searchable identifier of a customer profile.
         public let keyName: String?
         /// A list of key values.
@@ -279,7 +278,6 @@ extension CustomerProfiles {
     }
 
     public struct Address: AWSEncodableShape & AWSDecodableShape {
-
         /// The first line of a customer address.
         public let address1: String?
         /// The second line of a customer address.
@@ -352,7 +350,6 @@ extension CustomerProfiles {
     }
 
     public struct ConnectorOperator: AWSEncodableShape {
-
         /// The operation to be performed on the provided Marketo source fields.
         public let marketo: MarketoConnectorOperator?
         /// The operation to be performed on the provided Amazon S3 source fields.
@@ -436,7 +433,6 @@ extension CustomerProfiles {
     }
 
     public struct CreateDomainResponse: AWSDecodableShape {
-
         /// The timestamp of when the domain was created.
         public let createdAt: Date
         /// The URL of the SQS dead letter queue, which is used for reporting errors associated with ingesting data from third party applications.
@@ -492,7 +488,7 @@ extension CustomerProfiles {
         public let attributes: [String: String]?
         /// The customer’s billing address.
         public let billingAddress: Address?
-        /// The customer’s birth date. 
+        /// The customer’s birth date.
         public let birthDate: String?
         /// The customer’s business email address.
         public let businessEmailAddress: String?
@@ -502,11 +498,11 @@ extension CustomerProfiles {
         public let businessPhoneNumber: String?
         /// The unique name of the domain.
         public let domainName: String
-        /// The customer’s email address, which has not been specified as a personal or business address. 
+        /// The customer’s email address, which has not been specified as a personal or business address.
         public let emailAddress: String?
         /// The customer’s first name.
         public let firstName: String?
-        /// The gender with which the customer identifies. 
+        /// The gender with which the customer identifies.
         public let gender: Gender?
         /// The customer’s home phone number.
         public let homePhoneNumber: String?
@@ -522,7 +518,7 @@ extension CustomerProfiles {
         public let partyType: PartyType?
         /// The customer’s personal email address.
         public let personalEmailAddress: String?
-        /// The customer’s phone number, which has not been specified as a mobile, home, or business number. 
+        /// The customer’s phone number, which has not been specified as a mobile, home, or business number.
         public let phoneNumber: String?
         /// The customer’s shipping address.
         public let shippingAddress: Address?
@@ -622,7 +618,6 @@ extension CustomerProfiles {
     }
 
     public struct CreateProfileResponse: AWSDecodableShape {
-
         /// The unique identifier of a customer profile.
         public let profileId: String
 
@@ -657,7 +652,6 @@ extension CustomerProfiles {
     }
 
     public struct DeleteDomainResponse: AWSDecodableShape {
-
         /// A message that indicates the delete request is done.
         public let message: String
 
@@ -699,7 +693,6 @@ extension CustomerProfiles {
     }
 
     public struct DeleteIntegrationResponse: AWSDecodableShape {
-
         /// A message that indicates the delete request is done.
         public let message: String
 
@@ -755,7 +748,6 @@ extension CustomerProfiles {
     }
 
     public struct DeleteProfileKeyResponse: AWSDecodableShape {
-
         /// A message that indicates the delete request is done.
         public let message: String?
 
@@ -809,7 +801,6 @@ extension CustomerProfiles {
     }
 
     public struct DeleteProfileObjectResponse: AWSDecodableShape {
-
         /// A message that indicates the delete request is done.
         public let message: String?
 
@@ -824,7 +815,7 @@ extension CustomerProfiles {
 
     public struct DeleteProfileObjectTypeRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "domainName", location: .uri(locationName: "DomainName")), 
+            AWSMemberEncoding(label: "domainName", location: .uri(locationName: "DomainName")),
             AWSMemberEncoding(label: "objectTypeName", location: .uri(locationName: "ObjectTypeName"))
         ]
 
@@ -851,7 +842,6 @@ extension CustomerProfiles {
     }
 
     public struct DeleteProfileObjectTypeResponse: AWSDecodableShape {
-
         /// A message that indicates the delete request is done.
         public let message: String
 
@@ -892,7 +882,6 @@ extension CustomerProfiles {
     }
 
     public struct DeleteProfileResponse: AWSDecodableShape {
-
         /// A message that indicates the delete request is done.
         public let message: String?
 
@@ -906,7 +895,6 @@ extension CustomerProfiles {
     }
 
     public struct DomainStats: AWSDecodableShape {
-
         /// The number of profiles that you are currently paying for in the domain. If you have more than 100 objects associated with a single profile, that profile counts as two profiles. If you have more than 200 objects, that profile counts as three, and so on.
         public let meteringProfileCount: Int64?
         /// The total number of objects in domain.
@@ -932,8 +920,7 @@ extension CustomerProfiles {
     }
 
     public struct FieldSourceProfileIds: AWSEncodableShape {
-
-        /// A unique identifier for the account number field to be merged. 
+        /// A unique identifier for the account number field to be merged.
         public let accountNumber: String?
         /// A unique identifier for the additional information field to be merged.
         public let additionalInformation: String?
@@ -1054,7 +1041,6 @@ extension CustomerProfiles {
     }
 
     public struct FlowDefinition: AWSEncodableShape {
-
         /// A description of the flow you want to create.
         public let description: String?
         /// The specified name of the flow. Use underscores (_) or hyphens (-) only. Spaces are not allowed.
@@ -1124,7 +1110,6 @@ extension CustomerProfiles {
     }
 
     public struct GetDomainResponse: AWSDecodableShape {
-
         /// The timestamp of when the domain was created.
         public let createdAt: Date
         /// The URL of the SQS dead letter queue, which is used for reporting errors associated with ingesting data from third party applications.
@@ -1198,7 +1183,6 @@ extension CustomerProfiles {
     }
 
     public struct GetIntegrationResponse: AWSDecodableShape {
-
         /// The timestamp of when the domain was created.
         public let createdAt: Date
         /// The unique name of the domain.
@@ -1233,8 +1217,8 @@ extension CustomerProfiles {
 
     public struct GetMatchesRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "domainName", location: .uri(locationName: "DomainName")), 
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "max-results")), 
+            AWSMemberEncoding(label: "domainName", location: .uri(locationName: "DomainName")),
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "max-results")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "next-token"))
         ]
 
@@ -1242,7 +1226,7 @@ extension CustomerProfiles {
         public let domainName: String
         /// The maximum number of results to return per page.
         public let maxResults: Int?
-        /// The token for the next set of results. Use the value returned in the previous 
+        /// The token for the next set of results. Use the value returned in the previous
         /// response in the next request to retrieve the next set of results.
         public let nextToken: String?
 
@@ -1266,7 +1250,6 @@ extension CustomerProfiles {
     }
 
     public struct GetMatchesResponse: AWSDecodableShape {
-
         /// The list of matched profiles for this instance.
         public let matches: [MatchItem]?
         /// The timestamp this version of Match Result generated.
@@ -1293,7 +1276,7 @@ extension CustomerProfiles {
 
     public struct GetProfileObjectTypeRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "domainName", location: .uri(locationName: "DomainName")), 
+            AWSMemberEncoding(label: "domainName", location: .uri(locationName: "DomainName")),
             AWSMemberEncoding(label: "objectTypeName", location: .uri(locationName: "ObjectTypeName"))
         ]
 
@@ -1320,7 +1303,6 @@ extension CustomerProfiles {
     }
 
     public struct GetProfileObjectTypeResponse: AWSDecodableShape {
-
         /// Indicates whether a profile should be created when data is received if one doesn’t exist for an object of this type. The default is FALSE. If the AllowProfileCreation flag is set to FALSE, then the service tries to fetch a standard profile and associate this object with the profile. If it is set to TRUE, and if no match is found, then the service creates a new standard profile.
         public let allowProfileCreation: Bool?
         /// The timestamp of when the domain was created.
@@ -1395,7 +1377,6 @@ extension CustomerProfiles {
     }
 
     public struct GetProfileObjectTypeTemplateResponse: AWSDecodableShape {
-
         /// Indicates whether a profile should be created when data is received if one doesn’t exist for an object of this type. The default is FALSE. If the AllowProfileCreation flag is set to FALSE, then the service tries to fetch a standard profile and associate this object with the profile. If it is set to TRUE, and if no match is found, then the service creates a new standard profile.
         public let allowProfileCreation: Bool?
         /// A map of the name and ObjectType field.
@@ -1429,7 +1410,6 @@ extension CustomerProfiles {
     }
 
     public struct IncrementalPullConfig: AWSEncodableShape {
-
         /// A field that specifies the date time or timestamp field as the criteria to use when importing incremental records from the source.
         public let datetimeTypeFieldName: String?
 
@@ -1449,7 +1429,7 @@ extension CustomerProfiles {
 
     public struct ListAccountIntegrationsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "max-results")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "max-results")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "next-token"))
         ]
 
@@ -1481,7 +1461,6 @@ extension CustomerProfiles {
     }
 
     public struct ListAccountIntegrationsResponse: AWSDecodableShape {
-
         /// The list of ListAccountIntegration instances.
         public let items: [ListIntegrationItem]?
         /// The pagination token from the previous ListAccountIntegrations API call.
@@ -1499,7 +1478,6 @@ extension CustomerProfiles {
     }
 
     public struct ListDomainItem: AWSDecodableShape {
-
         /// The timestamp of when the domain was created.
         public let createdAt: Date
         /// The unique name of the domain.
@@ -1526,7 +1504,7 @@ extension CustomerProfiles {
 
     public struct ListDomainsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "max-results")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "max-results")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "next-token"))
         ]
 
@@ -1551,7 +1529,6 @@ extension CustomerProfiles {
     }
 
     public struct ListDomainsResponse: AWSDecodableShape {
-
         /// The list of ListDomains instances.
         public let items: [ListDomainItem]?
         /// The pagination token from the previous ListDomains API call.
@@ -1569,7 +1546,6 @@ extension CustomerProfiles {
     }
 
     public struct ListIntegrationItem: AWSDecodableShape {
-
         /// The timestamp of when the domain was created.
         public let createdAt: Date
         /// The unique name of the domain.
@@ -1604,8 +1580,8 @@ extension CustomerProfiles {
 
     public struct ListIntegrationsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "domainName", location: .uri(locationName: "DomainName")), 
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "max-results")), 
+            AWSMemberEncoding(label: "domainName", location: .uri(locationName: "DomainName")),
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "max-results")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "next-token"))
         ]
 
@@ -1636,7 +1612,6 @@ extension CustomerProfiles {
     }
 
     public struct ListIntegrationsResponse: AWSDecodableShape {
-
         /// The list of ListIntegrations instances.
         public let items: [ListIntegrationItem]?
         /// The pagination token from the previous ListIntegrations API call.
@@ -1654,7 +1629,6 @@ extension CustomerProfiles {
     }
 
     public struct ListProfileObjectTypeItem: AWSDecodableShape {
-
         /// The timestamp of when the domain was created.
         public let createdAt: Date?
         /// Description of the profile object type.
@@ -1684,7 +1658,6 @@ extension CustomerProfiles {
     }
 
     public struct ListProfileObjectTypeTemplateItem: AWSDecodableShape {
-
         /// The name of the source of the object template.
         public let sourceName: String?
         /// The source of the object template.
@@ -1707,7 +1680,7 @@ extension CustomerProfiles {
 
     public struct ListProfileObjectTypeTemplatesRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "max-results")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "max-results")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "next-token"))
         ]
 
@@ -1732,10 +1705,9 @@ extension CustomerProfiles {
     }
 
     public struct ListProfileObjectTypeTemplatesResponse: AWSDecodableShape {
-
         /// The list of ListProfileObjectType template instances.
         public let items: [ListProfileObjectTypeTemplateItem]?
-        /// The pagination token from the previous ListObjectTypeTemplates API call. 
+        /// The pagination token from the previous ListObjectTypeTemplates API call.
         public let nextToken: String?
 
         public init(items: [ListProfileObjectTypeTemplateItem]? = nil, nextToken: String? = nil) {
@@ -1751,8 +1723,8 @@ extension CustomerProfiles {
 
     public struct ListProfileObjectTypesRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "domainName", location: .uri(locationName: "DomainName")), 
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "max-results")), 
+            AWSMemberEncoding(label: "domainName", location: .uri(locationName: "DomainName")),
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "max-results")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "next-token"))
         ]
 
@@ -1783,7 +1755,6 @@ extension CustomerProfiles {
     }
 
     public struct ListProfileObjectTypesResponse: AWSDecodableShape {
-
         /// The list of ListProfileObjectTypes instances.
         public let items: [ListProfileObjectTypeItem]?
         /// Identifies the next page of results to return.
@@ -1801,7 +1772,6 @@ extension CustomerProfiles {
     }
 
     public struct ListProfileObjectsItem: AWSDecodableShape {
-
         /// A JSON representation of a ProfileObject that belongs to a profile.
         public let object: String?
         /// Specifies the kind of object being added to a profile, such as "Salesforce-Account."
@@ -1824,8 +1794,8 @@ extension CustomerProfiles {
 
     public struct ListProfileObjectsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "domainName", location: .uri(locationName: "DomainName")), 
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "max-results")), 
+            AWSMemberEncoding(label: "domainName", location: .uri(locationName: "DomainName")),
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "max-results")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "next-token"))
         ]
 
@@ -1869,7 +1839,6 @@ extension CustomerProfiles {
     }
 
     public struct ListProfileObjectsResponse: AWSDecodableShape {
-
         /// The list of ListProfileObject instances.
         public let items: [ListProfileObjectsItem]?
         /// The pagination token from the previous call to ListProfileObjects.
@@ -1907,7 +1876,6 @@ extension CustomerProfiles {
     }
 
     public struct ListTagsForResourceResponse: AWSDecodableShape {
-
         /// The tags used to organize, track, or control access for this resource.
         public let tags: [String: String]?
 
@@ -1916,12 +1884,11 @@ extension CustomerProfiles {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tags = "tags"
+            case tags
         }
     }
 
     public struct MarketoSourceProperties: AWSEncodableShape {
-
         /// The object specified in the Marketo flow source.
         public let object: String
 
@@ -1940,7 +1907,6 @@ extension CustomerProfiles {
     }
 
     public struct MatchItem: AWSDecodableShape {
-
         /// The unique identifiers for this group of profiles that match.
         public let matchId: String?
         /// A list of identifiers for profiles that match.
@@ -1958,7 +1924,6 @@ extension CustomerProfiles {
     }
 
     public struct MatchingRequest: AWSEncodableShape {
-
         /// The flag that enables the matching process of duplicate profiles.
         public let enabled: Bool
 
@@ -1972,7 +1937,6 @@ extension CustomerProfiles {
     }
 
     public struct MatchingResponse: AWSDecodableShape {
-
         /// The flag that enables the matching process of duplicate profiles.
         public let enabled: Bool?
 
@@ -1992,7 +1956,7 @@ extension CustomerProfiles {
 
         /// The unique name of the domain.
         public let domainName: String
-        /// The identifiers of the fields in the profile that has the information you want to apply to the merge. For example, say you want to merge EmailAddress from Profile1 into MainProfile. This would be the  identifier of the EmailAddress field in Profile1. 
+        /// The identifiers of the fields in the profile that has the information you want to apply to the merge. For example, say you want to merge EmailAddress from Profile1 into MainProfile. This would be the  identifier of the EmailAddress field in Profile1.
         public let fieldSourceProfileIds: FieldSourceProfileIds?
         /// The identifier of the profile to be taken.
         public let mainProfileId: String
@@ -2027,7 +1991,6 @@ extension CustomerProfiles {
     }
 
     public struct MergeProfilesResponse: AWSDecodableShape {
-
         /// A message that indicates the merge request is complete.
         public let message: String?
 
@@ -2041,7 +2004,6 @@ extension CustomerProfiles {
     }
 
     public struct ObjectTypeField: AWSEncodableShape & AWSDecodableShape {
-
         /// The content type of the field. Used for determining equality when searching.
         public let contentType: FieldContentType?
         /// A field of a ProfileObject. For example: _source.FirstName, where “_source” is a ProfileObjectType of a Zendesk user and “FirstName” is a field in that ObjectType.
@@ -2070,7 +2032,6 @@ extension CustomerProfiles {
     }
 
     public struct ObjectTypeKey: AWSEncodableShape & AWSDecodableShape {
-
         /// The reference for the key name of the fields map.
         public let fieldNames: [String]?
         /// The types of keys that a ProfileObject can have. Each ProfileObject can have only 1 UNIQUE key but multiple PROFILE keys. PROFILE means that this key can be used to tie an object to a PROFILE. UNIQUE means that it can be used to uniquely identify an object. If a key a is marked as SECONDARY, it will be used to search for profiles after all other PROFILE keys have been searched. A LOOKUP_ONLY key is only used to match a profile but is not persisted to be used for searching of the profile. A NEW_ONLY key is only used if the profile does not already exist before the object is ingested, otherwise it is only used for matching objects to profiles.
@@ -2096,7 +2057,6 @@ extension CustomerProfiles {
     }
 
     public struct Profile: AWSDecodableShape {
-
         /// A unique account number that you have given to the customer.
         public let accountNumber: String?
         /// Any additional information relevant to the customer’s profile.
@@ -2107,7 +2067,7 @@ extension CustomerProfiles {
         public let attributes: [String: String]?
         /// The customer’s billing address.
         public let billingAddress: Address?
-        /// The customer’s birth date. 
+        /// The customer’s birth date.
         public let birthDate: String?
         /// The customer’s business email address.
         public let businessEmailAddress: String?
@@ -2115,11 +2075,11 @@ extension CustomerProfiles {
         public let businessName: String?
         /// The customer’s home phone number.
         public let businessPhoneNumber: String?
-        /// The customer’s email address, which has not been specified as a personal or business address. 
+        /// The customer’s email address, which has not been specified as a personal or business address.
         public let emailAddress: String?
         /// The customer’s first name.
         public let firstName: String?
-        /// The gender with which the customer identifies. 
+        /// The gender with which the customer identifies.
         public let gender: Gender?
         /// The customer’s home phone number.
         public let homePhoneNumber: String?
@@ -2246,7 +2206,6 @@ extension CustomerProfiles {
     }
 
     public struct PutIntegrationResponse: AWSDecodableShape {
-
         /// The timestamp of when the domain was created.
         public let createdAt: Date
         /// The unique name of the domain.
@@ -2301,7 +2260,7 @@ extension CustomerProfiles {
             try self.validate(self.domainName, name: "domainName", parent: name, max: 64)
             try self.validate(self.domainName, name: "domainName", parent: name, min: 1)
             try self.validate(self.domainName, name: "domainName", parent: name, pattern: "^[a-zA-Z0-9_-]+$")
-            try self.validate(self.object, name: "object", parent: name, max: 256000)
+            try self.validate(self.object, name: "object", parent: name, max: 256_000)
             try self.validate(self.object, name: "object", parent: name, min: 1)
             try self.validate(self.objectTypeName, name: "objectTypeName", parent: name, max: 255)
             try self.validate(self.objectTypeName, name: "objectTypeName", parent: name, min: 1)
@@ -2315,7 +2274,6 @@ extension CustomerProfiles {
     }
 
     public struct PutProfileObjectResponse: AWSDecodableShape {
-
         /// The unique identifier of the profile object generated by the service.
         public let profileObjectUniqueKey: String?
 
@@ -2330,7 +2288,7 @@ extension CustomerProfiles {
 
     public struct PutProfileObjectTypeRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "domainName", location: .uri(locationName: "DomainName")), 
+            AWSMemberEncoding(label: "domainName", location: .uri(locationName: "DomainName")),
             AWSMemberEncoding(label: "objectTypeName", location: .uri(locationName: "ObjectTypeName"))
         ]
 
@@ -2417,7 +2375,6 @@ extension CustomerProfiles {
     }
 
     public struct PutProfileObjectTypeResponse: AWSDecodableShape {
-
         /// Indicates whether a profile should be created when data is received if one doesn’t exist for an object of this type. The default is FALSE. If the AllowProfileCreation flag is set to FALSE, then the service tries to fetch a standard profile and associate this object with the profile. If it is set to TRUE, and if no match is found, then the service creates a new standard profile.
         public let allowProfileCreation: Bool?
         /// The timestamp of when the domain was created.
@@ -2471,7 +2428,6 @@ extension CustomerProfiles {
     }
 
     public struct S3SourceProperties: AWSEncodableShape {
-
         /// The Amazon S3 bucket name where the source files are stored.
         public let bucketName: String
         /// The object key for the Amazon S3 bucket in which the source files are stored.
@@ -2497,7 +2453,6 @@ extension CustomerProfiles {
     }
 
     public struct SalesforceSourceProperties: AWSEncodableShape {
-
         /// The flag that enables dynamic fetching of new (recently added) fields in the Salesforce objects while running a flow.
         public let enableDynamicFieldUpdate: Bool?
         /// Indicates whether Amazon AppFlow includes deleted files in the flow run.
@@ -2524,7 +2479,6 @@ extension CustomerProfiles {
     }
 
     public struct ScheduledTriggerProperties: AWSEncodableShape {
-
         /// Specifies whether a scheduled flow has an incremental data transfer or a complete data transfer for each flow run.
         public let dataPullMode: DataPullMode?
         /// Specifies the date range for the records to import from the connector in the first flow run.
@@ -2572,8 +2526,8 @@ extension CustomerProfiles {
 
     public struct SearchProfilesRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "domainName", location: .uri(locationName: "DomainName")), 
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "max-results")), 
+            AWSMemberEncoding(label: "domainName", location: .uri(locationName: "DomainName")),
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "max-results")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "next-token"))
         ]
 
@@ -2620,7 +2574,6 @@ extension CustomerProfiles {
     }
 
     public struct SearchProfilesResponse: AWSDecodableShape {
-
         /// The list of SearchProfiles instances.
         public let items: [Profile]?
         /// The pagination token from the previous SearchProfiles API call.
@@ -2638,7 +2591,6 @@ extension CustomerProfiles {
     }
 
     public struct ServiceNowSourceProperties: AWSEncodableShape {
-
         /// The object specified in the ServiceNow flow source.
         public let object: String
 
@@ -2657,7 +2609,6 @@ extension CustomerProfiles {
     }
 
     public struct SourceConnectorProperties: AWSEncodableShape {
-
         /// The properties that are applied when Marketo is being used as a source.
         public let marketo: MarketoSourceProperties?
         /// The properties that are applied when Amazon S3 is being used as the flow source.
@@ -2695,7 +2646,6 @@ extension CustomerProfiles {
     }
 
     public struct SourceFlowConfig: AWSEncodableShape {
-
         /// The name of the AppFlow connector profile. This name must be unique for each connector profile in the AWS account.
         public let connectorProfileName: String?
         /// The type of connector, such as Salesforce, Marketo, and so on.
@@ -2756,20 +2706,15 @@ extension CustomerProfiles {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tags = "tags"
+            case tags
         }
     }
 
     public struct TagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct Task: AWSEncodableShape {
-
         /// The operation to be performed on the provided source fields.
         public let connectorOperator: ConnectorOperator?
         /// A field in a destination connector, or a field value against which Amazon AppFlow validates a source field.
@@ -2812,7 +2757,6 @@ extension CustomerProfiles {
     }
 
     public struct TriggerConfig: AWSEncodableShape {
-
         /// Specifies the configuration details of a schedule-triggered flow that you define. Currently, these settings only apply to the Scheduled trigger type.
         public let triggerProperties: TriggerProperties?
         /// Specifies the type of flow trigger. It can be OnDemand, Scheduled, or Event.
@@ -2834,7 +2778,6 @@ extension CustomerProfiles {
     }
 
     public struct TriggerProperties: AWSEncodableShape {
-
         /// Specifies the configuration details of a schedule-triggered flow that you define.
         public let scheduled: ScheduledTriggerProperties?
 
@@ -2853,7 +2796,7 @@ extension CustomerProfiles {
 
     public struct UntagResourceRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "resourceArn")), 
+            AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "resourceArn")),
             AWSMemberEncoding(label: "tagKeys", location: .querystring(locationName: "tagKeys"))
         ]
 
@@ -2883,15 +2826,10 @@ extension CustomerProfiles {
     }
 
     public struct UntagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateAddress: AWSEncodableShape {
-
         /// The first line of a customer address.
         public let address1: String?
         /// The second line of a customer address.
@@ -3008,7 +2946,6 @@ extension CustomerProfiles {
     }
 
     public struct UpdateDomainResponse: AWSDecodableShape {
-
         /// The timestamp of when the domain was created.
         public let createdAt: Date
         /// The URL of the SQS dead letter queue, which is used for reporting errors associated with ingesting data from third party applications.
@@ -3064,7 +3001,7 @@ extension CustomerProfiles {
         public let attributes: [String: String]?
         /// The customer’s billing address.
         public let billingAddress: UpdateAddress?
-        /// The customer’s birth date. 
+        /// The customer’s birth date.
         public let birthDate: String?
         /// The customer’s business email address.
         public let businessEmailAddress: String?
@@ -3074,11 +3011,11 @@ extension CustomerProfiles {
         public let businessPhoneNumber: String?
         /// The unique name of the domain.
         public let domainName: String
-        /// The customer’s email address, which has not been specified as a personal or business address. 
+        /// The customer’s email address, which has not been specified as a personal or business address.
         public let emailAddress: String?
         /// The customer’s first name.
         public let firstName: String?
-        /// The gender with which the customer identifies. 
+        /// The gender with which the customer identifies.
         public let gender: Gender?
         /// The customer’s home phone number.
         public let homePhoneNumber: String?
@@ -3094,7 +3031,7 @@ extension CustomerProfiles {
         public let partyType: PartyType?
         /// The customer’s personal email address.
         public let personalEmailAddress: String?
-        /// The customer’s phone number, which has not been specified as a mobile, home, or business number. 
+        /// The customer’s phone number, which has not been specified as a mobile, home, or business number.
         public let phoneNumber: String?
         /// The unique identifier of a customer profile.
         public let profileId: String
@@ -3184,7 +3121,6 @@ extension CustomerProfiles {
     }
 
     public struct UpdateProfileResponse: AWSDecodableShape {
-
         /// The unique identifier of a customer profile.
         public let profileId: String
 
@@ -3198,7 +3134,6 @@ extension CustomerProfiles {
     }
 
     public struct ZendeskSourceProperties: AWSEncodableShape {
-
         /// The object specified in the Zendesk flow source.
         public let object: String
 

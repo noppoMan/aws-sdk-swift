@@ -65,12 +65,12 @@ public struct TimestreamWrite: AWSService {
 
     // MARK: API Calls
 
-    /// Creates a new Timestream database. If the KMS key is not specified, the database will be encrypted with a Timestream managed KMS key located in your account. Refer to AWS managed KMS keys for more info.  Service quotas apply. For more information, see Access Management in the Timestream Developer Guide. 
+    /// Creates a new Timestream database. If the KMS key is not specified, the database will be encrypted with a Timestream managed KMS key located in your account. Refer to AWS managed KMS keys for more info.  Service quotas apply. For more information, see Access Management in the Timestream Developer Guide.
     public func createDatabase(_ input: CreateDatabaseRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<CreateDatabaseResponse> {
         return self.client.execute(operation: "CreateDatabase", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// The CreateTable operation adds a new table to an existing database in your account. In an AWS account, table names must be at least unique within each Region if they are in the same database.  You may have identical table names in the same Region if the tables are in seperate databases. While creating the table, you must specify the table name, database name, and the retention properties. Service quotas apply. For more information, see Access Management in the Timestream Developer Guide. 
+    /// The CreateTable operation adds a new table to an existing database in your account. In an AWS account, table names must be at least unique within each Region if they are in the same database.  You may have identical table names in the same Region if the tables are in seperate databases. While creating the table, you must specify the table name, database name, and the retention properties. Service quotas apply. For more information, see Access Management in the Timestream Developer Guide.
     public func createTable(_ input: CreateTableRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<CreateTableResponse> {
         return self.client.execute(operation: "CreateTable", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -95,22 +95,22 @@ public struct TimestreamWrite: AWSService {
         return self.client.execute(operation: "DescribeEndpoints", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Returns information about the table, including the table name, database name,  retention duration of the memory store and the magnetic store. Service quotas apply. For more information, see Access Management in the Timestream Developer Guide. 
+    /// Returns information about the table, including the table name, database name,  retention duration of the memory store and the magnetic store. Service quotas apply. For more information, see Access Management in the Timestream Developer Guide.
     public func describeTable(_ input: DescribeTableRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<DescribeTableResponse> {
         return self.client.execute(operation: "DescribeTable", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Returns a list of your Timestream databases.   Service quotas apply. For more information, see Access Management in the Timestream Developer Guide. 
+    /// Returns a list of your Timestream databases.   Service quotas apply. For more information, see Access Management in the Timestream Developer Guide.
     public func listDatabases(_ input: ListDatabasesRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<ListDatabasesResponse> {
         return self.client.execute(operation: "ListDatabases", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// A list of tables, along with the name, status and retention properties of each table. 
+    /// A list of tables, along with the name, status and retention properties of each table.
     public func listTables(_ input: ListTablesRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<ListTablesResponse> {
         return self.client.execute(operation: "ListTables", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// List all tags on a Timestream resource. 
+    /// List all tags on a Timestream resource.
     public func listTagsForResource(_ input: ListTagsForResourceRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<ListTagsForResourceResponse> {
         return self.client.execute(operation: "ListTagsForResource", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -120,12 +120,12 @@ public struct TimestreamWrite: AWSService {
         return self.client.execute(operation: "TagResource", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    ///  Removes the association of tags from a Timestream resource. 
+    ///  Removes the association of tags from a Timestream resource.
     public func untagResource(_ input: UntagResourceRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<UntagResourceResponse> {
         return self.client.execute(operation: "UntagResource", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    ///  Modifies the KMS key for an existing database. While updating the database,  you must specify the database name and the identifier of the new KMS key to be used (KmsKeyId). If there are any concurrent UpdateDatabase requests, first writer wins. 
+    ///  Modifies the KMS key for an existing database. While updating the database,  you must specify the database name and the identifier of the new KMS key to be used (KmsKeyId). If there are any concurrent UpdateDatabase requests, first writer wins.
     public func updateDatabase(_ input: UpdateDatabaseRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<UpdateDatabaseResponse> {
         return self.client.execute(operation: "UpdateDatabase", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -135,7 +135,7 @@ public struct TimestreamWrite: AWSService {
         return self.client.execute(operation: "UpdateTable", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// The WriteRecords operation enables you to write your time series  data into Timestream. You can specify a single data point or a batch  of data points to be inserted into the system. Timestream offers you  with a flexible schema that auto detects the column names and data types  for your Timestream tables based on the dimension names and data types of the data points you specify when invoking writes into the database.  Timestream support eventual consistency read semantics. This means that  when you query data immediately after writing a batch of data into Timestream,  the query results might not reflect the results of a recently completed write  operation. The results may also include some stale data. If you repeat the  query request after a short time, the results should return the latest data. Service quotas apply. For more information,  see Access Management in the Timestream Developer Guide. 
+    /// The WriteRecords operation enables you to write your time series  data into Timestream. You can specify a single data point or a batch  of data points to be inserted into the system. Timestream offers you  with a flexible schema that auto detects the column names and data types  for your Timestream tables based on the dimension names and data types of the data points you specify when invoking writes into the database.  Timestream support eventual consistency read semantics. This means that  when you query data immediately after writing a batch of data into Timestream,  the query results might not reflect the results of a recently completed write  operation. The results may also include some stale data. If you repeat the  query request after a short time, the results should return the latest data. Service quotas apply. For more information,  see Access Management in the Timestream Developer Guide.
     @discardableResult public func writeRecords(_ input: WriteRecordsRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<Void> {
         return self.client.execute(operation: "WriteRecords", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }

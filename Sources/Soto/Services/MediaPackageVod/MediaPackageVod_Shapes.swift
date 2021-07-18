@@ -68,7 +68,6 @@ extension MediaPackageVod {
     // MARK: Shapes
 
     public struct AssetShallow: AWSDecodableShape {
-
         /// The ARN of the Asset.
         public let arn: String?
         /// The time the Asset was initially submitted for Ingest.
@@ -97,19 +96,18 @@ extension MediaPackageVod {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdAt = "createdAt"
-            case id = "id"
-            case packagingGroupId = "packagingGroupId"
-            case resourceId = "resourceId"
-            case sourceArn = "sourceArn"
-            case sourceRoleArn = "sourceRoleArn"
-            case tags = "tags"
+            case arn
+            case createdAt
+            case id
+            case packagingGroupId
+            case resourceId
+            case sourceArn
+            case sourceRoleArn
+            case tags
         }
     }
 
     public struct Authorization: AWSEncodableShape & AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) for the secret in AWS Secrets Manager that is used for CDN authorization.
         public let cdnIdentifierSecret: String
         /// The Amazon Resource Name (ARN) for the IAM role that allows MediaPackage to communicate with AWS Secrets Manager.
@@ -121,13 +119,12 @@ extension MediaPackageVod {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case cdnIdentifierSecret = "cdnIdentifierSecret"
-            case secretsRoleArn = "secretsRoleArn"
+            case cdnIdentifierSecret
+            case secretsRoleArn
         }
     }
 
     public struct CmafEncryption: AWSEncodableShape & AWSDecodableShape {
-
         /// An optional 128-bit, 16-byte hex value represented by a 32-character string, used in conjunction with the key for encrypting blocks. If you don't specify a value, then MediaPackage creates the constant initialization vector (IV).
         public let constantInitializationVector: String?
         public let spekeKeyProvider: SpekeKeyProvider
@@ -138,13 +135,12 @@ extension MediaPackageVod {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case constantInitializationVector = "constantInitializationVector"
-            case spekeKeyProvider = "spekeKeyProvider"
+            case constantInitializationVector
+            case spekeKeyProvider
         }
     }
 
     public struct CmafPackage: AWSEncodableShape & AWSDecodableShape {
-
         public let encryption: CmafEncryption?
         /// A list of HLS manifest configurations.
         public let hlsManifests: [HlsManifest]
@@ -162,10 +158,10 @@ extension MediaPackageVod {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case encryption = "encryption"
-            case hlsManifests = "hlsManifests"
-            case includeEncoderConfigurationInSegments = "includeEncoderConfigurationInSegments"
-            case segmentDurationSeconds = "segmentDurationSeconds"
+            case encryption
+            case hlsManifests
+            case includeEncoderConfigurationInSegments
+            case segmentDurationSeconds
         }
     }
 
@@ -184,12 +180,11 @@ extension MediaPackageVod {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case egressAccessLogs = "egressAccessLogs"
+            case egressAccessLogs
         }
     }
 
     public struct ConfigureLogsResponse: AWSDecodableShape {
-
         /// The ARN of the PackagingGroup.
         public let arn: String?
         public let authorization: Authorization?
@@ -210,17 +205,16 @@ extension MediaPackageVod {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case authorization = "authorization"
-            case domainName = "domainName"
-            case egressAccessLogs = "egressAccessLogs"
-            case id = "id"
-            case tags = "tags"
+            case arn
+            case authorization
+            case domainName
+            case egressAccessLogs
+            case id
+            case tags
         }
     }
 
     public struct CreateAssetRequest: AWSEncodableShape {
-
         /// The unique identifier for the Asset.
         public let id: String
         /// The ID of the PackagingGroup for the Asset.
@@ -243,17 +237,16 @@ extension MediaPackageVod {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case id = "id"
-            case packagingGroupId = "packagingGroupId"
-            case resourceId = "resourceId"
-            case sourceArn = "sourceArn"
-            case sourceRoleArn = "sourceRoleArn"
-            case tags = "tags"
+            case id
+            case packagingGroupId
+            case resourceId
+            case sourceArn
+            case sourceRoleArn
+            case tags
         }
     }
 
     public struct CreateAssetResponse: AWSDecodableShape {
-
         /// The ARN of the Asset.
         public let arn: String?
         /// The time the Asset was initially submitted for Ingest.
@@ -285,20 +278,19 @@ extension MediaPackageVod {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdAt = "createdAt"
-            case egressEndpoints = "egressEndpoints"
-            case id = "id"
-            case packagingGroupId = "packagingGroupId"
-            case resourceId = "resourceId"
-            case sourceArn = "sourceArn"
-            case sourceRoleArn = "sourceRoleArn"
-            case tags = "tags"
+            case arn
+            case createdAt
+            case egressEndpoints
+            case id
+            case packagingGroupId
+            case resourceId
+            case sourceArn
+            case sourceRoleArn
+            case tags
         }
     }
 
     public struct CreatePackagingConfigurationRequest: AWSEncodableShape {
-
         public let cmafPackage: CmafPackage?
         public let dashPackage: DashPackage?
         public let hlsPackage: HlsPackage?
@@ -320,18 +312,17 @@ extension MediaPackageVod {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case cmafPackage = "cmafPackage"
-            case dashPackage = "dashPackage"
-            case hlsPackage = "hlsPackage"
-            case id = "id"
-            case mssPackage = "mssPackage"
-            case packagingGroupId = "packagingGroupId"
-            case tags = "tags"
+            case cmafPackage
+            case dashPackage
+            case hlsPackage
+            case id
+            case mssPackage
+            case packagingGroupId
+            case tags
         }
     }
 
     public struct CreatePackagingConfigurationResponse: AWSDecodableShape {
-
         /// The ARN of the PackagingConfiguration.
         public let arn: String?
         public let cmafPackage: CmafPackage?
@@ -356,19 +347,18 @@ extension MediaPackageVod {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case cmafPackage = "cmafPackage"
-            case dashPackage = "dashPackage"
-            case hlsPackage = "hlsPackage"
-            case id = "id"
-            case mssPackage = "mssPackage"
-            case packagingGroupId = "packagingGroupId"
-            case tags = "tags"
+            case arn
+            case cmafPackage
+            case dashPackage
+            case hlsPackage
+            case id
+            case mssPackage
+            case packagingGroupId
+            case tags
         }
     }
 
     public struct CreatePackagingGroupRequest: AWSEncodableShape {
-
         public let authorization: Authorization?
         public let egressAccessLogs: EgressAccessLogs?
         /// The ID of the PackagingGroup.
@@ -383,15 +373,14 @@ extension MediaPackageVod {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case authorization = "authorization"
-            case egressAccessLogs = "egressAccessLogs"
-            case id = "id"
-            case tags = "tags"
+            case authorization
+            case egressAccessLogs
+            case id
+            case tags
         }
     }
 
     public struct CreatePackagingGroupResponse: AWSDecodableShape {
-
         /// The ARN of the PackagingGroup.
         public let arn: String?
         public let authorization: Authorization?
@@ -412,17 +401,16 @@ extension MediaPackageVod {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case authorization = "authorization"
-            case domainName = "domainName"
-            case egressAccessLogs = "egressAccessLogs"
-            case id = "id"
-            case tags = "tags"
+            case arn
+            case authorization
+            case domainName
+            case egressAccessLogs
+            case id
+            case tags
         }
     }
 
     public struct DashEncryption: AWSEncodableShape & AWSDecodableShape {
-
         public let spekeKeyProvider: SpekeKeyProvider
 
         public init(spekeKeyProvider: SpekeKeyProvider) {
@@ -430,12 +418,11 @@ extension MediaPackageVod {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case spekeKeyProvider = "spekeKeyProvider"
+            case spekeKeyProvider
         }
     }
 
     public struct DashManifest: AWSEncodableShape & AWSDecodableShape {
-
         /// Determines the position of some tags in the Media Presentation Description (MPD).  When set to FULL, elements like SegmentTemplate and ContentProtection are included in each Representation.  When set to COMPACT, duplicate elements are combined and presented at the AdaptationSet level.
         public let manifestLayout: ManifestLayout?
         /// An optional string to include in the name of the manifest.
@@ -455,16 +442,15 @@ extension MediaPackageVod {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case manifestLayout = "manifestLayout"
-            case manifestName = "manifestName"
-            case minBufferTimeSeconds = "minBufferTimeSeconds"
-            case profile = "profile"
-            case streamSelection = "streamSelection"
+            case manifestLayout
+            case manifestName
+            case minBufferTimeSeconds
+            case profile
+            case streamSelection
         }
     }
 
     public struct DashPackage: AWSEncodableShape & AWSDecodableShape {
-
         /// A list of DASH manifest configurations.
         public let dashManifests: [DashManifest]
         public let encryption: DashEncryption?
@@ -491,12 +477,12 @@ extension MediaPackageVod {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case dashManifests = "dashManifests"
-            case encryption = "encryption"
-            case includeEncoderConfigurationInSegments = "includeEncoderConfigurationInSegments"
-            case periodTriggers = "periodTriggers"
-            case segmentDurationSeconds = "segmentDurationSeconds"
-            case segmentTemplateFormat = "segmentTemplateFormat"
+            case dashManifests
+            case encryption
+            case includeEncoderConfigurationInSegments
+            case periodTriggers
+            case segmentDurationSeconds
+            case segmentTemplateFormat
         }
     }
 
@@ -516,11 +502,7 @@ extension MediaPackageVod {
     }
 
     public struct DeleteAssetResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeletePackagingConfigurationRequest: AWSEncodableShape {
@@ -539,11 +521,7 @@ extension MediaPackageVod {
     }
 
     public struct DeletePackagingConfigurationResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeletePackagingGroupRequest: AWSEncodableShape {
@@ -562,11 +540,7 @@ extension MediaPackageVod {
     }
 
     public struct DeletePackagingGroupResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DescribeAssetRequest: AWSEncodableShape {
@@ -585,7 +559,6 @@ extension MediaPackageVod {
     }
 
     public struct DescribeAssetResponse: AWSDecodableShape {
-
         /// The ARN of the Asset.
         public let arn: String?
         /// The time the Asset was initially submitted for Ingest.
@@ -617,15 +590,15 @@ extension MediaPackageVod {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdAt = "createdAt"
-            case egressEndpoints = "egressEndpoints"
-            case id = "id"
-            case packagingGroupId = "packagingGroupId"
-            case resourceId = "resourceId"
-            case sourceArn = "sourceArn"
-            case sourceRoleArn = "sourceRoleArn"
-            case tags = "tags"
+            case arn
+            case createdAt
+            case egressEndpoints
+            case id
+            case packagingGroupId
+            case resourceId
+            case sourceArn
+            case sourceRoleArn
+            case tags
         }
     }
 
@@ -645,7 +618,6 @@ extension MediaPackageVod {
     }
 
     public struct DescribePackagingConfigurationResponse: AWSDecodableShape {
-
         /// The ARN of the PackagingConfiguration.
         public let arn: String?
         public let cmafPackage: CmafPackage?
@@ -670,14 +642,14 @@ extension MediaPackageVod {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case cmafPackage = "cmafPackage"
-            case dashPackage = "dashPackage"
-            case hlsPackage = "hlsPackage"
-            case id = "id"
-            case mssPackage = "mssPackage"
-            case packagingGroupId = "packagingGroupId"
-            case tags = "tags"
+            case arn
+            case cmafPackage
+            case dashPackage
+            case hlsPackage
+            case id
+            case mssPackage
+            case packagingGroupId
+            case tags
         }
     }
 
@@ -697,7 +669,6 @@ extension MediaPackageVod {
     }
 
     public struct DescribePackagingGroupResponse: AWSDecodableShape {
-
         /// The ARN of the PackagingGroup.
         public let arn: String?
         public let authorization: Authorization?
@@ -718,17 +689,16 @@ extension MediaPackageVod {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case authorization = "authorization"
-            case domainName = "domainName"
-            case egressAccessLogs = "egressAccessLogs"
-            case id = "id"
-            case tags = "tags"
+            case arn
+            case authorization
+            case domainName
+            case egressAccessLogs
+            case id
+            case tags
         }
     }
 
     public struct EgressAccessLogs: AWSEncodableShape & AWSDecodableShape {
-
         /// Customize the log group name.
         public let logGroupName: String?
 
@@ -737,12 +707,11 @@ extension MediaPackageVod {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case logGroupName = "logGroupName"
+            case logGroupName
         }
     }
 
     public struct EgressEndpoint: AWSDecodableShape {
-
         /// The ID of the PackagingConfiguration being applied to the Asset.
         public let packagingConfigurationId: String?
         /// The URL of the parent manifest for the repackaged Asset.
@@ -754,13 +723,12 @@ extension MediaPackageVod {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case packagingConfigurationId = "packagingConfigurationId"
-            case url = "url"
+            case packagingConfigurationId
+            case url
         }
     }
 
     public struct HlsEncryption: AWSEncodableShape & AWSDecodableShape {
-
         /// A constant initialization vector for encryption (optional).
         /// When not specified the initialization vector will be periodically rotated.
         public let constantInitializationVector: String?
@@ -775,14 +743,13 @@ extension MediaPackageVod {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case constantInitializationVector = "constantInitializationVector"
-            case encryptionMethod = "encryptionMethod"
-            case spekeKeyProvider = "spekeKeyProvider"
+            case constantInitializationVector
+            case encryptionMethod
+            case spekeKeyProvider
         }
     }
 
     public struct HlsManifest: AWSEncodableShape & AWSDecodableShape {
-
         /// This setting controls how ad markers are included in the packaged OriginEndpoint.
         /// "NONE" will omit all SCTE-35 ad markers from the output.
         /// "PASSTHROUGH" causes the manifest to contain a copy of the SCTE-35 ad
@@ -818,17 +785,16 @@ extension MediaPackageVod {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case adMarkers = "adMarkers"
-            case includeIframeOnlyStream = "includeIframeOnlyStream"
-            case manifestName = "manifestName"
-            case programDateTimeIntervalSeconds = "programDateTimeIntervalSeconds"
-            case repeatExtXKey = "repeatExtXKey"
-            case streamSelection = "streamSelection"
+            case adMarkers
+            case includeIframeOnlyStream
+            case manifestName
+            case programDateTimeIntervalSeconds
+            case repeatExtXKey
+            case streamSelection
         }
     }
 
     public struct HlsPackage: AWSEncodableShape & AWSDecodableShape {
-
         public let encryption: HlsEncryption?
         /// A list of HLS manifest configurations.
         public let hlsManifests: [HlsManifest]
@@ -846,17 +812,17 @@ extension MediaPackageVod {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case encryption = "encryption"
-            case hlsManifests = "hlsManifests"
-            case segmentDurationSeconds = "segmentDurationSeconds"
-            case useAudioRenditionGroup = "useAudioRenditionGroup"
+            case encryption
+            case hlsManifests
+            case segmentDurationSeconds
+            case useAudioRenditionGroup
         }
     }
 
     public struct ListAssetsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
-            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
+            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")),
             AWSMemberEncoding(label: "packagingGroupId", location: .querystring(locationName: "packagingGroupId"))
         ]
 
@@ -882,7 +848,6 @@ extension MediaPackageVod {
     }
 
     public struct ListAssetsResponse: AWSDecodableShape {
-
         /// A list of MediaPackage VOD Asset resources.
         public let assets: [AssetShallow]?
         /// A token that can be used to resume pagination from the end of the collection.
@@ -894,15 +859,15 @@ extension MediaPackageVod {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case assets = "assets"
-            case nextToken = "nextToken"
+            case assets
+            case nextToken
         }
     }
 
     public struct ListPackagingConfigurationsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
-            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
+            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")),
             AWSMemberEncoding(label: "packagingGroupId", location: .querystring(locationName: "packagingGroupId"))
         ]
 
@@ -928,7 +893,6 @@ extension MediaPackageVod {
     }
 
     public struct ListPackagingConfigurationsResponse: AWSDecodableShape {
-
         /// A token that can be used to resume pagination from the end of the collection.
         public let nextToken: String?
         /// A list of MediaPackage VOD PackagingConfiguration resources.
@@ -940,14 +904,14 @@ extension MediaPackageVod {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case packagingConfigurations = "packagingConfigurations"
+            case nextToken
+            case packagingConfigurations
         }
     }
 
     public struct ListPackagingGroupsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
@@ -970,7 +934,6 @@ extension MediaPackageVod {
     }
 
     public struct ListPackagingGroupsResponse: AWSDecodableShape {
-
         /// A token that can be used to resume pagination from the end of the collection.
         public let nextToken: String?
         /// A list of MediaPackage VOD PackagingGroup resources.
@@ -982,8 +945,8 @@ extension MediaPackageVod {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case packagingGroups = "packagingGroups"
+            case nextToken
+            case packagingGroups
         }
     }
 
@@ -1003,7 +966,6 @@ extension MediaPackageVod {
     }
 
     public struct ListTagsForResourceResponse: AWSDecodableShape {
-
         /// A collection of tags associated with a resource
         public let tags: [String: String]?
 
@@ -1012,12 +974,11 @@ extension MediaPackageVod {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tags = "tags"
+            case tags
         }
     }
 
     public struct MssEncryption: AWSEncodableShape & AWSDecodableShape {
-
         public let spekeKeyProvider: SpekeKeyProvider
 
         public init(spekeKeyProvider: SpekeKeyProvider) {
@@ -1025,12 +986,11 @@ extension MediaPackageVod {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case spekeKeyProvider = "spekeKeyProvider"
+            case spekeKeyProvider
         }
     }
 
     public struct MssManifest: AWSEncodableShape & AWSDecodableShape {
-
         /// An optional string to include in the name of the manifest.
         public let manifestName: String?
         public let streamSelection: StreamSelection?
@@ -1041,13 +1001,12 @@ extension MediaPackageVod {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case manifestName = "manifestName"
-            case streamSelection = "streamSelection"
+            case manifestName
+            case streamSelection
         }
     }
 
     public struct MssPackage: AWSEncodableShape & AWSDecodableShape {
-
         public let encryption: MssEncryption?
         /// A list of MSS manifest configurations.
         public let mssManifests: [MssManifest]
@@ -1061,14 +1020,13 @@ extension MediaPackageVod {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case encryption = "encryption"
-            case mssManifests = "mssManifests"
-            case segmentDurationSeconds = "segmentDurationSeconds"
+            case encryption
+            case mssManifests
+            case segmentDurationSeconds
         }
     }
 
     public struct PackagingConfiguration: AWSDecodableShape {
-
         /// The ARN of the PackagingConfiguration.
         public let arn: String?
         public let cmafPackage: CmafPackage?
@@ -1093,19 +1051,18 @@ extension MediaPackageVod {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case cmafPackage = "cmafPackage"
-            case dashPackage = "dashPackage"
-            case hlsPackage = "hlsPackage"
-            case id = "id"
-            case mssPackage = "mssPackage"
-            case packagingGroupId = "packagingGroupId"
-            case tags = "tags"
+            case arn
+            case cmafPackage
+            case dashPackage
+            case hlsPackage
+            case id
+            case mssPackage
+            case packagingGroupId
+            case tags
         }
     }
 
     public struct PackagingGroup: AWSDecodableShape {
-
         /// The ARN of the PackagingGroup.
         public let arn: String?
         public let authorization: Authorization?
@@ -1126,17 +1083,16 @@ extension MediaPackageVod {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case authorization = "authorization"
-            case domainName = "domainName"
-            case egressAccessLogs = "egressAccessLogs"
-            case id = "id"
-            case tags = "tags"
+            case arn
+            case authorization
+            case domainName
+            case egressAccessLogs
+            case id
+            case tags
         }
     }
 
     public struct SpekeKeyProvider: AWSEncodableShape & AWSDecodableShape {
-
         /// An Amazon Resource Name (ARN) of an IAM role that AWS Elemental
         /// MediaPackage will assume when accessing the key provider service.
         public let roleArn: String
@@ -1152,14 +1108,13 @@ extension MediaPackageVod {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case roleArn = "roleArn"
-            case systemIds = "systemIds"
-            case url = "url"
+            case roleArn
+            case systemIds
+            case url
         }
     }
 
     public struct StreamSelection: AWSEncodableShape & AWSDecodableShape {
-
         /// The maximum video bitrate (bps) to include in output.
         public let maxVideoBitsPerSecond: Int?
         /// The minimum video bitrate (bps) to include in output.
@@ -1174,9 +1129,9 @@ extension MediaPackageVod {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxVideoBitsPerSecond = "maxVideoBitsPerSecond"
-            case minVideoBitsPerSecond = "minVideoBitsPerSecond"
-            case streamOrder = "streamOrder"
+            case maxVideoBitsPerSecond
+            case minVideoBitsPerSecond
+            case streamOrder
         }
     }
 
@@ -1196,13 +1151,13 @@ extension MediaPackageVod {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tags = "tags"
+            case tags
         }
     }
 
     public struct UntagResourceRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "ResourceArn")), 
+            AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "ResourceArn")),
             AWSMemberEncoding(label: "tagKeys", location: .querystring(locationName: "tagKeys"))
         ]
 
@@ -1234,12 +1189,11 @@ extension MediaPackageVod {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case authorization = "authorization"
+            case authorization
         }
     }
 
     public struct UpdatePackagingGroupResponse: AWSDecodableShape {
-
         /// The ARN of the PackagingGroup.
         public let arn: String?
         public let authorization: Authorization?
@@ -1260,12 +1214,12 @@ extension MediaPackageVod {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case authorization = "authorization"
-            case domainName = "domainName"
-            case egressAccessLogs = "egressAccessLogs"
-            case id = "id"
-            case tags = "tags"
+            case arn
+            case authorization
+            case domainName
+            case egressAccessLogs
+            case id
+            case tags
         }
     }
 }

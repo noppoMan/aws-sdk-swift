@@ -20,7 +20,7 @@ import SotoCore
 // MARK: Paginators
 
 extension Neptune {
-    ///  Returns information about endpoints for an Amazon Neptune DB cluster.  This operation can also return information for Amazon RDS clusters and Amazon DocDB clusters. 
+    ///  Returns information about endpoints for an Amazon Neptune DB cluster.  This operation can also return information for Amazon RDS clusters and Amazon DocDB clusters.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.
@@ -233,7 +233,7 @@ extension Neptune {
     }
 
     ///  Returns information about provisioned DB clusters, and supports pagination.
-    ///    This operation can also return information for Amazon RDS clusters and Amazon DocDB clusters. 
+    ///    This operation can also return information for Amazon RDS clusters and Amazon DocDB clusters.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.
@@ -340,7 +340,7 @@ extension Neptune {
     }
 
     ///  Returns information about provisioned instances, and supports pagination.
-    ///    This operation can also return information for Amazon RDS instances and Amazon DocDB instances. 
+    ///    This operation can also return information for Amazon RDS instances and Amazon DocDB instances.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.

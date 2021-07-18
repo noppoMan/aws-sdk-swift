@@ -179,7 +179,7 @@ extension SSMContacts {
         )
     }
 
-    ///  Lists all of the engagements to contact channels that have been acknowledged. 
+    ///  Lists all of the engagements to contact channels that have been acknowledged.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.

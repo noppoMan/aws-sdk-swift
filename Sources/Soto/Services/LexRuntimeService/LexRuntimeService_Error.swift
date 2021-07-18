@@ -53,11 +53,11 @@ public struct LexRuntimeServiceErrorType: AWSErrorType {
 
     /// Either the Amazon Lex bot is still building, or one of the dependent services (Amazon Polly, AWS Lambda) failed with an internal service error.
     public static var badGatewayException: Self { .init(.badGatewayException) }
-    ///  Request validation failed, there is no usable message in the context, or the bot build failed, is still in progress, or contains unbuilt changes. 
+    ///  Request validation failed, there is no usable message in the context, or the bot build failed, is still in progress, or contains unbuilt changes.
     public static var badRequestException: Self { .init(.badRequestException) }
-    ///  Two clients are using the same AWS account, Amazon Lex bot, and user ID. 
+    ///  Two clients are using the same AWS account, Amazon Lex bot, and user ID.
     public static var conflictException: Self { .init(.conflictException) }
-    ///  One of the dependencies, such as AWS Lambda or Amazon Polly, threw an exception. For example,    If Amazon Lex does not have sufficient permissions to call a Lambda function.   If a Lambda function takes longer than 30 seconds to execute.   If a fulfillment Lambda function returns a Delegate dialog action without removing any slot values.  
+    ///  One of the dependencies, such as AWS Lambda or Amazon Polly, threw an exception. For example,    If Amazon Lex does not have sufficient permissions to call a Lambda function.   If a Lambda function takes longer than 30 seconds to execute.   If a fulfillment Lambda function returns a Delegate dialog action without removing any slot values.
     public static var dependencyFailedException: Self { .init(.dependencyFailedException) }
     /// Internal service error. Retry the call.
     public static var internalFailureException: Self { .init(.internalFailureException) }
@@ -71,7 +71,7 @@ public struct LexRuntimeServiceErrorType: AWSErrorType {
     public static var notFoundException: Self { .init(.notFoundException) }
     /// The input speech is too long.
     public static var requestTimeoutException: Self { .init(.requestTimeoutException) }
-    /// The Content-Type header (PostContent API) has an invalid value. 
+    /// The Content-Type header (PostContent API) has an invalid value.
     public static var unsupportedMediaTypeException: Self { .init(.unsupportedMediaTypeException) }
 }
 

@@ -54,13 +54,13 @@ public struct CodestarnotificationsErrorType: AWSErrorType {
     public static var concurrentModificationException: Self { .init(.concurrentModificationException) }
     /// Some or all of the configuration is incomplete, missing, or not valid.
     public static var configurationException: Self { .init(.configurationException) }
-    /// The value for the enumeration token used in the request to return the next batch of the results is not valid. 
+    /// The value for the enumeration token used in the request to return the next batch of the results is not valid.
     public static var invalidNextTokenException: Self { .init(.invalidNextTokenException) }
     /// One of the AWS CodeStar Notifications limits has been exceeded. Limits apply to accounts, notification rules, notifications, resources, and targets. For more information, see Limits.
     public static var limitExceededException: Self { .init(.limitExceededException) }
     /// A resource with the same name or ID already exists. Notification rule names must be unique in your AWS account.
     public static var resourceAlreadyExistsException: Self { .init(.resourceAlreadyExistsException) }
-    /// AWS CodeStar Notifications can't find a resource that matches the provided ARN. 
+    /// AWS CodeStar Notifications can't find a resource that matches the provided ARN.
     public static var resourceNotFoundException: Self { .init(.resourceNotFoundException) }
     /// One or more parameter values are not valid.
     public static var validationException: Self { .init(.validationException) }

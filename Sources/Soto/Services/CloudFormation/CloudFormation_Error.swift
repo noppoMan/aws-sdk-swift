@@ -95,7 +95,7 @@ public struct CloudFormationErrorType: AWSErrorType {
     public static var stackSetNotEmptyException: Self { .init(.stackSetNotEmptyException) }
     /// The specified stack set doesn't exist.
     public static var stackSetNotFoundException: Self { .init(.stackSetNotFoundException) }
-    /// Another operation has been performed on this stack set since the specified operation was performed. 
+    /// Another operation has been performed on this stack set since the specified operation was performed.
     public static var staleRequestException: Self { .init(.staleRequestException) }
     /// A client request token already exists.
     public static var tokenAlreadyExistsException: Self { .init(.tokenAlreadyExistsException) }

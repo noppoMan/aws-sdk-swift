@@ -50,7 +50,7 @@ public struct AuditManagerErrorType: AWSErrorType {
     public static var internalServerException: Self { .init(.internalServerException) }
     ///  The resource specified in the request cannot be found.
     public static var resourceNotFoundException: Self { .init(.resourceNotFoundException) }
-    ///  The request has invalid or missing parameters. 
+    ///  The request has invalid or missing parameters.
     public static var validationException: Self { .init(.validationException) }
 }
 

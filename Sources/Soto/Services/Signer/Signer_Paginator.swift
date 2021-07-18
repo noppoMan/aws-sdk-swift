@@ -26,7 +26,7 @@ extension Signer {
     ///  			subsequent calls to ListSigningJobs to fetch the remaining values. You can
     ///  			continue calling ListSigningJobs with your maxResults
     ///  			parameter and with new values that code signing returns in the nextToken
-    ///  			parameter until all of your signing jobs have been returned. 
+    ///  			parameter until all of your signing jobs have been returned.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.

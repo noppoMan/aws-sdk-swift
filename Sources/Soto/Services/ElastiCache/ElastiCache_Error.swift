@@ -192,7 +192,7 @@ public struct ElastiCacheErrorType: AWSErrorType {
     public static var nodeQuotaForCustomerExceededFault: Self { .init(.nodeQuotaForCustomerExceededFault) }
     /// The specified replication group already exists.
     public static var replicationGroupAlreadyExistsFault: Self { .init(.replicationGroupAlreadyExistsFault) }
-    /// The targeted replication group is not available. 
+    /// The targeted replication group is not available.
     public static var replicationGroupAlreadyUnderMigrationFault: Self { .init(.replicationGroupAlreadyUnderMigrationFault) }
     /// The specified replication group does not exist.
     public static var replicationGroupNotFoundFault: Self { .init(.replicationGroupNotFoundFault) }

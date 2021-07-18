@@ -58,7 +58,7 @@ public struct DeviceFarmErrorType: AWSErrorType {
     public static var cannotDeleteException: Self { .init(.cannotDeleteException) }
     /// An entity with the same name already exists.
     public static var idempotencyException: Self { .init(.idempotencyException) }
-    /// An internal exception was raised in the service. Contact aws-devicefarm-support@amazon.com if you see this error. 
+    /// An internal exception was raised in the service. Contact aws-devicefarm-support@amazon.com if you see this error.
     public static var internalServiceException: Self { .init(.internalServiceException) }
     /// There was an error with the update request, or you do not have sufficient permissions to update this VPC endpoint configuration.
     public static var invalidOperationException: Self { .init(.invalidOperationException) }
@@ -74,7 +74,7 @@ public struct DeviceFarmErrorType: AWSErrorType {
     public static var tagOperationException: Self { .init(.tagOperationException) }
     /// The request doesn't comply with the AWS Identity and Access Management (IAM) tag policy. Correct your request and then retry it.
     public static var tagPolicyException: Self { .init(.tagPolicyException) }
-    /// The list of tags on the repository is over the limit. The maximum number of tags that can be applied to a repository is 50. 
+    /// The list of tags on the repository is over the limit. The maximum number of tags that can be applied to a repository is 50.
     public static var tooManyTagsException: Self { .init(.tooManyTagsException) }
 }
 

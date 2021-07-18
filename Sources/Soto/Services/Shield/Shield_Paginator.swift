@@ -179,7 +179,7 @@ extension Shield {
         )
     }
 
-    ///  Retrieves the resources that are included in the protection group. 
+    ///  Retrieves the resources that are included in the protection group.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.

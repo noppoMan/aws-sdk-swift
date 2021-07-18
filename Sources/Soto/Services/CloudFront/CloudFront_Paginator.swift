@@ -126,7 +126,7 @@ extension CloudFront {
         )
     }
 
-    ///  Lists invalidation batches. 
+    ///  Lists invalidation batches.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.
@@ -179,7 +179,7 @@ extension CloudFront {
         )
     }
 
-    ///  List streaming distributions. 
+    ///  List streaming distributions.
     ///
     /// Provide paginated results to closure `onPage` for it to combine them into one result.
     /// This works in a similar manner to `Array.reduce<Result>(_:_:) -> Result`.

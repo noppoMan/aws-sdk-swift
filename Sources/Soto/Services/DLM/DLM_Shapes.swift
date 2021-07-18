@@ -85,7 +85,6 @@ extension DLM {
     // MARK: Shapes
 
     public struct Action: AWSEncodableShape & AWSDecodableShape {
-
         /// The rule for copying shared snapshots across Regions.
         public let crossRegionCopy: [CrossRegionCopyAction]
         /// A descriptive name for the action.
@@ -112,7 +111,6 @@ extension DLM {
     }
 
     public struct CreateLifecyclePolicyRequest: AWSEncodableShape {
-
         /// A description of the lifecycle policy. The characters ^[0-9A-Za-z _-]+$ are
         /// 			supported.
         public let description: String
@@ -161,7 +159,6 @@ extension DLM {
     }
 
     public struct CreateLifecyclePolicyResponse: AWSDecodableShape {
-
         /// The identifier of the lifecycle policy.
         public let policyId: String?
 
@@ -175,7 +172,6 @@ extension DLM {
     }
 
     public struct CreateRule: AWSEncodableShape & AWSDecodableShape {
-
         /// The schedule, as a Cron expression. The schedule interval must be between 1 hour and 1
         /// 			year. For more information, see Cron
         /// 				expressions in the Amazon CloudWatch User Guide.
@@ -185,13 +181,13 @@ extension DLM {
         public let interval: Int?
         /// The interval unit.
         public let intervalUnit: IntervalUnitValues?
-        /// Specifies the destination for snapshots created by the policy. To create snapshots in the same 
-        /// 			Region as the source resource, specify CLOUD. To create snapshots on the same 
-        /// 			Outpost as the source resource, specify OUTPOST_LOCAL. If you omit this 
+        /// Specifies the destination for snapshots created by the policy. To create snapshots in the same
+        /// 			Region as the source resource, specify CLOUD. To create snapshots on the same
+        /// 			Outpost as the source resource, specify OUTPOST_LOCAL. If you omit this
         /// 			parameter, CLOUD is used by default.
-        /// 		       If the policy targets resources in an AWS Region, then you must create snapshots in the same 
-        /// 			Region as the source resource. 
-        /// 		       If the policy targets resources on an Outpost, then you can create snapshots on the same Outpost 
+        /// 		       If the policy targets resources in an AWS Region, then you must create snapshots in the same
+        /// 			Region as the source resource.
+        /// 		       If the policy targets resources on an Outpost, then you can create snapshots on the same Outpost
         /// 			as the source resource, or in the Region of that Outpost.
         public let location: LocationValues?
         /// The time, in UTC, to start the operation. The supported format is hh:mm.
@@ -230,7 +226,6 @@ extension DLM {
     }
 
     public struct CrossRegionCopyAction: AWSEncodableShape & AWSDecodableShape {
-
         /// The encryption settings for the copied snapshot.
         public let encryptionConfiguration: EncryptionConfiguration
         public let retainRule: CrossRegionCopyRetainRule?
@@ -258,7 +253,6 @@ extension DLM {
     }
 
     public struct CrossRegionCopyRetainRule: AWSEncodableShape & AWSDecodableShape {
-
         /// The amount of time to retain each snapshot. The maximum is 100 years. This is
         /// 			equivalent to 1200 months, 5200 weeks, or 36500 days.
         public let interval: Int?
@@ -281,7 +275,6 @@ extension DLM {
     }
 
     public struct CrossRegionCopyRule: AWSEncodableShape & AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the AWS KMS customer master key (CMK) to use for EBS
         /// 			encryption. If this parameter is not specified, your AWS managed CMK for EBS is
         /// 			used.
@@ -295,11 +288,11 @@ extension DLM {
         /// The retention rule.
         public let retainRule: CrossRegionCopyRetainRule?
         /// The Amazon Resource Name (ARN) of the target AWS Outpost for the snapshot copies.
-        /// 		       If you specify an ARN, you must omit TargetRegion. You cannot 
+        /// 		       If you specify an ARN, you must omit TargetRegion. You cannot
         /// 			specify a target Region and a target Outpost in the same rule.
         public let target: String?
         /// The target Region for the snapshot copies.
-        /// 		       If you specify a target Region, you must omit Target. You cannot 
+        /// 		       If you specify a target Region, you must omit Target. You cannot
         /// 			specify a target Region and a target Outpost in the same rule.
         public let targetRegion: String?
 
@@ -353,20 +346,15 @@ extension DLM {
     }
 
     public struct DeleteLifecyclePolicyResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct EncryptionConfiguration: AWSEncodableShape & AWSDecodableShape {
-
-        /// The Amazon Resource Name (ARN) of the AWS KMS customer master key (CMK) to use for EBS 
+        /// The Amazon Resource Name (ARN) of the AWS KMS customer master key (CMK) to use for EBS
         /// 			encryption. If this parameter is not specified, your AWS managed CMK for EBS is used.
         public let cmkArn: String?
-        /// To encrypt a copy of an unencrypted snapshot when encryption by default is not enabled, enable 
-        /// 			encryption using this parameter. Copies of encrypted snapshots are encrypted, even if this 
+        /// To encrypt a copy of an unencrypted snapshot when encryption by default is not enabled, enable
+        /// 			encryption using this parameter. Copies of encrypted snapshots are encrypted, even if this
         /// 			parameter is false or when encryption by default is not enabled.
         public let encrypted: Bool
 
@@ -387,17 +375,16 @@ extension DLM {
     }
 
     public struct EventParameters: AWSEncodableShape & AWSDecodableShape {
-
-        /// The snapshot description that can trigger the policy. The description pattern is specified using 
-        /// 			a regular expression. The policy runs only if a snapshot with a description that matches the 
+        /// The snapshot description that can trigger the policy. The description pattern is specified using
+        /// 			a regular expression. The policy runs only if a snapshot with a description that matches the
         /// 			specified pattern is shared with your account.
-        /// 		       For example, specifying ^.*Created for policy: policy-1234567890abcdef0.*$  
-        /// 			configures the policy to run only if snapshots created by policy policy-1234567890abcdef0 
+        /// 		       For example, specifying ^.*Created for policy: policy-1234567890abcdef0.*$
+        /// 			configures the policy to run only if snapshots created by policy policy-1234567890abcdef0
         /// 			are shared with your account.
         public let descriptionRegex: String
         /// The type of event. Currently, only snapshot sharing events are supported.
         public let eventType: EventTypeValues
-        /// The IDs of the AWS accounts that can trigger policy by sharing snapshots with your account. The 
+        /// The IDs of the AWS accounts that can trigger policy by sharing snapshots with your account. The
         /// 			policy only runs if one of the specified AWS accounts shares a snapshot with your account.
         public let snapshotOwner: [String]
 
@@ -426,7 +413,6 @@ extension DLM {
     }
 
     public struct EventSource: AWSEncodableShape & AWSDecodableShape {
-
         /// Information about the event.
         public let parameters: EventParameters?
         /// The source of the event. Currently only managed AWS CloudWatch Events rules are supported.
@@ -448,7 +434,6 @@ extension DLM {
     }
 
     public struct FastRestoreRule: AWSEncodableShape & AWSDecodableShape {
-
         /// The Availability Zones in which to enable fast snapshot restore.
         public let availabilityZones: [String]
         /// The number of snapshots to be enabled with fast snapshot restore.
@@ -488,10 +473,10 @@ extension DLM {
 
     public struct GetLifecyclePoliciesRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "policyIds", location: .querystring(locationName: "policyIds")), 
-            AWSMemberEncoding(label: "resourceTypes", location: .querystring(locationName: "resourceTypes")), 
-            AWSMemberEncoding(label: "state", location: .querystring(locationName: "state")), 
-            AWSMemberEncoding(label: "tagsToAdd", location: .querystring(locationName: "tagsToAdd")), 
+            AWSMemberEncoding(label: "policyIds", location: .querystring(locationName: "policyIds")),
+            AWSMemberEncoding(label: "resourceTypes", location: .querystring(locationName: "resourceTypes")),
+            AWSMemberEncoding(label: "state", location: .querystring(locationName: "state")),
+            AWSMemberEncoding(label: "tagsToAdd", location: .querystring(locationName: "tagsToAdd")),
             AWSMemberEncoding(label: "targetTags", location: .querystring(locationName: "targetTags"))
         ]
 
@@ -541,7 +526,6 @@ extension DLM {
     }
 
     public struct GetLifecyclePoliciesResponse: AWSDecodableShape {
-
         /// Summary information about the lifecycle policies.
         public let policies: [LifecyclePolicySummary]?
 
@@ -575,7 +559,6 @@ extension DLM {
     }
 
     public struct GetLifecyclePolicyResponse: AWSDecodableShape {
-
         /// Detailed information about the lifecycle policy.
         public let policy: LifecyclePolicy?
 
@@ -589,7 +572,6 @@ extension DLM {
     }
 
     public struct LifecyclePolicy: AWSDecodableShape {
-
         /// The local date and time when the lifecycle policy was created.
         public let dateCreated: Date?
         /// The local date and time when the lifecycle policy was last modified.
@@ -640,13 +622,12 @@ extension DLM {
     }
 
     public struct LifecyclePolicySummary: AWSDecodableShape {
-
         /// The description of the lifecycle policy.
         public let description: String?
         /// The identifier of the lifecycle policy.
         public let policyId: String?
-        /// The type of policy. EBS_SNAPSHOT_MANAGEMENT indicates that the policy 
-        /// 			manages the lifecycle of Amazon EBS snapshots. IMAGE_MANAGEMENT 
+        /// The type of policy. EBS_SNAPSHOT_MANAGEMENT indicates that the policy
+        /// 			manages the lifecycle of Amazon EBS snapshots. IMAGE_MANAGEMENT
         /// 			indicates that the policy manages the lifecycle of EBS-backed AMIs.
         public let policyType: PolicyTypeValues?
         /// The activation state of the lifecycle policy.
@@ -692,7 +673,6 @@ extension DLM {
     }
 
     public struct ListTagsForResourceResponse: AWSDecodableShape {
-
         /// Information about the tags.
         public let tags: [String: String]?
 
@@ -706,14 +686,13 @@ extension DLM {
     }
 
     public struct Parameters: AWSEncodableShape & AWSDecodableShape {
-
         /// [EBS Snapshot Management – Instance policies only] Indicates whether to exclude the
         /// 			root volume from snapshots created using CreateSnapshots.
         /// 			The default is false.
         public let excludeBootVolume: Bool?
-        /// Applies to AMI lifecycle policies only. Indicates whether targeted instances are rebooted when the lifecycle 
-        /// 			policy runs. true indicates that targeted instances are not rebooted when the policy 
-        /// 			runs. false indicates that target instances are rebooted when the policy runs. The 
+        /// Applies to AMI lifecycle policies only. Indicates whether targeted instances are rebooted when the lifecycle
+        /// 			policy runs. true indicates that targeted instances are not rebooted when the policy
+        /// 			runs. false indicates that target instances are rebooted when the policy runs. The
         /// 			default is true (instances are not rebooted).
         public let noReboot: Bool?
 
@@ -729,36 +708,35 @@ extension DLM {
     }
 
     public struct PolicyDetails: AWSEncodableShape & AWSDecodableShape {
-
-        /// The actions to be performed when the event-based policy is triggered. You can specify 
+        /// The actions to be performed when the event-based policy is triggered. You can specify
         /// 		only one action per policy.
         /// 		       This parameter is required for event-based policies only. If you are creating a snapshot or AMI policy, omit this parameter.
         public let actions: [Action]?
-        /// The event that triggers the event-based policy. 
+        /// The event that triggers the event-based policy.
         /// 		       This parameter is required for event-based policies only. If you are creating a snapshot or AMI policy, omit this parameter.
         public let eventSource: EventSource?
-        /// A set of optional parameters for snapshot and AMI lifecycle policies. 
+        /// A set of optional parameters for snapshot and AMI lifecycle policies.
         /// 		       This parameter is required for snapshot and AMI policies only. If you are creating an event-based policy, omit this parameter.
         public let parameters: Parameters?
-        /// The valid target resource types and actions a policy can manage. Specify EBS_SNAPSHOT_MANAGEMENT 
-        /// 			to create a lifecycle policy that manages the lifecycle of Amazon EBS snapshots. Specify IMAGE_MANAGEMENT 
-        /// 			to create a lifecycle policy that manages the lifecycle of EBS-backed AMIs. Specify EVENT_BASED_POLICY  
+        /// The valid target resource types and actions a policy can manage. Specify EBS_SNAPSHOT_MANAGEMENT
+        /// 			to create a lifecycle policy that manages the lifecycle of Amazon EBS snapshots. Specify IMAGE_MANAGEMENT
+        /// 			to create a lifecycle policy that manages the lifecycle of EBS-backed AMIs. Specify EVENT_BASED_POLICY
         /// 			to create an event-based policy that performs specific actions when a defined event occurs in your AWS account.
         /// 		       The default is EBS_SNAPSHOT_MANAGEMENT.
         public let policyType: PolicyTypeValues?
-        /// The location of the resources to backup. If the source resources are located in an AWS Region, specify 
-        /// 			CLOUD. If the source resources are located on an AWS Outpost 
-        /// 			in your account, specify OUTPOST. 
-        /// 			      If you specify OUTPOST, Amazon Data Lifecycle Manager backs up all resources 
+        /// The location of the resources to backup. If the source resources are located in an AWS Region, specify
+        /// 			CLOUD. If the source resources are located on an AWS Outpost
+        /// 			in your account, specify OUTPOST.
+        /// 			      If you specify OUTPOST, Amazon Data Lifecycle Manager backs up all resources
         /// 				of the specified type with matching target tags across all of the Outposts in your account.
         public let resourceLocations: [ResourceLocationValues]?
-        /// The target resource type for snapshot and AMI lifecycle policies. Use VOLUME to 
-        /// 			create snapshots of individual volumes or use INSTANCE to create multi-volume 
+        /// The target resource type for snapshot and AMI lifecycle policies. Use VOLUME to
+        /// 			create snapshots of individual volumes or use INSTANCE to create multi-volume
         /// 			snapshots from the volumes for an instance.
         /// 		       This parameter is required for snapshot and AMI policies only. If you are creating an event-based policy, omit this parameter.
         public let resourceTypes: [ResourceTypeValues]?
-        /// The schedules of policy-defined actions for snapshot and AMI lifecycle policies. A policy 
-        /// 			can have up to four schedules—one mandatory schedule and up to three optional schedules. 
+        /// The schedules of policy-defined actions for snapshot and AMI lifecycle policies. A policy
+        /// 			can have up to four schedules—one mandatory schedule and up to three optional schedules.
         /// 		       This parameter is required for snapshot and AMI policies only. If you are creating an event-based policy, omit this parameter.
         public let schedules: [Schedule]?
         /// The single tag that identifies targeted resources for this policy.
@@ -812,7 +790,6 @@ extension DLM {
     }
 
     public struct RetainRule: AWSEncodableShape & AWSDecodableShape {
-
         /// The number of snapshots to retain for each volume, up to a maximum of 1000.
         public let count: Int?
         /// The amount of time to retain each snapshot. The maximum is 100 years. This is
@@ -841,16 +818,15 @@ extension DLM {
     }
 
     public struct Schedule: AWSEncodableShape & AWSDecodableShape {
-
         /// Copy all user-defined tags on a source volume to snapshots of the volume created by
         /// 			this policy.
         public let copyTags: Bool?
         /// The creation rule.
         public let createRule: CreateRule?
         /// The rule for cross-Region snapshot copies.
-        /// 		       You can only specify cross-Region copy rules for policies that create snapshots in a Region. 
-        /// 			If the policy creates snapshots on an Outpost, then you cannot copy the snapshots to a Region or 
-        /// 			to an Outpost. If the policy creates snapshots in a Region, then snapshots can be copied to up to three 
+        /// 		       You can only specify cross-Region copy rules for policies that create snapshots in a Region.
+        /// 			If the policy creates snapshots on an Outpost, then you cannot copy the snapshots to a Region or
+        /// 			to an Outpost. If the policy creates snapshots in a Region, then snapshots can be copied to up to three
         /// 			Regions or Outposts.
         public let crossRegionCopyRules: [CrossRegionCopyRule]?
         /// The rule for enabling fast snapshot restore.
@@ -920,7 +896,6 @@ extension DLM {
     }
 
     public struct ShareRule: AWSEncodableShape & AWSDecodableShape {
-
         /// The IDs of the AWS accounts with which to share the snapshots.
         public let targetAccounts: [String]
         /// The period after which snapshots that are shared with other AWS accounts are automatically unshared.
@@ -952,7 +927,6 @@ extension DLM {
     }
 
     public struct Tag: AWSEncodableShape & AWSDecodableShape {
-
         /// The tag key.
         public let key: String
         /// The tag value.
@@ -1011,16 +985,12 @@ extension DLM {
     }
 
     public struct TagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UntagResourceRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "ResourceArn")), 
+            AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "ResourceArn")),
             AWSMemberEncoding(label: "tagKeys", location: .querystring(locationName: "tagKeys"))
         ]
 
@@ -1050,11 +1020,7 @@ extension DLM {
     }
 
     public struct UntagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateLifecyclePolicyRequest: AWSEncodableShape {
@@ -1102,10 +1068,6 @@ extension DLM {
     }
 
     public struct UpdateLifecyclePolicyResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 }

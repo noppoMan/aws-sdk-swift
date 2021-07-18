@@ -29,7 +29,6 @@ extension Pricing {
     // MARK: Shapes
 
     public struct AttributeValue: AWSDecodableShape {
-
         /// The specific value of an attributeName.
         public let value: String?
 
@@ -43,8 +42,7 @@ extension Pricing {
     }
 
     public struct DescribeServicesRequest: AWSEncodableShape {
-
-        /// The format version that you want the response to be in. Valid values are: aws_v1 
+        /// The format version that you want the response to be in. Valid values are: aws_v1
         public let formatVersion: String?
         /// The maximum number of results that you want returned in the response.
         public let maxResults: Int?
@@ -74,7 +72,6 @@ extension Pricing {
     }
 
     public struct DescribeServicesResponse: AWSDecodableShape {
-
         /// The format version of the response. For example, aws_v1.
         public let formatVersion: String?
         /// The pagination token for the next set of retreivable results.
@@ -96,7 +93,6 @@ extension Pricing {
     }
 
     public struct Filter: AWSEncodableShape {
-
         /// The product metadata field that you want to filter on. You can filter by just the  service code to see all products for a specific service, filter  by just the attribute name to see a specific attribute for multiple services, or use both a service code and an attribute name to retrieve only products that match both fields. Valid values include: ServiceCode, and all attribute names  For example, you can filter by the AmazonEC2 service code and the  volumeType attribute name to get the prices for only Amazon EC2 volumes.
         public let field: String
         /// The type of filter that you want to use. Valid values are: TERM_MATCH. TERM_MATCH returns only  products that match both the given filter field and the given value.
@@ -118,7 +114,6 @@ extension Pricing {
     }
 
     public struct GetAttributeValuesRequest: AWSEncodableShape {
-
         /// The name of the attribute that you want to retrieve the values for, such as volumeType.
         public let attributeName: String
         /// The maximum number of results to return in response.
@@ -149,7 +144,6 @@ extension Pricing {
     }
 
     public struct GetAttributeValuesResponse: AWSDecodableShape {
-
         /// The list of values for an attribute. For example, Throughput Optimized HDD and  Provisioned IOPS are two available values for the AmazonEC2  volumeType.
         public let attributeValues: [AttributeValue]?
         /// The pagination token that indicates the next set of results to retrieve.
@@ -167,16 +161,15 @@ extension Pricing {
     }
 
     public struct GetProductsRequest: AWSEncodableShape {
-
         /// The list of filters that limit the returned products. only products that match all filters are returned.
         public let filters: [Filter]?
-        /// The format version that you want the response to be in. Valid values are: aws_v1 
+        /// The format version that you want the response to be in. Valid values are: aws_v1
         public let formatVersion: String?
         /// The maximum number of results to return in the response.
         public let maxResults: Int?
         /// The pagination token that indicates the next set of results that you want to retrieve.
         public let nextToken: String?
-        /// The code for the service whose products you want to retrieve. 
+        /// The code for the service whose products you want to retrieve.
         public let serviceCode: String?
 
         public init(filters: [Filter]? = nil, formatVersion: String? = nil, maxResults: Int? = nil, nextToken: String? = nil, serviceCode: String? = nil) {
@@ -202,7 +195,6 @@ extension Pricing {
     }
 
     public struct GetProductsResponse: AWSDecodableShape {
-
         /// The format version of the response. For example, aws_v1.
         public let formatVersion: String?
         /// The pagination token that indicates the next set of results to retrieve.
@@ -224,7 +216,6 @@ extension Pricing {
     }
 
     public struct Service: AWSDecodableShape {
-
         /// The attributes that are available for this service.
         public let attributeNames: [String]?
         /// The code for the Amazon Web Services service.

@@ -124,7 +124,7 @@ public struct AccessAnalyzer: AWSService {
         return self.client.execute(operation: "GetFinding", path: "/finding/{id}", httpMethod: .GET, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Retrieves the policy that was generated using StartPolicyGeneration. 
+    /// Retrieves the policy that was generated using StartPolicyGeneration.
     public func getGeneratedPolicy(_ input: GetGeneratedPolicyRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<GetGeneratedPolicyResponse> {
         return self.client.execute(operation: "GetGeneratedPolicy", path: "/policy/generation/{jobId}", httpMethod: .GET, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -199,7 +199,7 @@ public struct AccessAnalyzer: AWSService {
         return self.client.execute(operation: "UpdateFindings", path: "/finding", httpMethod: .PUT, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Requests the validation of a policy and returns a list of findings. The findings help you identify issues and provide actionable recommendations to resolve the issue and enable you to author functional policies that meet security best practices. 
+    /// Requests the validation of a policy and returns a list of findings. The findings help you identify issues and provide actionable recommendations to resolve the issue and enable you to author functional policies that meet security best practices.
     public func validatePolicy(_ input: ValidatePolicyRequest, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<ValidatePolicyResponse> {
         return self.client.execute(operation: "ValidatePolicy", path: "/policy/validation", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }

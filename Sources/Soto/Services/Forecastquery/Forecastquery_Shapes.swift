@@ -24,7 +24,6 @@ extension Forecastquery {
     // MARK: Shapes
 
     public struct DataPoint: AWSDecodableShape {
-
         /// The timestamp of the specific forecast.
         public let timestamp: String?
         /// The forecast value.
@@ -42,8 +41,7 @@ extension Forecastquery {
     }
 
     public struct Forecast: AWSDecodableShape {
-
-        /// The forecast. The string of the string-to-array map is one of the following values:   p10   p50   p90  
+        /// The forecast. The string of the string-to-array map is one of the following values:   p10   p50   p90
         public let predictions: [String: [DataPoint]]?
 
         public init(predictions: [String: [DataPoint]]? = nil) {
@@ -56,8 +54,7 @@ extension Forecastquery {
     }
 
     public struct QueryForecastRequest: AWSEncodableShape {
-
-        /// The end date for the forecast. Specify the date using this format: yyyy-MM-dd'T'HH:mm:ss (ISO 8601 format). For example, 2015-01-01T20:00:00. 
+        /// The end date for the forecast. Specify the date using this format: yyyy-MM-dd'T'HH:mm:ss (ISO 8601 format). For example, 2015-01-01T20:00:00.
         public let endDate: String?
         /// The filtering criteria to apply when retrieving the forecast. For example, to get the forecast for client_21 in the electricity usage dataset, specify the following:  {"item_id" : "client_21"}    To get the full forecast, use the CreateForecastExportJob operation.
         public let filters: [String: String]
@@ -100,7 +97,6 @@ extension Forecastquery {
     }
 
     public struct QueryForecastResponse: AWSDecodableShape {
-
         /// The forecast.
         public let forecast: Forecast?
 

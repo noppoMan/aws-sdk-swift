@@ -62,19 +62,19 @@ public struct TextractErrorType: AWSErrorType {
     public static var documentTooLargeException: Self { .init(.documentTooLargeException) }
     /// Indicates you have exceeded the maximum number of active human in the loop workflows available
     public static var humanLoopQuotaExceededException: Self { .init(.humanLoopQuotaExceededException) }
-    /// A ClientRequestToken input parameter was reused with an operation, but at least one of the other input parameters is different from the previous call to the operation. 
+    /// A ClientRequestToken input parameter was reused with an operation, but at least one of the other input parameters is different from the previous call to the operation.
     public static var idempotentParameterMismatchException: Self { .init(.idempotentParameterMismatchException) }
     /// Amazon Textract experienced a service issue. Try your call again.
     public static var internalServerError: Self { .init(.internalServerError) }
     /// An invalid job identifier was passed to GetDocumentAnalysis or to GetDocumentAnalysis.
     public static var invalidJobIdException: Self { .init(.invalidJobIdException) }
-    ///  Indicates you do not have decrypt permissions with the KMS key entered, or the KMS key was entered incorrectly. 
+    ///  Indicates you do not have decrypt permissions with the KMS key entered, or the KMS key was entered incorrectly.
     public static var invalidKMSKeyException: Self { .init(.invalidKMSKeyException) }
     /// An input parameter violated a constraint. For example, in synchronous operations,  an InvalidParameterException exception occurs when neither of the S3Object or Bytes values are supplied in the Document request parameter. Validate your parameter before calling the API operation again.
     public static var invalidParameterException: Self { .init(.invalidParameterException) }
-    /// Amazon Textract is unable to access the S3 object that's specified in the request. for more information, Configure Access to Amazon S3 For troubleshooting information, see Troubleshooting Amazon S3 
+    /// Amazon Textract is unable to access the S3 object that's specified in the request. for more information, Configure Access to Amazon S3 For troubleshooting information, see Troubleshooting Amazon S3
     public static var invalidS3ObjectException: Self { .init(.invalidS3ObjectException) }
-    /// An Amazon Textract service limit was exceeded. For example, if you start too many asynchronous jobs concurrently, calls to start operations (StartDocumentTextDetection, for example) raise a LimitExceededException exception (HTTP status code: 400) until the number of concurrently running jobs is below the Amazon Textract service limit. 
+    /// An Amazon Textract service limit was exceeded. For example, if you start too many asynchronous jobs concurrently, calls to start operations (StartDocumentTextDetection, for example) raise a LimitExceededException exception (HTTP status code: 400) until the number of concurrently running jobs is below the Amazon Textract service limit.
     public static var limitExceededException: Self { .init(.limitExceededException) }
     /// The number of requests exceeded your throughput limit. If you want to increase this limit,  contact Amazon Textract.
     public static var provisionedThroughputExceededException: Self { .init(.provisionedThroughputExceededException) }

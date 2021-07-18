@@ -29,16 +29,16 @@ extension Redshift {
     }
 
     public enum AquaConfigurationStatus: String, CustomStringConvertible, Codable {
-        case auto = "auto"
-        case disabled = "disabled"
-        case enabled = "enabled"
+        case auto
+        case disabled
+        case enabled
         public var description: String { return self.rawValue }
     }
 
     public enum AquaStatus: String, CustomStringConvertible, Codable {
-        case applying = "applying"
-        case disabled = "disabled"
-        case enabled = "enabled"
+        case applying
+        case disabled
+        case enabled
         public var description: String { return self.rawValue }
     }
 
@@ -50,7 +50,7 @@ extension Redshift {
 
     public enum Mode: String, CustomStringConvertible, Codable {
         case highPerformance = "high-performance"
-        case standard = "standard"
+        case standard
         public var description: String { return self.rawValue }
     }
 
@@ -63,19 +63,19 @@ extension Redshift {
     }
 
     public enum OperatorType: String, CustomStringConvertible, Codable {
-        case between = "between"
-        case eq = "eq"
-        case ge = "ge"
-        case gt = "gt"
-        case `in` = "in"
-        case le = "le"
-        case lt = "lt"
+        case between
+        case eq
+        case ge
+        case gt
+        case `in`
+        case le
+        case lt
         public var description: String { return self.rawValue }
     }
 
     public enum ParameterApplyType: String, CustomStringConvertible, Codable {
-        case dynamic = "dynamic"
-        case `static` = "static"
+        case dynamic
+        case `static`
         public var description: String { return self.rawValue }
     }
 
@@ -133,7 +133,7 @@ extension Redshift {
     }
 
     public enum SourceType: String, CustomStringConvertible, Codable {
-        case cluster = "cluster"
+        case cluster
         case clusterParameterGroup = "cluster-parameter-group"
         case clusterSecurityGroup = "cluster-security-group"
         case clusterSnapshot = "cluster-snapshot"
@@ -151,38 +151,37 @@ extension Redshift {
     }
 
     public enum UsageLimitBreachAction: String, CustomStringConvertible, Codable {
-        case disable = "disable"
+        case disable
         case emitMetric = "emit-metric"
-        case log = "log"
+        case log
         public var description: String { return self.rawValue }
     }
 
     public enum UsageLimitFeatureType: String, CustomStringConvertible, Codable {
         case concurrencyScaling = "concurrency-scaling"
-        case spectrum = "spectrum"
+        case spectrum
         public var description: String { return self.rawValue }
     }
 
     public enum UsageLimitLimitType: String, CustomStringConvertible, Codable {
         case dataScanned = "data-scanned"
-        case time = "time"
+        case time
         public var description: String { return self.rawValue }
     }
 
     public enum UsageLimitPeriod: String, CustomStringConvertible, Codable {
-        case daily = "daily"
-        case monthly = "monthly"
-        case weekly = "weekly"
+        case daily
+        case monthly
+        case weekly
         public var description: String { return self.rawValue }
     }
 
     // MARK: Shapes
 
     public struct AcceptReservedNodeExchangeInputMessage: AWSEncodableShape {
-
         /// A string representing the node identifier of the DC1 Reserved Node to be exchanged.
         public let reservedNodeId: String
-        /// The unique identifier of the DC2 Reserved Node offering to be used for the exchange. You can obtain the value for the parameter by calling GetReservedNodeExchangeOfferings 
+        /// The unique identifier of the DC2 Reserved Node offering to be used for the exchange. You can obtain the value for the parameter by calling GetReservedNodeExchangeOfferings
         public let targetReservedNodeOfferingId: String
 
         public init(reservedNodeId: String, targetReservedNodeOfferingId: String) {
@@ -191,8 +190,8 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.reservedNodeId, name: "reservedNodeId", parent: name, max: 2147483647)
-            try self.validate(self.targetReservedNodeOfferingId, name: "targetReservedNodeOfferingId", parent: name, max: 2147483647)
+            try self.validate(self.reservedNodeId, name: "reservedNodeId", parent: name, max: 2_147_483_647)
+            try self.validate(self.targetReservedNodeOfferingId, name: "targetReservedNodeOfferingId", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -202,7 +201,6 @@ extension Redshift {
     }
 
     public struct AcceptReservedNodeExchangeOutputMessage: AWSDecodableShape {
-
         public let exchangedReservedNode: ReservedNode?
 
         public init(exchangedReservedNode: ReservedNode? = nil) {
@@ -215,7 +213,7 @@ extension Redshift {
     }
 
     public struct AccountAttribute: AWSDecodableShape {
-        public struct _AttributeValuesEncoding: ArrayCoderProperties { static public let member = "AttributeValueTarget" }
+        public struct _AttributeValuesEncoding: ArrayCoderProperties { public static let member = "AttributeValueTarget" }
 
         /// The name of the attribute.
         public let attributeName: String?
@@ -235,7 +233,7 @@ extension Redshift {
     }
 
     public struct AccountAttributeList: AWSDecodableShape {
-        public struct _AccountAttributesEncoding: ArrayCoderProperties { static public let member = "AccountAttribute" }
+        public struct _AccountAttributesEncoding: ArrayCoderProperties { public static let member = "AccountAttribute" }
 
         /// A list of attributes assigned to an account.
         @OptionalCustomCoding<ArrayCoder<_AccountAttributesEncoding, AccountAttribute>>
@@ -251,8 +249,7 @@ extension Redshift {
     }
 
     public struct AccountWithRestoreAccess: AWSDecodableShape {
-
-        /// The identifier of an Amazon Web Services support account authorized to restore a  snapshot. For Amazon Web Services Support, the identifier is amazon-redshift-support. 
+        /// The identifier of an Amazon Web Services support account authorized to restore a  snapshot. For Amazon Web Services Support, the identifier is amazon-redshift-support.
         public let accountAlias: String?
         /// The identifier of an account authorized to restore a snapshot.
         public let accountId: String?
@@ -269,10 +266,9 @@ extension Redshift {
     }
 
     public struct AquaConfiguration: AWSDecodableShape {
-
-        /// The value represents how the cluster is configured to use AQUA. Possible values include the following.   enabled - Use AQUA if it is available for the current Region and Amazon Redshift node type.   disabled - Don't use AQUA.    auto - Amazon Redshift determines whether to use AQUA.  
+        /// The value represents how the cluster is configured to use AQUA. Possible values include the following.   enabled - Use AQUA if it is available for the current Region and Amazon Redshift node type.   disabled - Don't use AQUA.    auto - Amazon Redshift determines whether to use AQUA.
         public let aquaConfigurationStatus: AquaConfigurationStatus?
-        /// The value indicates the status of AQUA on the cluster. Possible values include the following.   enabled - AQUA is enabled.   disabled - AQUA is not enabled.    applying - AQUA status is being applied.   
+        /// The value indicates the status of AQUA on the cluster. Possible values include the following.   enabled - AQUA is enabled.   disabled - AQUA is not enabled.    applying - AQUA status is being applied.
         public let aquaStatus: AquaStatus?
 
         public init(aquaConfigurationStatus: AquaConfigurationStatus? = nil, aquaStatus: AquaStatus? = nil) {
@@ -287,7 +283,6 @@ extension Redshift {
     }
 
     public struct AttributeValueTarget: AWSDecodableShape {
-
         /// The value of the attribute.
         public let attributeValue: String?
 
@@ -301,7 +296,6 @@ extension Redshift {
     }
 
     public struct AuthenticationProfile: AWSDecodableShape {
-
         /// The content of the authentication profile in JSON format. The maximum length of the JSON string is determined by a quota for your account.
         public let authenticationProfileContent: String?
         /// The name of the authentication profile.
@@ -319,14 +313,13 @@ extension Redshift {
     }
 
     public struct AuthorizeClusterSecurityGroupIngressMessage: AWSEncodableShape {
-
         /// The IP range to be added the Amazon Redshift security group.
         public let cidrip: String?
         /// The name of the security group to which the ingress rule is added.
         public let clusterSecurityGroupName: String
         /// The EC2 security group to be added the Amazon Redshift security group.
         public let eC2SecurityGroupName: String?
-        /// The account number of the owner of the security group specified by the EC2SecurityGroupName parameter. The Amazon Web Services Access Key ID is not an acceptable value.  Example: 111122223333 
+        /// The account number of the owner of the security group specified by the EC2SecurityGroupName parameter. The Amazon Web Services Access Key ID is not an acceptable value.  Example: 111122223333
         public let eC2SecurityGroupOwnerId: String?
 
         public init(cidrip: String? = nil, clusterSecurityGroupName: String, eC2SecurityGroupName: String? = nil, eC2SecurityGroupOwnerId: String? = nil) {
@@ -337,10 +330,10 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.cidrip, name: "cidrip", parent: name, max: 2147483647)
-            try self.validate(self.clusterSecurityGroupName, name: "clusterSecurityGroupName", parent: name, max: 2147483647)
-            try self.validate(self.eC2SecurityGroupName, name: "eC2SecurityGroupName", parent: name, max: 2147483647)
-            try self.validate(self.eC2SecurityGroupOwnerId, name: "eC2SecurityGroupOwnerId", parent: name, max: 2147483647)
+            try self.validate(self.cidrip, name: "cidrip", parent: name, max: 2_147_483_647)
+            try self.validate(self.clusterSecurityGroupName, name: "clusterSecurityGroupName", parent: name, max: 2_147_483_647)
+            try self.validate(self.eC2SecurityGroupName, name: "eC2SecurityGroupName", parent: name, max: 2_147_483_647)
+            try self.validate(self.eC2SecurityGroupOwnerId, name: "eC2SecurityGroupOwnerId", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -352,7 +345,6 @@ extension Redshift {
     }
 
     public struct AuthorizeClusterSecurityGroupIngressResult: AWSDecodableShape {
-
         public let clusterSecurityGroup: ClusterSecurityGroup?
 
         public init(clusterSecurityGroup: ClusterSecurityGroup? = nil) {
@@ -365,7 +357,7 @@ extension Redshift {
     }
 
     public struct AuthorizeEndpointAccessMessage: AWSEncodableShape {
-        public struct _VpcIdsEncoding: ArrayCoderProperties { static public let member = "VpcIdentifier" }
+        public struct _VpcIdsEncoding: ArrayCoderProperties { public static let member = "VpcIdentifier" }
 
         /// The account ID to grant access to.
         public let account: String
@@ -382,10 +374,10 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.account, name: "account", parent: name, max: 2147483647)
-            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2147483647)
+            try self.validate(self.account, name: "account", parent: name, max: 2_147_483_647)
+            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2_147_483_647)
             try self.vpcIds?.forEach {
-                try validate($0, name: "vpcIds[]", parent: name, max: 2147483647)
+                try validate($0, name: "vpcIds[]", parent: name, max: 2_147_483_647)
             }
         }
 
@@ -397,7 +389,6 @@ extension Redshift {
     }
 
     public struct AuthorizeSnapshotAccessMessage: AWSEncodableShape {
-
         /// The identifier of the account authorized to restore the specified snapshot. To share a snapshot with Amazon Web Services Support, specify amazon-redshift-support.
         public let accountWithRestoreAccess: String
         /// The identifier of the cluster the snapshot was created from. This parameter is required if your IAM user has a policy containing a snapshot resource element that specifies anything other than * for the cluster name.
@@ -412,9 +403,9 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.accountWithRestoreAccess, name: "accountWithRestoreAccess", parent: name, max: 2147483647)
-            try self.validate(self.snapshotClusterIdentifier, name: "snapshotClusterIdentifier", parent: name, max: 2147483647)
-            try self.validate(self.snapshotIdentifier, name: "snapshotIdentifier", parent: name, max: 2147483647)
+            try self.validate(self.accountWithRestoreAccess, name: "accountWithRestoreAccess", parent: name, max: 2_147_483_647)
+            try self.validate(self.snapshotClusterIdentifier, name: "snapshotClusterIdentifier", parent: name, max: 2_147_483_647)
+            try self.validate(self.snapshotIdentifier, name: "snapshotIdentifier", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -425,7 +416,6 @@ extension Redshift {
     }
 
     public struct AuthorizeSnapshotAccessResult: AWSDecodableShape {
-
         public let snapshot: Snapshot?
 
         public init(snapshot: Snapshot? = nil) {
@@ -438,7 +428,7 @@ extension Redshift {
     }
 
     public struct AvailabilityZone: AWSDecodableShape {
-        public struct _SupportedPlatformsEncoding: ArrayCoderProperties { static public let member = "SupportedPlatform" }
+        public struct _SupportedPlatformsEncoding: ArrayCoderProperties { public static let member = "SupportedPlatform" }
 
         /// The name of the availability zone.
         public let name: String?
@@ -457,7 +447,7 @@ extension Redshift {
     }
 
     public struct BatchDeleteClusterSnapshotsRequest: AWSEncodableShape {
-        public struct _IdentifiersEncoding: ArrayCoderProperties { static public let member = "DeleteClusterSnapshotMessage" }
+        public struct _IdentifiersEncoding: ArrayCoderProperties { public static let member = "DeleteClusterSnapshotMessage" }
 
         /// A list of identifiers for the snapshots that you want to delete.
         @CustomCoding<ArrayCoder<_IdentifiersEncoding, DeleteClusterSnapshotMessage>>
@@ -479,13 +469,13 @@ extension Redshift {
     }
 
     public struct BatchDeleteClusterSnapshotsResult: AWSDecodableShape {
-        public struct _ErrorsEncoding: ArrayCoderProperties { static public let member = "SnapshotErrorMessage" }
-        public struct _ResourcesEncoding: ArrayCoderProperties { static public let member = "String" }
+        public struct _ErrorsEncoding: ArrayCoderProperties { public static let member = "SnapshotErrorMessage" }
+        public struct _ResourcesEncoding: ArrayCoderProperties { public static let member = "String" }
 
         /// A list of any errors returned.
         @OptionalCustomCoding<ArrayCoder<_ErrorsEncoding, SnapshotErrorMessage>>
         public var errors: [SnapshotErrorMessage]?
-        /// A list of the snapshot identifiers that were deleted. 
+        /// A list of the snapshot identifiers that were deleted.
         @OptionalCustomCoding<ArrayCoder<_ResourcesEncoding, String>>
         public var resources: [String]?
 
@@ -501,11 +491,11 @@ extension Redshift {
     }
 
     public struct BatchModifyClusterSnapshotsMessage: AWSEncodableShape {
-        public struct _SnapshotIdentifierListEncoding: ArrayCoderProperties { static public let member = "String" }
+        public struct _SnapshotIdentifierListEncoding: ArrayCoderProperties { public static let member = "String" }
 
-        /// A boolean value indicating whether to override an exception if the retention period has passed. 
+        /// A boolean value indicating whether to override an exception if the retention period has passed.
         public let force: Bool?
-        /// The number of days that a manual snapshot is retained. If you specify the value -1, the manual snapshot is retained indefinitely. The number must be either -1 or an integer between 1 and 3,653. If you decrease the manual snapshot retention period from its current value, existing manual snapshots that fall outside of the new retention period will return an error. If you want to suppress the errors and delete the snapshots, use the force option. 
+        /// The number of days that a manual snapshot is retained. If you specify the value -1, the manual snapshot is retained indefinitely. The number must be either -1 or an integer between 1 and 3,653. If you decrease the manual snapshot retention period from its current value, existing manual snapshots that fall outside of the new retention period will return an error. If you want to suppress the errors and delete the snapshots, use the force option.
         public let manualSnapshotRetentionPeriod: Int?
         /// A list of snapshot identifiers you want to modify.
         @CustomCoding<ArrayCoder<_SnapshotIdentifierListEncoding, String>>
@@ -519,7 +509,7 @@ extension Redshift {
 
         public func validate(name: String) throws {
             try self.snapshotIdentifierList.forEach {
-                try validate($0, name: "snapshotIdentifierList[]", parent: name, max: 2147483647)
+                try validate($0, name: "snapshotIdentifierList[]", parent: name, max: 2_147_483_647)
             }
         }
 
@@ -531,8 +521,8 @@ extension Redshift {
     }
 
     public struct BatchModifyClusterSnapshotsOutputMessage: AWSDecodableShape {
-        public struct _ErrorsEncoding: ArrayCoderProperties { static public let member = "SnapshotErrorMessage" }
-        public struct _ResourcesEncoding: ArrayCoderProperties { static public let member = "String" }
+        public struct _ErrorsEncoding: ArrayCoderProperties { public static let member = "SnapshotErrorMessage" }
+        public struct _ResourcesEncoding: ArrayCoderProperties { public static let member = "String" }
 
         /// A list of any errors returned.
         @OptionalCustomCoding<ArrayCoder<_ErrorsEncoding, SnapshotErrorMessage>>
@@ -553,7 +543,6 @@ extension Redshift {
     }
 
     public struct CancelResizeMessage: AWSEncodableShape {
-
         /// The unique identifier for the cluster that you want to cancel a resize operation for.
         public let clusterIdentifier: String
 
@@ -562,7 +551,7 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2147483647)
+            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -571,14 +560,14 @@ extension Redshift {
     }
 
     public struct Cluster: AWSDecodableShape {
-        public struct _ClusterParameterGroupsEncoding: ArrayCoderProperties { static public let member = "ClusterParameterGroup" }
-        public struct _ClusterSecurityGroupsEncoding: ArrayCoderProperties { static public let member = "ClusterSecurityGroup" }
-        public struct _DeferredMaintenanceWindowsEncoding: ArrayCoderProperties { static public let member = "DeferredMaintenanceWindow" }
-        public struct _IamRolesEncoding: ArrayCoderProperties { static public let member = "ClusterIamRole" }
-        public struct _TagsEncoding: ArrayCoderProperties { static public let member = "Tag" }
-        public struct _VpcSecurityGroupsEncoding: ArrayCoderProperties { static public let member = "VpcSecurityGroup" }
+        public struct _ClusterParameterGroupsEncoding: ArrayCoderProperties { public static let member = "ClusterParameterGroup" }
+        public struct _ClusterSecurityGroupsEncoding: ArrayCoderProperties { public static let member = "ClusterSecurityGroup" }
+        public struct _DeferredMaintenanceWindowsEncoding: ArrayCoderProperties { public static let member = "DeferredMaintenanceWindow" }
+        public struct _IamRolesEncoding: ArrayCoderProperties { public static let member = "ClusterIamRole" }
+        public struct _TagsEncoding: ArrayCoderProperties { public static let member = "Tag" }
+        public struct _VpcSecurityGroupsEncoding: ArrayCoderProperties { public static let member = "VpcSecurityGroup" }
 
-        /// A boolean value that, if true, indicates that major version upgrades will be applied automatically to the cluster during the maintenance window. 
+        /// A boolean value that, if true, indicates that major version upgrades will be applied automatically to the cluster during the maintenance window.
         public let allowVersionUpgrade: Bool?
         /// The AQUA (Advanced Query Accelerator) configuration of the cluster.
         public let aquaConfiguration: AquaConfiguration?
@@ -588,7 +577,7 @@ extension Redshift {
         public let availabilityZone: String?
         /// Describes the status of the Availability Zone relocation operation.
         public let availabilityZoneRelocationStatus: String?
-        /// The availability status of the cluster for queries. Possible values are the following:   Available - The cluster is available for queries.    Unavailable - The cluster is not available for queries.   Maintenance - The cluster is intermittently available for queries due to maintenance activities.   Modifying - The cluster is intermittently available for queries due to changes that modify the cluster.   Failed - The cluster failed and is not available for queries.  
+        /// The availability status of the cluster for queries. Possible values are the following:   Available - The cluster is available for queries.    Unavailable - The cluster is not available for queries.   Maintenance - The cluster is intermittently available for queries due to maintenance activities.   Modifying - The cluster is intermittently available for queries due to changes that modify the cluster.   Failed - The cluster failed and is not available for queries.
         public let clusterAvailabilityStatus: String?
         /// The date and time that the cluster was created.
         public let clusterCreateTime: Date?
@@ -606,26 +595,26 @@ extension Redshift {
         public let clusterPublicKey: String?
         /// The specific revision number of the database in the cluster.
         public let clusterRevisionNumber: String?
-        /// A list of cluster security group that are associated with the cluster. Each security group is represented by an element that contains ClusterSecurityGroup.Name and ClusterSecurityGroup.Status subelements.  Cluster security groups are used when the cluster is not created in an Amazon Virtual Private Cloud (VPC). Clusters that are created in a VPC use VPC security groups, which are listed by the VpcSecurityGroups parameter. 
+        /// A list of cluster security group that are associated with the cluster. Each security group is represented by an element that contains ClusterSecurityGroup.Name and ClusterSecurityGroup.Status subelements.  Cluster security groups are used when the cluster is not created in an Amazon Virtual Private Cloud (VPC). Clusters that are created in a VPC use VPC security groups, which are listed by the VpcSecurityGroups parameter.
         @OptionalCustomCoding<ArrayCoder<_ClusterSecurityGroupsEncoding, ClusterSecurityGroupMembership>>
         public var clusterSecurityGroups: [ClusterSecurityGroupMembership]?
         /// A value that returns the destination region and retention period that are configured for cross-region snapshot copy.
         public let clusterSnapshotCopyStatus: ClusterSnapshotCopyStatus?
-        ///  The current state of the cluster. Possible values are the following:    available     available, prep-for-resize     available, resize-cleanup     cancelling-resize     creating     deleting     final-snapshot     hardware-failure     incompatible-hsm     incompatible-network     incompatible-parameters     incompatible-restore     modifying     paused     rebooting     renaming     resizing     rotating-keys     storage-full     updating-hsm   
+        ///  The current state of the cluster. Possible values are the following:    available     available, prep-for-resize     available, resize-cleanup     cancelling-resize     creating     deleting     final-snapshot     hardware-failure     incompatible-hsm     incompatible-network     incompatible-parameters     incompatible-restore     modifying     paused     rebooting     renaming     resizing     rotating-keys     storage-full     updating-hsm
         public let clusterStatus: String?
         /// The name of the subnet group that is associated with the cluster. This parameter is valid only when the cluster is in a VPC.
         public let clusterSubnetGroupName: String?
         /// The version ID of the Amazon Redshift engine that is running on the cluster.
         public let clusterVersion: String?
         public let dataTransferProgress: DataTransferProgress?
-        /// The name of the initial database that was created when the cluster was created. This same name is returned for the life of the cluster. If an initial database was not specified, a database named devdev was created by default. 
+        /// The name of the initial database that was created when the cluster was created. This same name is returned for the life of the cluster. If an initial database was not specified, a database named devdev was created by default.
         public let dBName: String?
         /// Describes a group of DeferredMaintenanceWindow objects.
         @OptionalCustomCoding<ArrayCoder<_DeferredMaintenanceWindowsEncoding, DeferredMaintenanceWindow>>
         public var deferredMaintenanceWindows: [DeferredMaintenanceWindow]?
         /// The status of the elastic IP (EIP) address.
         public let elasticIpStatus: ElasticIpStatus?
-        /// The number of nodes that you can resize the cluster to with the elastic resize method. 
+        /// The number of nodes that you can resize the cluster to with the elastic resize method.
         public let elasticResizeNumberOfNodeOptions: String?
         /// A boolean value that, if true, indicates that data in the cluster is encrypted at rest.
         public let encrypted: Bool?
@@ -633,9 +622,9 @@ extension Redshift {
         public let endpoint: Endpoint?
         /// An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see Enhanced VPC Routing in the Amazon Redshift Cluster Management Guide. If this option is true, enhanced VPC routing is enabled.  Default: false
         public let enhancedVpcRouting: Bool?
-        /// The date and time when the next snapshot is expected to be taken for clusters with a valid snapshot schedule and backups enabled. 
+        /// The date and time when the next snapshot is expected to be taken for clusters with a valid snapshot schedule and backups enabled.
         public let expectedNextSnapshotScheduleTime: Date?
-        ///  The status of next expected snapshot for clusters having a valid snapshot schedule and backups enabled.  Possible values are the following:   OnTrack - The next snapshot is expected to be taken on time.    Pending - The next snapshot is pending to be taken.   
+        ///  The status of next expected snapshot for clusters having a valid snapshot schedule and backups enabled.  Possible values are the following:   OnTrack - The next snapshot is expected to be taken on time.    Pending - The next snapshot is pending to be taken.
         public let expectedNextSnapshotScheduleTimeStatus: String?
         /// A value that reports whether the Amazon Redshift cluster has finished applying any hardware security module (HSM) settings changes specified in a modify cluster command. Values: active, applying
         public let hsmStatus: HsmStatus?
@@ -648,7 +637,7 @@ extension Redshift {
         public let maintenanceTrackName: String?
         /// The default number of days to retain a manual snapshot. If the value is -1, the snapshot is retained indefinitely. This setting doesn't change the retention period of existing snapshots. The value must be either -1 or an integer between 1 and 3,653.
         public let manualSnapshotRetentionPeriod: Int?
-        /// The admin user name for the cluster. This name is used to connect to the database that is specified in the DBName parameter. 
+        /// The admin user name for the cluster. This name is used to connect to the database that is specified in the DBName parameter.
         public let masterUsername: String?
         /// The status of a modify operation, if any, initiated for the cluster.
         public let modifyStatus: String?
@@ -667,7 +656,7 @@ extension Redshift {
         public let preferredMaintenanceWindow: String?
         /// A boolean value that, if true, indicates that the cluster can be accessed from a public network.
         public let publiclyAccessible: Bool?
-        /// Returns the following:   AllowCancelResize: a boolean value indicating if the resize operation can be cancelled.   ResizeType: Returns ClassicResize  
+        /// Returns the following:   AllowCancelResize: a boolean value indicating if the resize operation can be cancelled.   ResizeType: Returns ClassicResize
         public let resizeInfo: ResizeInfo?
         /// A value that describes the status of a cluster restore action. This parameter returns null if the cluster was not created by restoring a snapshot.
         public let restoreStatus: RestoreStatus?
@@ -678,7 +667,7 @@ extension Redshift {
         /// The list of tags for the cluster.
         @OptionalCustomCoding<ArrayCoder<_TagsEncoding, Tag>>
         public var tags: [Tag]?
-        /// The total storage capacity of the cluster in megabytes. 
+        /// The total storage capacity of the cluster in megabytes.
         public let totalStorageCapacityInMegaBytes: Int64?
         /// The identifier of the VPC the cluster is in, if the cluster is in a VPC.
         public let vpcId: String?
@@ -794,7 +783,6 @@ extension Redshift {
     }
 
     public struct ClusterAssociatedToSchedule: AWSDecodableShape {
-
         public let clusterIdentifier: String?
         public let scheduleAssociationState: ScheduleState?
 
@@ -810,8 +798,7 @@ extension Redshift {
     }
 
     public struct ClusterCredentials: AWSDecodableShape {
-
-        /// A temporary password that authorizes the user name returned by DbUser to log on to the database DbName. 
+        /// A temporary password that authorizes the user name returned by DbUser to log on to the database DbName.
         public let dbPassword: String?
         /// A database user name that is authorized to log on to the database DbName using the password DbPassword. If the specified DbUser exists in the database, the new user name has the same database privileges as the the user named in DbUser. By default, the user is added to PUBLIC. If the DbGroups parameter is specifed, DbUser is added to the listed groups for any sessions created using these credentials.
         public let dbUser: String?
@@ -832,7 +819,7 @@ extension Redshift {
     }
 
     public struct ClusterDbRevision: AWSDecodableShape {
-        public struct _RevisionTargetsEncoding: ArrayCoderProperties { static public let member = "RevisionTarget" }
+        public struct _RevisionTargetsEncoding: ArrayCoderProperties { public static let member = "RevisionTarget" }
 
         /// The unique identifier of the cluster.
         public let clusterIdentifier: String?
@@ -860,7 +847,7 @@ extension Redshift {
     }
 
     public struct ClusterDbRevisionsMessage: AWSDecodableShape {
-        public struct _ClusterDbRevisionsEncoding: ArrayCoderProperties { static public let member = "ClusterDbRevision" }
+        public struct _ClusterDbRevisionsEncoding: ArrayCoderProperties { public static let member = "ClusterDbRevision" }
 
         /// A list of revisions.
         @OptionalCustomCoding<ArrayCoder<_ClusterDbRevisionsEncoding, ClusterDbRevision>>
@@ -880,10 +867,9 @@ extension Redshift {
     }
 
     public struct ClusterIamRole: AWSDecodableShape {
-
-        /// A value that describes the status of the IAM role's association with an Amazon Redshift cluster. The following are possible statuses and descriptions.    in-sync: The role is available for use by the cluster.    adding: The role is in the process of being associated with the cluster.    removing: The role is in the process of being disassociated with the cluster.  
+        /// A value that describes the status of the IAM role's association with an Amazon Redshift cluster. The following are possible statuses and descriptions.    in-sync: The role is available for use by the cluster.    adding: The role is in the process of being associated with the cluster.    removing: The role is in the process of being disassociated with the cluster.
         public let applyStatus: String?
-        /// The Amazon Resource Name (ARN) of the IAM role, for example, arn:aws:iam::123456789012:role/RedshiftCopyUnload. 
+        /// The Amazon Resource Name (ARN) of the IAM role, for example, arn:aws:iam::123456789012:role/RedshiftCopyUnload.
         public let iamRoleArn: String?
 
         public init(applyStatus: String? = nil, iamRoleArn: String? = nil) {
@@ -898,7 +884,6 @@ extension Redshift {
     }
 
     public struct ClusterNode: AWSDecodableShape {
-
         /// Whether the node is a leader node or a compute node.
         public let nodeRole: String?
         /// The private IP address of a node within a cluster.
@@ -920,7 +905,7 @@ extension Redshift {
     }
 
     public struct ClusterParameterGroup: AWSDecodableShape {
-        public struct _TagsEncoding: ArrayCoderProperties { static public let member = "Tag" }
+        public struct _TagsEncoding: ArrayCoderProperties { public static let member = "Tag" }
 
         /// The description of the parameter group.
         public let description: String?
@@ -948,11 +933,11 @@ extension Redshift {
     }
 
     public struct ClusterParameterGroupDetails: AWSDecodableShape {
-        public struct _ParametersEncoding: ArrayCoderProperties { static public let member = "Parameter" }
+        public struct _ParametersEncoding: ArrayCoderProperties { public static let member = "Parameter" }
 
-        /// A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the Marker parameter and retrying the command. If the Marker field is empty, all response records have been retrieved for the request. 
+        /// A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the Marker parameter and retrying the command. If the Marker field is empty, all response records have been retrieved for the request.
         public let marker: String?
-        /// A list of Parameter instances. Each instance lists the parameters of one cluster parameter group. 
+        /// A list of Parameter instances. Each instance lists the parameters of one cluster parameter group.
         @OptionalCustomCoding<ArrayCoder<_ParametersEncoding, Parameter>>
         public var parameters: [Parameter]?
 
@@ -968,7 +953,6 @@ extension Redshift {
     }
 
     public struct ClusterParameterGroupNameMessage: AWSDecodableShape {
-
         /// The name of the cluster parameter group.
         public let parameterGroupName: String?
         /// The status of the parameter group. For example, if you made a change to a parameter group name-value pair, then the change could be pending a reboot of an associated cluster.
@@ -986,10 +970,9 @@ extension Redshift {
     }
 
     public struct ClusterParameterGroupStatus: AWSDecodableShape {
-
-        /// The list of parameter statuses. 
-        /// For more information about parameters and parameter groups, go to 
-        /// Amazon Redshift Parameter Groups 
+        /// The list of parameter statuses.
+        /// For more information about parameters and parameter groups, go to
+        /// Amazon Redshift Parameter Groups
         /// in the Amazon Redshift Cluster Management Guide.
         @OptionalCustomCoding<StandardArrayCoder>
         public var clusterParameterStatusList: [ClusterParameterStatus]?
@@ -1012,11 +995,11 @@ extension Redshift {
     }
 
     public struct ClusterParameterGroupsMessage: AWSDecodableShape {
-        public struct _ParameterGroupsEncoding: ArrayCoderProperties { static public let member = "ClusterParameterGroup" }
+        public struct _ParameterGroupsEncoding: ArrayCoderProperties { public static let member = "ClusterParameterGroup" }
 
-        /// A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the Marker parameter and retrying the command. If the Marker field is empty, all response records have been retrieved for the request. 
+        /// A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the Marker parameter and retrying the command. If the Marker field is empty, all response records have been retrieved for the request.
         public let marker: String?
-        /// A list of ClusterParameterGroup instances. Each instance describes one cluster parameter group. 
+        /// A list of ClusterParameterGroup instances. Each instance describes one cluster parameter group.
         @OptionalCustomCoding<ArrayCoder<_ParameterGroupsEncoding, ClusterParameterGroup>>
         public var parameterGroups: [ClusterParameterGroup]?
 
@@ -1032,10 +1015,9 @@ extension Redshift {
     }
 
     public struct ClusterParameterStatus: AWSDecodableShape {
-
         /// The error that prevented the parameter from being applied to the database.
         public let parameterApplyErrorDescription: String?
-        /// The status of the parameter that indicates whether the parameter is in sync with the database, waiting for a cluster reboot, or encountered an error when being applied. The following are possible statuses and descriptions.    in-sync: The parameter value is in sync with the database.    pending-reboot: The parameter value will be applied after the cluster reboots.    applying: The parameter value is being applied to the database.    invalid-parameter: Cannot apply the parameter value because it has an invalid value or syntax.    apply-deferred: The parameter contains static property changes. The changes are deferred until the cluster reboots.    apply-error: Cannot connect to the cluster. The parameter change will be applied after the cluster reboots.    unknown-error: Cannot apply the parameter change right now. The change will be applied after the cluster reboots.  
+        /// The status of the parameter that indicates whether the parameter is in sync with the database, waiting for a cluster reboot, or encountered an error when being applied. The following are possible statuses and descriptions.    in-sync: The parameter value is in sync with the database.    pending-reboot: The parameter value will be applied after the cluster reboots.    applying: The parameter value is being applied to the database.    invalid-parameter: Cannot apply the parameter value because it has an invalid value or syntax.    apply-deferred: The parameter contains static property changes. The changes are deferred until the cluster reboots.    apply-error: Cannot connect to the cluster. The parameter change will be applied after the cluster reboots.    unknown-error: Cannot apply the parameter change right now. The change will be applied after the cluster reboots.
         public let parameterApplyStatus: String?
         /// The name of the parameter.
         public let parameterName: String?
@@ -1054,9 +1036,9 @@ extension Redshift {
     }
 
     public struct ClusterSecurityGroup: AWSDecodableShape {
-        public struct _EC2SecurityGroupsEncoding: ArrayCoderProperties { static public let member = "EC2SecurityGroup" }
-        public struct _IPRangesEncoding: ArrayCoderProperties { static public let member = "IPRange" }
-        public struct _TagsEncoding: ArrayCoderProperties { static public let member = "Tag" }
+        public struct _EC2SecurityGroupsEncoding: ArrayCoderProperties { public static let member = "EC2SecurityGroup" }
+        public struct _IPRangesEncoding: ArrayCoderProperties { public static let member = "IPRange" }
+        public struct _TagsEncoding: ArrayCoderProperties { public static let member = "Tag" }
 
         /// The name of the cluster security group to which the operation was applied.
         public let clusterSecurityGroupName: String?
@@ -1090,7 +1072,6 @@ extension Redshift {
     }
 
     public struct ClusterSecurityGroupMembership: AWSDecodableShape {
-
         /// The name of the cluster security group.
         public let clusterSecurityGroupName: String?
         /// The status of the cluster security group.
@@ -1108,12 +1089,12 @@ extension Redshift {
     }
 
     public struct ClusterSecurityGroupMessage: AWSDecodableShape {
-        public struct _ClusterSecurityGroupsEncoding: ArrayCoderProperties { static public let member = "ClusterSecurityGroup" }
+        public struct _ClusterSecurityGroupsEncoding: ArrayCoderProperties { public static let member = "ClusterSecurityGroup" }
 
-        /// A list of ClusterSecurityGroup instances. 
+        /// A list of ClusterSecurityGroup instances.
         @OptionalCustomCoding<ArrayCoder<_ClusterSecurityGroupsEncoding, ClusterSecurityGroup>>
         public var clusterSecurityGroups: [ClusterSecurityGroup]?
-        /// A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the Marker parameter and retrying the command. If the Marker field is empty, all response records have been retrieved for the request. 
+        /// A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the Marker parameter and retrying the command. If the Marker field is empty, all response records have been retrieved for the request.
         public let marker: String?
 
         public init(clusterSecurityGroups: [ClusterSecurityGroup]? = nil, marker: String? = nil) {
@@ -1128,7 +1109,6 @@ extension Redshift {
     }
 
     public struct ClusterSnapshotCopyStatus: AWSDecodableShape {
-
         /// The destination region that snapshots are automatically copied to when cross-region snapshot copy is enabled.
         public let destinationRegion: String?
         /// The number of days that automated snapshots are retained in the destination region after they are copied from a source region. If the value is -1, the manual snapshot is retained indefinitely.  The value must be either -1 or an integer between 1 and 3,653.
@@ -1154,16 +1134,16 @@ extension Redshift {
     }
 
     public struct ClusterSubnetGroup: AWSDecodableShape {
-        public struct _SubnetsEncoding: ArrayCoderProperties { static public let member = "Subnet" }
-        public struct _TagsEncoding: ArrayCoderProperties { static public let member = "Tag" }
+        public struct _SubnetsEncoding: ArrayCoderProperties { public static let member = "Subnet" }
+        public struct _TagsEncoding: ArrayCoderProperties { public static let member = "Tag" }
 
         /// The name of the cluster subnet group.
         public let clusterSubnetGroupName: String?
         /// The description of the cluster subnet group.
         public let description: String?
-        /// The status of the cluster subnet group. Possible values are Complete, Incomplete and Invalid. 
+        /// The status of the cluster subnet group. Possible values are Complete, Incomplete and Invalid.
         public let subnetGroupStatus: String?
-        /// A list of the VPC Subnet elements. 
+        /// A list of the VPC Subnet elements.
         @OptionalCustomCoding<ArrayCoder<_SubnetsEncoding, Subnet>>
         public var subnets: [Subnet]?
         /// The list of tags for the cluster subnet group.
@@ -1192,12 +1172,12 @@ extension Redshift {
     }
 
     public struct ClusterSubnetGroupMessage: AWSDecodableShape {
-        public struct _ClusterSubnetGroupsEncoding: ArrayCoderProperties { static public let member = "ClusterSubnetGroup" }
+        public struct _ClusterSubnetGroupsEncoding: ArrayCoderProperties { public static let member = "ClusterSubnetGroup" }
 
-        /// A list of ClusterSubnetGroup instances. 
+        /// A list of ClusterSubnetGroup instances.
         @OptionalCustomCoding<ArrayCoder<_ClusterSubnetGroupsEncoding, ClusterSubnetGroup>>
         public var clusterSubnetGroups: [ClusterSubnetGroup]?
-        /// A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the Marker parameter and retrying the command. If the Marker field is empty, all response records have been retrieved for the request. 
+        /// A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the Marker parameter and retrying the command. If the Marker field is empty, all response records have been retrieved for the request.
         public let marker: String?
 
         public init(clusterSubnetGroups: [ClusterSubnetGroup]? = nil, marker: String? = nil) {
@@ -1212,7 +1192,6 @@ extension Redshift {
     }
 
     public struct ClusterVersion: AWSDecodableShape {
-
         /// The name of the cluster parameter group family for the cluster.
         public let clusterParameterGroupFamily: String?
         /// The version number used by the cluster.
@@ -1234,12 +1213,12 @@ extension Redshift {
     }
 
     public struct ClusterVersionsMessage: AWSDecodableShape {
-        public struct _ClusterVersionsEncoding: ArrayCoderProperties { static public let member = "ClusterVersion" }
+        public struct _ClusterVersionsEncoding: ArrayCoderProperties { public static let member = "ClusterVersion" }
 
-        /// A list of Version elements. 
+        /// A list of Version elements.
         @OptionalCustomCoding<ArrayCoder<_ClusterVersionsEncoding, ClusterVersion>>
         public var clusterVersions: [ClusterVersion]?
-        /// A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the Marker parameter and retrying the command. If the Marker field is empty, all response records have been retrieved for the request. 
+        /// A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the Marker parameter and retrying the command. If the Marker field is empty, all response records have been retrieved for the request.
         public let marker: String?
 
         public init(clusterVersions: [ClusterVersion]? = nil, marker: String? = nil) {
@@ -1254,12 +1233,12 @@ extension Redshift {
     }
 
     public struct ClustersMessage: AWSDecodableShape {
-        public struct _ClustersEncoding: ArrayCoderProperties { static public let member = "Cluster" }
+        public struct _ClustersEncoding: ArrayCoderProperties { public static let member = "Cluster" }
 
-        /// A list of Cluster objects, where each object describes one cluster. 
+        /// A list of Cluster objects, where each object describes one cluster.
         @OptionalCustomCoding<ArrayCoder<_ClustersEncoding, Cluster>>
         public var clusters: [Cluster]?
-        /// A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the Marker parameter and retrying the command. If the Marker field is empty, all response records have been retrieved for the request. 
+        /// A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the Marker parameter and retrying the command. If the Marker field is empty, all response records have been retrieved for the request.
         public let marker: String?
 
         public init(clusters: [Cluster]? = nil, marker: String? = nil) {
@@ -1274,14 +1253,13 @@ extension Redshift {
     }
 
     public struct CopyClusterSnapshotMessage: AWSEncodableShape {
-
         /// The number of days that a manual snapshot is retained. If the value is -1, the manual snapshot is retained indefinitely.  The value must be either -1 or an integer between 1 and 3,653. The default value is -1.
         public let manualSnapshotRetentionPeriod: Int?
-        /// The identifier of the cluster the source snapshot was created from. This parameter is required if your IAM user has a policy containing a snapshot resource element that specifies anything other than * for the cluster name. Constraints:   Must be the identifier for a valid cluster.  
+        /// The identifier of the cluster the source snapshot was created from. This parameter is required if your IAM user has a policy containing a snapshot resource element that specifies anything other than * for the cluster name. Constraints:   Must be the identifier for a valid cluster.
         public let sourceSnapshotClusterIdentifier: String?
-        /// The identifier for the source snapshot. Constraints:   Must be the identifier for a valid automated snapshot whose state is available.  
+        /// The identifier for the source snapshot. Constraints:   Must be the identifier for a valid automated snapshot whose state is available.
         public let sourceSnapshotIdentifier: String
-        /// The identifier given to the new manual snapshot. Constraints:   Cannot be null, empty, or blank.   Must contain from 1 to 255 alphanumeric characters or hyphens.   First character must be a letter.   Cannot end with a hyphen or contain two consecutive hyphens.   Must be unique for the account that is making the request.  
+        /// The identifier given to the new manual snapshot. Constraints:   Cannot be null, empty, or blank.   Must contain from 1 to 255 alphanumeric characters or hyphens.   First character must be a letter.   Cannot end with a hyphen or contain two consecutive hyphens.   Must be unique for the account that is making the request.
         public let targetSnapshotIdentifier: String
 
         public init(manualSnapshotRetentionPeriod: Int? = nil, sourceSnapshotClusterIdentifier: String? = nil, sourceSnapshotIdentifier: String, targetSnapshotIdentifier: String) {
@@ -1292,9 +1270,9 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.sourceSnapshotClusterIdentifier, name: "sourceSnapshotClusterIdentifier", parent: name, max: 2147483647)
-            try self.validate(self.sourceSnapshotIdentifier, name: "sourceSnapshotIdentifier", parent: name, max: 2147483647)
-            try self.validate(self.targetSnapshotIdentifier, name: "targetSnapshotIdentifier", parent: name, max: 2147483647)
+            try self.validate(self.sourceSnapshotClusterIdentifier, name: "sourceSnapshotClusterIdentifier", parent: name, max: 2_147_483_647)
+            try self.validate(self.sourceSnapshotIdentifier, name: "sourceSnapshotIdentifier", parent: name, max: 2_147_483_647)
+            try self.validate(self.targetSnapshotIdentifier, name: "targetSnapshotIdentifier", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -1306,7 +1284,6 @@ extension Redshift {
     }
 
     public struct CopyClusterSnapshotResult: AWSDecodableShape {
-
         public let snapshot: Snapshot?
 
         public init(snapshot: Snapshot? = nil) {
@@ -1319,7 +1296,6 @@ extension Redshift {
     }
 
     public struct CreateAuthenticationProfileMessage: AWSEncodableShape {
-
         /// The content of the authentication profile in JSON format.  The maximum length of the JSON string is determined by a quota for your account.
         public let authenticationProfileContent: String
         /// The name of the authentication profile to be created.
@@ -1331,7 +1307,7 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.authenticationProfileContent, name: "authenticationProfileContent", parent: name, max: 2147483647)
+            try self.validate(self.authenticationProfileContent, name: "authenticationProfileContent", parent: name, max: 2_147_483_647)
             try self.validate(self.authenticationProfileName, name: "authenticationProfileName", parent: name, max: 63)
             try self.validate(self.authenticationProfileName, name: "authenticationProfileName", parent: name, pattern: "^[a-zA-Z0-9\\-]+$")
         }
@@ -1343,7 +1319,6 @@ extension Redshift {
     }
 
     public struct CreateAuthenticationProfileResult: AWSDecodableShape {
-
         /// The content of the authentication profile in JSON format.
         public let authenticationProfileContent: String?
         /// The name of the authentication profile that was created.
@@ -1361,16 +1336,16 @@ extension Redshift {
     }
 
     public struct CreateClusterMessage: AWSEncodableShape {
-        public struct _ClusterSecurityGroupsEncoding: ArrayCoderProperties { static public let member = "ClusterSecurityGroupName" }
-        public struct _IamRolesEncoding: ArrayCoderProperties { static public let member = "IamRoleArn" }
-        public struct _TagsEncoding: ArrayCoderProperties { static public let member = "Tag" }
-        public struct _VpcSecurityGroupIdsEncoding: ArrayCoderProperties { static public let member = "VpcSecurityGroupId" }
+        public struct _ClusterSecurityGroupsEncoding: ArrayCoderProperties { public static let member = "ClusterSecurityGroupName" }
+        public struct _IamRolesEncoding: ArrayCoderProperties { public static let member = "IamRoleArn" }
+        public struct _TagsEncoding: ArrayCoderProperties { public static let member = "Tag" }
+        public struct _VpcSecurityGroupIdsEncoding: ArrayCoderProperties { public static let member = "VpcSecurityGroupId" }
 
         /// Reserved.
         public let additionalInfo: String?
-        /// If true, major version upgrades can be applied during the maintenance window to the Amazon Redshift engine that is running on the cluster. When a new major version of the Amazon Redshift engine is released, you can request that the service automatically apply upgrades during the maintenance window to the Amazon Redshift engine that is running on your cluster. Default: true 
+        /// If true, major version upgrades can be applied during the maintenance window to the Amazon Redshift engine that is running on the cluster. When a new major version of the Amazon Redshift engine is released, you can request that the service automatically apply upgrades during the maintenance window to the Amazon Redshift engine that is running on your cluster. Default: true
         public let allowVersionUpgrade: Bool?
-        /// The value represents how the cluster is configured to use AQUA (Advanced Query Accelerator) when it is created. Possible values include the following.   enabled - Use AQUA if it is available for the current Region and Amazon Redshift node type.   disabled - Don't use AQUA.    auto - Amazon Redshift determines whether to use AQUA.  
+        /// The value represents how the cluster is configured to use AQUA (Advanced Query Accelerator) when it is created. Possible values include the following.   enabled - Use AQUA if it is available for the current Region and Amazon Redshift node type.   disabled - Don't use AQUA.    auto - Amazon Redshift determines whether to use AQUA.
         public let aquaConfigurationStatus: AquaConfigurationStatus?
         /// The number of days that automated snapshots are retained. If the value is 0, automated snapshots are disabled. Even if automated snapshots are disabled, you can still create manual snapshots when you want with CreateClusterSnapshot.   You can't disable automated snapshots for RA3 node types. Set the automated retention period from 1-35 days. Default: 1  Constraints: Must be a value from 0 to 35.
         public let automatedSnapshotRetentionPeriod: Int?
@@ -1378,21 +1353,21 @@ extension Redshift {
         public let availabilityZone: String?
         /// The option to enable relocation for an Amazon Redshift cluster between Availability Zones after the cluster is created.
         public let availabilityZoneRelocation: Bool?
-        /// A unique identifier for the cluster. You use this identifier to refer to the cluster for any subsequent cluster operations such as deleting or modifying. The identifier also appears in the Amazon Redshift console.  Constraints:   Must contain from 1 to 63 alphanumeric characters or hyphens.   Alphabetic characters must be lowercase.   First character must be a letter.   Cannot end with a hyphen or contain two consecutive hyphens.   Must be unique for all clusters within an account.  
-        ///  Example: myexamplecluster 
+        /// A unique identifier for the cluster. You use this identifier to refer to the cluster for any subsequent cluster operations such as deleting or modifying. The identifier also appears in the Amazon Redshift console.  Constraints:   Must contain from 1 to 63 alphanumeric characters or hyphens.   Alphabetic characters must be lowercase.   First character must be a letter.   Cannot end with a hyphen or contain two consecutive hyphens.   Must be unique for all clusters within an account.
+        ///  Example: myexamplecluster
         public let clusterIdentifier: String
-        /// The name of the parameter group to be associated with this cluster. Default: The default Amazon Redshift cluster parameter group. For information about the default parameter group, go to Working with Amazon Redshift Parameter Groups  Constraints:   Must be 1 to 255 alphanumeric characters or hyphens.   First character must be a letter.   Cannot end with a hyphen or contain two consecutive hyphens.  
+        /// The name of the parameter group to be associated with this cluster. Default: The default Amazon Redshift cluster parameter group. For information about the default parameter group, go to Working with Amazon Redshift Parameter Groups  Constraints:   Must be 1 to 255 alphanumeric characters or hyphens.   First character must be a letter.   Cannot end with a hyphen or contain two consecutive hyphens.
         public let clusterParameterGroupName: String?
         /// A list of security groups to be associated with this cluster. Default: The default cluster security group for Amazon Redshift.
         @OptionalCustomCoding<ArrayCoder<_ClusterSecurityGroupsEncoding, String>>
         public var clusterSecurityGroups: [String]?
         /// The name of a cluster subnet group to be associated with this cluster. If this parameter is not provided the resulting cluster will be deployed outside virtual private cloud (VPC).
         public let clusterSubnetGroupName: String?
-        /// The type of the cluster. When cluster type is specified as    single-node, the NumberOfNodes parameter is not required.    multi-node, the NumberOfNodes parameter is required.   Valid Values: multi-node | single-node  Default: multi-node 
+        /// The type of the cluster. When cluster type is specified as    single-node, the NumberOfNodes parameter is not required.    multi-node, the NumberOfNodes parameter is required.   Valid Values: multi-node | single-node  Default: multi-node
         public let clusterType: String?
-        /// The version of the Amazon Redshift engine software that you want to deploy on the cluster. The version selected runs on all the nodes in the cluster. Constraints: Only version 1.0 is currently available. Example: 1.0 
+        /// The version of the Amazon Redshift engine software that you want to deploy on the cluster. The version selected runs on all the nodes in the cluster. Constraints: Only version 1.0 is currently available. Example: 1.0
         public let clusterVersion: String?
-        /// The name of the first database to be created when the cluster is created. To create additional databases after the cluster is created, connect to the cluster with a SQL client and use SQL commands to create a database. For more information, go to Create a Database in the Amazon Redshift Database Developer Guide.  Default: dev  Constraints:   Must contain 1 to 64 alphanumeric characters.   Must contain only lowercase letters.   Cannot be a word that is reserved by the service. A list of reserved words can be found in Reserved Words in the Amazon Redshift Database Developer Guide.   
+        /// The name of the first database to be created when the cluster is created. To create additional databases after the cluster is created, connect to the cluster with a SQL client and use SQL commands to create a database. For more information, go to Create a Database in the Amazon Redshift Database Developer Guide.  Default: dev  Constraints:   Must contain 1 to 64 alphanumeric characters.   Must contain only lowercase letters.   Cannot be a word that is reserved by the service. A list of reserved words can be found in Reserved Words in the Amazon Redshift Database Developer Guide.
         public let dBName: String?
         /// The Elastic IP (EIP) address for the cluster. Constraints: The cluster must be provisioned in EC2-VPC and publicly-accessible through an Internet gateway. For more information about provisioning clusters in EC2-VPC, go to Supported Platforms to Launch Your Cluster in the Amazon Redshift Cluster Management Guide.
         public let elasticIp: String?
@@ -1413,20 +1388,20 @@ extension Redshift {
         public let maintenanceTrackName: String?
         /// The default number of days to retain a manual snapshot. If the value is -1, the snapshot is retained indefinitely. This setting doesn't change the retention period of existing snapshots. The value must be either -1 or an integer between 1 and 3,653.
         public let manualSnapshotRetentionPeriod: Int?
-        /// The user name associated with the admin user account for the cluster that is being created. Constraints:   Must be 1 - 128 alphanumeric characters. The user name can't be PUBLIC.   First character must be a letter.  
-        ///  Cannot be a reserved word. A list of reserved words can be found in Reserved Words in the Amazon Redshift Database Developer Guide.   
+        /// The user name associated with the admin user account for the cluster that is being created. Constraints:   Must be 1 - 128 alphanumeric characters. The user name can't be PUBLIC.   First character must be a letter.
+        ///  Cannot be a reserved word. A list of reserved words can be found in Reserved Words in the Amazon Redshift Database Developer Guide.
         public let masterUsername: String
-        /// The password associated with the admin user account for the cluster that is being created. Constraints:   Must be between 8 and 64 characters in length.   Must contain at least one uppercase letter.   Must contain at least one lowercase letter.   Must contain one number.   Can be any printable ASCII character (ASCII code 33 to 126) except ' (single quote), " (double quote), \, /, @, or space.  
+        /// The password associated with the admin user account for the cluster that is being created. Constraints:   Must be between 8 and 64 characters in length.   Must contain at least one uppercase letter.   Must contain at least one lowercase letter.   Must contain one number.   Can be any printable ASCII character (ASCII code 33 to 126) except ' (single quote), " (double quote), \, /, @, or space.
         public let masterUserPassword: String
-        /// The node type to be provisioned for the cluster. For information about node types, go to  Working with Clusters in the Amazon Redshift Cluster Management Guide.  Valid Values: ds2.xlarge | ds2.8xlarge | dc1.large | dc1.8xlarge |  dc2.large | dc2.8xlarge |  ra3.xlplus |  ra3.4xlarge | ra3.16xlarge 
+        /// The node type to be provisioned for the cluster. For information about node types, go to  Working with Clusters in the Amazon Redshift Cluster Management Guide.  Valid Values: ds2.xlarge | ds2.8xlarge | dc1.large | dc1.8xlarge |  dc2.large | dc2.8xlarge |  ra3.xlplus |  ra3.4xlarge | ra3.16xlarge
         public let nodeType: String
         /// The number of compute nodes in the cluster. This parameter is required when the ClusterType parameter is specified as multi-node.  For information about determining how many nodes you need, go to  Working with Clusters in the Amazon Redshift Cluster Management Guide.  If you don't specify this parameter, you get a single-node cluster. When requesting a multi-node cluster, you must specify the number of nodes that you want in the cluster. Default: 1  Constraints: Value must be at least 1 and no more than 100.
         public let numberOfNodes: Int?
-        /// The port number on which the cluster accepts incoming connections. The cluster is accessible only via the JDBC and ODBC connection strings. Part of the connection string requires the port on which the cluster will listen for incoming connections. Default: 5439  Valid Values: 1150-65535 
+        /// The port number on which the cluster accepts incoming connections. The cluster is accessible only via the JDBC and ODBC connection strings. Part of the connection string requires the port on which the cluster will listen for incoming connections. Default: 5439  Valid Values: 1150-65535
         public let port: Int?
         /// The weekly time range (in UTC) during which automated cluster maintenance can occur. Format: ddd:hh24:mi-ddd:hh24:mi  Default: A 30-minute window selected at random from an 8-hour block of time per region, occurring on a random day of the week. For more information about the time blocks for each region, see Maintenance Windows in Amazon Redshift Cluster Management Guide. Valid Days: Mon | Tue | Wed | Thu | Fri | Sat | Sun Constraints: Minimum 30-minute window.
         public let preferredMaintenanceWindow: String?
-        /// If true, the cluster can be accessed from a public network. 
+        /// If true, the cluster can be accessed from a public network.
         public let publiclyAccessible: Bool?
         /// A unique identifier for the snapshot schedule.
         public let snapshotScheduleIdentifier: String?
@@ -1473,35 +1448,35 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.additionalInfo, name: "additionalInfo", parent: name, max: 2147483647)
-            try self.validate(self.availabilityZone, name: "availabilityZone", parent: name, max: 2147483647)
-            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2147483647)
-            try self.validate(self.clusterParameterGroupName, name: "clusterParameterGroupName", parent: name, max: 2147483647)
+            try self.validate(self.additionalInfo, name: "additionalInfo", parent: name, max: 2_147_483_647)
+            try self.validate(self.availabilityZone, name: "availabilityZone", parent: name, max: 2_147_483_647)
+            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2_147_483_647)
+            try self.validate(self.clusterParameterGroupName, name: "clusterParameterGroupName", parent: name, max: 2_147_483_647)
             try self.clusterSecurityGroups?.forEach {
-                try validate($0, name: "clusterSecurityGroups[]", parent: name, max: 2147483647)
+                try validate($0, name: "clusterSecurityGroups[]", parent: name, max: 2_147_483_647)
             }
-            try self.validate(self.clusterSubnetGroupName, name: "clusterSubnetGroupName", parent: name, max: 2147483647)
-            try self.validate(self.clusterType, name: "clusterType", parent: name, max: 2147483647)
-            try self.validate(self.clusterVersion, name: "clusterVersion", parent: name, max: 2147483647)
-            try self.validate(self.dBName, name: "dBName", parent: name, max: 2147483647)
-            try self.validate(self.elasticIp, name: "elasticIp", parent: name, max: 2147483647)
-            try self.validate(self.hsmClientCertificateIdentifier, name: "hsmClientCertificateIdentifier", parent: name, max: 2147483647)
-            try self.validate(self.hsmConfigurationIdentifier, name: "hsmConfigurationIdentifier", parent: name, max: 2147483647)
+            try self.validate(self.clusterSubnetGroupName, name: "clusterSubnetGroupName", parent: name, max: 2_147_483_647)
+            try self.validate(self.clusterType, name: "clusterType", parent: name, max: 2_147_483_647)
+            try self.validate(self.clusterVersion, name: "clusterVersion", parent: name, max: 2_147_483_647)
+            try self.validate(self.dBName, name: "dBName", parent: name, max: 2_147_483_647)
+            try self.validate(self.elasticIp, name: "elasticIp", parent: name, max: 2_147_483_647)
+            try self.validate(self.hsmClientCertificateIdentifier, name: "hsmClientCertificateIdentifier", parent: name, max: 2_147_483_647)
+            try self.validate(self.hsmConfigurationIdentifier, name: "hsmConfigurationIdentifier", parent: name, max: 2_147_483_647)
             try self.iamRoles?.forEach {
-                try validate($0, name: "iamRoles[]", parent: name, max: 2147483647)
+                try validate($0, name: "iamRoles[]", parent: name, max: 2_147_483_647)
             }
-            try self.validate(self.kmsKeyId, name: "kmsKeyId", parent: name, max: 2147483647)
-            try self.validate(self.maintenanceTrackName, name: "maintenanceTrackName", parent: name, max: 2147483647)
-            try self.validate(self.masterUsername, name: "masterUsername", parent: name, max: 2147483647)
-            try self.validate(self.masterUserPassword, name: "masterUserPassword", parent: name, max: 2147483647)
-            try self.validate(self.nodeType, name: "nodeType", parent: name, max: 2147483647)
-            try self.validate(self.preferredMaintenanceWindow, name: "preferredMaintenanceWindow", parent: name, max: 2147483647)
-            try self.validate(self.snapshotScheduleIdentifier, name: "snapshotScheduleIdentifier", parent: name, max: 2147483647)
+            try self.validate(self.kmsKeyId, name: "kmsKeyId", parent: name, max: 2_147_483_647)
+            try self.validate(self.maintenanceTrackName, name: "maintenanceTrackName", parent: name, max: 2_147_483_647)
+            try self.validate(self.masterUsername, name: "masterUsername", parent: name, max: 2_147_483_647)
+            try self.validate(self.masterUserPassword, name: "masterUserPassword", parent: name, max: 2_147_483_647)
+            try self.validate(self.nodeType, name: "nodeType", parent: name, max: 2_147_483_647)
+            try self.validate(self.preferredMaintenanceWindow, name: "preferredMaintenanceWindow", parent: name, max: 2_147_483_647)
+            try self.validate(self.snapshotScheduleIdentifier, name: "snapshotScheduleIdentifier", parent: name, max: 2_147_483_647)
             try self.tags?.forEach {
                 try $0.validate(name: "\(name).tags[]")
             }
             try self.vpcSecurityGroupIds?.forEach {
-                try validate($0, name: "vpcSecurityGroupIds[]", parent: name, max: 2147483647)
+                try validate($0, name: "vpcSecurityGroupIds[]", parent: name, max: 2_147_483_647)
             }
         }
 
@@ -1542,13 +1517,13 @@ extension Redshift {
     }
 
     public struct CreateClusterParameterGroupMessage: AWSEncodableShape {
-        public struct _TagsEncoding: ArrayCoderProperties { static public let member = "Tag" }
+        public struct _TagsEncoding: ArrayCoderProperties { public static let member = "Tag" }
 
         /// A description of the parameter group.
         public let description: String
-        /// The Amazon Redshift engine version to which the cluster parameter group applies. The cluster engine version determines the set of parameters. To get a list of valid parameter group family names, you can call DescribeClusterParameterGroups. By default, Amazon Redshift returns a list of all the parameter groups that are owned by your account, including the default parameter groups for each Amazon Redshift engine version. The parameter group family names associated with the default parameter groups provide you the valid values. For example, a valid family name is "redshift-1.0". 
+        /// The Amazon Redshift engine version to which the cluster parameter group applies. The cluster engine version determines the set of parameters. To get a list of valid parameter group family names, you can call DescribeClusterParameterGroups. By default, Amazon Redshift returns a list of all the parameter groups that are owned by your account, including the default parameter groups for each Amazon Redshift engine version. The parameter group family names associated with the default parameter groups provide you the valid values. For example, a valid family name is "redshift-1.0".
         public let parameterGroupFamily: String
-        /// The name of the cluster parameter group. Constraints:   Must be 1 to 255 alphanumeric characters or hyphens   First character must be a letter.   Cannot end with a hyphen or contain two consecutive hyphens.   Must be unique withing your account.    This value is stored as a lower-case string. 
+        /// The name of the cluster parameter group. Constraints:   Must be 1 to 255 alphanumeric characters or hyphens   First character must be a letter.   Cannot end with a hyphen or contain two consecutive hyphens.   Must be unique withing your account.    This value is stored as a lower-case string.
         public let parameterGroupName: String
         /// A list of tag instances.
         @OptionalCustomCoding<ArrayCoder<_TagsEncoding, Tag>>
@@ -1562,9 +1537,9 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.description, name: "description", parent: name, max: 2147483647)
-            try self.validate(self.parameterGroupFamily, name: "parameterGroupFamily", parent: name, max: 2147483647)
-            try self.validate(self.parameterGroupName, name: "parameterGroupName", parent: name, max: 2147483647)
+            try self.validate(self.description, name: "description", parent: name, max: 2_147_483_647)
+            try self.validate(self.parameterGroupFamily, name: "parameterGroupFamily", parent: name, max: 2_147_483_647)
+            try self.validate(self.parameterGroupName, name: "parameterGroupName", parent: name, max: 2_147_483_647)
             try self.tags?.forEach {
                 try $0.validate(name: "\(name).tags[]")
             }
@@ -1579,7 +1554,6 @@ extension Redshift {
     }
 
     public struct CreateClusterParameterGroupResult: AWSDecodableShape {
-
         public let clusterParameterGroup: ClusterParameterGroup?
 
         public init(clusterParameterGroup: ClusterParameterGroup? = nil) {
@@ -1592,7 +1566,6 @@ extension Redshift {
     }
 
     public struct CreateClusterResult: AWSDecodableShape {
-
         public let cluster: Cluster?
 
         public init(cluster: Cluster? = nil) {
@@ -1605,9 +1578,9 @@ extension Redshift {
     }
 
     public struct CreateClusterSecurityGroupMessage: AWSEncodableShape {
-        public struct _TagsEncoding: ArrayCoderProperties { static public let member = "Tag" }
+        public struct _TagsEncoding: ArrayCoderProperties { public static let member = "Tag" }
 
-        /// The name for the security group. Amazon Redshift stores the value as a lowercase string. Constraints:   Must contain no more than 255 alphanumeric characters or hyphens.   Must not be "Default".   Must be unique for all security groups that are created by your account.   Example: examplesecuritygroup 
+        /// The name for the security group. Amazon Redshift stores the value as a lowercase string. Constraints:   Must contain no more than 255 alphanumeric characters or hyphens.   Must not be "Default".   Must be unique for all security groups that are created by your account.   Example: examplesecuritygroup
         public let clusterSecurityGroupName: String
         /// A description for the security group.
         public let description: String
@@ -1622,8 +1595,8 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.clusterSecurityGroupName, name: "clusterSecurityGroupName", parent: name, max: 2147483647)
-            try self.validate(self.description, name: "description", parent: name, max: 2147483647)
+            try self.validate(self.clusterSecurityGroupName, name: "clusterSecurityGroupName", parent: name, max: 2_147_483_647)
+            try self.validate(self.description, name: "description", parent: name, max: 2_147_483_647)
             try self.tags?.forEach {
                 try $0.validate(name: "\(name).tags[]")
             }
@@ -1637,7 +1610,6 @@ extension Redshift {
     }
 
     public struct CreateClusterSecurityGroupResult: AWSDecodableShape {
-
         public let clusterSecurityGroup: ClusterSecurityGroup?
 
         public init(clusterSecurityGroup: ClusterSecurityGroup? = nil) {
@@ -1650,15 +1622,15 @@ extension Redshift {
     }
 
     public struct CreateClusterSnapshotMessage: AWSEncodableShape {
-        public struct _TagsEncoding: ArrayCoderProperties { static public let member = "Tag" }
+        public struct _TagsEncoding: ArrayCoderProperties { public static let member = "Tag" }
 
         /// The cluster identifier for which you want a snapshot.
         public let clusterIdentifier: String
-        /// The number of days that a manual snapshot is retained. If the value is -1, the manual snapshot is retained indefinitely. 
+        /// The number of days that a manual snapshot is retained. If the value is -1, the manual snapshot is retained indefinitely.
         ///  The value must be either -1 or an integer between 1 and 3,653.
         ///  The default value is -1.
         public let manualSnapshotRetentionPeriod: Int?
-        /// A unique identifier for the snapshot that you are requesting. This identifier must be unique for all snapshots within the account. Constraints:   Cannot be null, empty, or blank   Must contain from 1 to 255 alphanumeric characters or hyphens   First character must be a letter   Cannot end with a hyphen or contain two consecutive hyphens   Example: my-snapshot-id 
+        /// A unique identifier for the snapshot that you are requesting. This identifier must be unique for all snapshots within the account. Constraints:   Cannot be null, empty, or blank   Must contain from 1 to 255 alphanumeric characters or hyphens   First character must be a letter   Cannot end with a hyphen or contain two consecutive hyphens   Example: my-snapshot-id
         public let snapshotIdentifier: String
         /// A list of tag instances.
         @OptionalCustomCoding<ArrayCoder<_TagsEncoding, Tag>>
@@ -1672,8 +1644,8 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2147483647)
-            try self.validate(self.snapshotIdentifier, name: "snapshotIdentifier", parent: name, max: 2147483647)
+            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2_147_483_647)
+            try self.validate(self.snapshotIdentifier, name: "snapshotIdentifier", parent: name, max: 2_147_483_647)
             try self.tags?.forEach {
                 try $0.validate(name: "\(name).tags[]")
             }
@@ -1688,7 +1660,6 @@ extension Redshift {
     }
 
     public struct CreateClusterSnapshotResult: AWSDecodableShape {
-
         public let snapshot: Snapshot?
 
         public init(snapshot: Snapshot? = nil) {
@@ -1701,10 +1672,10 @@ extension Redshift {
     }
 
     public struct CreateClusterSubnetGroupMessage: AWSEncodableShape {
-        public struct _SubnetIdsEncoding: ArrayCoderProperties { static public let member = "SubnetIdentifier" }
-        public struct _TagsEncoding: ArrayCoderProperties { static public let member = "Tag" }
+        public struct _SubnetIdsEncoding: ArrayCoderProperties { public static let member = "SubnetIdentifier" }
+        public struct _TagsEncoding: ArrayCoderProperties { public static let member = "Tag" }
 
-        /// The name for the subnet group. Amazon Redshift stores the value as a lowercase string. Constraints:   Must contain no more than 255 alphanumeric characters or hyphens.   Must not be "Default".   Must be unique for all subnet groups that are created by your account.   Example: examplesubnetgroup 
+        /// The name for the subnet group. Amazon Redshift stores the value as a lowercase string. Constraints:   Must contain no more than 255 alphanumeric characters or hyphens.   Must not be "Default".   Must be unique for all subnet groups that are created by your account.   Example: examplesubnetgroup
         public let clusterSubnetGroupName: String
         /// A description for the subnet group.
         public let description: String
@@ -1723,10 +1694,10 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.clusterSubnetGroupName, name: "clusterSubnetGroupName", parent: name, max: 2147483647)
-            try self.validate(self.description, name: "description", parent: name, max: 2147483647)
+            try self.validate(self.clusterSubnetGroupName, name: "clusterSubnetGroupName", parent: name, max: 2_147_483_647)
+            try self.validate(self.description, name: "description", parent: name, max: 2_147_483_647)
             try self.subnetIds.forEach {
-                try validate($0, name: "subnetIds[]", parent: name, max: 2147483647)
+                try validate($0, name: "subnetIds[]", parent: name, max: 2_147_483_647)
             }
             try self.tags?.forEach {
                 try $0.validate(name: "\(name).tags[]")
@@ -1742,7 +1713,6 @@ extension Redshift {
     }
 
     public struct CreateClusterSubnetGroupResult: AWSDecodableShape {
-
         public let clusterSubnetGroup: ClusterSubnetGroup?
 
         public init(clusterSubnetGroup: ClusterSubnetGroup? = nil) {
@@ -1755,7 +1725,7 @@ extension Redshift {
     }
 
     public struct CreateEndpointAccessMessage: AWSEncodableShape {
-        public struct _VpcSecurityGroupIdsEncoding: ArrayCoderProperties { static public let member = "VpcSecurityGroupId" }
+        public struct _VpcSecurityGroupIdsEncoding: ArrayCoderProperties { public static let member = "VpcSecurityGroupId" }
 
         /// The cluster identifier of the cluster to access.
         public let clusterIdentifier: String?
@@ -1778,12 +1748,12 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2147483647)
-            try self.validate(self.endpointName, name: "endpointName", parent: name, max: 2147483647)
-            try self.validate(self.resourceOwner, name: "resourceOwner", parent: name, max: 2147483647)
-            try self.validate(self.subnetGroupName, name: "subnetGroupName", parent: name, max: 2147483647)
+            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2_147_483_647)
+            try self.validate(self.endpointName, name: "endpointName", parent: name, max: 2_147_483_647)
+            try self.validate(self.resourceOwner, name: "resourceOwner", parent: name, max: 2_147_483_647)
+            try self.validate(self.subnetGroupName, name: "subnetGroupName", parent: name, max: 2_147_483_647)
             try self.vpcSecurityGroupIds?.forEach {
-                try validate($0, name: "vpcSecurityGroupIds[]", parent: name, max: 2147483647)
+                try validate($0, name: "vpcSecurityGroupIds[]", parent: name, max: 2_147_483_647)
             }
         }
 
@@ -1797,11 +1767,11 @@ extension Redshift {
     }
 
     public struct CreateEventSubscriptionMessage: AWSEncodableShape {
-        public struct _EventCategoriesEncoding: ArrayCoderProperties { static public let member = "EventCategory" }
-        public struct _SourceIdsEncoding: ArrayCoderProperties { static public let member = "SourceId" }
-        public struct _TagsEncoding: ArrayCoderProperties { static public let member = "Tag" }
+        public struct _EventCategoriesEncoding: ArrayCoderProperties { public static let member = "EventCategory" }
+        public struct _SourceIdsEncoding: ArrayCoderProperties { public static let member = "SourceId" }
+        public struct _TagsEncoding: ArrayCoderProperties { public static let member = "Tag" }
 
-        /// A boolean value; set to true to activate the subscription, and set to false to create the subscription but not activate it. 
+        /// A boolean value; set to true to activate the subscription, and set to false to create the subscription but not activate it.
         public let enabled: Bool?
         /// Specifies the Amazon Redshift event categories to be published by the event notification subscription. Values: configuration, management, monitoring, security
         @OptionalCustomCoding<ArrayCoder<_EventCategoriesEncoding, String>>
@@ -1815,7 +1785,7 @@ extension Redshift {
         public var sourceIds: [String]?
         /// The type of source that will be generating the events. For example, if you want to be notified of events generated by a cluster, you would set this parameter to cluster. If this value is not specified, events are returned for all Amazon Redshift objects in your account. You must specify a source type in order to specify source IDs. Valid values: cluster, cluster-parameter-group, cluster-security-group, cluster-snapshot, and scheduled-action.
         public let sourceType: String?
-        /// The name of the event subscription to be created. Constraints:   Cannot be null, empty, or blank.   Must contain from 1 to 255 alphanumeric characters or hyphens.   First character must be a letter.   Cannot end with a hyphen or contain two consecutive hyphens.  
+        /// The name of the event subscription to be created. Constraints:   Cannot be null, empty, or blank.   Must contain from 1 to 255 alphanumeric characters or hyphens.   First character must be a letter.   Cannot end with a hyphen or contain two consecutive hyphens.
         public let subscriptionName: String
         /// A list of tag instances.
         @OptionalCustomCoding<ArrayCoder<_TagsEncoding, Tag>>
@@ -1834,15 +1804,15 @@ extension Redshift {
 
         public func validate(name: String) throws {
             try self.eventCategories?.forEach {
-                try validate($0, name: "eventCategories[]", parent: name, max: 2147483647)
+                try validate($0, name: "eventCategories[]", parent: name, max: 2_147_483_647)
             }
-            try self.validate(self.severity, name: "severity", parent: name, max: 2147483647)
-            try self.validate(self.snsTopicArn, name: "snsTopicArn", parent: name, max: 2147483647)
+            try self.validate(self.severity, name: "severity", parent: name, max: 2_147_483_647)
+            try self.validate(self.snsTopicArn, name: "snsTopicArn", parent: name, max: 2_147_483_647)
             try self.sourceIds?.forEach {
-                try validate($0, name: "sourceIds[]", parent: name, max: 2147483647)
+                try validate($0, name: "sourceIds[]", parent: name, max: 2_147_483_647)
             }
-            try self.validate(self.sourceType, name: "sourceType", parent: name, max: 2147483647)
-            try self.validate(self.subscriptionName, name: "subscriptionName", parent: name, max: 2147483647)
+            try self.validate(self.sourceType, name: "sourceType", parent: name, max: 2_147_483_647)
+            try self.validate(self.subscriptionName, name: "subscriptionName", parent: name, max: 2_147_483_647)
             try self.tags?.forEach {
                 try $0.validate(name: "\(name).tags[]")
             }
@@ -1861,7 +1831,6 @@ extension Redshift {
     }
 
     public struct CreateEventSubscriptionResult: AWSDecodableShape {
-
         public let eventSubscription: EventSubscription?
 
         public init(eventSubscription: EventSubscription? = nil) {
@@ -1874,7 +1843,7 @@ extension Redshift {
     }
 
     public struct CreateHsmClientCertificateMessage: AWSEncodableShape {
-        public struct _TagsEncoding: ArrayCoderProperties { static public let member = "Tag" }
+        public struct _TagsEncoding: ArrayCoderProperties { public static let member = "Tag" }
 
         /// The identifier to be assigned to the new HSM client certificate that the cluster will use to connect to the HSM to use the database encryption keys.
         public let hsmClientCertificateIdentifier: String
@@ -1888,7 +1857,7 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.hsmClientCertificateIdentifier, name: "hsmClientCertificateIdentifier", parent: name, max: 2147483647)
+            try self.validate(self.hsmClientCertificateIdentifier, name: "hsmClientCertificateIdentifier", parent: name, max: 2_147_483_647)
             try self.tags?.forEach {
                 try $0.validate(name: "\(name).tags[]")
             }
@@ -1901,7 +1870,6 @@ extension Redshift {
     }
 
     public struct CreateHsmClientCertificateResult: AWSDecodableShape {
-
         public let hsmClientCertificate: HsmClientCertificate?
 
         public init(hsmClientCertificate: HsmClientCertificate? = nil) {
@@ -1914,7 +1882,7 @@ extension Redshift {
     }
 
     public struct CreateHsmConfigurationMessage: AWSEncodableShape {
-        public struct _TagsEncoding: ArrayCoderProperties { static public let member = "Tag" }
+        public struct _TagsEncoding: ArrayCoderProperties { public static let member = "Tag" }
 
         /// A text description of the HSM configuration to be created.
         public let description: String
@@ -1943,12 +1911,12 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.description, name: "description", parent: name, max: 2147483647)
-            try self.validate(self.hsmConfigurationIdentifier, name: "hsmConfigurationIdentifier", parent: name, max: 2147483647)
-            try self.validate(self.hsmIpAddress, name: "hsmIpAddress", parent: name, max: 2147483647)
-            try self.validate(self.hsmPartitionName, name: "hsmPartitionName", parent: name, max: 2147483647)
-            try self.validate(self.hsmPartitionPassword, name: "hsmPartitionPassword", parent: name, max: 2147483647)
-            try self.validate(self.hsmServerPublicCertificate, name: "hsmServerPublicCertificate", parent: name, max: 2147483647)
+            try self.validate(self.description, name: "description", parent: name, max: 2_147_483_647)
+            try self.validate(self.hsmConfigurationIdentifier, name: "hsmConfigurationIdentifier", parent: name, max: 2_147_483_647)
+            try self.validate(self.hsmIpAddress, name: "hsmIpAddress", parent: name, max: 2_147_483_647)
+            try self.validate(self.hsmPartitionName, name: "hsmPartitionName", parent: name, max: 2_147_483_647)
+            try self.validate(self.hsmPartitionPassword, name: "hsmPartitionPassword", parent: name, max: 2_147_483_647)
+            try self.validate(self.hsmServerPublicCertificate, name: "hsmServerPublicCertificate", parent: name, max: 2_147_483_647)
             try self.tags?.forEach {
                 try $0.validate(name: "\(name).tags[]")
             }
@@ -1966,7 +1934,6 @@ extension Redshift {
     }
 
     public struct CreateHsmConfigurationResult: AWSDecodableShape {
-
         public let hsmConfiguration: HsmConfiguration?
 
         public init(hsmConfiguration: HsmConfiguration? = nil) {
@@ -1979,22 +1946,21 @@ extension Redshift {
     }
 
     public struct CreateScheduledActionMessage: AWSEncodableShape {
-
-        /// If true, the schedule is enabled. If false, the scheduled action does not trigger.  For more information about state of the scheduled action, see ScheduledAction. 
+        /// If true, the schedule is enabled. If false, the scheduled action does not trigger.  For more information about state of the scheduled action, see ScheduledAction.
         public let enable: Bool?
-        /// The end time in UTC of the scheduled action. After this time, the scheduled action does not trigger.  For more information about this parameter, see ScheduledAction. 
+        /// The end time in UTC of the scheduled action. After this time, the scheduled action does not trigger.  For more information about this parameter, see ScheduledAction.
         public let endTime: Date?
-        /// The IAM role to assume to run the target action.  For more information about this parameter, see ScheduledAction. 
+        /// The IAM role to assume to run the target action.  For more information about this parameter, see ScheduledAction.
         public let iamRole: String
         /// The schedule in at( ) or cron( ) format.  For more information about this parameter, see ScheduledAction.
         public let schedule: String
-        /// The description of the scheduled action.  
+        /// The description of the scheduled action.
         public let scheduledActionDescription: String?
-        /// The name of the scheduled action. The name must be unique within an account.  For more information about this parameter, see ScheduledAction. 
+        /// The name of the scheduled action. The name must be unique within an account.  For more information about this parameter, see ScheduledAction.
         public let scheduledActionName: String
         /// The start time in UTC of the scheduled action.  Before this time, the scheduled action does not trigger. For more information about this parameter, see ScheduledAction.
         public let startTime: Date?
-        /// A JSON format string of the Amazon Redshift API operation with input parameters.  For more information about this parameter, see ScheduledAction. 
+        /// A JSON format string of the Amazon Redshift API operation with input parameters.  For more information about this parameter, see ScheduledAction.
         public let targetAction: ScheduledActionType
 
         public init(enable: Bool? = nil, endTime: Date? = nil, iamRole: String, schedule: String, scheduledActionDescription: String? = nil, scheduledActionName: String, startTime: Date? = nil, targetAction: ScheduledActionType) {
@@ -2009,10 +1975,10 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.iamRole, name: "iamRole", parent: name, max: 2147483647)
-            try self.validate(self.schedule, name: "schedule", parent: name, max: 2147483647)
-            try self.validate(self.scheduledActionDescription, name: "scheduledActionDescription", parent: name, max: 2147483647)
-            try self.validate(self.scheduledActionName, name: "scheduledActionName", parent: name, max: 2147483647)
+            try self.validate(self.iamRole, name: "iamRole", parent: name, max: 2_147_483_647)
+            try self.validate(self.schedule, name: "schedule", parent: name, max: 2_147_483_647)
+            try self.validate(self.scheduledActionDescription, name: "scheduledActionDescription", parent: name, max: 2_147_483_647)
+            try self.validate(self.scheduledActionName, name: "scheduledActionName", parent: name, max: 2_147_483_647)
             try self.targetAction.validate(name: "\(name).targetAction")
         }
 
@@ -2029,11 +1995,11 @@ extension Redshift {
     }
 
     public struct CreateSnapshotCopyGrantMessage: AWSEncodableShape {
-        public struct _TagsEncoding: ArrayCoderProperties { static public let member = "Tag" }
+        public struct _TagsEncoding: ArrayCoderProperties { public static let member = "Tag" }
 
         /// The unique identifier of the customer master key (CMK) to which to grant Amazon Redshift permission. If no key is specified, the default key is used.
         public let kmsKeyId: String?
-        /// The name of the snapshot copy grant. This name must be unique in the region for the account.  Constraints:   Must contain from 1 to 63 alphanumeric characters or hyphens.   Alphabetic characters must be lowercase.   First character must be a letter.   Cannot end with a hyphen or contain two consecutive hyphens.   Must be unique for all clusters within an account.  
+        /// The name of the snapshot copy grant. This name must be unique in the region for the account.  Constraints:   Must contain from 1 to 63 alphanumeric characters or hyphens.   Alphabetic characters must be lowercase.   First character must be a letter.   Cannot end with a hyphen or contain two consecutive hyphens.   Must be unique for all clusters within an account.
         public let snapshotCopyGrantName: String
         /// A list of tag instances.
         @OptionalCustomCoding<ArrayCoder<_TagsEncoding, Tag>>
@@ -2046,8 +2012,8 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.kmsKeyId, name: "kmsKeyId", parent: name, max: 2147483647)
-            try self.validate(self.snapshotCopyGrantName, name: "snapshotCopyGrantName", parent: name, max: 2147483647)
+            try self.validate(self.kmsKeyId, name: "kmsKeyId", parent: name, max: 2_147_483_647)
+            try self.validate(self.snapshotCopyGrantName, name: "snapshotCopyGrantName", parent: name, max: 2_147_483_647)
             try self.tags?.forEach {
                 try $0.validate(name: "\(name).tags[]")
             }
@@ -2061,7 +2027,6 @@ extension Redshift {
     }
 
     public struct CreateSnapshotCopyGrantResult: AWSDecodableShape {
-
         public let snapshotCopyGrant: SnapshotCopyGrant?
 
         public init(snapshotCopyGrant: SnapshotCopyGrant? = nil) {
@@ -2074,12 +2039,12 @@ extension Redshift {
     }
 
     public struct CreateSnapshotScheduleMessage: AWSEncodableShape {
-        public struct _ScheduleDefinitionsEncoding: ArrayCoderProperties { static public let member = "ScheduleDefinition" }
-        public struct _TagsEncoding: ArrayCoderProperties { static public let member = "Tag" }
+        public struct _ScheduleDefinitionsEncoding: ArrayCoderProperties { public static let member = "ScheduleDefinition" }
+        public struct _TagsEncoding: ArrayCoderProperties { public static let member = "Tag" }
 
         public let dryRun: Bool?
         public let nextInvocations: Int?
-        /// The definition of the snapshot schedule. The definition is made up of schedule expressions, for example "cron(30 12 *)" or "rate(12 hours)". 
+        /// The definition of the snapshot schedule. The definition is made up of schedule expressions, for example "cron(30 12 *)" or "rate(12 hours)".
         @OptionalCustomCoding<ArrayCoder<_ScheduleDefinitionsEncoding, String>>
         public var scheduleDefinitions: [String]?
         /// The description of the snapshot schedule.
@@ -2101,10 +2066,10 @@ extension Redshift {
 
         public func validate(name: String) throws {
             try self.scheduleDefinitions?.forEach {
-                try validate($0, name: "scheduleDefinitions[]", parent: name, max: 2147483647)
+                try validate($0, name: "scheduleDefinitions[]", parent: name, max: 2_147_483_647)
             }
-            try self.validate(self.scheduleDescription, name: "scheduleDescription", parent: name, max: 2147483647)
-            try self.validate(self.scheduleIdentifier, name: "scheduleIdentifier", parent: name, max: 2147483647)
+            try self.validate(self.scheduleDescription, name: "scheduleDescription", parent: name, max: 2_147_483_647)
+            try self.validate(self.scheduleIdentifier, name: "scheduleIdentifier", parent: name, max: 2_147_483_647)
             try self.tags?.forEach {
                 try $0.validate(name: "\(name).tags[]")
             }
@@ -2121,11 +2086,11 @@ extension Redshift {
     }
 
     public struct CreateTagsMessage: AWSEncodableShape {
-        public struct _TagsEncoding: ArrayCoderProperties { static public let member = "Tag" }
+        public struct _TagsEncoding: ArrayCoderProperties { public static let member = "Tag" }
 
-        /// The Amazon Resource Name (ARN) to which you want to add the tag or tags. For example, arn:aws:redshift:us-east-2:123456789:cluster:t1. 
+        /// The Amazon Resource Name (ARN) to which you want to add the tag or tags. For example, arn:aws:redshift:us-east-2:123456789:cluster:t1.
         public let resourceName: String
-        /// One or more name/value pairs to add as tags to the specified resource. Each tag name is passed in with the parameter Key and the corresponding value is passed in with the parameter Value. The Key and Value parameters are separated by a comma (,). Separate multiple tags with a space. For example, --tags "Key"="owner","Value"="admin" "Key"="environment","Value"="test" "Key"="version","Value"="1.0". 
+        /// One or more name/value pairs to add as tags to the specified resource. Each tag name is passed in with the parameter Key and the corresponding value is passed in with the parameter Value. The Key and Value parameters are separated by a comma (,). Separate multiple tags with a space. For example, --tags "Key"="owner","Value"="admin" "Key"="environment","Value"="test" "Key"="version","Value"="1.0".
         @CustomCoding<ArrayCoder<_TagsEncoding, Tag>>
         public var tags: [Tag]
 
@@ -2135,7 +2100,7 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.resourceName, name: "resourceName", parent: name, max: 2147483647)
+            try self.validate(self.resourceName, name: "resourceName", parent: name, max: 2_147_483_647)
             try self.tags.forEach {
                 try $0.validate(name: "\(name).tags[]")
             }
@@ -2148,9 +2113,9 @@ extension Redshift {
     }
 
     public struct CreateUsageLimitMessage: AWSEncodableShape {
-        public struct _TagsEncoding: ArrayCoderProperties { static public let member = "Tag" }
+        public struct _TagsEncoding: ArrayCoderProperties { public static let member = "Tag" }
 
-        /// The limit amount. If time-based, this amount is in minutes. If data-based, this amount is in terabytes (TB). The value must be a positive number. 
+        /// The limit amount. If time-based, this amount is in minutes. If data-based, this amount is in terabytes (TB). The value must be a positive number.
         public let amount: Int64
         /// The action that Amazon Redshift takes when the limit is reached. The default is log.  For more information about this parameter, see UsageLimit.
         public let breachAction: UsageLimitBreachAction?
@@ -2158,9 +2123,9 @@ extension Redshift {
         public let clusterIdentifier: String
         /// The Amazon Redshift feature that you want to limit.
         public let featureType: UsageLimitFeatureType
-        /// The type of limit. Depending on the feature type, this can be based on a time duration or data size. If FeatureType is spectrum, then LimitType must be data-scanned. If FeatureType is concurrency-scaling, then LimitType must be time. 
+        /// The type of limit. Depending on the feature type, this can be based on a time duration or data size. If FeatureType is spectrum, then LimitType must be data-scanned. If FeatureType is concurrency-scaling, then LimitType must be time.
         public let limitType: UsageLimitLimitType
-        /// The time period that the amount applies to. A weekly period begins on Sunday. The default is monthly.  
+        /// The time period that the amount applies to. A weekly period begins on Sunday. The default is monthly.
         public let period: UsageLimitPeriod?
         /// A list of tag instances.
         @OptionalCustomCoding<ArrayCoder<_TagsEncoding, Tag>>
@@ -2177,7 +2142,7 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2147483647)
+            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2_147_483_647)
             try self.tags?.forEach {
                 try $0.validate(name: "\(name).tags[]")
             }
@@ -2195,7 +2160,6 @@ extension Redshift {
     }
 
     public struct CustomerStorageMessage: AWSDecodableShape {
-
         /// The total amount of storage currently used for snapshots.
         public let totalBackupSizeInMegaBytes: Double?
         /// The total amount of storage currently provisioned.
@@ -2213,7 +2177,6 @@ extension Redshift {
     }
 
     public struct DataTransferProgress: AWSDecodableShape {
-
         /// Describes the data transfer rate in MB's per second.
         public let currentRateInMegaBytesPerSecond: Double?
         /// Describes the total amount of data that has been transfered in MB's.
@@ -2247,9 +2210,9 @@ extension Redshift {
     }
 
     public struct DefaultClusterParameters: AWSDecodableShape {
-        public struct _ParametersEncoding: ArrayCoderProperties { static public let member = "Parameter" }
+        public struct _ParametersEncoding: ArrayCoderProperties { public static let member = "Parameter" }
 
-        /// A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the Marker parameter and retrying the command. If the Marker field is empty, all response records have been retrieved for the request. 
+        /// A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the Marker parameter and retrying the command. If the Marker field is empty, all response records have been retrieved for the request.
         public let marker: String?
         /// The name of the cluster parameter group family to which the engine default parameters apply.
         public let parameterGroupFamily: String?
@@ -2271,7 +2234,6 @@ extension Redshift {
     }
 
     public struct DeferredMaintenanceWindow: AWSDecodableShape {
-
         ///  A timestamp for the end of the time period when we defer maintenance.
         public let deferMaintenanceEndTime: Date?
         /// A unique identifier for the maintenance window.
@@ -2293,7 +2255,6 @@ extension Redshift {
     }
 
     public struct DeleteAuthenticationProfileMessage: AWSEncodableShape {
-
         /// The name of the authentication profile to delete.
         public let authenticationProfileName: String
 
@@ -2312,7 +2273,6 @@ extension Redshift {
     }
 
     public struct DeleteAuthenticationProfileResult: AWSDecodableShape {
-
         /// The name of the authentication profile that was deleted.
         public let authenticationProfileName: String?
 
@@ -2326,14 +2286,13 @@ extension Redshift {
     }
 
     public struct DeleteClusterMessage: AWSEncodableShape {
-
-        /// The identifier of the cluster to be deleted. Constraints:   Must contain lowercase characters.   Must contain from 1 to 63 alphanumeric characters or hyphens.   First character must be a letter.   Cannot end with a hyphen or contain two consecutive hyphens.  
+        /// The identifier of the cluster to be deleted. Constraints:   Must contain lowercase characters.   Must contain from 1 to 63 alphanumeric characters or hyphens.   First character must be a letter.   Cannot end with a hyphen or contain two consecutive hyphens.
         public let clusterIdentifier: String
-        /// The identifier of the final snapshot that is to be created immediately before deleting the cluster. If this parameter is provided, SkipFinalClusterSnapshot must be false.  Constraints:   Must be 1 to 255 alphanumeric characters.   First character must be a letter.   Cannot end with a hyphen or contain two consecutive hyphens.  
+        /// The identifier of the final snapshot that is to be created immediately before deleting the cluster. If this parameter is provided, SkipFinalClusterSnapshot must be false.  Constraints:   Must be 1 to 255 alphanumeric characters.   First character must be a letter.   Cannot end with a hyphen or contain two consecutive hyphens.
         public let finalClusterSnapshotIdentifier: String?
         /// The number of days that a manual snapshot is retained. If the value is -1, the manual snapshot is retained indefinitely. The value must be either -1 or an integer between 1 and 3,653. The default value is -1.
         public let finalClusterSnapshotRetentionPeriod: Int?
-        /// Determines whether a final snapshot of the cluster is created before Amazon Redshift deletes the cluster. If true, a final cluster snapshot is not created. If false, a final cluster snapshot is created before the cluster is deleted.   The FinalClusterSnapshotIdentifier parameter must be specified if SkipFinalClusterSnapshot is false.  Default: false 
+        /// Determines whether a final snapshot of the cluster is created before Amazon Redshift deletes the cluster. If true, a final cluster snapshot is not created. If false, a final cluster snapshot is created before the cluster is deleted.   The FinalClusterSnapshotIdentifier parameter must be specified if SkipFinalClusterSnapshot is false.  Default: false
         public let skipFinalClusterSnapshot: Bool?
 
         public init(clusterIdentifier: String, finalClusterSnapshotIdentifier: String? = nil, finalClusterSnapshotRetentionPeriod: Int? = nil, skipFinalClusterSnapshot: Bool? = nil) {
@@ -2344,8 +2303,8 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2147483647)
-            try self.validate(self.finalClusterSnapshotIdentifier, name: "finalClusterSnapshotIdentifier", parent: name, max: 2147483647)
+            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2_147_483_647)
+            try self.validate(self.finalClusterSnapshotIdentifier, name: "finalClusterSnapshotIdentifier", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -2357,8 +2316,7 @@ extension Redshift {
     }
 
     public struct DeleteClusterParameterGroupMessage: AWSEncodableShape {
-
-        /// The name of the parameter group to be deleted. Constraints:   Must be the name of an existing cluster parameter group.   Cannot delete a default cluster parameter group.  
+        /// The name of the parameter group to be deleted. Constraints:   Must be the name of an existing cluster parameter group.   Cannot delete a default cluster parameter group.
         public let parameterGroupName: String
 
         public init(parameterGroupName: String) {
@@ -2366,7 +2324,7 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.parameterGroupName, name: "parameterGroupName", parent: name, max: 2147483647)
+            try self.validate(self.parameterGroupName, name: "parameterGroupName", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -2375,7 +2333,6 @@ extension Redshift {
     }
 
     public struct DeleteClusterResult: AWSDecodableShape {
-
         public let cluster: Cluster?
 
         public init(cluster: Cluster? = nil) {
@@ -2388,7 +2345,6 @@ extension Redshift {
     }
 
     public struct DeleteClusterSecurityGroupMessage: AWSEncodableShape {
-
         /// The name of the cluster security group to be deleted.
         public let clusterSecurityGroupName: String
 
@@ -2397,7 +2353,7 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.clusterSecurityGroupName, name: "clusterSecurityGroupName", parent: name, max: 2147483647)
+            try self.validate(self.clusterSecurityGroupName, name: "clusterSecurityGroupName", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -2406,7 +2362,6 @@ extension Redshift {
     }
 
     public struct DeleteClusterSnapshotMessage: AWSEncodableShape {
-
         /// The unique identifier of the cluster the snapshot was created from. This parameter is required if your IAM user has a policy containing a snapshot resource element that specifies anything other than * for the cluster name. Constraints: Must be the name of valid cluster.
         public let snapshotClusterIdentifier: String?
         /// The unique identifier of the manual snapshot to be deleted. Constraints: Must be the name of an existing snapshot that is in the available, failed, or cancelled state.
@@ -2418,8 +2373,8 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.snapshotClusterIdentifier, name: "snapshotClusterIdentifier", parent: name, max: 2147483647)
-            try self.validate(self.snapshotIdentifier, name: "snapshotIdentifier", parent: name, max: 2147483647)
+            try self.validate(self.snapshotClusterIdentifier, name: "snapshotClusterIdentifier", parent: name, max: 2_147_483_647)
+            try self.validate(self.snapshotIdentifier, name: "snapshotIdentifier", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -2429,7 +2384,6 @@ extension Redshift {
     }
 
     public struct DeleteClusterSnapshotResult: AWSDecodableShape {
-
         public let snapshot: Snapshot?
 
         public init(snapshot: Snapshot? = nil) {
@@ -2442,7 +2396,6 @@ extension Redshift {
     }
 
     public struct DeleteClusterSubnetGroupMessage: AWSEncodableShape {
-
         /// The name of the cluster subnet group name to be deleted.
         public let clusterSubnetGroupName: String
 
@@ -2451,7 +2404,7 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.clusterSubnetGroupName, name: "clusterSubnetGroupName", parent: name, max: 2147483647)
+            try self.validate(self.clusterSubnetGroupName, name: "clusterSubnetGroupName", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -2460,7 +2413,6 @@ extension Redshift {
     }
 
     public struct DeleteEndpointAccessMessage: AWSEncodableShape {
-
         /// The Redshift-managed VPC endpoint to delete.
         public let endpointName: String
 
@@ -2469,7 +2421,7 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.endpointName, name: "endpointName", parent: name, max: 2147483647)
+            try self.validate(self.endpointName, name: "endpointName", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -2478,7 +2430,6 @@ extension Redshift {
     }
 
     public struct DeleteEventSubscriptionMessage: AWSEncodableShape {
-
         /// The name of the Amazon Redshift event notification subscription to be deleted.
         public let subscriptionName: String
 
@@ -2487,7 +2438,7 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.subscriptionName, name: "subscriptionName", parent: name, max: 2147483647)
+            try self.validate(self.subscriptionName, name: "subscriptionName", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -2496,7 +2447,6 @@ extension Redshift {
     }
 
     public struct DeleteHsmClientCertificateMessage: AWSEncodableShape {
-
         /// The identifier of the HSM client certificate to be deleted.
         public let hsmClientCertificateIdentifier: String
 
@@ -2505,7 +2455,7 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.hsmClientCertificateIdentifier, name: "hsmClientCertificateIdentifier", parent: name, max: 2147483647)
+            try self.validate(self.hsmClientCertificateIdentifier, name: "hsmClientCertificateIdentifier", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -2514,7 +2464,6 @@ extension Redshift {
     }
 
     public struct DeleteHsmConfigurationMessage: AWSEncodableShape {
-
         /// The identifier of the Amazon Redshift HSM configuration to be deleted.
         public let hsmConfigurationIdentifier: String
 
@@ -2523,7 +2472,7 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.hsmConfigurationIdentifier, name: "hsmConfigurationIdentifier", parent: name, max: 2147483647)
+            try self.validate(self.hsmConfigurationIdentifier, name: "hsmConfigurationIdentifier", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -2532,8 +2481,7 @@ extension Redshift {
     }
 
     public struct DeleteScheduledActionMessage: AWSEncodableShape {
-
-        /// The name of the scheduled action to delete. 
+        /// The name of the scheduled action to delete.
         public let scheduledActionName: String
 
         public init(scheduledActionName: String) {
@@ -2541,7 +2489,7 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.scheduledActionName, name: "scheduledActionName", parent: name, max: 2147483647)
+            try self.validate(self.scheduledActionName, name: "scheduledActionName", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -2550,7 +2498,6 @@ extension Redshift {
     }
 
     public struct DeleteSnapshotCopyGrantMessage: AWSEncodableShape {
-
         /// The name of the snapshot copy grant to delete.
         public let snapshotCopyGrantName: String
 
@@ -2559,7 +2506,7 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.snapshotCopyGrantName, name: "snapshotCopyGrantName", parent: name, max: 2147483647)
+            try self.validate(self.snapshotCopyGrantName, name: "snapshotCopyGrantName", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -2568,7 +2515,6 @@ extension Redshift {
     }
 
     public struct DeleteSnapshotScheduleMessage: AWSEncodableShape {
-
         /// A unique identifier of the snapshot schedule to delete.
         public let scheduleIdentifier: String
 
@@ -2577,7 +2523,7 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.scheduleIdentifier, name: "scheduleIdentifier", parent: name, max: 2147483647)
+            try self.validate(self.scheduleIdentifier, name: "scheduleIdentifier", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -2586,9 +2532,9 @@ extension Redshift {
     }
 
     public struct DeleteTagsMessage: AWSEncodableShape {
-        public struct _TagKeysEncoding: ArrayCoderProperties { static public let member = "TagKey" }
+        public struct _TagKeysEncoding: ArrayCoderProperties { public static let member = "TagKey" }
 
-        /// The Amazon Resource Name (ARN) from which you want to remove the tag or tags. For example, arn:aws:redshift:us-east-2:123456789:cluster:t1. 
+        /// The Amazon Resource Name (ARN) from which you want to remove the tag or tags. For example, arn:aws:redshift:us-east-2:123456789:cluster:t1.
         public let resourceName: String
         /// The tag key that you want to delete.
         @CustomCoding<ArrayCoder<_TagKeysEncoding, String>>
@@ -2600,9 +2546,9 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.resourceName, name: "resourceName", parent: name, max: 2147483647)
+            try self.validate(self.resourceName, name: "resourceName", parent: name, max: 2_147_483_647)
             try self.tagKeys.forEach {
-                try validate($0, name: "tagKeys[]", parent: name, max: 2147483647)
+                try validate($0, name: "tagKeys[]", parent: name, max: 2_147_483_647)
             }
         }
 
@@ -2613,7 +2559,6 @@ extension Redshift {
     }
 
     public struct DeleteUsageLimitMessage: AWSEncodableShape {
-
         /// The identifier of the usage limit to delete.
         public let usageLimitId: String
 
@@ -2622,7 +2567,7 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.usageLimitId, name: "usageLimitId", parent: name, max: 2147483647)
+            try self.validate(self.usageLimitId, name: "usageLimitId", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -2631,7 +2576,7 @@ extension Redshift {
     }
 
     public struct DescribeAccountAttributesMessage: AWSEncodableShape {
-        public struct _AttributeNamesEncoding: ArrayCoderProperties { static public let member = "AttributeName" }
+        public struct _AttributeNamesEncoding: ArrayCoderProperties { public static let member = "AttributeName" }
 
         /// A list of attribute names.
         @OptionalCustomCoding<ArrayCoder<_AttributeNamesEncoding, String>>
@@ -2643,7 +2588,7 @@ extension Redshift {
 
         public func validate(name: String) throws {
             try self.attributeNames?.forEach {
-                try validate($0, name: "attributeNames[]", parent: name, max: 2147483647)
+                try validate($0, name: "attributeNames[]", parent: name, max: 2_147_483_647)
             }
         }
 
@@ -2653,7 +2598,6 @@ extension Redshift {
     }
 
     public struct DescribeAuthenticationProfilesMessage: AWSEncodableShape {
-
         /// The name of the authentication profile to describe. If not specified then all authentication profiles owned by the account are listed.
         public let authenticationProfileName: String?
 
@@ -2672,7 +2616,6 @@ extension Redshift {
     }
 
     public struct DescribeAuthenticationProfilesResult: AWSDecodableShape {
-
         /// The list of authentication profiles.
         @OptionalCustomCoding<StandardArrayCoder>
         public var authenticationProfiles: [AuthenticationProfile]?
@@ -2687,7 +2630,6 @@ extension Redshift {
     }
 
     public struct DescribeClusterDbRevisionsMessage: AWSEncodableShape {
-
         /// A unique identifier for a cluster whose ClusterDbRevisions you are requesting. This parameter is case sensitive. All clusters defined for an account are returned by default.
         public let clusterIdentifier: String?
         /// An optional parameter that specifies the starting point for returning a set of response records. When the results of a DescribeClusterDbRevisions request exceed the value specified in MaxRecords, Amazon Redshift returns a value in the marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the marker parameter and retrying the request.  Constraints: You can specify either the ClusterIdentifier parameter, or the marker parameter, but not both.
@@ -2702,8 +2644,8 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2147483647)
-            try self.validate(self.marker, name: "marker", parent: name, max: 2147483647)
+            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2_147_483_647)
+            try self.validate(self.marker, name: "marker", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -2714,10 +2656,10 @@ extension Redshift {
     }
 
     public struct DescribeClusterParameterGroupsMessage: AWSEncodableShape {
-        public struct _TagKeysEncoding: ArrayCoderProperties { static public let member = "TagKey" }
-        public struct _TagValuesEncoding: ArrayCoderProperties { static public let member = "TagValue" }
+        public struct _TagKeysEncoding: ArrayCoderProperties { public static let member = "TagKey" }
+        public struct _TagValuesEncoding: ArrayCoderProperties { public static let member = "TagValue" }
 
-        /// An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeClusterParameterGroups request exceed the value specified in MaxRecords, Amazon Web Services returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request. 
+        /// An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeClusterParameterGroups request exceed the value specified in MaxRecords, Amazon Web Services returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request.
         public let marker: String?
         /// The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified MaxRecords value, a value is returned in a marker field of the response. You can retrieve the next set of records by retrying the command with the returned marker value.  Default: 100  Constraints: minimum 20, maximum 100.
         public let maxRecords: Int?
@@ -2739,13 +2681,13 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.marker, name: "marker", parent: name, max: 2147483647)
-            try self.validate(self.parameterGroupName, name: "parameterGroupName", parent: name, max: 2147483647)
+            try self.validate(self.marker, name: "marker", parent: name, max: 2_147_483_647)
+            try self.validate(self.parameterGroupName, name: "parameterGroupName", parent: name, max: 2_147_483_647)
             try self.tagKeys?.forEach {
-                try validate($0, name: "tagKeys[]", parent: name, max: 2147483647)
+                try validate($0, name: "tagKeys[]", parent: name, max: 2_147_483_647)
             }
             try self.tagValues?.forEach {
-                try validate($0, name: "tagValues[]", parent: name, max: 2147483647)
+                try validate($0, name: "tagValues[]", parent: name, max: 2_147_483_647)
             }
         }
 
@@ -2759,14 +2701,13 @@ extension Redshift {
     }
 
     public struct DescribeClusterParametersMessage: AWSEncodableShape {
-
-        /// An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeClusterParameters request exceed the value specified in MaxRecords, Amazon Web Services returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request. 
+        /// An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeClusterParameters request exceed the value specified in MaxRecords, Amazon Web Services returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request.
         public let marker: String?
         /// The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified MaxRecords value, a value is returned in a marker field of the response. You can retrieve the next set of records by retrying the command with the returned marker value.  Default: 100  Constraints: minimum 20, maximum 100.
         public let maxRecords: Int?
         /// The name of a cluster parameter group for which to return details.
         public let parameterGroupName: String
-        /// The parameter types to return. Specify user to show parameters that are different form the default. Similarly, specify engine-default to show parameters that are the same as the default parameter group.  Default: All parameter types returned. Valid Values: user | engine-default 
+        /// The parameter types to return. Specify user to show parameters that are different form the default. Similarly, specify engine-default to show parameters that are the same as the default parameter group.  Default: All parameter types returned. Valid Values: user | engine-default
         public let source: String?
 
         public init(marker: String? = nil, maxRecords: Int? = nil, parameterGroupName: String, source: String? = nil) {
@@ -2777,9 +2718,9 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.marker, name: "marker", parent: name, max: 2147483647)
-            try self.validate(self.parameterGroupName, name: "parameterGroupName", parent: name, max: 2147483647)
-            try self.validate(self.source, name: "source", parent: name, max: 2147483647)
+            try self.validate(self.marker, name: "marker", parent: name, max: 2_147_483_647)
+            try self.validate(self.parameterGroupName, name: "parameterGroupName", parent: name, max: 2_147_483_647)
+            try self.validate(self.source, name: "source", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -2791,12 +2732,12 @@ extension Redshift {
     }
 
     public struct DescribeClusterSecurityGroupsMessage: AWSEncodableShape {
-        public struct _TagKeysEncoding: ArrayCoderProperties { static public let member = "TagKey" }
-        public struct _TagValuesEncoding: ArrayCoderProperties { static public let member = "TagValue" }
+        public struct _TagKeysEncoding: ArrayCoderProperties { public static let member = "TagKey" }
+        public struct _TagValuesEncoding: ArrayCoderProperties { public static let member = "TagValue" }
 
-        /// The name of a cluster security group for which you are requesting details. You can specify either the Marker parameter or a ClusterSecurityGroupName parameter, but not both.  Example: securitygroup1 
+        /// The name of a cluster security group for which you are requesting details. You can specify either the Marker parameter or a ClusterSecurityGroupName parameter, but not both.  Example: securitygroup1
         public let clusterSecurityGroupName: String?
-        /// An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeClusterSecurityGroups request exceed the value specified in MaxRecords, Amazon Web Services returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request.  Constraints: You can specify either the ClusterSecurityGroupName parameter or the Marker parameter, but not both. 
+        /// An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeClusterSecurityGroups request exceed the value specified in MaxRecords, Amazon Web Services returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request.  Constraints: You can specify either the ClusterSecurityGroupName parameter or the Marker parameter, but not both.
         public let marker: String?
         /// The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified MaxRecords value, a value is returned in a marker field of the response. You can retrieve the next set of records by retrying the command with the returned marker value.  Default: 100  Constraints: minimum 20, maximum 100.
         public let maxRecords: Int?
@@ -2816,13 +2757,13 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.clusterSecurityGroupName, name: "clusterSecurityGroupName", parent: name, max: 2147483647)
-            try self.validate(self.marker, name: "marker", parent: name, max: 2147483647)
+            try self.validate(self.clusterSecurityGroupName, name: "clusterSecurityGroupName", parent: name, max: 2_147_483_647)
+            try self.validate(self.marker, name: "marker", parent: name, max: 2_147_483_647)
             try self.tagKeys?.forEach {
-                try validate($0, name: "tagKeys[]", parent: name, max: 2147483647)
+                try validate($0, name: "tagKeys[]", parent: name, max: 2_147_483_647)
             }
             try self.tagValues?.forEach {
-                try validate($0, name: "tagValues[]", parent: name, max: 2147483647)
+                try validate($0, name: "tagValues[]", parent: name, max: 2_147_483_647)
             }
         }
 
@@ -2836,17 +2777,17 @@ extension Redshift {
     }
 
     public struct DescribeClusterSnapshotsMessage: AWSEncodableShape {
-        public struct _SortingEntitiesEncoding: ArrayCoderProperties { static public let member = "SnapshotSortingEntity" }
-        public struct _TagKeysEncoding: ArrayCoderProperties { static public let member = "TagKey" }
-        public struct _TagValuesEncoding: ArrayCoderProperties { static public let member = "TagValue" }
+        public struct _SortingEntitiesEncoding: ArrayCoderProperties { public static let member = "SnapshotSortingEntity" }
+        public struct _TagKeysEncoding: ArrayCoderProperties { public static let member = "TagKey" }
+        public struct _TagValuesEncoding: ArrayCoderProperties { public static let member = "TagValue" }
 
-        /// A value that indicates whether to return snapshots only for an existing cluster. You can perform table-level restore only by using a snapshot of an existing cluster, that is, a cluster that has not been deleted. Values for this parameter work as follows:    If ClusterExists is set to true, ClusterIdentifier is required.   If ClusterExists is set to false and ClusterIdentifier isn't specified, all snapshots associated with deleted clusters (orphaned snapshots) are returned.    If ClusterExists is set to false and ClusterIdentifier is specified for a deleted cluster, snapshots associated with that cluster are returned.   If ClusterExists is set to false and ClusterIdentifier is specified for an existing cluster, no snapshots are returned.   
+        /// A value that indicates whether to return snapshots only for an existing cluster. You can perform table-level restore only by using a snapshot of an existing cluster, that is, a cluster that has not been deleted. Values for this parameter work as follows:    If ClusterExists is set to true, ClusterIdentifier is required.   If ClusterExists is set to false and ClusterIdentifier isn't specified, all snapshots associated with deleted clusters (orphaned snapshots) are returned.    If ClusterExists is set to false and ClusterIdentifier is specified for a deleted cluster, snapshots associated with that cluster are returned.   If ClusterExists is set to false and ClusterIdentifier is specified for an existing cluster, no snapshots are returned.
         public let clusterExists: Bool?
         /// The identifier of the cluster which generated the requested snapshots.
         public let clusterIdentifier: String?
-        /// A time value that requests only snapshots created at or before the specified time. The time value is specified in ISO 8601 format. For more information about ISO 8601, go to the ISO8601 Wikipedia page.  Example: 2012-07-16T18:00:00Z 
+        /// A time value that requests only snapshots created at or before the specified time. The time value is specified in ISO 8601 format. For more information about ISO 8601, go to the ISO8601 Wikipedia page.  Example: 2012-07-16T18:00:00Z
         public let endTime: Date?
-        /// An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeClusterSnapshots request exceed the value specified in MaxRecords, Amazon Web Services returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request. 
+        /// An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeClusterSnapshots request exceed the value specified in MaxRecords, Amazon Web Services returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request.
         public let marker: String?
         /// The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified MaxRecords value, a value is returned in a marker field of the response. You can retrieve the next set of records by retrying the command with the returned marker value.  Default: 100  Constraints: minimum 20, maximum 100.
         public let maxRecords: Int?
@@ -2854,11 +2795,11 @@ extension Redshift {
         public let ownerAccount: String?
         /// The snapshot identifier of the snapshot about which to return information.
         public let snapshotIdentifier: String?
-        /// The type of snapshots for which you are requesting information. By default, snapshots of all types are returned. Valid Values: automated | manual 
+        /// The type of snapshots for which you are requesting information. By default, snapshots of all types are returned. Valid Values: automated | manual
         public let snapshotType: String?
         @OptionalCustomCoding<ArrayCoder<_SortingEntitiesEncoding, SnapshotSortingEntity>>
         public var sortingEntities: [SnapshotSortingEntity]?
-        /// A value that requests only snapshots created at or after the specified time. The time value is specified in ISO 8601 format. For more information about ISO 8601, go to the ISO8601 Wikipedia page.  Example: 2012-07-16T18:00:00Z 
+        /// A value that requests only snapshots created at or after the specified time. The time value is specified in ISO 8601 format. For more information about ISO 8601, go to the ISO8601 Wikipedia page.  Example: 2012-07-16T18:00:00Z
         public let startTime: Date?
         /// A tag key or keys for which you want to return all matching cluster snapshots that are associated with the specified key or keys. For example, suppose that you have snapshots that are tagged with keys called owner and environment. If you specify both of these tag keys in the request, Amazon Redshift returns a response with the snapshots that have either or both of these tag keys associated with them.
         @OptionalCustomCoding<ArrayCoder<_TagKeysEncoding, String>>
@@ -2883,16 +2824,16 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2147483647)
-            try self.validate(self.marker, name: "marker", parent: name, max: 2147483647)
-            try self.validate(self.ownerAccount, name: "ownerAccount", parent: name, max: 2147483647)
-            try self.validate(self.snapshotIdentifier, name: "snapshotIdentifier", parent: name, max: 2147483647)
-            try self.validate(self.snapshotType, name: "snapshotType", parent: name, max: 2147483647)
+            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2_147_483_647)
+            try self.validate(self.marker, name: "marker", parent: name, max: 2_147_483_647)
+            try self.validate(self.ownerAccount, name: "ownerAccount", parent: name, max: 2_147_483_647)
+            try self.validate(self.snapshotIdentifier, name: "snapshotIdentifier", parent: name, max: 2_147_483_647)
+            try self.validate(self.snapshotType, name: "snapshotType", parent: name, max: 2_147_483_647)
             try self.tagKeys?.forEach {
-                try validate($0, name: "tagKeys[]", parent: name, max: 2147483647)
+                try validate($0, name: "tagKeys[]", parent: name, max: 2_147_483_647)
             }
             try self.tagValues?.forEach {
-                try validate($0, name: "tagValues[]", parent: name, max: 2147483647)
+                try validate($0, name: "tagValues[]", parent: name, max: 2_147_483_647)
             }
         }
 
@@ -2913,12 +2854,12 @@ extension Redshift {
     }
 
     public struct DescribeClusterSubnetGroupsMessage: AWSEncodableShape {
-        public struct _TagKeysEncoding: ArrayCoderProperties { static public let member = "TagKey" }
-        public struct _TagValuesEncoding: ArrayCoderProperties { static public let member = "TagValue" }
+        public struct _TagKeysEncoding: ArrayCoderProperties { public static let member = "TagKey" }
+        public struct _TagValuesEncoding: ArrayCoderProperties { public static let member = "TagValue" }
 
         /// The name of the cluster subnet group for which information is requested.
         public let clusterSubnetGroupName: String?
-        /// An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeClusterSubnetGroups request exceed the value specified in MaxRecords, Amazon Web Services returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request. 
+        /// An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeClusterSubnetGroups request exceed the value specified in MaxRecords, Amazon Web Services returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request.
         public let marker: String?
         /// The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified MaxRecords value, a value is returned in a marker field of the response. You can retrieve the next set of records by retrying the command with the returned marker value.  Default: 100  Constraints: minimum 20, maximum 100.
         public let maxRecords: Int?
@@ -2938,13 +2879,13 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.clusterSubnetGroupName, name: "clusterSubnetGroupName", parent: name, max: 2147483647)
-            try self.validate(self.marker, name: "marker", parent: name, max: 2147483647)
+            try self.validate(self.clusterSubnetGroupName, name: "clusterSubnetGroupName", parent: name, max: 2_147_483_647)
+            try self.validate(self.marker, name: "marker", parent: name, max: 2_147_483_647)
             try self.tagKeys?.forEach {
-                try validate($0, name: "tagKeys[]", parent: name, max: 2147483647)
+                try validate($0, name: "tagKeys[]", parent: name, max: 2_147_483_647)
             }
             try self.tagValues?.forEach {
-                try validate($0, name: "tagValues[]", parent: name, max: 2147483647)
+                try validate($0, name: "tagValues[]", parent: name, max: 2_147_483_647)
             }
         }
 
@@ -2958,10 +2899,9 @@ extension Redshift {
     }
 
     public struct DescribeClusterTracksMessage: AWSEncodableShape {
-
-        /// The name of the maintenance track. 
+        /// The name of the maintenance track.
         public let maintenanceTrackName: String?
-        /// An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeClusterTracks request exceed the value specified in MaxRecords, Amazon Redshift returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request. 
+        /// An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeClusterTracks request exceed the value specified in MaxRecords, Amazon Redshift returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request.
         public let marker: String?
         /// An integer value for the maximum number of maintenance tracks to return.
         public let maxRecords: Int?
@@ -2973,8 +2913,8 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.maintenanceTrackName, name: "maintenanceTrackName", parent: name, max: 2147483647)
-            try self.validate(self.marker, name: "marker", parent: name, max: 2147483647)
+            try self.validate(self.maintenanceTrackName, name: "maintenanceTrackName", parent: name, max: 2_147_483_647)
+            try self.validate(self.marker, name: "marker", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -2985,12 +2925,11 @@ extension Redshift {
     }
 
     public struct DescribeClusterVersionsMessage: AWSEncodableShape {
-
-        /// The name of a specific cluster parameter group family to return details for. Constraints:   Must be 1 to 255 alphanumeric characters   First character must be a letter   Cannot end with a hyphen or contain two consecutive hyphens  
+        /// The name of a specific cluster parameter group family to return details for. Constraints:   Must be 1 to 255 alphanumeric characters   First character must be a letter   Cannot end with a hyphen or contain two consecutive hyphens
         public let clusterParameterGroupFamily: String?
-        /// The specific cluster version to return. Example: 1.0 
+        /// The specific cluster version to return. Example: 1.0
         public let clusterVersion: String?
-        /// An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeClusterVersions request exceed the value specified in MaxRecords, Amazon Web Services returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request. 
+        /// An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeClusterVersions request exceed the value specified in MaxRecords, Amazon Web Services returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request.
         public let marker: String?
         /// The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified MaxRecords value, a value is returned in a marker field of the response. You can retrieve the next set of records by retrying the command with the returned marker value.  Default: 100  Constraints: minimum 20, maximum 100.
         public let maxRecords: Int?
@@ -3003,9 +2942,9 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.clusterParameterGroupFamily, name: "clusterParameterGroupFamily", parent: name, max: 2147483647)
-            try self.validate(self.clusterVersion, name: "clusterVersion", parent: name, max: 2147483647)
-            try self.validate(self.marker, name: "marker", parent: name, max: 2147483647)
+            try self.validate(self.clusterParameterGroupFamily, name: "clusterParameterGroupFamily", parent: name, max: 2_147_483_647)
+            try self.validate(self.clusterVersion, name: "clusterVersion", parent: name, max: 2_147_483_647)
+            try self.validate(self.marker, name: "marker", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -3017,12 +2956,12 @@ extension Redshift {
     }
 
     public struct DescribeClustersMessage: AWSEncodableShape {
-        public struct _TagKeysEncoding: ArrayCoderProperties { static public let member = "TagKey" }
-        public struct _TagValuesEncoding: ArrayCoderProperties { static public let member = "TagValue" }
+        public struct _TagKeysEncoding: ArrayCoderProperties { public static let member = "TagKey" }
+        public struct _TagValuesEncoding: ArrayCoderProperties { public static let member = "TagValue" }
 
         /// The unique identifier of a cluster whose properties you are requesting. This parameter is case sensitive. The default is that all clusters defined for an account are returned.
         public let clusterIdentifier: String?
-        /// An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeClusters request exceed the value specified in MaxRecords, Amazon Web Services returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request.  Constraints: You can specify either the ClusterIdentifier parameter or the Marker parameter, but not both. 
+        /// An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeClusters request exceed the value specified in MaxRecords, Amazon Web Services returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request.  Constraints: You can specify either the ClusterIdentifier parameter or the Marker parameter, but not both.
         public let marker: String?
         /// The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified MaxRecords value, a value is returned in a marker field of the response. You can retrieve the next set of records by retrying the command with the returned marker value.  Default: 100  Constraints: minimum 20, maximum 100.
         public let maxRecords: Int?
@@ -3042,13 +2981,13 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2147483647)
-            try self.validate(self.marker, name: "marker", parent: name, max: 2147483647)
+            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2_147_483_647)
+            try self.validate(self.marker, name: "marker", parent: name, max: 2_147_483_647)
             try self.tagKeys?.forEach {
-                try validate($0, name: "tagKeys[]", parent: name, max: 2147483647)
+                try validate($0, name: "tagKeys[]", parent: name, max: 2_147_483_647)
             }
             try self.tagValues?.forEach {
-                try validate($0, name: "tagValues[]", parent: name, max: 2147483647)
+                try validate($0, name: "tagValues[]", parent: name, max: 2_147_483_647)
             }
         }
 
@@ -3062,8 +3001,7 @@ extension Redshift {
     }
 
     public struct DescribeDefaultClusterParametersMessage: AWSEncodableShape {
-
-        /// An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeDefaultClusterParameters request exceed the value specified in MaxRecords, Amazon Web Services returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request. 
+        /// An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeDefaultClusterParameters request exceed the value specified in MaxRecords, Amazon Web Services returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request.
         public let marker: String?
         /// The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified MaxRecords value, a value is returned in a marker field of the response. You can retrieve the next set of records by retrying the command with the returned marker value.  Default: 100  Constraints: minimum 20, maximum 100.
         public let maxRecords: Int?
@@ -3077,8 +3015,8 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.marker, name: "marker", parent: name, max: 2147483647)
-            try self.validate(self.parameterGroupFamily, name: "parameterGroupFamily", parent: name, max: 2147483647)
+            try self.validate(self.marker, name: "marker", parent: name, max: 2_147_483_647)
+            try self.validate(self.parameterGroupFamily, name: "parameterGroupFamily", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -3089,7 +3027,6 @@ extension Redshift {
     }
 
     public struct DescribeDefaultClusterParametersResult: AWSDecodableShape {
-
         public let defaultClusterParameters: DefaultClusterParameters?
 
         public init(defaultClusterParameters: DefaultClusterParameters? = nil) {
@@ -3102,7 +3039,6 @@ extension Redshift {
     }
 
     public struct DescribeEndpointAccessMessage: AWSEncodableShape {
-
         /// The cluster identifier associated with the described endpoint.
         public let clusterIdentifier: String?
         /// The name of the endpoint to be described.
@@ -3126,11 +3062,11 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2147483647)
-            try self.validate(self.endpointName, name: "endpointName", parent: name, max: 2147483647)
-            try self.validate(self.marker, name: "marker", parent: name, max: 2147483647)
-            try self.validate(self.resourceOwner, name: "resourceOwner", parent: name, max: 2147483647)
-            try self.validate(self.vpcId, name: "vpcId", parent: name, max: 2147483647)
+            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2_147_483_647)
+            try self.validate(self.endpointName, name: "endpointName", parent: name, max: 2_147_483_647)
+            try self.validate(self.marker, name: "marker", parent: name, max: 2_147_483_647)
+            try self.validate(self.resourceOwner, name: "resourceOwner", parent: name, max: 2_147_483_647)
+            try self.validate(self.vpcId, name: "vpcId", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -3144,7 +3080,6 @@ extension Redshift {
     }
 
     public struct DescribeEndpointAuthorizationMessage: AWSEncodableShape {
-
         /// The Aaccount ID of either the cluster owner (grantor) or grantee.  If Grantee parameter is true, then the Account value is of the grantor.
         public let account: String?
         /// The cluster identifier of the cluster to access.
@@ -3165,9 +3100,9 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.account, name: "account", parent: name, max: 2147483647)
-            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2147483647)
-            try self.validate(self.marker, name: "marker", parent: name, max: 2147483647)
+            try self.validate(self.account, name: "account", parent: name, max: 2_147_483_647)
+            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2_147_483_647)
+            try self.validate(self.marker, name: "marker", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -3180,7 +3115,6 @@ extension Redshift {
     }
 
     public struct DescribeEventCategoriesMessage: AWSEncodableShape {
-
         /// The source type, such as cluster or parameter group, to which the described event categories apply. Valid values: cluster, cluster-snapshot, cluster-parameter-group, cluster-security-group, and scheduled-action.
         public let sourceType: String?
 
@@ -3189,7 +3123,7 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.sourceType, name: "sourceType", parent: name, max: 2147483647)
+            try self.validate(self.sourceType, name: "sourceType", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -3198,10 +3132,10 @@ extension Redshift {
     }
 
     public struct DescribeEventSubscriptionsMessage: AWSEncodableShape {
-        public struct _TagKeysEncoding: ArrayCoderProperties { static public let member = "TagKey" }
-        public struct _TagValuesEncoding: ArrayCoderProperties { static public let member = "TagValue" }
+        public struct _TagKeysEncoding: ArrayCoderProperties { public static let member = "TagKey" }
+        public struct _TagValuesEncoding: ArrayCoderProperties { public static let member = "TagValue" }
 
-        /// An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeEventSubscriptions request exceed the value specified in MaxRecords, Amazon Web Services returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request. 
+        /// An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeEventSubscriptions request exceed the value specified in MaxRecords, Amazon Web Services returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request.
         public let marker: String?
         /// The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified MaxRecords value, a value is returned in a marker field of the response. You can retrieve the next set of records by retrying the command with the returned marker value.  Default: 100  Constraints: minimum 20, maximum 100.
         public let maxRecords: Int?
@@ -3223,13 +3157,13 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.marker, name: "marker", parent: name, max: 2147483647)
-            try self.validate(self.subscriptionName, name: "subscriptionName", parent: name, max: 2147483647)
+            try self.validate(self.marker, name: "marker", parent: name, max: 2_147_483_647)
+            try self.validate(self.subscriptionName, name: "subscriptionName", parent: name, max: 2_147_483_647)
             try self.tagKeys?.forEach {
-                try validate($0, name: "tagKeys[]", parent: name, max: 2147483647)
+                try validate($0, name: "tagKeys[]", parent: name, max: 2_147_483_647)
             }
             try self.tagValues?.forEach {
-                try validate($0, name: "tagValues[]", parent: name, max: 2147483647)
+                try validate($0, name: "tagValues[]", parent: name, max: 2_147_483_647)
             }
         }
 
@@ -3243,20 +3177,19 @@ extension Redshift {
     }
 
     public struct DescribeEventsMessage: AWSEncodableShape {
-
-        /// The number of minutes prior to the time of the request for which to retrieve events. For example, if the request is sent at 18:00 and you specify a duration of 60, then only events which have occurred after 17:00 will be returned. Default: 60 
+        /// The number of minutes prior to the time of the request for which to retrieve events. For example, if the request is sent at 18:00 and you specify a duration of 60, then only events which have occurred after 17:00 will be returned. Default: 60
         public let duration: Int?
-        /// The end of the time interval for which to retrieve events, specified in ISO 8601 format. For more information about ISO 8601, go to the ISO8601 Wikipedia page.  Example: 2009-07-08T18:00Z 
+        /// The end of the time interval for which to retrieve events, specified in ISO 8601 format. For more information about ISO 8601, go to the ISO8601 Wikipedia page.  Example: 2009-07-08T18:00Z
         public let endTime: Date?
-        /// An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeEvents request exceed the value specified in MaxRecords, Amazon Web Services returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request. 
+        /// An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeEvents request exceed the value specified in MaxRecords, Amazon Web Services returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request.
         public let marker: String?
         /// The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified MaxRecords value, a value is returned in a marker field of the response. You can retrieve the next set of records by retrying the command with the returned marker value.  Default: 100  Constraints: minimum 20, maximum 100.
         public let maxRecords: Int?
-        /// The identifier of the event source for which events will be returned. If this parameter is not specified, then all sources are included in the response. Constraints: If SourceIdentifier is supplied, SourceType must also be provided.   Specify a cluster identifier when SourceType is cluster.   Specify a cluster security group name when SourceType is cluster-security-group.   Specify a cluster parameter group name when SourceType is cluster-parameter-group.   Specify a cluster snapshot identifier when SourceType is cluster-snapshot.  
+        /// The identifier of the event source for which events will be returned. If this parameter is not specified, then all sources are included in the response. Constraints: If SourceIdentifier is supplied, SourceType must also be provided.   Specify a cluster identifier when SourceType is cluster.   Specify a cluster security group name when SourceType is cluster-security-group.   Specify a cluster parameter group name when SourceType is cluster-parameter-group.   Specify a cluster snapshot identifier when SourceType is cluster-snapshot.
         public let sourceIdentifier: String?
-        /// The event source to retrieve events for. If no value is specified, all events are returned. Constraints: If SourceType is supplied, SourceIdentifier must also be provided.   Specify cluster when SourceIdentifier is a cluster identifier.   Specify cluster-security-group when SourceIdentifier is a cluster security group name.   Specify cluster-parameter-group when SourceIdentifier is a cluster parameter group name.   Specify cluster-snapshot when SourceIdentifier is a cluster snapshot identifier.  
+        /// The event source to retrieve events for. If no value is specified, all events are returned. Constraints: If SourceType is supplied, SourceIdentifier must also be provided.   Specify cluster when SourceIdentifier is a cluster identifier.   Specify cluster-security-group when SourceIdentifier is a cluster security group name.   Specify cluster-parameter-group when SourceIdentifier is a cluster parameter group name.   Specify cluster-snapshot when SourceIdentifier is a cluster snapshot identifier.
         public let sourceType: SourceType?
-        /// The beginning of the time interval to retrieve events for, specified in ISO 8601 format. For more information about ISO 8601, go to the ISO8601 Wikipedia page.  Example: 2009-07-08T18:00Z 
+        /// The beginning of the time interval to retrieve events for, specified in ISO 8601 format. For more information about ISO 8601, go to the ISO8601 Wikipedia page.  Example: 2009-07-08T18:00Z
         public let startTime: Date?
 
         public init(duration: Int? = nil, endTime: Date? = nil, marker: String? = nil, maxRecords: Int? = nil, sourceIdentifier: String? = nil, sourceType: SourceType? = nil, startTime: Date? = nil) {
@@ -3270,8 +3203,8 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.marker, name: "marker", parent: name, max: 2147483647)
-            try self.validate(self.sourceIdentifier, name: "sourceIdentifier", parent: name, max: 2147483647)
+            try self.validate(self.marker, name: "marker", parent: name, max: 2_147_483_647)
+            try self.validate(self.sourceIdentifier, name: "sourceIdentifier", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -3286,12 +3219,12 @@ extension Redshift {
     }
 
     public struct DescribeHsmClientCertificatesMessage: AWSEncodableShape {
-        public struct _TagKeysEncoding: ArrayCoderProperties { static public let member = "TagKey" }
-        public struct _TagValuesEncoding: ArrayCoderProperties { static public let member = "TagValue" }
+        public struct _TagKeysEncoding: ArrayCoderProperties { public static let member = "TagKey" }
+        public struct _TagValuesEncoding: ArrayCoderProperties { public static let member = "TagValue" }
 
         /// The identifier of a specific HSM client certificate for which you want information. If no identifier is specified, information is returned for all HSM client certificates owned by your account.
         public let hsmClientCertificateIdentifier: String?
-        /// An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeHsmClientCertificates request exceed the value specified in MaxRecords, Amazon Web Services returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request. 
+        /// An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeHsmClientCertificates request exceed the value specified in MaxRecords, Amazon Web Services returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request.
         public let marker: String?
         /// The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified MaxRecords value, a value is returned in a marker field of the response. You can retrieve the next set of records by retrying the command with the returned marker value.  Default: 100  Constraints: minimum 20, maximum 100.
         public let maxRecords: Int?
@@ -3311,13 +3244,13 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.hsmClientCertificateIdentifier, name: "hsmClientCertificateIdentifier", parent: name, max: 2147483647)
-            try self.validate(self.marker, name: "marker", parent: name, max: 2147483647)
+            try self.validate(self.hsmClientCertificateIdentifier, name: "hsmClientCertificateIdentifier", parent: name, max: 2_147_483_647)
+            try self.validate(self.marker, name: "marker", parent: name, max: 2_147_483_647)
             try self.tagKeys?.forEach {
-                try validate($0, name: "tagKeys[]", parent: name, max: 2147483647)
+                try validate($0, name: "tagKeys[]", parent: name, max: 2_147_483_647)
             }
             try self.tagValues?.forEach {
-                try validate($0, name: "tagValues[]", parent: name, max: 2147483647)
+                try validate($0, name: "tagValues[]", parent: name, max: 2_147_483_647)
             }
         }
 
@@ -3331,12 +3264,12 @@ extension Redshift {
     }
 
     public struct DescribeHsmConfigurationsMessage: AWSEncodableShape {
-        public struct _TagKeysEncoding: ArrayCoderProperties { static public let member = "TagKey" }
-        public struct _TagValuesEncoding: ArrayCoderProperties { static public let member = "TagValue" }
+        public struct _TagKeysEncoding: ArrayCoderProperties { public static let member = "TagKey" }
+        public struct _TagValuesEncoding: ArrayCoderProperties { public static let member = "TagValue" }
 
         /// The identifier of a specific Amazon Redshift HSM configuration to be described. If no identifier is specified, information is returned for all HSM configurations owned by your account.
         public let hsmConfigurationIdentifier: String?
-        /// An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeHsmConfigurations request exceed the value specified in MaxRecords, Amazon Web Services returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request. 
+        /// An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeHsmConfigurations request exceed the value specified in MaxRecords, Amazon Web Services returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request.
         public let marker: String?
         /// The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified MaxRecords value, a value is returned in a marker field of the response. You can retrieve the next set of records by retrying the command with the returned marker value.  Default: 100  Constraints: minimum 20, maximum 100.
         public let maxRecords: Int?
@@ -3356,13 +3289,13 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.hsmConfigurationIdentifier, name: "hsmConfigurationIdentifier", parent: name, max: 2147483647)
-            try self.validate(self.marker, name: "marker", parent: name, max: 2147483647)
+            try self.validate(self.hsmConfigurationIdentifier, name: "hsmConfigurationIdentifier", parent: name, max: 2_147_483_647)
+            try self.validate(self.marker, name: "marker", parent: name, max: 2_147_483_647)
             try self.tagKeys?.forEach {
-                try validate($0, name: "tagKeys[]", parent: name, max: 2147483647)
+                try validate($0, name: "tagKeys[]", parent: name, max: 2_147_483_647)
             }
             try self.tagValues?.forEach {
-                try validate($0, name: "tagValues[]", parent: name, max: 2147483647)
+                try validate($0, name: "tagValues[]", parent: name, max: 2_147_483_647)
             }
         }
 
@@ -3376,8 +3309,7 @@ extension Redshift {
     }
 
     public struct DescribeLoggingStatusMessage: AWSEncodableShape {
-
-        /// The identifier of the cluster from which to get the logging status. Example: examplecluster 
+        /// The identifier of the cluster from which to get the logging status. Example: examplecluster
         public let clusterIdentifier: String
 
         public init(clusterIdentifier: String) {
@@ -3385,7 +3317,7 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2147483647)
+            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -3394,16 +3326,16 @@ extension Redshift {
     }
 
     public struct DescribeNodeConfigurationOptionsMessage: AWSEncodableShape {
-        public struct _FiltersEncoding: ArrayCoderProperties { static public let member = "NodeConfigurationOptionsFilter" }
+        public struct _FiltersEncoding: ArrayCoderProperties { public static let member = "NodeConfigurationOptionsFilter" }
 
-        /// The action type to evaluate for possible node configurations. Specify "restore-cluster" to get configuration combinations based on an existing snapshot.  Specify "recommend-node-config" to get configuration recommendations based on an existing cluster or snapshot.  Specify "resize-cluster" to get configuration combinations for elastic resize based on an existing cluster. 
+        /// The action type to evaluate for possible node configurations. Specify "restore-cluster" to get configuration combinations based on an existing snapshot.  Specify "recommend-node-config" to get configuration recommendations based on an existing cluster or snapshot.  Specify "resize-cluster" to get configuration combinations for elastic resize based on an existing cluster.
         public let actionType: ActionType
         /// The identifier of the cluster to evaluate for possible node configurations.
         public let clusterIdentifier: String?
         /// A set of name, operator, and value items to filter the results.
         @OptionalCustomCoding<ArrayCoder<_FiltersEncoding, NodeConfigurationOptionsFilter>>
         public var filters: [NodeConfigurationOptionsFilter]?
-        /// An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeNodeConfigurationOptions request exceed the value specified in MaxRecords, Amazon Web Services returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request. 
+        /// An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeNodeConfigurationOptions request exceed the value specified in MaxRecords, Amazon Web Services returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request.
         public let marker: String?
         /// The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified MaxRecords value, a value is returned in a marker field of the response. You can retrieve the next set of records by retrying the command with the returned marker value.  Default: 500  Constraints: minimum 100, maximum 500.
         public let maxRecords: Int?
@@ -3423,13 +3355,13 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2147483647)
+            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2_147_483_647)
             try self.filters?.forEach {
                 try $0.validate(name: "\(name).filters[]")
             }
-            try self.validate(self.marker, name: "marker", parent: name, max: 2147483647)
-            try self.validate(self.ownerAccount, name: "ownerAccount", parent: name, max: 2147483647)
-            try self.validate(self.snapshotIdentifier, name: "snapshotIdentifier", parent: name, max: 2147483647)
+            try self.validate(self.marker, name: "marker", parent: name, max: 2_147_483_647)
+            try self.validate(self.ownerAccount, name: "ownerAccount", parent: name, max: 2_147_483_647)
+            try self.validate(self.snapshotIdentifier, name: "snapshotIdentifier", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -3444,10 +3376,9 @@ extension Redshift {
     }
 
     public struct DescribeOrderableClusterOptionsMessage: AWSEncodableShape {
-
         /// The version filter value. Specify this parameter to show only the available offerings matching the specified version. Default: All versions. Constraints: Must be one of the version returned from DescribeClusterVersions.
         public let clusterVersion: String?
-        /// An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeOrderableClusterOptions request exceed the value specified in MaxRecords, Amazon Web Services returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request. 
+        /// An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeOrderableClusterOptions request exceed the value specified in MaxRecords, Amazon Web Services returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request.
         public let marker: String?
         /// The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified MaxRecords value, a value is returned in a marker field of the response. You can retrieve the next set of records by retrying the command with the returned marker value.  Default: 100  Constraints: minimum 20, maximum 100.
         public let maxRecords: Int?
@@ -3462,9 +3393,9 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.clusterVersion, name: "clusterVersion", parent: name, max: 2147483647)
-            try self.validate(self.marker, name: "marker", parent: name, max: 2147483647)
-            try self.validate(self.nodeType, name: "nodeType", parent: name, max: 2147483647)
+            try self.validate(self.clusterVersion, name: "clusterVersion", parent: name, max: 2_147_483_647)
+            try self.validate(self.marker, name: "marker", parent: name, max: 2_147_483_647)
+            try self.validate(self.nodeType, name: "nodeType", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -3476,7 +3407,6 @@ extension Redshift {
     }
 
     public struct DescribePartnersInputMessage: AWSEncodableShape {
-
         /// The Region ID that owns the cluster.
         public let accountId: String
         /// The cluster identifier of the cluster whose partner integration is being described.
@@ -3514,7 +3444,7 @@ extension Redshift {
     }
 
     public struct DescribePartnersOutputMessage: AWSDecodableShape {
-        public struct _PartnerIntegrationInfoListEncoding: ArrayCoderProperties { static public let member = "PartnerIntegrationInfo" }
+        public struct _PartnerIntegrationInfoListEncoding: ArrayCoderProperties { public static let member = "PartnerIntegrationInfo" }
 
         /// A list of partner integrations.
         @OptionalCustomCoding<ArrayCoder<_PartnerIntegrationInfoListEncoding, PartnerIntegrationInfo>>
@@ -3530,8 +3460,7 @@ extension Redshift {
     }
 
     public struct DescribeReservedNodeOfferingsMessage: AWSEncodableShape {
-
-        /// An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeReservedNodeOfferings request exceed the value specified in MaxRecords, Amazon Web Services returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request. 
+        /// An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeReservedNodeOfferings request exceed the value specified in MaxRecords, Amazon Web Services returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request.
         public let marker: String?
         /// The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified MaxRecords value, a value is returned in a marker field of the response. You can retrieve the next set of records by retrying the command with the returned marker value.  Default: 100  Constraints: minimum 20, maximum 100.
         public let maxRecords: Int?
@@ -3545,8 +3474,8 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.marker, name: "marker", parent: name, max: 2147483647)
-            try self.validate(self.reservedNodeOfferingId, name: "reservedNodeOfferingId", parent: name, max: 2147483647)
+            try self.validate(self.marker, name: "marker", parent: name, max: 2_147_483_647)
+            try self.validate(self.reservedNodeOfferingId, name: "reservedNodeOfferingId", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -3557,8 +3486,7 @@ extension Redshift {
     }
 
     public struct DescribeReservedNodesMessage: AWSEncodableShape {
-
-        /// An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeReservedNodes request exceed the value specified in MaxRecords, Amazon Web Services returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request. 
+        /// An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeReservedNodes request exceed the value specified in MaxRecords, Amazon Web Services returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request.
         public let marker: String?
         /// The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified MaxRecords value, a value is returned in a marker field of the response. You can retrieve the next set of records by retrying the command with the returned marker value.  Default: 100  Constraints: minimum 20, maximum 100.
         public let maxRecords: Int?
@@ -3572,8 +3500,8 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.marker, name: "marker", parent: name, max: 2147483647)
-            try self.validate(self.reservedNodeId, name: "reservedNodeId", parent: name, max: 2147483647)
+            try self.validate(self.marker, name: "marker", parent: name, max: 2_147_483_647)
+            try self.validate(self.reservedNodeId, name: "reservedNodeId", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -3584,7 +3512,6 @@ extension Redshift {
     }
 
     public struct DescribeResizeMessage: AWSEncodableShape {
-
         /// The unique identifier of a cluster whose resize progress you are requesting. This parameter is case-sensitive. By default, resize operations for all clusters defined for an account are returned.
         public let clusterIdentifier: String
 
@@ -3593,7 +3520,7 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2147483647)
+            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -3602,24 +3529,24 @@ extension Redshift {
     }
 
     public struct DescribeScheduledActionsMessage: AWSEncodableShape {
-        public struct _FiltersEncoding: ArrayCoderProperties { static public let member = "ScheduledActionFilter" }
+        public struct _FiltersEncoding: ArrayCoderProperties { public static let member = "ScheduledActionFilter" }
 
-        /// If true, retrieve only active scheduled actions.  If false, retrieve only disabled scheduled actions. 
+        /// If true, retrieve only active scheduled actions.  If false, retrieve only disabled scheduled actions.
         public let active: Bool?
         /// The end time in UTC of the scheduled action to retrieve.  Only active scheduled actions that have invocations before this time are retrieved.
         public let endTime: Date?
-        /// List of scheduled action filters. 
+        /// List of scheduled action filters.
         @OptionalCustomCoding<ArrayCoder<_FiltersEncoding, ScheduledActionFilter>>
         public var filters: [ScheduledActionFilter]?
-        /// An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeScheduledActions request exceed the value specified in MaxRecords, Amazon Web Services returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request. 
+        /// An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeScheduledActions request exceed the value specified in MaxRecords, Amazon Web Services returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request.
         public let marker: String?
         /// The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified MaxRecords value, a value is returned in a marker field of the response. You can retrieve the next set of records by retrying the command with the returned marker value.  Default: 100  Constraints: minimum 20, maximum 100.
         public let maxRecords: Int?
-        /// The name of the scheduled action to retrieve. 
+        /// The name of the scheduled action to retrieve.
         public let scheduledActionName: String?
         /// The start time in UTC of the scheduled actions to retrieve.  Only active scheduled actions that have invocations after this time are retrieved.
         public let startTime: Date?
-        /// The type of the scheduled actions to retrieve. 
+        /// The type of the scheduled actions to retrieve.
         public let targetActionType: ScheduledActionTypeValues?
 
         public init(active: Bool? = nil, endTime: Date? = nil, filters: [ScheduledActionFilter]? = nil, marker: String? = nil, maxRecords: Int? = nil, scheduledActionName: String? = nil, startTime: Date? = nil, targetActionType: ScheduledActionTypeValues? = nil) {
@@ -3637,8 +3564,8 @@ extension Redshift {
             try self.filters?.forEach {
                 try $0.validate(name: "\(name).filters[]")
             }
-            try self.validate(self.marker, name: "marker", parent: name, max: 2147483647)
-            try self.validate(self.scheduledActionName, name: "scheduledActionName", parent: name, max: 2147483647)
+            try self.validate(self.marker, name: "marker", parent: name, max: 2_147_483_647)
+            try self.validate(self.scheduledActionName, name: "scheduledActionName", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -3654,10 +3581,10 @@ extension Redshift {
     }
 
     public struct DescribeSnapshotCopyGrantsMessage: AWSEncodableShape {
-        public struct _TagKeysEncoding: ArrayCoderProperties { static public let member = "TagKey" }
-        public struct _TagValuesEncoding: ArrayCoderProperties { static public let member = "TagValue" }
+        public struct _TagKeysEncoding: ArrayCoderProperties { public static let member = "TagKey" }
+        public struct _TagValuesEncoding: ArrayCoderProperties { public static let member = "TagValue" }
 
-        /// An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeSnapshotCopyGrant request exceed the value specified in MaxRecords, Amazon Web Services returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request.  Constraints: You can specify either the SnapshotCopyGrantName parameter or the Marker parameter, but not both. 
+        /// An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeSnapshotCopyGrant request exceed the value specified in MaxRecords, Amazon Web Services returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request.  Constraints: You can specify either the SnapshotCopyGrantName parameter or the Marker parameter, but not both.
         public let marker: String?
         /// The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified MaxRecords value, a value is returned in a marker field of the response. You can retrieve the next set of records by retrying the command with the returned marker value.  Default: 100  Constraints: minimum 20, maximum 100.
         public let maxRecords: Int?
@@ -3679,13 +3606,13 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.marker, name: "marker", parent: name, max: 2147483647)
-            try self.validate(self.snapshotCopyGrantName, name: "snapshotCopyGrantName", parent: name, max: 2147483647)
+            try self.validate(self.marker, name: "marker", parent: name, max: 2_147_483_647)
+            try self.validate(self.snapshotCopyGrantName, name: "snapshotCopyGrantName", parent: name, max: 2_147_483_647)
             try self.tagKeys?.forEach {
-                try validate($0, name: "tagKeys[]", parent: name, max: 2147483647)
+                try validate($0, name: "tagKeys[]", parent: name, max: 2_147_483_647)
             }
             try self.tagValues?.forEach {
-                try validate($0, name: "tagValues[]", parent: name, max: 2147483647)
+                try validate($0, name: "tagValues[]", parent: name, max: 2_147_483_647)
             }
         }
 
@@ -3699,8 +3626,8 @@ extension Redshift {
     }
 
     public struct DescribeSnapshotSchedulesMessage: AWSEncodableShape {
-        public struct _TagKeysEncoding: ArrayCoderProperties { static public let member = "TagKey" }
-        public struct _TagValuesEncoding: ArrayCoderProperties { static public let member = "TagValue" }
+        public struct _TagKeysEncoding: ArrayCoderProperties { public static let member = "TagKey" }
+        public struct _TagValuesEncoding: ArrayCoderProperties { public static let member = "TagValue" }
 
         /// The unique identifier for the cluster whose snapshot schedules you want to view.
         public let clusterIdentifier: String?
@@ -3727,14 +3654,14 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2147483647)
-            try self.validate(self.marker, name: "marker", parent: name, max: 2147483647)
-            try self.validate(self.scheduleIdentifier, name: "scheduleIdentifier", parent: name, max: 2147483647)
+            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2_147_483_647)
+            try self.validate(self.marker, name: "marker", parent: name, max: 2_147_483_647)
+            try self.validate(self.scheduleIdentifier, name: "scheduleIdentifier", parent: name, max: 2_147_483_647)
             try self.tagKeys?.forEach {
-                try validate($0, name: "tagKeys[]", parent: name, max: 2147483647)
+                try validate($0, name: "tagKeys[]", parent: name, max: 2_147_483_647)
             }
             try self.tagValues?.forEach {
-                try validate($0, name: "tagValues[]", parent: name, max: 2147483647)
+                try validate($0, name: "tagValues[]", parent: name, max: 2_147_483_647)
             }
         }
 
@@ -3749,7 +3676,7 @@ extension Redshift {
     }
 
     public struct DescribeSnapshotSchedulesOutputMessage: AWSDecodableShape {
-        public struct _SnapshotSchedulesEncoding: ArrayCoderProperties { static public let member = "SnapshotSchedule" }
+        public struct _SnapshotSchedulesEncoding: ArrayCoderProperties { public static let member = "SnapshotSchedule" }
 
         /// A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the marker parameter and retrying the command. If the marker field is empty, all response records have been retrieved for the request.
         public let marker: String?
@@ -3769,7 +3696,6 @@ extension Redshift {
     }
 
     public struct DescribeTableRestoreStatusMessage: AWSEncodableShape {
-
         /// The Amazon Redshift cluster that the table is being restored to.
         public let clusterIdentifier: String?
         /// An optional pagination token provided by a previous DescribeTableRestoreStatus request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by the MaxRecords parameter.
@@ -3787,9 +3713,9 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2147483647)
-            try self.validate(self.marker, name: "marker", parent: name, max: 2147483647)
-            try self.validate(self.tableRestoreRequestId, name: "tableRestoreRequestId", parent: name, max: 2147483647)
+            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2_147_483_647)
+            try self.validate(self.marker, name: "marker", parent: name, max: 2_147_483_647)
+            try self.validate(self.tableRestoreRequestId, name: "tableRestoreRequestId", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -3801,16 +3727,16 @@ extension Redshift {
     }
 
     public struct DescribeTagsMessage: AWSEncodableShape {
-        public struct _TagKeysEncoding: ArrayCoderProperties { static public let member = "TagKey" }
-        public struct _TagValuesEncoding: ArrayCoderProperties { static public let member = "TagValue" }
+        public struct _TagKeysEncoding: ArrayCoderProperties { public static let member = "TagKey" }
+        public struct _TagValuesEncoding: ArrayCoderProperties { public static let member = "TagValue" }
 
-        /// A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the marker parameter and retrying the command. If the marker field is empty, all response records have been retrieved for the request. 
+        /// A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the marker parameter and retrying the command. If the marker field is empty, all response records have been retrieved for the request.
         public let marker: String?
-        /// The maximum number or response records to return in each call. If the number of remaining response records exceeds the specified MaxRecords value, a value is returned in a marker field of the response. You can retrieve the next set of records by retrying the command with the returned marker value. 
+        /// The maximum number or response records to return in each call. If the number of remaining response records exceeds the specified MaxRecords value, a value is returned in a marker field of the response. You can retrieve the next set of records by retrying the command with the returned marker value.
         public let maxRecords: Int?
-        /// The Amazon Resource Name (ARN) for which you want to describe the tag or tags. For example, arn:aws:redshift:us-east-2:123456789:cluster:t1. 
+        /// The Amazon Resource Name (ARN) for which you want to describe the tag or tags. For example, arn:aws:redshift:us-east-2:123456789:cluster:t1.
         public let resourceName: String?
-        /// The type of resource with which you want to view tags. Valid resource types are:    Cluster   CIDR/IP   EC2 security group   Snapshot   Cluster security group   Subnet group   HSM connection   HSM certificate   Parameter group   Snapshot copy grant   For more information about Amazon Redshift resource types and constructing ARNs, go to Specifying Policy Elements: Actions, Effects, Resources, and Principals in the Amazon Redshift Cluster Management Guide. 
+        /// The type of resource with which you want to view tags. Valid resource types are:    Cluster   CIDR/IP   EC2 security group   Snapshot   Cluster security group   Subnet group   HSM connection   HSM certificate   Parameter group   Snapshot copy grant   For more information about Amazon Redshift resource types and constructing ARNs, go to Specifying Policy Elements: Actions, Effects, Resources, and Principals in the Amazon Redshift Cluster Management Guide.
         public let resourceType: String?
         /// A tag key or keys for which you want to return all matching resources that are associated with the specified key or keys. For example, suppose that you have resources tagged with keys called owner and environment. If you specify both of these tag keys in the request, Amazon Redshift returns a response with all resources that have either or both of these tag keys associated with them.
         @OptionalCustomCoding<ArrayCoder<_TagKeysEncoding, String>>
@@ -3829,14 +3755,14 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.marker, name: "marker", parent: name, max: 2147483647)
-            try self.validate(self.resourceName, name: "resourceName", parent: name, max: 2147483647)
-            try self.validate(self.resourceType, name: "resourceType", parent: name, max: 2147483647)
+            try self.validate(self.marker, name: "marker", parent: name, max: 2_147_483_647)
+            try self.validate(self.resourceName, name: "resourceName", parent: name, max: 2_147_483_647)
+            try self.validate(self.resourceType, name: "resourceType", parent: name, max: 2_147_483_647)
             try self.tagKeys?.forEach {
-                try validate($0, name: "tagKeys[]", parent: name, max: 2147483647)
+                try validate($0, name: "tagKeys[]", parent: name, max: 2_147_483_647)
             }
             try self.tagValues?.forEach {
-                try validate($0, name: "tagValues[]", parent: name, max: 2147483647)
+                try validate($0, name: "tagValues[]", parent: name, max: 2_147_483_647)
             }
         }
 
@@ -3851,14 +3777,14 @@ extension Redshift {
     }
 
     public struct DescribeUsageLimitsMessage: AWSEncodableShape {
-        public struct _TagKeysEncoding: ArrayCoderProperties { static public let member = "TagKey" }
-        public struct _TagValuesEncoding: ArrayCoderProperties { static public let member = "TagValue" }
+        public struct _TagKeysEncoding: ArrayCoderProperties { public static let member = "TagKey" }
+        public struct _TagValuesEncoding: ArrayCoderProperties { public static let member = "TagValue" }
 
         /// The identifier of the cluster for which you want to describe usage limits.
         public let clusterIdentifier: String?
         /// The feature type for which you want to describe usage limits.
         public let featureType: UsageLimitFeatureType?
-        /// An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeUsageLimits request exceed the value specified in MaxRecords, Amazon Web Services returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request. 
+        /// An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeUsageLimits request exceed the value specified in MaxRecords, Amazon Web Services returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request.
         public let marker: String?
         /// The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified MaxRecords value, a value is returned in a marker field of the response. You can retrieve the next set of records by retrying the command with the returned marker value.  Default: 100  Constraints: minimum 20, maximum 100.
         public let maxRecords: Int?
@@ -3882,15 +3808,15 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2147483647)
-            try self.validate(self.marker, name: "marker", parent: name, max: 2147483647)
+            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2_147_483_647)
+            try self.validate(self.marker, name: "marker", parent: name, max: 2_147_483_647)
             try self.tagKeys?.forEach {
-                try validate($0, name: "tagKeys[]", parent: name, max: 2147483647)
+                try validate($0, name: "tagKeys[]", parent: name, max: 2_147_483_647)
             }
             try self.tagValues?.forEach {
-                try validate($0, name: "tagValues[]", parent: name, max: 2147483647)
+                try validate($0, name: "tagValues[]", parent: name, max: 2_147_483_647)
             }
-            try self.validate(self.usageLimitId, name: "usageLimitId", parent: name, max: 2147483647)
+            try self.validate(self.usageLimitId, name: "usageLimitId", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -3905,8 +3831,7 @@ extension Redshift {
     }
 
     public struct DisableLoggingMessage: AWSEncodableShape {
-
-        /// The identifier of the cluster on which logging is to be stopped. Example: examplecluster 
+        /// The identifier of the cluster on which logging is to be stopped. Example: examplecluster
         public let clusterIdentifier: String
 
         public init(clusterIdentifier: String) {
@@ -3914,7 +3839,7 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2147483647)
+            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -3923,7 +3848,6 @@ extension Redshift {
     }
 
     public struct DisableSnapshotCopyMessage: AWSEncodableShape {
-
         /// The unique identifier of the source cluster that you want to disable copying of snapshots to a destination region. Constraints: Must be the valid name of an existing cluster that has cross-region snapshot copy enabled.
         public let clusterIdentifier: String
 
@@ -3932,7 +3856,7 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2147483647)
+            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -3941,7 +3865,6 @@ extension Redshift {
     }
 
     public struct DisableSnapshotCopyResult: AWSDecodableShape {
-
         public let cluster: Cluster?
 
         public init(cluster: Cluster? = nil) {
@@ -3954,11 +3877,11 @@ extension Redshift {
     }
 
     public struct EC2SecurityGroup: AWSDecodableShape {
-        public struct _TagsEncoding: ArrayCoderProperties { static public let member = "Tag" }
+        public struct _TagsEncoding: ArrayCoderProperties { public static let member = "Tag" }
 
         /// The name of the EC2 Security Group.
         public let eC2SecurityGroupName: String?
-        /// The account ID of the owner of the EC2 security group specified in the EC2SecurityGroupName field. 
+        /// The account ID of the owner of the EC2 security group specified in the EC2SecurityGroupName field.
         public let eC2SecurityGroupOwnerId: String?
         /// The status of the EC2 security group.
         public let status: String?
@@ -3982,7 +3905,6 @@ extension Redshift {
     }
 
     public struct ElasticIpStatus: AWSDecodableShape {
-
         /// The elastic IP (EIP) address for the cluster.
         public let elasticIp: String?
         /// The status of the elastic IP (EIP) address.
@@ -4000,12 +3922,11 @@ extension Redshift {
     }
 
     public struct EnableLoggingMessage: AWSEncodableShape {
-
-        /// The name of an existing S3 bucket where the log files are to be stored. Constraints:   Must be in the same region as the cluster   The cluster must have read bucket and put object permissions  
+        /// The name of an existing S3 bucket where the log files are to be stored. Constraints:   Must be in the same region as the cluster   The cluster must have read bucket and put object permissions
         public let bucketName: String
-        /// The identifier of the cluster on which logging is to be started. Example: examplecluster 
+        /// The identifier of the cluster on which logging is to be started. Example: examplecluster
         public let clusterIdentifier: String
-        /// The prefix applied to the log file names. Constraints:   Cannot exceed 512 characters   Cannot contain spaces( ), double quotes ("), single quotes ('), a backslash (\), or control characters. The hexadecimal codes for invalid characters are:    x00 to x20   x22   x27   x5c   x7f or larger    
+        /// The prefix applied to the log file names. Constraints:   Cannot exceed 512 characters   Cannot contain spaces( ), double quotes ("), single quotes ('), a backslash (\), or control characters. The hexadecimal codes for invalid characters are:    x00 to x20   x22   x27   x5c   x7f or larger
         public let s3KeyPrefix: String?
 
         public init(bucketName: String, clusterIdentifier: String, s3KeyPrefix: String? = nil) {
@@ -4015,9 +3936,9 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.bucketName, name: "bucketName", parent: name, max: 2147483647)
-            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2147483647)
-            try self.validate(self.s3KeyPrefix, name: "s3KeyPrefix", parent: name, max: 2147483647)
+            try self.validate(self.bucketName, name: "bucketName", parent: name, max: 2_147_483_647)
+            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2_147_483_647)
+            try self.validate(self.s3KeyPrefix, name: "s3KeyPrefix", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -4028,10 +3949,9 @@ extension Redshift {
     }
 
     public struct EnableSnapshotCopyMessage: AWSEncodableShape {
-
         /// The unique identifier of the source cluster to copy snapshots from. Constraints: Must be the valid name of an existing cluster that does not already have cross-region snapshot copy enabled.
         public let clusterIdentifier: String
-        /// The destination Region that you want to copy snapshots to. Constraints: Must be the name of a valid Region. For more information, see Regions and Endpoints in the Amazon Web Services General Reference. 
+        /// The destination Region that you want to copy snapshots to. Constraints: Must be the name of a valid Region. For more information, see Regions and Endpoints in the Amazon Web Services General Reference.
         public let destinationRegion: String
         /// The number of days to retain newly copied snapshots in the destination Region after they are copied from the source Region. If the value is -1, the manual snapshot is retained indefinitely.  The value must be either -1 or an integer between 1 and 3,653.
         public let manualSnapshotRetentionPeriod: Int?
@@ -4049,9 +3969,9 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2147483647)
-            try self.validate(self.destinationRegion, name: "destinationRegion", parent: name, max: 2147483647)
-            try self.validate(self.snapshotCopyGrantName, name: "snapshotCopyGrantName", parent: name, max: 2147483647)
+            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2_147_483_647)
+            try self.validate(self.destinationRegion, name: "destinationRegion", parent: name, max: 2_147_483_647)
+            try self.validate(self.snapshotCopyGrantName, name: "snapshotCopyGrantName", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -4064,7 +3984,6 @@ extension Redshift {
     }
 
     public struct EnableSnapshotCopyResult: AWSDecodableShape {
-
         public let cluster: Cluster?
 
         public init(cluster: Cluster? = nil) {
@@ -4077,7 +3996,7 @@ extension Redshift {
     }
 
     public struct Endpoint: AWSDecodableShape {
-        public struct _VpcEndpointsEncoding: ArrayCoderProperties { static public let member = "VpcEndpoint" }
+        public struct _VpcEndpointsEncoding: ArrayCoderProperties { public static let member = "VpcEndpoint" }
 
         /// The DNS address of the Cluster.
         public let address: String?
@@ -4101,7 +4020,7 @@ extension Redshift {
     }
 
     public struct EndpointAccess: AWSDecodableShape {
-        public struct _VpcSecurityGroupsEncoding: ArrayCoderProperties { static public let member = "VpcSecurityGroup" }
+        public struct _VpcSecurityGroupsEncoding: ArrayCoderProperties { public static let member = "VpcSecurityGroup" }
 
         /// The DNS address of the endpoint.
         public let address: String?
@@ -4152,7 +4071,6 @@ extension Redshift {
     }
 
     public struct EndpointAccessList: AWSDecodableShape {
-
         /// The list of endpoints with access to the cluster.
         @OptionalCustomCoding<StandardArrayCoder>
         public var endpointAccessList: [EndpointAccess]?
@@ -4171,7 +4089,7 @@ extension Redshift {
     }
 
     public struct EndpointAuthorization: AWSDecodableShape {
-        public struct _AllowedVPCsEncoding: ArrayCoderProperties { static public let member = "VpcIdentifier" }
+        public struct _AllowedVPCsEncoding: ArrayCoderProperties { public static let member = "VpcIdentifier" }
 
         /// Indicates whether all VPCs in the grantee account are allowed access to the cluster.
         public let allowedAllVPCs: Bool?
@@ -4219,7 +4137,6 @@ extension Redshift {
     }
 
     public struct EndpointAuthorizationList: AWSDecodableShape {
-
         /// The authorizations to an endpoint.
         @OptionalCustomCoding<StandardArrayCoder>
         public var endpointAuthorizationList: [EndpointAuthorization]?
@@ -4238,7 +4155,7 @@ extension Redshift {
     }
 
     public struct Event: AWSDecodableShape {
-        public struct _EventCategoriesEncoding: ArrayCoderProperties { static public let member = "EventCategory" }
+        public struct _EventCategoriesEncoding: ArrayCoderProperties { public static let member = "EventCategory" }
 
         /// The date and time of the event.
         public let date: Date?
@@ -4278,7 +4195,7 @@ extension Redshift {
     }
 
     public struct EventCategoriesMap: AWSDecodableShape {
-        public struct _EventsEncoding: ArrayCoderProperties { static public let member = "EventInfoMap" }
+        public struct _EventsEncoding: ArrayCoderProperties { public static let member = "EventInfoMap" }
 
         /// The events in the event category.
         @OptionalCustomCoding<ArrayCoder<_EventsEncoding, EventInfoMap>>
@@ -4298,7 +4215,7 @@ extension Redshift {
     }
 
     public struct EventCategoriesMessage: AWSDecodableShape {
-        public struct _EventCategoriesMapListEncoding: ArrayCoderProperties { static public let member = "EventCategoriesMap" }
+        public struct _EventCategoriesMapListEncoding: ArrayCoderProperties { public static let member = "EventCategoriesMap" }
 
         /// A list of event categories descriptions.
         @OptionalCustomCoding<ArrayCoder<_EventCategoriesMapListEncoding, EventCategoriesMap>>
@@ -4314,7 +4231,7 @@ extension Redshift {
     }
 
     public struct EventInfoMap: AWSDecodableShape {
-        public struct _EventCategoriesEncoding: ArrayCoderProperties { static public let member = "EventCategory" }
+        public struct _EventCategoriesEncoding: ArrayCoderProperties { public static let member = "EventCategory" }
 
         /// The category of an Amazon Redshift event.
         @OptionalCustomCoding<ArrayCoder<_EventCategoriesEncoding, String>>
@@ -4342,9 +4259,9 @@ extension Redshift {
     }
 
     public struct EventSubscription: AWSDecodableShape {
-        public struct _EventCategoriesListEncoding: ArrayCoderProperties { static public let member = "EventCategory" }
-        public struct _SourceIdsListEncoding: ArrayCoderProperties { static public let member = "SourceId" }
-        public struct _TagsEncoding: ArrayCoderProperties { static public let member = "Tag" }
+        public struct _EventCategoriesListEncoding: ArrayCoderProperties { public static let member = "EventCategory" }
+        public struct _SourceIdsListEncoding: ArrayCoderProperties { public static let member = "SourceId" }
+        public struct _TagsEncoding: ArrayCoderProperties { public static let member = "Tag" }
 
         /// The account associated with the Amazon Redshift event notification subscription.
         public let customerAwsId: String?
@@ -4362,9 +4279,9 @@ extension Redshift {
         /// A list of the sources that publish events to the Amazon Redshift event notification subscription.
         @OptionalCustomCoding<ArrayCoder<_SourceIdsListEncoding, String>>
         public var sourceIdsList: [String]?
-        /// The source type of the events returned by the Amazon Redshift event notification, such as cluster, cluster-snapshot, cluster-parameter-group, cluster-security-group, or scheduled-action. 
+        /// The source type of the events returned by the Amazon Redshift event notification, such as cluster, cluster-snapshot, cluster-parameter-group, cluster-security-group, or scheduled-action.
         public let sourceType: String?
-        /// The status of the Amazon Redshift event notification subscription. Constraints:   Can be one of the following: active | no-permission | topic-not-exist   The status "no-permission" indicates that Amazon Redshift no longer has permission to post to the Amazon SNS topic. The status "topic-not-exist" indicates that the topic was deleted after the subscription was created.  
+        /// The status of the Amazon Redshift event notification subscription. Constraints:   Can be one of the following: active | no-permission | topic-not-exist   The status "no-permission" indicates that Amazon Redshift no longer has permission to post to the Amazon SNS topic. The status "topic-not-exist" indicates that the topic was deleted after the subscription was created.
         public let status: String?
         /// The date and time the Amazon Redshift event notification subscription was created.
         public let subscriptionCreationTime: Date?
@@ -4402,12 +4319,12 @@ extension Redshift {
     }
 
     public struct EventSubscriptionsMessage: AWSDecodableShape {
-        public struct _EventSubscriptionsListEncoding: ArrayCoderProperties { static public let member = "EventSubscription" }
+        public struct _EventSubscriptionsListEncoding: ArrayCoderProperties { public static let member = "EventSubscription" }
 
         /// A list of event subscriptions.
         @OptionalCustomCoding<ArrayCoder<_EventSubscriptionsListEncoding, EventSubscription>>
         public var eventSubscriptionsList: [EventSubscription]?
-        /// A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the Marker parameter and retrying the command. If the Marker field is empty, all response records have been retrieved for the request. 
+        /// A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the Marker parameter and retrying the command. If the Marker field is empty, all response records have been retrieved for the request.
         public let marker: String?
 
         public init(eventSubscriptionsList: [EventSubscription]? = nil, marker: String? = nil) {
@@ -4422,12 +4339,12 @@ extension Redshift {
     }
 
     public struct EventsMessage: AWSDecodableShape {
-        public struct _EventsEncoding: ArrayCoderProperties { static public let member = "Event" }
+        public struct _EventsEncoding: ArrayCoderProperties { public static let member = "Event" }
 
-        /// A list of Event instances. 
+        /// A list of Event instances.
         @OptionalCustomCoding<ArrayCoder<_EventsEncoding, Event>>
         public var events: [Event]?
-        /// A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the Marker parameter and retrying the command. If the Marker field is empty, all response records have been retrieved for the request. 
+        /// A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the Marker parameter and retrying the command. If the Marker field is empty, all response records have been retrieved for the request.
         public let marker: String?
 
         public init(events: [Event]? = nil, marker: String? = nil) {
@@ -4442,18 +4359,18 @@ extension Redshift {
     }
 
     public struct GetClusterCredentialsMessage: AWSEncodableShape {
-        public struct _DbGroupsEncoding: ArrayCoderProperties { static public let member = "DbGroup" }
+        public struct _DbGroupsEncoding: ArrayCoderProperties { public static let member = "DbGroup" }
 
         /// Create a database user with the name specified for the user named in DbUser if one does not exist.
         public let autoCreate: Bool?
         /// The unique identifier of the cluster that contains the database for which your are requesting credentials. This parameter is case sensitive.
         public let clusterIdentifier: String
-        /// A list of the names of existing database groups that the user named in DbUser will join for the current session, in addition to any group memberships for an existing user. If not specified, a new user is added only to PUBLIC. Database group name constraints   Must be 1 to 64 alphanumeric characters or hyphens   Must contain only lowercase letters, numbers, underscore, plus sign, period (dot), at symbol (@), or hyphen.   First character must be a letter.   Must not contain a colon ( : ) or slash ( / ).    Cannot be a reserved word. A list of reserved words can be found in Reserved Words in the Amazon Redshift Database Developer Guide.  
+        /// A list of the names of existing database groups that the user named in DbUser will join for the current session, in addition to any group memberships for an existing user. If not specified, a new user is added only to PUBLIC. Database group name constraints   Must be 1 to 64 alphanumeric characters or hyphens   Must contain only lowercase letters, numbers, underscore, plus sign, period (dot), at symbol (@), or hyphen.   First character must be a letter.   Must not contain a colon ( : ) or slash ( / ).    Cannot be a reserved word. A list of reserved words can be found in Reserved Words in the Amazon Redshift Database Developer Guide.
         @OptionalCustomCoding<ArrayCoder<_DbGroupsEncoding, String>>
         public var dbGroups: [String]?
-        /// The name of a database that DbUser is authorized to log on to. If DbName is not specified, DbUser can log on to any existing database. Constraints:   Must be 1 to 64 alphanumeric characters or hyphens   Must contain only lowercase letters, numbers, underscore, plus sign, period (dot), at symbol (@), or hyphen.   First character must be a letter.   Must not contain a colon ( : ) or slash ( / ).    Cannot be a reserved word. A list of reserved words can be found in Reserved Words in the Amazon Redshift Database Developer Guide.  
+        /// The name of a database that DbUser is authorized to log on to. If DbName is not specified, DbUser can log on to any existing database. Constraints:   Must be 1 to 64 alphanumeric characters or hyphens   Must contain only lowercase letters, numbers, underscore, plus sign, period (dot), at symbol (@), or hyphen.   First character must be a letter.   Must not contain a colon ( : ) or slash ( / ).    Cannot be a reserved word. A list of reserved words can be found in Reserved Words in the Amazon Redshift Database Developer Guide.
         public let dbName: String?
-        /// The name of a database user. If a user name matching DbUser exists in the database, the temporary user credentials have the same permissions as the existing user. If DbUser doesn't exist in the database and Autocreate is True, a new user is created using the value for DbUser with PUBLIC permissions. If a database user matching the value for DbUser doesn't exist and Autocreate is False, then the command succeeds but the connection attempt will fail because the user doesn't exist in the database. For more information, see CREATE USER in the Amazon Redshift Database Developer Guide.  Constraints:   Must be 1 to 64 alphanumeric characters or hyphens. The user name can't be PUBLIC.   Must contain only lowercase letters, numbers, underscore, plus sign, period (dot), at symbol (@), or hyphen.   First character must be a letter.   Must not contain a colon ( : ) or slash ( / ).    Cannot be a reserved word. A list of reserved words can be found in Reserved Words in the Amazon Redshift Database Developer Guide.  
+        /// The name of a database user. If a user name matching DbUser exists in the database, the temporary user credentials have the same permissions as the existing user. If DbUser doesn't exist in the database and Autocreate is True, a new user is created using the value for DbUser with PUBLIC permissions. If a database user matching the value for DbUser doesn't exist and Autocreate is False, then the command succeeds but the connection attempt will fail because the user doesn't exist in the database. For more information, see CREATE USER in the Amazon Redshift Database Developer Guide.  Constraints:   Must be 1 to 64 alphanumeric characters or hyphens. The user name can't be PUBLIC.   Must contain only lowercase letters, numbers, underscore, plus sign, period (dot), at symbol (@), or hyphen.   First character must be a letter.   Must not contain a colon ( : ) or slash ( / ).    Cannot be a reserved word. A list of reserved words can be found in Reserved Words in the Amazon Redshift Database Developer Guide.
         public let dbUser: String
         /// The number of seconds until the returned temporary password expires. Constraint: minimum 900, maximum 3600. Default: 900
         public let durationSeconds: Int?
@@ -4468,12 +4385,12 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2147483647)
+            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2_147_483_647)
             try self.dbGroups?.forEach {
-                try validate($0, name: "dbGroups[]", parent: name, max: 2147483647)
+                try validate($0, name: "dbGroups[]", parent: name, max: 2_147_483_647)
             }
-            try self.validate(self.dbName, name: "dbName", parent: name, max: 2147483647)
-            try self.validate(self.dbUser, name: "dbUser", parent: name, max: 2147483647)
+            try self.validate(self.dbName, name: "dbName", parent: name, max: 2_147_483_647)
+            try self.validate(self.dbUser, name: "dbUser", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -4487,7 +4404,6 @@ extension Redshift {
     }
 
     public struct GetReservedNodeExchangeOfferingsInputMessage: AWSEncodableShape {
-
         /// A value that indicates the starting point for the next set of ReservedNodeOfferings.
         public let marker: String?
         /// An integer setting the maximum number of ReservedNodeOfferings to retrieve.
@@ -4502,8 +4418,8 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.marker, name: "marker", parent: name, max: 2147483647)
-            try self.validate(self.reservedNodeId, name: "reservedNodeId", parent: name, max: 2147483647)
+            try self.validate(self.marker, name: "marker", parent: name, max: 2_147_483_647)
+            try self.validate(self.reservedNodeId, name: "reservedNodeId", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -4514,9 +4430,9 @@ extension Redshift {
     }
 
     public struct GetReservedNodeExchangeOfferingsOutputMessage: AWSDecodableShape {
-        public struct _ReservedNodeOfferingsEncoding: ArrayCoderProperties { static public let member = "ReservedNodeOffering" }
+        public struct _ReservedNodeOfferingsEncoding: ArrayCoderProperties { public static let member = "ReservedNodeOffering" }
 
-        /// An optional parameter that specifies the starting point for returning a set of response records. When the results of a GetReservedNodeExchangeOfferings request exceed the value specified in MaxRecords, Amazon Redshift returns a value in the marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the marker parameter and retrying the request. 
+        /// An optional parameter that specifies the starting point for returning a set of response records. When the results of a GetReservedNodeExchangeOfferings request exceed the value specified in MaxRecords, Amazon Redshift returns a value in the marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the marker parameter and retrying the request.
         public let marker: String?
         /// Returns an array of ReservedNodeOffering objects.
         @OptionalCustomCoding<ArrayCoder<_ReservedNodeOfferingsEncoding, ReservedNodeOffering>>
@@ -4534,7 +4450,7 @@ extension Redshift {
     }
 
     public struct HsmClientCertificate: AWSDecodableShape {
-        public struct _TagsEncoding: ArrayCoderProperties { static public let member = "Tag" }
+        public struct _TagsEncoding: ArrayCoderProperties { public static let member = "Tag" }
 
         /// The identifier of the HSM client certificate.
         public let hsmClientCertificateIdentifier: String?
@@ -4558,12 +4474,12 @@ extension Redshift {
     }
 
     public struct HsmClientCertificateMessage: AWSDecodableShape {
-        public struct _HsmClientCertificatesEncoding: ArrayCoderProperties { static public let member = "HsmClientCertificate" }
+        public struct _HsmClientCertificatesEncoding: ArrayCoderProperties { public static let member = "HsmClientCertificate" }
 
         /// A list of the identifiers for one or more HSM client certificates used by Amazon Redshift clusters to store and retrieve database encryption keys in an HSM.
         @OptionalCustomCoding<ArrayCoder<_HsmClientCertificatesEncoding, HsmClientCertificate>>
         public var hsmClientCertificates: [HsmClientCertificate]?
-        /// A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the Marker parameter and retrying the command. If the Marker field is empty, all response records have been retrieved for the request. 
+        /// A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the Marker parameter and retrying the command. If the Marker field is empty, all response records have been retrieved for the request.
         public let marker: String?
 
         public init(hsmClientCertificates: [HsmClientCertificate]? = nil, marker: String? = nil) {
@@ -4578,7 +4494,7 @@ extension Redshift {
     }
 
     public struct HsmConfiguration: AWSDecodableShape {
-        public struct _TagsEncoding: ArrayCoderProperties { static public let member = "Tag" }
+        public struct _TagsEncoding: ArrayCoderProperties { public static let member = "Tag" }
 
         /// A text description of the HSM configuration.
         public let description: String?
@@ -4610,12 +4526,12 @@ extension Redshift {
     }
 
     public struct HsmConfigurationMessage: AWSDecodableShape {
-        public struct _HsmConfigurationsEncoding: ArrayCoderProperties { static public let member = "HsmConfiguration" }
+        public struct _HsmConfigurationsEncoding: ArrayCoderProperties { public static let member = "HsmConfiguration" }
 
         /// A list of HsmConfiguration objects.
         @OptionalCustomCoding<ArrayCoder<_HsmConfigurationsEncoding, HsmConfiguration>>
         public var hsmConfigurations: [HsmConfiguration]?
-        /// A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the Marker parameter and retrying the command. If the Marker field is empty, all response records have been retrieved for the request. 
+        /// A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the Marker parameter and retrying the command. If the Marker field is empty, all response records have been retrieved for the request.
         public let marker: String?
 
         public init(hsmConfigurations: [HsmConfiguration]? = nil, marker: String? = nil) {
@@ -4630,7 +4546,6 @@ extension Redshift {
     }
 
     public struct HsmStatus: AWSDecodableShape {
-
         /// Specifies the name of the HSM client certificate the Amazon Redshift cluster uses to retrieve the data encryption keys stored in an HSM.
         public let hsmClientCertificateIdentifier: String?
         /// Specifies the name of the HSM configuration that contains the information the Amazon Redshift cluster can use to retrieve and store keys in an HSM.
@@ -4652,7 +4567,7 @@ extension Redshift {
     }
 
     public struct IPRange: AWSDecodableShape {
-        public struct _TagsEncoding: ArrayCoderProperties { static public let member = "Tag" }
+        public struct _TagsEncoding: ArrayCoderProperties { public static let member = "Tag" }
 
         /// The IP range in Classless Inter-Domain Routing (CIDR) notation.
         public let cidrip: String?
@@ -4676,7 +4591,6 @@ extension Redshift {
     }
 
     public struct LoggingStatus: AWSDecodableShape {
-
         /// The name of the S3 bucket where the log files are stored.
         public let bucketName: String?
         /// The message indicating that logs failed to be delivered.
@@ -4710,13 +4624,13 @@ extension Redshift {
     }
 
     public struct MaintenanceTrack: AWSDecodableShape {
-        public struct _UpdateTargetsEncoding: ArrayCoderProperties { static public let member = "UpdateTarget" }
+        public struct _UpdateTargetsEncoding: ArrayCoderProperties { public static let member = "UpdateTarget" }
 
         /// The version number for the cluster release.
         public let databaseVersion: String?
         /// The name of the maintenance track. Possible values are current and trailing.
         public let maintenanceTrackName: String?
-        /// An array of UpdateTarget objects to update with the maintenance track. 
+        /// An array of UpdateTarget objects to update with the maintenance track.
         @OptionalCustomCoding<ArrayCoder<_UpdateTargetsEncoding, UpdateTarget>>
         public var updateTargets: [UpdateTarget]?
 
@@ -4734,8 +4648,7 @@ extension Redshift {
     }
 
     public struct ModifyAquaInputMessage: AWSEncodableShape {
-
-        /// The new value of AQUA configuration status. Possible values include the following.   enabled - Use AQUA if it is available for the current Region and Amazon Redshift node type.   disabled - Don't use AQUA.    auto - Amazon Redshift determines whether to use AQUA.  
+        /// The new value of AQUA configuration status. Possible values include the following.   enabled - Use AQUA if it is available for the current Region and Amazon Redshift node type.   disabled - Don't use AQUA.    auto - Amazon Redshift determines whether to use AQUA.
         public let aquaConfigurationStatus: AquaConfigurationStatus?
         /// The identifier of the cluster to be modified.
         public let clusterIdentifier: String
@@ -4746,7 +4659,7 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2147483647)
+            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -4756,8 +4669,7 @@ extension Redshift {
     }
 
     public struct ModifyAquaOutputMessage: AWSDecodableShape {
-
-        /// The updated AQUA configuration of the cluster. 
+        /// The updated AQUA configuration of the cluster.
         public let aquaConfiguration: AquaConfiguration?
 
         public init(aquaConfiguration: AquaConfiguration? = nil) {
@@ -4770,7 +4682,6 @@ extension Redshift {
     }
 
     public struct ModifyAuthenticationProfileMessage: AWSEncodableShape {
-
         /// The new content of the authentication profile in JSON format. The maximum length of the JSON string is determined by a quota for your account.
         public let authenticationProfileContent: String
         /// The name of the authentication profile to replace.
@@ -4782,7 +4693,7 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.authenticationProfileContent, name: "authenticationProfileContent", parent: name, max: 2147483647)
+            try self.validate(self.authenticationProfileContent, name: "authenticationProfileContent", parent: name, max: 2_147_483_647)
             try self.validate(self.authenticationProfileName, name: "authenticationProfileName", parent: name, max: 63)
             try self.validate(self.authenticationProfileName, name: "authenticationProfileName", parent: name, pattern: "^[a-zA-Z0-9\\-]+$")
         }
@@ -4794,7 +4705,6 @@ extension Redshift {
     }
 
     public struct ModifyAuthenticationProfileResult: AWSDecodableShape {
-
         /// The updated content of the authentication profile in JSON format.
         public let authenticationProfileContent: String?
         /// The name of the authentication profile that was replaced.
@@ -4812,8 +4722,7 @@ extension Redshift {
     }
 
     public struct ModifyClusterDbRevisionMessage: AWSEncodableShape {
-
-        /// The unique identifier of a cluster whose database revision you want to modify.  Example: examplecluster 
+        /// The unique identifier of a cluster whose database revision you want to modify.  Example: examplecluster
         public let clusterIdentifier: String
         /// The identifier of the database revision. You can retrieve this value from the response to the DescribeClusterDbRevisions request.
         public let revisionTarget: String
@@ -4824,8 +4733,8 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2147483647)
-            try self.validate(self.revisionTarget, name: "revisionTarget", parent: name, max: 2147483647)
+            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2_147_483_647)
+            try self.validate(self.revisionTarget, name: "revisionTarget", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -4835,7 +4744,6 @@ extension Redshift {
     }
 
     public struct ModifyClusterDbRevisionResult: AWSDecodableShape {
-
         public let cluster: Cluster?
 
         public init(cluster: Cluster? = nil) {
@@ -4848,8 +4756,8 @@ extension Redshift {
     }
 
     public struct ModifyClusterIamRolesMessage: AWSEncodableShape {
-        public struct _AddIamRolesEncoding: ArrayCoderProperties { static public let member = "IamRoleArn" }
-        public struct _RemoveIamRolesEncoding: ArrayCoderProperties { static public let member = "IamRoleArn" }
+        public struct _AddIamRolesEncoding: ArrayCoderProperties { public static let member = "IamRoleArn" }
+        public struct _RemoveIamRolesEncoding: ArrayCoderProperties { public static let member = "IamRoleArn" }
 
         /// Zero or more IAM roles to associate with the cluster. The roles must be in their Amazon Resource Name (ARN) format. You can associate up to 10 IAM roles with a single cluster in a single request.
         @OptionalCustomCoding<ArrayCoder<_AddIamRolesEncoding, String>>
@@ -4868,11 +4776,11 @@ extension Redshift {
 
         public func validate(name: String) throws {
             try self.addIamRoles?.forEach {
-                try validate($0, name: "addIamRoles[]", parent: name, max: 2147483647)
+                try validate($0, name: "addIamRoles[]", parent: name, max: 2_147_483_647)
             }
-            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2147483647)
+            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2_147_483_647)
             try self.removeIamRoles?.forEach {
-                try validate($0, name: "removeIamRoles[]", parent: name, max: 2147483647)
+                try validate($0, name: "removeIamRoles[]", parent: name, max: 2_147_483_647)
             }
         }
 
@@ -4884,7 +4792,6 @@ extension Redshift {
     }
 
     public struct ModifyClusterIamRolesResult: AWSDecodableShape {
-
         public let cluster: Cluster?
 
         public init(cluster: Cluster? = nil) {
@@ -4897,10 +4804,9 @@ extension Redshift {
     }
 
     public struct ModifyClusterMaintenanceMessage: AWSEncodableShape {
-
         /// A unique identifier for the cluster.
         public let clusterIdentifier: String
-        /// A boolean indicating whether to enable the deferred maintenance window. 
+        /// A boolean indicating whether to enable the deferred maintenance window.
         public let deferMaintenance: Bool?
         /// An integer indicating the duration of the maintenance window in days. If you specify a duration, you can't specify an end time. The duration must be 45 days or less.
         public let deferMaintenanceDuration: Int?
@@ -4921,8 +4827,8 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2147483647)
-            try self.validate(self.deferMaintenanceIdentifier, name: "deferMaintenanceIdentifier", parent: name, max: 2147483647)
+            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2_147_483_647)
+            try self.validate(self.deferMaintenanceIdentifier, name: "deferMaintenanceIdentifier", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -4936,7 +4842,6 @@ extension Redshift {
     }
 
     public struct ModifyClusterMaintenanceResult: AWSDecodableShape {
-
         public let cluster: Cluster?
 
         public init(cluster: Cluster? = nil) {
@@ -4949,10 +4854,10 @@ extension Redshift {
     }
 
     public struct ModifyClusterMessage: AWSEncodableShape {
-        public struct _ClusterSecurityGroupsEncoding: ArrayCoderProperties { static public let member = "ClusterSecurityGroupName" }
-        public struct _VpcSecurityGroupIdsEncoding: ArrayCoderProperties { static public let member = "VpcSecurityGroupId" }
+        public struct _ClusterSecurityGroupsEncoding: ArrayCoderProperties { public static let member = "ClusterSecurityGroupName" }
+        public struct _VpcSecurityGroupIdsEncoding: ArrayCoderProperties { public static let member = "VpcSecurityGroupId" }
 
-        /// If true, major version upgrades will be applied automatically to the cluster during the maintenance window.  Default: false 
+        /// If true, major version upgrades will be applied automatically to the cluster during the maintenance window.  Default: false
         public let allowVersionUpgrade: Bool?
         /// The number of days that automated snapshots are retained. If the value is 0, automated snapshots are disabled. Even if automated snapshots are disabled, you can still create manual snapshots when you want with CreateClusterSnapshot.  If you decrease the automated snapshot retention period from its current value, existing automated snapshots that fall outside of the new retention period will be immediately deleted.  You can't disable automated snapshots for RA3 node types. Set the automated retention period from 1-35 days. Default: Uses existing setting. Constraints: Must be a value from 0 to 35.
         public let automatedSnapshotRetentionPeriod: Int?
@@ -4960,23 +4865,23 @@ extension Redshift {
         public let availabilityZone: String?
         /// The option to enable relocation for an Amazon Redshift cluster between Availability Zones after the cluster modification is complete.
         public let availabilityZoneRelocation: Bool?
-        /// The unique identifier of the cluster to be modified. Example: examplecluster 
+        /// The unique identifier of the cluster to be modified. Example: examplecluster
         public let clusterIdentifier: String
         /// The name of the cluster parameter group to apply to this cluster. This change is applied only after the cluster is rebooted. To reboot a cluster use RebootCluster.  Default: Uses existing setting. Constraints: The cluster parameter group must be in the same parameter group family that matches the cluster version.
         public let clusterParameterGroupName: String?
-        /// A list of cluster security groups to be authorized on this cluster. This change is asynchronously applied as soon as possible. Security groups currently associated with the cluster, and not in the list of groups to apply, will be revoked from the cluster. Constraints:   Must be 1 to 255 alphanumeric characters or hyphens   First character must be a letter   Cannot end with a hyphen or contain two consecutive hyphens  
+        /// A list of cluster security groups to be authorized on this cluster. This change is asynchronously applied as soon as possible. Security groups currently associated with the cluster, and not in the list of groups to apply, will be revoked from the cluster. Constraints:   Must be 1 to 255 alphanumeric characters or hyphens   First character must be a letter   Cannot end with a hyphen or contain two consecutive hyphens
         @OptionalCustomCoding<ArrayCoder<_ClusterSecurityGroupsEncoding, String>>
         public var clusterSecurityGroups: [String]?
-        /// The new cluster type. When you submit your cluster resize request, your existing cluster goes into a read-only mode. After Amazon Redshift provisions a new cluster based on your resize requirements, there will be outage for a period while the old cluster is deleted and your connection is switched to the new cluster. You can use DescribeResize to track the progress of the resize request.  Valid Values:  multi-node | single-node  
+        /// The new cluster type. When you submit your cluster resize request, your existing cluster goes into a read-only mode. After Amazon Redshift provisions a new cluster based on your resize requirements, there will be outage for a period while the old cluster is deleted and your connection is switched to the new cluster. You can use DescribeResize to track the progress of the resize request.  Valid Values:  multi-node | single-node
         public let clusterType: String?
-        /// The new version number of the Amazon Redshift engine to upgrade to. For major version upgrades, if a non-default cluster parameter group is currently in use, a new cluster parameter group in the cluster parameter group family for the new version must be specified. The new cluster parameter group can be the default for that cluster parameter group family. 
-        /// For more information about parameters and parameter groups, go to 
-        /// Amazon Redshift Parameter Groups 
-        /// in the Amazon Redshift Cluster Management Guide. Example: 1.0 
+        /// The new version number of the Amazon Redshift engine to upgrade to. For major version upgrades, if a non-default cluster parameter group is currently in use, a new cluster parameter group in the cluster parameter group family for the new version must be specified. The new cluster parameter group can be the default for that cluster parameter group family.
+        /// For more information about parameters and parameter groups, go to
+        /// Amazon Redshift Parameter Groups
+        /// in the Amazon Redshift Cluster Management Guide. Example: 1.0
         public let clusterVersion: String?
         /// The Elastic IP (EIP) address for the cluster. Constraints: The cluster must be provisioned in EC2-VPC and publicly-accessible through an Internet gateway. For more information about provisioning clusters in EC2-VPC, go to Supported Platforms to Launch Your Cluster in the Amazon Redshift Cluster Management Guide.
         public let elasticIp: String?
-        /// Indicates whether the cluster is encrypted. If the value is encrypted (true) and you provide a value for the KmsKeyId parameter, we encrypt the cluster with the provided KmsKeyId. If you don't provide a KmsKeyId, we encrypt with the default key.  If the value is not encrypted (false), then the cluster is decrypted. 
+        /// Indicates whether the cluster is encrypted. If the value is encrypted (true) and you provide a value for the KmsKeyId parameter, we encrypt the cluster with the provided KmsKeyId. If you don't provide a KmsKeyId, we encrypt with the default key.  If the value is not encrypted (false), then the cluster is decrypted.
         public let encrypted: Bool?
         /// An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see Enhanced VPC Routing in the Amazon Redshift Cluster Management Guide. If this option is true, enhanced VPC routing is enabled.  Default: false
         public let enhancedVpcRouting: Bool?
@@ -4990,19 +4895,19 @@ extension Redshift {
         public let maintenanceTrackName: String?
         /// The default for number of days that a newly created manual snapshot is retained. If the value is -1, the manual snapshot is retained indefinitely. This value doesn't retroactively change the retention periods of existing manual snapshots. The value must be either -1 or an integer between 1 and 3,653. The default value is -1.
         public let manualSnapshotRetentionPeriod: Int?
-        /// The new password for the cluster admin user. This change is asynchronously applied as soon as possible. Between the time of the request and the completion of the request, the MasterUserPassword element exists in the PendingModifiedValues element of the operation response.   Operations never return the password, so this operation provides a way to regain access to the admin user account for a cluster if the password is lost.  Default: Uses existing setting. Constraints:   Must be between 8 and 64 characters in length.   Must contain at least one uppercase letter.   Must contain at least one lowercase letter.   Must contain one number.   Can be any printable ASCII character (ASCII code 33 to 126) except ' (single quote), " (double quote), \, /, @, or space.  
+        /// The new password for the cluster admin user. This change is asynchronously applied as soon as possible. Between the time of the request and the completion of the request, the MasterUserPassword element exists in the PendingModifiedValues element of the operation response.   Operations never return the password, so this operation provides a way to regain access to the admin user account for a cluster if the password is lost.  Default: Uses existing setting. Constraints:   Must be between 8 and 64 characters in length.   Must contain at least one uppercase letter.   Must contain at least one lowercase letter.   Must contain one number.   Can be any printable ASCII character (ASCII code 33 to 126) except ' (single quote), " (double quote), \, /, @, or space.
         public let masterUserPassword: String?
-        /// The new identifier for the cluster.  Constraints:   Must contain from 1 to 63 alphanumeric characters or hyphens.   Alphabetic characters must be lowercase.   First character must be a letter.   Cannot end with a hyphen or contain two consecutive hyphens.   Must be unique for all clusters within an account.  
-        ///  Example: examplecluster 
+        /// The new identifier for the cluster.  Constraints:   Must contain from 1 to 63 alphanumeric characters or hyphens.   Alphabetic characters must be lowercase.   First character must be a letter.   Cannot end with a hyphen or contain two consecutive hyphens.   Must be unique for all clusters within an account.
+        ///  Example: examplecluster
         public let newClusterIdentifier: String?
-        /// The new node type of the cluster. If you specify a new node type, you must also specify the number of nodes parameter. 
-        /// For more information about resizing clusters, go to 
-        /// Resizing Clusters in Amazon Redshift 
-        /// in the Amazon Redshift Cluster Management Guide.  Valid Values: ds2.xlarge | ds2.8xlarge | dc1.large | dc1.8xlarge |  dc2.large | dc2.8xlarge |  ra3.xlplus |  ra3.4xlarge | ra3.16xlarge 
+        /// The new node type of the cluster. If you specify a new node type, you must also specify the number of nodes parameter.
+        /// For more information about resizing clusters, go to
+        /// Resizing Clusters in Amazon Redshift
+        /// in the Amazon Redshift Cluster Management Guide.  Valid Values: ds2.xlarge | ds2.8xlarge | dc1.large | dc1.8xlarge |  dc2.large | dc2.8xlarge |  ra3.xlplus |  ra3.4xlarge | ra3.16xlarge
         public let nodeType: String?
-        /// The new number of nodes of the cluster. If you specify a new number of nodes, you must also specify the node type parameter. 
-        /// For more information about resizing clusters, go to 
-        /// Resizing Clusters in Amazon Redshift 
+        /// The new number of nodes of the cluster. If you specify a new number of nodes, you must also specify the node type parameter.
+        /// For more information about resizing clusters, go to
+        /// Resizing Clusters in Amazon Redshift
         /// in the Amazon Redshift Cluster Management Guide.  Valid Values: Integer greater than 0.
         public let numberOfNodes: Int?
         /// The option to change the port of an Amazon Redshift cluster.
@@ -5044,25 +4949,25 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.availabilityZone, name: "availabilityZone", parent: name, max: 2147483647)
-            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2147483647)
-            try self.validate(self.clusterParameterGroupName, name: "clusterParameterGroupName", parent: name, max: 2147483647)
+            try self.validate(self.availabilityZone, name: "availabilityZone", parent: name, max: 2_147_483_647)
+            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2_147_483_647)
+            try self.validate(self.clusterParameterGroupName, name: "clusterParameterGroupName", parent: name, max: 2_147_483_647)
             try self.clusterSecurityGroups?.forEach {
-                try validate($0, name: "clusterSecurityGroups[]", parent: name, max: 2147483647)
+                try validate($0, name: "clusterSecurityGroups[]", parent: name, max: 2_147_483_647)
             }
-            try self.validate(self.clusterType, name: "clusterType", parent: name, max: 2147483647)
-            try self.validate(self.clusterVersion, name: "clusterVersion", parent: name, max: 2147483647)
-            try self.validate(self.elasticIp, name: "elasticIp", parent: name, max: 2147483647)
-            try self.validate(self.hsmClientCertificateIdentifier, name: "hsmClientCertificateIdentifier", parent: name, max: 2147483647)
-            try self.validate(self.hsmConfigurationIdentifier, name: "hsmConfigurationIdentifier", parent: name, max: 2147483647)
-            try self.validate(self.kmsKeyId, name: "kmsKeyId", parent: name, max: 2147483647)
-            try self.validate(self.maintenanceTrackName, name: "maintenanceTrackName", parent: name, max: 2147483647)
-            try self.validate(self.masterUserPassword, name: "masterUserPassword", parent: name, max: 2147483647)
-            try self.validate(self.newClusterIdentifier, name: "newClusterIdentifier", parent: name, max: 2147483647)
-            try self.validate(self.nodeType, name: "nodeType", parent: name, max: 2147483647)
-            try self.validate(self.preferredMaintenanceWindow, name: "preferredMaintenanceWindow", parent: name, max: 2147483647)
+            try self.validate(self.clusterType, name: "clusterType", parent: name, max: 2_147_483_647)
+            try self.validate(self.clusterVersion, name: "clusterVersion", parent: name, max: 2_147_483_647)
+            try self.validate(self.elasticIp, name: "elasticIp", parent: name, max: 2_147_483_647)
+            try self.validate(self.hsmClientCertificateIdentifier, name: "hsmClientCertificateIdentifier", parent: name, max: 2_147_483_647)
+            try self.validate(self.hsmConfigurationIdentifier, name: "hsmConfigurationIdentifier", parent: name, max: 2_147_483_647)
+            try self.validate(self.kmsKeyId, name: "kmsKeyId", parent: name, max: 2_147_483_647)
+            try self.validate(self.maintenanceTrackName, name: "maintenanceTrackName", parent: name, max: 2_147_483_647)
+            try self.validate(self.masterUserPassword, name: "masterUserPassword", parent: name, max: 2_147_483_647)
+            try self.validate(self.newClusterIdentifier, name: "newClusterIdentifier", parent: name, max: 2_147_483_647)
+            try self.validate(self.nodeType, name: "nodeType", parent: name, max: 2_147_483_647)
+            try self.validate(self.preferredMaintenanceWindow, name: "preferredMaintenanceWindow", parent: name, max: 2_147_483_647)
             try self.vpcSecurityGroupIds?.forEach {
-                try validate($0, name: "vpcSecurityGroupIds[]", parent: name, max: 2147483647)
+                try validate($0, name: "vpcSecurityGroupIds[]", parent: name, max: 2_147_483_647)
             }
         }
 
@@ -5096,7 +5001,7 @@ extension Redshift {
     }
 
     public struct ModifyClusterParameterGroupMessage: AWSEncodableShape {
-        public struct _ParametersEncoding: ArrayCoderProperties { static public let member = "Parameter" }
+        public struct _ParametersEncoding: ArrayCoderProperties { public static let member = "Parameter" }
 
         /// The name of the parameter group to be modified.
         public let parameterGroupName: String
@@ -5110,7 +5015,7 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.parameterGroupName, name: "parameterGroupName", parent: name, max: 2147483647)
+            try self.validate(self.parameterGroupName, name: "parameterGroupName", parent: name, max: 2_147_483_647)
             try self.parameters.forEach {
                 try $0.validate(name: "\(name).parameters[]")
             }
@@ -5123,7 +5028,6 @@ extension Redshift {
     }
 
     public struct ModifyClusterResult: AWSDecodableShape {
-
         public let cluster: Cluster?
 
         public init(cluster: Cluster? = nil) {
@@ -5136,7 +5040,6 @@ extension Redshift {
     }
 
     public struct ModifyClusterSnapshotMessage: AWSEncodableShape {
-
         /// A Boolean option to override an exception if the retention period has already passed.
         public let force: Bool?
         /// The number of days that a manual snapshot is retained. If the value is -1, the manual snapshot is retained indefinitely. If the manual snapshot falls outside of the new retention period, you can specify the force option to immediately delete the snapshot. The value must be either -1 or an integer between 1 and 3,653.
@@ -5151,7 +5054,7 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.snapshotIdentifier, name: "snapshotIdentifier", parent: name, max: 2147483647)
+            try self.validate(self.snapshotIdentifier, name: "snapshotIdentifier", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -5162,7 +5065,6 @@ extension Redshift {
     }
 
     public struct ModifyClusterSnapshotResult: AWSDecodableShape {
-
         public let snapshot: Snapshot?
 
         public init(snapshot: Snapshot? = nil) {
@@ -5175,8 +5077,7 @@ extension Redshift {
     }
 
     public struct ModifyClusterSnapshotScheduleMessage: AWSEncodableShape {
-
-        /// A unique identifier for the cluster whose snapshot schedule you want to modify. 
+        /// A unique identifier for the cluster whose snapshot schedule you want to modify.
         public let clusterIdentifier: String
         /// A boolean to indicate whether to remove the assoiciation between the cluster and the schedule.
         public let disassociateSchedule: Bool?
@@ -5190,8 +5091,8 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2147483647)
-            try self.validate(self.scheduleIdentifier, name: "scheduleIdentifier", parent: name, max: 2147483647)
+            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2_147_483_647)
+            try self.validate(self.scheduleIdentifier, name: "scheduleIdentifier", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -5202,7 +5103,7 @@ extension Redshift {
     }
 
     public struct ModifyClusterSubnetGroupMessage: AWSEncodableShape {
-        public struct _SubnetIdsEncoding: ArrayCoderProperties { static public let member = "SubnetIdentifier" }
+        public struct _SubnetIdsEncoding: ArrayCoderProperties { public static let member = "SubnetIdentifier" }
 
         /// The name of the subnet group to be modified.
         public let clusterSubnetGroupName: String
@@ -5219,10 +5120,10 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.clusterSubnetGroupName, name: "clusterSubnetGroupName", parent: name, max: 2147483647)
-            try self.validate(self.description, name: "description", parent: name, max: 2147483647)
+            try self.validate(self.clusterSubnetGroupName, name: "clusterSubnetGroupName", parent: name, max: 2_147_483_647)
+            try self.validate(self.description, name: "description", parent: name, max: 2_147_483_647)
             try self.subnetIds.forEach {
-                try validate($0, name: "subnetIds[]", parent: name, max: 2147483647)
+                try validate($0, name: "subnetIds[]", parent: name, max: 2_147_483_647)
             }
         }
 
@@ -5234,7 +5135,6 @@ extension Redshift {
     }
 
     public struct ModifyClusterSubnetGroupResult: AWSDecodableShape {
-
         public let clusterSubnetGroup: ClusterSubnetGroup?
 
         public init(clusterSubnetGroup: ClusterSubnetGroup? = nil) {
@@ -5247,7 +5147,7 @@ extension Redshift {
     }
 
     public struct ModifyEndpointAccessMessage: AWSEncodableShape {
-        public struct _VpcSecurityGroupIdsEncoding: ArrayCoderProperties { static public let member = "VpcSecurityGroupId" }
+        public struct _VpcSecurityGroupIdsEncoding: ArrayCoderProperties { public static let member = "VpcSecurityGroupId" }
 
         /// The endpoint to be modified.
         public let endpointName: String
@@ -5261,9 +5161,9 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.endpointName, name: "endpointName", parent: name, max: 2147483647)
+            try self.validate(self.endpointName, name: "endpointName", parent: name, max: 2_147_483_647)
             try self.vpcSecurityGroupIds?.forEach {
-                try validate($0, name: "vpcSecurityGroupIds[]", parent: name, max: 2147483647)
+                try validate($0, name: "vpcSecurityGroupIds[]", parent: name, max: 2_147_483_647)
             }
         }
 
@@ -5274,10 +5174,10 @@ extension Redshift {
     }
 
     public struct ModifyEventSubscriptionMessage: AWSEncodableShape {
-        public struct _EventCategoriesEncoding: ArrayCoderProperties { static public let member = "EventCategory" }
-        public struct _SourceIdsEncoding: ArrayCoderProperties { static public let member = "SourceId" }
+        public struct _EventCategoriesEncoding: ArrayCoderProperties { public static let member = "EventCategory" }
+        public struct _SourceIdsEncoding: ArrayCoderProperties { public static let member = "SourceId" }
 
-        /// A Boolean value indicating if the subscription is enabled. true indicates the subscription is enabled 
+        /// A Boolean value indicating if the subscription is enabled. true indicates the subscription is enabled
         public let enabled: Bool?
         /// Specifies the Amazon Redshift event categories to be published by the event notification subscription. Values: configuration, management, monitoring, security
         @OptionalCustomCoding<ArrayCoder<_EventCategoriesEncoding, String>>
@@ -5306,15 +5206,15 @@ extension Redshift {
 
         public func validate(name: String) throws {
             try self.eventCategories?.forEach {
-                try validate($0, name: "eventCategories[]", parent: name, max: 2147483647)
+                try validate($0, name: "eventCategories[]", parent: name, max: 2_147_483_647)
             }
-            try self.validate(self.severity, name: "severity", parent: name, max: 2147483647)
-            try self.validate(self.snsTopicArn, name: "snsTopicArn", parent: name, max: 2147483647)
+            try self.validate(self.severity, name: "severity", parent: name, max: 2_147_483_647)
+            try self.validate(self.snsTopicArn, name: "snsTopicArn", parent: name, max: 2_147_483_647)
             try self.sourceIds?.forEach {
-                try validate($0, name: "sourceIds[]", parent: name, max: 2147483647)
+                try validate($0, name: "sourceIds[]", parent: name, max: 2_147_483_647)
             }
-            try self.validate(self.sourceType, name: "sourceType", parent: name, max: 2147483647)
-            try self.validate(self.subscriptionName, name: "subscriptionName", parent: name, max: 2147483647)
+            try self.validate(self.sourceType, name: "sourceType", parent: name, max: 2_147_483_647)
+            try self.validate(self.subscriptionName, name: "subscriptionName", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -5329,7 +5229,6 @@ extension Redshift {
     }
 
     public struct ModifyEventSubscriptionResult: AWSDecodableShape {
-
         public let eventSubscription: EventSubscription?
 
         public init(eventSubscription: EventSubscription? = nil) {
@@ -5342,22 +5241,21 @@ extension Redshift {
     }
 
     public struct ModifyScheduledActionMessage: AWSEncodableShape {
-
-        /// A modified enable flag of the scheduled action. If true, the scheduled action is active. If false, the scheduled action is disabled. 
+        /// A modified enable flag of the scheduled action. If true, the scheduled action is active. If false, the scheduled action is disabled.
         public let enable: Bool?
-        /// A modified end time of the scheduled action.  For more information about this parameter, see ScheduledAction. 
+        /// A modified end time of the scheduled action.  For more information about this parameter, see ScheduledAction.
         public let endTime: Date?
         /// A different IAM role to assume to run the target action.  For more information about this parameter, see ScheduledAction.
         public let iamRole: String?
         /// A modified schedule in either at( ) or cron( ) format.  For more information about this parameter, see ScheduledAction.
         public let schedule: String?
-        /// A modified description of the scheduled action. 
+        /// A modified description of the scheduled action.
         public let scheduledActionDescription: String?
-        /// The name of the scheduled action to modify. 
+        /// The name of the scheduled action to modify.
         public let scheduledActionName: String
-        /// A modified start time of the scheduled action.  For more information about this parameter, see ScheduledAction. 
+        /// A modified start time of the scheduled action.  For more information about this parameter, see ScheduledAction.
         public let startTime: Date?
-        /// A modified JSON format of the scheduled action.  For more information about this parameter, see ScheduledAction. 
+        /// A modified JSON format of the scheduled action.  For more information about this parameter, see ScheduledAction.
         public let targetAction: ScheduledActionType?
 
         public init(enable: Bool? = nil, endTime: Date? = nil, iamRole: String? = nil, schedule: String? = nil, scheduledActionDescription: String? = nil, scheduledActionName: String, startTime: Date? = nil, targetAction: ScheduledActionType? = nil) {
@@ -5372,10 +5270,10 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.iamRole, name: "iamRole", parent: name, max: 2147483647)
-            try self.validate(self.schedule, name: "schedule", parent: name, max: 2147483647)
-            try self.validate(self.scheduledActionDescription, name: "scheduledActionDescription", parent: name, max: 2147483647)
-            try self.validate(self.scheduledActionName, name: "scheduledActionName", parent: name, max: 2147483647)
+            try self.validate(self.iamRole, name: "iamRole", parent: name, max: 2_147_483_647)
+            try self.validate(self.schedule, name: "schedule", parent: name, max: 2_147_483_647)
+            try self.validate(self.scheduledActionDescription, name: "scheduledActionDescription", parent: name, max: 2_147_483_647)
+            try self.validate(self.scheduledActionName, name: "scheduledActionName", parent: name, max: 2_147_483_647)
             try self.targetAction?.validate(name: "\(name).targetAction")
         }
 
@@ -5392,7 +5290,6 @@ extension Redshift {
     }
 
     public struct ModifySnapshotCopyRetentionPeriodMessage: AWSEncodableShape {
-
         /// The unique identifier of the cluster for which you want to change the retention period for either automated or manual snapshots that are copied to a destination Region. Constraints: Must be the valid name of an existing cluster that has cross-region snapshot copy enabled.
         public let clusterIdentifier: String
         /// Indicates whether to apply the snapshot retention period to newly copied manual snapshots instead of automated snapshots.
@@ -5407,7 +5304,7 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2147483647)
+            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -5418,7 +5315,6 @@ extension Redshift {
     }
 
     public struct ModifySnapshotCopyRetentionPeriodResult: AWSDecodableShape {
-
         public let cluster: Cluster?
 
         public init(cluster: Cluster? = nil) {
@@ -5431,7 +5327,7 @@ extension Redshift {
     }
 
     public struct ModifySnapshotScheduleMessage: AWSEncodableShape {
-        public struct _ScheduleDefinitionsEncoding: ArrayCoderProperties { static public let member = "ScheduleDefinition" }
+        public struct _ScheduleDefinitionsEncoding: ArrayCoderProperties { public static let member = "ScheduleDefinition" }
 
         /// An updated list of schedule definitions. A schedule definition is made up of schedule expressions, for example, "cron(30 12 *)" or "rate(12 hours)".
         @CustomCoding<ArrayCoder<_ScheduleDefinitionsEncoding, String>>
@@ -5446,9 +5342,9 @@ extension Redshift {
 
         public func validate(name: String) throws {
             try self.scheduleDefinitions.forEach {
-                try validate($0, name: "scheduleDefinitions[]", parent: name, max: 2147483647)
+                try validate($0, name: "scheduleDefinitions[]", parent: name, max: 2_147_483_647)
             }
-            try self.validate(self.scheduleIdentifier, name: "scheduleIdentifier", parent: name, max: 2147483647)
+            try self.validate(self.scheduleIdentifier, name: "scheduleIdentifier", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -5458,10 +5354,9 @@ extension Redshift {
     }
 
     public struct ModifyUsageLimitMessage: AWSEncodableShape {
-
-        /// The new limit amount.  For more information about this parameter, see UsageLimit. 
+        /// The new limit amount.  For more information about this parameter, see UsageLimit.
         public let amount: Int64?
-        /// The new action that Amazon Redshift takes when the limit is reached.  For more information about this parameter, see UsageLimit. 
+        /// The new action that Amazon Redshift takes when the limit is reached.  For more information about this parameter, see UsageLimit.
         public let breachAction: UsageLimitBreachAction?
         /// The identifier of the usage limit to modify.
         public let usageLimitId: String
@@ -5473,7 +5368,7 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.usageLimitId, name: "usageLimitId", parent: name, max: 2147483647)
+            try self.validate(self.usageLimitId, name: "usageLimitId", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -5484,14 +5379,13 @@ extension Redshift {
     }
 
     public struct NetworkInterface: AWSDecodableShape {
-
-        /// The Availability Zone. 
+        /// The Availability Zone.
         public let availabilityZone: String?
-        /// The network interface identifier. 
+        /// The network interface identifier.
         public let networkInterfaceId: String?
-        /// The IPv4 address of the network interface within the subnet. 
+        /// The IPv4 address of the network interface within the subnet.
         public let privateIpAddress: String?
-        /// The subnet identifier. 
+        /// The subnet identifier.
         public let subnetId: String?
 
         public init(availabilityZone: String? = nil, networkInterfaceId: String? = nil, privateIpAddress: String? = nil, subnetId: String? = nil) {
@@ -5510,7 +5404,6 @@ extension Redshift {
     }
 
     public struct NodeConfigurationOption: AWSDecodableShape {
-
         /// The estimated disk utilizaton percentage.
         public let estimatedDiskUtilizationPercent: Double?
         /// The category of the node configuration recommendation.
@@ -5536,7 +5429,7 @@ extension Redshift {
     }
 
     public struct NodeConfigurationOptionsFilter: AWSEncodableShape {
-        public struct _ValuesEncoding: ArrayCoderProperties { static public let member = "item" }
+        public struct _ValuesEncoding: ArrayCoderProperties { public static let member = "item" }
 
         /// The name of the element to filter.
         public let name: NodeConfigurationOptionsFilterName?
@@ -5554,7 +5447,7 @@ extension Redshift {
 
         public func validate(name: String) throws {
             try self.values?.forEach {
-                try validate($0, name: "values[]", parent: name, max: 2147483647)
+                try validate($0, name: "values[]", parent: name, max: 2_147_483_647)
             }
         }
 
@@ -5566,9 +5459,9 @@ extension Redshift {
     }
 
     public struct NodeConfigurationOptionsMessage: AWSDecodableShape {
-        public struct _NodeConfigurationOptionListEncoding: ArrayCoderProperties { static public let member = "NodeConfigurationOption" }
+        public struct _NodeConfigurationOptionListEncoding: ArrayCoderProperties { public static let member = "NodeConfigurationOption" }
 
-        /// A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the Marker parameter and retrying the command. If the Marker field is empty, all response records have been retrieved for the request. 
+        /// A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the Marker parameter and retrying the command. If the Marker field is empty, all response records have been retrieved for the request.
         public let marker: String?
         /// A list of valid node configurations.
         @OptionalCustomCoding<ArrayCoder<_NodeConfigurationOptionListEncoding, NodeConfigurationOption>>
@@ -5586,12 +5479,12 @@ extension Redshift {
     }
 
     public struct OrderableClusterOption: AWSDecodableShape {
-        public struct _AvailabilityZonesEncoding: ArrayCoderProperties { static public let member = "AvailabilityZone" }
+        public struct _AvailabilityZonesEncoding: ArrayCoderProperties { public static let member = "AvailabilityZone" }
 
         /// A list of availability zones for the orderable cluster.
         @OptionalCustomCoding<ArrayCoder<_AvailabilityZonesEncoding, AvailabilityZone>>
         public var availabilityZones: [AvailabilityZone]?
-        /// The cluster type, for example multi-node. 
+        /// The cluster type, for example multi-node.
         public let clusterType: String?
         /// The version of the orderable cluster.
         public let clusterVersion: String?
@@ -5614,9 +5507,9 @@ extension Redshift {
     }
 
     public struct OrderableClusterOptionsMessage: AWSDecodableShape {
-        public struct _OrderableClusterOptionsEncoding: ArrayCoderProperties { static public let member = "OrderableClusterOption" }
+        public struct _OrderableClusterOptionsEncoding: ArrayCoderProperties { public static let member = "OrderableClusterOption" }
 
-        /// A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the Marker parameter and retrying the command. If the Marker field is empty, all response records have been retrieved for the request. 
+        /// A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the Marker parameter and retrying the command. If the Marker field is empty, all response records have been retrieved for the request.
         public let marker: String?
         /// An OrderableClusterOption structure containing information about orderable options for the cluster.
         @OptionalCustomCoding<ArrayCoder<_OrderableClusterOptionsEncoding, OrderableClusterOption>>
@@ -5634,19 +5527,18 @@ extension Redshift {
     }
 
     public struct Parameter: AWSEncodableShape & AWSDecodableShape {
-
         /// The valid range of values for the parameter.
         public let allowedValues: String?
-        /// Specifies how to apply the WLM configuration parameter. Some properties can be applied dynamically, while other properties require that any associated clusters be rebooted for the configuration changes to be applied. 
-        /// For more information about parameters and parameter groups, go to 
-        /// Amazon Redshift Parameter Groups 
+        /// Specifies how to apply the WLM configuration parameter. Some properties can be applied dynamically, while other properties require that any associated clusters be rebooted for the configuration changes to be applied.
+        /// For more information about parameters and parameter groups, go to
+        /// Amazon Redshift Parameter Groups
         /// in the Amazon Redshift Cluster Management Guide.
         public let applyType: ParameterApplyType?
         /// The data type of the parameter.
         public let dataType: String?
         /// A description of the parameter.
         public let description: String?
-        /// If true, the parameter can be modified. Some parameters have security or operational implications that prevent them from being changed. 
+        /// If true, the parameter can be modified. Some parameters have security or operational implications that prevent them from being changed.
         public let isModifiable: Bool?
         /// The earliest engine version to which the parameter can apply.
         public let minimumEngineVersion: String?
@@ -5670,13 +5562,13 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.allowedValues, name: "allowedValues", parent: name, max: 2147483647)
-            try self.validate(self.dataType, name: "dataType", parent: name, max: 2147483647)
-            try self.validate(self.description, name: "description", parent: name, max: 2147483647)
-            try self.validate(self.minimumEngineVersion, name: "minimumEngineVersion", parent: name, max: 2147483647)
-            try self.validate(self.parameterName, name: "parameterName", parent: name, max: 2147483647)
-            try self.validate(self.parameterValue, name: "parameterValue", parent: name, max: 2147483647)
-            try self.validate(self.source, name: "source", parent: name, max: 2147483647)
+            try self.validate(self.allowedValues, name: "allowedValues", parent: name, max: 2_147_483_647)
+            try self.validate(self.dataType, name: "dataType", parent: name, max: 2_147_483_647)
+            try self.validate(self.description, name: "description", parent: name, max: 2_147_483_647)
+            try self.validate(self.minimumEngineVersion, name: "minimumEngineVersion", parent: name, max: 2_147_483_647)
+            try self.validate(self.parameterName, name: "parameterName", parent: name, max: 2_147_483_647)
+            try self.validate(self.parameterValue, name: "parameterValue", parent: name, max: 2_147_483_647)
+            try self.validate(self.source, name: "source", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -5693,7 +5585,6 @@ extension Redshift {
     }
 
     public struct PartnerIntegrationInfo: AWSDecodableShape {
-
         /// The date (UTC) that the partner integration was created.
         public let createdAt: Date?
         /// The name of the database that receives data from a partner.
@@ -5727,7 +5618,6 @@ extension Redshift {
     }
 
     public struct PartnerIntegrationInputMessage: AWSEncodableShape {
-
         /// The Region ID that owns the cluster.
         public let accountId: String
         /// The cluster identifier of the cluster that receives data from the partner.
@@ -5765,7 +5655,6 @@ extension Redshift {
     }
 
     public struct PartnerIntegrationOutputMessage: AWSDecodableShape {
-
         /// The name of the database that receives data from the partner.
         public let databaseName: String?
         /// The name of the partner that is authorized to send data.
@@ -5783,7 +5672,6 @@ extension Redshift {
     }
 
     public struct PauseClusterMessage: AWSEncodableShape & AWSDecodableShape {
-
         /// The identifier of the cluster to be paused.
         public let clusterIdentifier: String
 
@@ -5792,7 +5680,7 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2147483647)
+            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -5801,7 +5689,6 @@ extension Redshift {
     }
 
     public struct PauseClusterResult: AWSDecodableShape {
-
         public let cluster: Cluster?
 
         public init(cluster: Cluster? = nil) {
@@ -5814,7 +5701,6 @@ extension Redshift {
     }
 
     public struct PendingModifiedValues: AWSDecodableShape {
-
         /// The pending or in-progress change of the automated snapshot retention period.
         public let automatedSnapshotRetentionPeriod: Int?
         /// The pending or in-progress change of the new identifier for the cluster.
@@ -5823,7 +5709,7 @@ extension Redshift {
         public let clusterType: String?
         /// The pending or in-progress change of the service version.
         public let clusterVersion: String?
-        /// The encryption type for a cluster. Possible values are: KMS and None. 
+        /// The encryption type for a cluster. Possible values are: KMS and None.
         public let encryptionType: String?
         /// An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see Enhanced VPC Routing in the Amazon Redshift Cluster Management Guide. If this option is true, enhanced VPC routing is enabled.  Default: false
         public let enhancedVpcRouting: Bool?
@@ -5868,8 +5754,7 @@ extension Redshift {
     }
 
     public struct PurchaseReservedNodeOfferingMessage: AWSEncodableShape {
-
-        /// The number of reserved nodes that you want to purchase. Default: 1 
+        /// The number of reserved nodes that you want to purchase. Default: 1
         public let nodeCount: Int?
         /// The unique identifier of the reserved node offering you want to purchase.
         public let reservedNodeOfferingId: String
@@ -5880,7 +5765,7 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.reservedNodeOfferingId, name: "reservedNodeOfferingId", parent: name, max: 2147483647)
+            try self.validate(self.reservedNodeOfferingId, name: "reservedNodeOfferingId", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -5890,7 +5775,6 @@ extension Redshift {
     }
 
     public struct PurchaseReservedNodeOfferingResult: AWSDecodableShape {
-
         public let reservedNode: ReservedNode?
 
         public init(reservedNode: ReservedNode? = nil) {
@@ -5903,7 +5787,6 @@ extension Redshift {
     }
 
     public struct RebootClusterMessage: AWSEncodableShape {
-
         /// The cluster identifier.
         public let clusterIdentifier: String
 
@@ -5912,7 +5795,7 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2147483647)
+            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -5921,7 +5804,6 @@ extension Redshift {
     }
 
     public struct RebootClusterResult: AWSDecodableShape {
-
         public let cluster: Cluster?
 
         public init(cluster: Cluster? = nil) {
@@ -5934,7 +5816,6 @@ extension Redshift {
     }
 
     public struct RecurringCharge: AWSDecodableShape {
-
         /// The amount charged per the period of time specified by the recurring charge frequency.
         public let recurringChargeAmount: Double?
         /// The frequency at which the recurring charge amount is applied.
@@ -5952,7 +5833,7 @@ extension Redshift {
     }
 
     public struct ReservedNode: AWSDecodableShape {
-        public struct _RecurringChargesEncoding: ArrayCoderProperties { static public let member = "RecurringCharge" }
+        public struct _RecurringChargesEncoding: ArrayCoderProperties { public static let member = "RecurringCharge" }
 
         /// The currency code for the reserved cluster.
         public let currencyCode: String?
@@ -5976,7 +5857,7 @@ extension Redshift {
         public let reservedNodeOfferingType: ReservedNodeOfferingType?
         /// The time the reservation started. You purchase a reserved node offering for a duration. This is the start time of that duration.
         public let startTime: Date?
-        /// The state of the reserved compute node. Possible Values:   pending-payment-This reserved node has recently been purchased, and the sale has been approved, but payment has not yet been confirmed.   active-This reserved node is owned by the caller and is available for use.   payment-failed-Payment failed for the purchase attempt.   retired-The reserved node is no longer available.    exchanging-The owner is exchanging the reserved node for another reserved node.  
+        /// The state of the reserved compute node. Possible Values:   pending-payment-This reserved node has recently been purchased, and the sale has been approved, but payment has not yet been confirmed.   active-This reserved node is owned by the caller and is available for use.   payment-failed-Payment failed for the purchase attempt.   retired-The reserved node is no longer available.    exchanging-The owner is exchanging the reserved node for another reserved node.
         public let state: String?
         /// The hourly rate Amazon Redshift charges you for this reserved node.
         public let usagePrice: Double?
@@ -6015,7 +5896,7 @@ extension Redshift {
     }
 
     public struct ReservedNodeOffering: AWSDecodableShape {
-        public struct _RecurringChargesEncoding: ArrayCoderProperties { static public let member = "RecurringCharge" }
+        public struct _RecurringChargesEncoding: ArrayCoderProperties { public static let member = "RecurringCharge" }
 
         /// The currency code for the compute nodes offering.
         public let currencyCode: String?
@@ -6062,9 +5943,9 @@ extension Redshift {
     }
 
     public struct ReservedNodeOfferingsMessage: AWSDecodableShape {
-        public struct _ReservedNodeOfferingsEncoding: ArrayCoderProperties { static public let member = "ReservedNodeOffering" }
+        public struct _ReservedNodeOfferingsEncoding: ArrayCoderProperties { public static let member = "ReservedNodeOffering" }
 
-        /// A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the Marker parameter and retrying the command. If the Marker field is empty, all response records have been retrieved for the request. 
+        /// A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the Marker parameter and retrying the command. If the Marker field is empty, all response records have been retrieved for the request.
         public let marker: String?
         /// A list of ReservedNodeOffering objects.
         @OptionalCustomCoding<ArrayCoder<_ReservedNodeOfferingsEncoding, ReservedNodeOffering>>
@@ -6082,9 +5963,9 @@ extension Redshift {
     }
 
     public struct ReservedNodesMessage: AWSDecodableShape {
-        public struct _ReservedNodesEncoding: ArrayCoderProperties { static public let member = "ReservedNode" }
+        public struct _ReservedNodesEncoding: ArrayCoderProperties { public static let member = "ReservedNode" }
 
-        /// A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the Marker parameter and retrying the command. If the Marker field is empty, all response records have been retrieved for the request. 
+        /// A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the Marker parameter and retrying the command. If the Marker field is empty, all response records have been retrieved for the request.
         public let marker: String?
         /// The list of ReservedNode objects.
         @OptionalCustomCoding<ArrayCoder<_ReservedNodesEncoding, ReservedNode>>
@@ -6102,14 +5983,14 @@ extension Redshift {
     }
 
     public struct ResetClusterParameterGroupMessage: AWSEncodableShape {
-        public struct _ParametersEncoding: ArrayCoderProperties { static public let member = "Parameter" }
+        public struct _ParametersEncoding: ArrayCoderProperties { public static let member = "Parameter" }
 
         /// The name of the cluster parameter group to be reset.
         public let parameterGroupName: String
         /// An array of names of parameters to be reset. If ResetAllParameters option is not used, then at least one parameter name must be supplied.  Constraints: A maximum of 20 parameters can be reset in a single request.
         @OptionalCustomCoding<ArrayCoder<_ParametersEncoding, Parameter>>
         public var parameters: [Parameter]?
-        /// If true, all parameters in the specified parameter group will be reset to their default values.  Default: true 
+        /// If true, all parameters in the specified parameter group will be reset to their default values.  Default: true
         public let resetAllParameters: Bool?
 
         public init(parameterGroupName: String, parameters: [Parameter]? = nil, resetAllParameters: Bool? = nil) {
@@ -6119,7 +6000,7 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.parameterGroupName, name: "parameterGroupName", parent: name, max: 2147483647)
+            try self.validate(self.parameterGroupName, name: "parameterGroupName", parent: name, max: 2_147_483_647)
             try self.parameters?.forEach {
                 try $0.validate(name: "\(name).parameters[]")
             }
@@ -6133,8 +6014,7 @@ extension Redshift {
     }
 
     public struct ResizeClusterMessage: AWSEncodableShape & AWSDecodableShape {
-
-        /// A boolean value indicating whether the resize operation is using the classic resize process. If you don't provide this parameter or set the value to false, the resize type is elastic. 
+        /// A boolean value indicating whether the resize operation is using the classic resize process. If you don't provide this parameter or set the value to false, the resize type is elastic.
         public let classic: Bool?
         /// The unique identifier for the cluster to resize.
         public let clusterIdentifier: String
@@ -6154,9 +6034,9 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2147483647)
-            try self.validate(self.clusterType, name: "clusterType", parent: name, max: 2147483647)
-            try self.validate(self.nodeType, name: "nodeType", parent: name, max: 2147483647)
+            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2_147_483_647)
+            try self.validate(self.clusterType, name: "clusterType", parent: name, max: 2_147_483_647)
+            try self.validate(self.nodeType, name: "nodeType", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -6169,7 +6049,6 @@ extension Redshift {
     }
 
     public struct ResizeClusterResult: AWSDecodableShape {
-
         public let cluster: Cluster?
 
         public init(cluster: Cluster? = nil) {
@@ -6182,7 +6061,6 @@ extension Redshift {
     }
 
     public struct ResizeInfo: AWSDecodableShape {
-
         /// A boolean value indicating if the resize operation can be cancelled.
         public let allowCancelResize: Bool?
         /// Returns the value ClassicResize.
@@ -6200,7 +6078,6 @@ extension Redshift {
     }
 
     public struct ResizeProgressMessage: AWSDecodableShape {
-
         /// The average rate of the resize operation over the last few minutes, measured in megabytes per second. After the resize operation completes, this value shows the average rate of the entire resize operation.
         public let avgResizeRateInMegaBytesPerSecond: Double?
         /// The percent of data transferred from source cluster to target cluster.
@@ -6222,13 +6099,13 @@ extension Redshift {
         public let message: String?
         /// While the resize operation is in progress, this value shows the current amount of data, in megabytes, that has been processed so far. When the resize operation is complete, this value shows the total amount of data, in megabytes, on the cluster, which may be more or less than TotalResizeDataInMegaBytes (the estimated total amount of data before resize).
         public let progressInMegaBytes: Int64?
-        /// An enum with possible values of ClassicResize and ElasticResize. These values describe the type of resize operation being performed. 
+        /// An enum with possible values of ClassicResize and ElasticResize. These values describe the type of resize operation being performed.
         public let resizeType: String?
-        /// The status of the resize operation. Valid Values: NONE | IN_PROGRESS | FAILED | SUCCEEDED | CANCELLING 
+        /// The status of the resize operation. Valid Values: NONE | IN_PROGRESS | FAILED | SUCCEEDED | CANCELLING
         public let status: String?
-        /// The cluster type after the resize operation is complete. Valid Values: multi-node | single-node 
+        /// The cluster type after the resize operation is complete. Valid Values: multi-node | single-node
         public let targetClusterType: String?
-        /// The type of encryption for the cluster after the resize is complete. Possible values are KMS and None. 
+        /// The type of encryption for the cluster after the resize is complete. Possible values are KMS and None.
         public let targetEncryptionType: String?
         /// The node type that the cluster will have after the resize operation is complete.
         public let targetNodeType: String?
@@ -6277,25 +6154,25 @@ extension Redshift {
     }
 
     public struct RestoreFromClusterSnapshotMessage: AWSEncodableShape {
-        public struct _ClusterSecurityGroupsEncoding: ArrayCoderProperties { static public let member = "ClusterSecurityGroupName" }
-        public struct _IamRolesEncoding: ArrayCoderProperties { static public let member = "IamRoleArn" }
-        public struct _VpcSecurityGroupIdsEncoding: ArrayCoderProperties { static public let member = "VpcSecurityGroupId" }
+        public struct _ClusterSecurityGroupsEncoding: ArrayCoderProperties { public static let member = "ClusterSecurityGroupName" }
+        public struct _IamRolesEncoding: ArrayCoderProperties { public static let member = "IamRoleArn" }
+        public struct _VpcSecurityGroupIdsEncoding: ArrayCoderProperties { public static let member = "VpcSecurityGroupId" }
 
         /// Reserved.
         public let additionalInfo: String?
-        /// If true, major version upgrades can be applied during the maintenance window to the Amazon Redshift engine that is running on the cluster.  Default: true 
+        /// If true, major version upgrades can be applied during the maintenance window to the Amazon Redshift engine that is running on the cluster.  Default: true
         public let allowVersionUpgrade: Bool?
-        /// The value represents how the cluster is configured to use AQUA (Advanced Query Accelerator) after the cluster is restored. Possible values include the following.   enabled - Use AQUA if it is available for the current Region and Amazon Redshift node type.   disabled - Don't use AQUA.    auto - Amazon Redshift determines whether to use AQUA.  
+        /// The value represents how the cluster is configured to use AQUA (Advanced Query Accelerator) after the cluster is restored. Possible values include the following.   enabled - Use AQUA if it is available for the current Region and Amazon Redshift node type.   disabled - Don't use AQUA.    auto - Amazon Redshift determines whether to use AQUA.
         public let aquaConfigurationStatus: AquaConfigurationStatus?
         /// The number of days that automated snapshots are retained. If the value is 0, automated snapshots are disabled. Even if automated snapshots are disabled, you can still create manual snapshots when you want with CreateClusterSnapshot.   You can't disable automated snapshots for RA3 node types. Set the automated retention period from 1-35 days. Default: The value selected for the cluster from which the snapshot was taken. Constraints: Must be a value from 0 to 35.
         public let automatedSnapshotRetentionPeriod: Int?
-        /// The Amazon EC2 Availability Zone in which to restore the cluster. Default: A random, system-chosen Availability Zone. Example: us-east-2a 
+        /// The Amazon EC2 Availability Zone in which to restore the cluster. Default: A random, system-chosen Availability Zone. Example: us-east-2a
         public let availabilityZone: String?
         /// The option to enable relocation for an Amazon Redshift cluster between Availability Zones after the cluster is restored.
         public let availabilityZoneRelocation: Bool?
-        /// The identifier of the cluster that will be created from restoring the snapshot.  Constraints:   Must contain from 1 to 63 alphanumeric characters or hyphens.   Alphabetic characters must be lowercase.   First character must be a letter.   Cannot end with a hyphen or contain two consecutive hyphens.   Must be unique for all clusters within an account.  
+        /// The identifier of the cluster that will be created from restoring the snapshot.  Constraints:   Must contain from 1 to 63 alphanumeric characters or hyphens.   Alphabetic characters must be lowercase.   First character must be a letter.   Cannot end with a hyphen or contain two consecutive hyphens.   Must be unique for all clusters within an account.
         public let clusterIdentifier: String
-        /// The name of the parameter group to be associated with this cluster. Default: The default Amazon Redshift cluster parameter group. For information about the default parameter group, go to Working with Amazon Redshift Parameter Groups. Constraints:   Must be 1 to 255 alphanumeric characters or hyphens.   First character must be a letter.   Cannot end with a hyphen or contain two consecutive hyphens.  
+        /// The name of the parameter group to be associated with this cluster. Default: The default Amazon Redshift cluster parameter group. For information about the default parameter group, go to Working with Amazon Redshift Parameter Groups. Constraints:   Must be 1 to 255 alphanumeric characters or hyphens.   First character must be a letter.   Cannot end with a hyphen or contain two consecutive hyphens.
         public let clusterParameterGroupName: String?
         /// A list of security groups to be associated with this cluster. Default: The default cluster security group for Amazon Redshift. Cluster security groups only apply to clusters outside of VPCs.
         @OptionalCustomCoding<ArrayCoder<_ClusterSecurityGroupsEncoding, String>>
@@ -6319,7 +6196,7 @@ extension Redshift {
         public let maintenanceTrackName: String?
         /// The default number of days to retain a manual snapshot. If the value is -1, the snapshot is retained indefinitely. This setting doesn't change the retention period of existing snapshots. The value must be either -1 or an integer between 1 and 3,653.
         public let manualSnapshotRetentionPeriod: Int?
-        /// The node type that the restored cluster will be provisioned with. Default: The node type of the cluster from which the snapshot was taken. You can modify this if you are using any DS node type. In that case, you can choose to restore into another DS node type of the same size. For example, you can restore ds1.8xlarge into ds2.8xlarge, or ds1.xlarge into ds2.xlarge. If you have a DC instance type, you must restore into that same instance type and size. In other words, you can only restore a dc1.large instance type into another dc1.large instance type or dc2.large instance type. You can't restore dc1.8xlarge to dc2.8xlarge. First restore to a dc1.8xlarge cluster, then resize to a dc2.8large cluster. For more information about node types, see  About Clusters and Nodes in the Amazon Redshift Cluster Management Guide. 
+        /// The node type that the restored cluster will be provisioned with. Default: The node type of the cluster from which the snapshot was taken. You can modify this if you are using any DS node type. In that case, you can choose to restore into another DS node type of the same size. For example, you can restore ds1.8xlarge into ds2.8xlarge, or ds1.xlarge into ds2.xlarge. If you have a DC instance type, you must restore into that same instance type and size. In other words, you can only restore a dc1.large instance type into another dc1.large instance type or dc2.large instance type. You can't restore dc1.8xlarge to dc2.8xlarge. First restore to a dc1.8xlarge cluster, then resize to a dc2.8large cluster. For more information about node types, see  About Clusters and Nodes in the Amazon Redshift Cluster Management Guide.
         public let nodeType: String?
         /// The number of nodes specified when provisioning the restored cluster.
         public let numberOfNodes: Int?
@@ -6329,11 +6206,11 @@ extension Redshift {
         public let port: Int?
         /// The weekly time range (in UTC) during which automated cluster maintenance can occur. Format: ddd:hh24:mi-ddd:hh24:mi  Default: The value selected for the cluster from which the snapshot was taken. For more information about the time blocks for each region, see Maintenance Windows in Amazon Redshift Cluster Management Guide.  Valid Days: Mon | Tue | Wed | Thu | Fri | Sat | Sun Constraints: Minimum 30-minute window.
         public let preferredMaintenanceWindow: String?
-        /// If true, the cluster can be accessed from a public network. 
+        /// If true, the cluster can be accessed from a public network.
         public let publiclyAccessible: Bool?
         /// The name of the cluster the source snapshot was created from. This parameter is required if your IAM user has a policy containing a snapshot resource element that specifies anything other than * for the cluster name.
         public let snapshotClusterIdentifier: String?
-        /// The name of the snapshot from which to create the new cluster. This parameter isn't case sensitive. Example: my-snapshot-id 
+        /// The name of the snapshot from which to create the new cluster. This parameter isn't case sensitive. Example: my-snapshot-id
         public let snapshotIdentifier: String
         /// A unique identifier for the snapshot schedule.
         public let snapshotScheduleIdentifier: String?
@@ -6373,30 +6250,30 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.additionalInfo, name: "additionalInfo", parent: name, max: 2147483647)
-            try self.validate(self.availabilityZone, name: "availabilityZone", parent: name, max: 2147483647)
-            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2147483647)
-            try self.validate(self.clusterParameterGroupName, name: "clusterParameterGroupName", parent: name, max: 2147483647)
+            try self.validate(self.additionalInfo, name: "additionalInfo", parent: name, max: 2_147_483_647)
+            try self.validate(self.availabilityZone, name: "availabilityZone", parent: name, max: 2_147_483_647)
+            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2_147_483_647)
+            try self.validate(self.clusterParameterGroupName, name: "clusterParameterGroupName", parent: name, max: 2_147_483_647)
             try self.clusterSecurityGroups?.forEach {
-                try validate($0, name: "clusterSecurityGroups[]", parent: name, max: 2147483647)
+                try validate($0, name: "clusterSecurityGroups[]", parent: name, max: 2_147_483_647)
             }
-            try self.validate(self.clusterSubnetGroupName, name: "clusterSubnetGroupName", parent: name, max: 2147483647)
-            try self.validate(self.elasticIp, name: "elasticIp", parent: name, max: 2147483647)
-            try self.validate(self.hsmClientCertificateIdentifier, name: "hsmClientCertificateIdentifier", parent: name, max: 2147483647)
-            try self.validate(self.hsmConfigurationIdentifier, name: "hsmConfigurationIdentifier", parent: name, max: 2147483647)
+            try self.validate(self.clusterSubnetGroupName, name: "clusterSubnetGroupName", parent: name, max: 2_147_483_647)
+            try self.validate(self.elasticIp, name: "elasticIp", parent: name, max: 2_147_483_647)
+            try self.validate(self.hsmClientCertificateIdentifier, name: "hsmClientCertificateIdentifier", parent: name, max: 2_147_483_647)
+            try self.validate(self.hsmConfigurationIdentifier, name: "hsmConfigurationIdentifier", parent: name, max: 2_147_483_647)
             try self.iamRoles?.forEach {
-                try validate($0, name: "iamRoles[]", parent: name, max: 2147483647)
+                try validate($0, name: "iamRoles[]", parent: name, max: 2_147_483_647)
             }
-            try self.validate(self.kmsKeyId, name: "kmsKeyId", parent: name, max: 2147483647)
-            try self.validate(self.maintenanceTrackName, name: "maintenanceTrackName", parent: name, max: 2147483647)
-            try self.validate(self.nodeType, name: "nodeType", parent: name, max: 2147483647)
-            try self.validate(self.ownerAccount, name: "ownerAccount", parent: name, max: 2147483647)
-            try self.validate(self.preferredMaintenanceWindow, name: "preferredMaintenanceWindow", parent: name, max: 2147483647)
-            try self.validate(self.snapshotClusterIdentifier, name: "snapshotClusterIdentifier", parent: name, max: 2147483647)
-            try self.validate(self.snapshotIdentifier, name: "snapshotIdentifier", parent: name, max: 2147483647)
-            try self.validate(self.snapshotScheduleIdentifier, name: "snapshotScheduleIdentifier", parent: name, max: 2147483647)
+            try self.validate(self.kmsKeyId, name: "kmsKeyId", parent: name, max: 2_147_483_647)
+            try self.validate(self.maintenanceTrackName, name: "maintenanceTrackName", parent: name, max: 2_147_483_647)
+            try self.validate(self.nodeType, name: "nodeType", parent: name, max: 2_147_483_647)
+            try self.validate(self.ownerAccount, name: "ownerAccount", parent: name, max: 2_147_483_647)
+            try self.validate(self.preferredMaintenanceWindow, name: "preferredMaintenanceWindow", parent: name, max: 2_147_483_647)
+            try self.validate(self.snapshotClusterIdentifier, name: "snapshotClusterIdentifier", parent: name, max: 2_147_483_647)
+            try self.validate(self.snapshotIdentifier, name: "snapshotIdentifier", parent: name, max: 2_147_483_647)
+            try self.validate(self.snapshotScheduleIdentifier, name: "snapshotScheduleIdentifier", parent: name, max: 2_147_483_647)
             try self.vpcSecurityGroupIds?.forEach {
-                try validate($0, name: "vpcSecurityGroupIds[]", parent: name, max: 2147483647)
+                try validate($0, name: "vpcSecurityGroupIds[]", parent: name, max: 2_147_483_647)
             }
         }
 
@@ -6433,7 +6310,6 @@ extension Redshift {
     }
 
     public struct RestoreFromClusterSnapshotResult: AWSDecodableShape {
-
         public let cluster: Cluster?
 
         public init(cluster: Cluster? = nil) {
@@ -6446,16 +6322,15 @@ extension Redshift {
     }
 
     public struct RestoreStatus: AWSDecodableShape {
-
-        /// The number of megabytes per second being transferred from the backup storage. Returns the average rate for a completed backup. This field is only updated when you restore to DC2 and DS2 node types. 
+        /// The number of megabytes per second being transferred from the backup storage. Returns the average rate for a completed backup. This field is only updated when you restore to DC2 and DS2 node types.
         public let currentRestoreRateInMegaBytesPerSecond: Double?
-        /// The amount of time an in-progress restore has been running, or the amount of time it took a completed restore to finish. This field is only updated when you restore to DC2 and DS2 node types. 
+        /// The amount of time an in-progress restore has been running, or the amount of time it took a completed restore to finish. This field is only updated when you restore to DC2 and DS2 node types.
         public let elapsedTimeInSeconds: Int64?
-        /// The estimate of the time remaining before the restore will complete. Returns 0 for a completed restore. This field is only updated when you restore to DC2 and DS2 node types. 
+        /// The estimate of the time remaining before the restore will complete. Returns 0 for a completed restore. This field is only updated when you restore to DC2 and DS2 node types.
         public let estimatedTimeToCompletionInSeconds: Int64?
-        /// The number of megabytes that have been transferred from snapshot storage. This field is only updated when you restore to DC2 and DS2 node types. 
+        /// The number of megabytes that have been transferred from snapshot storage. This field is only updated when you restore to DC2 and DS2 node types.
         public let progressInMegaBytes: Int64?
-        /// The size of the set of snapshot data used to restore the cluster. This field is only updated when you restore to DC2 and DS2 node types. 
+        /// The size of the set of snapshot data used to restore the cluster. This field is only updated when you restore to DC2 and DS2 node types.
         public let snapshotSizeInMegaBytes: Int64?
         /// The status of the restore action. Returns starting, restoring, completed, or failed.
         public let status: String?
@@ -6480,7 +6355,6 @@ extension Redshift {
     }
 
     public struct RestoreTableFromClusterSnapshotMessage: AWSEncodableShape {
-
         /// The identifier of the Amazon Redshift cluster to restore the table to.
         public let clusterIdentifier: String
         /// Indicates whether name identifiers for database, schema, and table are case sensitive.  If true, the names are case sensitive.  If false (default), the names are not case sensitive.
@@ -6513,14 +6387,14 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2147483647)
-            try self.validate(self.newTableName, name: "newTableName", parent: name, max: 2147483647)
-            try self.validate(self.snapshotIdentifier, name: "snapshotIdentifier", parent: name, max: 2147483647)
-            try self.validate(self.sourceDatabaseName, name: "sourceDatabaseName", parent: name, max: 2147483647)
-            try self.validate(self.sourceSchemaName, name: "sourceSchemaName", parent: name, max: 2147483647)
-            try self.validate(self.sourceTableName, name: "sourceTableName", parent: name, max: 2147483647)
-            try self.validate(self.targetDatabaseName, name: "targetDatabaseName", parent: name, max: 2147483647)
-            try self.validate(self.targetSchemaName, name: "targetSchemaName", parent: name, max: 2147483647)
+            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2_147_483_647)
+            try self.validate(self.newTableName, name: "newTableName", parent: name, max: 2_147_483_647)
+            try self.validate(self.snapshotIdentifier, name: "snapshotIdentifier", parent: name, max: 2_147_483_647)
+            try self.validate(self.sourceDatabaseName, name: "sourceDatabaseName", parent: name, max: 2_147_483_647)
+            try self.validate(self.sourceSchemaName, name: "sourceSchemaName", parent: name, max: 2_147_483_647)
+            try self.validate(self.sourceTableName, name: "sourceTableName", parent: name, max: 2_147_483_647)
+            try self.validate(self.targetDatabaseName, name: "targetDatabaseName", parent: name, max: 2_147_483_647)
+            try self.validate(self.targetSchemaName, name: "targetSchemaName", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -6537,7 +6411,6 @@ extension Redshift {
     }
 
     public struct RestoreTableFromClusterSnapshotResult: AWSDecodableShape {
-
         public let tableRestoreStatus: TableRestoreStatus?
 
         public init(tableRestoreStatus: TableRestoreStatus? = nil) {
@@ -6550,7 +6423,6 @@ extension Redshift {
     }
 
     public struct ResumeClusterMessage: AWSEncodableShape & AWSDecodableShape {
-
         /// The identifier of the cluster to be resumed.
         public let clusterIdentifier: String
 
@@ -6559,7 +6431,7 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2147483647)
+            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -6568,7 +6440,6 @@ extension Redshift {
     }
 
     public struct ResumeClusterResult: AWSDecodableShape {
-
         public let cluster: Cluster?
 
         public init(cluster: Cluster? = nil) {
@@ -6581,7 +6452,6 @@ extension Redshift {
     }
 
     public struct RevisionTarget: AWSDecodableShape {
-
         /// A unique string that identifies the version to update the cluster to. You can use this value in ModifyClusterDbRevision.
         public let databaseRevision: String?
         /// The date on which the database revision was released.
@@ -6603,14 +6473,13 @@ extension Redshift {
     }
 
     public struct RevokeClusterSecurityGroupIngressMessage: AWSEncodableShape {
-
-        /// The IP range for which to revoke access. This range must be a valid Classless Inter-Domain Routing (CIDR) block of IP addresses. If CIDRIP is specified, EC2SecurityGroupName and EC2SecurityGroupOwnerId cannot be provided. 
+        /// The IP range for which to revoke access. This range must be a valid Classless Inter-Domain Routing (CIDR) block of IP addresses. If CIDRIP is specified, EC2SecurityGroupName and EC2SecurityGroupOwnerId cannot be provided.
         public let cidrip: String?
         /// The name of the security Group from which to revoke the ingress rule.
         public let clusterSecurityGroupName: String
-        /// The name of the EC2 Security Group whose access is to be revoked. If EC2SecurityGroupName is specified, EC2SecurityGroupOwnerId must also be provided and CIDRIP cannot be provided. 
+        /// The name of the EC2 Security Group whose access is to be revoked. If EC2SecurityGroupName is specified, EC2SecurityGroupOwnerId must also be provided and CIDRIP cannot be provided.
         public let eC2SecurityGroupName: String?
-        /// The account number of the owner of the security group specified in the EC2SecurityGroupName parameter. The Amazon Web Services access key ID is not an acceptable value. If EC2SecurityGroupOwnerId is specified, EC2SecurityGroupName must also be provided. and CIDRIP cannot be provided.  Example: 111122223333 
+        /// The account number of the owner of the security group specified in the EC2SecurityGroupName parameter. The Amazon Web Services access key ID is not an acceptable value. If EC2SecurityGroupOwnerId is specified, EC2SecurityGroupName must also be provided. and CIDRIP cannot be provided.  Example: 111122223333
         public let eC2SecurityGroupOwnerId: String?
 
         public init(cidrip: String? = nil, clusterSecurityGroupName: String, eC2SecurityGroupName: String? = nil, eC2SecurityGroupOwnerId: String? = nil) {
@@ -6621,10 +6490,10 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.cidrip, name: "cidrip", parent: name, max: 2147483647)
-            try self.validate(self.clusterSecurityGroupName, name: "clusterSecurityGroupName", parent: name, max: 2147483647)
-            try self.validate(self.eC2SecurityGroupName, name: "eC2SecurityGroupName", parent: name, max: 2147483647)
-            try self.validate(self.eC2SecurityGroupOwnerId, name: "eC2SecurityGroupOwnerId", parent: name, max: 2147483647)
+            try self.validate(self.cidrip, name: "cidrip", parent: name, max: 2_147_483_647)
+            try self.validate(self.clusterSecurityGroupName, name: "clusterSecurityGroupName", parent: name, max: 2_147_483_647)
+            try self.validate(self.eC2SecurityGroupName, name: "eC2SecurityGroupName", parent: name, max: 2_147_483_647)
+            try self.validate(self.eC2SecurityGroupOwnerId, name: "eC2SecurityGroupOwnerId", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -6636,7 +6505,6 @@ extension Redshift {
     }
 
     public struct RevokeClusterSecurityGroupIngressResult: AWSDecodableShape {
-
         public let clusterSecurityGroup: ClusterSecurityGroup?
 
         public init(clusterSecurityGroup: ClusterSecurityGroup? = nil) {
@@ -6649,7 +6517,7 @@ extension Redshift {
     }
 
     public struct RevokeEndpointAccessMessage: AWSEncodableShape {
-        public struct _VpcIdsEncoding: ArrayCoderProperties { static public let member = "VpcIdentifier" }
+        public struct _VpcIdsEncoding: ArrayCoderProperties { public static let member = "VpcIdentifier" }
 
         /// The account ID whose access is to be revoked.
         public let account: String?
@@ -6669,10 +6537,10 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.account, name: "account", parent: name, max: 2147483647)
-            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2147483647)
+            try self.validate(self.account, name: "account", parent: name, max: 2_147_483_647)
+            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2_147_483_647)
             try self.vpcIds?.forEach {
-                try validate($0, name: "vpcIds[]", parent: name, max: 2147483647)
+                try validate($0, name: "vpcIds[]", parent: name, max: 2_147_483_647)
             }
         }
 
@@ -6685,7 +6553,6 @@ extension Redshift {
     }
 
     public struct RevokeSnapshotAccessMessage: AWSEncodableShape {
-
         /// The identifier of the account that can no longer restore the specified snapshot.
         public let accountWithRestoreAccess: String
         /// The identifier of the cluster the snapshot was created from. This parameter is required if your IAM user has a policy containing a snapshot resource element that specifies anything other than * for the cluster name.
@@ -6700,9 +6567,9 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.accountWithRestoreAccess, name: "accountWithRestoreAccess", parent: name, max: 2147483647)
-            try self.validate(self.snapshotClusterIdentifier, name: "snapshotClusterIdentifier", parent: name, max: 2147483647)
-            try self.validate(self.snapshotIdentifier, name: "snapshotIdentifier", parent: name, max: 2147483647)
+            try self.validate(self.accountWithRestoreAccess, name: "accountWithRestoreAccess", parent: name, max: 2_147_483_647)
+            try self.validate(self.snapshotClusterIdentifier, name: "snapshotClusterIdentifier", parent: name, max: 2_147_483_647)
+            try self.validate(self.snapshotIdentifier, name: "snapshotIdentifier", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -6713,7 +6580,6 @@ extension Redshift {
     }
 
     public struct RevokeSnapshotAccessResult: AWSDecodableShape {
-
         public let snapshot: Snapshot?
 
         public init(snapshot: Snapshot? = nil) {
@@ -6726,7 +6592,6 @@ extension Redshift {
     }
 
     public struct RotateEncryptionKeyMessage: AWSEncodableShape {
-
         /// The unique identifier of the cluster that you want to rotate the encryption keys for. Constraints: Must be the name of valid cluster that has encryption enabled.
         public let clusterIdentifier: String
 
@@ -6735,7 +6600,7 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2147483647)
+            try self.validate(self.clusterIdentifier, name: "clusterIdentifier", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -6744,7 +6609,6 @@ extension Redshift {
     }
 
     public struct RotateEncryptionKeyResult: AWSDecodableShape {
-
         public let cluster: Cluster?
 
         public init(cluster: Cluster? = nil) {
@@ -6757,29 +6621,29 @@ extension Redshift {
     }
 
     public struct ScheduledAction: AWSDecodableShape {
-        public struct _NextInvocationsEncoding: ArrayCoderProperties { static public let member = "ScheduledActionTime" }
+        public struct _NextInvocationsEncoding: ArrayCoderProperties { public static let member = "ScheduledActionTime" }
 
-        /// The end time in UTC when the schedule is no longer active. After this time, the scheduled action does not trigger. 
+        /// The end time in UTC when the schedule is no longer active. After this time, the scheduled action does not trigger.
         public let endTime: Date?
-        /// The IAM role to assume to run the scheduled action.  This IAM role must have permission to run the Amazon Redshift API operation in the scheduled action. This IAM role must allow the Amazon Redshift scheduler (Principal scheduler.redshift.amazonaws.com) to assume permissions on your behalf. 
-        /// For more information about the IAM role to use with the Amazon Redshift scheduler, see 
-        /// Using Identity-Based Policies for Amazon Redshift 
+        /// The IAM role to assume to run the scheduled action.  This IAM role must have permission to run the Amazon Redshift API operation in the scheduled action. This IAM role must allow the Amazon Redshift scheduler (Principal scheduler.redshift.amazonaws.com) to assume permissions on your behalf.
+        /// For more information about the IAM role to use with the Amazon Redshift scheduler, see
+        /// Using Identity-Based Policies for Amazon Redshift
         /// in the Amazon Redshift Cluster Management Guide.
         public let iamRole: String?
-        /// List of times when the scheduled action will run. 
+        /// List of times when the scheduled action will run.
         @OptionalCustomCoding<ArrayCoder<_NextInvocationsEncoding, Date>>
         public var nextInvocations: [Date]?
         /// The schedule for a one-time (at format) or recurring (cron format) scheduled action.  Schedule invocations must be separated by at least one hour. Format of at expressions is "at(yyyy-mm-ddThh:mm:ss)". For example, "at(2016-03-04T17:27:00)". Format of cron expressions is "cron(Minutes Hours Day-of-month Month Day-of-week Year)".  For example, "cron(0 10 ? * MON *)". For more information, see  Cron Expressions  in the Amazon CloudWatch Events User Guide.
         public let schedule: String?
-        /// The description of the scheduled action. 
+        /// The description of the scheduled action.
         public let scheduledActionDescription: String?
-        /// The name of the scheduled action. 
+        /// The name of the scheduled action.
         public let scheduledActionName: String?
-        /// The start time in UTC when the schedule is active. Before this time, the scheduled action does not trigger. 
+        /// The start time in UTC when the schedule is active. Before this time, the scheduled action does not trigger.
         public let startTime: Date?
-        /// The state of the scheduled action. For example, DISABLED. 
+        /// The state of the scheduled action. For example, DISABLED.
         public let state: ScheduledActionState?
-        /// A JSON format string of the Amazon Redshift API operation with input parameters.  "{\"ResizeCluster\":{\"NodeType\":\"ds2.8xlarge\",\"ClusterIdentifier\":\"my-test-cluster\",\"NumberOfNodes\":3}}". 
+        /// A JSON format string of the Amazon Redshift API operation with input parameters.  "{\"ResizeCluster\":{\"NodeType\":\"ds2.8xlarge\",\"ClusterIdentifier\":\"my-test-cluster\",\"NumberOfNodes\":3}}".
         public let targetAction: ScheduledActionType?
 
         public init(endTime: Date? = nil, iamRole: String? = nil, nextInvocations: [Date]? = nil, schedule: String? = nil, scheduledActionDescription: String? = nil, scheduledActionName: String? = nil, startTime: Date? = nil, state: ScheduledActionState? = nil, targetAction: ScheduledActionType? = nil) {
@@ -6808,11 +6672,11 @@ extension Redshift {
     }
 
     public struct ScheduledActionFilter: AWSEncodableShape {
-        public struct _ValuesEncoding: ArrayCoderProperties { static public let member = "item" }
+        public struct _ValuesEncoding: ArrayCoderProperties { public static let member = "item" }
 
-        /// The type of element to filter. 
+        /// The type of element to filter.
         public let name: ScheduledActionFilterName
-        /// List of values. Compare if the value (of type defined by Name) equals an item in the list of scheduled actions. 
+        /// List of values. Compare if the value (of type defined by Name) equals an item in the list of scheduled actions.
         @CustomCoding<ArrayCoder<_ValuesEncoding, String>>
         public var values: [String]
 
@@ -6823,7 +6687,7 @@ extension Redshift {
 
         public func validate(name: String) throws {
             try self.values.forEach {
-                try validate($0, name: "values[]", parent: name, max: 2147483647)
+                try validate($0, name: "values[]", parent: name, max: 2_147_483_647)
             }
         }
 
@@ -6834,12 +6698,11 @@ extension Redshift {
     }
 
     public struct ScheduledActionType: AWSEncodableShape & AWSDecodableShape {
-
-        /// An action that runs a PauseCluster API operation. 
+        /// An action that runs a PauseCluster API operation.
         public let pauseCluster: PauseClusterMessage?
-        /// An action that runs a ResizeCluster API operation. 
+        /// An action that runs a ResizeCluster API operation.
         public let resizeCluster: ResizeClusterMessage?
-        /// An action that runs a ResumeCluster API operation. 
+        /// An action that runs a ResumeCluster API operation.
         public let resumeCluster: ResumeClusterMessage?
 
         public init(pauseCluster: PauseClusterMessage? = nil, resizeCluster: ResizeClusterMessage? = nil, resumeCluster: ResumeClusterMessage? = nil) {
@@ -6862,11 +6725,11 @@ extension Redshift {
     }
 
     public struct ScheduledActionsMessage: AWSDecodableShape {
-        public struct _ScheduledActionsEncoding: ArrayCoderProperties { static public let member = "ScheduledAction" }
+        public struct _ScheduledActionsEncoding: ArrayCoderProperties { public static let member = "ScheduledAction" }
 
-        /// An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeScheduledActions request exceed the value specified in MaxRecords, Amazon Web Services returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request. 
+        /// An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeScheduledActions request exceed the value specified in MaxRecords, Amazon Web Services returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request.
         public let marker: String?
-        /// List of retrieved scheduled actions. 
+        /// List of retrieved scheduled actions.
         @OptionalCustomCoding<ArrayCoder<_ScheduledActionsEncoding, ScheduledAction>>
         public var scheduledActions: [ScheduledAction]?
 
@@ -6882,11 +6745,11 @@ extension Redshift {
     }
 
     public struct Snapshot: AWSDecodableShape {
-        public struct _AccountsWithRestoreAccessEncoding: ArrayCoderProperties { static public let member = "AccountWithRestoreAccess" }
-        public struct _RestorableNodeTypesEncoding: ArrayCoderProperties { static public let member = "NodeType" }
-        public struct _TagsEncoding: ArrayCoderProperties { static public let member = "Tag" }
+        public struct _AccountsWithRestoreAccessEncoding: ArrayCoderProperties { public static let member = "AccountWithRestoreAccess" }
+        public struct _RestorableNodeTypesEncoding: ArrayCoderProperties { public static let member = "NodeType" }
+        public struct _TagsEncoding: ArrayCoderProperties { public static let member = "Tag" }
 
-        /// A list of the accounts authorized to restore the snapshot. Returns null if no accounts are authorized. Visible only to the snapshot owner. 
+        /// A list of the accounts authorized to restore the snapshot. Returns null if no accounts are authorized. Visible only to the snapshot owner.
         @OptionalCustomCoding<ArrayCoder<_AccountsWithRestoreAccessEncoding, AccountWithRestoreAccess>>
         public var accountsWithRestoreAccess: [AccountWithRestoreAccess]?
         /// The size of the incremental backup.
@@ -6901,7 +6764,7 @@ extension Redshift {
         public let clusterIdentifier: String?
         /// The version ID of the Amazon Redshift engine that is running on the cluster.
         public let clusterVersion: String?
-        /// The number of megabytes per second being transferred to the snapshot backup. Returns 0 for a completed backup. 
+        /// The number of megabytes per second being transferred to the snapshot backup. Returns 0 for a completed backup.
         public let currentBackupRateInMegaBytesPerSecond: Double?
         /// The name of the database that was created when the cluster was created.
         public let dBName: String?
@@ -6911,11 +6774,11 @@ extension Redshift {
         public let encrypted: Bool?
         /// A boolean that indicates whether the snapshot data is encrypted using the HSM keys of the source cluster. true indicates that the data is encrypted using HSM keys.
         public let encryptedWithHSM: Bool?
-        /// The cluster version of the cluster used to create the snapshot. For example, 1.0.15503. 
+        /// The cluster version of the cluster used to create the snapshot. For example, 1.0.15503.
         public let engineFullVersion: String?
         /// An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see Enhanced VPC Routing in the Amazon Redshift Cluster Management Guide. If this option is true, enhanced VPC routing is enabled.  Default: false
         public let enhancedVpcRouting: Bool?
-        /// The estimate of the time remaining before the snapshot backup will complete. Returns 0 for a completed backup. 
+        /// The estimate of the time remaining before the snapshot backup will complete. Returns 0 for a completed backup.
         public let estimatedSecondsToCompletion: Int64?
         /// The Key Management Service (KMS) key ID of the encryption key that was used to encrypt data in the cluster from which the snapshot was taken.
         public let kmsKeyId: String?
@@ -6923,7 +6786,7 @@ extension Redshift {
         public let maintenanceTrackName: String?
         /// The number of days until a manual snapshot will pass its retention period.
         public let manualSnapshotRemainingDays: Int?
-        /// The number of days that a manual snapshot is retained. If the value is -1, the manual snapshot is retained indefinitely. 
+        /// The number of days that a manual snapshot is retained. If the value is -1, the manual snapshot is retained indefinitely.
         ///  The value must be either -1 or an integer between 1 and 3,653.
         public let manualSnapshotRetentionPeriod: Int?
         /// The admin user name for the cluster.
@@ -6945,11 +6808,11 @@ extension Redshift {
         public let snapshotIdentifier: String?
         /// A timestamp representing the start of the retention period for the snapshot.
         public let snapshotRetentionStartTime: Date?
-        /// The snapshot type. Snapshots created using CreateClusterSnapshot and CopyClusterSnapshot are of type "manual". 
+        /// The snapshot type. Snapshots created using CreateClusterSnapshot and CopyClusterSnapshot are of type "manual".
         public let snapshotType: String?
         /// The source region from which the snapshot was copied.
         public let sourceRegion: String?
-        /// The snapshot status. The value of the status depends on the API operation used:     CreateClusterSnapshot and CopyClusterSnapshot returns status as "creating".     DescribeClusterSnapshots returns status as "creating", "available", "final snapshot", or "failed".    DeleteClusterSnapshot returns status as "deleted".  
+        /// The snapshot status. The value of the status depends on the API operation used:     CreateClusterSnapshot and CopyClusterSnapshot returns status as "creating".     DescribeClusterSnapshots returns status as "creating", "available", "final snapshot", or "failed".    DeleteClusterSnapshot returns status as "deleted".
         public let status: String?
         /// The list of tags for the cluster snapshot.
         @OptionalCustomCoding<ArrayCoder<_TagsEncoding, Tag>>
@@ -7035,7 +6898,7 @@ extension Redshift {
     }
 
     public struct SnapshotCopyGrant: AWSDecodableShape {
-        public struct _TagsEncoding: ArrayCoderProperties { static public let member = "Tag" }
+        public struct _TagsEncoding: ArrayCoderProperties { public static let member = "Tag" }
 
         /// The unique identifier of the customer master key (CMK) in Amazon Web Services KMS to which Amazon Redshift is granted permission.
         public let kmsKeyId: String?
@@ -7059,9 +6922,9 @@ extension Redshift {
     }
 
     public struct SnapshotCopyGrantMessage: AWSDecodableShape {
-        public struct _SnapshotCopyGrantsEncoding: ArrayCoderProperties { static public let member = "SnapshotCopyGrant" }
+        public struct _SnapshotCopyGrantsEncoding: ArrayCoderProperties { public static let member = "SnapshotCopyGrant" }
 
-        /// An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeSnapshotCopyGrant request exceed the value specified in MaxRecords, Amazon Web Services returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request.  Constraints: You can specify either the SnapshotCopyGrantName parameter or the Marker parameter, but not both. 
+        /// An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeSnapshotCopyGrant request exceed the value specified in MaxRecords, Amazon Web Services returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request.  Constraints: You can specify either the SnapshotCopyGrantName parameter or the Marker parameter, but not both.
         public let marker: String?
         /// The list of SnapshotCopyGrant objects.
         @OptionalCustomCoding<ArrayCoder<_SnapshotCopyGrantsEncoding, SnapshotCopyGrant>>
@@ -7079,7 +6942,6 @@ extension Redshift {
     }
 
     public struct SnapshotErrorMessage: AWSDecodableShape {
-
         /// The failure code for the error.
         public let failureCode: String?
         /// The text message describing the error.
@@ -7105,11 +6967,11 @@ extension Redshift {
     }
 
     public struct SnapshotMessage: AWSDecodableShape {
-        public struct _SnapshotsEncoding: ArrayCoderProperties { static public let member = "Snapshot" }
+        public struct _SnapshotsEncoding: ArrayCoderProperties { public static let member = "Snapshot" }
 
-        /// A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the Marker parameter and retrying the command. If the Marker field is empty, all response records have been retrieved for the request. 
+        /// A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the Marker parameter and retrying the command. If the Marker field is empty, all response records have been retrieved for the request.
         public let marker: String?
-        /// A list of Snapshot instances. 
+        /// A list of Snapshot instances.
         @OptionalCustomCoding<ArrayCoder<_SnapshotsEncoding, Snapshot>>
         public var snapshots: [Snapshot]?
 
@@ -7125,10 +6987,10 @@ extension Redshift {
     }
 
     public struct SnapshotSchedule: AWSDecodableShape {
-        public struct _AssociatedClustersEncoding: ArrayCoderProperties { static public let member = "ClusterAssociatedToSchedule" }
-        public struct _NextInvocationsEncoding: ArrayCoderProperties { static public let member = "SnapshotTime" }
-        public struct _ScheduleDefinitionsEncoding: ArrayCoderProperties { static public let member = "ScheduleDefinition" }
-        public struct _TagsEncoding: ArrayCoderProperties { static public let member = "Tag" }
+        public struct _AssociatedClustersEncoding: ArrayCoderProperties { public static let member = "ClusterAssociatedToSchedule" }
+        public struct _NextInvocationsEncoding: ArrayCoderProperties { public static let member = "SnapshotTime" }
+        public struct _ScheduleDefinitionsEncoding: ArrayCoderProperties { public static let member = "ScheduleDefinition" }
+        public struct _TagsEncoding: ArrayCoderProperties { public static let member = "Tag" }
 
         /// The number of clusters associated with the schedule.
         public let associatedClusterCount: Int?
@@ -7170,7 +7032,6 @@ extension Redshift {
     }
 
     public struct SnapshotSortingEntity: AWSEncodableShape {
-
         /// The category for sorting the snapshots.
         public let attribute: SnapshotAttributeToSortBy
         /// The order for listing the attributes.
@@ -7188,7 +7049,6 @@ extension Redshift {
     }
 
     public struct Subnet: AWSDecodableShape {
-
         public let subnetAvailabilityZone: AvailabilityZone?
         /// The identifier of the subnet.
         public let subnetIdentifier: String?
@@ -7209,7 +7069,6 @@ extension Redshift {
     }
 
     public struct SupportedOperation: AWSDecodableShape {
-
         /// A list of the supported operations.
         public let operationName: String?
 
@@ -7223,7 +7082,6 @@ extension Redshift {
     }
 
     public struct SupportedPlatform: AWSDecodableShape {
-
         public let name: String?
 
         public init(name: String? = nil) {
@@ -7236,7 +7094,6 @@ extension Redshift {
     }
 
     public struct TableRestoreStatus: AWSDecodableShape {
-
         /// The identifier of the Amazon Redshift cluster that the table is being restored to.
         public let clusterIdentifier: String?
         /// A description of the status of the table restore request. Status values include SUCCEEDED, FAILED, CANCELED, PENDING, IN_PROGRESS.
@@ -7255,7 +7112,7 @@ extension Redshift {
         public let sourceSchemaName: String?
         /// The name of the source table being restored.
         public let sourceTableName: String?
-        /// A value that describes the current state of the table restore request. Valid Values: SUCCEEDED, FAILED, CANCELED, PENDING, IN_PROGRESS 
+        /// A value that describes the current state of the table restore request. Valid Values: SUCCEEDED, FAILED, CANCELED, PENDING, IN_PROGRESS
         public let status: TableRestoreStatusType?
         /// The unique identifier for the table restore request.
         public let tableRestoreRequestId: String?
@@ -7302,7 +7159,7 @@ extension Redshift {
     }
 
     public struct TableRestoreStatusMessage: AWSDecodableShape {
-        public struct _TableRestoreStatusDetailsEncoding: ArrayCoderProperties { static public let member = "TableRestoreStatus" }
+        public struct _TableRestoreStatusDetailsEncoding: ArrayCoderProperties { public static let member = "TableRestoreStatus" }
 
         /// A pagination token that can be used in a subsequent DescribeTableRestoreStatus request.
         public let marker: String?
@@ -7322,7 +7179,6 @@ extension Redshift {
     }
 
     public struct Tag: AWSEncodableShape & AWSDecodableShape {
-
         /// The key, or name, for the resource tag.
         public let key: String?
         /// The value for the resource tag.
@@ -7334,8 +7190,8 @@ extension Redshift {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.key, name: "key", parent: name, max: 2147483647)
-            try self.validate(self.value, name: "value", parent: name, max: 2147483647)
+            try self.validate(self.key, name: "key", parent: name, max: 2_147_483_647)
+            try self.validate(self.value, name: "value", parent: name, max: 2_147_483_647)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -7345,10 +7201,9 @@ extension Redshift {
     }
 
     public struct TaggedResource: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) with which the tag is associated, for example: arn:aws:redshift:us-east-2:123456789:cluster:t1.
         public let resourceName: String?
-        /// The type of resource with which the tag is associated. Valid resource types are:    Cluster   CIDR/IP   EC2 security group   Snapshot   Cluster security group   Subnet group   HSM connection   HSM certificate   Parameter group   For more information about Amazon Redshift resource types and constructing ARNs, go to Constructing an Amazon Redshift Amazon Resource Name (ARN) in the Amazon Redshift Cluster Management Guide. 
+        /// The type of resource with which the tag is associated. Valid resource types are:    Cluster   CIDR/IP   EC2 security group   Snapshot   Cluster security group   Subnet group   HSM connection   HSM certificate   Parameter group   For more information about Amazon Redshift resource types and constructing ARNs, go to Constructing an Amazon Redshift Amazon Resource Name (ARN) in the Amazon Redshift Cluster Management Guide.
         public let resourceType: String?
         /// The tag for the resource.
         public let tag: Tag?
@@ -7367,9 +7222,9 @@ extension Redshift {
     }
 
     public struct TaggedResourceListMessage: AWSDecodableShape {
-        public struct _TaggedResourcesEncoding: ArrayCoderProperties { static public let member = "TaggedResource" }
+        public struct _TaggedResourcesEncoding: ArrayCoderProperties { public static let member = "TaggedResource" }
 
-        /// A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the Marker parameter and retrying the command. If the Marker field is empty, all response records have been retrieved for the request. 
+        /// A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the Marker parameter and retrying the command. If the Marker field is empty, all response records have been retrieved for the request.
         public let marker: String?
         /// A list of tags with their associated resources.
         @OptionalCustomCoding<ArrayCoder<_TaggedResourcesEncoding, TaggedResource>>
@@ -7387,9 +7242,9 @@ extension Redshift {
     }
 
     public struct TrackListMessage: AWSDecodableShape {
-        public struct _MaintenanceTracksEncoding: ArrayCoderProperties { static public let member = "MaintenanceTrack" }
+        public struct _MaintenanceTracksEncoding: ArrayCoderProperties { public static let member = "MaintenanceTrack" }
 
-        /// A list of maintenance tracks output by the DescribeClusterTracks operation. 
+        /// A list of maintenance tracks output by the DescribeClusterTracks operation.
         @OptionalCustomCoding<ArrayCoder<_MaintenanceTracksEncoding, MaintenanceTrack>>
         public var maintenanceTracks: [MaintenanceTrack]?
         /// The starting point to return a set of response tracklist records. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request.
@@ -7407,7 +7262,6 @@ extension Redshift {
     }
 
     public struct UpdatePartnerStatusInputMessage: AWSEncodableShape {
-
         /// The Region ID that owns the cluster.
         public let accountId: String
         /// The cluster identifier of the cluster whose partner integration status is being updated.
@@ -7440,7 +7294,7 @@ extension Redshift {
             try self.validate(self.databaseName, name: "databaseName", parent: name, pattern: "^[\\p{L}_][\\p{L}\\p{N}@$#_]+$")
             try self.validate(self.partnerName, name: "partnerName", parent: name, max: 255)
             try self.validate(self.partnerName, name: "partnerName", parent: name, pattern: "^[a-zA-Z0-9\\-_]+$")
-            try self.validate(self.statusMessage, name: "statusMessage", parent: name, max: 262144)
+            try self.validate(self.statusMessage, name: "statusMessage", parent: name, max: 262_144)
             try self.validate(self.statusMessage, name: "statusMessage", parent: name, pattern: "^[\\x20-\\x7E]+$")
         }
 
@@ -7455,7 +7309,7 @@ extension Redshift {
     }
 
     public struct UpdateTarget: AWSDecodableShape {
-        public struct _SupportedOperationsEncoding: ArrayCoderProperties { static public let member = "SupportedOperation" }
+        public struct _SupportedOperationsEncoding: ArrayCoderProperties { public static let member = "SupportedOperation" }
 
         /// The cluster version for the new maintenance track.
         public let databaseVersion: String?
@@ -7479,11 +7333,11 @@ extension Redshift {
     }
 
     public struct UsageLimit: AWSDecodableShape {
-        public struct _TagsEncoding: ArrayCoderProperties { static public let member = "Tag" }
+        public struct _TagsEncoding: ArrayCoderProperties { public static let member = "Tag" }
 
         /// The limit amount. If time-based, this amount is in minutes. If data-based, this amount is in terabytes (TB).
         public let amount: Int64?
-        /// The action that Amazon Redshift takes when the limit is reached. Possible values are:     log - To log an event in a system table. The default is log.    emit-metric - To emit CloudWatch metrics.    disable - To disable the feature until the next usage period begins.  
+        /// The action that Amazon Redshift takes when the limit is reached. Possible values are:     log - To log an event in a system table. The default is log.    emit-metric - To emit CloudWatch metrics.    disable - To disable the feature until the next usage period begins.
         public let breachAction: UsageLimitBreachAction?
         /// The identifier of the cluster with a usage limit.
         public let clusterIdentifier: String?
@@ -7491,7 +7345,7 @@ extension Redshift {
         public let featureType: UsageLimitFeatureType?
         /// The type of limit. Depending on the feature type, this can be based on a time duration or data size.
         public let limitType: UsageLimitLimitType?
-        /// The time period that the amount applies to. A weekly period begins on Sunday. The default is monthly. 
+        /// The time period that the amount applies to. A weekly period begins on Sunday. The default is monthly.
         public let period: UsageLimitPeriod?
         /// A list of tag instances.
         @OptionalCustomCoding<ArrayCoder<_TagsEncoding, Tag>>
@@ -7523,10 +7377,9 @@ extension Redshift {
     }
 
     public struct UsageLimitList: AWSDecodableShape {
-
-        /// A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the Marker parameter and retrying the command. If the Marker field is empty, all response records have been retrieved for the request. 
+        /// A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the Marker parameter and retrying the command. If the Marker field is empty, all response records have been retrieved for the request.
         public let marker: String?
-        /// Contains the output from the DescribeUsageLimits action. 
+        /// Contains the output from the DescribeUsageLimits action.
         @OptionalCustomCoding<StandardArrayCoder>
         public var usageLimits: [UsageLimit]?
 
@@ -7542,14 +7395,14 @@ extension Redshift {
     }
 
     public struct VpcEndpoint: AWSDecodableShape {
-        public struct _NetworkInterfacesEncoding: ArrayCoderProperties { static public let member = "NetworkInterface" }
+        public struct _NetworkInterfacesEncoding: ArrayCoderProperties { public static let member = "NetworkInterface" }
 
-        /// One or more network interfaces of the endpoint. Also known as an interface endpoint. 
+        /// One or more network interfaces of the endpoint. Also known as an interface endpoint.
         @OptionalCustomCoding<ArrayCoder<_NetworkInterfacesEncoding, NetworkInterface>>
         public var networkInterfaces: [NetworkInterface]?
         /// The connection endpoint ID for connecting an Amazon Redshift cluster through the proxy.
         public let vpcEndpointId: String?
-        /// The VPC identifier that the endpoint is associated. 
+        /// The VPC identifier that the endpoint is associated.
         public let vpcId: String?
 
         public init(networkInterfaces: [NetworkInterface]? = nil, vpcEndpointId: String? = nil, vpcId: String? = nil) {
@@ -7566,7 +7419,6 @@ extension Redshift {
     }
 
     public struct VpcSecurityGroupMembership: AWSDecodableShape {
-
         /// The status of the VPC security group.
         public let status: String?
         /// The identifier of the VPC security group.

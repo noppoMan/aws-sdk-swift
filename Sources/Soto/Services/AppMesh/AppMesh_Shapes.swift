@@ -34,8 +34,8 @@ extension AppMesh {
     }
 
     public enum DurationUnit: String, CustomStringConvertible, Codable {
-        case ms = "ms"
-        case s = "s"
+        case ms
+        case s
         public var description: String { return self.rawValue }
     }
 
@@ -53,11 +53,11 @@ extension AppMesh {
     }
 
     public enum GrpcRetryPolicyEvent: String, CustomStringConvertible, Codable {
-        case cancelled = "cancelled"
+        case cancelled
         case deadlineExceeded = "deadline-exceeded"
-        case `internal` = "internal"
+        case `internal`
         case resourceExhausted = "resource-exhausted"
-        case unavailable = "unavailable"
+        case unavailable
         public var description: String { return self.rawValue }
     }
 
@@ -75,8 +75,8 @@ extension AppMesh {
     }
 
     public enum HttpScheme: String, CustomStringConvertible, Codable {
-        case http = "http"
-        case https = "https"
+        case http
+        case https
         public var description: String { return self.rawValue }
     }
 
@@ -95,10 +95,10 @@ extension AppMesh {
     }
 
     public enum PortProtocol: String, CustomStringConvertible, Codable {
-        case grpc = "grpc"
-        case http = "http"
-        case http2 = "http2"
-        case tcp = "tcp"
+        case grpc
+        case http
+        case http2
+        case tcp
         public var description: String { return self.rawValue }
     }
 
@@ -122,9 +122,9 @@ extension AppMesh {
     }
 
     public enum VirtualGatewayPortProtocol: String, CustomStringConvertible, Codable {
-        case grpc = "grpc"
-        case http = "http"
-        case http2 = "http2"
+        case grpc
+        case http
+        case http2
         public var description: String { return self.rawValue }
     }
 
@@ -201,8 +201,8 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case file = "file"
-            case sds = "sds"
+            case file
+            case sds
         }
     }
 
@@ -264,28 +264,28 @@ extension AppMesh {
         public func validate(name: String) throws {
             switch self {
             case .exact(let value):
-                try validate(value, name: "exact", parent: name, max: 255)
-                try validate(value, name: "exact", parent: name, min: 1)
+                try self.validate(value, name: "exact", parent: name, max: 255)
+                try self.validate(value, name: "exact", parent: name, min: 1)
             case .prefix(let value):
-                try validate(value, name: "prefix", parent: name, max: 255)
-                try validate(value, name: "prefix", parent: name, min: 1)
+                try self.validate(value, name: "prefix", parent: name, max: 255)
+                try self.validate(value, name: "prefix", parent: name, min: 1)
             case .regex(let value):
-                try validate(value, name: "regex", parent: name, max: 255)
-                try validate(value, name: "regex", parent: name, min: 1)
+                try self.validate(value, name: "regex", parent: name, max: 255)
+                try self.validate(value, name: "regex", parent: name, min: 1)
             case .suffix(let value):
-                try validate(value, name: "suffix", parent: name, max: 255)
-                try validate(value, name: "suffix", parent: name, min: 1)
+                try self.validate(value, name: "suffix", parent: name, max: 255)
+                try self.validate(value, name: "suffix", parent: name, min: 1)
             default:
                 break
             }
         }
 
         private enum CodingKeys: String, CodingKey {
-            case exact = "exact"
-            case prefix = "prefix"
-            case range = "range"
-            case regex = "regex"
-            case suffix = "suffix"
+            case exact
+            case prefix
+            case range
+            case regex
+            case suffix
         }
     }
 
@@ -348,28 +348,28 @@ extension AppMesh {
         public func validate(name: String) throws {
             switch self {
             case .exact(let value):
-                try validate(value, name: "exact", parent: name, max: 255)
-                try validate(value, name: "exact", parent: name, min: 1)
+                try self.validate(value, name: "exact", parent: name, max: 255)
+                try self.validate(value, name: "exact", parent: name, min: 1)
             case .prefix(let value):
-                try validate(value, name: "prefix", parent: name, max: 255)
-                try validate(value, name: "prefix", parent: name, min: 1)
+                try self.validate(value, name: "prefix", parent: name, max: 255)
+                try self.validate(value, name: "prefix", parent: name, min: 1)
             case .regex(let value):
-                try validate(value, name: "regex", parent: name, max: 255)
-                try validate(value, name: "regex", parent: name, min: 1)
+                try self.validate(value, name: "regex", parent: name, max: 255)
+                try self.validate(value, name: "regex", parent: name, min: 1)
             case .suffix(let value):
-                try validate(value, name: "suffix", parent: name, max: 255)
-                try validate(value, name: "suffix", parent: name, min: 1)
+                try self.validate(value, name: "suffix", parent: name, max: 255)
+                try self.validate(value, name: "suffix", parent: name, min: 1)
             default:
                 break
             }
         }
 
         private enum CodingKeys: String, CodingKey {
-            case exact = "exact"
-            case prefix = "prefix"
-            case range = "range"
-            case regex = "regex"
-            case suffix = "suffix"
+            case exact
+            case prefix
+            case range
+            case regex
+            case suffix
         }
     }
 
@@ -432,39 +432,39 @@ extension AppMesh {
         public func validate(name: String) throws {
             switch self {
             case .exact(let value):
-                try validate(value, name: "exact", parent: name, max: 255)
-                try validate(value, name: "exact", parent: name, min: 1)
+                try self.validate(value, name: "exact", parent: name, max: 255)
+                try self.validate(value, name: "exact", parent: name, min: 1)
             case .prefix(let value):
-                try validate(value, name: "prefix", parent: name, max: 255)
-                try validate(value, name: "prefix", parent: name, min: 1)
+                try self.validate(value, name: "prefix", parent: name, max: 255)
+                try self.validate(value, name: "prefix", parent: name, min: 1)
             case .regex(let value):
-                try validate(value, name: "regex", parent: name, max: 255)
-                try validate(value, name: "regex", parent: name, min: 1)
+                try self.validate(value, name: "regex", parent: name, max: 255)
+                try self.validate(value, name: "regex", parent: name, min: 1)
             case .suffix(let value):
-                try validate(value, name: "suffix", parent: name, max: 255)
-                try validate(value, name: "suffix", parent: name, min: 1)
+                try self.validate(value, name: "suffix", parent: name, max: 255)
+                try self.validate(value, name: "suffix", parent: name, min: 1)
             default:
                 break
             }
         }
 
         private enum CodingKeys: String, CodingKey {
-            case exact = "exact"
-            case prefix = "prefix"
-            case range = "range"
-            case regex = "regex"
-            case suffix = "suffix"
+            case exact
+            case prefix
+            case range
+            case regex
+            case suffix
         }
     }
 
     public enum ListenerTimeout: AWSEncodableShape & AWSDecodableShape {
-        /// An object that represents types of timeouts. 
+        /// An object that represents types of timeouts.
         case grpc(GrpcTimeout)
-        /// An object that represents types of timeouts. 
+        /// An object that represents types of timeouts.
         case http(HttpTimeout)
-        /// An object that represents types of timeouts. 
+        /// An object that represents types of timeouts.
         case http2(HttpTimeout)
-        /// An object that represents types of timeouts. 
+        /// An object that represents types of timeouts.
         case tcp(TcpTimeout)
 
         public init(from decoder: Decoder) throws {
@@ -520,10 +520,10 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case grpc = "grpc"
-            case http = "http"
-            case http2 = "http2"
-            case tcp = "tcp"
+            case grpc
+            case http
+            case http2
+            case tcp
         }
     }
 
@@ -579,9 +579,9 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case acm = "acm"
-            case file = "file"
-            case sds = "sds"
+            case acm
+            case file
+            case sds
         }
     }
 
@@ -630,8 +630,8 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case file = "file"
-            case sds = "sds"
+            case file
+            case sds
         }
     }
 
@@ -680,8 +680,8 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case awsCloudMap = "awsCloudMap"
-            case dns = "dns"
+            case awsCloudMap
+            case dns
         }
     }
 
@@ -739,9 +739,9 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case acm = "acm"
-            case file = "file"
-            case sds = "sds"
+            case acm
+            case file
+            case sds
         }
     }
 
@@ -790,13 +790,13 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case file = "file"
-            case sds = "sds"
+            case file
+            case sds
         }
     }
 
     public enum VirtualGatewayConnectionPool: AWSEncodableShape & AWSDecodableShape {
-        /// An object that represents a type of connection pool. 
+        /// An object that represents a type of connection pool.
         case grpc(VirtualGatewayGrpcConnectionPool)
         /// An object that represents a type of connection pool.
         case http(VirtualGatewayHttpConnectionPool)
@@ -849,9 +849,9 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case grpc = "grpc"
-            case http = "http"
-            case http2 = "http2"
+            case grpc
+            case http
+            case http2
         }
     }
 
@@ -907,9 +907,9 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case acm = "acm"
-            case file = "file"
-            case sds = "sds"
+            case acm
+            case file
+            case sds
         }
     }
 
@@ -958,8 +958,8 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case file = "file"
-            case sds = "sds"
+            case file
+            case sds
         }
     }
 
@@ -1017,9 +1017,9 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case acm = "acm"
-            case file = "file"
-            case sds = "sds"
+            case acm
+            case file
+            case sds
         }
     }
 
@@ -1086,10 +1086,10 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case grpc = "grpc"
-            case http = "http"
-            case http2 = "http2"
-            case tcp = "tcp"
+            case grpc
+            case http
+            case http2
+            case tcp
         }
     }
 
@@ -1138,15 +1138,14 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case virtualNode = "virtualNode"
-            case virtualRouter = "virtualRouter"
+            case virtualNode
+            case virtualRouter
         }
     }
 
     // MARK: Shapes
 
     public struct AwsCloudMapInstanceAttribute: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of an Cloud Map service instance attribute key. Any Cloud Map service instance that contains the specified key and value is returned.
         public let key: String
         /// The value of an Cloud Map service instance attribute key. Any Cloud Map service instance that contains the specified key and value is returned.
@@ -1167,13 +1166,12 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case key = "key"
-            case value = "value"
+            case key
+            case value
         }
     }
 
     public struct AwsCloudMapServiceDiscovery: AWSEncodableShape & AWSDecodableShape {
-
         /// A string map that contains attributes with values that you can use to filter instances by any custom attribute that you specified when you registered the instance. Only instances that match all of the specified key/value pairs will be returned.
         public let attributes: [AwsCloudMapInstanceAttribute]?
         /// The name of the Cloud Map namespace to use.
@@ -1198,14 +1196,13 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case attributes = "attributes"
-            case namespaceName = "namespaceName"
-            case serviceName = "serviceName"
+            case attributes
+            case namespaceName
+            case serviceName
         }
     }
 
     public struct BackendDefaults: AWSEncodableShape & AWSDecodableShape {
-
         /// A reference to an object that represents a client policy.
         public let clientPolicy: ClientPolicy?
 
@@ -1218,12 +1215,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientPolicy = "clientPolicy"
+            case clientPolicy
         }
     }
 
     public struct ClientPolicy: AWSEncodableShape & AWSDecodableShape {
-
         /// A reference to an object that represents a Transport Layer Security (TLS) client policy.
         public let tls: ClientPolicyTls?
 
@@ -1236,12 +1232,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tls = "tls"
+            case tls
         }
     }
 
     public struct ClientPolicyTls: AWSEncodableShape & AWSDecodableShape {
-
         /// A reference to an object that represents a client's TLS certificate.
         public let certificate: ClientTlsCertificate?
         /// Whether the policy is enforced. The default is True, if a value isn't specified.
@@ -1268,17 +1263,17 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case certificate = "certificate"
-            case enforce = "enforce"
-            case ports = "ports"
-            case validation = "validation"
+            case certificate
+            case enforce
+            case ports
+            case validation
         }
     }
 
     public struct CreateGatewayRouteInput: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")), 
-            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")), 
+            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")),
+            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")),
             AWSMemberEncoding(label: "virtualGatewayName", location: .uri(locationName: "virtualGatewayName"))
         ]
 
@@ -1325,10 +1320,10 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientToken = "clientToken"
-            case gatewayRouteName = "gatewayRouteName"
-            case spec = "spec"
-            case tags = "tags"
+            case clientToken
+            case gatewayRouteName
+            case spec
+            case tags
         }
     }
 
@@ -1344,12 +1339,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case gatewayRoute = "gatewayRoute"
+            case gatewayRoute
         }
     }
 
     public struct CreateMeshInput: AWSEncodableShape {
-
         /// Unique, case-sensitive identifier that you provide to ensure the idempotency of the
         /// request. Up to 36 letters, numbers, hyphens, and underscores are allowed.
         public let clientToken: String?
@@ -1377,10 +1371,10 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientToken = "clientToken"
-            case meshName = "meshName"
-            case spec = "spec"
-            case tags = "tags"
+            case clientToken
+            case meshName
+            case spec
+            case tags
         }
     }
 
@@ -1396,14 +1390,14 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case mesh = "mesh"
+            case mesh
         }
     }
 
     public struct CreateRouteInput: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")), 
-            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")), 
+            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")),
+            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")),
             AWSMemberEncoding(label: "virtualRouterName", location: .uri(locationName: "virtualRouterName"))
         ]
 
@@ -1450,10 +1444,10 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientToken = "clientToken"
-            case routeName = "routeName"
-            case spec = "spec"
-            case tags = "tags"
+            case clientToken
+            case routeName
+            case spec
+            case tags
         }
     }
 
@@ -1469,13 +1463,13 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case route = "route"
+            case route
         }
     }
 
     public struct CreateVirtualGatewayInput: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")), 
+            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")),
             AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner"))
         ]
 
@@ -1517,10 +1511,10 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientToken = "clientToken"
-            case spec = "spec"
-            case tags = "tags"
-            case virtualGatewayName = "virtualGatewayName"
+            case clientToken
+            case spec
+            case tags
+            case virtualGatewayName
         }
     }
 
@@ -1536,13 +1530,13 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case virtualGateway = "virtualGateway"
+            case virtualGateway
         }
     }
 
     public struct CreateVirtualNodeInput: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")), 
+            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")),
             AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner"))
         ]
 
@@ -1584,10 +1578,10 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientToken = "clientToken"
-            case spec = "spec"
-            case tags = "tags"
-            case virtualNodeName = "virtualNodeName"
+            case clientToken
+            case spec
+            case tags
+            case virtualNodeName
         }
     }
 
@@ -1603,13 +1597,13 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case virtualNode = "virtualNode"
+            case virtualNode
         }
     }
 
     public struct CreateVirtualRouterInput: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")), 
+            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")),
             AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner"))
         ]
 
@@ -1651,10 +1645,10 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientToken = "clientToken"
-            case spec = "spec"
-            case tags = "tags"
-            case virtualRouterName = "virtualRouterName"
+            case clientToken
+            case spec
+            case tags
+            case virtualRouterName
         }
     }
 
@@ -1670,13 +1664,13 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case virtualRouter = "virtualRouter"
+            case virtualRouter
         }
     }
 
     public struct CreateVirtualServiceInput: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")), 
+            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")),
             AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner"))
         ]
 
@@ -1716,10 +1710,10 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientToken = "clientToken"
-            case spec = "spec"
-            case tags = "tags"
-            case virtualServiceName = "virtualServiceName"
+            case clientToken
+            case spec
+            case tags
+            case virtualServiceName
         }
     }
 
@@ -1735,15 +1729,15 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case virtualService = "virtualService"
+            case virtualService
         }
     }
 
     public struct DeleteGatewayRouteInput: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "gatewayRouteName", location: .uri(locationName: "gatewayRouteName")), 
-            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")), 
-            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")), 
+            AWSMemberEncoding(label: "gatewayRouteName", location: .uri(locationName: "gatewayRouteName")),
+            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")),
+            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")),
             AWSMemberEncoding(label: "virtualGatewayName", location: .uri(locationName: "virtualGatewayName"))
         ]
 
@@ -1789,7 +1783,7 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case gatewayRoute = "gatewayRoute"
+            case gatewayRoute
         }
     }
 
@@ -1825,15 +1819,15 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case mesh = "mesh"
+            case mesh
         }
     }
 
     public struct DeleteRouteInput: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")), 
-            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")), 
-            AWSMemberEncoding(label: "routeName", location: .uri(locationName: "routeName")), 
+            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")),
+            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")),
+            AWSMemberEncoding(label: "routeName", location: .uri(locationName: "routeName")),
             AWSMemberEncoding(label: "virtualRouterName", location: .uri(locationName: "virtualRouterName"))
         ]
 
@@ -1879,14 +1873,14 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case route = "route"
+            case route
         }
     }
 
     public struct DeleteVirtualGatewayInput: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")), 
-            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")), 
+            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")),
+            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")),
             AWSMemberEncoding(label: "virtualGatewayName", location: .uri(locationName: "virtualGatewayName"))
         ]
 
@@ -1927,14 +1921,14 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case virtualGateway = "virtualGateway"
+            case virtualGateway
         }
     }
 
     public struct DeleteVirtualNodeInput: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")), 
-            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")), 
+            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")),
+            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")),
             AWSMemberEncoding(label: "virtualNodeName", location: .uri(locationName: "virtualNodeName"))
         ]
 
@@ -1975,14 +1969,14 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case virtualNode = "virtualNode"
+            case virtualNode
         }
     }
 
     public struct DeleteVirtualRouterInput: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")), 
-            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")), 
+            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")),
+            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")),
             AWSMemberEncoding(label: "virtualRouterName", location: .uri(locationName: "virtualRouterName"))
         ]
 
@@ -2023,14 +2017,14 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case virtualRouter = "virtualRouter"
+            case virtualRouter
         }
     }
 
     public struct DeleteVirtualServiceInput: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")), 
-            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")), 
+            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")),
+            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")),
             AWSMemberEncoding(label: "virtualServiceName", location: .uri(locationName: "virtualServiceName"))
         ]
 
@@ -2069,15 +2063,15 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case virtualService = "virtualService"
+            case virtualService
         }
     }
 
     public struct DescribeGatewayRouteInput: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "gatewayRouteName", location: .uri(locationName: "gatewayRouteName")), 
-            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")), 
-            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")), 
+            AWSMemberEncoding(label: "gatewayRouteName", location: .uri(locationName: "gatewayRouteName")),
+            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")),
+            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")),
             AWSMemberEncoding(label: "virtualGatewayName", location: .uri(locationName: "virtualGatewayName"))
         ]
 
@@ -2123,13 +2117,13 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case gatewayRoute = "gatewayRoute"
+            case gatewayRoute
         }
     }
 
     public struct DescribeMeshInput: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")), 
+            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")),
             AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner"))
         ]
 
@@ -2165,15 +2159,15 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case mesh = "mesh"
+            case mesh
         }
     }
 
     public struct DescribeRouteInput: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")), 
-            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")), 
-            AWSMemberEncoding(label: "routeName", location: .uri(locationName: "routeName")), 
+            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")),
+            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")),
+            AWSMemberEncoding(label: "routeName", location: .uri(locationName: "routeName")),
             AWSMemberEncoding(label: "virtualRouterName", location: .uri(locationName: "virtualRouterName"))
         ]
 
@@ -2219,14 +2213,14 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case route = "route"
+            case route
         }
     }
 
     public struct DescribeVirtualGatewayInput: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")), 
-            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")), 
+            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")),
+            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")),
             AWSMemberEncoding(label: "virtualGatewayName", location: .uri(locationName: "virtualGatewayName"))
         ]
 
@@ -2267,14 +2261,14 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case virtualGateway = "virtualGateway"
+            case virtualGateway
         }
     }
 
     public struct DescribeVirtualNodeInput: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")), 
-            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")), 
+            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")),
+            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")),
             AWSMemberEncoding(label: "virtualNodeName", location: .uri(locationName: "virtualNodeName"))
         ]
 
@@ -2315,14 +2309,14 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case virtualNode = "virtualNode"
+            case virtualNode
         }
     }
 
     public struct DescribeVirtualRouterInput: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")), 
-            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")), 
+            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")),
+            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")),
             AWSMemberEncoding(label: "virtualRouterName", location: .uri(locationName: "virtualRouterName"))
         ]
 
@@ -2363,14 +2357,14 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case virtualRouter = "virtualRouter"
+            case virtualRouter
         }
     }
 
     public struct DescribeVirtualServiceInput: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")), 
-            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")), 
+            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")),
+            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")),
             AWSMemberEncoding(label: "virtualServiceName", location: .uri(locationName: "virtualServiceName"))
         ]
 
@@ -2409,13 +2403,12 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case virtualService = "virtualService"
+            case virtualService
         }
     }
 
     public struct DnsServiceDiscovery: AWSEncodableShape & AWSDecodableShape {
-
-        /// Specifies the DNS service discovery hostname for the virtual node. 
+        /// Specifies the DNS service discovery hostname for the virtual node.
         public let hostname: String
         /// Specifies the DNS response type for the virtual node.
         public let responseType: DnsResponseType?
@@ -2426,13 +2419,12 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case hostname = "hostname"
-            case responseType = "responseType"
+            case hostname
+            case responseType
         }
     }
 
     public struct Duration: AWSEncodableShape & AWSDecodableShape {
-
         /// A unit of time.
         public let unit: DurationUnit?
         /// A number of time units.
@@ -2448,13 +2440,12 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case unit = "unit"
-            case value = "value"
+            case unit
+            case value
         }
     }
 
     public struct EgressFilter: AWSEncodableShape & AWSDecodableShape {
-
         /// The egress filter type. By default, the type is DROP_ALL, which allows egress only from virtual nodes to other defined resources in the service mesh (and any traffic to *.amazonaws.com for Amazon Web Services API calls). You can set the egress filter type to ALLOW_ALL to allow egress to any endpoint inside or outside of the service mesh.
         public let type: EgressFilterType
 
@@ -2463,13 +2454,12 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case type = "type"
+            case type
         }
     }
 
     public struct FileAccessLog: AWSEncodableShape & AWSDecodableShape {
-
-        /// The file path to write access logs to. You can use /dev/stdout to send access logs to standard out and configure your Envoy container to use a log driver, such as awslogs, to export the access logs to a log storage service such as Amazon CloudWatch Logs. You can also specify a path in the Envoy container's file system to write the files to disk.   The Envoy process must have write permissions to the path that you specify here. Otherwise, Envoy fails to bootstrap properly. 
+        /// The file path to write access logs to. You can use /dev/stdout to send access logs to standard out and configure your Envoy container to use a log driver, such as awslogs, to export the access logs to a log storage service such as Amazon CloudWatch Logs. You can also specify a path in the Envoy container's file system to write the files to disk.   The Envoy process must have write permissions to the path that you specify here. Otherwise, Envoy fails to bootstrap properly.
         public let path: String
 
         public init(path: String) {
@@ -2482,15 +2472,14 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case path = "path"
+            case path
         }
     }
 
     public struct GatewayRouteData: AWSDecodableShape {
-
         /// The name of the gateway route.
         public let gatewayRouteName: String
-        /// The name of the service mesh that the resource resides in. 
+        /// The name of the service mesh that the resource resides in.
         public let meshName: String
         public let metadata: ResourceMetadata
         /// The specifications of the gateway route.
@@ -2510,17 +2499,16 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case gatewayRouteName = "gatewayRouteName"
-            case meshName = "meshName"
-            case metadata = "metadata"
-            case spec = "spec"
-            case status = "status"
-            case virtualGatewayName = "virtualGatewayName"
+            case gatewayRouteName
+            case meshName
+            case metadata
+            case spec
+            case status
+            case virtualGatewayName
         }
     }
 
     public struct GatewayRouteHostnameMatch: AWSEncodableShape & AWSDecodableShape {
-
         /// The exact host name to match on.
         public let exact: String?
         /// The specified ending characters of the host name to match on.
@@ -2539,13 +2527,12 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case exact = "exact"
-            case suffix = "suffix"
+            case exact
+            case suffix
         }
     }
 
     public struct GatewayRouteHostnameRewrite: AWSEncodableShape & AWSDecodableShape {
-
         /// The default target host name to write to.
         public let defaultTargetHostname: DefaultGatewayRouteRewrite?
 
@@ -2554,12 +2541,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case defaultTargetHostname = "defaultTargetHostname"
+            case defaultTargetHostname
         }
     }
 
     public struct GatewayRouteRef: AWSDecodableShape {
-
         /// The full Amazon Resource Name (ARN) for the gateway route.
         public let arn: String
         /// The Unix epoch timestamp in seconds for when the resource was created.
@@ -2568,7 +2554,7 @@ extension AppMesh {
         public let gatewayRouteName: String
         /// The Unix epoch timestamp in seconds for when the resource was last updated.
         public let lastUpdatedAt: Date
-        /// The name of the service mesh that the resource resides in. 
+        /// The name of the service mesh that the resource resides in.
         public let meshName: String
         /// The AWS IAM account ID of the service mesh owner. If the account ID is not your own, then it's the ID of the account that shared the mesh with your account. For more information about mesh sharing, see Working with shared meshes.
         public let meshOwner: String
@@ -2592,20 +2578,19 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdAt = "createdAt"
-            case gatewayRouteName = "gatewayRouteName"
-            case lastUpdatedAt = "lastUpdatedAt"
-            case meshName = "meshName"
-            case meshOwner = "meshOwner"
-            case resourceOwner = "resourceOwner"
-            case version = "version"
-            case virtualGatewayName = "virtualGatewayName"
+            case arn
+            case createdAt
+            case gatewayRouteName
+            case lastUpdatedAt
+            case meshName
+            case meshOwner
+            case resourceOwner
+            case version
+            case virtualGatewayName
         }
     }
 
     public struct GatewayRouteSpec: AWSEncodableShape & AWSDecodableShape {
-
         /// An object that represents the specification of a gRPC gateway route.
         public let grpcRoute: GrpcGatewayRoute?
         /// An object that represents the specification of an HTTP/2 gateway route.
@@ -2631,15 +2616,14 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case grpcRoute = "grpcRoute"
-            case http2Route = "http2Route"
-            case httpRoute = "httpRoute"
-            case priority = "priority"
+            case grpcRoute
+            case http2Route
+            case httpRoute
+            case priority
         }
     }
 
     public struct GatewayRouteStatus: AWSDecodableShape {
-
         /// The current status for the gateway route.
         public let status: GatewayRouteStatusCode
 
@@ -2648,12 +2632,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case status = "status"
+            case status
         }
     }
 
     public struct GatewayRouteTarget: AWSEncodableShape & AWSDecodableShape {
-
         /// An object that represents a virtual service gateway route target.
         public let virtualService: GatewayRouteVirtualService
 
@@ -2666,12 +2649,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case virtualService = "virtualService"
+            case virtualService
         }
     }
 
     public struct GatewayRouteVirtualService: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the virtual service that traffic is routed to.
         public let virtualServiceName: String
 
@@ -2685,12 +2667,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case virtualServiceName = "virtualServiceName"
+            case virtualServiceName
         }
     }
 
     public struct GrpcGatewayRoute: AWSEncodableShape & AWSDecodableShape {
-
         /// An object that represents the action to take if a match is determined.
         public let action: GrpcGatewayRouteAction
         /// An object that represents the criteria for determining a request match.
@@ -2707,13 +2688,12 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case action = "action"
-            case match = "match"
+            case action
+            case match
         }
     }
 
     public struct GrpcGatewayRouteAction: AWSEncodableShape & AWSDecodableShape {
-
         /// The gateway route action to rewrite.
         public let rewrite: GrpcGatewayRouteRewrite?
         /// An object that represents the target that traffic is routed to when a request matches the gateway route.
@@ -2729,13 +2709,12 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case rewrite = "rewrite"
-            case target = "target"
+            case rewrite
+            case target
         }
     }
 
     public struct GrpcGatewayRouteMatch: AWSEncodableShape & AWSDecodableShape {
-
         /// The gateway route host name to be matched on.
         public let hostname: GatewayRouteHostnameMatch?
         /// The gateway route metadata to be matched on.
@@ -2759,14 +2738,13 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case hostname = "hostname"
-            case metadata = "metadata"
-            case serviceName = "serviceName"
+            case hostname
+            case metadata
+            case serviceName
         }
     }
 
     public struct GrpcGatewayRouteMetadata: AWSEncodableShape & AWSDecodableShape {
-
         /// Specify True to match anything except the match criteria. The default value is False.
         public let invert: Bool?
         /// The criteria for determining a metadata match.
@@ -2787,14 +2765,13 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case invert = "invert"
-            case match = "match"
-            case name = "name"
+            case invert
+            case match
+            case name
         }
     }
 
     public struct GrpcGatewayRouteRewrite: AWSEncodableShape & AWSDecodableShape {
-
         /// The host name of the gateway route to rewrite.
         public let hostname: GatewayRouteHostnameRewrite?
 
@@ -2803,15 +2780,14 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case hostname = "hostname"
+            case hostname
         }
     }
 
     public struct GrpcRetryPolicy: AWSEncodableShape & AWSDecodableShape {
-
         /// Specify at least one of the valid values.
         public let grpcRetryEvents: [GrpcRetryPolicyEvent]?
-        /// Specify at least one of the following values.     server-error – HTTP status codes 500, 501, 502, 503, 504, 505, 506, 507, 508, 510, and 511    gateway-error – HTTP status codes 502, 503, and 504    client-error – HTTP status code 409    stream-error – Retry on refused stream  
+        /// Specify at least one of the following values.     server-error – HTTP status codes 500, 501, 502, 503, 504, 505, 506, 507, 508, 510, and 511    gateway-error – HTTP status codes 502, 503, and 504    client-error – HTTP status code 409    stream-error – Retry on refused stream
         public let httpRetryEvents: [String]?
         /// The maximum number of retry attempts.
         public let maxRetries: Int64
@@ -2844,23 +2820,22 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case grpcRetryEvents = "grpcRetryEvents"
-            case httpRetryEvents = "httpRetryEvents"
-            case maxRetries = "maxRetries"
-            case perRetryTimeout = "perRetryTimeout"
-            case tcpRetryEvents = "tcpRetryEvents"
+            case grpcRetryEvents
+            case httpRetryEvents
+            case maxRetries
+            case perRetryTimeout
+            case tcpRetryEvents
         }
     }
 
     public struct GrpcRoute: AWSEncodableShape & AWSDecodableShape {
-
         /// An object that represents the action to take if a match is determined.
         public let action: GrpcRouteAction
         /// An object that represents the criteria for determining a request match.
         public let match: GrpcRouteMatch
         /// An object that represents a retry policy.
         public let retryPolicy: GrpcRetryPolicy?
-        /// An object that represents types of timeouts. 
+        /// An object that represents types of timeouts.
         public let timeout: GrpcTimeout?
 
         public init(action: GrpcRouteAction, match: GrpcRouteMatch, retryPolicy: GrpcRetryPolicy? = nil, timeout: GrpcTimeout? = nil) {
@@ -2878,15 +2853,14 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case action = "action"
-            case match = "match"
-            case retryPolicy = "retryPolicy"
-            case timeout = "timeout"
+            case action
+            case match
+            case retryPolicy
+            case timeout
         }
     }
 
     public struct GrpcRouteAction: AWSEncodableShape & AWSDecodableShape {
-
         /// An object that represents the targets that traffic is routed to when a request matches the route.
         public let weightedTargets: [WeightedTarget]
 
@@ -2903,12 +2877,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case weightedTargets = "weightedTargets"
+            case weightedTargets
         }
     }
 
     public struct GrpcRouteMatch: AWSEncodableShape & AWSDecodableShape {
-
         /// An object that represents the data to match from the request.
         public let metadata: [GrpcRouteMetadata]?
         /// The method name to match from the request. If you specify a name, you must also specify a serviceName.
@@ -2933,14 +2906,13 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case metadata = "metadata"
-            case methodName = "methodName"
-            case serviceName = "serviceName"
+            case metadata
+            case methodName
+            case serviceName
         }
     }
 
     public struct GrpcRouteMetadata: AWSEncodableShape & AWSDecodableShape {
-
         /// Specify True to match anything except the match criteria. The default value is False.
         public let invert: Bool?
         /// An object that represents the data to match from the request.
@@ -2961,14 +2933,13 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case invert = "invert"
-            case match = "match"
-            case name = "name"
+            case invert
+            case match
+            case name
         }
     }
 
     public struct GrpcTimeout: AWSEncodableShape & AWSDecodableShape {
-
         /// An object that represents an idle timeout. An idle timeout bounds the amount of time that a connection may be idle. The default value is none.
         public let idle: Duration?
         /// An object that represents a per request timeout. The default value is 15 seconds. If you set a higher timeout, then make sure that the higher value is set for each App Mesh  resource in a conversation. For example, if a virtual node backend uses a virtual router provider to route to another virtual node, then the timeout should be greater than 15 seconds for the source and destination virtual node and the route.
@@ -2985,13 +2956,12 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case idle = "idle"
-            case perRequest = "perRequest"
+            case idle
+            case perRequest
         }
     }
 
     public struct HealthCheckPolicy: AWSEncodableShape & AWSDecodableShape {
-
         /// The number of consecutive successful health checks that must occur before declaring listener healthy.
         public let healthyThreshold: Int
         /// The time period in milliseconds between each health check execution.
@@ -3004,7 +2974,7 @@ extension AppMesh {
         public let `protocol`: PortProtocol
         /// The amount of time to wait when receiving a response from the health check, in milliseconds.
         public let timeoutMillis: Int64
-        /// The number of consecutive failed health checks that must occur before declaring a virtual node unhealthy. 
+        /// The number of consecutive failed health checks that must occur before declaring a virtual node unhealthy.
         public let unhealthyThreshold: Int
 
         public init(healthyThreshold: Int, intervalMillis: Int64, path: String? = nil, port: Int? = nil, protocol: PortProtocol, timeoutMillis: Int64, unhealthyThreshold: Int) {
@@ -3020,7 +2990,7 @@ extension AppMesh {
         public func validate(name: String) throws {
             try self.validate(self.healthyThreshold, name: "healthyThreshold", parent: name, max: 10)
             try self.validate(self.healthyThreshold, name: "healthyThreshold", parent: name, min: 2)
-            try self.validate(self.intervalMillis, name: "intervalMillis", parent: name, max: 300000)
+            try self.validate(self.intervalMillis, name: "intervalMillis", parent: name, max: 300_000)
             try self.validate(self.intervalMillis, name: "intervalMillis", parent: name, min: 5000)
             try self.validate(self.port, name: "port", parent: name, max: 65535)
             try self.validate(self.port, name: "port", parent: name, min: 1)
@@ -3031,18 +3001,17 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case healthyThreshold = "healthyThreshold"
-            case intervalMillis = "intervalMillis"
-            case path = "path"
-            case port = "port"
-            case `protocol` = "protocol"
-            case timeoutMillis = "timeoutMillis"
-            case unhealthyThreshold = "unhealthyThreshold"
+            case healthyThreshold
+            case intervalMillis
+            case path
+            case port
+            case `protocol`
+            case timeoutMillis
+            case unhealthyThreshold
         }
     }
 
     public struct HttpGatewayRoute: AWSEncodableShape & AWSDecodableShape {
-
         /// An object that represents the action to take if a match is determined.
         public let action: HttpGatewayRouteAction
         /// An object that represents the criteria for determining a request match.
@@ -3059,13 +3028,12 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case action = "action"
-            case match = "match"
+            case action
+            case match
         }
     }
 
     public struct HttpGatewayRouteAction: AWSEncodableShape & AWSDecodableShape {
-
         /// The gateway route action to rewrite.
         public let rewrite: HttpGatewayRouteRewrite?
         /// An object that represents the target that traffic is routed to when a request matches the gateway route.
@@ -3082,13 +3050,12 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case rewrite = "rewrite"
-            case target = "target"
+            case rewrite
+            case target
         }
     }
 
     public struct HttpGatewayRouteHeader: AWSEncodableShape & AWSDecodableShape {
-
         /// Specify True to match anything except the match criteria. The default value is False.
         public let invert: Bool?
         public let match: HeaderMatchMethod?
@@ -3108,14 +3075,13 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case invert = "invert"
-            case match = "match"
-            case name = "name"
+            case invert
+            case match
+            case name
         }
     }
 
     public struct HttpGatewayRouteMatch: AWSEncodableShape & AWSDecodableShape {
-
         /// The client request headers to match on.
         public let headers: [HttpGatewayRouteHeader]?
         /// The host name to match on.
@@ -3151,17 +3117,16 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case headers = "headers"
-            case hostname = "hostname"
-            case method = "method"
-            case path = "path"
-            case prefix = "prefix"
-            case queryParameters = "queryParameters"
+            case headers
+            case hostname
+            case method
+            case path
+            case prefix
+            case queryParameters
         }
     }
 
     public struct HttpGatewayRoutePathRewrite: AWSEncodableShape & AWSDecodableShape {
-
         /// The exact path to rewrite.
         public let exact: String?
 
@@ -3175,12 +3140,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case exact = "exact"
+            case exact
         }
     }
 
     public struct HttpGatewayRoutePrefixRewrite: AWSEncodableShape & AWSDecodableShape {
-
         /// The default prefix used to replace the incoming route prefix when rewritten.
         public let defaultPrefix: DefaultGatewayRouteRewrite?
         /// The value used to replace the incoming route prefix when rewritten.
@@ -3197,13 +3161,12 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case defaultPrefix = "defaultPrefix"
-            case value = "value"
+            case defaultPrefix
+            case value
         }
     }
 
     public struct HttpGatewayRouteRewrite: AWSEncodableShape & AWSDecodableShape {
-
         /// The host name to rewrite.
         public let hostname: GatewayRouteHostnameRewrite?
         /// The path to rewrite.
@@ -3223,14 +3186,13 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case hostname = "hostname"
-            case path = "path"
-            case prefix = "prefix"
+            case hostname
+            case path
+            case prefix
         }
     }
 
     public struct HttpPathMatch: AWSEncodableShape & AWSDecodableShape {
-
         /// The exact path to match on.
         public let exact: String?
         /// The regex used to match the path.
@@ -3249,13 +3211,12 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case exact = "exact"
-            case regex = "regex"
+            case exact
+            case regex
         }
     }
 
     public struct HttpQueryParameter: AWSEncodableShape & AWSDecodableShape {
-
         /// The query parameter to match on.
         public let match: QueryParameterMatch?
         /// A name for the query parameter that will be matched on.
@@ -3267,14 +3228,13 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case match = "match"
-            case name = "name"
+            case match
+            case name
         }
     }
 
     public struct HttpRetryPolicy: AWSEncodableShape & AWSDecodableShape {
-
-        /// Specify at least one of the following values.     server-error – HTTP status codes 500, 501, 502, 503, 504, 505, 506, 507, 508, 510, and 511    gateway-error – HTTP status codes 502, 503, and 504    client-error – HTTP status code 409    stream-error – Retry on refused stream  
+        /// Specify at least one of the following values.     server-error – HTTP status codes 500, 501, 502, 503, 504, 505, 506, 507, 508, 510, and 511    gateway-error – HTTP status codes 502, 503, and 504    client-error – HTTP status code 409    stream-error – Retry on refused stream
         public let httpRetryEvents: [String]?
         /// The maximum number of retry attempts.
         public let maxRetries: Int64
@@ -3304,22 +3264,21 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case httpRetryEvents = "httpRetryEvents"
-            case maxRetries = "maxRetries"
-            case perRetryTimeout = "perRetryTimeout"
-            case tcpRetryEvents = "tcpRetryEvents"
+            case httpRetryEvents
+            case maxRetries
+            case perRetryTimeout
+            case tcpRetryEvents
         }
     }
 
     public struct HttpRoute: AWSEncodableShape & AWSDecodableShape {
-
         /// An object that represents the action to take if a match is determined.
         public let action: HttpRouteAction
         /// An object that represents the criteria for determining a request match.
         public let match: HttpRouteMatch
         /// An object that represents a retry policy.
         public let retryPolicy: HttpRetryPolicy?
-        /// An object that represents types of timeouts. 
+        /// An object that represents types of timeouts.
         public let timeout: HttpTimeout?
 
         public init(action: HttpRouteAction, match: HttpRouteMatch, retryPolicy: HttpRetryPolicy? = nil, timeout: HttpTimeout? = nil) {
@@ -3337,15 +3296,14 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case action = "action"
-            case match = "match"
-            case retryPolicy = "retryPolicy"
-            case timeout = "timeout"
+            case action
+            case match
+            case retryPolicy
+            case timeout
         }
     }
 
     public struct HttpRouteAction: AWSEncodableShape & AWSDecodableShape {
-
         /// An object that represents the targets that traffic is routed to when a request matches the route.
         public let weightedTargets: [WeightedTarget]
 
@@ -3362,12 +3320,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case weightedTargets = "weightedTargets"
+            case weightedTargets
         }
     }
 
     public struct HttpRouteHeader: AWSEncodableShape & AWSDecodableShape {
-
         /// Specify True to match anything except the match criteria. The default value is False.
         public let invert: Bool?
         /// The HeaderMatchMethod object.
@@ -3388,14 +3345,13 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case invert = "invert"
-            case match = "match"
-            case name = "name"
+            case invert
+            case match
+            case name
         }
     }
 
     public struct HttpRouteMatch: AWSEncodableShape & AWSDecodableShape {
-
         /// The client request headers to match on.
         public let headers: [HttpRouteHeader]?
         /// The client request method to match on. Specify only one.
@@ -3430,17 +3386,16 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case headers = "headers"
-            case method = "method"
-            case path = "path"
-            case prefix = "prefix"
-            case queryParameters = "queryParameters"
-            case scheme = "scheme"
+            case headers
+            case method
+            case path
+            case prefix
+            case queryParameters
+            case scheme
         }
     }
 
     public struct HttpTimeout: AWSEncodableShape & AWSDecodableShape {
-
         /// An object that represents an idle timeout. An idle timeout bounds the amount of time that a connection may be idle. The default value is none.
         public let idle: Duration?
         /// An object that represents a per request timeout. The default value is 15 seconds. If you set a higher timeout, then make sure that the higher value is set for each App Mesh  resource in a conversation. For example, if a virtual node backend uses a virtual router provider to route to another virtual node, then the timeout should be greater than 15 seconds for the source and destination virtual node and the route.
@@ -3457,17 +3412,17 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case idle = "idle"
-            case perRequest = "perRequest"
+            case idle
+            case perRequest
         }
     }
 
     public struct ListGatewayRoutesInput: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "limit", location: .querystring(locationName: "limit")), 
-            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")), 
-            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")), 
-            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")), 
+            AWSMemberEncoding(label: "limit", location: .querystring(locationName: "limit")),
+            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")),
+            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")),
+            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")),
             AWSMemberEncoding(label: "virtualGatewayName", location: .uri(locationName: "virtualGatewayName"))
         ]
 
@@ -3505,7 +3460,6 @@ extension AppMesh {
     }
 
     public struct ListGatewayRoutesOutput: AWSDecodableShape {
-
         /// The list of existing gateway routes for the specified service mesh and virtual gateway.
         public let gatewayRoutes: [GatewayRouteRef]
         /// The nextToken value to include in a future ListGatewayRoutes request. When the results of a ListGatewayRoutes request exceed limit, you can use this value to retrieve the next page of results. This value is null when there are no more results to return.
@@ -3517,20 +3471,20 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case gatewayRoutes = "gatewayRoutes"
-            case nextToken = "nextToken"
+            case gatewayRoutes
+            case nextToken
         }
     }
 
     public struct ListMeshesInput: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "limit", location: .querystring(locationName: "limit")), 
+            AWSMemberEncoding(label: "limit", location: .querystring(locationName: "limit")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
         /// The maximum number of results returned by ListMeshes in paginated output. When you use this parameter, ListMeshes returns only limit results in a single page along with a nextToken response element. You can see the remaining results of the initial request by sending another ListMeshes request with the returned nextToken value. This value can be between 1 and 100. If you don't use this parameter, ListMeshes returns up to 100 results and a nextToken value if applicable.
         public let limit: Int?
-        /// The nextToken value returned from a previous paginated ListMeshes request where limit was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the nextToken value.   This token should be treated as an opaque identifier that is used only to retrieve the next items in a list and not for other programmatic purposes. 
+        /// The nextToken value returned from a previous paginated ListMeshes request where limit was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the nextToken value.   This token should be treated as an opaque identifier that is used only to retrieve the next items in a list and not for other programmatic purposes.
         public let nextToken: String?
 
         public init(limit: Int? = nil, nextToken: String? = nil) {
@@ -3547,7 +3501,6 @@ extension AppMesh {
     }
 
     public struct ListMeshesOutput: AWSDecodableShape {
-
         /// The list of existing service meshes.
         public let meshes: [MeshRef]
         /// The nextToken value to include in a future ListMeshes request. When the results of a ListMeshes request exceed limit, you can use this value to retrieve the next page of results. This value is null when there are no more results to return.
@@ -3559,17 +3512,17 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case meshes = "meshes"
-            case nextToken = "nextToken"
+            case meshes
+            case nextToken
         }
     }
 
     public struct ListRoutesInput: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "limit", location: .querystring(locationName: "limit")), 
-            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")), 
-            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")), 
-            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")), 
+            AWSMemberEncoding(label: "limit", location: .querystring(locationName: "limit")),
+            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")),
+            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")),
+            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")),
             AWSMemberEncoding(label: "virtualRouterName", location: .uri(locationName: "virtualRouterName"))
         ]
 
@@ -3607,7 +3560,6 @@ extension AppMesh {
     }
 
     public struct ListRoutesOutput: AWSDecodableShape {
-
         /// The nextToken value to include in a future ListRoutes request. When the results of a ListRoutes request exceed limit, you can use this value to retrieve the next page of results. This value is null when there are no more results to return.
         public let nextToken: String?
         /// The list of existing routes for the specified service mesh and virtual router.
@@ -3619,15 +3571,15 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case routes = "routes"
+            case nextToken
+            case routes
         }
     }
 
     public struct ListTagsForResourceInput: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "limit", location: .querystring(locationName: "limit")), 
-            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")), 
+            AWSMemberEncoding(label: "limit", location: .querystring(locationName: "limit")),
+            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")),
             AWSMemberEncoding(label: "resourceArn", location: .querystring(locationName: "resourceArn"))
         ]
 
@@ -3653,7 +3605,6 @@ extension AppMesh {
     }
 
     public struct ListTagsForResourceOutput: AWSDecodableShape {
-
         /// The nextToken value to include in a future ListTagsForResource request. When the results of a ListTagsForResource request exceed limit, you can use this value to retrieve the next page of results. This value is null when there are no more results to return.
         public let nextToken: String?
         /// The tags for the resource.
@@ -3665,16 +3616,16 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case tags = "tags"
+            case nextToken
+            case tags
         }
     }
 
     public struct ListVirtualGatewaysInput: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "limit", location: .querystring(locationName: "limit")), 
-            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")), 
-            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")), 
+            AWSMemberEncoding(label: "limit", location: .querystring(locationName: "limit")),
+            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")),
+            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
@@ -3707,7 +3658,6 @@ extension AppMesh {
     }
 
     public struct ListVirtualGatewaysOutput: AWSDecodableShape {
-
         /// The nextToken value to include in a future ListVirtualGateways request. When the results of a ListVirtualGateways request exceed limit, you can use this value to retrieve the next page of results. This value is null when there are no more results to return.
         public let nextToken: String?
         /// The list of existing virtual gateways for the specified service mesh.
@@ -3719,16 +3669,16 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case virtualGateways = "virtualGateways"
+            case nextToken
+            case virtualGateways
         }
     }
 
     public struct ListVirtualNodesInput: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "limit", location: .querystring(locationName: "limit")), 
-            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")), 
-            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")), 
+            AWSMemberEncoding(label: "limit", location: .querystring(locationName: "limit")),
+            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")),
+            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
@@ -3761,7 +3711,6 @@ extension AppMesh {
     }
 
     public struct ListVirtualNodesOutput: AWSDecodableShape {
-
         /// The nextToken value to include in a future ListVirtualNodes request. When the results of a ListVirtualNodes request exceed limit, you can use this value to retrieve the next page of results. This value is null when there are no more results to return.
         public let nextToken: String?
         /// The list of existing virtual nodes for the specified service mesh.
@@ -3773,16 +3722,16 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case virtualNodes = "virtualNodes"
+            case nextToken
+            case virtualNodes
         }
     }
 
     public struct ListVirtualRoutersInput: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "limit", location: .querystring(locationName: "limit")), 
-            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")), 
-            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")), 
+            AWSMemberEncoding(label: "limit", location: .querystring(locationName: "limit")),
+            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")),
+            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
@@ -3815,7 +3764,6 @@ extension AppMesh {
     }
 
     public struct ListVirtualRoutersOutput: AWSDecodableShape {
-
         /// The nextToken value to include in a future ListVirtualRouters request. When the results of a ListVirtualRouters request exceed limit, you can use this value to retrieve the next page of results. This value is null when there are no more results to return.
         public let nextToken: String?
         /// The list of existing virtual routers for the specified service mesh.
@@ -3827,16 +3775,16 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case virtualRouters = "virtualRouters"
+            case nextToken
+            case virtualRouters
         }
     }
 
     public struct ListVirtualServicesInput: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "limit", location: .querystring(locationName: "limit")), 
-            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")), 
-            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")), 
+            AWSMemberEncoding(label: "limit", location: .querystring(locationName: "limit")),
+            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")),
+            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
@@ -3869,7 +3817,6 @@ extension AppMesh {
     }
 
     public struct ListVirtualServicesOutput: AWSDecodableShape {
-
         /// The nextToken value to include in a future ListVirtualServices request. When the results of a ListVirtualServices request exceed limit, you can use this value to retrieve the next page of results. This value is null when there are no more results to return.
         public let nextToken: String?
         /// The list of existing virtual services for the specified service mesh.
@@ -3881,13 +3828,12 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case virtualServices = "virtualServices"
+            case nextToken
+            case virtualServices
         }
     }
 
     public struct Listener: AWSEncodableShape & AWSDecodableShape {
-
         /// The connection pool information for the listener.
         public let connectionPool: VirtualNodeConnectionPool?
         /// The health check information for the listener.
@@ -3920,20 +3866,19 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case connectionPool = "connectionPool"
-            case healthCheck = "healthCheck"
-            case outlierDetection = "outlierDetection"
-            case portMapping = "portMapping"
-            case timeout = "timeout"
-            case tls = "tls"
+            case connectionPool
+            case healthCheck
+            case outlierDetection
+            case portMapping
+            case timeout
+            case tls
         }
     }
 
     public struct ListenerTls: AWSEncodableShape & AWSDecodableShape {
-
         /// A reference to an object that represents a listener's Transport Layer Security (TLS) certificate.
         public let certificate: ListenerTlsCertificate
-        /// Specify one of the following modes.    STRICT – Listener only accepts connections with TLS enabled.     PERMISSIVE – Listener accepts connections with or without TLS enabled.    DISABLED – Listener only accepts connections without TLS.   
+        /// Specify one of the following modes.    STRICT – Listener only accepts connections with TLS enabled.     PERMISSIVE – Listener accepts connections with or without TLS enabled.    DISABLED – Listener only accepts connections without TLS.
         public let mode: ListenerTlsMode
         /// A reference to an object that represents a listener's Transport Layer Security (TLS) validation context.
         public let validation: ListenerTlsValidationContext?
@@ -3950,14 +3895,13 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case certificate = "certificate"
-            case mode = "mode"
-            case validation = "validation"
+            case certificate
+            case mode
+            case validation
         }
     }
 
     public struct ListenerTlsAcmCertificate: AWSEncodableShape & AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) for the certificate. The certificate must meet specific requirements and you must have proxy authorization enabled. For more information, see Transport Layer Security (TLS).
         public let certificateArn: String
 
@@ -3966,12 +3910,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case certificateArn = "certificateArn"
+            case certificateArn
         }
     }
 
     public struct ListenerTlsFileCertificate: AWSEncodableShape & AWSDecodableShape {
-
         /// The certificate chain for the certificate.
         public let certificateChain: String
         /// The private key for a certificate stored on the file system of the virtual node that the proxy is running on.
@@ -3990,13 +3933,12 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case certificateChain = "certificateChain"
-            case privateKey = "privateKey"
+            case certificateChain
+            case privateKey
         }
     }
 
     public struct ListenerTlsSdsCertificate: AWSEncodableShape & AWSDecodableShape {
-
         /// A reference to an object that represents the name of the secret requested from the Secret Discovery Service provider representing Transport Layer Security (TLS) materials like a certificate or certificate chain.
         public let secretName: String
 
@@ -4005,12 +3947,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case secretName = "secretName"
+            case secretName
         }
     }
 
     public struct ListenerTlsValidationContext: AWSEncodableShape & AWSDecodableShape {
-
         /// A reference to an object that represents the SANs for a listener's Transport Layer Security (TLS) validation context.
         public let subjectAlternativeNames: SubjectAlternativeNames?
         /// A reference to where to retrieve the trust chain when validating a peer’s Transport Layer Security (TLS) certificate.
@@ -4027,13 +3968,12 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case subjectAlternativeNames = "subjectAlternativeNames"
-            case trust = "trust"
+            case subjectAlternativeNames
+            case trust
         }
     }
 
     public struct Logging: AWSEncodableShape & AWSDecodableShape {
-
         /// The access log configuration for a virtual node.
         public let accessLog: AccessLog?
 
@@ -4046,12 +3986,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accessLog = "accessLog"
+            case accessLog
         }
     }
 
     public struct MatchRange: AWSEncodableShape & AWSDecodableShape {
-
         /// The end of the range.
         public let end: Int64
         /// The start of the range.
@@ -4063,13 +4002,12 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case end = "end"
-            case start = "start"
+            case end
+            case start
         }
     }
 
     public struct MeshData: AWSDecodableShape {
-
         /// The name of the service mesh.
         public let meshName: String
         /// The associated metadata for the service mesh.
@@ -4087,15 +4025,14 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case meshName = "meshName"
-            case metadata = "metadata"
-            case spec = "spec"
-            case status = "status"
+            case meshName
+            case metadata
+            case spec
+            case status
         }
     }
 
     public struct MeshRef: AWSDecodableShape {
-
         /// The full Amazon Resource Name (ARN) of the service mesh.
         public let arn: String
         /// The Unix epoch timestamp in seconds for when the resource was created.
@@ -4122,18 +4059,17 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdAt = "createdAt"
-            case lastUpdatedAt = "lastUpdatedAt"
-            case meshName = "meshName"
-            case meshOwner = "meshOwner"
-            case resourceOwner = "resourceOwner"
-            case version = "version"
+            case arn
+            case createdAt
+            case lastUpdatedAt
+            case meshName
+            case meshOwner
+            case resourceOwner
+            case version
         }
     }
 
     public struct MeshSpec: AWSEncodableShape & AWSDecodableShape {
-
         /// The egress filter rules for the service mesh.
         public let egressFilter: EgressFilter?
 
@@ -4142,12 +4078,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case egressFilter = "egressFilter"
+            case egressFilter
         }
     }
 
     public struct MeshStatus: AWSDecodableShape {
-
         /// The current mesh status.
         public let status: MeshStatusCode?
 
@@ -4156,19 +4091,18 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case status = "status"
+            case status
         }
     }
 
     public struct OutlierDetection: AWSEncodableShape & AWSDecodableShape {
-
         /// The base amount of time for which a host is ejected.
         public let baseEjectionDuration: Duration
         /// The time interval between ejection sweep analysis.
         public let interval: Duration
         /// Maximum percentage of hosts in load balancing pool for upstream service that can be ejected. Will eject at least one host regardless of the value.
         public let maxEjectionPercent: Int
-        /// Number of consecutive 5xx errors required for ejection. 
+        /// Number of consecutive 5xx errors required for ejection.
         public let maxServerErrors: Int64
 
         public init(baseEjectionDuration: Duration, interval: Duration, maxEjectionPercent: Int, maxServerErrors: Int64) {
@@ -4187,15 +4121,14 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case baseEjectionDuration = "baseEjectionDuration"
-            case interval = "interval"
-            case maxEjectionPercent = "maxEjectionPercent"
-            case maxServerErrors = "maxServerErrors"
+            case baseEjectionDuration
+            case interval
+            case maxEjectionPercent
+            case maxServerErrors
         }
     }
 
     public struct PortMapping: AWSEncodableShape & AWSDecodableShape {
-
         /// The port used for the port mapping.
         public let port: Int
         /// The protocol used for the port mapping. Specify one protocol.
@@ -4212,13 +4145,12 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case port = "port"
-            case `protocol` = "protocol"
+            case port
+            case `protocol`
         }
     }
 
     public struct QueryParameterMatch: AWSEncodableShape & AWSDecodableShape {
-
         /// The exact query parameter to match on.
         public let exact: String?
 
@@ -4227,12 +4159,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case exact = "exact"
+            case exact
         }
     }
 
     public struct ResourceMetadata: AWSDecodableShape {
-
         /// The full Amazon Resource Name (ARN) for the resource.
         public let arn: String
         /// The Unix epoch timestamp in seconds for when the resource was created.
@@ -4259,18 +4190,17 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdAt = "createdAt"
-            case lastUpdatedAt = "lastUpdatedAt"
-            case meshOwner = "meshOwner"
-            case resourceOwner = "resourceOwner"
-            case uid = "uid"
-            case version = "version"
+            case arn
+            case createdAt
+            case lastUpdatedAt
+            case meshOwner
+            case resourceOwner
+            case uid
+            case version
         }
     }
 
     public struct RouteData: AWSDecodableShape {
-
         /// The name of the service mesh that the route resides in.
         public let meshName: String
         /// The associated metadata for the route.
@@ -4294,17 +4224,16 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case meshName = "meshName"
-            case metadata = "metadata"
-            case routeName = "routeName"
-            case spec = "spec"
-            case status = "status"
-            case virtualRouterName = "virtualRouterName"
+            case meshName
+            case metadata
+            case routeName
+            case spec
+            case status
+            case virtualRouterName
         }
     }
 
     public struct RouteRef: AWSDecodableShape {
-
         /// The full Amazon Resource Name (ARN) for the route.
         public let arn: String
         /// The Unix epoch timestamp in seconds for when the resource was created.
@@ -4337,20 +4266,19 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdAt = "createdAt"
-            case lastUpdatedAt = "lastUpdatedAt"
-            case meshName = "meshName"
-            case meshOwner = "meshOwner"
-            case resourceOwner = "resourceOwner"
-            case routeName = "routeName"
-            case version = "version"
-            case virtualRouterName = "virtualRouterName"
+            case arn
+            case createdAt
+            case lastUpdatedAt
+            case meshName
+            case meshOwner
+            case resourceOwner
+            case routeName
+            case version
+            case virtualRouterName
         }
     }
 
     public struct RouteSpec: AWSEncodableShape & AWSDecodableShape {
-
         /// An object that represents the specification of a gRPC route.
         public let grpcRoute: GrpcRoute?
         /// An object that represents the specification of an HTTP/2 route.
@@ -4380,16 +4308,15 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case grpcRoute = "grpcRoute"
-            case http2Route = "http2Route"
-            case httpRoute = "httpRoute"
-            case priority = "priority"
-            case tcpRoute = "tcpRoute"
+            case grpcRoute
+            case http2Route
+            case httpRoute
+            case priority
+            case tcpRoute
         }
     }
 
     public struct RouteStatus: AWSDecodableShape {
-
         /// The current status for the route.
         public let status: RouteStatusCode
 
@@ -4398,12 +4325,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case status = "status"
+            case status
         }
     }
 
     public struct SubjectAlternativeNameMatchers: AWSEncodableShape & AWSDecodableShape {
-
         /// The values sent must match the specified values exactly.
         public let exact: [String]
 
@@ -4419,12 +4345,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case exact = "exact"
+            case exact
         }
     }
 
     public struct SubjectAlternativeNames: AWSEncodableShape & AWSDecodableShape {
-
         /// An object that represents the criteria for determining a SANs match.
         public let match: SubjectAlternativeNameMatchers
 
@@ -4437,12 +4362,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case match = "match"
+            case match
         }
     }
 
     public struct TagRef: AWSEncodableShape & AWSDecodableShape {
-
         /// One part of a key-value pair that make up a tag. A key is a general label that acts like a category for more specific tag values.
         public let key: String
         /// The optional part of a key-value pair that make up a tag. A value acts as a descriptor within a tag category (key).
@@ -4460,8 +4384,8 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case key = "key"
-            case value = "value"
+            case key
+            case value
         }
     }
 
@@ -4488,23 +4412,18 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tags = "tags"
+            case tags
         }
     }
 
     public struct TagResourceOutput: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct TcpRoute: AWSEncodableShape & AWSDecodableShape {
-
         /// The action to take if a match is determined.
         public let action: TcpRouteAction
-        /// An object that represents types of timeouts. 
+        /// An object that represents types of timeouts.
         public let timeout: TcpTimeout?
 
         public init(action: TcpRouteAction, timeout: TcpTimeout? = nil) {
@@ -4518,13 +4437,12 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case action = "action"
-            case timeout = "timeout"
+            case action
+            case timeout
         }
     }
 
     public struct TcpRouteAction: AWSEncodableShape & AWSDecodableShape {
-
         /// An object that represents the targets that traffic is routed to when a request matches the route.
         public let weightedTargets: [WeightedTarget]
 
@@ -4541,12 +4459,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case weightedTargets = "weightedTargets"
+            case weightedTargets
         }
     }
 
     public struct TcpTimeout: AWSEncodableShape & AWSDecodableShape {
-
         /// An object that represents an idle timeout. An idle timeout bounds the amount of time that a connection may be idle. The default value is none.
         public let idle: Duration?
 
@@ -4559,12 +4476,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case idle = "idle"
+            case idle
         }
     }
 
     public struct TlsValidationContext: AWSEncodableShape & AWSDecodableShape {
-
         /// A reference to an object that represents the SANs for a Transport Layer Security (TLS) validation context.
         public let subjectAlternativeNames: SubjectAlternativeNames?
         /// A reference to where to retrieve the trust chain when validating a peer’s Transport Layer Security (TLS) certificate.
@@ -4581,13 +4497,12 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case subjectAlternativeNames = "subjectAlternativeNames"
-            case trust = "trust"
+            case subjectAlternativeNames
+            case trust
         }
     }
 
     public struct TlsValidationContextAcmTrust: AWSEncodableShape & AWSDecodableShape {
-
         /// One or more ACM Amazon Resource Name (ARN)s.
         public let certificateAuthorityArns: [String]
 
@@ -4601,12 +4516,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case certificateAuthorityArns = "certificateAuthorityArns"
+            case certificateAuthorityArns
         }
     }
 
     public struct TlsValidationContextFileTrust: AWSEncodableShape & AWSDecodableShape {
-
         /// The certificate trust chain for a certificate stored on the file system of the virtual node that the proxy is running on.
         public let certificateChain: String
 
@@ -4620,12 +4534,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case certificateChain = "certificateChain"
+            case certificateChain
         }
     }
 
     public struct TlsValidationContextSdsTrust: AWSEncodableShape & AWSDecodableShape {
-
         /// A reference to an object that represents the name of the secret for a Transport Layer Security (TLS) Secret Discovery Service validation context trust.
         public let secretName: String
 
@@ -4634,7 +4547,7 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case secretName = "secretName"
+            case secretName
         }
     }
 
@@ -4662,23 +4575,19 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tagKeys = "tagKeys"
+            case tagKeys
         }
     }
 
     public struct UntagResourceOutput: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateGatewayRouteInput: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "gatewayRouteName", location: .uri(locationName: "gatewayRouteName")), 
-            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")), 
-            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")), 
+            AWSMemberEncoding(label: "gatewayRouteName", location: .uri(locationName: "gatewayRouteName")),
+            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")),
+            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")),
             AWSMemberEncoding(label: "virtualGatewayName", location: .uri(locationName: "virtualGatewayName"))
         ]
 
@@ -4718,8 +4627,8 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientToken = "clientToken"
-            case spec = "spec"
+            case clientToken
+            case spec
         }
     }
 
@@ -4735,7 +4644,7 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case gatewayRoute = "gatewayRoute"
+            case gatewayRoute
         }
     }
 
@@ -4764,8 +4673,8 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientToken = "clientToken"
-            case spec = "spec"
+            case clientToken
+            case spec
         }
     }
 
@@ -4780,15 +4689,15 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case mesh = "mesh"
+            case mesh
         }
     }
 
     public struct UpdateRouteInput: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")), 
-            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")), 
-            AWSMemberEncoding(label: "routeName", location: .uri(locationName: "routeName")), 
+            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")),
+            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")),
+            AWSMemberEncoding(label: "routeName", location: .uri(locationName: "routeName")),
             AWSMemberEncoding(label: "virtualRouterName", location: .uri(locationName: "virtualRouterName"))
         ]
 
@@ -4828,8 +4737,8 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientToken = "clientToken"
-            case spec = "spec"
+            case clientToken
+            case spec
         }
     }
 
@@ -4845,14 +4754,14 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case route = "route"
+            case route
         }
     }
 
     public struct UpdateVirtualGatewayInput: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")), 
-            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")), 
+            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")),
+            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")),
             AWSMemberEncoding(label: "virtualGatewayName", location: .uri(locationName: "virtualGatewayName"))
         ]
 
@@ -4887,8 +4796,8 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientToken = "clientToken"
-            case spec = "spec"
+            case clientToken
+            case spec
         }
     }
 
@@ -4904,14 +4813,14 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case virtualGateway = "virtualGateway"
+            case virtualGateway
         }
     }
 
     public struct UpdateVirtualNodeInput: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")), 
-            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")), 
+            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")),
+            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")),
             AWSMemberEncoding(label: "virtualNodeName", location: .uri(locationName: "virtualNodeName"))
         ]
 
@@ -4946,8 +4855,8 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientToken = "clientToken"
-            case spec = "spec"
+            case clientToken
+            case spec
         }
     }
 
@@ -4963,14 +4872,14 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case virtualNode = "virtualNode"
+            case virtualNode
         }
     }
 
     public struct UpdateVirtualRouterInput: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")), 
-            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")), 
+            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")),
+            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")),
             AWSMemberEncoding(label: "virtualRouterName", location: .uri(locationName: "virtualRouterName"))
         ]
 
@@ -5005,8 +4914,8 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientToken = "clientToken"
-            case spec = "spec"
+            case clientToken
+            case spec
         }
     }
 
@@ -5022,14 +4931,14 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case virtualRouter = "virtualRouter"
+            case virtualRouter
         }
     }
 
     public struct UpdateVirtualServiceInput: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")), 
-            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")), 
+            AWSMemberEncoding(label: "meshName", location: .uri(locationName: "meshName")),
+            AWSMemberEncoding(label: "meshOwner", location: .querystring(locationName: "meshOwner")),
             AWSMemberEncoding(label: "virtualServiceName", location: .uri(locationName: "virtualServiceName"))
         ]
 
@@ -5062,8 +4971,8 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientToken = "clientToken"
-            case spec = "spec"
+            case clientToken
+            case spec
         }
     }
 
@@ -5079,12 +4988,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case virtualService = "virtualService"
+            case virtualService
         }
     }
 
     public struct VirtualGatewayBackendDefaults: AWSEncodableShape & AWSDecodableShape {
-
         /// A reference to an object that represents a client policy.
         public let clientPolicy: VirtualGatewayClientPolicy?
 
@@ -5097,12 +5005,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientPolicy = "clientPolicy"
+            case clientPolicy
         }
     }
 
     public struct VirtualGatewayClientPolicy: AWSEncodableShape & AWSDecodableShape {
-
         /// A reference to an object that represents a Transport Layer Security (TLS) client policy.
         public let tls: VirtualGatewayClientPolicyTls?
 
@@ -5115,12 +5022,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tls = "tls"
+            case tls
         }
     }
 
     public struct VirtualGatewayClientPolicyTls: AWSEncodableShape & AWSDecodableShape {
-
         /// A reference to an object that represents a virtual gateway's client's Transport Layer Security (TLS) certificate.
         public let certificate: VirtualGatewayClientTlsCertificate?
         /// Whether the policy is enforced. The default is True, if a value isn't specified.
@@ -5147,15 +5053,14 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case certificate = "certificate"
-            case enforce = "enforce"
-            case ports = "ports"
-            case validation = "validation"
+            case certificate
+            case enforce
+            case ports
+            case validation
         }
     }
 
     public struct VirtualGatewayData: AWSDecodableShape {
-
         /// The name of the service mesh that the virtual gateway resides in.
         public let meshName: String
         public let metadata: ResourceMetadata
@@ -5175,16 +5080,15 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case meshName = "meshName"
-            case metadata = "metadata"
-            case spec = "spec"
-            case status = "status"
-            case virtualGatewayName = "virtualGatewayName"
+            case meshName
+            case metadata
+            case spec
+            case status
+            case virtualGatewayName
         }
     }
 
     public struct VirtualGatewayFileAccessLog: AWSEncodableShape & AWSDecodableShape {
-
         /// The file path to write access logs to. You can use /dev/stdout to send access logs to standard out and configure your Envoy container to use a log driver, such as awslogs, to export the access logs to a log storage service such as Amazon CloudWatch Logs. You can also specify a path in the Envoy container's file system to write the files to disk.
         public let path: String
 
@@ -5198,12 +5102,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case path = "path"
+            case path
         }
     }
 
     public struct VirtualGatewayGrpcConnectionPool: AWSEncodableShape & AWSDecodableShape {
-
         /// Maximum number of inflight requests Envoy can concurrently support across hosts in upstream cluster.
         public let maxRequests: Int
 
@@ -5216,12 +5119,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxRequests = "maxRequests"
+            case maxRequests
         }
     }
 
     public struct VirtualGatewayHealthCheckPolicy: AWSEncodableShape & AWSDecodableShape {
-
         /// The number of consecutive successful health checks that must occur before declaring the listener healthy.
         public let healthyThreshold: Int
         /// The time period in milliseconds between each health check execution.
@@ -5250,7 +5152,7 @@ extension AppMesh {
         public func validate(name: String) throws {
             try self.validate(self.healthyThreshold, name: "healthyThreshold", parent: name, max: 10)
             try self.validate(self.healthyThreshold, name: "healthyThreshold", parent: name, min: 2)
-            try self.validate(self.intervalMillis, name: "intervalMillis", parent: name, max: 300000)
+            try self.validate(self.intervalMillis, name: "intervalMillis", parent: name, max: 300_000)
             try self.validate(self.intervalMillis, name: "intervalMillis", parent: name, min: 5000)
             try self.validate(self.port, name: "port", parent: name, max: 65535)
             try self.validate(self.port, name: "port", parent: name, min: 1)
@@ -5261,18 +5163,17 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case healthyThreshold = "healthyThreshold"
-            case intervalMillis = "intervalMillis"
-            case path = "path"
-            case port = "port"
-            case `protocol` = "protocol"
-            case timeoutMillis = "timeoutMillis"
-            case unhealthyThreshold = "unhealthyThreshold"
+            case healthyThreshold
+            case intervalMillis
+            case path
+            case port
+            case `protocol`
+            case timeoutMillis
+            case unhealthyThreshold
         }
     }
 
     public struct VirtualGatewayHttp2ConnectionPool: AWSEncodableShape & AWSDecodableShape {
-
         /// Maximum number of inflight requests Envoy can concurrently support across hosts in upstream cluster.
         public let maxRequests: Int
 
@@ -5285,12 +5186,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxRequests = "maxRequests"
+            case maxRequests
         }
     }
 
     public struct VirtualGatewayHttpConnectionPool: AWSEncodableShape & AWSDecodableShape {
-
         /// Maximum number of outbound TCP connections Envoy can establish concurrently with all hosts in upstream cluster.
         public let maxConnections: Int
         /// Number of overflowing requests after max_connections Envoy will queue to upstream cluster.
@@ -5307,13 +5207,12 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxConnections = "maxConnections"
-            case maxPendingRequests = "maxPendingRequests"
+            case maxConnections
+            case maxPendingRequests
         }
     }
 
     public struct VirtualGatewayListener: AWSEncodableShape & AWSDecodableShape {
-
         /// The connection pool information for the virtual gateway listener.
         public let connectionPool: VirtualGatewayConnectionPool?
         /// The health check information for the listener.
@@ -5338,18 +5237,17 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case connectionPool = "connectionPool"
-            case healthCheck = "healthCheck"
-            case portMapping = "portMapping"
-            case tls = "tls"
+            case connectionPool
+            case healthCheck
+            case portMapping
+            case tls
         }
     }
 
     public struct VirtualGatewayListenerTls: AWSEncodableShape & AWSDecodableShape {
-
         /// An object that represents a Transport Layer Security (TLS) certificate.
         public let certificate: VirtualGatewayListenerTlsCertificate
-        /// Specify one of the following modes.    STRICT – Listener only accepts connections with TLS enabled.     PERMISSIVE – Listener accepts connections with or without TLS enabled.    DISABLED – Listener only accepts connections without TLS.   
+        /// Specify one of the following modes.    STRICT – Listener only accepts connections with TLS enabled.     PERMISSIVE – Listener accepts connections with or without TLS enabled.    DISABLED – Listener only accepts connections without TLS.
         public let mode: VirtualGatewayListenerTlsMode
         /// A reference to an object that represents a virtual gateway's listener's Transport Layer Security (TLS) validation context.
         public let validation: VirtualGatewayListenerTlsValidationContext?
@@ -5366,14 +5264,13 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case certificate = "certificate"
-            case mode = "mode"
-            case validation = "validation"
+            case certificate
+            case mode
+            case validation
         }
     }
 
     public struct VirtualGatewayListenerTlsAcmCertificate: AWSEncodableShape & AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) for the certificate. The certificate must meet specific requirements and you must have proxy authorization enabled. For more information, see Transport Layer Security (TLS).
         public let certificateArn: String
 
@@ -5382,12 +5279,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case certificateArn = "certificateArn"
+            case certificateArn
         }
     }
 
     public struct VirtualGatewayListenerTlsFileCertificate: AWSEncodableShape & AWSDecodableShape {
-
         /// The certificate chain for the certificate.
         public let certificateChain: String
         /// The private key for a certificate stored on the file system of the mesh endpoint that the proxy is running on.
@@ -5406,13 +5302,12 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case certificateChain = "certificateChain"
-            case privateKey = "privateKey"
+            case certificateChain
+            case privateKey
         }
     }
 
     public struct VirtualGatewayListenerTlsSdsCertificate: AWSEncodableShape & AWSDecodableShape {
-
         /// A reference to an object that represents the name of the secret secret requested from the Secret Discovery Service provider representing Transport Layer Security (TLS) materials like a certificate or certificate chain.
         public let secretName: String
 
@@ -5421,12 +5316,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case secretName = "secretName"
+            case secretName
         }
     }
 
     public struct VirtualGatewayListenerTlsValidationContext: AWSEncodableShape & AWSDecodableShape {
-
         /// A reference to an object that represents the SANs for a virtual gateway listener's Transport Layer Security (TLS) validation context.
         public let subjectAlternativeNames: SubjectAlternativeNames?
         /// A reference to where to retrieve the trust chain when validating a peer’s Transport Layer Security (TLS) certificate.
@@ -5443,13 +5337,12 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case subjectAlternativeNames = "subjectAlternativeNames"
-            case trust = "trust"
+            case subjectAlternativeNames
+            case trust
         }
     }
 
     public struct VirtualGatewayLogging: AWSEncodableShape & AWSDecodableShape {
-
         /// The access log configuration.
         public let accessLog: VirtualGatewayAccessLog?
 
@@ -5462,12 +5355,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accessLog = "accessLog"
+            case accessLog
         }
     }
 
     public struct VirtualGatewayPortMapping: AWSEncodableShape & AWSDecodableShape {
-
         /// The port used for the port mapping. Specify one protocol.
         public let port: Int
         /// The protocol used for the port mapping.
@@ -5484,13 +5376,12 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case port = "port"
-            case `protocol` = "protocol"
+            case port
+            case `protocol`
         }
     }
 
     public struct VirtualGatewayRef: AWSDecodableShape {
-
         /// The full Amazon Resource Name (ARN) for the resource.
         public let arn: String
         /// The Unix epoch timestamp in seconds for when the resource was created.
@@ -5520,19 +5411,18 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdAt = "createdAt"
-            case lastUpdatedAt = "lastUpdatedAt"
-            case meshName = "meshName"
-            case meshOwner = "meshOwner"
-            case resourceOwner = "resourceOwner"
-            case version = "version"
-            case virtualGatewayName = "virtualGatewayName"
+            case arn
+            case createdAt
+            case lastUpdatedAt
+            case meshName
+            case meshOwner
+            case resourceOwner
+            case version
+            case virtualGatewayName
         }
     }
 
     public struct VirtualGatewaySpec: AWSEncodableShape & AWSDecodableShape {
-
         /// A reference to an object that represents the defaults for backends.
         public let backendDefaults: VirtualGatewayBackendDefaults?
         /// The listeners that the mesh endpoint is expected to receive inbound traffic from. You can specify one listener.
@@ -5555,14 +5445,13 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case backendDefaults = "backendDefaults"
-            case listeners = "listeners"
-            case logging = "logging"
+            case backendDefaults
+            case listeners
+            case logging
         }
     }
 
     public struct VirtualGatewayStatus: AWSDecodableShape {
-
         /// The current status.
         public let status: VirtualGatewayStatusCode
 
@@ -5571,12 +5460,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case status = "status"
+            case status
         }
     }
 
     public struct VirtualGatewayTlsValidationContext: AWSEncodableShape & AWSDecodableShape {
-
         /// A reference to an object that represents the SANs for a virtual gateway's listener's Transport Layer Security (TLS) validation context.
         public let subjectAlternativeNames: SubjectAlternativeNames?
         /// A reference to where to retrieve the trust chain when validating a peer’s Transport Layer Security (TLS) certificate.
@@ -5593,13 +5481,12 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case subjectAlternativeNames = "subjectAlternativeNames"
-            case trust = "trust"
+            case subjectAlternativeNames
+            case trust
         }
     }
 
     public struct VirtualGatewayTlsValidationContextAcmTrust: AWSEncodableShape & AWSDecodableShape {
-
         /// One or more ACM Amazon Resource Name (ARN)s.
         public let certificateAuthorityArns: [String]
 
@@ -5613,12 +5500,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case certificateAuthorityArns = "certificateAuthorityArns"
+            case certificateAuthorityArns
         }
     }
 
     public struct VirtualGatewayTlsValidationContextFileTrust: AWSEncodableShape & AWSDecodableShape {
-
         /// The certificate trust chain for a certificate stored on the file system of the virtual node that the proxy is running on.
         public let certificateChain: String
 
@@ -5632,12 +5518,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case certificateChain = "certificateChain"
+            case certificateChain
         }
     }
 
     public struct VirtualGatewayTlsValidationContextSdsTrust: AWSEncodableShape & AWSDecodableShape {
-
         /// A reference to an object that represents the name of the secret for a virtual gateway's Transport Layer Security (TLS) Secret Discovery Service validation context trust.
         public let secretName: String
 
@@ -5646,12 +5531,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case secretName = "secretName"
+            case secretName
         }
     }
 
     public struct VirtualNodeData: AWSDecodableShape {
-
         /// The name of the service mesh that the virtual node resides in.
         public let meshName: String
         /// The associated metadata for the virtual node.
@@ -5672,16 +5556,15 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case meshName = "meshName"
-            case metadata = "metadata"
-            case spec = "spec"
-            case status = "status"
-            case virtualNodeName = "virtualNodeName"
+            case meshName
+            case metadata
+            case spec
+            case status
+            case virtualNodeName
         }
     }
 
     public struct VirtualNodeGrpcConnectionPool: AWSEncodableShape & AWSDecodableShape {
-
         /// Maximum number of inflight requests Envoy can concurrently support across hosts in upstream cluster.
         public let maxRequests: Int
 
@@ -5694,12 +5577,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxRequests = "maxRequests"
+            case maxRequests
         }
     }
 
     public struct VirtualNodeHttp2ConnectionPool: AWSEncodableShape & AWSDecodableShape {
-
         /// Maximum number of inflight requests Envoy can concurrently support across hosts in upstream cluster.
         public let maxRequests: Int
 
@@ -5712,12 +5594,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxRequests = "maxRequests"
+            case maxRequests
         }
     }
 
     public struct VirtualNodeHttpConnectionPool: AWSEncodableShape & AWSDecodableShape {
-
         /// Maximum number of outbound TCP connections Envoy can establish concurrently with all hosts in upstream cluster.
         public let maxConnections: Int
         /// Number of overflowing requests after max_connections Envoy will queue to upstream cluster.
@@ -5734,13 +5615,12 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxConnections = "maxConnections"
-            case maxPendingRequests = "maxPendingRequests"
+            case maxConnections
+            case maxPendingRequests
         }
     }
 
     public struct VirtualNodeRef: AWSDecodableShape {
-
         /// The full Amazon Resource Name (ARN) for the virtual node.
         public let arn: String
         /// The Unix epoch timestamp in seconds for when the resource was created.
@@ -5770,19 +5650,18 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdAt = "createdAt"
-            case lastUpdatedAt = "lastUpdatedAt"
-            case meshName = "meshName"
-            case meshOwner = "meshOwner"
-            case resourceOwner = "resourceOwner"
-            case version = "version"
-            case virtualNodeName = "virtualNodeName"
+            case arn
+            case createdAt
+            case lastUpdatedAt
+            case meshName
+            case meshOwner
+            case resourceOwner
+            case version
+            case virtualNodeName
         }
     }
 
     public struct VirtualNodeServiceProvider: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the virtual node that is acting as a service provider.
         public let virtualNodeName: String
 
@@ -5796,12 +5675,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case virtualNodeName = "virtualNodeName"
+            case virtualNodeName
         }
     }
 
     public struct VirtualNodeSpec: AWSEncodableShape & AWSDecodableShape {
-
         /// A reference to an object that represents the defaults for backends.
         public let backendDefaults: BackendDefaults?
         /// The backends that the virtual node is expected to send outbound traffic to.
@@ -5835,16 +5713,15 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case backendDefaults = "backendDefaults"
-            case backends = "backends"
-            case listeners = "listeners"
-            case logging = "logging"
-            case serviceDiscovery = "serviceDiscovery"
+            case backendDefaults
+            case backends
+            case listeners
+            case logging
+            case serviceDiscovery
         }
     }
 
     public struct VirtualNodeStatus: AWSDecodableShape {
-
         /// The current status of the virtual node.
         public let status: VirtualNodeStatusCode
 
@@ -5853,12 +5730,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case status = "status"
+            case status
         }
     }
 
     public struct VirtualNodeTcpConnectionPool: AWSEncodableShape & AWSDecodableShape {
-
         /// Maximum number of outbound TCP connections Envoy can establish concurrently with all hosts in upstream cluster.
         public let maxConnections: Int
 
@@ -5871,12 +5747,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxConnections = "maxConnections"
+            case maxConnections
         }
     }
 
     public struct VirtualRouterData: AWSDecodableShape {
-
         /// The name of the service mesh that the virtual router resides in.
         public let meshName: String
         /// The associated metadata for the virtual router.
@@ -5897,16 +5772,15 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case meshName = "meshName"
-            case metadata = "metadata"
-            case spec = "spec"
-            case status = "status"
-            case virtualRouterName = "virtualRouterName"
+            case meshName
+            case metadata
+            case spec
+            case status
+            case virtualRouterName
         }
     }
 
     public struct VirtualRouterListener: AWSEncodableShape & AWSDecodableShape {
-
         public let portMapping: PortMapping
 
         public init(portMapping: PortMapping) {
@@ -5918,12 +5792,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case portMapping = "portMapping"
+            case portMapping
         }
     }
 
     public struct VirtualRouterRef: AWSDecodableShape {
-
         /// The full Amazon Resource Name (ARN) for the virtual router.
         public let arn: String
         /// The Unix epoch timestamp in seconds for when the resource was created.
@@ -5953,19 +5826,18 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdAt = "createdAt"
-            case lastUpdatedAt = "lastUpdatedAt"
-            case meshName = "meshName"
-            case meshOwner = "meshOwner"
-            case resourceOwner = "resourceOwner"
-            case version = "version"
-            case virtualRouterName = "virtualRouterName"
+            case arn
+            case createdAt
+            case lastUpdatedAt
+            case meshName
+            case meshOwner
+            case resourceOwner
+            case version
+            case virtualRouterName
         }
     }
 
     public struct VirtualRouterServiceProvider: AWSEncodableShape & AWSDecodableShape {
-
         /// The name of the virtual router that is acting as a service provider.
         public let virtualRouterName: String
 
@@ -5979,12 +5851,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case virtualRouterName = "virtualRouterName"
+            case virtualRouterName
         }
     }
 
     public struct VirtualRouterSpec: AWSEncodableShape & AWSDecodableShape {
-
         /// The listeners that the virtual router is expected to receive inbound traffic from. You can specify one listener.
         public let listeners: [VirtualRouterListener]?
 
@@ -6001,12 +5872,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case listeners = "listeners"
+            case listeners
         }
     }
 
     public struct VirtualRouterStatus: AWSDecodableShape {
-
         /// The current status of the virtual router.
         public let status: VirtualRouterStatusCode
 
@@ -6015,12 +5885,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case status = "status"
+            case status
         }
     }
 
     public struct VirtualServiceBackend: AWSEncodableShape & AWSDecodableShape {
-
         /// A reference to an object that represents the client policy for a backend.
         public let clientPolicy: ClientPolicy?
         /// The name of the virtual service that is acting as a virtual node backend.
@@ -6036,13 +5905,12 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientPolicy = "clientPolicy"
-            case virtualServiceName = "virtualServiceName"
+            case clientPolicy
+            case virtualServiceName
         }
     }
 
     public struct VirtualServiceData: AWSDecodableShape {
-
         /// The name of the service mesh that the virtual service resides in.
         public let meshName: String
         public let metadata: ResourceMetadata
@@ -6062,16 +5930,15 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case meshName = "meshName"
-            case metadata = "metadata"
-            case spec = "spec"
-            case status = "status"
-            case virtualServiceName = "virtualServiceName"
+            case meshName
+            case metadata
+            case spec
+            case status
+            case virtualServiceName
         }
     }
 
     public struct VirtualServiceRef: AWSDecodableShape {
-
         /// The full Amazon Resource Name (ARN) for the virtual service.
         public let arn: String
         /// The Unix epoch timestamp in seconds for when the resource was created.
@@ -6101,19 +5968,18 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdAt = "createdAt"
-            case lastUpdatedAt = "lastUpdatedAt"
-            case meshName = "meshName"
-            case meshOwner = "meshOwner"
-            case resourceOwner = "resourceOwner"
-            case version = "version"
-            case virtualServiceName = "virtualServiceName"
+            case arn
+            case createdAt
+            case lastUpdatedAt
+            case meshName
+            case meshOwner
+            case resourceOwner
+            case version
+            case virtualServiceName
         }
     }
 
     public struct VirtualServiceSpec: AWSEncodableShape & AWSDecodableShape {
-
         /// The App Mesh object that is acting as the provider for a virtual service. You can specify a single virtual node or virtual router.
         public let provider: VirtualServiceProvider?
 
@@ -6126,12 +5992,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case provider = "provider"
+            case provider
         }
     }
 
     public struct VirtualServiceStatus: AWSDecodableShape {
-
         /// The current status of the virtual service.
         public let status: VirtualServiceStatusCode
 
@@ -6140,12 +6005,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case status = "status"
+            case status
         }
     }
 
     public struct WeightedTarget: AWSEncodableShape & AWSDecodableShape {
-
         /// The virtual node to associate with the weighted target.
         public let virtualNode: String
         /// The relative weight of the weighted target.
@@ -6164,13 +6028,12 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case virtualNode = "virtualNode"
-            case weight = "weight"
+            case virtualNode
+            case weight
         }
     }
 
     public struct AccessLog: AWSEncodableShape & AWSDecodableShape {
-
         /// The file object to send virtual node access logs to.
         public let file: FileAccessLog?
 
@@ -6183,13 +6046,12 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case file = "file"
+            case file
         }
     }
 
     public struct Backend: AWSEncodableShape & AWSDecodableShape {
-
-        /// Specifies a virtual service to use as a backend.  
+        /// Specifies a virtual service to use as a backend.
         public let virtualService: VirtualServiceBackend?
 
         public init(virtualService: VirtualServiceBackend? = nil) {
@@ -6201,12 +6063,11 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case virtualService = "virtualService"
+            case virtualService
         }
     }
 
     public struct VirtualGatewayAccessLog: AWSEncodableShape & AWSDecodableShape {
-
         /// The file object to send virtual gateway access logs to.
         public let file: VirtualGatewayFileAccessLog?
 
@@ -6219,7 +6080,7 @@ extension AppMesh {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case file = "file"
+            case file
         }
     }
 }

@@ -73,7 +73,7 @@ public struct DAXErrorType: AWSErrorType {
     public static var clusterNotFoundFault: Self { .init(.clusterNotFoundFault) }
     /// You have attempted to exceed the maximum number of DAX clusters for your AWS account.
     public static var clusterQuotaForCustomerExceededFault: Self { .init(.clusterQuotaForCustomerExceededFault) }
-    /// There are not enough system resources to create the cluster you requested (or to resize an already-existing cluster). 
+    /// There are not enough system resources to create the cluster you requested (or to resize an already-existing cluster).
     public static var insufficientClusterCapacityFault: Self { .init(.insufficientClusterCapacityFault) }
     /// The Amazon Resource Name (ARN) supplied in the request is not valid.
     public static var invalidARNFault: Self { .init(.invalidARNFault) }

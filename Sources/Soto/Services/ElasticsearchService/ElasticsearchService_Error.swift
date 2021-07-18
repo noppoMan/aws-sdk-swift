@@ -61,7 +61,7 @@ public struct ElasticsearchServiceErrorType: AWSErrorType {
     public static var disabledOperationException: Self { .init(.disabledOperationException) }
     /// The request processing has failed because of an unknown error, exception or failure (the failure is internal to the service) . Gives http status code of 500.
     public static var internalException: Self { .init(.internalException) }
-    /// The request processing has failed because of invalid pagination token provided by customer. Returns an HTTP status code of 400. 
+    /// The request processing has failed because of invalid pagination token provided by customer. Returns an HTTP status code of 400.
     public static var invalidPaginationTokenException: Self { .init(.invalidPaginationTokenException) }
     /// An exception for trying to create or access sub-resource that is either invalid or not supported. Gives http status code of 409.
     public static var invalidTypeException: Self { .init(.invalidTypeException) }

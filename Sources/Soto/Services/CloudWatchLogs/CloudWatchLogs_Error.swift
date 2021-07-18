@@ -57,7 +57,7 @@ public struct CloudWatchLogsErrorType: AWSErrorType {
     public static var invalidOperationException: Self { .init(.invalidOperationException) }
     /// A parameter is specified incorrectly.
     public static var invalidParameterException: Self { .init(.invalidParameterException) }
-    /// The sequence token is not valid. You can get the correct sequence token in  the expectedSequenceToken field in the InvalidSequenceTokenException message. 
+    /// The sequence token is not valid. You can get the correct sequence token in  the expectedSequenceToken field in the InvalidSequenceTokenException message.
     public static var invalidSequenceTokenException: Self { .init(.invalidSequenceTokenException) }
     /// You have reached the maximum number of resources that can be created.
     public static var limitExceededException: Self { .init(.limitExceededException) }

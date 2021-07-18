@@ -166,21 +166,16 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case invitationId = "invitationId"
-            case masterId = "masterId"
+            case invitationId
+            case masterId
         }
     }
 
     public struct AcceptInvitationResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct AccessControlList: AWSDecodableShape {
-
         /// A value that indicates whether public read access for the bucket is enabled through an Access Control List (ACL).
         public let allowsPublicReadAccess: Bool?
         /// A value that indicates whether public write access for the bucket is enabled through an Access Control List (ACL).
@@ -192,13 +187,12 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case allowsPublicReadAccess = "allowsPublicReadAccess"
-            case allowsPublicWriteAccess = "allowsPublicWriteAccess"
+            case allowsPublicReadAccess
+            case allowsPublicWriteAccess
         }
     }
 
     public struct AccessKeyDetails: AWSDecodableShape {
-
         /// The access key ID of the user.
         public let accessKeyId: String?
         /// The principal ID of the user.
@@ -216,15 +210,14 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accessKeyId = "accessKeyId"
-            case principalId = "principalId"
-            case userName = "userName"
-            case userType = "userType"
+            case accessKeyId
+            case principalId
+            case userName
+            case userType
         }
     }
 
     public struct AccountDetail: AWSEncodableShape {
-
         /// The member account ID.
         public let accountId: String
         /// The email address of the member account.
@@ -243,13 +236,12 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accountId = "accountId"
-            case email = "email"
+            case accountId
+            case email
         }
     }
 
     public struct AccountLevelPermissions: AWSDecodableShape {
-
         /// Describes the S3 Block Public Access settings of the bucket's parent account.
         public let blockPublicAccess: BlockPublicAccess?
 
@@ -258,12 +250,11 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case blockPublicAccess = "blockPublicAccess"
+            case blockPublicAccess
         }
     }
 
     public struct Action: AWSDecodableShape {
-
         /// The GuardDuty finding activity type.
         public let actionType: String?
         /// Information about the AWS_API_CALL action described in this finding.
@@ -284,16 +275,15 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case actionType = "actionType"
-            case awsApiCallAction = "awsApiCallAction"
-            case dnsRequestAction = "dnsRequestAction"
-            case networkConnectionAction = "networkConnectionAction"
-            case portProbeAction = "portProbeAction"
+            case actionType
+            case awsApiCallAction
+            case dnsRequestAction
+            case networkConnectionAction
+            case portProbeAction
         }
     }
 
     public struct AdminAccount: AWSDecodableShape {
-
         /// The AWS account ID for the account.
         public let adminAccountId: String?
         /// Indicates whether the account is enabled as the delegated administrator.
@@ -305,8 +295,8 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case adminAccountId = "adminAccountId"
-            case adminStatus = "adminStatus"
+            case adminAccountId
+            case adminStatus
         }
     }
 
@@ -336,20 +326,15 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case findingIds = "findingIds"
+            case findingIds
         }
     }
 
     public struct ArchiveFindingsResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct AwsApiCallAction: AWSDecodableShape {
-
         /// The AWS API name.
         public let api: String?
         /// The AWS API caller type.
@@ -373,17 +358,16 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case api = "api"
-            case callerType = "callerType"
-            case domainDetails = "domainDetails"
-            case errorCode = "errorCode"
-            case remoteIpDetails = "remoteIpDetails"
-            case serviceName = "serviceName"
+            case api
+            case callerType
+            case domainDetails
+            case errorCode
+            case remoteIpDetails
+            case serviceName
         }
     }
 
     public struct BlockPublicAccess: AWSDecodableShape {
-
         /// Indicates if S3 Block Public Access is set to BlockPublicAcls.
         public let blockPublicAcls: Bool?
         /// Indicates if S3 Block Public Access is set to BlockPublicPolicy.
@@ -401,15 +385,14 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case blockPublicAcls = "blockPublicAcls"
-            case blockPublicPolicy = "blockPublicPolicy"
-            case ignorePublicAcls = "ignorePublicAcls"
-            case restrictPublicBuckets = "restrictPublicBuckets"
+            case blockPublicAcls
+            case blockPublicPolicy
+            case ignorePublicAcls
+            case restrictPublicBuckets
         }
     }
 
     public struct BucketLevelPermissions: AWSDecodableShape {
-
         /// Contains information on how Access Control Policies are applied to the bucket.
         public let accessControlList: AccessControlList?
         /// Contains information on which account level S3 Block Public Access settings are applied to the S3 bucket.
@@ -424,14 +407,13 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accessControlList = "accessControlList"
-            case blockPublicAccess = "blockPublicAccess"
-            case bucketPolicy = "bucketPolicy"
+            case accessControlList
+            case blockPublicAccess
+            case bucketPolicy
         }
     }
 
     public struct BucketPolicy: AWSDecodableShape {
-
         /// A value that indicates whether public read access for the bucket is enabled through a bucket policy.
         public let allowsPublicReadAccess: Bool?
         /// A value that indicates whether public write access for the bucket is enabled through a bucket policy.
@@ -443,13 +425,12 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case allowsPublicReadAccess = "allowsPublicReadAccess"
-            case allowsPublicWriteAccess = "allowsPublicWriteAccess"
+            case allowsPublicReadAccess
+            case allowsPublicWriteAccess
         }
     }
 
     public struct City: AWSDecodableShape {
-
         /// The city name of the remote IP address.
         public let cityName: String?
 
@@ -458,12 +439,11 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case cityName = "cityName"
+            case cityName
         }
     }
 
     public struct CloudTrailConfigurationResult: AWSDecodableShape {
-
         /// Describes whether CloudTrail is enabled as a data source for the detector.
         public let status: DataSourceStatus
 
@@ -472,12 +452,11 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case status = "status"
+            case status
         }
     }
 
     public struct Condition: AWSEncodableShape & AWSDecodableShape {
-
         /// Represents the equal condition to be applied to a single field when querying for findings.
         public let eq: [String]?
         /// Represents an equal condition to be applied to a single field when querying for findings.
@@ -519,23 +498,22 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case eq = "eq"
-            case equals = "equals"
-            case greaterThan = "greaterThan"
-            case greaterThanOrEqual = "greaterThanOrEqual"
-            case gt = "gt"
-            case gte = "gte"
-            case lessThan = "lessThan"
-            case lessThanOrEqual = "lessThanOrEqual"
-            case lt = "lt"
-            case lte = "lte"
-            case neq = "neq"
-            case notEquals = "notEquals"
+            case eq
+            case equals
+            case greaterThan
+            case greaterThanOrEqual
+            case gt
+            case gte
+            case lessThan
+            case lessThanOrEqual
+            case lt
+            case lte
+            case neq
+            case notEquals
         }
     }
 
     public struct Country: AWSDecodableShape {
-
         /// The country code of the remote IP address.
         public let countryCode: String?
         /// The country name of the remote IP address.
@@ -547,13 +525,12 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case countryCode = "countryCode"
-            case countryName = "countryName"
+            case countryCode
+            case countryName
         }
     }
 
     public struct CreateDetectorRequest: AWSEncodableShape {
-
         /// The idempotency token for the create request.
         public let clientToken: String?
         /// Describes which data sources will be enabled for the detector.
@@ -586,16 +563,15 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientToken = "clientToken"
-            case dataSources = "dataSources"
-            case enable = "enable"
-            case findingPublishingFrequency = "findingPublishingFrequency"
-            case tags = "tags"
+            case clientToken
+            case dataSources
+            case enable
+            case findingPublishingFrequency
+            case tags
         }
     }
 
     public struct CreateDetectorResponse: AWSDecodableShape {
-
         /// The unique ID of the created detector.
         public let detectorId: String?
 
@@ -604,7 +580,7 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case detectorId = "detectorId"
+            case detectorId
         }
     }
 
@@ -621,7 +597,7 @@ extension GuardDuty {
         public let description: String?
         /// The ID of the detector belonging to the GuardDuty account that you want to create a filter for.
         public let detectorId: String
-        /// Represents the criteria to be used in the filter for querying findings. You can only use the following attributes to query findings:   accountId   region   confidence   id   resource.accessKeyDetails.accessKeyId   resource.accessKeyDetails.principalId   resource.accessKeyDetails.userName   resource.accessKeyDetails.userType   resource.instanceDetails.iamInstanceProfile.id   resource.instanceDetails.imageId   resource.instanceDetails.instanceId   resource.instanceDetails.outpostArn   resource.instanceDetails.networkInterfaces.ipv6Addresses   resource.instanceDetails.networkInterfaces.privateIpAddresses.privateIpAddress   resource.instanceDetails.networkInterfaces.publicDnsName   resource.instanceDetails.networkInterfaces.publicIp   resource.instanceDetails.networkInterfaces.securityGroups.groupId   resource.instanceDetails.networkInterfaces.securityGroups.groupName   resource.instanceDetails.networkInterfaces.subnetId   resource.instanceDetails.networkInterfaces.vpcId   resource.instanceDetails.tags.key   resource.instanceDetails.tags.value   resource.resourceType   service.action.actionType   service.action.awsApiCallAction.api   service.action.awsApiCallAction.callerType   service.action.awsApiCallAction.errorCode   service.action.awsApiCallAction.remoteIpDetails.city.cityName   service.action.awsApiCallAction.remoteIpDetails.country.countryName   service.action.awsApiCallAction.remoteIpDetails.ipAddressV4   service.action.awsApiCallAction.remoteIpDetails.organization.asn   service.action.awsApiCallAction.remoteIpDetails.organization.asnOrg   service.action.awsApiCallAction.serviceName   service.action.dnsRequestAction.domain   service.action.networkConnectionAction.blocked   service.action.networkConnectionAction.connectionDirection   service.action.networkConnectionAction.localPortDetails.port   service.action.networkConnectionAction.protocol   service.action.networkConnectionAction.localIpDetails.ipAddressV4   service.action.networkConnectionAction.remoteIpDetails.city.cityName   service.action.networkConnectionAction.remoteIpDetails.country.countryName   service.action.networkConnectionAction.remoteIpDetails.ipAddressV4   service.action.networkConnectionAction.remoteIpDetails.organization.asn   service.action.networkConnectionAction.remoteIpDetails.organization.asnOrg   service.action.networkConnectionAction.remotePortDetails.port   service.additionalInfo.threatListName   service.archived When this attribute is set to TRUE, only archived findings are listed. When it's set to FALSE, only unarchived findings are listed. When this attribute is not set, all existing findings are listed.   service.resourceRole   severity   type   updatedAt Type: ISO 8601 string format: YYYY-MM-DDTHH:MM:SS.SSSZ or YYYY-MM-DDTHH:MM:SSZ depending on whether the value contains milliseconds.  
+        /// Represents the criteria to be used in the filter for querying findings. You can only use the following attributes to query findings:   accountId   region   confidence   id   resource.accessKeyDetails.accessKeyId   resource.accessKeyDetails.principalId   resource.accessKeyDetails.userName   resource.accessKeyDetails.userType   resource.instanceDetails.iamInstanceProfile.id   resource.instanceDetails.imageId   resource.instanceDetails.instanceId   resource.instanceDetails.outpostArn   resource.instanceDetails.networkInterfaces.ipv6Addresses   resource.instanceDetails.networkInterfaces.privateIpAddresses.privateIpAddress   resource.instanceDetails.networkInterfaces.publicDnsName   resource.instanceDetails.networkInterfaces.publicIp   resource.instanceDetails.networkInterfaces.securityGroups.groupId   resource.instanceDetails.networkInterfaces.securityGroups.groupName   resource.instanceDetails.networkInterfaces.subnetId   resource.instanceDetails.networkInterfaces.vpcId   resource.instanceDetails.tags.key   resource.instanceDetails.tags.value   resource.resourceType   service.action.actionType   service.action.awsApiCallAction.api   service.action.awsApiCallAction.callerType   service.action.awsApiCallAction.errorCode   service.action.awsApiCallAction.remoteIpDetails.city.cityName   service.action.awsApiCallAction.remoteIpDetails.country.countryName   service.action.awsApiCallAction.remoteIpDetails.ipAddressV4   service.action.awsApiCallAction.remoteIpDetails.organization.asn   service.action.awsApiCallAction.remoteIpDetails.organization.asnOrg   service.action.awsApiCallAction.serviceName   service.action.dnsRequestAction.domain   service.action.networkConnectionAction.blocked   service.action.networkConnectionAction.connectionDirection   service.action.networkConnectionAction.localPortDetails.port   service.action.networkConnectionAction.protocol   service.action.networkConnectionAction.localIpDetails.ipAddressV4   service.action.networkConnectionAction.remoteIpDetails.city.cityName   service.action.networkConnectionAction.remoteIpDetails.country.countryName   service.action.networkConnectionAction.remoteIpDetails.ipAddressV4   service.action.networkConnectionAction.remoteIpDetails.organization.asn   service.action.networkConnectionAction.remoteIpDetails.organization.asnOrg   service.action.networkConnectionAction.remotePortDetails.port   service.additionalInfo.threatListName   service.archived When this attribute is set to TRUE, only archived findings are listed. When it's set to FALSE, only unarchived findings are listed. When this attribute is not set, all existing findings are listed.   service.resourceRole   severity   type   updatedAt Type: ISO 8601 string format: YYYY-MM-DDTHH:MM:SS.SSSZ or YYYY-MM-DDTHH:MM:SSZ depending on whether the value contains milliseconds.
         public let findingCriteria: FindingCriteria
         /// The name of the filter. Minimum length of 3. Maximum length of 64. Valid characters include alphanumeric characters, dot (.), underscore (_), and dash (-). Spaces are not allowed.
         public let name: String
@@ -661,18 +637,17 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case action = "action"
-            case clientToken = "clientToken"
-            case description = "description"
-            case findingCriteria = "findingCriteria"
-            case name = "name"
-            case rank = "rank"
-            case tags = "tags"
+            case action
+            case clientToken
+            case description
+            case findingCriteria
+            case name
+            case rank
+            case tags
         }
     }
 
     public struct CreateFilterResponse: AWSDecodableShape {
-
         /// The name of the successfully created filter.
         public let name: String
 
@@ -681,7 +656,7 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case name = "name"
+            case name
         }
     }
 
@@ -734,17 +709,16 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case activate = "activate"
-            case clientToken = "clientToken"
-            case format = "format"
-            case location = "location"
-            case name = "name"
-            case tags = "tags"
+            case activate
+            case clientToken
+            case format
+            case location
+            case name
+            case tags
         }
     }
 
     public struct CreateIPSetResponse: AWSDecodableShape {
-
         /// The ID of the IPSet resource.
         public let ipSetId: String
 
@@ -753,7 +727,7 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case ipSetId = "ipSetId"
+            case ipSetId
         }
     }
 
@@ -783,12 +757,11 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accountDetails = "accountDetails"
+            case accountDetails
         }
     }
 
     public struct CreateMembersResponse: AWSDecodableShape {
-
         /// A list of objects that include the accountIds of the unprocessed accounts and a result string that explains why each was unprocessed.
         public let unprocessedAccounts: [UnprocessedAccount]
 
@@ -797,7 +770,7 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case unprocessedAccounts = "unprocessedAccounts"
+            case unprocessedAccounts
         }
     }
 
@@ -829,14 +802,13 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case clientToken = "clientToken"
-            case destinationProperties = "destinationProperties"
-            case destinationType = "destinationType"
+            case clientToken
+            case destinationProperties
+            case destinationType
         }
     }
 
     public struct CreatePublishingDestinationResponse: AWSDecodableShape {
-
         /// The ID of the publishing destination that is created.
         public let destinationId: String
 
@@ -845,7 +817,7 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case destinationId = "destinationId"
+            case destinationId
         }
     }
 
@@ -875,16 +847,12 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case findingTypes = "findingTypes"
+            case findingTypes
         }
     }
 
     public struct CreateSampleFindingsResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct CreateThreatIntelSetRequest: AWSEncodableShape {
@@ -936,17 +904,16 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case activate = "activate"
-            case clientToken = "clientToken"
-            case format = "format"
-            case location = "location"
-            case name = "name"
-            case tags = "tags"
+            case activate
+            case clientToken
+            case format
+            case location
+            case name
+            case tags
         }
     }
 
     public struct CreateThreatIntelSetResponse: AWSDecodableShape {
-
         /// The ID of the ThreatIntelSet resource.
         public let threatIntelSetId: String
 
@@ -955,12 +922,11 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case threatIntelSetId = "threatIntelSetId"
+            case threatIntelSetId
         }
     }
 
     public struct DNSLogsConfigurationResult: AWSDecodableShape {
-
         /// Denotes whether DNS logs is enabled as a data source.
         public let status: DataSourceStatus
 
@@ -969,12 +935,11 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case status = "status"
+            case status
         }
     }
 
     public struct DataSourceConfigurations: AWSEncodableShape {
-
         /// Describes whether S3 data event logs are enabled as a data source.
         public let s3Logs: S3LogsConfiguration?
 
@@ -983,12 +948,11 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case s3Logs = "s3Logs"
+            case s3Logs
         }
     }
 
     public struct DataSourceConfigurationsResult: AWSDecodableShape {
-
         /// An object that contains information on the status of CloudTrail as a data source.
         public let cloudTrail: CloudTrailConfigurationResult
         /// An object that contains information on the status of DNS logs as a data source.
@@ -1006,15 +970,14 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case cloudTrail = "cloudTrail"
+            case cloudTrail
             case dNSLogs = "dnsLogs"
-            case flowLogs = "flowLogs"
-            case s3Logs = "s3Logs"
+            case flowLogs
+            case s3Logs
         }
     }
 
     public struct DeclineInvitationsRequest: AWSEncodableShape {
-
         /// A list of account IDs of the AWS accounts that sent invitations to the current member account that you want to decline invitations from.
         public let accountIds: [String]
 
@@ -1032,12 +995,11 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accountIds = "accountIds"
+            case accountIds
         }
     }
 
     public struct DeclineInvitationsResponse: AWSDecodableShape {
-
         /// A list of objects that contain the unprocessed account and a result string that explains why it was unprocessed.
         public let unprocessedAccounts: [UnprocessedAccount]
 
@@ -1046,12 +1008,11 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case unprocessedAccounts = "unprocessedAccounts"
+            case unprocessedAccounts
         }
     }
 
     public struct DefaultServerSideEncryption: AWSDecodableShape {
-
         /// The type of encryption used for objects within the S3 bucket.
         public let encryptionType: String?
         /// The Amazon Resource Name (ARN) of the KMS encryption key. Only available if the bucket EncryptionType is aws:kms.
@@ -1063,8 +1024,8 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case encryptionType = "encryptionType"
-            case kmsMasterKeyArn = "kmsMasterKeyArn"
+            case encryptionType
+            case kmsMasterKeyArn
         }
     }
 
@@ -1089,16 +1050,12 @@ extension GuardDuty {
     }
 
     public struct DeleteDetectorResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteFilterRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "detectorId", location: .uri(locationName: "detectorId")), 
+            AWSMemberEncoding(label: "detectorId", location: .uri(locationName: "detectorId")),
             AWSMemberEncoding(label: "filterName", location: .uri(locationName: "filterName"))
         ]
 
@@ -1121,16 +1078,12 @@ extension GuardDuty {
     }
 
     public struct DeleteFilterResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteIPSetRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "detectorId", location: .uri(locationName: "detectorId")), 
+            AWSMemberEncoding(label: "detectorId", location: .uri(locationName: "detectorId")),
             AWSMemberEncoding(label: "ipSetId", location: .uri(locationName: "ipSetId"))
         ]
 
@@ -1153,15 +1106,10 @@ extension GuardDuty {
     }
 
     public struct DeleteIPSetResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteInvitationsRequest: AWSEncodableShape {
-
         /// A list of account IDs of the AWS accounts that sent invitations to the current member account that you want to delete invitations from.
         public let accountIds: [String]
 
@@ -1179,12 +1127,11 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accountIds = "accountIds"
+            case accountIds
         }
     }
 
     public struct DeleteInvitationsResponse: AWSDecodableShape {
-
         /// A list of objects that contain the unprocessed account and a result string that explains why it was unprocessed.
         public let unprocessedAccounts: [UnprocessedAccount]
 
@@ -1193,7 +1140,7 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case unprocessedAccounts = "unprocessedAccounts"
+            case unprocessedAccounts
         }
     }
 
@@ -1224,12 +1171,11 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accountIds = "accountIds"
+            case accountIds
         }
     }
 
     public struct DeleteMembersResponse: AWSDecodableShape {
-
         /// The accounts that could not be processed.
         public let unprocessedAccounts: [UnprocessedAccount]
 
@@ -1238,13 +1184,13 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case unprocessedAccounts = "unprocessedAccounts"
+            case unprocessedAccounts
         }
     }
 
     public struct DeletePublishingDestinationRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "destinationId", location: .uri(locationName: "destinationId")), 
+            AWSMemberEncoding(label: "destinationId", location: .uri(locationName: "destinationId")),
             AWSMemberEncoding(label: "detectorId", location: .uri(locationName: "detectorId"))
         ]
 
@@ -1267,16 +1213,12 @@ extension GuardDuty {
     }
 
     public struct DeletePublishingDestinationResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteThreatIntelSetRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "detectorId", location: .uri(locationName: "detectorId")), 
+            AWSMemberEncoding(label: "detectorId", location: .uri(locationName: "detectorId")),
             AWSMemberEncoding(label: "threatIntelSetId", location: .uri(locationName: "threatIntelSetId"))
         ]
 
@@ -1299,11 +1241,7 @@ extension GuardDuty {
     }
 
     public struct DeleteThreatIntelSetResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DescribeOrganizationConfigurationRequest: AWSEncodableShape {
@@ -1327,7 +1265,6 @@ extension GuardDuty {
     }
 
     public struct DescribeOrganizationConfigurationResponse: AWSDecodableShape {
-
         /// Indicates whether GuardDuty is automatically enabled for accounts added to the organization.
         public let autoEnable: Bool
         /// Describes which data sources are enabled automatically for member accounts.
@@ -1342,15 +1279,15 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case autoEnable = "autoEnable"
-            case dataSources = "dataSources"
-            case memberAccountLimitReached = "memberAccountLimitReached"
+            case autoEnable
+            case dataSources
+            case memberAccountLimitReached
         }
     }
 
     public struct DescribePublishingDestinationRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "destinationId", location: .uri(locationName: "destinationId")), 
+            AWSMemberEncoding(label: "destinationId", location: .uri(locationName: "destinationId")),
             AWSMemberEncoding(label: "detectorId", location: .uri(locationName: "detectorId"))
         ]
 
@@ -1373,7 +1310,6 @@ extension GuardDuty {
     }
 
     public struct DescribePublishingDestinationResponse: AWSDecodableShape {
-
         /// The ID of the publishing destination.
         public let destinationId: String
         /// A DestinationProperties object that includes the DestinationArn and KmsKeyArn of the publishing destination.
@@ -1394,16 +1330,15 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case destinationId = "destinationId"
-            case destinationProperties = "destinationProperties"
-            case destinationType = "destinationType"
-            case publishingFailureStartTimestamp = "publishingFailureStartTimestamp"
-            case status = "status"
+            case destinationId
+            case destinationProperties
+            case destinationType
+            case publishingFailureStartTimestamp
+            case status
         }
     }
 
     public struct Destination: AWSDecodableShape {
-
         /// The unique ID of the publishing destination.
         public let destinationId: String
         /// The type of resource used for the publishing destination. Currently, only Amazon S3 buckets are supported.
@@ -1418,14 +1353,13 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case destinationId = "destinationId"
-            case destinationType = "destinationType"
-            case status = "status"
+            case destinationId
+            case destinationType
+            case status
         }
     }
 
     public struct DestinationProperties: AWSEncodableShape & AWSDecodableShape {
-
         /// The ARN of the resource to publish to.
         public let destinationArn: String?
         /// The ARN of the KMS key to use for encryption.
@@ -1437,13 +1371,12 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case destinationArn = "destinationArn"
-            case kmsKeyArn = "kmsKeyArn"
+            case destinationArn
+            case kmsKeyArn
         }
     }
 
     public struct DisableOrganizationAdminAccountRequest: AWSEncodableShape {
-
         /// The AWS Account ID for the organizations account to be disabled as a GuardDuty delegated administrator.
         public let adminAccountId: String
 
@@ -1452,16 +1385,12 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case adminAccountId = "adminAccountId"
+            case adminAccountId
         }
     }
 
     public struct DisableOrganizationAdminAccountResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DisassociateFromMasterAccountRequest: AWSEncodableShape {
@@ -1485,11 +1414,7 @@ extension GuardDuty {
     }
 
     public struct DisassociateFromMasterAccountResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DisassociateMembersRequest: AWSEncodableShape {
@@ -1519,12 +1444,11 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accountIds = "accountIds"
+            case accountIds
         }
     }
 
     public struct DisassociateMembersResponse: AWSDecodableShape {
-
         /// A list of objects that contain the unprocessed account and a result string that explains why it was unprocessed.
         public let unprocessedAccounts: [UnprocessedAccount]
 
@@ -1533,12 +1457,11 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case unprocessedAccounts = "unprocessedAccounts"
+            case unprocessedAccounts
         }
     }
 
     public struct DnsRequestAction: AWSDecodableShape {
-
         /// The domain information for the API request.
         public let domain: String?
 
@@ -1547,12 +1470,11 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case domain = "domain"
+            case domain
         }
     }
 
     public struct DomainDetails: AWSDecodableShape {
-
         /// The domain information for the AWS API call.
         public let domain: String?
 
@@ -1561,12 +1483,11 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case domain = "domain"
+            case domain
         }
     }
 
     public struct EnableOrganizationAdminAccountRequest: AWSEncodableShape {
-
         /// The AWS Account ID for the organization account to be enabled as a GuardDuty delegated administrator.
         public let adminAccountId: String
 
@@ -1575,20 +1496,15 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case adminAccountId = "adminAccountId"
+            case adminAccountId
         }
     }
 
     public struct EnableOrganizationAdminAccountResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct Evidence: AWSDecodableShape {
-
         /// A list of threat intelligence details related to the evidence.
         public let threatIntelligenceDetails: [ThreatIntelligenceDetail]?
 
@@ -1597,12 +1513,11 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case threatIntelligenceDetails = "threatIntelligenceDetails"
+            case threatIntelligenceDetails
         }
     }
 
     public struct Finding: AWSDecodableShape {
-
         /// The ID of the account in which the finding was generated.
         public let accountId: String
         /// The ARN of the finding.
@@ -1651,26 +1566,25 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accountId = "accountId"
-            case arn = "arn"
-            case confidence = "confidence"
-            case createdAt = "createdAt"
-            case description = "description"
-            case id = "id"
-            case partition = "partition"
-            case region = "region"
-            case resource = "resource"
-            case schemaVersion = "schemaVersion"
-            case service = "service"
-            case severity = "severity"
-            case title = "title"
-            case type = "type"
-            case updatedAt = "updatedAt"
+            case accountId
+            case arn
+            case confidence
+            case createdAt
+            case description
+            case id
+            case partition
+            case region
+            case resource
+            case schemaVersion
+            case service
+            case severity
+            case title
+            case type
+            case updatedAt
         }
     }
 
     public struct FindingCriteria: AWSEncodableShape & AWSDecodableShape {
-
         /// Represents a map of finding properties that match specified conditions and values when querying findings.
         public let criterion: [String: Condition]?
 
@@ -1679,12 +1593,11 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case criterion = "criterion"
+            case criterion
         }
     }
 
     public struct FindingStatistics: AWSDecodableShape {
-
         /// Represents a map of severity to count statistics for a set of findings.
         public let countBySeverity: [String: Int]?
 
@@ -1693,12 +1606,11 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case countBySeverity = "countBySeverity"
+            case countBySeverity
         }
     }
 
     public struct FlowLogsConfigurationResult: AWSDecodableShape {
-
         /// Denotes whether VPC flow logs is enabled as a data source.
         public let status: DataSourceStatus
 
@@ -1707,12 +1619,11 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case status = "status"
+            case status
         }
     }
 
     public struct GeoLocation: AWSDecodableShape {
-
         /// The latitude information of the remote IP address.
         public let lat: Double?
         /// The longitude information of the remote IP address.
@@ -1724,8 +1635,8 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case lat = "lat"
-            case lon = "lon"
+            case lat
+            case lon
         }
     }
 
@@ -1750,7 +1661,6 @@ extension GuardDuty {
     }
 
     public struct GetDetectorResponse: AWSDecodableShape {
-
         /// The timestamp of when the detector was created.
         public let createdAt: String?
         /// Describes which data sources are enabled for the detector.
@@ -1777,19 +1687,19 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case createdAt = "createdAt"
-            case dataSources = "dataSources"
-            case findingPublishingFrequency = "findingPublishingFrequency"
-            case serviceRole = "serviceRole"
-            case status = "status"
-            case tags = "tags"
-            case updatedAt = "updatedAt"
+            case createdAt
+            case dataSources
+            case findingPublishingFrequency
+            case serviceRole
+            case status
+            case tags
+            case updatedAt
         }
     }
 
     public struct GetFilterRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "detectorId", location: .uri(locationName: "detectorId")), 
+            AWSMemberEncoding(label: "detectorId", location: .uri(locationName: "detectorId")),
             AWSMemberEncoding(label: "filterName", location: .uri(locationName: "filterName"))
         ]
 
@@ -1812,7 +1722,6 @@ extension GuardDuty {
     }
 
     public struct GetFilterResponse: AWSDecodableShape {
-
         /// Specifies the action that is to be applied to the findings that match the filter.
         public let action: FilterAction
         /// The description of the filter.
@@ -1836,12 +1745,12 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case action = "action"
-            case description = "description"
-            case findingCriteria = "findingCriteria"
-            case name = "name"
-            case rank = "rank"
-            case tags = "tags"
+            case action
+            case description
+            case findingCriteria
+            case name
+            case rank
+            case tags
         }
     }
 
@@ -1874,13 +1783,12 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case findingIds = "findingIds"
-            case sortCriteria = "sortCriteria"
+            case findingIds
+            case sortCriteria
         }
     }
 
     public struct GetFindingsResponse: AWSDecodableShape {
-
         /// A list of findings.
         public let findings: [Finding]
 
@@ -1889,7 +1797,7 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case findings = "findings"
+            case findings
         }
     }
 
@@ -1918,13 +1826,12 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case findingCriteria = "findingCriteria"
-            case findingStatisticTypes = "findingStatisticTypes"
+            case findingCriteria
+            case findingStatisticTypes
         }
     }
 
     public struct GetFindingsStatisticsResponse: AWSDecodableShape {
-
         /// The finding statistics object.
         public let findingStatistics: FindingStatistics
 
@@ -1933,13 +1840,13 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case findingStatistics = "findingStatistics"
+            case findingStatistics
         }
     }
 
     public struct GetIPSetRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "detectorId", location: .uri(locationName: "detectorId")), 
+            AWSMemberEncoding(label: "detectorId", location: .uri(locationName: "detectorId")),
             AWSMemberEncoding(label: "ipSetId", location: .uri(locationName: "ipSetId"))
         ]
 
@@ -1962,7 +1869,6 @@ extension GuardDuty {
     }
 
     public struct GetIPSetResponse: AWSDecodableShape {
-
         /// The format of the file that contains the IPSet.
         public let format: IpSetFormat
         /// The URI of the file that contains the IPSet. For example: https://s3.us-west-2.amazonaws.com/my-bucket/my-object-key.
@@ -1983,24 +1889,19 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case format = "format"
-            case location = "location"
-            case name = "name"
-            case status = "status"
-            case tags = "tags"
+            case format
+            case location
+            case name
+            case status
+            case tags
         }
     }
 
     public struct GetInvitationsCountRequest: AWSEncodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct GetInvitationsCountResponse: AWSDecodableShape {
-
         /// The number of received invitations.
         public let invitationsCount: Int?
 
@@ -2009,7 +1910,7 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case invitationsCount = "invitationsCount"
+            case invitationsCount
         }
     }
 
@@ -2034,7 +1935,6 @@ extension GuardDuty {
     }
 
     public struct GetMasterAccountResponse: AWSDecodableShape {
-
         /// The administrator account details.
         public let master: Master
 
@@ -2043,7 +1943,7 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case master = "master"
+            case master
         }
     }
 
@@ -2074,12 +1974,11 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accountIds = "accountIds"
+            case accountIds
         }
     }
 
     public struct GetMemberDetectorsResponse: AWSDecodableShape {
-
         /// An object that describes which data sources are enabled for a member account.
         public let memberDataSourceConfigurations: [MemberDataSourceConfiguration]
         /// A list of member account IDs that were unable to be processed along with an explanation for why they were not processed.
@@ -2092,7 +1991,7 @@ extension GuardDuty {
 
         private enum CodingKeys: String, CodingKey {
             case memberDataSourceConfigurations = "members"
-            case unprocessedAccounts = "unprocessedAccounts"
+            case unprocessedAccounts
         }
     }
 
@@ -2123,12 +2022,11 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accountIds = "accountIds"
+            case accountIds
         }
     }
 
     public struct GetMembersResponse: AWSDecodableShape {
-
         /// A list of members.
         public let members: [Member]
         /// A list of objects that contain the unprocessed account and a result string that explains why it was unprocessed.
@@ -2140,14 +2038,14 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case members = "members"
-            case unprocessedAccounts = "unprocessedAccounts"
+            case members
+            case unprocessedAccounts
         }
     }
 
     public struct GetThreatIntelSetRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "detectorId", location: .uri(locationName: "detectorId")), 
+            AWSMemberEncoding(label: "detectorId", location: .uri(locationName: "detectorId")),
             AWSMemberEncoding(label: "threatIntelSetId", location: .uri(locationName: "threatIntelSetId"))
         ]
 
@@ -2170,7 +2068,6 @@ extension GuardDuty {
     }
 
     public struct GetThreatIntelSetResponse: AWSDecodableShape {
-
         /// The format of the threatIntelSet.
         public let format: ThreatIntelSetFormat
         /// The URI of the file that contains the ThreatIntelSet. For example: https://s3.us-west-2.amazonaws.com/my-bucket/my-object-key.
@@ -2191,11 +2088,11 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case format = "format"
-            case location = "location"
-            case name = "name"
-            case status = "status"
-            case tags = "tags"
+            case format
+            case location
+            case name
+            case status
+            case tags
         }
     }
 
@@ -2235,16 +2132,15 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
-            case unit = "unit"
-            case usageCriteria = "usageCriteria"
+            case maxResults
+            case nextToken
+            case unit
+            case usageCriteria
             case usageStatisticType = "usageStatisticsType"
         }
     }
 
     public struct GetUsageStatisticsResponse: AWSDecodableShape {
-
         /// The pagination parameter to be used on the next list operation to retrieve more items.
         public let nextToken: String?
         /// The usage statistics object. If a UsageStatisticType was provided, the objects representing other types will be null.
@@ -2256,13 +2152,12 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case usageStatistics = "usageStatistics"
+            case nextToken
+            case usageStatistics
         }
     }
 
     public struct IamInstanceProfile: AWSDecodableShape {
-
         /// The profile ARN of the EC2 instance.
         public let arn: String?
         /// The profile ID of the EC2 instance.
@@ -2274,13 +2169,12 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case id = "id"
+            case arn
+            case id
         }
     }
 
     public struct InstanceDetails: AWSDecodableShape {
-
         /// The Availability Zone of the EC2 instance.
         public let availabilityZone: String?
         /// The profile information of the EC2 instance.
@@ -2325,24 +2219,23 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case availabilityZone = "availabilityZone"
-            case iamInstanceProfile = "iamInstanceProfile"
-            case imageDescription = "imageDescription"
-            case imageId = "imageId"
-            case instanceId = "instanceId"
-            case instanceState = "instanceState"
-            case instanceType = "instanceType"
-            case launchTime = "launchTime"
-            case networkInterfaces = "networkInterfaces"
-            case outpostArn = "outpostArn"
-            case platform = "platform"
-            case productCodes = "productCodes"
-            case tags = "tags"
+            case availabilityZone
+            case iamInstanceProfile
+            case imageDescription
+            case imageId
+            case instanceId
+            case instanceState
+            case instanceType
+            case launchTime
+            case networkInterfaces
+            case outpostArn
+            case platform
+            case productCodes
+            case tags
         }
     }
 
     public struct Invitation: AWSDecodableShape {
-
         /// The ID of the account that the invitation was sent from.
         public let accountId: String?
         /// The ID of the invitation. This value is used to validate the inviter account to the member account.
@@ -2360,10 +2253,10 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accountId = "accountId"
-            case invitationId = "invitationId"
-            case invitedAt = "invitedAt"
-            case relationshipStatus = "relationshipStatus"
+            case accountId
+            case invitationId
+            case invitedAt
+            case relationshipStatus
         }
     }
 
@@ -2400,14 +2293,13 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accountIds = "accountIds"
-            case disableEmailNotification = "disableEmailNotification"
-            case message = "message"
+            case accountIds
+            case disableEmailNotification
+            case message
         }
     }
 
     public struct InviteMembersResponse: AWSDecodableShape {
-
         /// A list of objects that contain the unprocessed account and a result string that explains why it was unprocessed.
         public let unprocessedAccounts: [UnprocessedAccount]
 
@@ -2416,13 +2308,13 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case unprocessedAccounts = "unprocessedAccounts"
+            case unprocessedAccounts
         }
     }
 
     public struct ListDetectorsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
@@ -2445,7 +2337,6 @@ extension GuardDuty {
     }
 
     public struct ListDetectorsResponse: AWSDecodableShape {
-
         /// A list of detector IDs.
         public let detectorIds: [String]
         /// The pagination parameter to be used on the next list operation to retrieve more items.
@@ -2457,15 +2348,15 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case detectorIds = "detectorIds"
-            case nextToken = "nextToken"
+            case detectorIds
+            case nextToken
         }
     }
 
     public struct ListFiltersRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "detectorId", location: .uri(locationName: "detectorId")), 
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "detectorId", location: .uri(locationName: "detectorId")),
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
@@ -2493,7 +2384,6 @@ extension GuardDuty {
     }
 
     public struct ListFiltersResponse: AWSDecodableShape {
-
         /// A list of filter names.
         public let filterNames: [String]
         /// The pagination parameter to be used on the next list operation to retrieve more items.
@@ -2505,8 +2395,8 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case filterNames = "filterNames"
-            case nextToken = "nextToken"
+            case filterNames
+            case nextToken
         }
     }
 
@@ -2517,7 +2407,7 @@ extension GuardDuty {
 
         /// The ID of the detector that specifies the GuardDuty service whose findings you want to list.
         public let detectorId: String
-        /// Represents the criteria used for querying findings. Valid values include:   JSON field name   accountId   region   confidence   id   resource.accessKeyDetails.accessKeyId   resource.accessKeyDetails.principalId   resource.accessKeyDetails.userName   resource.accessKeyDetails.userType   resource.instanceDetails.iamInstanceProfile.id   resource.instanceDetails.imageId   resource.instanceDetails.instanceId   resource.instanceDetails.networkInterfaces.ipv6Addresses   resource.instanceDetails.networkInterfaces.privateIpAddresses.privateIpAddress   resource.instanceDetails.networkInterfaces.publicDnsName   resource.instanceDetails.networkInterfaces.publicIp   resource.instanceDetails.networkInterfaces.securityGroups.groupId   resource.instanceDetails.networkInterfaces.securityGroups.groupName   resource.instanceDetails.networkInterfaces.subnetId   resource.instanceDetails.networkInterfaces.vpcId   resource.instanceDetails.tags.key   resource.instanceDetails.tags.value   resource.resourceType   service.action.actionType   service.action.awsApiCallAction.api   service.action.awsApiCallAction.callerType   service.action.awsApiCallAction.remoteIpDetails.city.cityName   service.action.awsApiCallAction.remoteIpDetails.country.countryName   service.action.awsApiCallAction.remoteIpDetails.ipAddressV4   service.action.awsApiCallAction.remoteIpDetails.organization.asn   service.action.awsApiCallAction.remoteIpDetails.organization.asnOrg   service.action.awsApiCallAction.serviceName   service.action.dnsRequestAction.domain   service.action.networkConnectionAction.blocked   service.action.networkConnectionAction.connectionDirection   service.action.networkConnectionAction.localPortDetails.port   service.action.networkConnectionAction.protocol   service.action.networkConnectionAction.remoteIpDetails.city.cityName   service.action.networkConnectionAction.remoteIpDetails.country.countryName   service.action.networkConnectionAction.remoteIpDetails.ipAddressV4   service.action.networkConnectionAction.remoteIpDetails.organization.asn   service.action.networkConnectionAction.remoteIpDetails.organization.asnOrg   service.action.networkConnectionAction.remotePortDetails.port   service.additionalInfo.threatListName   service.archived When this attribute is set to 'true', only archived findings are listed. When it's set to 'false', only unarchived findings are listed. When this attribute is not set, all existing findings are listed.   service.resourceRole   severity   type   updatedAt Type: Timestamp in Unix Epoch millisecond format: 1486685375000  
+        /// Represents the criteria used for querying findings. Valid values include:   JSON field name   accountId   region   confidence   id   resource.accessKeyDetails.accessKeyId   resource.accessKeyDetails.principalId   resource.accessKeyDetails.userName   resource.accessKeyDetails.userType   resource.instanceDetails.iamInstanceProfile.id   resource.instanceDetails.imageId   resource.instanceDetails.instanceId   resource.instanceDetails.networkInterfaces.ipv6Addresses   resource.instanceDetails.networkInterfaces.privateIpAddresses.privateIpAddress   resource.instanceDetails.networkInterfaces.publicDnsName   resource.instanceDetails.networkInterfaces.publicIp   resource.instanceDetails.networkInterfaces.securityGroups.groupId   resource.instanceDetails.networkInterfaces.securityGroups.groupName   resource.instanceDetails.networkInterfaces.subnetId   resource.instanceDetails.networkInterfaces.vpcId   resource.instanceDetails.tags.key   resource.instanceDetails.tags.value   resource.resourceType   service.action.actionType   service.action.awsApiCallAction.api   service.action.awsApiCallAction.callerType   service.action.awsApiCallAction.remoteIpDetails.city.cityName   service.action.awsApiCallAction.remoteIpDetails.country.countryName   service.action.awsApiCallAction.remoteIpDetails.ipAddressV4   service.action.awsApiCallAction.remoteIpDetails.organization.asn   service.action.awsApiCallAction.remoteIpDetails.organization.asnOrg   service.action.awsApiCallAction.serviceName   service.action.dnsRequestAction.domain   service.action.networkConnectionAction.blocked   service.action.networkConnectionAction.connectionDirection   service.action.networkConnectionAction.localPortDetails.port   service.action.networkConnectionAction.protocol   service.action.networkConnectionAction.remoteIpDetails.city.cityName   service.action.networkConnectionAction.remoteIpDetails.country.countryName   service.action.networkConnectionAction.remoteIpDetails.ipAddressV4   service.action.networkConnectionAction.remoteIpDetails.organization.asn   service.action.networkConnectionAction.remoteIpDetails.organization.asnOrg   service.action.networkConnectionAction.remotePortDetails.port   service.additionalInfo.threatListName   service.archived When this attribute is set to 'true', only archived findings are listed. When it's set to 'false', only unarchived findings are listed. When this attribute is not set, all existing findings are listed.   service.resourceRole   severity   type   updatedAt Type: Timestamp in Unix Epoch millisecond format: 1486685375000
         public let findingCriteria: FindingCriteria?
         /// You can use this parameter to indicate the maximum number of items you want in the response. The default value is 50. The maximum value is 50.
         public let maxResults: Int?
@@ -2542,15 +2432,14 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case findingCriteria = "findingCriteria"
-            case maxResults = "maxResults"
-            case nextToken = "nextToken"
-            case sortCriteria = "sortCriteria"
+            case findingCriteria
+            case maxResults
+            case nextToken
+            case sortCriteria
         }
     }
 
     public struct ListFindingsResponse: AWSDecodableShape {
-
         /// The IDs of the findings that you're listing.
         public let findingIds: [String]
         /// The pagination parameter to be used on the next list operation to retrieve more items.
@@ -2562,15 +2451,15 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case findingIds = "findingIds"
-            case nextToken = "nextToken"
+            case findingIds
+            case nextToken
         }
     }
 
     public struct ListIPSetsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "detectorId", location: .uri(locationName: "detectorId")), 
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "detectorId", location: .uri(locationName: "detectorId")),
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
@@ -2598,7 +2487,6 @@ extension GuardDuty {
     }
 
     public struct ListIPSetsResponse: AWSDecodableShape {
-
         /// The IDs of the IPSet resources.
         public let ipSetIds: [String]
         /// The pagination parameter to be used on the next list operation to retrieve more items.
@@ -2610,14 +2498,14 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case ipSetIds = "ipSetIds"
-            case nextToken = "nextToken"
+            case ipSetIds
+            case nextToken
         }
     }
 
     public struct ListInvitationsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
@@ -2640,7 +2528,6 @@ extension GuardDuty {
     }
 
     public struct ListInvitationsResponse: AWSDecodableShape {
-
         /// A list of invitation descriptions.
         public let invitations: [Invitation]?
         /// The pagination parameter to be used on the next list operation to retrieve more items.
@@ -2652,16 +2539,16 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case invitations = "invitations"
-            case nextToken = "nextToken"
+            case invitations
+            case nextToken
         }
     }
 
     public struct ListMembersRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "detectorId", location: .uri(locationName: "detectorId")), 
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
-            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")), 
+            AWSMemberEncoding(label: "detectorId", location: .uri(locationName: "detectorId")),
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
+            AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken")),
             AWSMemberEncoding(label: "onlyAssociated", location: .querystring(locationName: "onlyAssociated"))
         ]
 
@@ -2692,7 +2579,6 @@ extension GuardDuty {
     }
 
     public struct ListMembersResponse: AWSDecodableShape {
-
         /// A list of members.
         public let members: [Member]?
         /// The pagination parameter to be used on the next list operation to retrieve more items.
@@ -2704,14 +2590,14 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case members = "members"
-            case nextToken = "nextToken"
+            case members
+            case nextToken
         }
     }
 
     public struct ListOrganizationAdminAccountsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
@@ -2734,7 +2620,6 @@ extension GuardDuty {
     }
 
     public struct ListOrganizationAdminAccountsResponse: AWSDecodableShape {
-
         /// A list of accounts configured as GuardDuty delegated administrators.
         public let adminAccounts: [AdminAccount]?
         /// The pagination parameter to be used on the next list operation to retrieve more items.
@@ -2746,15 +2631,15 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case adminAccounts = "adminAccounts"
-            case nextToken = "nextToken"
+            case adminAccounts
+            case nextToken
         }
     }
 
     public struct ListPublishingDestinationsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "detectorId", location: .uri(locationName: "detectorId")), 
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "detectorId", location: .uri(locationName: "detectorId")),
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
@@ -2782,7 +2667,6 @@ extension GuardDuty {
     }
 
     public struct ListPublishingDestinationsResponse: AWSDecodableShape {
-
         /// A Destinations object that includes information about each publishing destination returned.
         public let destinations: [Destination]
         /// A token to use for paginating results that are returned in the response. Set the value of this parameter to null for the first request to a list action. For subsequent calls, use the NextToken value returned from the previous request to continue listing results after the first page.
@@ -2794,8 +2678,8 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case destinations = "destinations"
-            case nextToken = "nextToken"
+            case destinations
+            case nextToken
         }
     }
 
@@ -2804,7 +2688,7 @@ extension GuardDuty {
             AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "resourceArn"))
         ]
 
-        /// The Amazon Resource Name (ARN) for the given GuardDuty resource. 
+        /// The Amazon Resource Name (ARN) for the given GuardDuty resource.
         public let resourceArn: String
 
         public init(resourceArn: String) {
@@ -2819,7 +2703,6 @@ extension GuardDuty {
     }
 
     public struct ListTagsForResourceResponse: AWSDecodableShape {
-
         /// The tags associated with the resource.
         public let tags: [String: String]?
 
@@ -2828,14 +2711,14 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tags = "tags"
+            case tags
         }
     }
 
     public struct ListThreatIntelSetsRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "detectorId", location: .uri(locationName: "detectorId")), 
-            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")), 
+            AWSMemberEncoding(label: "detectorId", location: .uri(locationName: "detectorId")),
+            AWSMemberEncoding(label: "maxResults", location: .querystring(locationName: "maxResults")),
             AWSMemberEncoding(label: "nextToken", location: .querystring(locationName: "nextToken"))
         ]
 
@@ -2863,7 +2746,6 @@ extension GuardDuty {
     }
 
     public struct ListThreatIntelSetsResponse: AWSDecodableShape {
-
         /// The pagination parameter to be used on the next list operation to retrieve more items.
         public let nextToken: String?
         /// The IDs of the ThreatIntelSet resources.
@@ -2875,13 +2757,12 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case nextToken = "nextToken"
-            case threatIntelSetIds = "threatIntelSetIds"
+            case nextToken
+            case threatIntelSetIds
         }
     }
 
     public struct LocalIpDetails: AWSDecodableShape {
-
         /// The IPv4 local address of the connection.
         public let ipAddressV4: String?
 
@@ -2890,12 +2771,11 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case ipAddressV4 = "ipAddressV4"
+            case ipAddressV4
         }
     }
 
     public struct LocalPortDetails: AWSDecodableShape {
-
         /// The port number of the local connection.
         public let port: Int?
         /// The port name of the local connection.
@@ -2907,13 +2787,12 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case port = "port"
-            case portName = "portName"
+            case port
+            case portName
         }
     }
 
     public struct Master: AWSDecodableShape {
-
         /// The ID of the account used as the administrator account.
         public let accountId: String?
         /// The value used to validate the administrator account to the member account.
@@ -2931,15 +2810,14 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accountId = "accountId"
-            case invitationId = "invitationId"
-            case invitedAt = "invitedAt"
-            case relationshipStatus = "relationshipStatus"
+            case accountId
+            case invitationId
+            case invitedAt
+            case relationshipStatus
         }
     }
 
     public struct Member: AWSDecodableShape {
-
         /// The ID of the member account.
         public let accountId: String
         /// The detector ID of the member account.
@@ -2966,18 +2844,17 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accountId = "accountId"
-            case detectorId = "detectorId"
-            case email = "email"
-            case invitedAt = "invitedAt"
-            case masterId = "masterId"
-            case relationshipStatus = "relationshipStatus"
-            case updatedAt = "updatedAt"
+            case accountId
+            case detectorId
+            case email
+            case invitedAt
+            case masterId
+            case relationshipStatus
+            case updatedAt
         }
     }
 
     public struct MemberDataSourceConfiguration: AWSDecodableShape {
-
         /// The account ID for the member account.
         public let accountId: String
         /// Contains information on the status of data sources for the account.
@@ -2989,13 +2866,12 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accountId = "accountId"
-            case dataSources = "dataSources"
+            case accountId
+            case dataSources
         }
     }
 
     public struct NetworkConnectionAction: AWSDecodableShape {
-
         /// Indicates whether EC2 blocked the network connection to your instance.
         public let blocked: Bool?
         /// The network connection direction.
@@ -3022,18 +2898,17 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case blocked = "blocked"
-            case connectionDirection = "connectionDirection"
-            case localIpDetails = "localIpDetails"
-            case localPortDetails = "localPortDetails"
-            case `protocol` = "protocol"
-            case remoteIpDetails = "remoteIpDetails"
-            case remotePortDetails = "remotePortDetails"
+            case blocked
+            case connectionDirection
+            case localIpDetails
+            case localPortDetails
+            case `protocol`
+            case remoteIpDetails
+            case remotePortDetails
         }
     }
 
     public struct NetworkInterface: AWSDecodableShape {
-
         /// A list of IPv6 addresses for the EC2 instance.
         public let ipv6Addresses: [String]?
         /// The ID of the network interface.
@@ -3069,21 +2944,20 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case ipv6Addresses = "ipv6Addresses"
-            case networkInterfaceId = "networkInterfaceId"
-            case privateDnsName = "privateDnsName"
-            case privateIpAddress = "privateIpAddress"
-            case privateIpAddresses = "privateIpAddresses"
-            case publicDnsName = "publicDnsName"
-            case publicIp = "publicIp"
-            case securityGroups = "securityGroups"
-            case subnetId = "subnetId"
-            case vpcId = "vpcId"
+            case ipv6Addresses
+            case networkInterfaceId
+            case privateDnsName
+            case privateIpAddress
+            case privateIpAddresses
+            case publicDnsName
+            case publicIp
+            case securityGroups
+            case subnetId
+            case vpcId
         }
     }
 
     public struct Organization: AWSDecodableShape {
-
         /// The Autonomous System Number (ASN) of the internet provider of the remote IP address.
         public let asn: String?
         /// The organization that registered this ASN.
@@ -3101,15 +2975,14 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case asn = "asn"
-            case asnOrg = "asnOrg"
-            case isp = "isp"
-            case org = "org"
+            case asn
+            case asnOrg
+            case isp
+            case org
         }
     }
 
     public struct OrganizationDataSourceConfigurations: AWSEncodableShape {
-
         /// Describes whether S3 data event logs are enabled for new members of the organization.
         public let s3Logs: OrganizationS3LogsConfiguration?
 
@@ -3118,12 +2991,11 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case s3Logs = "s3Logs"
+            case s3Logs
         }
     }
 
     public struct OrganizationDataSourceConfigurationsResult: AWSDecodableShape {
-
         /// Describes whether S3 data event logs are enabled as a data source.
         public let s3Logs: OrganizationS3LogsConfigurationResult
 
@@ -3132,12 +3004,11 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case s3Logs = "s3Logs"
+            case s3Logs
         }
     }
 
     public struct OrganizationS3LogsConfiguration: AWSEncodableShape {
-
         /// A value that contains information on whether S3 data event logs will be enabled automatically as a data source for the organization.
         public let autoEnable: Bool
 
@@ -3146,12 +3017,11 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case autoEnable = "autoEnable"
+            case autoEnable
         }
     }
 
     public struct OrganizationS3LogsConfigurationResult: AWSDecodableShape {
-
         /// A value that describes whether S3 data event logs are automatically enabled for new members of the organization.
         public let autoEnable: Bool
 
@@ -3160,13 +3030,12 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case autoEnable = "autoEnable"
+            case autoEnable
         }
     }
 
     public struct Owner: AWSDecodableShape {
-
-        /// The canonical user ID of the bucket owner. For information about locating your canonical user ID see Finding Your Account Canonical User ID. 
+        /// The canonical user ID of the bucket owner. For information about locating your canonical user ID see Finding Your Account Canonical User ID.
         public let id: String?
 
         public init(id: String? = nil) {
@@ -3174,12 +3043,11 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case id = "id"
+            case id
         }
     }
 
     public struct PermissionConfiguration: AWSDecodableShape {
-
         /// Contains information about the account level permissions on the S3 bucket.
         public let accountLevelPermissions: AccountLevelPermissions?
         /// Contains information about the bucket level permissions for the S3 bucket.
@@ -3191,13 +3059,12 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accountLevelPermissions = "accountLevelPermissions"
-            case bucketLevelPermissions = "bucketLevelPermissions"
+            case accountLevelPermissions
+            case bucketLevelPermissions
         }
     }
 
     public struct PortProbeAction: AWSDecodableShape {
-
         /// Indicates whether EC2 blocked the port probe to the instance, such as with an ACL.
         public let blocked: Bool?
         /// A list of objects related to port probe details.
@@ -3209,13 +3076,12 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case blocked = "blocked"
-            case portProbeDetails = "portProbeDetails"
+            case blocked
+            case portProbeDetails
         }
     }
 
     public struct PortProbeDetail: AWSDecodableShape {
-
         /// The local IP information of the connection.
         public let localIpDetails: LocalIpDetails?
         /// The local port information of the connection.
@@ -3230,14 +3096,13 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case localIpDetails = "localIpDetails"
-            case localPortDetails = "localPortDetails"
-            case remoteIpDetails = "remoteIpDetails"
+            case localIpDetails
+            case localPortDetails
+            case remoteIpDetails
         }
     }
 
     public struct PrivateIpAddressDetails: AWSDecodableShape {
-
         /// The private DNS name of the EC2 instance.
         public let privateDnsName: String?
         /// The private IP address of the EC2 instance.
@@ -3249,13 +3114,12 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case privateDnsName = "privateDnsName"
-            case privateIpAddress = "privateIpAddress"
+            case privateDnsName
+            case privateIpAddress
         }
     }
 
     public struct ProductCode: AWSDecodableShape {
-
         /// The product code information.
         public let code: String?
         /// The product code type.
@@ -3267,13 +3131,12 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case code = "code"
-            case productType = "productType"
+            case code
+            case productType
         }
     }
 
     public struct PublicAccess: AWSDecodableShape {
-
         /// Describes the effective permission on this bucket after factoring all attached policies.
         public let effectivePermission: String?
         /// Contains information about how permissions are configured for the S3 bucket.
@@ -3285,13 +3148,12 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case effectivePermission = "effectivePermission"
-            case permissionConfiguration = "permissionConfiguration"
+            case effectivePermission
+            case permissionConfiguration
         }
     }
 
     public struct RemoteIpDetails: AWSDecodableShape {
-
         /// The city information of the remote IP address.
         public let city: City?
         /// The country code of the remote IP address.
@@ -3312,16 +3174,15 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case city = "city"
-            case country = "country"
-            case geoLocation = "geoLocation"
-            case ipAddressV4 = "ipAddressV4"
-            case organization = "organization"
+            case city
+            case country
+            case geoLocation
+            case ipAddressV4
+            case organization
         }
     }
 
     public struct RemotePortDetails: AWSDecodableShape {
-
         /// The port number of the remote connection.
         public let port: Int?
         /// The port name of the remote connection.
@@ -3333,13 +3194,12 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case port = "port"
-            case portName = "portName"
+            case port
+            case portName
         }
     }
 
     public struct Resource: AWSDecodableShape {
-
         /// The IAM access key details (IAM user information) of a user that engaged in the activity that prompted GuardDuty to generate a finding.
         public let accessKeyDetails: AccessKeyDetails?
         /// The information about the EC2 instance associated with the activity that prompted GuardDuty to generate a finding.
@@ -3357,15 +3217,14 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accessKeyDetails = "accessKeyDetails"
-            case instanceDetails = "instanceDetails"
-            case resourceType = "resourceType"
-            case s3BucketDetails = "s3BucketDetails"
+            case accessKeyDetails
+            case instanceDetails
+            case resourceType
+            case s3BucketDetails
         }
     }
 
     public struct S3BucketDetail: AWSDecodableShape {
-
         /// The Amazon Resource Name (ARN) of the S3 bucket.
         public let arn: String?
         /// The date and time the bucket was created at.
@@ -3395,19 +3254,18 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case arn = "arn"
-            case createdAt = "createdAt"
-            case defaultServerSideEncryption = "defaultServerSideEncryption"
-            case name = "name"
-            case owner = "owner"
-            case publicAccess = "publicAccess"
-            case tags = "tags"
-            case type = "type"
+            case arn
+            case createdAt
+            case defaultServerSideEncryption
+            case name
+            case owner
+            case publicAccess
+            case tags
+            case type
         }
     }
 
     public struct S3LogsConfiguration: AWSEncodableShape {
-
         ///  The status of S3 data event logs as a data source.
         public let enable: Bool
 
@@ -3416,12 +3274,11 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case enable = "enable"
+            case enable
         }
     }
 
     public struct S3LogsConfigurationResult: AWSDecodableShape {
-
         /// A value that describes whether S3 data event logs are automatically enabled for new members of the organization.
         public let status: DataSourceStatus
 
@@ -3430,12 +3287,11 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case status = "status"
+            case status
         }
     }
 
     public struct SecurityGroup: AWSDecodableShape {
-
         /// The security group ID of the EC2 instance.
         public let groupId: String?
         /// The security group name of the EC2 instance.
@@ -3447,13 +3303,12 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case groupId = "groupId"
-            case groupName = "groupName"
+            case groupId
+            case groupName
         }
     }
 
     public struct Service: AWSDecodableShape {
-
         /// Information about the activity that is described in a finding.
         public let action: Action?
         /// Indicates whether this finding is archived.
@@ -3489,21 +3344,20 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case action = "action"
-            case archived = "archived"
-            case count = "count"
-            case detectorId = "detectorId"
-            case eventFirstSeen = "eventFirstSeen"
-            case eventLastSeen = "eventLastSeen"
-            case evidence = "evidence"
-            case resourceRole = "resourceRole"
-            case serviceName = "serviceName"
-            case userFeedback = "userFeedback"
+            case action
+            case archived
+            case count
+            case detectorId
+            case eventFirstSeen
+            case eventLastSeen
+            case evidence
+            case resourceRole
+            case serviceName
+            case userFeedback
         }
     }
 
     public struct SortCriteria: AWSEncodableShape {
-
         /// Represents the finding attribute (for example, accountId) to sort findings by.
         public let attributeName: String?
         /// The order by which the sorted findings are to be displayed.
@@ -3515,8 +3369,8 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case attributeName = "attributeName"
-            case orderBy = "orderBy"
+            case attributeName
+            case orderBy
         }
     }
 
@@ -3547,12 +3401,11 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accountIds = "accountIds"
+            case accountIds
         }
     }
 
     public struct StartMonitoringMembersResponse: AWSDecodableShape {
-
         /// A list of objects that contain the unprocessed account and a result string that explains why it was unprocessed.
         public let unprocessedAccounts: [UnprocessedAccount]
 
@@ -3561,7 +3414,7 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case unprocessedAccounts = "unprocessedAccounts"
+            case unprocessedAccounts
         }
     }
 
@@ -3592,13 +3445,12 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accountIds = "accountIds"
+            case accountIds
         }
     }
 
     public struct StopMonitoringMembersResponse: AWSDecodableShape {
-
-        /// A list of objects that contain an accountId for each account that could not be processed, and a result string that indicates why the account was not processed. 
+        /// A list of objects that contain an accountId for each account that could not be processed, and a result string that indicates why the account was not processed.
         public let unprocessedAccounts: [UnprocessedAccount]
 
         public init(unprocessedAccounts: [UnprocessedAccount]) {
@@ -3606,12 +3458,11 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case unprocessedAccounts = "unprocessedAccounts"
+            case unprocessedAccounts
         }
     }
 
     public struct Tag: AWSDecodableShape {
-
         /// The EC2 instance tag key.
         public let key: String?
         /// The EC2 instance tag value.
@@ -3623,8 +3474,8 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case key = "key"
-            case value = "value"
+            case key
+            case value
         }
     }
 
@@ -3656,20 +3507,15 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case tags = "tags"
+            case tags
         }
     }
 
     public struct TagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct ThreatIntelligenceDetail: AWSDecodableShape {
-
         /// The name of the threat intelligence list that triggered the finding.
         public let threatListName: String?
         /// A list of names of the threats in the threat intelligence list that triggered the finding.
@@ -3681,13 +3527,12 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case threatListName = "threatListName"
-            case threatNames = "threatNames"
+            case threatListName
+            case threatNames
         }
     }
 
     public struct Total: AWSDecodableShape {
-
         /// The total usage.
         public let amount: String?
         /// The currency unit that the amount is given in.
@@ -3699,8 +3544,8 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case amount = "amount"
-            case unit = "unit"
+            case amount
+            case unit
         }
     }
 
@@ -3730,20 +3575,15 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case findingIds = "findingIds"
+            case findingIds
         }
     }
 
     public struct UnarchiveFindingsResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UnprocessedAccount: AWSDecodableShape {
-
         /// The AWS account ID.
         public let accountId: String
         /// A reason why the account hasn't been processed.
@@ -3755,14 +3595,14 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accountId = "accountId"
-            case result = "result"
+            case accountId
+            case result
         }
     }
 
     public struct UntagResourceRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "resourceArn")), 
+            AWSMemberEncoding(label: "resourceArn", location: .uri(locationName: "resourceArn")),
             AWSMemberEncoding(label: "tagKeys", location: .querystring(locationName: "tagKeys"))
         ]
 
@@ -3791,11 +3631,7 @@ extension GuardDuty {
     }
 
     public struct UntagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateDetectorRequest: AWSEncodableShape {
@@ -3825,23 +3661,19 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case dataSources = "dataSources"
-            case enable = "enable"
-            case findingPublishingFrequency = "findingPublishingFrequency"
+            case dataSources
+            case enable
+            case findingPublishingFrequency
         }
     }
 
     public struct UpdateDetectorResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateFilterRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "detectorId", location: .uri(locationName: "detectorId")), 
+            AWSMemberEncoding(label: "detectorId", location: .uri(locationName: "detectorId")),
             AWSMemberEncoding(label: "filterName", location: .uri(locationName: "filterName"))
         ]
 
@@ -3876,15 +3708,14 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case action = "action"
-            case description = "description"
-            case findingCriteria = "findingCriteria"
-            case rank = "rank"
+            case action
+            case description
+            case findingCriteria
+            case rank
         }
     }
 
     public struct UpdateFilterResponse: AWSDecodableShape {
-
         /// The name of the filter.
         public let name: String
 
@@ -3893,7 +3724,7 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case name = "name"
+            case name
         }
     }
 
@@ -3929,23 +3760,19 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case comments = "comments"
-            case feedback = "feedback"
-            case findingIds = "findingIds"
+            case comments
+            case feedback
+            case findingIds
         }
     }
 
     public struct UpdateFindingsFeedbackResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateIPSetRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "detectorId", location: .uri(locationName: "detectorId")), 
+            AWSMemberEncoding(label: "detectorId", location: .uri(locationName: "detectorId")),
             AWSMemberEncoding(label: "ipSetId", location: .uri(locationName: "ipSetId"))
         ]
 
@@ -3978,18 +3805,14 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case activate = "activate"
-            case location = "location"
-            case name = "name"
+            case activate
+            case location
+            case name
         }
     }
 
     public struct UpdateIPSetResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateMemberDetectorsRequest: AWSEncodableShape {
@@ -4022,13 +3845,12 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accountIds = "accountIds"
-            case dataSources = "dataSources"
+            case accountIds
+            case dataSources
         }
     }
 
     public struct UpdateMemberDetectorsResponse: AWSDecodableShape {
-
         /// A list of member account IDs that were unable to be processed along with an explanation for why they were not processed.
         public let unprocessedAccounts: [UnprocessedAccount]
 
@@ -4037,7 +3859,7 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case unprocessedAccounts = "unprocessedAccounts"
+            case unprocessedAccounts
         }
     }
 
@@ -4065,22 +3887,18 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case autoEnable = "autoEnable"
-            case dataSources = "dataSources"
+            case autoEnable
+            case dataSources
         }
     }
 
     public struct UpdateOrganizationConfigurationResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdatePublishingDestinationRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "destinationId", location: .uri(locationName: "destinationId")), 
+            AWSMemberEncoding(label: "destinationId", location: .uri(locationName: "destinationId")),
             AWSMemberEncoding(label: "detectorId", location: .uri(locationName: "detectorId"))
         ]
 
@@ -4103,21 +3921,17 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case destinationProperties = "destinationProperties"
+            case destinationProperties
         }
     }
 
     public struct UpdatePublishingDestinationResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UpdateThreatIntelSetRequest: AWSEncodableShape {
         public static var _encoding = [
-            AWSMemberEncoding(label: "detectorId", location: .uri(locationName: "detectorId")), 
+            AWSMemberEncoding(label: "detectorId", location: .uri(locationName: "detectorId")),
             AWSMemberEncoding(label: "threatIntelSetId", location: .uri(locationName: "threatIntelSetId"))
         ]
 
@@ -4150,22 +3964,17 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case activate = "activate"
-            case location = "location"
-            case name = "name"
+            case activate
+            case location
+            case name
         }
     }
 
     public struct UpdateThreatIntelSetResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UsageAccountResult: AWSDecodableShape {
-
         /// The Account ID that generated usage.
         public let accountId: String?
         /// Represents the total of usage for the Account ID.
@@ -4177,13 +3986,12 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accountId = "accountId"
-            case total = "total"
+            case accountId
+            case total
         }
     }
 
     public struct UsageCriteria: AWSEncodableShape {
-
         /// The account IDs to aggregate usage statistics from.
         public let accountIds: [String]?
         /// The data sources to aggregate usage statistics from.
@@ -4207,14 +4015,13 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case accountIds = "accountIds"
-            case dataSources = "dataSources"
-            case resources = "resources"
+            case accountIds
+            case dataSources
+            case resources
         }
     }
 
     public struct UsageDataSourceResult: AWSDecodableShape {
-
         /// The data source type that generated usage.
         public let dataSource: DataSource?
         /// Represents the total of usage for the specified data source.
@@ -4226,13 +4033,12 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case dataSource = "dataSource"
-            case total = "total"
+            case dataSource
+            case total
         }
     }
 
     public struct UsageResourceResult: AWSDecodableShape {
-
         /// The AWS resource that generated usage.
         public let resource: String?
         /// Represents the sum total of usage for the specified resource type.
@@ -4244,13 +4050,12 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case resource = "resource"
-            case total = "total"
+            case resource
+            case total
         }
     }
 
     public struct UsageStatistics: AWSDecodableShape {
-
         /// The usage statistic sum organized by account ID.
         public let sumByAccount: [UsageAccountResult]?
         /// The usage statistic sum organized by on data source.
@@ -4268,10 +4073,10 @@ extension GuardDuty {
         }
 
         private enum CodingKeys: String, CodingKey {
-            case sumByAccount = "sumByAccount"
-            case sumByDataSource = "sumByDataSource"
-            case sumByResource = "sumByResource"
-            case topResources = "topResources"
+            case sumByAccount
+            case sumByDataSource
+            case sumByResource
+            case topResources
         }
     }
 }

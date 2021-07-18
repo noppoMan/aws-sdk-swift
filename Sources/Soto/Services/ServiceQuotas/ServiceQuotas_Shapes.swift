@@ -58,23 +58,14 @@ extension ServiceQuotas {
     // MARK: Shapes
 
     public struct AssociateServiceQuotaTemplateRequest: AWSEncodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct AssociateServiceQuotaTemplateResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DeleteServiceQuotaIncreaseRequestFromTemplateRequest: AWSEncodableShape {
-
         /// The AWS Region.
         public let awsRegion: String
         /// The quota identifier.
@@ -108,32 +99,19 @@ extension ServiceQuotas {
     }
 
     public struct DeleteServiceQuotaIncreaseRequestFromTemplateResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DisassociateServiceQuotaTemplateRequest: AWSEncodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct DisassociateServiceQuotaTemplateResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct ErrorReason: AWSDecodableShape {
-
-        /// Service Quotas returns the following error values:    DEPENDENCY_ACCESS_DENIED_ERROR - The caller does not have the required permissions to complete the action. To resolve the error, you must have permission to access the service or quota.    DEPENDENCY_THROTTLING_ERROR - The service is throttling Service Quotas.    DEPENDENCY_SERVICE_ERROR - The service is not available.    SERVICE_QUOTA_NOT_AVAILABLE_ERROR - There was an error in Service Quotas.  
+        /// Service Quotas returns the following error values:    DEPENDENCY_ACCESS_DENIED_ERROR - The caller does not have the required permissions to complete the action. To resolve the error, you must have permission to access the service or quota.    DEPENDENCY_THROTTLING_ERROR - The service is throttling Service Quotas.    DEPENDENCY_SERVICE_ERROR - The service is not available.    SERVICE_QUOTA_NOT_AVAILABLE_ERROR - There was an error in Service Quotas.
         public let errorCode: ErrorCode?
         /// The error message.
         public let errorMessage: String?
@@ -150,7 +128,6 @@ extension ServiceQuotas {
     }
 
     public struct GetAWSDefaultServiceQuotaRequest: AWSEncodableShape {
-
         /// The quota identifier.
         public let quotaCode: String
         /// The service identifier.
@@ -177,7 +154,6 @@ extension ServiceQuotas {
     }
 
     public struct GetAWSDefaultServiceQuotaResponse: AWSDecodableShape {
-
         /// Information about the quota.
         public let quota: ServiceQuota?
 
@@ -191,15 +167,10 @@ extension ServiceQuotas {
     }
 
     public struct GetAssociationForServiceQuotaTemplateRequest: AWSEncodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct GetAssociationForServiceQuotaTemplateResponse: AWSDecodableShape {
-
         /// The association status. If the status is ASSOCIATED, the quota increase requests in the template are automatically applied to new accounts in your organization.
         public let serviceQuotaTemplateAssociationStatus: ServiceQuotaTemplateAssociationStatus?
 
@@ -213,7 +184,6 @@ extension ServiceQuotas {
     }
 
     public struct GetRequestedServiceQuotaChangeRequest: AWSEncodableShape {
-
         /// The ID of the quota increase request.
         public let requestId: String
 
@@ -233,7 +203,6 @@ extension ServiceQuotas {
     }
 
     public struct GetRequestedServiceQuotaChangeResponse: AWSDecodableShape {
-
         /// Information about the quota increase request.
         public let requestedQuota: RequestedServiceQuotaChange?
 
@@ -247,7 +216,6 @@ extension ServiceQuotas {
     }
 
     public struct GetServiceQuotaIncreaseRequestFromTemplateRequest: AWSEncodableShape {
-
         /// The AWS Region.
         public let awsRegion: String
         /// The quota identifier.
@@ -281,7 +249,6 @@ extension ServiceQuotas {
     }
 
     public struct GetServiceQuotaIncreaseRequestFromTemplateResponse: AWSDecodableShape {
-
         /// Information about the quota increase request.
         public let serviceQuotaIncreaseRequestInTemplate: ServiceQuotaIncreaseRequestInTemplate?
 
@@ -295,7 +262,6 @@ extension ServiceQuotas {
     }
 
     public struct GetServiceQuotaRequest: AWSEncodableShape {
-
         /// The quota identifier.
         public let quotaCode: String
         /// The service identifier.
@@ -322,7 +288,6 @@ extension ServiceQuotas {
     }
 
     public struct GetServiceQuotaResponse: AWSDecodableShape {
-
         /// Information about the quota.
         public let quota: ServiceQuota?
 
@@ -336,7 +301,6 @@ extension ServiceQuotas {
     }
 
     public struct ListAWSDefaultServiceQuotasRequest: AWSEncodableShape {
-
         /// The maximum number of results to return with a single call. To retrieve the remaining results, if any, make another call with the token returned from this call.
         public let maxResults: Int?
         /// The token for the next page of results.
@@ -368,7 +332,6 @@ extension ServiceQuotas {
     }
 
     public struct ListAWSDefaultServiceQuotasResponse: AWSDecodableShape {
-
         /// The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         public let nextToken: String?
         /// Information about the quotas.
@@ -386,7 +349,6 @@ extension ServiceQuotas {
     }
 
     public struct ListRequestedServiceQuotaChangeHistoryByQuotaRequest: AWSEncodableShape {
-
         /// The maximum number of results to return with a single call. To retrieve the remaining results, if any, make another call with the token returned from this call.
         public let maxResults: Int?
         /// The token for the next page of results.
@@ -429,7 +391,6 @@ extension ServiceQuotas {
     }
 
     public struct ListRequestedServiceQuotaChangeHistoryByQuotaResponse: AWSDecodableShape {
-
         /// The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         public let nextToken: String?
         /// Information about the quota increase requests.
@@ -447,7 +408,6 @@ extension ServiceQuotas {
     }
 
     public struct ListRequestedServiceQuotaChangeHistoryRequest: AWSEncodableShape {
-
         /// The maximum number of results to return with a single call. To retrieve the remaining results, if any, make another call with the token returned from this call.
         public let maxResults: Int?
         /// The token for the next page of results.
@@ -483,7 +443,6 @@ extension ServiceQuotas {
     }
 
     public struct ListRequestedServiceQuotaChangeHistoryResponse: AWSDecodableShape {
-
         /// The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         public let nextToken: String?
         /// Information about the quota increase requests.
@@ -501,7 +460,6 @@ extension ServiceQuotas {
     }
 
     public struct ListServiceQuotaIncreaseRequestsInTemplateRequest: AWSEncodableShape {
-
         /// The AWS Region.
         public let awsRegion: String?
         /// The maximum number of results to return with a single call. To retrieve the remaining results, if any, make another call with the token returned from this call.
@@ -540,7 +498,6 @@ extension ServiceQuotas {
     }
 
     public struct ListServiceQuotaIncreaseRequestsInTemplateResponse: AWSDecodableShape {
-
         /// The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         public let nextToken: String?
         /// Information about the quota increase requests.
@@ -558,7 +515,6 @@ extension ServiceQuotas {
     }
 
     public struct ListServiceQuotasRequest: AWSEncodableShape {
-
         /// The maximum number of results to return with a single call. To retrieve the remaining results, if any, make another call with the token returned from this call.
         public let maxResults: Int?
         /// The token for the next page of results.
@@ -590,7 +546,6 @@ extension ServiceQuotas {
     }
 
     public struct ListServiceQuotasResponse: AWSDecodableShape {
-
         /// The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         public let nextToken: String?
         /// Information about the quotas.
@@ -608,7 +563,6 @@ extension ServiceQuotas {
     }
 
     public struct ListServicesRequest: AWSEncodableShape {
-
         /// The maximum number of results to return with a single call. To retrieve the remaining results, if any, make another call with the token returned from this call.
         public let maxResults: Int?
         /// The token for the next page of results.
@@ -633,7 +587,6 @@ extension ServiceQuotas {
     }
 
     public struct ListServicesResponse: AWSDecodableShape {
-
         /// The token to use to retrieve the next page of results. This value is null when there are no more results to return.
         public let nextToken: String?
         /// Information about the services.
@@ -651,7 +604,6 @@ extension ServiceQuotas {
     }
 
     public struct ListTagsForResourceRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) for the applied quota for which you want to list tags. You can get this information by using the Service Quotas console, or by listing the quotas using the list-service-quotas AWS CLI command or the ListServiceQuotas AWS API operation.
         public let resourceARN: String
 
@@ -671,7 +623,6 @@ extension ServiceQuotas {
     }
 
     public struct ListTagsForResourceResponse: AWSDecodableShape {
-
         /// A complex data type that contains zero or more tag elements.
         public let tags: [Tag]?
 
@@ -685,7 +636,6 @@ extension ServiceQuotas {
     }
 
     public struct MetricInfo: AWSDecodableShape {
-
         /// The metric dimension. This is a name/value pair that is part of the identity of a metric.
         public let metricDimensions: [String: String]?
         /// The name of the metric.
@@ -711,7 +661,6 @@ extension ServiceQuotas {
     }
 
     public struct PutServiceQuotaIncreaseRequestIntoTemplateRequest: AWSEncodableShape {
-
         /// The AWS Region.
         public let awsRegion: String
         /// The new, increased value for the quota.
@@ -732,7 +681,7 @@ extension ServiceQuotas {
             try self.validate(self.awsRegion, name: "awsRegion", parent: name, max: 64)
             try self.validate(self.awsRegion, name: "awsRegion", parent: name, min: 1)
             try self.validate(self.awsRegion, name: "awsRegion", parent: name, pattern: "[a-zA-Z][a-zA-Z0-9-]{1,128}")
-            try self.validate(self.desiredValue, name: "desiredValue", parent: name, max: 10000000000.0)
+            try self.validate(self.desiredValue, name: "desiredValue", parent: name, max: 10_000_000_000.0)
             try self.validate(self.desiredValue, name: "desiredValue", parent: name, min: 0.0)
             try self.validate(self.quotaCode, name: "quotaCode", parent: name, max: 128)
             try self.validate(self.quotaCode, name: "quotaCode", parent: name, min: 1)
@@ -751,7 +700,6 @@ extension ServiceQuotas {
     }
 
     public struct PutServiceQuotaIncreaseRequestIntoTemplateResponse: AWSDecodableShape {
-
         /// Information about the quota increase request.
         public let serviceQuotaIncreaseRequestInTemplate: ServiceQuotaIncreaseRequestInTemplate?
 
@@ -765,7 +713,6 @@ extension ServiceQuotas {
     }
 
     public struct QuotaPeriod: AWSDecodableShape {
-
         /// The time unit.
         public let periodUnit: PeriodUnit?
         /// The value.
@@ -783,7 +730,6 @@ extension ServiceQuotas {
     }
 
     public struct RequestServiceQuotaIncreaseRequest: AWSEncodableShape {
-
         /// The new, increased value for the quota.
         public let desiredValue: Double
         /// The quota identifier.
@@ -798,7 +744,7 @@ extension ServiceQuotas {
         }
 
         public func validate(name: String) throws {
-            try self.validate(self.desiredValue, name: "desiredValue", parent: name, max: 10000000000.0)
+            try self.validate(self.desiredValue, name: "desiredValue", parent: name, max: 10_000_000_000.0)
             try self.validate(self.desiredValue, name: "desiredValue", parent: name, min: 0.0)
             try self.validate(self.quotaCode, name: "quotaCode", parent: name, max: 128)
             try self.validate(self.quotaCode, name: "quotaCode", parent: name, min: 1)
@@ -816,7 +762,6 @@ extension ServiceQuotas {
     }
 
     public struct RequestServiceQuotaIncreaseResponse: AWSDecodableShape {
-
         /// Information about the quota increase request.
         public let requestedQuota: RequestedServiceQuotaChange?
 
@@ -830,7 +775,6 @@ extension ServiceQuotas {
     }
 
     public struct RequestedServiceQuotaChange: AWSDecodableShape {
-
         /// The case ID.
         public let caseId: String?
         /// The date and time when the quota increase request was received and the case ID was created.
@@ -896,7 +840,6 @@ extension ServiceQuotas {
     }
 
     public struct ServiceInfo: AWSDecodableShape {
-
         /// The service identifier.
         public let serviceCode: String?
         /// The service name.
@@ -914,7 +857,6 @@ extension ServiceQuotas {
     }
 
     public struct ServiceQuota: AWSDecodableShape {
-
         /// Indicates whether the quota value can be increased.
         public let adjustable: Bool?
         /// The error code and error reason.
@@ -972,7 +914,6 @@ extension ServiceQuotas {
     }
 
     public struct ServiceQuotaIncreaseRequestInTemplate: AWSDecodableShape {
-
         /// The AWS Region.
         public let awsRegion: String?
         /// The new, increased value of the quota.
@@ -1014,7 +955,6 @@ extension ServiceQuotas {
     }
 
     public struct Tag: AWSEncodableShape & AWSDecodableShape {
-
         /// A string that contains a tag key. The string length should be between 1 and 128 characters. Valid characters include a-z, A-Z, 0-9, space, and the special characters _ - . : / = + @.
         public let key: String
         /// A string that contains an optional tag value. The string length should be between 0 and 256 characters. Valid characters include a-z, A-Z, 0-9, space, and the special characters _ - . : / = + @.
@@ -1040,7 +980,6 @@ extension ServiceQuotas {
     }
 
     public struct TagResourceRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) for the applied quota. You can get this information by using the Service Quotas console, or by listing the quotas using the list-service-quotas AWS CLI command or the ListServiceQuotas AWS API operation.
         public let resourceARN: String
         /// The tags that you want to add to the resource.
@@ -1068,15 +1007,10 @@ extension ServiceQuotas {
     }
 
     public struct TagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 
     public struct UntagResourceRequest: AWSEncodableShape {
-
         /// The Amazon Resource Name (ARN) for the applied quota that you want to untag. You can get this information by using the Service Quotas console, or by listing the quotas using the list-service-quotas AWS CLI command or the ListServiceQuotas AWS API operation.
         public let resourceARN: String
         /// The keys of the tags that you want to remove from the resource.
@@ -1105,10 +1039,6 @@ extension ServiceQuotas {
     }
 
     public struct UntagResourceResponse: AWSDecodableShape {
-
-
-        public init() {
-        }
-
+        public init() {}
     }
 }

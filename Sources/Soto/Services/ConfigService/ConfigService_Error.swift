@@ -99,9 +99,9 @@ public struct ConfigServiceErrorType: AWSErrorType {
     /// 			write to it.
     public static var insufficientDeliveryPolicyException: Self { .init(.insufficientDeliveryPolicyException) }
     /// Indicates one of the following errors:
-    /// 		         For PutConfigRule, the rule cannot be created because the IAM role assigned to AWS Config lacks permissions to perform the config:Put* action.   For PutConfigRule, the AWS Lambda function cannot be invoked. Check the function ARN, and check the function's permissions.   For PutOrganizationConfigRule, organization config rule cannot be created because you do not have permissions to call IAM GetRole action or create a service linked role.   For PutConformancePack and PutOrganizationConformancePack, a conformance pack cannot be created because you do not have permissions: 
-    /// 				             To call IAM GetRole action or create a service linked role.   To read Amazon S3 bucket.  
-    /// 			          
+    /// 		         For PutConfigRule, the rule cannot be created because the IAM role assigned to AWS Config lacks permissions to perform the config:Put* action.   For PutConfigRule, the AWS Lambda function cannot be invoked. Check the function ARN, and check the function's permissions.   For PutOrganizationConfigRule, organization config rule cannot be created because you do not have permissions to call IAM GetRole action or create a service linked role.   For PutConformancePack and PutOrganizationConformancePack, a conformance pack cannot be created because you do not have permissions:
+    /// 				             To call IAM GetRole action or create a service linked role.   To read Amazon S3 bucket.
+    ///
     public static var insufficientPermissionsException: Self { .init(.insufficientPermissionsException) }
     /// You have provided a configuration recorder name that is not
     /// 			valid.
@@ -144,7 +144,7 @@ public struct ConfigServiceErrorType: AWSErrorType {
     /// 			is thrown if the number of accounts and aggregators exceeds the
     /// 			limit.
     public static var limitExceededException: Self { .init(.limitExceededException) }
-    /// You have reached the limit (100,000) of active custom resource types in your account. 
+    /// You have reached the limit (100,000) of active custom resource types in your account.
     /// 			Delete unused resources using DeleteResourceConfig.
     public static var maxActiveResourcesExceededException: Self { .init(.maxActiveResourcesExceededException) }
     /// Failed to add the AWS Config rule because the account already
@@ -195,7 +195,7 @@ public struct ConfigServiceErrorType: AWSErrorType {
     public static var noSuchDeliveryChannelException: Self { .init(.noSuchDeliveryChannelException) }
     /// You specified one or more organization config rules that do not exist.
     public static var noSuchOrganizationConfigRuleException: Self { .init(.noSuchOrganizationConfigRuleException) }
-    /// AWS Config organization conformance pack that you passed in the filter does not exist. 
+    /// AWS Config organization conformance pack that you passed in the filter does not exist.
     /// 		       For DeleteOrganizationConformancePack, you tried to delete an organization conformance pack that does not exist.
     public static var noSuchOrganizationConformancePackException: Self { .init(.noSuchOrganizationConformancePackException) }
     /// You specified an AWS Config rule without a remediation configuration.
@@ -205,10 +205,10 @@ public struct ConfigServiceErrorType: AWSErrorType {
     /// You have specified a retention configuration that does not exist.
     public static var noSuchRetentionConfigurationException: Self { .init(.noSuchRetentionConfigurationException) }
     /// For PutConfigurationAggregator API, you can see this exception for the following reasons:
-    /// 		         No permission to call EnableAWSServiceAccess API   The configuration aggregator cannot be updated because your AWS Organization management account or the delegated administrator role changed. 
-    /// 				Delete this aggregator and create a new one with the current AWS Organization.   The configuration aggregator is associated with a previous AWS Organization and AWS Config cannot aggregate data with current AWS Organization. 
-    /// 				Delete this aggregator and create a new one with the current AWS Organization.   You are not a registered delegated administrator for AWS Config with permissions to call ListDelegatedAdministrators API. 
-    /// 			Ensure that the management account registers delagated administrator for AWS Config service principle name before the delegated administrator creates an aggregator.  	
+    /// 		         No permission to call EnableAWSServiceAccess API   The configuration aggregator cannot be updated because your AWS Organization management account or the delegated administrator role changed.
+    /// 				Delete this aggregator and create a new one with the current AWS Organization.   The configuration aggregator is associated with a previous AWS Organization and AWS Config cannot aggregate data with current AWS Organization.
+    /// 				Delete this aggregator and create a new one with the current AWS Organization.   You are not a registered delegated administrator for AWS Config with permissions to call ListDelegatedAdministrators API.
+    /// 			Ensure that the management account registers delagated administrator for AWS Config service principle name before the delegated administrator creates an aggregator.
     /// 		       For all OrganizationConfigRule and OrganizationConformancePack APIs, AWS Config throws an exception if APIs are called from member accounts. All APIs must be called from organization master account.
     public static var organizationAccessDeniedException: Self { .init(.organizationAccessDeniedException) }
     /// AWS Config resource cannot be created because your organization does not have all features enabled.
@@ -217,12 +217,12 @@ public struct ConfigServiceErrorType: AWSErrorType {
     public static var organizationConformancePackTemplateValidationException: Self { .init(.organizationConformancePackTemplateValidationException) }
     /// The configuration item size is outside the allowable range.
     public static var oversizedConfigurationItemException: Self { .init(.oversizedConfigurationItemException) }
-    /// Remediation action is in progress. You can either cancel execution in AWS Systems Manager or wait and try again later. 
+    /// Remediation action is in progress. You can either cancel execution in AWS Systems Manager or wait and try again later.
     public static var remediationInProgressException: Self { .init(.remediationInProgressException) }
     /// Two users are trying to modify the same query at the same time. Wait for a moment and try again.
     public static var resourceConcurrentModificationException: Self { .init(.resourceConcurrentModificationException) }
-    /// You see this exception in the following cases: 
-    /// 		         For DeleteConfigRule, AWS Config is deleting this rule. Try your request again later.   For DeleteConfigRule, the rule is deleting your evaluation results. Try your request again later.   For DeleteConfigRule, a remediation action is associated with the rule and AWS Config cannot delete this rule. Delete the remediation action associated with the rule before deleting the rule and try your request again later.   For PutConfigOrganizationRule, organization config rule deletion is in progress. Try your request again later.   For DeleteOrganizationConfigRule, organization config rule creation is in progress. Try your request again later.   For PutConformancePack and PutOrganizationConformancePack, a conformance pack creation, update, and deletion is in progress. Try your request again later.   For DeleteConformancePack, a conformance pack creation, update, and deletion is in progress. Try your request again later.  
+    /// You see this exception in the following cases:
+    /// 		         For DeleteConfigRule, AWS Config is deleting this rule. Try your request again later.   For DeleteConfigRule, the rule is deleting your evaluation results. Try your request again later.   For DeleteConfigRule, a remediation action is associated with the rule and AWS Config cannot delete this rule. Delete the remediation action associated with the rule before deleting the rule and try your request again later.   For PutConfigOrganizationRule, organization config rule deletion is in progress. Try your request again later.   For DeleteOrganizationConfigRule, organization config rule creation is in progress. Try your request again later.   For PutConformancePack and PutOrganizationConformancePack, a conformance pack creation, update, and deletion is in progress. Try your request again later.   For DeleteConformancePack, a conformance pack creation, update, and deletion is in progress. Try your request again later.
     public static var resourceInUseException: Self { .init(.resourceInUseException) }
     /// You have specified a resource that is either unknown or has not
     /// 			been discovered.

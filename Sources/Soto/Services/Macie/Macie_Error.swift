@@ -48,9 +48,9 @@ public struct MacieErrorType: AWSErrorType {
     public static var accessDeniedException: Self { .init(.accessDeniedException) }
     /// Internal server error.
     public static var internalException: Self { .init(.internalException) }
-    /// The request was rejected because an invalid or out-of-range value was supplied for an input parameter. 
+    /// The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
     public static var invalidInputException: Self { .init(.invalidInputException) }
-    /// The request was rejected because it attempted to create resources beyond the current AWS account limits. The error code describes the limit exceeded. 
+    /// The request was rejected because it attempted to create resources beyond the current AWS account limits. The error code describes the limit exceeded.
     public static var limitExceededException: Self { .init(.limitExceededException) }
 }
 

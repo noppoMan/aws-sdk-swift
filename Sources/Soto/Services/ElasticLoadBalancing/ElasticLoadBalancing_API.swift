@@ -125,7 +125,7 @@ public struct ElasticLoadBalancing: AWSService {
         return self.client.execute(operation: "DeleteLoadBalancerPolicy", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Deregisters the specified instances from the specified load balancer. After the instance is deregistered, it no longer receives traffic from the load balancer.  You can use DescribeLoadBalancers to verify that the instance is deregistered from the load balancer.  
+    /// Deregisters the specified instances from the specified load balancer. After the instance is deregistered, it no longer receives traffic from the load balancer.  You can use DescribeLoadBalancers to verify that the instance is deregistered from the load balancer.
     ///  For more information, see Register or De-Register EC2 Instances  in the Classic Load Balancers Guide.
     public func deregisterInstancesFromLoadBalancer(_ input: DeregisterEndPointsInput, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<DeregisterEndPointsOutput> {
         return self.client.execute(operation: "DeregisterInstancesFromLoadBalancer", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
@@ -181,7 +181,7 @@ public struct ElasticLoadBalancing: AWSService {
         return self.client.execute(operation: "EnableAvailabilityZonesForLoadBalancer", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Modifies the attributes of the specified load balancer.  You can modify the load balancer attributes, such as AccessLogs, ConnectionDraining, and  CrossZoneLoadBalancing by either enabling or disabling them. Or, you can modify the load balancer attribute  ConnectionSettings by specifying an idle connection timeout value for your load balancer.  For more information, see the following in the Classic Load Balancers Guide:    Cross-Zone Load Balancing     Connection Draining     Access Logs     Idle Connection Timeout   
+    /// Modifies the attributes of the specified load balancer.  You can modify the load balancer attributes, such as AccessLogs, ConnectionDraining, and  CrossZoneLoadBalancing by either enabling or disabling them. Or, you can modify the load balancer attribute  ConnectionSettings by specifying an idle connection timeout value for your load balancer.  For more information, see the following in the Classic Load Balancers Guide:    Cross-Zone Load Balancing     Connection Draining     Access Logs     Idle Connection Timeout
     public func modifyLoadBalancerAttributes(_ input: ModifyLoadBalancerAttributesInput, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<ModifyLoadBalancerAttributesOutput> {
         return self.client.execute(operation: "ModifyLoadBalancerAttributes", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
@@ -204,7 +204,7 @@ public struct ElasticLoadBalancing: AWSService {
         return self.client.execute(operation: "SetLoadBalancerListenerSSLCertificate", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
     }
 
-    /// Replaces the set of policies associated with the specified port on which the EC2 instance is listening with a new set of policies.  At this time, only the back-end server authentication policy type can be applied to the instance ports; this policy type is composed of multiple public key policies. Each time you use SetLoadBalancerPoliciesForBackendServer to enable the policies,  use the PolicyNames parameter to list the policies that you want to enable. You can use DescribeLoadBalancers or DescribeLoadBalancerPolicies to verify that the policy  is associated with the EC2 instance.     
+    /// Replaces the set of policies associated with the specified port on which the EC2 instance is listening with a new set of policies.  At this time, only the back-end server authentication policy type can be applied to the instance ports; this policy type is composed of multiple public key policies. Each time you use SetLoadBalancerPoliciesForBackendServer to enable the policies,  use the PolicyNames parameter to list the policies that you want to enable. You can use DescribeLoadBalancers or DescribeLoadBalancerPolicies to verify that the policy  is associated with the EC2 instance.
     ///  For more information about enabling back-end instance authentication, see Configure Back-end Instance Authentication in the Classic Load Balancers Guide. For more information about Proxy Protocol, see  Configure Proxy Protocol Support in the Classic Load Balancers Guide.
     public func setLoadBalancerPoliciesForBackendServer(_ input: SetLoadBalancerPoliciesForBackendServerInput, logger: Logger = AWSClient.loggingDisabled, on eventLoop: EventLoop? = nil) -> EventLoopFuture<SetLoadBalancerPoliciesForBackendServerOutput> {
         return self.client.execute(operation: "SetLoadBalancerPoliciesForBackendServer", path: "/", httpMethod: .POST, serviceConfig: self.config, input: input, logger: logger, on: eventLoop)
