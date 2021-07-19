@@ -22,7 +22,7 @@ public struct CloudWatchErrorType: AWSErrorType {
     enum Code: String {
         case concurrentModificationException = "ConcurrentModificationException"
         case dashboardInvalidInputError = "InvalidParameterInput"
-        case dashboardNotFoundError = "ResourceNotFound"
+        case dashboardNotFoundError = "DashboardNotFoundError"
         case internalServiceFault = "InternalServiceError"
         case invalidFormatFault = "InvalidFormat"
         case invalidNextToken = "InvalidNextToken"
